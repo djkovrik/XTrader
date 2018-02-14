@@ -182,7 +182,7 @@ complexity:
     active: true
     threshold: 7
   LargeClass:
-    active: true
+    active: false
     threshold: 150
   ComplexInterface:
     active: true
