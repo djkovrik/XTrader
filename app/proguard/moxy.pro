@@ -1,0 +1,1 @@
+-dontwarn com.arellomobile.mvp.MoxyReflector
