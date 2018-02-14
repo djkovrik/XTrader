@@ -2,18 +2,29 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-  compileSdkVersion 26
-
-
+  compileSdkVersion Versions.COMPILED_SDK_VERSION
 
   defaultConfig {
-    minSdkVersion 19
-    targetSdkVersion 27
-    versionCode 1
-    versionName "1.0"
+    minSdkVersion Versions.MIN_SDK_VERSION
+    targetSdkVersion Versions.TARGET_SDK_VERSION
+    versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 + Versions.APP_VERSION_BUGFIX
+    versionName "${Versions.APP_VERSION_MAJOR}.${Versions.APP_VERSION_MINOR}.${Versions.APP_VERSION_BUGFIX}"
 
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+    flavorDimensions "variant"
+    resConfigs "en", "ru"
+  }
+
+  productFlavors {
+    dev {
+      dimension "variant"
+      minSdkVersion Versions.MIN_SDK_DEV_VERSION
+    }
+    prod {
+      dimension "variant"
+      minSdkVersion Versions.MIN_SDK_VERSION
+    }
   }
 
   buildTypes {
@@ -28,4 +39,14 @@ android {
 dependencies {
   implementation project(':domain')
 
+  implementation DataDependencies.kotlin
+  implementation DataDependencies.kotlinCoroutines
+  implementation DataDependencies.kotlinCoroutinesAndroid
+  implementation DataDependencies.javaxInject
+  implementation DataDependencies.retrofit
+
+  testImplementation DataTestDependencies.junit
+  testImplementation DataTestDependencies.mockito
+  testImplementation DataTestDependencies.mockitoKotlin
+  testImplementation DataTestDependencies.expekt
 }

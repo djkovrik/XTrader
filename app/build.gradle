@@ -2,31 +2,110 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 27
-    defaultConfig {
-        applicationId "com.sedsoftware.wexer"
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  compileSdkVersion Versions.COMPILED_SDK_VERSION
+
+  defaultConfig {
+    minSdkVersion Versions.MIN_SDK_VERSION
+    targetSdkVersion Versions.TARGET_SDK_VERSION
+    versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 + Versions.APP_VERSION_BUGFIX
+    versionName "${Versions.APP_VERSION_MAJOR}.${Versions.APP_VERSION_MINOR}.${Versions.APP_VERSION_BUGFIX}"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    flavorDimensions "variant"
+    resConfigs "en", "ru"
+  }
+
+  productFlavors {
+    dev {
+      dimension "variant"
+      minSdkVersion Versions.MIN_SDK_DEV_VERSION
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    prod {
+      dimension "variant"
+      minSdkVersion Versions.MIN_SDK_VERSION
     }
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+      proguardFiles fileTree('proguard').asList().toArray()
+    }
+    debug {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+androidExtensions {
+  experimental = true
 }
 
 dependencies {
 
-    implementation project(':domain')
-    implementation project(':data')
-    implementation project(':device')
+  implementation project(':domain')
+  implementation project(':data')
+  implementation project(':device')
 
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+  implementation PresentationDependencies.kotlin
+  implementation PresentationDependencies.kotlinCoroutines
+  implementation PresentationDependencies.kotlinCoroutinesAndroid
+
+  implementation PresentationDependencies.appCompat
+  implementation PresentationDependencies.cardView
+  implementation PresentationDependencies.design
+  implementation PresentationDependencies.recyclerView
+  implementation PresentationDependencies.constraintLayout
+
+  implementation PresentationDependencies.toothpick
+  implementation PresentationDependencies.toothpickAndroid
+  implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+  kapt PresentationDependencies.toothpickCompiler
+
+  implementation PresentationDependencies.moxy
+  kapt PresentationDependencies.moxyCompiler
+  implementation PresentationDependencies.moxyAndroid
+  implementation PresentationDependencies.moxyAppCompat
+  implementation PresentationDependencies.cicerone
+  implementation PresentationDependencies.anko
+  implementation PresentationDependencies.ankoDesign
+
+  implementation PresentationDependencies.moshi
+  implementation PresentationDependencies.retrofit
+  implementation PresentationDependencies.retrofitMoshiConverter
+  implementation PresentationDependencies.retrofitScalarsConverter
+  implementation PresentationDependencies.retrofitCoroutines
+  implementation PresentationDependencies.okhttp
+  implementation PresentationDependencies.okhttpInterceptor
+  implementation PresentationDependencies.glide
+  kapt PresentationDependencies.glideCompiler
+
+  implementation PresentationDependencies.materialValues
+  implementation PresentationDependencies.iconicsCore
+  implementation PresentationDependencies.iconicsView
+  implementation PresentationDependencies.materialTypeface
+  implementation PresentationDependencies.materialDialogs
+  implementation PresentationDependencies.materialDialogsCommons
+
+  implementation DeveloperToolsDependencies.timber
+
+  debugImplementation DeveloperToolsDependencies.leakCanary
+  releaseImplementation DeveloperToolsDependencies.leakCanaryNoOp
+  testImplementation DeveloperToolsDependencies.leakCanaryNoOp
+
+  testImplementation PresentationTestDependencies.junit
+  testImplementation PresentationTestDependencies.mockito
+  testImplementation PresentationTestDependencies.mockitoKotlin
+  testImplementation PresentationTestDependencies.expekt
+
+  androidTestImplementation PresentationTestDependencies.espresso
+  androidTestImplementation PresentationTestDependencies.mockitoAndroid
 }
+

@@ -1,9 +1,7 @@
-package com.sedsoftware.buildsrc
-
-import com.sedsoftware.buildsrc.Versions.JAVAX_INJECT_VERSION
-import com.sedsoftware.buildsrc.Versions.KOTLIN_COROUTINES_VERSION
-import com.sedsoftware.buildsrc.Versions.KOTLIN_VERSION
-import com.sedsoftware.buildsrc.Versions.SUPPORT_LIBRARY_VERSION
+import Versions.JAVAX_INJECT_VERSION
+import Versions.KOTLIN_COROUTINES_VERSION
+import Versions.KOTLIN_VERSION
+import Versions.SUPPORT_LIBRARY_VERSION
 
 object DeviceDependencies {
   const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$KOTLIN_VERSION"

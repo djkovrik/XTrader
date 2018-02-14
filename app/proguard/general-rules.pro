@@ -1,0 +1,11 @@
+-dontnote android.net.http.*
+-dontnote org.apache.http.**
+-dontnote com.mikepenz.iconics.**
+-dontnote com.mikepenz.materialize.**
+-dontnote com.afollestad.materialdialogs.**
+-dontnote com.squareup.moshi.**
+-dontnote okhttp3.internal.**
+-dontnote kotlin.internal.**
+-dontnote kotlin.jvm.internal.**
+
+-dontwarn com.jakewharton.rxbinding2.**

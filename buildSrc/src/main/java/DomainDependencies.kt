@@ -1,8 +1,6 @@
-package com.sedsoftware.buildsrc
-
-import com.sedsoftware.buildsrc.Versions.JAVAX_INJECT_VERSION
-import com.sedsoftware.buildsrc.Versions.KOTLIN_COROUTINES_VERSION
-import com.sedsoftware.buildsrc.Versions.KOTLIN_VERSION
+import Versions.JAVAX_INJECT_VERSION
+import Versions.KOTLIN_COROUTINES_VERSION
+import Versions.KOTLIN_VERSION
 
 object DomainDependencies {
   const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$KOTLIN_VERSION"

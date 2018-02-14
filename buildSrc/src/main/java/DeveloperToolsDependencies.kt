@@ -1,7 +1,5 @@
-package com.sedsoftware.buildsrc
-
-import com.sedsoftware.buildsrc.Versions.LEAK_CANARY_VERSION
-import com.sedsoftware.buildsrc.Versions.TIMBER_VERSION
+import Versions.LEAK_CANARY_VERSION
+import Versions.TIMBER_VERSION
 
 object DeveloperToolsDependencies {
   const val timber = "com.jakewharton.timber:timber:$TIMBER_VERSION"

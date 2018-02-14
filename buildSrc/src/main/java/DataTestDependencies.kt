@@ -1,9 +1,7 @@
-package com.sedsoftware.buildsrc
-
-import com.sedsoftware.buildsrc.Versions.EXPEKT_VERSION
-import com.sedsoftware.buildsrc.Versions.JUNIT_VERSION
-import com.sedsoftware.buildsrc.Versions.MOCKITO_KOTLIN_VERSION
-import com.sedsoftware.buildsrc.Versions.MOCKITO_VERSION
+import Versions.EXPEKT_VERSION
+import Versions.JUNIT_VERSION
+import Versions.MOCKITO_KOTLIN_VERSION
+import Versions.MOCKITO_VERSION
 
 object DataTestDependencies {
   const val junit = "junit:junit:$JUNIT_VERSION"

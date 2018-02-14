@@ -1,12 +1,22 @@
-package com.sedsoftware.buildsrc
-
 object Versions {
 
-  // App
+  // App version
+  // Versioning: Major -> millions, Minor -> thousands, Bugfix -> hundreds
+  // Current: 0.0.1 (000,000,001)
+  const val APP_VERSION_MAJOR = 0
+  const val APP_VERSION_MINOR = 0
+  const val APP_VERSION_BUGFIX = 1
+
+  // App data
   const val MIN_SDK_VERSION = 19
   const val MIN_SDK_DEV_VERSION = 22
   const val COMPILED_SDK_VERSION = 27
   const val TARGET_SDK_VERSION = 27
+  const val GRADLE_ANDROID_VERSION = "3.2.0-alpha02"
+
+  // Plugins
+  const val DETEKT_VERSION = "1.0.0.RC6-3"
+  const val GRADLE_VERSIONS_VERSION = "0.17.0"
 
   // Android
   const val SUPPORT_LIBRARY_VERSION = "27.0.2"
@@ -17,6 +27,7 @@ object Versions {
   const val KOTLIN_COROUTINES_VERSION = "0.22.2"
 
   // Core
+  const val REALM_VERSION = "4.3.4"
   const val TOOTHPICK_VERSION = "1.1.1"
   const val JAVAX_INJECT_VERSION = "1"
   const val RETROFIT_VERSION = "2.3.0"
@@ -37,11 +48,11 @@ object Versions {
   // Testing
   const val ESPRESSO_VERSION = "3.0.2-alpha1"
   const val JUNIT_VERSION = "4.12"
-  const val MOCKITO_VERSION = "2.13.0"
+  const val MOCKITO_VERSION = "2.15.0"
   const val MOCKITO_KOTLIN_VERSION = "1.5.0"
   const val EXPEKT_VERSION = "0.5.0"
 
   // Development tools
-  const val TIMBER_VERSION = "4.6.0"
+  const val TIMBER_VERSION = "4.6.1"
   const val LEAK_CANARY_VERSION = "1.5.4"
 }

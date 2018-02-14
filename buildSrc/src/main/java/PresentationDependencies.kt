@@ -1,22 +1,20 @@
-package com.sedsoftware.buildsrc
-
-import com.sedsoftware.buildsrc.Versions.ANKO_VERSION
-import com.sedsoftware.buildsrc.Versions.CICERONE_VERSION
-import com.sedsoftware.buildsrc.Versions.COMMUNITY_MATERIAL_ICONS_VERSION
-import com.sedsoftware.buildsrc.Versions.CONSTRAINT_LAYOUT_VERSION
-import com.sedsoftware.buildsrc.Versions.GLIDE_VERSION
-import com.sedsoftware.buildsrc.Versions.ICONICS_VERSION
-import com.sedsoftware.buildsrc.Versions.KOTLIN_COROUTINES_VERSION
-import com.sedsoftware.buildsrc.Versions.KOTLIN_VERSION
-import com.sedsoftware.buildsrc.Versions.MATERIAL_DIALOGS_VERSION
-import com.sedsoftware.buildsrc.Versions.MATERIAL_VALUES_VERSION
-import com.sedsoftware.buildsrc.Versions.MOSHI_VERSION
-import com.sedsoftware.buildsrc.Versions.MOXY_VERSION
-import com.sedsoftware.buildsrc.Versions.OKHTTP_VERSION
-import com.sedsoftware.buildsrc.Versions.RETROFIT_COROUTINES_ADAPTER_VERSION
-import com.sedsoftware.buildsrc.Versions.RETROFIT_VERSION
-import com.sedsoftware.buildsrc.Versions.SUPPORT_LIBRARY_VERSION
-import com.sedsoftware.buildsrc.Versions.TOOTHPICK_VERSION
+import Versions.ANKO_VERSION
+import Versions.CICERONE_VERSION
+import Versions.COMMUNITY_MATERIAL_ICONS_VERSION
+import Versions.CONSTRAINT_LAYOUT_VERSION
+import Versions.GLIDE_VERSION
+import Versions.ICONICS_VERSION
+import Versions.KOTLIN_COROUTINES_VERSION
+import Versions.KOTLIN_VERSION
+import Versions.MATERIAL_DIALOGS_VERSION
+import Versions.MATERIAL_VALUES_VERSION
+import Versions.MOSHI_VERSION
+import Versions.MOXY_VERSION
+import Versions.OKHTTP_VERSION
+import Versions.RETROFIT_COROUTINES_ADAPTER_VERSION
+import Versions.RETROFIT_VERSION
+import Versions.SUPPORT_LIBRARY_VERSION
+import Versions.TOOTHPICK_VERSION
 
 object PresentationDependencies {
   const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$KOTLIN_VERSION"
