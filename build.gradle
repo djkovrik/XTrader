@@ -1,14 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.21'
     repositories {
         google()
         jcenter()
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath AppDependencies.ANDROID_GRADLE
+        classpath Plugins.ANDROID_GRADLE
         classpath Plugins.KOTLIN_GRADLE_PLUGIN
         classpath Plugins.DETEKT
         classpath Plugins.GRADLE_VERSIONS
