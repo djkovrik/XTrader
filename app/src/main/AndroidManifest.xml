@@ -11,7 +11,14 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
     android:fullBackupContent="@xml/backup_descriptor">
-    <activity android:name=".presentation.features.main.MainActivity" />
+    <activity
+      android:name=".presentation.features.main.MainActivity"
+      android:launchMode="singleTop">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
   </application>
 
 </manifest>

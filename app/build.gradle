@@ -55,6 +55,7 @@ dependencies {
   implementation project(':device')
 
   implementation PresentationDependencies.kotlin
+  implementation PresentationDependencies.kotlinReflection
   implementation PresentationDependencies.kotlinCoroutines
   implementation PresentationDependencies.kotlinCoroutinesAndroid
 
