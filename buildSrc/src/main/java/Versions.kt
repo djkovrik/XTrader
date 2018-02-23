@@ -37,13 +37,13 @@ object Versions {
   const val MOXY_VERSION = "1.5.3"
   const val CICERONE_VERSION = "3.0.0"
   const val ANKO_VERSION = "0.10.4"
-  const val GLIDE_VERSION = "4.6.1"
 
   // UI
   const val MATERIAL_VALUES_VERSION = "1.1.1"
   const val ICONICS_VERSION = "3.0.2@aar"
   const val COMMUNITY_MATERIAL_ICONS_VERSION = "2.0.46.1@aar"
   const val MATERIAL_DIALOGS_VERSION = "0.9.6.0"
+  const val MP_ANDROID_CHART_VERSION = "v3.0.3"
 
   // Testing
   const val ESPRESSO_VERSION = "3.0.2-alpha1"

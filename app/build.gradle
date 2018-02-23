@@ -85,8 +85,6 @@ dependencies {
   implementation PresentationDependencies.retrofitCoroutines
   implementation PresentationDependencies.okhttp
   implementation PresentationDependencies.okhttpInterceptor
-  implementation PresentationDependencies.glide
-  kapt PresentationDependencies.glideCompiler
 
   implementation PresentationDependencies.materialValues
   implementation PresentationDependencies.iconicsCore
@@ -94,6 +92,7 @@ dependencies {
   implementation PresentationDependencies.materialTypeface
   implementation PresentationDependencies.materialDialogs
   implementation PresentationDependencies.materialDialogsCommons
+  implementation PresentationDependencies.mpAndroidChart
 
   implementation DeveloperToolsDependencies.timber
 

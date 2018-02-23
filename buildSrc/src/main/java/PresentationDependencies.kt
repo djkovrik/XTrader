@@ -1,8 +1,8 @@
+
 import Versions.ANKO_VERSION
 import Versions.CICERONE_VERSION
 import Versions.COMMUNITY_MATERIAL_ICONS_VERSION
 import Versions.CONSTRAINT_LAYOUT_VERSION
-import Versions.GLIDE_VERSION
 import Versions.ICONICS_VERSION
 import Versions.KOTLIN_COROUTINES_VERSION
 import Versions.KOTLIN_VERSION
@@ -10,6 +10,7 @@ import Versions.MATERIAL_DIALOGS_VERSION
 import Versions.MATERIAL_VALUES_VERSION
 import Versions.MOSHI_VERSION
 import Versions.MOXY_VERSION
+import Versions.MP_ANDROID_CHART_VERSION
 import Versions.OKHTTP_VERSION
 import Versions.RETROFIT_COROUTINES_ADAPTER_VERSION
 import Versions.RETROFIT_VERSION
@@ -47,8 +48,6 @@ object PresentationDependencies {
     "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$RETROFIT_COROUTINES_ADAPTER_VERSION"
   const val okhttp = "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
   const val okhttpInterceptor = "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
-  const val glide = "com.github.bumptech.glide:glide:$GLIDE_VERSION"
-  const val glideCompiler = "com.github.bumptech.glide:compiler:$GLIDE_VERSION"
 
   const val materialValues = "blue.aodev:material-values:$MATERIAL_VALUES_VERSION"
   const val iconicsCore = "com.mikepenz:iconics-core:$ICONICS_VERSION"
@@ -56,4 +55,5 @@ object PresentationDependencies {
   const val materialTypeface = "com.mikepenz:community-material-typeface:$COMMUNITY_MATERIAL_ICONS_VERSION"
   const val materialDialogs = "com.afollestad.material-dialogs:core:$MATERIAL_DIALOGS_VERSION"
   const val materialDialogsCommons = "com.afollestad.material-dialogs:commons:$MATERIAL_DIALOGS_VERSION"
+  const val mpAndroidChart = "com.github.philjay:mpandroidchart:$MP_ANDROID_CHART_VERSION"
 }

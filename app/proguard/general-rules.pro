@@ -7,5 +7,3 @@
 -dontnote okhttp3.internal.**
 -dontnote kotlin.internal.**
 -dontnote kotlin.jvm.internal.**
-
--dontwarn com.jakewharton.rxbinding2.**
