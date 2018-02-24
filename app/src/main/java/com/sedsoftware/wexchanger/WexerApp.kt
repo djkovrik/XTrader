@@ -8,6 +8,8 @@ import com.squareup.leakcanary.LeakCanary
 import timber.log.Timber
 import toothpick.Toothpick
 import toothpick.configuration.Configuration
+import toothpick.registries.FactoryRegistryLocator
+import toothpick.registries.MemberInjectorRegistryLocator
 
 class WexerApp : Application() {
 
@@ -40,7 +42,10 @@ class WexerApp : Application() {
       Toothpick.setConfiguration(Configuration.forDevelopment().preventMultipleRootScopes())
     } else {
       Toothpick.setConfiguration(Configuration.forProduction())
+      FactoryRegistryLocator.setRootRegistry(com.sedsoftware.wexchanger.FactoryRegistry())
+      MemberInjectorRegistryLocator.setRootRegistry(com.sedsoftware.wexchanger.MemberInjectorRegistry())
     }
+
   }
 
   /**

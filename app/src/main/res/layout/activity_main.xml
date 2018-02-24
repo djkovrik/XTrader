@@ -3,6 +3,6 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.sedsoftware.wexchanger.presentation.features.main.MainActivity">
+  tools:context="com.sedsoftware.wexchanger.presentation.features.home.MainActivity">
 
 </android.support.constraint.ConstraintLayout>
