@@ -7,6 +7,6 @@ data class WexCurrencyPairInfo(
   @Json(name = "min_price") val minPrice: Float,
   @Json(name = "max_price") val maxPrice: Float,
   @Json(name = "min_amount") val minAmount: Float,
-  @Json(name = "hidden") val hidden: Boolean,
+  @Json(name = "hidden") val hidden: Int,
   @Json(name = "fee") val fee: Float
 )
