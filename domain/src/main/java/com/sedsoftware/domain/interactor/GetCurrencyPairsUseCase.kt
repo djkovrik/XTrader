@@ -1,6 +1,7 @@
 package com.sedsoftware.domain.interactor
 
-import com.sedsoftware.domain.common.ResultCallback
+import com.sedsoftware.domain.common.ErrorCallback
+import com.sedsoftware.domain.common.SuccessCallback
 import com.sedsoftware.domain.entity.CurrencyPair
 import com.sedsoftware.domain.exception.EmptyServerResponse
 import com.sedsoftware.domain.executor.Executor
@@ -13,13 +14,13 @@ class GetCurrencyPairsUseCase @Inject constructor(
   executor: Executor
 ) : UseCase(executor) {
 
-  fun getPairs(callback: ResultCallback<List<CurrencyPair>>) = postExecute {
+  fun getPairs(onSuccess: SuccessCallback<List<CurrencyPair>>, onError: ErrorCallback) = postExecute {
     repository.getCurrencyPairsList().consumeEach { pairsList ->
       when {
         pairsList.isNotEmpty() ->
-          callback.onSuccess(pairsList)
+          onSuccess(pairsList)
         else ->
-          callback.onError(EmptyServerResponse("Pairs list is empty"))
+          onError(EmptyServerResponse("Pairs list is empty"))
       }
     }
   }

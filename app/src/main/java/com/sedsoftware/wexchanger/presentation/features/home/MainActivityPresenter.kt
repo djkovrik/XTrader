@@ -1,8 +1,6 @@
 package com.sedsoftware.wexchanger.presentation.features.home
 
 import com.arellomobile.mvp.InjectViewState
-import com.sedsoftware.domain.common.ResultCallback
-import com.sedsoftware.domain.entity.CurrencyPair
 import com.sedsoftware.domain.interactor.GetCurrencyPairsUseCase
 import com.sedsoftware.wexchanger.presentation.base.BasePresenter
 import timber.log.Timber
@@ -17,14 +15,10 @@ class MainActivityPresenter @Inject constructor(
     super.attachView(view)
 
     getCurrencyPairsUseCase
-      .getPairs(object : ResultCallback<List<CurrencyPair>> {
-        override fun onSuccess(value: List<CurrencyPair>) {
-          Timber.d("Pairs: $value")
-        }
-
-        override fun onError(error: Throwable) {
-          Timber.e("Error: ${error.message}")
-        }
+      .getPairs({ list ->
+        Timber.d("Pairs: $list") }, {
+          throwable ->
+        Timber.e("Error: ${throwable.message}")
       })
   }
 }
