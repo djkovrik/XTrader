@@ -44,6 +44,7 @@ object Versions {
   const val COMMUNITY_MATERIAL_ICONS_VERSION = "2.0.46.1@aar"
   const val MATERIAL_DIALOGS_VERSION = "0.9.6.0"
   const val MP_ANDROID_CHART_VERSION = "v3.0.3"
+  const val AV_BOTTOM_NAVIGATION_VERSION = "2.0.4"
 
   // Testing
   const val ESPRESSO_VERSION = "3.0.2-alpha1"
