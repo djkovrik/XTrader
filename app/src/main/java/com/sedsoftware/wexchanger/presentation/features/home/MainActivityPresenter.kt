@@ -2,6 +2,7 @@ package com.sedsoftware.wexchanger.presentation.features.home
 
 import com.arellomobile.mvp.InjectViewState
 import com.sedsoftware.domain.interactor.GetCurrencyPairsUseCase
+import com.sedsoftware.wexchanger.commons.extension.addToCancelableJobsPool
 import com.sedsoftware.wexchanger.presentation.base.BasePresenter
 import timber.log.Timber
 import javax.inject.Inject
@@ -20,5 +21,6 @@ class MainActivityPresenter @Inject constructor(
           throwable ->
         Timber.e("Error: ${throwable.message}")
       })
+      .addToCancelableJobsPool(jobs)
   }
 }
