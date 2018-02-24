@@ -44,6 +44,7 @@ dependencies {
   implementation DataDependencies.kotlinCoroutinesAndroid
   implementation DataDependencies.javaxInject
   implementation DataDependencies.retrofit
+  implementation DataDependencies.moshi
 
   testImplementation DataTestDependencies.junit
   testImplementation DataTestDependencies.mockito
