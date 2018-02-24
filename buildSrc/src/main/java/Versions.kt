@@ -29,7 +29,6 @@ object Versions {
   // Core
   const val REALM_VERSION = "4.3.4"
   const val TOOTHPICK_VERSION = "1.1.1"
-  const val JAVAX_INJECT_VERSION = "1"
   const val RETROFIT_VERSION = "2.3.0"
   const val RETROFIT_COROUTINES_ADAPTER_VERSION = "1.0.0"
   const val OKHTTP_VERSION = "3.9.1"

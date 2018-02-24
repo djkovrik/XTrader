@@ -1,53 +1,63 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
-  compileSdkVersion Versions.COMPILED_SDK_VERSION
+    compileSdkVersion Versions.COMPILED_SDK_VERSION
 
-  defaultConfig {
-    minSdkVersion Versions.MIN_SDK_VERSION
-    targetSdkVersion Versions.TARGET_SDK_VERSION
-    versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 + Versions.APP_VERSION_BUGFIX
-    versionName "${Versions.APP_VERSION_MAJOR}.${Versions.APP_VERSION_MINOR}.${Versions.APP_VERSION_BUGFIX}"
+    defaultConfig {
+        minSdkVersion Versions.MIN_SDK_VERSION
+        targetSdkVersion Versions.TARGET_SDK_VERSION
+        versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 +
+                Versions.APP_VERSION_BUGFIX
+        versionName "${Versions.APP_VERSION_MAJOR}.${Versions.APP_VERSION_MINOR}.${Versions.APP_VERSION_BUGFIX}"
 
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-    flavorDimensions "variant"
-    resConfigs "en", "ru"
-  }
-
-  productFlavors {
-    dev {
-      dimension "variant"
-      minSdkVersion Versions.MIN_SDK_DEV_VERSION
+        flavorDimensions "variant"
+        resConfigs "en", "ru"
     }
-    prod {
-      dimension "variant"
-      minSdkVersion Versions.MIN_SDK_VERSION
-    }
-  }
 
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    productFlavors {
+        dev {
+            dimension "variant"
+            minSdkVersion Versions.MIN_SDK_DEV_VERSION
+        }
+        prod {
+            dimension "variant"
+            minSdkVersion Versions.MIN_SDK_VERSION
+        }
     }
-  }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+kapt {
+    arguments {
+        arg("toothpick_registry_package_name", "com.sedsoftware.device")
+        arg("toothpick_registry_children_package_names", "com.sedsoftware.domain")
+    }
 }
 
 dependencies {
-  implementation project(':domain')
+    implementation project(':domain')
 
-  implementation DeviceDependencies.kotlin
-  implementation DeviceDependencies.kotlinCoroutines
-  implementation DeviceDependencies.kotlinCoroutinesAndroid
-  implementation DeviceDependencies.appCompat
-  implementation DeviceDependencies.javax
+    implementation DeviceDependencies.kotlin
+    implementation DeviceDependencies.kotlinCoroutines
+    implementation DeviceDependencies.kotlinCoroutinesAndroid
+    implementation DeviceDependencies.appCompat
+    implementation DeviceDependencies.toothpick
+    kapt DeviceDependencies.toothpickCompiler
 
-  implementation DeveloperToolsDependencies.timber
+    implementation DeveloperToolsDependencies.timber
 
-  testImplementation DeviceTestDependencies.junit
-  testImplementation DeviceTestDependencies.mockito
-  testImplementation DeviceTestDependencies.mockitoKotlin
-  testImplementation DeviceTestDependencies.expekt
+    testImplementation DeviceTestDependencies.junit
+    testImplementation DeviceTestDependencies.mockito
+    testImplementation DeviceTestDependencies.mockitoKotlin
+    testImplementation DeviceTestDependencies.expekt
 }

@@ -5,108 +5,117 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 
 android {
-  compileSdkVersion Versions.COMPILED_SDK_VERSION
+    compileSdkVersion Versions.COMPILED_SDK_VERSION
 
-  defaultConfig {
-    minSdkVersion Versions.MIN_SDK_VERSION
-    targetSdkVersion Versions.TARGET_SDK_VERSION
-    versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 + Versions.APP_VERSION_BUGFIX
-    versionName "${Versions.APP_VERSION_MAJOR}.${Versions.APP_VERSION_MINOR}.${Versions.APP_VERSION_BUGFIX}"
+    compileOptions.incremental = false
 
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    defaultConfig {
+        minSdkVersion Versions.MIN_SDK_VERSION
+        targetSdkVersion Versions.TARGET_SDK_VERSION
+        versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 +
+                Versions.APP_VERSION_BUGFIX
+        versionName "${Versions.APP_VERSION_MAJOR}.${Versions.APP_VERSION_MINOR}.${Versions.APP_VERSION_BUGFIX}"
 
-    flavorDimensions "variant"
-    resConfigs "en", "ru"
-  }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-  productFlavors {
-    dev {
-      dimension "variant"
-      minSdkVersion Versions.MIN_SDK_DEV_VERSION
+        flavorDimensions "variant"
+        resConfigs "en", "ru"
     }
-    prod {
-      dimension "variant"
-      minSdkVersion Versions.MIN_SDK_VERSION
-    }
-  }
 
-  buildTypes {
-    release {
-      minifyEnabled true
-      shrinkResources true
-      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
-      proguardFiles fileTree('proguard').asList().toArray()
+    productFlavors {
+        dev {
+            dimension "variant"
+            minSdkVersion Versions.MIN_SDK_DEV_VERSION
+        }
+        prod {
+            dimension "variant"
+            minSdkVersion Versions.MIN_SDK_VERSION
+        }
     }
-    debug {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFiles fileTree('proguard').asList().toArray()
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
-  }
 }
 
 androidExtensions {
-  experimental = true
+    experimental = true
+}
+
+kapt {
+    arguments {
+        arg("toothpick_registry_package_name", "com.sedsoftware.wexchanger")
+        arg("toothpick_registry_children_package_names ", "com.sedsoftware.data, com.sedsoftware.device")
+    }
 }
 
 dependencies {
 
-  implementation project(':domain')
-  implementation project(':data')
-  implementation project(':device')
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':device')
 
-  implementation PresentationDependencies.kotlin
-  implementation PresentationDependencies.kotlinReflection
-  implementation PresentationDependencies.kotlinCoroutines
-  implementation PresentationDependencies.kotlinCoroutinesAndroid
+    implementation PresentationDependencies.kotlin
+    implementation PresentationDependencies.kotlinReflection
+    implementation PresentationDependencies.kotlinCoroutines
+    implementation PresentationDependencies.kotlinCoroutinesAndroid
 
-  implementation PresentationDependencies.appCompat
-  implementation PresentationDependencies.cardView
-  implementation PresentationDependencies.design
-  implementation PresentationDependencies.recyclerView
-  implementation PresentationDependencies.constraintLayout
+    implementation PresentationDependencies.appCompat
+    implementation PresentationDependencies.cardView
+    implementation PresentationDependencies.design
+    implementation PresentationDependencies.recyclerView
+    implementation PresentationDependencies.constraintLayout
 
-  implementation PresentationDependencies.toothpick
-  implementation PresentationDependencies.toothpickAndroid
-  implementation PresentationDependencies.constraintLayout
-  kapt PresentationDependencies.toothpickCompiler
+    implementation PresentationDependencies.toothpick
+    implementation PresentationDependencies.toothpickAndroid
+    implementation PresentationDependencies.constraintLayout
+    kapt PresentationDependencies.toothpickCompiler
 
-  implementation PresentationDependencies.moxy
-  kapt PresentationDependencies.moxyCompiler
-  implementation PresentationDependencies.moxyAndroid
-  implementation PresentationDependencies.moxyAppCompat
-  implementation PresentationDependencies.cicerone
-  implementation PresentationDependencies.anko
-  implementation PresentationDependencies.ankoDesign
+    implementation PresentationDependencies.moxy
+    kapt PresentationDependencies.moxyCompiler
+    implementation PresentationDependencies.moxyAndroid
+    implementation PresentationDependencies.moxyAppCompat
+    implementation PresentationDependencies.cicerone
+    implementation PresentationDependencies.anko
+    implementation PresentationDependencies.ankoDesign
 
-  implementation PresentationDependencies.moshi
-  implementation PresentationDependencies.retrofit
-  implementation PresentationDependencies.retrofitMoshiConverter
-  implementation PresentationDependencies.retrofitScalarsConverter
-  implementation PresentationDependencies.retrofitCoroutines
-  implementation PresentationDependencies.okhttp
-  implementation PresentationDependencies.okhttpInterceptor
+    implementation PresentationDependencies.moshi
+    implementation PresentationDependencies.retrofit
+    implementation PresentationDependencies.retrofitMoshiConverter
+    implementation PresentationDependencies.retrofitScalarsConverter
+    implementation PresentationDependencies.retrofitCoroutines
+    implementation PresentationDependencies.okhttp
+    implementation PresentationDependencies.okhttpInterceptor
 
-  implementation PresentationDependencies.materialValues
-  implementation PresentationDependencies.iconicsCore
-  implementation PresentationDependencies.iconicsView
-  implementation PresentationDependencies.materialTypeface
-  implementation PresentationDependencies.materialDialogs
-  implementation PresentationDependencies.materialDialogsCommons
-  implementation PresentationDependencies.mpAndroidChart
-  implementation PresentationDependencies.AvBottomNavigation
+    implementation PresentationDependencies.materialValues
+    implementation PresentationDependencies.iconicsCore
+    implementation PresentationDependencies.iconicsView
+    implementation PresentationDependencies.materialTypeface
+    implementation PresentationDependencies.materialDialogs
+    implementation PresentationDependencies.materialDialogsCommons
+    implementation PresentationDependencies.mpAndroidChart
+    implementation PresentationDependencies.AvBottomNavigation
 
-  implementation DeveloperToolsDependencies.timber
+    implementation DeveloperToolsDependencies.timber
 
-  debugImplementation DeveloperToolsDependencies.leakCanary
-  releaseImplementation DeveloperToolsDependencies.leakCanaryNoOp
-  testImplementation DeveloperToolsDependencies.leakCanaryNoOp
+    debugImplementation DeveloperToolsDependencies.leakCanary
+    releaseImplementation DeveloperToolsDependencies.leakCanaryNoOp
+    testImplementation DeveloperToolsDependencies.leakCanaryNoOp
 
-  testImplementation PresentationTestDependencies.junit
-  testImplementation PresentationTestDependencies.mockito
-  testImplementation PresentationTestDependencies.mockitoKotlin
-  testImplementation PresentationTestDependencies.expekt
+    testImplementation PresentationTestDependencies.junit
+    testImplementation PresentationTestDependencies.mockito
+    testImplementation PresentationTestDependencies.mockitoKotlin
+    testImplementation PresentationTestDependencies.expekt
 
-  androidTestImplementation PresentationTestDependencies.espresso
-  androidTestImplementation PresentationTestDependencies.mockitoAndroid
+    androidTestImplementation PresentationTestDependencies.espresso
+    androidTestImplementation PresentationTestDependencies.mockitoAndroid
 }
-

@@ -1,4 +1,3 @@
-
 import Versions.ANKO_VERSION
 import Versions.AV_BOTTOM_NAVIGATION_VERSION
 import Versions.CICERONE_VERSION
