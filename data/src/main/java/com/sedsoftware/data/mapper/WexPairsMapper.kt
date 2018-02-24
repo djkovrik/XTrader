@@ -16,7 +16,7 @@ class WexPairsMapper @Inject constructor() {
         minPrice = pairInfo.minPrice,
         maxPrice = pairInfo.maxPrice,
         minAmount = pairInfo.minAmount,
-        hidden = pairInfo.hidden,
+        hidden = pairInfo.hidden == 0,
         fee = pairInfo.fee
       )
     }
