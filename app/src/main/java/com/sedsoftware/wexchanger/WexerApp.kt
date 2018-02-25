@@ -48,10 +48,6 @@ class WexerApp : Application() {
 
   }
 
-  /**
-   * App scope -> Network scope
-   *            \->
-   */
   private fun initScopes() {
     val appScope = Toothpick.openScope(AppScope.APPLICATION)
     appScope.installModules(AppModule())
