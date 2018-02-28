@@ -1,5 +1,5 @@
+import Versions.AH_BOTTOM_NAVIGATION_VERSION
 import Versions.ANKO_VERSION
-import Versions.AV_BOTTOM_NAVIGATION_VERSION
 import Versions.CICERONE_VERSION
 import Versions.COMMUNITY_MATERIAL_ICONS_VERSION
 import Versions.CONSTRAINT_LAYOUT_VERSION
@@ -56,5 +56,5 @@ object PresentationDependencies {
   const val materialDialogs = "com.afollestad.material-dialogs:core:$MATERIAL_DIALOGS_VERSION"
   const val materialDialogsCommons = "com.afollestad.material-dialogs:commons:$MATERIAL_DIALOGS_VERSION"
   const val mpAndroidChart = "com.github.philjay:mpandroidchart:$MP_ANDROID_CHART_VERSION"
-  const val AvBottomNavigation = "com.ashokvarma.android:bottom-navigation-bar:$AV_BOTTOM_NAVIGATION_VERSION"
+  const val AhBottomNavigation = "com.aurelhubert:ahbottomnavigation:$AH_BOTTOM_NAVIGATION_VERSION"
 }

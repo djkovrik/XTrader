@@ -103,7 +103,7 @@ dependencies {
     implementation PresentationDependencies.materialDialogs
     implementation PresentationDependencies.materialDialogsCommons
     implementation PresentationDependencies.mpAndroidChart
-    implementation PresentationDependencies.AvBottomNavigation
+    implementation PresentationDependencies.AhBottomNavigation
 
     implementation DeveloperToolsDependencies.timber
 
