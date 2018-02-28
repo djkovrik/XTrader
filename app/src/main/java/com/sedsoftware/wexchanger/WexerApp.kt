@@ -3,7 +3,7 @@ package com.sedsoftware.wexchanger
 import android.app.Application
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.di.module.AppModule
-import com.sedsoftware.wexchanger.di.module.NetworkModule
+import com.sedsoftware.wexchanger.di.module.DataSourcesModule
 import com.squareup.leakcanary.LeakCanary
 import timber.log.Timber
 import toothpick.Toothpick
@@ -52,7 +52,7 @@ class WexerApp : Application() {
     val appScope = Toothpick.openScope(AppScope.APPLICATION)
     appScope.installModules(AppModule())
 
-    val networkScope = Toothpick.openScopes(AppScope.APPLICATION, AppScope.NETWORK)
-    networkScope.installModules(NetworkModule())
+    val networkScope = Toothpick.openScopes(AppScope.APPLICATION, AppScope.DATASOURCES)
+    networkScope.installModules(DataSourcesModule())
   }
 }

@@ -12,7 +12,7 @@ import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import toothpick.config.Module
 
-class NetworkModule : Module() {
+class DataSourcesModule : Module() {
   init {
     // Networking
     bind(Moshi::class.java).toProvider(MoshiProvider::class.java).providesSingletonInScope()

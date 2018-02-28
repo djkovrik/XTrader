@@ -25,7 +25,7 @@ class MainActivity : BaseActivity(), MainActivityView {
   @ProvidePresenter
   fun providePresenter(): MainActivityPresenter =
     Toothpick
-      .openScope(AppScope.DATASOURCE)
+      .openScope(AppScope.DATASOURCES)
       .getInstance(MainActivityPresenter::class.java)
 
   override fun onCreate(savedInstanceState: Bundle?) {
