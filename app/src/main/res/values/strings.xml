@@ -1,3 +1,9 @@
 <resources>
   <string name="app_name">WEXchanger</string>
+
+  <string name="tab_market">Market</string>
+  <string name="tab_orders">Orders</string>
+  <string name="tab_wallet">Wallet</string>
+  <string name="tab_tracker">Tracker</string>
+  <string name="tab_settings">Settings</string>
 </resources>
