@@ -6,8 +6,15 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.mikepenz.iconics.context.IconicsContextWrapper
 import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
 import com.sedsoftware.wexchanger.commons.exception.MissingAnnotationException
+import com.sedsoftware.wexchanger.di.AppScope
+import ru.terrakok.cicerone.NavigatorHolder
+import toothpick.Toothpick
+import javax.inject.Inject
 
 abstract class BaseActivity : MvpAppCompatActivity() {
+
+  @Inject
+  lateinit var navigatorHolder: NavigatorHolder
 
   override fun attachBaseContext(newBase: Context?) {
     super.attachBaseContext(IconicsContextWrapper.wrap(newBase))
@@ -19,5 +26,7 @@ abstract class BaseActivity : MvpAppCompatActivity() {
     val annotation = this::class.annotations.firstOrNull { it is LayoutResource } as? LayoutResource
     annotation?.value?.let { setContentView(it) }
         ?: throw MissingAnnotationException("$this must be annotated with specific LayoutResource annotation.")
+
+    Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
   }
 }
