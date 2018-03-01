@@ -12,26 +12,26 @@ object Versions {
   const val MIN_SDK_DEV_VERSION = 22
   const val COMPILED_SDK_VERSION = 27
   const val TARGET_SDK_VERSION = 27
-  const val GRADLE_ANDROID_VERSION = "3.2.0-alpha02"
+  const val GRADLE_ANDROID_VERSION = "3.2.0-alpha04"
 
   // Plugins
   const val DETEKT_VERSION = "1.0.0.RC6-3"
   const val GRADLE_VERSIONS_VERSION = "0.17.0"
 
   // Android
-  const val SUPPORT_LIBRARY_VERSION = "27.0.2"
+  const val SUPPORT_LIBRARY_VERSION = "27.1.0"
   const val CONSTRAINT_LAYOUT_VERSION = "1.1.0-beta5"
 
   // Kotlin
-  const val KOTLIN_VERSION = "1.2.21"
-  const val KOTLIN_COROUTINES_VERSION = "0.22.2"
+  const val KOTLIN_VERSION = "1.2.30"
+  const val KOTLIN_COROUTINES_VERSION = "0.22.3"
 
   // Core
   const val REALM_VERSION = "4.3.4"
-  const val TOOTHPICK_VERSION = "1.1.1"
+  const val TOOTHPICK_VERSION = "1.1.2"
   const val RETROFIT_VERSION = "2.3.0"
   const val RETROFIT_COROUTINES_ADAPTER_VERSION = "1.0.0"
-  const val OKHTTP_VERSION = "3.9.1"
+  const val OKHTTP_VERSION = "3.10.0"
   const val MOSHI_VERSION = "1.5.0"
   const val MOXY_VERSION = "1.5.3"
   const val CICERONE_VERSION = "3.0.0"
@@ -39,11 +39,11 @@ object Versions {
 
   // UI
   const val MATERIAL_VALUES_VERSION = "1.1.1"
-  const val ICONICS_VERSION = "3.0.2@aar"
+  const val ICONICS_VERSION = "3.0.3@aar"
   const val COMMUNITY_MATERIAL_ICONS_VERSION = "2.0.46.1@aar"
   const val MATERIAL_DIALOGS_VERSION = "0.9.6.0"
   const val MP_ANDROID_CHART_VERSION = "v3.0.3"
-  const val AH_BOTTOM_NAVIGATION_VERSION = "2.1.0"
+  const val AH_BOTTOM_NAVIGATION_VERSION = "2.2.0"
 
   // Testing
   const val ESPRESSO_VERSION = "3.0.2-alpha1"
