@@ -61,6 +61,10 @@ class MainActivity : BaseActivity(), MainActivityView {
 
     initContainers()
     initBottomNavigation()
+
+    if (savedInstanceState == null) {
+      home_bottom_navigation.currentItem = BOTTOM_TAB_MARKET
+    }
   }
 
   override fun onPause() {
@@ -80,38 +84,45 @@ class MainActivity : BaseActivity(), MainActivityView {
           manager.findFragmentByTag(MarketContainerFragment::class.simpleName) as MarketContainerFragment? ?:
           MarketContainerFragment.newInstance(MarketContainerFragment::class.simpleName)
 
-      manager.beginTransaction()
-        .add(R.id.home_tabs_container, marketContainer, MarketContainerFragment::class.simpleName)
-        .detach(marketContainer)
-        .commitNow()
+      if (!marketContainer.isAdded) {
+        manager.beginTransaction()
+          .add(R.id.home_tabs_container, marketContainer, MarketContainerFragment::class.simpleName)
+          .detach(marketContainer)
+          .commitNow()
+      }
 
       ordersContainer =
           manager.findFragmentByTag(OrdersContainerFragment::class.simpleName) as OrdersContainerFragment? ?:
           OrdersContainerFragment.newInstance(OrdersContainerFragment::class.simpleName)
 
-      manager.beginTransaction()
-        .add(R.id.home_tabs_container, ordersContainer, OrdersContainerFragment::class.simpleName)
-        .detach(ordersContainer)
-        .commitNow()
+      if (!ordersContainer.isAdded) {
+        manager.beginTransaction()
+          .add(R.id.home_tabs_container, ordersContainer, OrdersContainerFragment::class.simpleName)
+          .detach(ordersContainer)
+          .commitNow()
+      }
 
       walletContainer =
           manager.findFragmentByTag(WalletContainerFragment::class.simpleName) as WalletContainerFragment? ?:
           WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName)
 
-      manager.beginTransaction()
-        .add(R.id.home_tabs_container, walletContainer, WalletContainerFragment::class.simpleName)
-        .detach(walletContainer)
-        .commitNow()
+      if (!walletContainer.isAdded) {
+        manager.beginTransaction()
+          .add(R.id.home_tabs_container, walletContainer, WalletContainerFragment::class.simpleName)
+          .detach(walletContainer)
+          .commitNow()
+      }
 
       trackerontainer =
           manager.findFragmentByTag(TrackerContainerFragment::class.simpleName) as TrackerContainerFragment? ?:
           TrackerContainerFragment.newInstance(TrackerContainerFragment::class.simpleName)
 
-      manager.beginTransaction()
-        .add(R.id.home_tabs_container, trackerontainer, TrackerContainerFragment::class.simpleName)
-        .detach(trackerontainer)
-        .commitNow()
-
+      if (!trackerontainer.isAdded) {
+        manager.beginTransaction()
+          .add(R.id.home_tabs_container, trackerontainer, TrackerContainerFragment::class.simpleName)
+          .detach(trackerontainer)
+          .commitNow()
+      }
     }
   }
 
@@ -196,6 +207,14 @@ class MainActivity : BaseActivity(), MainActivityView {
               .detach(ordersContainer)
               .detach(walletContainer)
               .attach(trackerontainer)
+              .commitNow()
+          }
+          AppScreen.SETTINGS_SCREEN -> {
+            fragmentManager.beginTransaction()
+              .detach(marketContainer)
+              .detach(ordersContainer)
+              .detach(walletContainer)
+              .detach(trackerontainer)
               .commitNow()
           }
         }
