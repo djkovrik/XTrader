@@ -1,5 +1,6 @@
 package com.sedsoftware.wexchanger.presentation.features.home
 
+import android.app.FragmentManager
 import android.os.Bundle
 import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -14,18 +15,15 @@ import com.sedsoftware.wexchanger.commons.extension.iconics
 import com.sedsoftware.wexchanger.commons.extension.string
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
+import com.sedsoftware.wexchanger.presentation.base.BaseFragment
 import com.sedsoftware.wexchanger.presentation.features.home.containers.market.MarketContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.home.containers.orders.OrdersContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.home.containers.tracker.TrackerContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.home.containers.wallet.WalletContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
-import kotlinx.android.synthetic.main.activity_main.home_bottom_navigation
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.commands.Back
-import ru.terrakok.cicerone.commands.Command
-import ru.terrakok.cicerone.commands.Forward
-import ru.terrakok.cicerone.commands.Replace
-import ru.terrakok.cicerone.commands.SystemMessage
+import ru.terrakok.cicerone.commands.*
 import toothpick.Toothpick
 
 @LayoutResource(R.layout.activity_main)
@@ -82,47 +80,39 @@ class MainActivity : BaseActivity(), MainActivityView {
 
       marketContainer =
           manager.findFragmentByTag(MarketContainerFragment::class.simpleName) as MarketContainerFragment? ?:
-          MarketContainerFragment.newInstance(MarketContainerFragment::class.simpleName)
-
-      if (!marketContainer.isAdded) {
-        manager.beginTransaction()
-          .add(R.id.home_tabs_container, marketContainer, MarketContainerFragment::class.simpleName)
-          .detach(marketContainer)
-          .commitNow()
-      }
+          MarketContainerFragment.newInstance(MarketContainerFragment::class.simpleName).also { fragment ->
+            manager.beginTransaction()
+              .add(R.id.home_tabs_container, fragment, MarketContainerFragment::class.simpleName)
+              .detach(fragment)
+              .commitNow()
+          }
 
       ordersContainer =
           manager.findFragmentByTag(OrdersContainerFragment::class.simpleName) as OrdersContainerFragment? ?:
-          OrdersContainerFragment.newInstance(OrdersContainerFragment::class.simpleName)
-
-      if (!ordersContainer.isAdded) {
-        manager.beginTransaction()
-          .add(R.id.home_tabs_container, ordersContainer, OrdersContainerFragment::class.simpleName)
-          .detach(ordersContainer)
-          .commitNow()
-      }
+          OrdersContainerFragment.newInstance(OrdersContainerFragment::class.simpleName).also { fragment ->
+            manager.beginTransaction()
+              .add(R.id.home_tabs_container, fragment, OrdersContainerFragment::class.simpleName)
+              .detach(fragment)
+              .commitNow()
+          }
 
       walletContainer =
           manager.findFragmentByTag(WalletContainerFragment::class.simpleName) as WalletContainerFragment? ?:
-          WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName)
-
-      if (!walletContainer.isAdded) {
-        manager.beginTransaction()
-          .add(R.id.home_tabs_container, walletContainer, WalletContainerFragment::class.simpleName)
-          .detach(walletContainer)
-          .commitNow()
-      }
+          WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName).also { fragment ->
+            manager.beginTransaction()
+              .add(R.id.home_tabs_container, fragment, WalletContainerFragment::class.simpleName)
+              .detach(fragment)
+              .commitNow()
+          }
 
       trackerontainer =
           manager.findFragmentByTag(TrackerContainerFragment::class.simpleName) as TrackerContainerFragment? ?:
-          TrackerContainerFragment.newInstance(TrackerContainerFragment::class.simpleName)
-
-      if (!trackerontainer.isAdded) {
-        manager.beginTransaction()
-          .add(R.id.home_tabs_container, trackerontainer, TrackerContainerFragment::class.simpleName)
-          .detach(trackerontainer)
-          .commitNow()
-      }
+          TrackerContainerFragment.newInstance(TrackerContainerFragment::class.simpleName).also { fragment ->
+            manager.beginTransaction()
+              .add(R.id.home_tabs_container, fragment, TrackerContainerFragment::class.simpleName)
+              .detach(fragment)
+              .commitNow()
+          }
     }
   }
 
