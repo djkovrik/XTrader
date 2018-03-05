@@ -17,3 +17,7 @@ dependencies {
     testImplementation DomainTestDependencies.junit
     testImplementation DomainTestDependencies.expekt
 }
+
+configurations.all() {
+    resolutionStrategy.force DomainDependencies.kotlin
+}

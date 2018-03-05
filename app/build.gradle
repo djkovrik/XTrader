@@ -119,3 +119,7 @@ dependencies {
     androidTestImplementation PresentationTestDependencies.espresso
     androidTestImplementation PresentationTestDependencies.mockitoAndroid
 }
+
+configurations.all() {
+    resolutionStrategy.force PresentationDependencies.kotlin
+}

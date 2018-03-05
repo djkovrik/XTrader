@@ -61,3 +61,7 @@ dependencies {
     testImplementation DeviceTestDependencies.mockitoKotlin
     testImplementation DeviceTestDependencies.expekt
 }
+
+configurations.all() {
+    resolutionStrategy.force DeviceDependencies.kotlin
+}
