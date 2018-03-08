@@ -1,7 +1,9 @@
 package com.sedsoftware.wexchanger.di.module
 
 import com.sedsoftware.data.executor.ThreadExecutor
+import com.sedsoftware.domain.device.Settings
 import com.sedsoftware.domain.executor.Executor
+import com.sedsoftware.wexchanger.di.provider.SettingsProvider
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -16,5 +18,8 @@ class AppModule : Module() {
 
     // Threading
     bind(Executor::class.java).toInstance(ThreadExecutor())
+
+    // Settings
+    bind(Settings::class.java).toProvider(SettingsProvider::class.java).providesSingletonInScope()
   }
 }
