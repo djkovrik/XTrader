@@ -24,7 +24,8 @@ object Versions {
 
   // Kotlin
   const val KOTLIN_VERSION = "1.2.30"
-  const val KOTLIN_COROUTINES_VERSION = "0.22.3"
+  const val KOTLIN_COROUTINES_VERSION = "0.22.5"
+  const val KOTLIN_KTX_VERSION = "0.2"
 
   // Core
   const val REALM_VERSION = "4.3.4"

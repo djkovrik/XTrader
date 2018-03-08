@@ -68,6 +68,7 @@ dependencies {
     implementation PresentationDependencies.kotlinReflection
     implementation PresentationDependencies.kotlinCoroutines
     implementation PresentationDependencies.kotlinCoroutinesAndroid
+    implementation PresentationDependencies.kotlinKtx
 
     implementation PresentationDependencies.appCompat
     implementation PresentationDependencies.cardView

@@ -5,6 +5,7 @@ import Versions.COMMUNITY_MATERIAL_ICONS_VERSION
 import Versions.CONSTRAINT_LAYOUT_VERSION
 import Versions.ICONICS_VERSION
 import Versions.KOTLIN_COROUTINES_VERSION
+import Versions.KOTLIN_KTX_VERSION
 import Versions.KOTLIN_VERSION
 import Versions.MATERIAL_DIALOGS_VERSION
 import Versions.MATERIAL_VALUES_VERSION
@@ -22,6 +23,7 @@ object PresentationDependencies {
   const val kotlinReflection = "org.jetbrains.kotlin:kotlin-reflect:$KOTLIN_VERSION"
   const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$KOTLIN_COROUTINES_VERSION"
   const val kotlinCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$KOTLIN_COROUTINES_VERSION"
+  const val kotlinKtx = "androidx.core:core-ktx:$KOTLIN_KTX_VERSION"
 
   const val appCompat = "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
   const val cardView = "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
