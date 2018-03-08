@@ -3,13 +3,14 @@ package com.sedsoftware.wexchanger
 import android.app.Application
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.di.module.AppModule
-import com.sedsoftware.wexchanger.di.module.DataSourcesModule
+import com.sedsoftware.wexchanger.di.module.NetworkingModule
 import com.squareup.leakcanary.LeakCanary
 import timber.log.Timber
 import toothpick.Toothpick
 import toothpick.configuration.Configuration
 import toothpick.registries.FactoryRegistryLocator
 import toothpick.registries.MemberInjectorRegistryLocator
+import toothpick.smoothie.module.SmoothieApplicationModule
 
 class WexerApp : Application() {
 
@@ -50,6 +51,6 @@ class WexerApp : Application() {
 
   private fun initScopes() {
     val appScope = Toothpick.openScope(AppScope.APPLICATION)
-    appScope.installModules(AppModule(), DataSourcesModule())
+    appScope.installModules(AppModule(), SmoothieApplicationModule(this), NetworkingModule())
   }
 }
