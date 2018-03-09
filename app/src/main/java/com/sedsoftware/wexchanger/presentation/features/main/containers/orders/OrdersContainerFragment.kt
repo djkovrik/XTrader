@@ -1,4 +1,4 @@
-package com.sedsoftware.wexchanger.presentation.features.home.containers.orders
+package com.sedsoftware.wexchanger.presentation.features.main.containers.orders
 
 import android.os.Bundle
 import com.sedsoftware.wexchanger.R

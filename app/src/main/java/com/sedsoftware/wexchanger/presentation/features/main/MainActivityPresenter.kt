@@ -1,4 +1,4 @@
-package com.sedsoftware.wexchanger.presentation.features.home
+package com.sedsoftware.wexchanger.presentation.features.main
 
 import com.arellomobile.mvp.InjectViewState
 import com.sedsoftware.wexchanger.presentation.base.BasePresenter

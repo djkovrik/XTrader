@@ -1,4 +1,4 @@
-package com.sedsoftware.wexchanger.presentation.features.home
+package com.sedsoftware.wexchanger.presentation.features.main
 
 import android.os.Bundle
 import android.widget.Toast
@@ -14,10 +14,10 @@ import com.sedsoftware.wexchanger.commons.extension.iconics
 import com.sedsoftware.wexchanger.commons.extension.string
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
-import com.sedsoftware.wexchanger.presentation.features.home.containers.market.MarketContainerFragment
-import com.sedsoftware.wexchanger.presentation.features.home.containers.orders.OrdersContainerFragment
-import com.sedsoftware.wexchanger.presentation.features.home.containers.tracker.TrackerContainerFragment
-import com.sedsoftware.wexchanger.presentation.features.home.containers.wallet.WalletContainerFragment
+import com.sedsoftware.wexchanger.presentation.features.main.containers.market.MarketContainerFragment
+import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.OrdersContainerFragment
+import com.sedsoftware.wexchanger.presentation.features.main.containers.tracker.TrackerContainerFragment
+import com.sedsoftware.wexchanger.presentation.features.main.containers.wallet.WalletContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
@@ -120,19 +120,19 @@ class MainActivity : BaseActivity(), MainActivityView {
 
   private fun initBottomNavigation() {
     val marketTabItem =
-        AHBottomNavigationItem(string(R.string.tab_market), iconics(CommunityMaterial.Icon.cmd_home))
+      AHBottomNavigationItem(string(R.string.tab_market), iconics(CommunityMaterial.Icon.cmd_home))
 
     val ordersTabItem =
-        AHBottomNavigationItem(string(R.string.tab_orders), iconics(CommunityMaterial.Icon.cmd_currency_btc))
+      AHBottomNavigationItem(string(R.string.tab_orders), iconics(CommunityMaterial.Icon.cmd_currency_btc))
 
     val walletTabItem =
-        AHBottomNavigationItem(string(R.string.tab_wallet), iconics(CommunityMaterial.Icon.cmd_wallet))
+      AHBottomNavigationItem(string(R.string.tab_wallet), iconics(CommunityMaterial.Icon.cmd_wallet))
 
     val trackerTabItem =
-        AHBottomNavigationItem(string(R.string.tab_tracker), iconics(CommunityMaterial.Icon.cmd_radar))
+      AHBottomNavigationItem(string(R.string.tab_tracker), iconics(CommunityMaterial.Icon.cmd_radar))
 
     val settingsTabItem =
-        AHBottomNavigationItem(string(R.string.tab_settings), iconics(CommunityMaterial.Icon.cmd_settings))
+      AHBottomNavigationItem(string(R.string.tab_settings), iconics(CommunityMaterial.Icon.cmd_settings))
 
     home_bottom_navigation.addItems(
       listOf(marketTabItem, ordersTabItem, walletTabItem, trackerTabItem, settingsTabItem)

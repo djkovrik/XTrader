@@ -1,4 +1,4 @@
-package com.sedsoftware.wexchanger.presentation.features.home.containers.wallet
+package com.sedsoftware.wexchanger.presentation.features.main.containers.market
 
 import android.os.Bundle
 import com.sedsoftware.wexchanger.R
@@ -6,10 +6,10 @@ import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
 import com.sedsoftware.wexchanger.presentation.base.BaseTabFragment
 
 @LayoutResource(R.layout.fragment_tab_container)
-class WalletContainerFragment : BaseTabFragment() {
+class MarketContainerFragment : BaseTabFragment() {
 
   companion object {
-    fun newInstance(tag: String?) = WalletContainerFragment().apply {
+    fun newInstance(tag: String?) = MarketContainerFragment().apply {
       arguments = Bundle().apply {
         putString(CONTAINER_TAG_KEY, tag)
       }
