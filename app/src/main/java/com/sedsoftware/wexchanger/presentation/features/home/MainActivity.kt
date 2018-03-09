@@ -1,6 +1,5 @@
 package com.sedsoftware.wexchanger.presentation.features.home
 
-import android.app.FragmentManager
 import android.os.Bundle
 import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -10,12 +9,11 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
-import com.sedsoftware.wexchanger.commons.extension.color
+import com.sedsoftware.wexchanger.commons.extension.colorFromAttr
 import com.sedsoftware.wexchanger.commons.extension.iconics
 import com.sedsoftware.wexchanger.commons.extension.string
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
-import com.sedsoftware.wexchanger.presentation.base.BaseFragment
 import com.sedsoftware.wexchanger.presentation.features.home.containers.market.MarketContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.home.containers.orders.OrdersContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.home.containers.tracker.TrackerContainerFragment
@@ -23,7 +21,11 @@ import com.sedsoftware.wexchanger.presentation.features.home.containers.wallet.W
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.commands.*
+import ru.terrakok.cicerone.commands.Back
+import ru.terrakok.cicerone.commands.Command
+import ru.terrakok.cicerone.commands.Forward
+import ru.terrakok.cicerone.commands.Replace
+import ru.terrakok.cicerone.commands.SystemMessage
 import toothpick.Toothpick
 
 @LayoutResource(R.layout.activity_main)
@@ -137,9 +139,9 @@ class MainActivity : BaseActivity(), MainActivityView {
     )
 
     home_bottom_navigation.isBehaviorTranslationEnabled = true
-    home_bottom_navigation.defaultBackgroundColor = color(R.color.colorPrimary)
-    home_bottom_navigation.accentColor = color(R.color.colorTabIcon)
-    home_bottom_navigation.inactiveColor = color(R.color.colorTabIconInactive)
+    home_bottom_navigation.defaultBackgroundColor = colorFromAttr(R.attr.colorPrimary)
+    home_bottom_navigation.accentColor = colorFromAttr(R.attr.colorTabIconActive)
+    home_bottom_navigation.inactiveColor = colorFromAttr(R.attr.colorTabIconInactive)
     home_bottom_navigation.titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
 
     home_bottom_navigation.setOnTabSelectedListener { position, _ ->

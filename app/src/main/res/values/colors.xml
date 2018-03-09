@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#3F51B5</color>
-  <color name="colorPrimaryDark">#303F9F</color>
-  <color name="colorAccent">#FF4081</color>
-
-  <color name="colorTabIcon">@color/material_color_white</color>
-  <color name="colorTabIconInactive">@color/material_color_white_50_percent</color>
+  <!-- Main app theme -->
+  <color name="primaryColor">#2196f3</color>
+  <color name="primaryLightColor">#6ec6ff</color>
+  <color name="primaryDarkColor">#0069c0</color>
+  <color name="secondaryColor">#ff4081</color>
+  <color name="secondaryLightColor">#ff79b0</color>
+  <color name="secondaryDarkColor">#c60055</color>
+  <color name="tabColorActive">@color/material_color_white</color>
+  <color name="tabColorInactive">@color/material_color_white_50_percent</color>
 </resources>
