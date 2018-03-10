@@ -6,14 +6,14 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
 import com.sedsoftware.wexchanger.di.AppScope
-import com.sedsoftware.wexchanger.presentation.base.BaseTabFragment
+import com.sedsoftware.wexchanger.presentation.base.BaseContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.di.OrdersContainerModule
 import ru.terrakok.cicerone.Navigator
 import toothpick.Toothpick
 import javax.inject.Inject
 
 @LayoutResource(R.layout.fragment_tab_container)
-class OrdersContainerFragment : BaseTabFragment(), OrdersContainerView {
+class OrdersContainerFragment : BaseContainerFragment(), OrdersContainerView {
 
   companion object {
     fun newInstance(tag: String?) = OrdersContainerFragment().apply {

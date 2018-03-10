@@ -9,7 +9,7 @@ import ru.terrakok.cicerone.Router
 import toothpick.Toothpick
 
 @LayoutResource(R.layout.fragment_tab_container)
-abstract class BaseTabFragment : BaseFragment() {
+abstract class BaseContainerFragment : BaseFragment() {
 
   protected companion object {
     const val CONTAINER_TAG_KEY = "CONTAINER_TAG_KEY"
