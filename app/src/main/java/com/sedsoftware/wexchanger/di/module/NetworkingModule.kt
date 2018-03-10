@@ -13,10 +13,5 @@ class NetworkingModule : Module() {
     bind(Moshi::class.java).toProvider(MoshiProvider::class.java).providesSingletonInScope()
     bind(OkHttpClient::class.java).toProvider(OkHttpClientProvider::class.java).providesSingletonInScope()
     bind(WexApi::class.java).toProvider(ApiProvider::class.java).providesSingletonInScope()
-
-    // Currency pairs
-//    bind(CurrencyPairsRepository::class.java).to(WexCurrencyPairsRepository::class.java).singletonInScope()
-//    bind(WexPairsMapper::class.java).singletonInScope()
-//    bind(GetCurrencyPairsUseCase::class.java).singletonInScope()
   }
 }
