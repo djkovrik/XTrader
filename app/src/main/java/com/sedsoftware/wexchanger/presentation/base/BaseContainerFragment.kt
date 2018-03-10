@@ -1,12 +1,15 @@
 package com.sedsoftware.wexchanger.presentation.base
 
+import android.os.Bundle
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.navigation.LocalNavigatorHolder
 import ru.terrakok.cicerone.Cicerone
+import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.Router
 import toothpick.Toothpick
+import javax.inject.Inject
 
 @LayoutResource(R.layout.fragment_tab_container)
 abstract class BaseContainerFragment : BaseFragment() {
@@ -14,6 +17,11 @@ abstract class BaseContainerFragment : BaseFragment() {
   protected companion object {
     const val CONTAINER_TAG_KEY = "CONTAINER_TAG_KEY"
   }
+
+  @Inject
+  lateinit var navigatorHolder: LocalNavigatorHolder
+
+  protected abstract val localNavigator: Navigator
 
   val router: Router
     get() = cicerone.router
@@ -25,8 +33,18 @@ abstract class BaseContainerFragment : BaseFragment() {
     get() = arguments?.getString(CONTAINER_TAG_KEY)
         ?: throw IllegalArgumentException("Container tag must be provided via arguments")
 
-  private var navigatorHolder: LocalNavigatorHolder =
-    Toothpick
-      .openScope(AppScope.APPLICATION)
-      .getInstance(LocalNavigatorHolder::class.java)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
+    super.onCreate(savedInstanceState)
+  }
+
+  override fun onResume() {
+    super.onResume()
+    cicerone.navigatorHolder.setNavigator(localNavigator)
+  }
+
+  override fun onPause() {
+    cicerone.navigatorHolder.removeNavigator()
+    super.onPause()
+  }
 }

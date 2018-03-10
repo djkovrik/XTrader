@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
 import com.sedsoftware.wexchanger.presentation.base.BaseContainerFragment
+import ru.terrakok.cicerone.Navigator
 
 @LayoutResource(R.layout.fragment_tab_container)
 class TrackerContainerFragment : BaseContainerFragment() {
@@ -15,4 +16,7 @@ class TrackerContainerFragment : BaseContainerFragment() {
       }
     }
   }
+
+  override val localNavigator: Navigator
+    get() = Navigator { }
 }

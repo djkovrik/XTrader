@@ -10,7 +10,6 @@ import com.sedsoftware.wexchanger.presentation.base.BaseContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.di.OrdersContainerModule
 import ru.terrakok.cicerone.Navigator
 import toothpick.Toothpick
-import javax.inject.Inject
 
 @LayoutResource(R.layout.fragment_tab_container)
 class OrdersContainerFragment : BaseContainerFragment(), OrdersContainerView {
@@ -23,27 +22,20 @@ class OrdersContainerFragment : BaseContainerFragment(), OrdersContainerView {
     }
   }
 
-  @Inject
-  lateinit var localNavigator: Navigator
+  override val localNavigator: Navigator
+    get() =
+      Toothpick
+        .openScopes(AppScope.APPLICATION, AppScope.TAB_ORDERS)
+        .getInstance(Navigator::class.java)
 
   @InjectPresenter
   lateinit var presenter: OrdersContainerPresenter
 
   @ProvidePresenter
-  fun providePresenter(): OrdersContainerPresenter =
-    Toothpick
-      .openScopes(AppScope.APPLICATION, AppScope.TAB_ORDERS)
-      .also { scope -> scope.installModules(OrdersContainerModule(this)) }
-      .also { scope -> Toothpick.inject(this, scope) }
-      .getInstance(OrdersContainerPresenter::class.java)
-
-  override fun onResume() {
-    super.onResume()
-    cicerone.navigatorHolder.setNavigator(localNavigator)
-  }
-
-  override fun onPause() {
-    cicerone.navigatorHolder.removeNavigator()
-    super.onPause()
+  fun providePresenter(): OrdersContainerPresenter {
+    val scope = Toothpick.openScopes(AppScope.APPLICATION, AppScope.TAB_ORDERS)
+    scope.installModules(OrdersContainerModule(this))
+    Toothpick.inject(this, scope)
+    return scope.getInstance(OrdersContainerPresenter::class.java)
   }
 }
