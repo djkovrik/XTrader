@@ -25,7 +25,7 @@ class MarketContainerFragment : BaseContainerFragment(), MarketContainerView {
   override val localNavigator: Navigator
     get() =
       Toothpick
-        .openScopes(AppScope.APPLICATION, AppScope.TAB_MARKET)
+        .openScope(AppScope.TAB_MARKET)
         .getInstance(Navigator::class.java)
 
   @InjectPresenter

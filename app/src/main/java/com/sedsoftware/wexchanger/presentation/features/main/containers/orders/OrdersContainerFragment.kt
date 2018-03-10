@@ -25,7 +25,7 @@ class OrdersContainerFragment : BaseContainerFragment(), OrdersContainerView {
   override val localNavigator: Navigator
     get() =
       Toothpick
-        .openScopes(AppScope.APPLICATION, AppScope.TAB_ORDERS)
+        .openScope(AppScope.TAB_ORDERS)
         .getInstance(Navigator::class.java)
 
   @InjectPresenter

@@ -21,6 +21,6 @@ class OrdersHelperFragment : BaseFragment(), OrdersHelperView {
   @ProvidePresenter
   fun providePresenter(): OrdersHelperPresenter =
     Toothpick
-      .openScopes(AppScope.APPLICATION, AppScope.TAB_ORDERS)
+      .openScope(AppScope.TAB_ORDERS)
       .getInstance(OrdersHelperPresenter::class.java)
 }

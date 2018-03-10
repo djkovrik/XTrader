@@ -35,6 +35,7 @@ abstract class BaseContainerFragment : BaseFragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
+    retainInstance = true
     super.onCreate(savedInstanceState)
   }
 

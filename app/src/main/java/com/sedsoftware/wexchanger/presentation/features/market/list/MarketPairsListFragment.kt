@@ -24,7 +24,7 @@ class MarketPairsListFragment : BaseFragment(), MarketPairsListView {
   @ProvidePresenter
   fun providePresenter(): MarketPairsListPresenter =
     Toothpick
-      .openScopes(AppScope.APPLICATION, AppScope.TAB_MARKET)
+      .openScope(AppScope.TAB_MARKET)
       .getInstance(MarketPairsListPresenter::class.java)
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

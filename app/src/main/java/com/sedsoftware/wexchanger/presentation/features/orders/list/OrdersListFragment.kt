@@ -24,7 +24,7 @@ class OrdersListFragment : BaseFragment(), OrdersListView {
   @ProvidePresenter
   fun providePresenter(): OrdersListPresenter =
     Toothpick
-      .openScopes(AppScope.APPLICATION, AppScope.TAB_ORDERS)
+      .openScope(AppScope.TAB_ORDERS)
       .getInstance(OrdersListPresenter::class.java)
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

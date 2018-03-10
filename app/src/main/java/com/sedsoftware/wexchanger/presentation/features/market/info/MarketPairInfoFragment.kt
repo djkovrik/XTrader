@@ -21,6 +21,6 @@ class MarketPairInfoFragment : BaseFragment(), MarketPairInfoView {
   @ProvidePresenter
   fun providePresenter(): MarketPairInfoPresenter =
     Toothpick
-      .openScopes(AppScope.APPLICATION, AppScope.TAB_MARKET)
+      .openScope(AppScope.TAB_MARKET)
       .getInstance(MarketPairInfoPresenter::class.java)
 }
