@@ -50,7 +50,8 @@ class WexerApp : Application() {
   }
 
   private fun initScopes() {
-    val appScope = Toothpick.openScope(AppScope.APPLICATION)
-    appScope.installModules(AppModule(), SmoothieApplicationModule(this), NetworkingModule())
+    Toothpick
+      .openScope(AppScope.APPLICATION)
+      .installModules(AppModule(), SmoothieApplicationModule(this), NetworkingModule())
   }
 }

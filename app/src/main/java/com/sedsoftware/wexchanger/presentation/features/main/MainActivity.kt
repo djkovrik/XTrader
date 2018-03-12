@@ -19,7 +19,7 @@ import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.O
 import com.sedsoftware.wexchanger.presentation.features.main.containers.tracker.TrackerContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.wallet.WalletContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.home_bottom_navigation
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.commands.Back
 import ru.terrakok.cicerone.commands.Command
@@ -47,10 +47,10 @@ class MainActivity : BaseActivity(), MainActivityView {
       .openScope(AppScope.APPLICATION)
       .getInstance(MainActivityPresenter::class.java)
 
-  lateinit var marketContainer: MarketContainerFragment
-  lateinit var ordersContainer: OrdersContainerFragment
-  lateinit var walletContainer: WalletContainerFragment
-  lateinit var trackerontainer: TrackerContainerFragment
+  private lateinit var marketContainer: MarketContainerFragment
+  private lateinit var ordersContainer: OrdersContainerFragment
+  private lateinit var walletContainer: WalletContainerFragment
+  private lateinit var trackerContainer: TrackerContainerFragment
 
   private val navigator: Navigator = Navigator { commands: Array<out Command>? ->
     commands?.forEach { applyCommand(it) }
@@ -107,7 +107,7 @@ class MainActivity : BaseActivity(), MainActivityView {
               .commitNow()
           }
 
-      trackerontainer =
+      trackerContainer =
           manager.findFragmentByTag(TrackerContainerFragment::class.simpleName) as TrackerContainerFragment? ?:
           TrackerContainerFragment.newInstance(TrackerContainerFragment::class.simpleName).also { fragment ->
             manager.beginTransaction()
@@ -173,7 +173,7 @@ class MainActivity : BaseActivity(), MainActivityView {
             fragmentManager.beginTransaction()
               .detach(ordersContainer)
               .detach(walletContainer)
-              .detach(trackerontainer)
+              .detach(trackerContainer)
               .attach(marketContainer)
               .commitNow()
           }
@@ -181,7 +181,7 @@ class MainActivity : BaseActivity(), MainActivityView {
             fragmentManager.beginTransaction()
               .detach(marketContainer)
               .detach(walletContainer)
-              .detach(trackerontainer)
+              .detach(trackerContainer)
               .attach(ordersContainer)
               .commitNow()
           }
@@ -189,7 +189,7 @@ class MainActivity : BaseActivity(), MainActivityView {
             fragmentManager.beginTransaction()
               .detach(marketContainer)
               .detach(ordersContainer)
-              .detach(trackerontainer)
+              .detach(trackerContainer)
               .attach(walletContainer)
               .commitNow()
           }
@@ -198,7 +198,7 @@ class MainActivity : BaseActivity(), MainActivityView {
               .detach(marketContainer)
               .detach(ordersContainer)
               .detach(walletContainer)
-              .attach(trackerontainer)
+              .attach(trackerContainer)
               .commitNow()
           }
           AppScreen.SETTINGS_SCREEN -> {
@@ -206,7 +206,7 @@ class MainActivity : BaseActivity(), MainActivityView {
               .detach(marketContainer)
               .detach(ordersContainer)
               .detach(walletContainer)
-              .detach(trackerontainer)
+              .detach(trackerContainer)
               .commitNow()
           }
         }

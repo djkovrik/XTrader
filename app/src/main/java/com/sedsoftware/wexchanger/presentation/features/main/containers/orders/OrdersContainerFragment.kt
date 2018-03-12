@@ -1,6 +1,6 @@
 package com.sedsoftware.wexchanger.presentation.features.main.containers.orders
 
-import android.os.Bundle
+import androidx.os.bundleOf
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.sedsoftware.wexchanger.R
@@ -16,9 +16,7 @@ class OrdersContainerFragment : BaseContainerFragment(), OrdersContainerView {
 
   companion object {
     fun newInstance(tag: String?) = OrdersContainerFragment().apply {
-      arguments = Bundle().apply {
-        putString(CONTAINER_TAG_KEY, tag)
-      }
+      arguments = bundleOf(CONTAINER_TAG_KEY to tag)
     }
   }
 

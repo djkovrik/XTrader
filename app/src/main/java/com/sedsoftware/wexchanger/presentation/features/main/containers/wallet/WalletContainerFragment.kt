@@ -1,6 +1,6 @@
 package com.sedsoftware.wexchanger.presentation.features.main.containers.wallet
 
-import android.os.Bundle
+import androidx.os.bundleOf
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.presentation.base.BaseContainerFragment
@@ -11,9 +11,7 @@ class WalletContainerFragment : BaseContainerFragment() {
 
   companion object {
     fun newInstance(tag: String?) = WalletContainerFragment().apply {
-      arguments = Bundle().apply {
-        putString(CONTAINER_TAG_KEY, tag)
-      }
+      arguments = bundleOf(CONTAINER_TAG_KEY to tag)
     }
   }
 
