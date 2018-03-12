@@ -2,7 +2,7 @@ package com.sedsoftware.wexchanger.presentation.base
 
 import android.os.Bundle
 import com.sedsoftware.wexchanger.R
-import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
+import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.navigation.LocalNavigatorHolder
 import ru.terrakok.cicerone.Cicerone
@@ -11,7 +11,7 @@ import ru.terrakok.cicerone.Router
 import toothpick.Toothpick
 import javax.inject.Inject
 
-@LayoutResource(R.layout.fragment_tab_container)
+@Layout(R.layout.fragment_tab_container)
 abstract class BaseContainerFragment : BaseFragment() {
 
   protected companion object {

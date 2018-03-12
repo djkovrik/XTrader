@@ -4,14 +4,14 @@ import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.sedsoftware.wexchanger.R
-import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
+import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.di.MarketContainerModule
 import ru.terrakok.cicerone.Navigator
 import toothpick.Toothpick
 
-@LayoutResource(R.layout.fragment_tab_container)
+@Layout(R.layout.fragment_tab_container)
 class MarketContainerFragment : BaseContainerFragment(), MarketContainerView {
 
   companion object {

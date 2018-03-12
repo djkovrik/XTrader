@@ -6,4 +6,4 @@ import kotlin.annotation.AnnotationTarget.CLASS
 
 @Retention(RUNTIME)
 @Target(CLASS)
-annotation class LayoutResource(@LayoutRes val value: Int)
+annotation class Layout(@LayoutRes val value: Int)

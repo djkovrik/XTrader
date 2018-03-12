@@ -3,12 +3,12 @@ package com.sedsoftware.wexchanger.presentation.features.market.info
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.sedsoftware.wexchanger.R
-import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
+import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseFragment
 import toothpick.Toothpick
 
-@LayoutResource(R.layout.fragment_market_pair_info)
+@Layout(R.layout.fragment_market_pair_info)
 class MarketPairInfoFragment : BaseFragment(), MarketPairInfoView {
 
   companion object {

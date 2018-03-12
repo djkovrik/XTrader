@@ -8,7 +8,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.sedsoftware.wexchanger.R
-import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
+import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.commons.extension.colorFromAttr
 import com.sedsoftware.wexchanger.commons.extension.iconics
 import com.sedsoftware.wexchanger.commons.extension.string
@@ -28,7 +28,7 @@ import ru.terrakok.cicerone.commands.Replace
 import ru.terrakok.cicerone.commands.SystemMessage
 import toothpick.Toothpick
 
-@LayoutResource(R.layout.activity_main)
+@Layout(R.layout.activity_main)
 class MainActivity : BaseActivity(), MainActivityView {
 
   private companion object {

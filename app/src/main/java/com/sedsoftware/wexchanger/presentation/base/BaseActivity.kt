@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.mikepenz.iconics.context.IconicsContextWrapper
-import com.sedsoftware.wexchanger.commons.annotation.LayoutResource
+import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.commons.exception.MissingAnnotationException
 import com.sedsoftware.wexchanger.di.AppScope
 import ru.terrakok.cicerone.NavigatorHolder
@@ -23,9 +23,9 @@ abstract class BaseActivity : MvpAppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    val annotation = this::class.annotations.firstOrNull { it is LayoutResource } as? LayoutResource
+    val annotation = this::class.annotations.firstOrNull { it is Layout } as? Layout
     annotation?.value?.let { setContentView(it) }
-        ?: throw MissingAnnotationException("$this must be annotated with specific LayoutResource annotation.")
+        ?: throw MissingAnnotationException("$this must be annotated with specific Layout annotation.")
 
     Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
   }
