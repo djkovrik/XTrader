@@ -14,7 +14,4 @@ class WalletContainerFragment : BaseContainerFragment() {
       arguments = bundleOf(CONTAINER_TAG_KEY to tag)
     }
   }
-
-  override val localNavigator: Navigator
-    get() = Navigator { }
 }

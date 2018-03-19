@@ -18,17 +18,17 @@ class MarketPairsListFragment : BaseFragment(), MarketPairsListView {
     fun newInstance() = MarketPairsListFragment()
   }
 
-  @InjectPresenter
-  lateinit var presenter: MarketPairsListPresenter
-
-  @ProvidePresenter
-  fun providePresenter(): MarketPairsListPresenter =
-    Toothpick
-      .openScope(AppScope.TAB_MARKET)
-      .getInstance(MarketPairsListPresenter::class.java)
-
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    nav_button.setOnClickListener { presenter.onPairInfoClicked() }
-  }
+//  @InjectPresenter
+//  lateinit var presenter: MarketPairsListPresenter
+//
+//  @ProvidePresenter
+//  fun providePresenter(): MarketPairsListPresenter =
+//    Toothpick
+//      .openScope(AppScope.TAB_MARKET)
+//      .getInstance(MarketPairsListPresenter::class.java)
+//
+//  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//    super.onViewCreated(view, savedInstanceState)
+//    nav_button.setOnClickListener { presenter.onPairInfoClicked() }
+//  }
 }

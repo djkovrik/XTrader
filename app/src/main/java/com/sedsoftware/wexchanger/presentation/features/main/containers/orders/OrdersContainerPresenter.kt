@@ -13,13 +13,8 @@ class OrdersContainerPresenter @Inject constructor(
   private val router: Router
 ) : BasePresenter<OrdersContainerView>() {
 
-  override fun onFirstViewAttach() {
-    super.onFirstViewAttach()
-    router.replaceScreen(AppScreen.ORDERS_LIST)
-  }
-
-  override fun onDestroy() {
-    Toothpick.closeScope(AppScope.TAB_ORDERS)
-    super.onDestroy()
-  }
+//  override fun onFirstViewAttach() {
+//    super.onFirstViewAttach()
+//    router.replaceScreen(AppScreen.ORDERS_LIST)
+//  }
 }

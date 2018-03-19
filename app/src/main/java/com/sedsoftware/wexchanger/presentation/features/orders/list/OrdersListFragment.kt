@@ -18,17 +18,17 @@ class OrdersListFragment : BaseFragment(), OrdersListView {
     fun newInstance() = OrdersListFragment()
   }
 
-  @InjectPresenter
-  lateinit var presenter: OrdersListPresenter
-
-  @ProvidePresenter
-  fun providePresenter(): OrdersListPresenter =
-    Toothpick
-      .openScope(AppScope.TAB_ORDERS)
-      .getInstance(OrdersListPresenter::class.java)
-
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    helper_button.setOnClickListener { presenter.onOrderClicked() }
-  }
+//  @InjectPresenter
+//  lateinit var presenter: OrdersListPresenter
+//
+//  @ProvidePresenter
+//  fun providePresenter(): OrdersListPresenter =
+//    Toothpick
+//      .openScope(AppScope.TAB_ORDERS)
+//      .getInstance(OrdersListPresenter::class.java)
+//
+//  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//    super.onViewCreated(view, savedInstanceState)
+//    helper_button.setOnClickListener { presenter.onOrderClicked() }
+//  }
 }

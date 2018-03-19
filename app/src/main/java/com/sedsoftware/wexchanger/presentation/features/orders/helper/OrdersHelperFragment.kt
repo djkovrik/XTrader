@@ -15,12 +15,12 @@ class OrdersHelperFragment : BaseFragment(), OrdersHelperView {
     fun newInstance() = OrdersHelperFragment()
   }
 
-  @InjectPresenter
-  lateinit var presenter: OrdersHelperPresenter
-
-  @ProvidePresenter
-  fun providePresenter(): OrdersHelperPresenter =
-    Toothpick
-      .openScope(AppScope.TAB_ORDERS)
-      .getInstance(OrdersHelperPresenter::class.java)
+//  @InjectPresenter
+//  lateinit var presenter: OrdersHelperPresenter
+//
+//  @ProvidePresenter
+//  fun providePresenter(): OrdersHelperPresenter =
+//    Toothpick
+//      .openScope(AppScope.TAB_ORDERS)
+//      .getInstance(OrdersHelperPresenter::class.java)
 }
