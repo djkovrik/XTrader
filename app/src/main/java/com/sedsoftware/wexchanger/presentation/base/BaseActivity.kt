@@ -26,7 +26,5 @@ abstract class BaseActivity : MvpAppCompatActivity() {
     val annotation = this::class.annotations.firstOrNull { it is Layout } as? Layout
     annotation?.value?.let { setContentView(it) }
         ?: throw MissingAnnotationException("$this must be annotated with specific Layout annotation.")
-
-    Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
   }
 }

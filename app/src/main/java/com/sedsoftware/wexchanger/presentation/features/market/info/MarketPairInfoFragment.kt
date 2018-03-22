@@ -15,12 +15,12 @@ class MarketPairInfoFragment : BaseFragment(), MarketPairInfoView {
     fun newInstance() = MarketPairInfoFragment()
   }
 
-//  @InjectPresenter
-//  lateinit var presenter: MarketPairInfoPresenter
-//
-//  @ProvidePresenter
-//  fun providePresenter(): MarketPairInfoPresenter =
-//    Toothpick
-//      .openScope(AppScope.TAB_MARKET)
-//      .getInstance(MarketPairInfoPresenter::class.java)
+  @InjectPresenter
+  lateinit var presenter: MarketPairInfoPresenter
+
+  @ProvidePresenter
+  fun providePresenter(): MarketPairInfoPresenter =
+    Toothpick
+      .openScope(AppScope.TAB_MARKET)
+      .getInstance(MarketPairInfoPresenter::class.java)
 }
