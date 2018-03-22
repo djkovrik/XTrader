@@ -18,8 +18,7 @@ abstract class BaseContainerFragment : BaseFragment() {
     const val CONTAINER_TAG_KEY = "CONTAINER_TAG_KEY"
   }
 
-  @Inject
-  lateinit var localNavigator: Navigator
+  protected abstract val localNavigator: Navigator
 
   @Inject
   lateinit var localNavigatorHolder: LocalNavigatorHolder

@@ -19,13 +19,9 @@ import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.O
 import com.sedsoftware.wexchanger.presentation.features.main.containers.tracker.TrackerContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.wallet.WalletContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
-import kotlinx.android.synthetic.main.activity_main.home_bottom_navigation
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.commands.Back
-import ru.terrakok.cicerone.commands.Command
-import ru.terrakok.cicerone.commands.Forward
-import ru.terrakok.cicerone.commands.Replace
-import ru.terrakok.cicerone.commands.SystemMessage
+import ru.terrakok.cicerone.commands.*
 import toothpick.Toothpick
 
 @Layout(R.layout.activity_main)
@@ -57,6 +53,9 @@ class MainActivity : BaseActivity(), MainActivityView {
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
+
+    Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
+
     super.onCreate(savedInstanceState)
 
     initContainers()
