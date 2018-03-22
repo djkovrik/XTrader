@@ -1,5 +1,6 @@
 package com.sedsoftware.wexchanger.presentation.base
 
+import android.content.Context
 import android.os.Bundle
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
@@ -33,9 +34,9 @@ abstract class BaseContainerFragment : BaseFragment() {
     get() = arguments?.getString(CONTAINER_TAG_KEY)
         ?: throw IllegalArgumentException("Container tag must be provided via arguments")
 
-  override fun onCreate(savedInstanceState: Bundle?) {
+  override fun onAttach(context: Context?) {
     Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
-    super.onCreate(savedInstanceState)
+    super.onAttach(context)
   }
 
   override fun onResume() {

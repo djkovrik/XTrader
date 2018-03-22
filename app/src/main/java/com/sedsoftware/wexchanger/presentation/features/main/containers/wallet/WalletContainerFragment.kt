@@ -1,5 +1,6 @@
 package com.sedsoftware.wexchanger.presentation.features.main.containers.wallet
 
+import android.content.Context
 import androidx.os.bundleOf
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -30,10 +31,24 @@ class WalletContainerFragment : BaseContainerFragment(), WalletContainerView {
   lateinit var presenter: WalletContainerPresenter
 
   @ProvidePresenter
-  fun providePresenter(): WalletContainerPresenter {
-    val scope = Toothpick.openScopes(AppScope.APPLICATION, AppScope.TAB_WALLET)
-    scope.installModules(WalletContainerModule(this))
-    Toothpick.inject(this, scope)
-    return scope.getInstance(WalletContainerPresenter::class.java)
+  fun providePresenter(): WalletContainerPresenter =
+    Toothpick
+      .openScope(AppScope.TAB_WALLET)
+      .getInstance(WalletContainerPresenter::class.java)
+
+  override fun onAttach(context: Context?) {
+    Toothpick
+      .openScopes(AppScope.APPLICATION, AppScope.TAB_WALLET)
+      .apply {
+        installModules(WalletContainerModule(this@WalletContainerFragment))
+        Toothpick.inject(this@WalletContainerFragment, this)
+      }
+
+    super.onAttach(context)
+  }
+
+  override fun onDestroyView() {
+    Toothpick.closeScope(AppScope.TAB_WALLET)
+    super.onDestroyView()
   }
 }

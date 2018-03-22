@@ -1,5 +1,6 @@
 package com.sedsoftware.wexchanger.presentation.features.main.containers.tracker
 
+import android.content.Context
 import androidx.os.bundleOf
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -30,10 +31,25 @@ class TrackerContainerFragment : BaseContainerFragment(), TrackerContainerView {
   lateinit var presenter: TrackerContainerPresenter
 
   @ProvidePresenter
-  fun providePresenter(): TrackerContainerPresenter {
-    val scope = Toothpick.openScopes(AppScope.APPLICATION, AppScope.TAB_TRACKER)
-    scope.installModules(TrackerContainerModule(this))
-    Toothpick.inject(this, scope)
-    return scope.getInstance(TrackerContainerPresenter::class.java)
+  fun providePresenter(): TrackerContainerPresenter =
+    Toothpick
+      .openScope(AppScope.TAB_TRACKER)
+      .getInstance(TrackerContainerPresenter::class.java)
+
+  override fun onAttach(context: Context?) {
+    Toothpick
+      .openScopes(AppScope.APPLICATION, AppScope.TAB_TRACKER)
+      .apply {
+        installModules(TrackerContainerModule(this@TrackerContainerFragment))
+        Toothpick.inject(this@TrackerContainerFragment, this)
+      }
+      .also { Toothpick.closeScope(AppScope.TAB_TRACKER) }
+
+    super.onAttach(context)
+  }
+
+  override fun onDestroyView() {
+    Toothpick.closeScope(AppScope.TAB_TRACKER)
+    super.onDestroyView()
   }
 }

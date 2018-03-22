@@ -17,9 +17,4 @@ class MarketContainerPresenter @Inject constructor(
     super.onFirstViewAttach()
     router.replaceScreen(AppScreen.MARKET_PAIRS_LIST)
   }
-
-  override fun onDestroy() {
-    Toothpick.closeScope(AppScope.TAB_MARKET)
-    super.onDestroy()
-  }
 }
