@@ -16,12 +16,14 @@ import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
 import com.sedsoftware.wexchanger.presentation.features.main.containers.market.MarketContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.OrdersContainerFragment
-import com.sedsoftware.wexchanger.presentation.features.main.containers.tracker.TrackerContainerFragment
-import com.sedsoftware.wexchanger.presentation.features.main.containers.wallet.WalletContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.commands.*
+import ru.terrakok.cicerone.commands.Back
+import ru.terrakok.cicerone.commands.Command
+import ru.terrakok.cicerone.commands.Forward
+import ru.terrakok.cicerone.commands.Replace
+import ru.terrakok.cicerone.commands.SystemMessage
 import toothpick.Toothpick
 
 @Layout(R.layout.activity_main)
@@ -44,7 +46,7 @@ class MainActivity : BaseActivity(), MainActivityView {
       .getInstance(MainActivityPresenter::class.java)
 
   private lateinit var marketContainer: MarketContainerFragment
-//  private lateinit var ordersContainer: OrdersContainerFragment
+  private lateinit var ordersContainer: OrdersContainerFragment
 //  private lateinit var walletContainer: WalletContainerFragment
 //  private lateinit var trackerContainer: TrackerContainerFragment
 
@@ -88,15 +90,15 @@ class MainActivity : BaseActivity(), MainActivityView {
               .commitNow()
           }
 
-//      ordersContainer =
-//          manager.findFragmentByTag(OrdersContainerFragment::class.simpleName) as OrdersContainerFragment? ?:
-//          OrdersContainerFragment.newInstance(OrdersContainerFragment::class.simpleName).also { fragment ->
-//            manager.beginTransaction()
-//              .add(R.id.home_tabs_container, fragment, OrdersContainerFragment::class.simpleName)
-//              .detach(fragment)
-//              .commitNow()
-//          }
-//
+      ordersContainer =
+          manager.findFragmentByTag(OrdersContainerFragment::class.simpleName) as OrdersContainerFragment? ?:
+          OrdersContainerFragment.newInstance(OrdersContainerFragment::class.simpleName).also { fragment ->
+            manager.beginTransaction()
+              .add(R.id.home_tabs_container, fragment, OrdersContainerFragment::class.simpleName)
+              .detach(fragment)
+              .commitNow()
+          }
+
 //      walletContainer =
 //          manager.findFragmentByTag(WalletContainerFragment::class.simpleName) as WalletContainerFragment? ?:
 //          WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName).also { fragment ->
@@ -170,20 +172,20 @@ class MainActivity : BaseActivity(), MainActivityView {
         when (command.screenKey) {
           AppScreen.MARKET_SCREEN -> {
             fragmentManager.beginTransaction()
-//              .detach(ordersContainer)
+              .detach(ordersContainer)
 //              .detach(walletContainer)
 //              .detach(trackerContainer)
               .attach(marketContainer)
               .commitNow()
           }
-//          AppScreen.ORDERS_SCREEN -> {
-//            fragmentManager.beginTransaction()
-//              .detach(marketContainer)
+          AppScreen.ORDERS_SCREEN -> {
+            fragmentManager.beginTransaction()
+              .detach(marketContainer)
 //              .detach(walletContainer)
 //              .detach(trackerContainer)
-//              .attach(ordersContainer)
-//              .commitNow()
-//          }
+              .attach(ordersContainer)
+              .commitNow()
+          }
 //          AppScreen.WALLET_SCREEN -> {
 //            fragmentManager.beginTransaction()
 //              .detach(marketContainer)

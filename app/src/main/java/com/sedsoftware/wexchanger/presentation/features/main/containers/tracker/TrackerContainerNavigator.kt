@@ -1,11 +1,17 @@
 package com.sedsoftware.wexchanger.presentation.features.main.containers.tracker
 
-import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.commands.Command
+import android.content.Context
+import android.content.Intent
+import android.support.v4.app.Fragment
+import com.sedsoftware.wexchanger.R
+import ru.terrakok.cicerone.android.SupportAppNavigator
+import javax.inject.Inject
 
-class TrackerContainerNavigator : Navigator {
+class TrackerContainerNavigator @Inject constructor(
+  fragment: TrackerContainerFragment
+) : SupportAppNavigator(fragment.activity, fragment.childFragmentManager, R.id.tab_container) {
 
-  override fun applyCommands(commands: Array<out Command>?) {
+  override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? = null
 
-  }
+  override fun createFragment(screenKey: String?, data: Any?): Fragment? = null
 }
