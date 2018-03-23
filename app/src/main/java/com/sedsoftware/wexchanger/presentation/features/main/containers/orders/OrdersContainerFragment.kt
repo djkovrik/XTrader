@@ -47,8 +47,8 @@ class OrdersContainerFragment : BaseContainerFragment(), OrdersContainerView {
     super.onAttach(context)
   }
 
-  override fun onDestroyView() {
+  override fun onDetach() {
     Toothpick.closeScope(AppScope.TAB_ORDERS)
-    super.onDestroyView()
+    super.onDetach()
   }
 }

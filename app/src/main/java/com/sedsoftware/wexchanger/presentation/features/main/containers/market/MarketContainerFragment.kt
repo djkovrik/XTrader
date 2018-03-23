@@ -47,8 +47,8 @@ class MarketContainerFragment : BaseContainerFragment(), MarketContainerView {
     super.onAttach(context)
   }
 
-  override fun onDestroyView() {
+  override fun onDetach() {
     Toothpick.closeScope(AppScope.TAB_MARKET)
-    super.onDestroyView()
+    super.onDetach()
   }
 }
