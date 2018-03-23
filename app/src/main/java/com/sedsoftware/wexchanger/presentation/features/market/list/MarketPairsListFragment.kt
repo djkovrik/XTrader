@@ -8,7 +8,7 @@ import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_market_pairs.nav_button
+import kotlinx.android.synthetic.main.fragment_market_pairs.*
 import toothpick.Toothpick
 
 @Layout(R.layout.fragment_market_pairs)

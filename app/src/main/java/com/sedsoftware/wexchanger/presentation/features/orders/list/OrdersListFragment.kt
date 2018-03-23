@@ -8,7 +8,7 @@ import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_orders_list.helper_button
+import kotlinx.android.synthetic.main.fragment_orders_list.*
 import toothpick.Toothpick
 
 @Layout(R.layout.fragment_orders_list)

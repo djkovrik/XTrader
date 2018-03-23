@@ -16,10 +16,8 @@ import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
 import com.sedsoftware.wexchanger.presentation.features.main.containers.market.MarketContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.OrdersContainerFragment
-import com.sedsoftware.wexchanger.presentation.features.main.containers.tracker.TrackerContainerFragment
-import com.sedsoftware.wexchanger.presentation.features.main.containers.wallet.WalletContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
-import kotlinx.android.synthetic.main.activity_main.home_bottom_navigation
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.commands.Back
 import ru.terrakok.cicerone.commands.Command
@@ -49,14 +47,17 @@ class MainActivity : BaseActivity(), MainActivityView {
 
   private lateinit var marketContainer: MarketContainerFragment
   private lateinit var ordersContainer: OrdersContainerFragment
-  private lateinit var walletContainer: WalletContainerFragment
-  private lateinit var trackerContainer: TrackerContainerFragment
+//  private lateinit var walletContainer: WalletContainerFragment
+//  private lateinit var trackerContainer: TrackerContainerFragment
 
   private val navigator: Navigator = Navigator { commands: Array<out Command>? ->
     commands?.forEach { applyCommand(it) }
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
+
+    Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
+
     super.onCreate(savedInstanceState)
 
     initContainers()
@@ -98,23 +99,23 @@ class MainActivity : BaseActivity(), MainActivityView {
               .commitNow()
           }
 
-      walletContainer =
-          manager.findFragmentByTag(WalletContainerFragment::class.simpleName) as WalletContainerFragment? ?:
-          WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName).also { fragment ->
-            manager.beginTransaction()
-              .add(R.id.home_tabs_container, fragment, WalletContainerFragment::class.simpleName)
-              .detach(fragment)
-              .commitNow()
-          }
-
-      trackerContainer =
-          manager.findFragmentByTag(TrackerContainerFragment::class.simpleName) as TrackerContainerFragment? ?:
-          TrackerContainerFragment.newInstance(TrackerContainerFragment::class.simpleName).also { fragment ->
-            manager.beginTransaction()
-              .add(R.id.home_tabs_container, fragment, TrackerContainerFragment::class.simpleName)
-              .detach(fragment)
-              .commitNow()
-          }
+//      walletContainer =
+//          manager.findFragmentByTag(WalletContainerFragment::class.simpleName) as WalletContainerFragment? ?:
+//          WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName).also { fragment ->
+//            manager.beginTransaction()
+//              .add(R.id.home_tabs_container, fragment, WalletContainerFragment::class.simpleName)
+//              .detach(fragment)
+//              .commitNow()
+//          }
+//
+//      trackerContainer =
+//          manager.findFragmentByTag(TrackerContainerFragment::class.simpleName) as TrackerContainerFragment? ?:
+//          TrackerContainerFragment.newInstance(TrackerContainerFragment::class.simpleName).also { fragment ->
+//            manager.beginTransaction()
+//              .add(R.id.home_tabs_container, fragment, TrackerContainerFragment::class.simpleName)
+//              .detach(fragment)
+//              .commitNow()
+//          }
     }
   }
 
@@ -172,43 +173,43 @@ class MainActivity : BaseActivity(), MainActivityView {
           AppScreen.MARKET_SCREEN -> {
             fragmentManager.beginTransaction()
               .detach(ordersContainer)
-              .detach(walletContainer)
-              .detach(trackerContainer)
+//              .detach(walletContainer)
+//              .detach(trackerContainer)
               .attach(marketContainer)
               .commitNow()
           }
           AppScreen.ORDERS_SCREEN -> {
             fragmentManager.beginTransaction()
               .detach(marketContainer)
-              .detach(walletContainer)
-              .detach(trackerContainer)
+//              .detach(walletContainer)
+//              .detach(trackerContainer)
               .attach(ordersContainer)
               .commitNow()
           }
-          AppScreen.WALLET_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(marketContainer)
-              .detach(ordersContainer)
-              .detach(trackerContainer)
-              .attach(walletContainer)
-              .commitNow()
-          }
-          AppScreen.TRACKER_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(marketContainer)
-              .detach(ordersContainer)
-              .detach(walletContainer)
-              .attach(trackerContainer)
-              .commitNow()
-          }
-          AppScreen.SETTINGS_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(marketContainer)
-              .detach(ordersContainer)
-              .detach(walletContainer)
-              .detach(trackerContainer)
-              .commitNow()
-          }
+//          AppScreen.WALLET_SCREEN -> {
+//            fragmentManager.beginTransaction()
+//              .detach(marketContainer)
+//              .detach(ordersContainer)
+//              .detach(trackerContainer)
+//              .attach(walletContainer)
+//              .commitNow()
+//          }
+//          AppScreen.TRACKER_SCREEN -> {
+//            fragmentManager.beginTransaction()
+//              .detach(marketContainer)
+//              .detach(ordersContainer)
+//              .detach(walletContainer)
+//              .attach(trackerContainer)
+//              .commitNow()
+//          }
+//          AppScreen.SETTINGS_SCREEN -> {
+//            fragmentManager.beginTransaction()
+//              .detach(marketContainer)
+//              .detach(ordersContainer)
+//              .detach(walletContainer)
+//              .detach(trackerContainer)
+//              .commitNow()
+//          }
         }
       }
     }

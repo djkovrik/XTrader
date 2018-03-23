@@ -11,7 +11,7 @@ import javax.inject.Inject
 @InjectViewState
 class OrdersContainerPresenter @Inject constructor(
   private val router: Router
-) : BasePresenter<OrdersContainerView>() {
+): BasePresenter<OrdersContainerView>() {
 
   override fun onFirstViewAttach() {
     super.onFirstViewAttach()
