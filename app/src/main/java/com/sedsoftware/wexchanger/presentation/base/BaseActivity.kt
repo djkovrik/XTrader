@@ -6,9 +6,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.mikepenz.iconics.context.IconicsContextWrapper
 import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.commons.exception.MissingAnnotationException
-import com.sedsoftware.wexchanger.di.AppScope
 import ru.terrakok.cicerone.NavigatorHolder
-import toothpick.Toothpick
 import javax.inject.Inject
 
 abstract class BaseActivity : MvpAppCompatActivity() {
