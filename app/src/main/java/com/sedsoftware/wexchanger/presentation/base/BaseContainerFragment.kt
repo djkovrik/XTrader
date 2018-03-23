@@ -1,7 +1,5 @@
 package com.sedsoftware.wexchanger.presentation.base
 
-import android.content.Context
-import android.os.Bundle
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.di.AppScope
@@ -10,7 +8,6 @@ import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.Router
 import toothpick.Toothpick
-import javax.inject.Inject
 
 @Layout(R.layout.fragment_tab_container)
 abstract class BaseContainerFragment : BaseFragment() {
@@ -21,8 +18,11 @@ abstract class BaseContainerFragment : BaseFragment() {
 
   protected abstract val localNavigator: Navigator
 
-  @Inject
-  lateinit var localNavigatorHolder: LocalNavigatorHolder
+  private val localNavigatorHolder: LocalNavigatorHolder =
+    Toothpick
+      .openScope(AppScope.APPLICATION)
+      .apply { Toothpick.inject(this@BaseContainerFragment, this) }
+      .getInstance(LocalNavigatorHolder::class.java)
 
   val router: Router
     get() = cicerone.router
@@ -33,11 +33,6 @@ abstract class BaseContainerFragment : BaseFragment() {
   private val containerTag: String
     get() = arguments?.getString(CONTAINER_TAG_KEY)
         ?: throw IllegalArgumentException("Container tag must be provided via arguments")
-
-  override fun onAttach(context: Context?) {
-    Toothpick.inject(this, Toothpick.openScope(AppScope.APPLICATION))
-    super.onAttach(context)
-  }
 
   override fun onResume() {
     super.onResume()

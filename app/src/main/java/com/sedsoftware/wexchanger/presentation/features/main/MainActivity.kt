@@ -44,9 +44,9 @@ class MainActivity : BaseActivity(), MainActivityView {
       .getInstance(MainActivityPresenter::class.java)
 
   private lateinit var marketContainer: MarketContainerFragment
-  private lateinit var ordersContainer: OrdersContainerFragment
-  private lateinit var walletContainer: WalletContainerFragment
-  private lateinit var trackerContainer: TrackerContainerFragment
+//  private lateinit var ordersContainer: OrdersContainerFragment
+//  private lateinit var walletContainer: WalletContainerFragment
+//  private lateinit var trackerContainer: TrackerContainerFragment
 
   private val navigator: Navigator = Navigator { commands: Array<out Command>? ->
     commands?.forEach { applyCommand(it) }
@@ -88,32 +88,32 @@ class MainActivity : BaseActivity(), MainActivityView {
               .commitNow()
           }
 
-      ordersContainer =
-          manager.findFragmentByTag(OrdersContainerFragment::class.simpleName) as OrdersContainerFragment? ?:
-          OrdersContainerFragment.newInstance(OrdersContainerFragment::class.simpleName).also { fragment ->
-            manager.beginTransaction()
-              .add(R.id.home_tabs_container, fragment, OrdersContainerFragment::class.simpleName)
-              .detach(fragment)
-              .commitNow()
-          }
-
-      walletContainer =
-          manager.findFragmentByTag(WalletContainerFragment::class.simpleName) as WalletContainerFragment? ?:
-          WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName).also { fragment ->
-            manager.beginTransaction()
-              .add(R.id.home_tabs_container, fragment, WalletContainerFragment::class.simpleName)
-              .detach(fragment)
-              .commitNow()
-          }
-
-      trackerContainer =
-          manager.findFragmentByTag(TrackerContainerFragment::class.simpleName) as TrackerContainerFragment? ?:
-          TrackerContainerFragment.newInstance(TrackerContainerFragment::class.simpleName).also { fragment ->
-            manager.beginTransaction()
-              .add(R.id.home_tabs_container, fragment, TrackerContainerFragment::class.simpleName)
-              .detach(fragment)
-              .commitNow()
-          }
+//      ordersContainer =
+//          manager.findFragmentByTag(OrdersContainerFragment::class.simpleName) as OrdersContainerFragment? ?:
+//          OrdersContainerFragment.newInstance(OrdersContainerFragment::class.simpleName).also { fragment ->
+//            manager.beginTransaction()
+//              .add(R.id.home_tabs_container, fragment, OrdersContainerFragment::class.simpleName)
+//              .detach(fragment)
+//              .commitNow()
+//          }
+//
+//      walletContainer =
+//          manager.findFragmentByTag(WalletContainerFragment::class.simpleName) as WalletContainerFragment? ?:
+//          WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName).also { fragment ->
+//            manager.beginTransaction()
+//              .add(R.id.home_tabs_container, fragment, WalletContainerFragment::class.simpleName)
+//              .detach(fragment)
+//              .commitNow()
+//          }
+//
+//      trackerContainer =
+//          manager.findFragmentByTag(TrackerContainerFragment::class.simpleName) as TrackerContainerFragment? ?:
+//          TrackerContainerFragment.newInstance(TrackerContainerFragment::class.simpleName).also { fragment ->
+//            manager.beginTransaction()
+//              .add(R.id.home_tabs_container, fragment, TrackerContainerFragment::class.simpleName)
+//              .detach(fragment)
+//              .commitNow()
+//          }
     }
   }
 
@@ -170,44 +170,44 @@ class MainActivity : BaseActivity(), MainActivityView {
         when (command.screenKey) {
           AppScreen.MARKET_SCREEN -> {
             fragmentManager.beginTransaction()
-              .detach(ordersContainer)
-              .detach(walletContainer)
-              .detach(trackerContainer)
+//              .detach(ordersContainer)
+//              .detach(walletContainer)
+//              .detach(trackerContainer)
               .attach(marketContainer)
               .commitNow()
           }
-          AppScreen.ORDERS_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(marketContainer)
-              .detach(walletContainer)
-              .detach(trackerContainer)
-              .attach(ordersContainer)
-              .commitNow()
-          }
-          AppScreen.WALLET_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(marketContainer)
-              .detach(ordersContainer)
-              .detach(trackerContainer)
-              .attach(walletContainer)
-              .commitNow()
-          }
-          AppScreen.TRACKER_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(marketContainer)
-              .detach(ordersContainer)
-              .detach(walletContainer)
-              .attach(trackerContainer)
-              .commitNow()
-          }
-          AppScreen.SETTINGS_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(marketContainer)
-              .detach(ordersContainer)
-              .detach(walletContainer)
-              .detach(trackerContainer)
-              .commitNow()
-          }
+//          AppScreen.ORDERS_SCREEN -> {
+//            fragmentManager.beginTransaction()
+//              .detach(marketContainer)
+//              .detach(walletContainer)
+//              .detach(trackerContainer)
+//              .attach(ordersContainer)
+//              .commitNow()
+//          }
+//          AppScreen.WALLET_SCREEN -> {
+//            fragmentManager.beginTransaction()
+//              .detach(marketContainer)
+//              .detach(ordersContainer)
+//              .detach(trackerContainer)
+//              .attach(walletContainer)
+//              .commitNow()
+//          }
+//          AppScreen.TRACKER_SCREEN -> {
+//            fragmentManager.beginTransaction()
+//              .detach(marketContainer)
+//              .detach(ordersContainer)
+//              .detach(walletContainer)
+//              .attach(trackerContainer)
+//              .commitNow()
+//          }
+//          AppScreen.SETTINGS_SCREEN -> {
+//            fragmentManager.beginTransaction()
+//              .detach(marketContainer)
+//              .detach(ordersContainer)
+//              .detach(walletContainer)
+//              .detach(trackerContainer)
+//              .commitNow()
+//          }
         }
       }
     }
