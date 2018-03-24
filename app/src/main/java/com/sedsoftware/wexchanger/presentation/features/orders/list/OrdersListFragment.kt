@@ -7,12 +7,12 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.di.AppScope
-import com.sedsoftware.wexchanger.presentation.base.BaseFragment
+import com.sedsoftware.wexchanger.presentation.base.BaseNestedFragment
 import kotlinx.android.synthetic.main.fragment_orders_list.*
 import toothpick.Toothpick
 
 @Layout(R.layout.fragment_orders_list)
-class OrdersListFragment : BaseFragment(), OrdersListView {
+class OrdersListFragment : BaseNestedFragment(), OrdersListView {
 
   companion object {
     fun newInstance() = OrdersListFragment()
