@@ -14,4 +14,8 @@ class OrdersListPresenter @Inject constructor(
   fun onOrderClicked() {
     router.navigateTo(AppScreen.ORDERS_HELPER)
   }
+
+  fun onBackPressed() {
+    router.exit()
+  }
 }

@@ -6,13 +6,14 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
+import com.sedsoftware.wexchanger.commons.listener.BackButtonListener
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseNestedFragment
 import kotlinx.android.synthetic.main.fragment_market_pairs.*
 import toothpick.Toothpick
 
 @Layout(R.layout.fragment_market_pairs)
-class MarketPairsListFragment : BaseNestedFragment(), MarketPairsListView {
+class MarketPairsListFragment : BaseNestedFragment(), MarketPairsListView, BackButtonListener {
 
   companion object {
     fun newInstance() = MarketPairsListFragment()
@@ -30,5 +31,10 @@ class MarketPairsListFragment : BaseNestedFragment(), MarketPairsListView {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     nav_button.setOnClickListener { presenter.onPairInfoClicked() }
+  }
+
+  override fun onBackPressed(): Boolean {
+    presenter.onBackPressed()
+    return true
   }
 }

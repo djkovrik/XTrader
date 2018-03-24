@@ -35,4 +35,10 @@ class MainActivityPresenter @Inject constructor(
     router.navigateTo(AppScreen.SETTINGS_SCREEN)
     return true
   }
+
+  fun getMainRouter(): Router = router
+
+  fun onBackPressed() {
+    router.exit()
+  }
 }

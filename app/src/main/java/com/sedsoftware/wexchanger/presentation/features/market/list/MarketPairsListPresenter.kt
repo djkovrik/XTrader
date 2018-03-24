@@ -14,4 +14,8 @@ class MarketPairsListPresenter @Inject constructor(
   fun onPairInfoClicked() {
     router.navigateTo(AppScreen.MARKET_PAIR_INFO)
   }
+
+  fun onBackPressed() {
+    router.exit()
+  }
 }

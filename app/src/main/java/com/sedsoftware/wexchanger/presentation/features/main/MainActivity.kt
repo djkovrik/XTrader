@@ -12,6 +12,8 @@ import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.commons.extension.colorFromAttr
 import com.sedsoftware.wexchanger.commons.extension.iconics
 import com.sedsoftware.wexchanger.commons.extension.string
+import com.sedsoftware.wexchanger.commons.listener.BackButtonListener
+import com.sedsoftware.wexchanger.commons.provider.RouterProvider
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
 import com.sedsoftware.wexchanger.presentation.features.main.containers.market.MarketContainerFragment
@@ -19,6 +21,7 @@ import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.O
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.commands.Back
 import ru.terrakok.cicerone.commands.Command
 import ru.terrakok.cicerone.commands.Forward
@@ -27,7 +30,7 @@ import ru.terrakok.cicerone.commands.SystemMessage
 import toothpick.Toothpick
 
 @Layout(R.layout.activity_main)
-class MainActivity : BaseActivity(), MainActivityView {
+class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
 
   private companion object {
     const val BOTTOM_TAB_MARKET = 0
@@ -77,6 +80,18 @@ class MainActivity : BaseActivity(), MainActivityView {
     super.onResumeFragments()
     navigatorHolder.setNavigator(navigator)
   }
+
+  override fun onBackPressed() {
+    val fragment = supportFragmentManager.findFragmentById(R.id.home_tabs_container)
+
+    when {
+      fragment is BackButtonListener && fragment.onBackPressed() -> return
+      else -> presenter.onBackPressed()
+    }
+  }
+
+  override fun getCurrentRouter(): Router =
+    presenter.getMainRouter()
 
   private fun initContainers() {
     supportFragmentManager.let { manager ->
