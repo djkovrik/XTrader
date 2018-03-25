@@ -16,10 +16,11 @@ import com.sedsoftware.wexchanger.commons.listener.BackButtonListener
 import com.sedsoftware.wexchanger.commons.provider.RouterProvider
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
+import com.sedsoftware.wexchanger.presentation.base.BaseFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.market.MarketContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.OrdersContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.home_bottom_navigation
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.commands.Back
@@ -182,6 +183,9 @@ class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
         }
       }
       is Replace -> {
+
+        BaseFragment.skipAnimation = true
+
         val fragmentManager = supportFragmentManager
 
         when (command.screenKey) {
@@ -226,6 +230,8 @@ class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
 //              .commitNow()
 //          }
         }
+
+        BaseFragment.skipAnimation = false
       }
     }
   }
