@@ -25,6 +25,7 @@ class MarketContainerNavigator @Inject constructor(
     else -> null
   }
 
+  @Suppress("ComplexCondition")
   override fun setupFragmentTransactionAnimation(
     command: Command?,
     currentFragment: Fragment?,

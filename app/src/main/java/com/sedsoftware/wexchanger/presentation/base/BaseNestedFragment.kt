@@ -7,15 +7,17 @@ import com.sedsoftware.wexchanger.R
 
 abstract class BaseNestedFragment : BaseFragment() {
 
+  var skipAnimation = false
+
   override fun onCreateAnimation(transit: Int, enter: Boolean, nextAnim: Int): Animation =
     when {
-      skipAnimation -> AnimationUtils.loadAnimation(context, R.anim.none)
+      skipAnimation -> applyAnimation(0)
       else -> applyAnimation(nextAnim)
     }
 
   private fun applyAnimation(@AnimRes anim: Int): Animation =
-    if (anim != 0)
-      AnimationUtils.loadAnimation(context, anim)
-    else
-      AnimationUtils.loadAnimation(context, R.anim.none)
+    when {
+      anim != 0 -> AnimationUtils.loadAnimation(context, anim)
+      else -> AnimationUtils.loadAnimation(context, R.anim.none)
+    }
 }

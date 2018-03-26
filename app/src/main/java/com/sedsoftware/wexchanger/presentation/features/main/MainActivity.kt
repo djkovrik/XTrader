@@ -9,25 +9,18 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
-import com.sedsoftware.wexchanger.commons.extension.colorFromAttr
-import com.sedsoftware.wexchanger.commons.extension.iconics
-import com.sedsoftware.wexchanger.commons.extension.string
+import com.sedsoftware.wexchanger.commons.extension.*
 import com.sedsoftware.wexchanger.commons.listener.BackButtonListener
 import com.sedsoftware.wexchanger.commons.provider.RouterProvider
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
-import com.sedsoftware.wexchanger.presentation.base.BaseFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.market.MarketContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.OrdersContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
-import kotlinx.android.synthetic.main.activity_main.home_bottom_navigation
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.Router
-import ru.terrakok.cicerone.commands.Back
-import ru.terrakok.cicerone.commands.Command
-import ru.terrakok.cicerone.commands.Forward
-import ru.terrakok.cicerone.commands.Replace
-import ru.terrakok.cicerone.commands.SystemMessage
+import ru.terrakok.cicerone.commands.*
 import toothpick.Toothpick
 
 @Layout(R.layout.activity_main)
@@ -115,6 +108,7 @@ class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
               .commitNow()
           }
 
+//<editor-fold desc="Temporary removed #1">
 //      walletContainer =
 //          manager.findFragmentByTag(WalletContainerFragment::class.simpleName) as WalletContainerFragment? ?:
 //          WalletContainerFragment.newInstance(WalletContainerFragment::class.simpleName).also { fragment ->
@@ -132,6 +126,7 @@ class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
 //              .detach(fragment)
 //              .commitNow()
 //          }
+//</editor-fold>
     }
   }
 
@@ -183,28 +178,23 @@ class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
         }
       }
       is Replace -> {
+        with(supportFragmentManager) {
+          disableAnimations()
 
-        BaseFragment.skipAnimation = true
-
-        val fragmentManager = supportFragmentManager
-
-        when (command.screenKey) {
-          AppScreen.MARKET_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(ordersContainer)
-//              .detach(walletContainer)
-//              .detach(trackerContainer)
-              .attach(marketContainer)
-              .commitNow()
-          }
-          AppScreen.ORDERS_SCREEN -> {
-            fragmentManager.beginTransaction()
-              .detach(marketContainer)
-//              .detach(walletContainer)
-//              .detach(trackerContainer)
-              .attach(ordersContainer)
-              .commitNow()
-          }
+          when (command.screenKey) {
+            AppScreen.MARKET_SCREEN -> {
+              beginTransaction()
+                .detach(ordersContainer)
+                .attach(marketContainer)
+                .commitNow()
+            }
+            AppScreen.ORDERS_SCREEN -> {
+              beginTransaction()
+                .detach(marketContainer)
+                .attach(ordersContainer)
+                .commitNow()
+            }
+//<editor-fold desc="Temporary removed #2">
 //          AppScreen.WALLET_SCREEN -> {
 //            fragmentManager.beginTransaction()
 //              .detach(marketContainer)
@@ -229,9 +219,10 @@ class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
 //              .detach(trackerContainer)
 //              .commitNow()
 //          }
+//</editor-fold>
+          }
+          enableAnimations()
         }
-
-        BaseFragment.skipAnimation = false
       }
     }
   }
