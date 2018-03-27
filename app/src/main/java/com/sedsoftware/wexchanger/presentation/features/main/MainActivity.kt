@@ -1,6 +1,7 @@
 package com.sedsoftware.wexchanger.presentation.features.main
 
 import android.os.Bundle
+import android.support.v7.app.ActionBar
 import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -9,22 +10,32 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.sedsoftware.wexchanger.R
 import com.sedsoftware.wexchanger.commons.annotation.Layout
-import com.sedsoftware.wexchanger.commons.extension.*
+import com.sedsoftware.wexchanger.commons.extension.colorFromAttr
+import com.sedsoftware.wexchanger.commons.extension.disableAnimations
+import com.sedsoftware.wexchanger.commons.extension.enableAnimations
+import com.sedsoftware.wexchanger.commons.extension.iconics
+import com.sedsoftware.wexchanger.commons.extension.string
 import com.sedsoftware.wexchanger.commons.listener.BackButtonListener
+import com.sedsoftware.wexchanger.commons.provider.ActionBarProvider
 import com.sedsoftware.wexchanger.commons.provider.RouterProvider
 import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.presentation.base.BaseActivity
 import com.sedsoftware.wexchanger.presentation.features.main.containers.market.MarketContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.OrdersContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.home_bottom_navigation
+import kotlinx.android.synthetic.main.activity_main.toolbar
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.Router
-import ru.terrakok.cicerone.commands.*
+import ru.terrakok.cicerone.commands.Back
+import ru.terrakok.cicerone.commands.Command
+import ru.terrakok.cicerone.commands.Forward
+import ru.terrakok.cicerone.commands.Replace
+import ru.terrakok.cicerone.commands.SystemMessage
 import toothpick.Toothpick
 
 @Layout(R.layout.activity_main)
-class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
+class MainActivity : BaseActivity(), MainActivityView, ActionBarProvider, RouterProvider {
 
   private companion object {
     const val BOTTOM_TAB_MARKET = 0
@@ -57,6 +68,9 @@ class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
 
     super.onCreate(savedInstanceState)
 
+    setSupportActionBar(toolbar)
+    toolbar.setNavigationOnClickListener { onBackPressed() }
+
     initContainers()
     initBottomNavigation()
 
@@ -84,8 +98,9 @@ class MainActivity : BaseActivity(), MainActivityView, RouterProvider {
     }
   }
 
-  override fun getCurrentRouter(): Router =
-    presenter.getMainRouter()
+  override fun getCurrentActionBar(): ActionBar? = supportActionBar
+
+  override fun getCurrentRouter(): Router = presenter.getMainRouter()
 
   private fun initContainers() {
     supportFragmentManager.let { manager ->
