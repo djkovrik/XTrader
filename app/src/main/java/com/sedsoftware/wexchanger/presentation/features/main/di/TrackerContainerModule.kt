@@ -8,7 +8,8 @@ import toothpick.config.Module
 
 class TrackerContainerModule(fragment: TrackerContainerFragment) : Module() {
   init {
-    bind(Navigator::class.java).toProviderInstance(TrackerNavigatorProvider(fragment)).providesSingletonInScope()
+    bind(Navigator::class.java).toProviderInstance(TrackerNavigatorProvider(fragment))
+      .providesSingletonInScope()
     bind(Router::class.java).toInstance(fragment.router)
   }
 }

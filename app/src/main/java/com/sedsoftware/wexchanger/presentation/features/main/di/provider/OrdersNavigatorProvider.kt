@@ -4,7 +4,8 @@ import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.O
 import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.OrdersContainerNavigator
 import javax.inject.Provider
 
-class OrdersNavigatorProvider(private val fragment: OrdersContainerFragment) : Provider<OrdersContainerNavigator> {
+class OrdersNavigatorProvider(private val fragment: OrdersContainerFragment) :
+  Provider<OrdersContainerNavigator> {
 
   override fun get(): OrdersContainerNavigator = OrdersContainerNavigator(fragment)
 }

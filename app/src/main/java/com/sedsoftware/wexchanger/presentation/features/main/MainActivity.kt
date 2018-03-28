@@ -150,16 +150,28 @@ class MainActivity : BaseActivity(), MainActivityView, ActionBarProvider, Router
       AHBottomNavigationItem(string(R.string.tab_market), iconics(CommunityMaterial.Icon.cmd_home))
 
     val ordersTabItem =
-      AHBottomNavigationItem(string(R.string.tab_orders), iconics(CommunityMaterial.Icon.cmd_currency_btc))
+      AHBottomNavigationItem(
+        string(R.string.tab_orders),
+        iconics(CommunityMaterial.Icon.cmd_currency_btc)
+      )
 
     val walletTabItem =
-      AHBottomNavigationItem(string(R.string.tab_wallet), iconics(CommunityMaterial.Icon.cmd_wallet))
+      AHBottomNavigationItem(
+        string(R.string.tab_wallet),
+        iconics(CommunityMaterial.Icon.cmd_wallet)
+      )
 
     val trackerTabItem =
-      AHBottomNavigationItem(string(R.string.tab_tracker), iconics(CommunityMaterial.Icon.cmd_radar))
+      AHBottomNavigationItem(
+        string(R.string.tab_tracker),
+        iconics(CommunityMaterial.Icon.cmd_radar)
+      )
 
     val settingsTabItem =
-      AHBottomNavigationItem(string(R.string.tab_settings), iconics(CommunityMaterial.Icon.cmd_settings))
+      AHBottomNavigationItem(
+        string(R.string.tab_settings),
+        iconics(CommunityMaterial.Icon.cmd_settings)
+      )
 
     home_bottom_navigation.addItems(
       listOf(marketTabItem, ordersTabItem, walletTabItem, trackerTabItem, settingsTabItem)
@@ -185,7 +197,11 @@ class MainActivity : BaseActivity(), MainActivityView, ActionBarProvider, Router
   private fun applyCommand(command: Command) {
     when (command) {
       is Back -> finish()
-      is SystemMessage -> Toast.makeText(this@MainActivity, command.message, Toast.LENGTH_SHORT).show()
+      is SystemMessage -> Toast.makeText(
+        this@MainActivity,
+        command.message,
+        Toast.LENGTH_SHORT
+      ).show()
       is Forward -> {
         when (command.screenKey) {
           AppScreen.SETTINGS_SCREEN -> {

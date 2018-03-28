@@ -11,7 +11,8 @@ class WalletContainerNavigator @Inject constructor(
   fragment: WalletContainerFragment
 ) : SupportAppNavigator(fragment.activity, fragment.childFragmentManager, R.id.tab_container) {
 
-  override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? = null
+  override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? =
+    null
 
   override fun createFragment(screenKey: String?, data: Any?): Fragment? = null
 }

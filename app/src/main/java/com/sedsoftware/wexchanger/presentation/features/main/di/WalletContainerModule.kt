@@ -8,7 +8,8 @@ import toothpick.config.Module
 
 class WalletContainerModule(fragment: WalletContainerFragment) : Module() {
   init {
-    bind(Navigator::class.java).toProviderInstance(WalletNavigatorProvider(fragment)).providesSingletonInScope()
+    bind(Navigator::class.java).toProviderInstance(WalletNavigatorProvider(fragment))
+      .providesSingletonInScope()
     bind(Router::class.java).toInstance(fragment.router)
   }
 }

@@ -12,7 +12,7 @@ object Versions {
   const val MIN_SDK_DEV_VERSION = 22
   const val COMPILED_SDK_VERSION = 27
   const val TARGET_SDK_VERSION = 27
-  const val GRADLE_ANDROID_VERSION = "3.2.0-alpha07"
+  const val GRADLE_ANDROID_VERSION = "3.2.0-alpha08"
 
   // Plugins
   const val DETEKT_VERSION = "1.0.0.RC6-4"
@@ -28,7 +28,6 @@ object Versions {
   const val KOTLIN_KTX_VERSION = "0.2"
 
   // Core
-  const val REALM_VERSION = "5.0.0"
   const val TOOTHPICK_VERSION = "1.1.3"
   const val RETROFIT_VERSION = "2.4.0"
   const val RETROFIT_COROUTINES_ADAPTER_VERSION = "1.0.0"
@@ -54,6 +53,6 @@ object Versions {
   const val EXPEKT_VERSION = "0.5.0"
 
   // Development tools
-  const val TIMBER_VERSION = "4.6.1"
+  const val TIMBER_VERSION = "4.7.0"
   const val LEAK_CANARY_VERSION = "1.5.4"
 }

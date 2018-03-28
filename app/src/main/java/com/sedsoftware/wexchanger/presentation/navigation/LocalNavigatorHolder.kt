@@ -5,5 +5,6 @@ import ru.terrakok.cicerone.Router
 
 class LocalNavigatorHolder(private val containers: HashMap<String, Cicerone<Router>> = hashMapOf()) {
 
-  fun getCicerone(containerTag: String): Cicerone<Router> = containers.getOrPut(containerTag, { Cicerone.create() })
+  fun getCicerone(containerTag: String): Cicerone<Router> =
+    containers.getOrPut(containerTag, { Cicerone.create() })
 }

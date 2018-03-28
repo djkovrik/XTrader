@@ -15,7 +15,6 @@ dependencies {
     kapt DomainDependencies.toothpickCompiler
 
     testImplementation DomainTestDependencies.junit
-    testImplementation DomainTestDependencies.expekt
 }
 
 configurations.all() {

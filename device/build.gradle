@@ -59,7 +59,6 @@ dependencies {
     testImplementation DeviceTestDependencies.junit
     testImplementation DeviceTestDependencies.mockito
     testImplementation DeviceTestDependencies.mockitoKotlin
-    testImplementation DeviceTestDependencies.expekt
 }
 
 configurations.all() {

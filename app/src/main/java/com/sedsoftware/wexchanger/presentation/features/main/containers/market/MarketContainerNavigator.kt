@@ -17,7 +17,8 @@ class MarketContainerNavigator @Inject constructor(
   fragment: MarketContainerFragment
 ) : SupportAppNavigator(fragment.activity, fragment.childFragmentManager, R.id.tab_container) {
 
-  override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? = null
+  override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? =
+    null
 
   override fun createFragment(screenKey: String?, data: Any?): Fragment? = when (screenKey) {
     AppScreen.MARKET_PAIRS_LIST -> MarketPairsListFragment.newInstance()
@@ -35,7 +36,8 @@ class MarketContainerNavigator @Inject constructor(
 
     if (command is Forward &&
       nextFragment is MarketPairInfoFragment &&
-      currentFragment is MarketPairsListFragment) {
+      currentFragment is MarketPairsListFragment
+    ) {
       fragmentTransaction?.setCustomAnimations(
         R.anim.enter_from_right,
         R.anim.exit_from_right,

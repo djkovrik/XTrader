@@ -14,14 +14,15 @@ class GetCurrencyPairsUseCase @Inject constructor(
   executor: Executor
 ) : UseCase(executor) {
 
-  fun getPairs(onSuccess: SuccessCallback<List<CurrencyPair>>, onError: ErrorCallback) = postExecute {
-    repository.getCurrencyPairsList().consumeEach { pairsList ->
-      when {
-        pairsList.isNotEmpty() ->
-          onSuccess(pairsList)
-        else ->
-          onError(EmptyServerResponse("Pairs list is empty"))
+  fun getPairs(onSuccess: SuccessCallback<List<CurrencyPair>>, onError: ErrorCallback) =
+    postExecute {
+      repository.getCurrencyPairsList().consumeEach { pairsList ->
+        when {
+          pairsList.isNotEmpty() ->
+            onSuccess(pairsList)
+          else ->
+            onError(EmptyServerResponse("Pairs list is empty"))
+        }
       }
     }
-  }
 }

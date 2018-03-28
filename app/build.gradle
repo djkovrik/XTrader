@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'realm-android'
 
 android {
     compileSdkVersion Versions.COMPILED_SDK_VERSION
@@ -12,8 +11,7 @@ android {
     defaultConfig {
         minSdkVersion Versions.MIN_SDK_VERSION
         targetSdkVersion Versions.TARGET_SDK_VERSION
-        versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 +
-                Versions.APP_VERSION_BUGFIX
+        versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 + Versions.APP_VERSION_BUGFIX
         versionName "${Versions.APP_VERSION_MAJOR}.${Versions.APP_VERSION_MINOR}.${Versions.APP_VERSION_BUGFIX}"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -115,8 +113,6 @@ dependencies {
     testImplementation PresentationTestDependencies.junit
     testImplementation PresentationTestDependencies.mockito
     testImplementation PresentationTestDependencies.mockitoKotlin
-    testImplementation PresentationTestDependencies.expekt
-
     androidTestImplementation PresentationTestDependencies.espresso
     androidTestImplementation PresentationTestDependencies.mockitoAndroid
 }

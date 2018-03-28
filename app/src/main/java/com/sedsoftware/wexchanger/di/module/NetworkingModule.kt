@@ -11,7 +11,8 @@ import toothpick.config.Module
 class NetworkingModule : Module() {
   init {
     bind(Moshi::class.java).toProvider(MoshiProvider::class.java).providesSingletonInScope()
-    bind(OkHttpClient::class.java).toProvider(OkHttpClientProvider::class.java).providesSingletonInScope()
+    bind(OkHttpClient::class.java).toProvider(OkHttpClientProvider::class.java)
+      .providesSingletonInScope()
     bind(WexApi::class.java).toProvider(ApiProvider::class.java).providesSingletonInScope()
   }
 }

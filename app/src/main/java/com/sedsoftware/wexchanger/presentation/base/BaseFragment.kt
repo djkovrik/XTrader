@@ -10,7 +10,11 @@ import com.sedsoftware.wexchanger.commons.exception.MissingAnnotationException
 
 abstract class BaseFragment : MvpAppCompatFragment() {
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View? {
 
     val annotation = this::class.annotations.firstOrNull { it is Layout } as? Layout
 

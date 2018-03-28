@@ -17,7 +17,8 @@ class OrdersContainerNavigator @Inject constructor(
   fragment: OrdersContainerFragment
 ) : SupportAppNavigator(fragment.activity, fragment.childFragmentManager, R.id.tab_container) {
 
-  override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? = null
+  override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? =
+    null
 
   override fun createFragment(screenKey: String?, data: Any?): Fragment? = when (screenKey) {
     AppScreen.ORDERS_LIST -> OrdersListFragment.newInstance()
@@ -35,7 +36,8 @@ class OrdersContainerNavigator @Inject constructor(
 
     if (command is Forward &&
       nextFragment is OrdersHelperFragment &&
-      currentFragment is OrdersListFragment) {
+      currentFragment is OrdersListFragment
+    ) {
       fragmentTransaction?.setCustomAnimations(
         R.anim.enter_from_right,
         R.anim.exit_from_right,

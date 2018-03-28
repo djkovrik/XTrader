@@ -177,7 +177,7 @@ complexity:
     threshold: 20
   NestedBlockDepth:
     active: true
-    threshold: 3
+    threshold: 4
   LongParameterList:
     active: true
     threshold: 7
@@ -266,7 +266,7 @@ style:
     ignoreEnums: false
   WildcardImport:
     active: true
-    excludeImports: 'java.util.*,kotlinx.android.synthetic.*,ru.terrakok.cicerone.commands.*'
+    excludeImports: 'java.util.*,kotlinx.android.synthetic.*,ru.terrakok.cicerone.commands.*,com.sedsoftware.wexchanger.commons.extension.*'
   SafeCast:
     active: true
   MaxLineLength:

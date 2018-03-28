@@ -1,12 +1,8 @@
 package com.sedsoftware.data.executor
 
 import com.sedsoftware.domain.executor.Executor
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.Deferred
-import kotlinx.coroutines.experimental.Job
+import kotlinx.coroutines.experimental.*
 import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
 
 class ThreadExecutor @Inject constructor() : Executor {

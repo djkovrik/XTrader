@@ -11,6 +11,5 @@ private fun FragmentManager.setAnimationFlags(shouldSkip: Boolean) =
   this.apply {
     fragments
       .flatMap { it.childFragmentManager.fragments }
-      .filter { it is BaseNestedFragment }
-      .forEach { (it as BaseNestedFragment).skipAnimation = shouldSkip }
+      .forEach { (it as? BaseNestedFragment)?.skipAnimation = shouldSkip }
   }

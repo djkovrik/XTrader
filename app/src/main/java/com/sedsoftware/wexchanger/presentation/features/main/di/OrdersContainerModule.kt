@@ -8,7 +8,8 @@ import toothpick.config.Module
 
 class OrdersContainerModule(fragment: OrdersContainerFragment) : Module() {
   init {
-    bind(Navigator::class.java).toProviderInstance(OrdersNavigatorProvider(fragment)).providesSingletonInScope()
+    bind(Navigator::class.java).toProviderInstance(OrdersNavigatorProvider(fragment))
+      .providesSingletonInScope()
     bind(Router::class.java).toInstance(fragment.router)
   }
 }
