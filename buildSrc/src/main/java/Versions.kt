@@ -1,12 +1,5 @@
 object Versions {
 
-  // App version
-  // Versioning: Major -> millions, Minor -> thousands, Bugfix -> hundreds
-  // Current: 0.0.1 (000,000,001)
-  const val APP_VERSION_MAJOR = 0
-  const val APP_VERSION_MINOR = 0
-  const val APP_VERSION_BUGFIX = 1
-
   // App data
   const val MIN_SDK_VERSION = 19
   const val MIN_SDK_DEV_VERSION = 22
@@ -17,6 +10,7 @@ object Versions {
   // Plugins
   const val DETEKT_VERSION = "1.0.0.RC6-4"
   const val GRADLE_VERSIONS_VERSION = "0.17.0"
+  const val GRADLE_VERSIONING_VERSION = "0.4.3"
 
   // Android
   const val SUPPORT_LIBRARY_VERSION = "27.1.0"

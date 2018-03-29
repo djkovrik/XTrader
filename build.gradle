@@ -11,6 +11,7 @@ buildscript {
         classpath Plugins.KOTLIN_GRADLE_PLUGIN
         classpath Plugins.DETEKT
         classpath Plugins.GRADLE_VERSIONS
+        classpath Plugins.GRADLE_VERSIONING
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -19,6 +20,7 @@ buildscript {
 
 apply plugin: 'io.gitlab.arturbosch.detekt'
 apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'com.gladed.androidgitversion'
 
 allprojects {
     repositories {

@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion Versions.MIN_SDK_VERSION
         targetSdkVersion Versions.TARGET_SDK_VERSION
-        versionCode Versions.APP_VERSION_MAJOR * 1000000 + Versions.APP_VERSION_MINOR * 1000 + Versions.APP_VERSION_BUGFIX
-        versionName "${Versions.APP_VERSION_MAJOR}.${Versions.APP_VERSION_MINOR}.${Versions.APP_VERSION_BUGFIX}"
+        versionCode androidGitVersion.code()
+        versionName androidGitVersion.name()
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
