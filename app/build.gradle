@@ -3,6 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+androidGitVersion {
+    codeFormat 'MNNPPP'
+    format '%tag%%.count%%<commit>%'
+    prefix 'v'
+}
+
 android {
     compileSdkVersion Versions.COMPILED_SDK_VERSION
 
