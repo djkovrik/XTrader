@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 
 androidGitVersion {
     codeFormat 'MNNPPP'
-    format '%tag%%.count%%<commit>%'
+    format '%tag%%.count%%-commit%'
     prefix 'v'
 }
 
