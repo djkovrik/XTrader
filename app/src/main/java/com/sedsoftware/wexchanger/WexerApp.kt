@@ -42,7 +42,7 @@ class WexerApp : Application() {
     if (BuildConfig.DEBUG) {
       Toothpick.setConfiguration(Configuration.forDevelopment().preventMultipleRootScopes())
     } else {
-      Toothpick.setConfiguration(Configuration.forProduction())
+      Toothpick.setConfiguration(Configuration.forProduction().disableReflection())
       FactoryRegistryLocator.setRootRegistry(com.sedsoftware.wexchanger.FactoryRegistry())
       MemberInjectorRegistryLocator.setRootRegistry(com.sedsoftware.wexchanger.MemberInjectorRegistry())
     }
