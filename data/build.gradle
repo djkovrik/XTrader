@@ -57,6 +57,7 @@ dependencies {
     testImplementation DataTestDependencies.junit
     testImplementation DataTestDependencies.mockito
     testImplementation DataTestDependencies.mockitoKotlin
+    testImplementation DataTestDependencies.expekt
 }
 
 configurations.all() {

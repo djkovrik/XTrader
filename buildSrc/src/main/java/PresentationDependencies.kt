@@ -1,3 +1,4 @@
+
 import Versions.AH_BOTTOM_NAVIGATION_VERSION
 import Versions.ANKO_VERSION
 import Versions.CICERONE_VERSION
@@ -7,6 +8,7 @@ import Versions.ICONICS_VERSION
 import Versions.KOTLIN_COROUTINES_VERSION
 import Versions.KOTLIN_KTX_VERSION
 import Versions.KOTLIN_VERSION
+import Versions.LOADING_INDICATOR_VERSION
 import Versions.MATERIAL_DIALOGS_VERSION
 import Versions.MATERIAL_VALUES_VERSION
 import Versions.MOSHI_VERSION
@@ -17,6 +19,7 @@ import Versions.RETROFIT_COROUTINES_ADAPTER_VERSION
 import Versions.RETROFIT_VERSION
 import Versions.SUPPORT_LIBRARY_VERSION
 import Versions.TOOTHPICK_VERSION
+import Versions.TYPEICONS_VERSION
 
 object PresentationDependencies {
   const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$KOTLIN_VERSION"
@@ -54,8 +57,11 @@ object PresentationDependencies {
   const val iconicsCore = "com.mikepenz:iconics-core:$ICONICS_VERSION"
   const val iconicsView = "com.mikepenz:iconics-views:$ICONICS_VERSION"
   const val materialTypeface = "com.mikepenz:community-material-typeface:$COMMUNITY_MATERIAL_ICONS_VERSION"
+  const val typeconsTypeface = "com.mikepenz:typeicons-typeface:$TYPEICONS_VERSION"
   const val materialDialogs = "com.afollestad.material-dialogs:core:$MATERIAL_DIALOGS_VERSION"
   const val materialDialogsCommons = "com.afollestad.material-dialogs:commons:$MATERIAL_DIALOGS_VERSION"
   const val mpAndroidChart = "com.github.philjay:mpandroidchart:$MP_ANDROID_CHART_VERSION"
   const val AhBottomNavigation = "com.aurelhubert:ahbottomnavigation:$AH_BOTTOM_NAVIGATION_VERSION"
+  const val avLoadingIndicator = "com.wang.avi:library:$LOADING_INDICATOR_VERSION"
+  const val androidMorphingButton = "com.github.dmytrodanylyk:android-morphing-button:98a4986e56"
 }

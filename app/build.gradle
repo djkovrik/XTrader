@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
 
 androidGitVersion {
     codeFormat 'MNNPPP'
@@ -105,10 +106,13 @@ dependencies {
     implementation PresentationDependencies.iconicsCore
     implementation PresentationDependencies.iconicsView
     implementation PresentationDependencies.materialTypeface
+    implementation PresentationDependencies.typeconsTypeface
     implementation PresentationDependencies.materialDialogs
     implementation PresentationDependencies.materialDialogsCommons
     implementation PresentationDependencies.mpAndroidChart
     implementation PresentationDependencies.AhBottomNavigation
+    implementation PresentationDependencies.avLoadingIndicator
+    implementation PresentationDependencies.androidMorphingButton
 
     implementation DeveloperToolsDependencies.timber
 
@@ -119,6 +123,7 @@ dependencies {
     testImplementation PresentationTestDependencies.junit
     testImplementation PresentationTestDependencies.mockito
     testImplementation PresentationTestDependencies.mockitoKotlin
+    testImplementation PresentationTestDependencies.expekt
     androidTestImplementation PresentationTestDependencies.espresso
     androidTestImplementation PresentationTestDependencies.mockitoAndroid
 }

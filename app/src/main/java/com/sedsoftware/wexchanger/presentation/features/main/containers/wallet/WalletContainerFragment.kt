@@ -1,7 +1,7 @@
 package com.sedsoftware.wexchanger.presentation.features.main.containers.wallet
 
 import android.content.Context
-import androidx.os.bundleOf
+import androidx.core.os.bundleOf
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.sedsoftware.wexchanger.R

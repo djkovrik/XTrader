@@ -1,5 +1,6 @@
 
 import Versions.ESPRESSO_VERSION
+import Versions.EXPEKT_VERSION
 import Versions.JUNIT_VERSION
 import Versions.MOCKITO_KOTLIN_VERSION
 import Versions.MOCKITO_VERSION
@@ -10,4 +11,5 @@ object PresentationTestDependencies {
   const val mockitoKotlin = "com.nhaarman:mockito-kotlin-kt1.1:$MOCKITO_KOTLIN_VERSION"
   const val mockitoAndroid = "org.mockito:mockito-android:$MOCKITO_VERSION"
   const val espresso = "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
+  const val expekt = "com.winterbe:expekt:$EXPEKT_VERSION"
 }
