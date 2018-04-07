@@ -52,6 +52,6 @@ class WexerApp : Application() {
   private fun initScopes() {
     Toothpick
       .openScope(AppScope.APPLICATION)
-      .installModules(AppModule(), SmoothieApplicationModule(this), NetworkingModule())
+      .installModules(SmoothieApplicationModule(this),  AppModule(this), NetworkingModule())
   }
 }

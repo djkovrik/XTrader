@@ -1,5 +1,7 @@
 package com.sedsoftware.wexchanger.di.module
 
+import android.app.Application
+import android.content.Context
 import com.sedsoftware.data.executor.ThreadExecutor
 import com.sedsoftware.domain.device.Settings
 import com.sedsoftware.domain.executor.Executor
@@ -10,8 +12,11 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import toothpick.config.Module
 
-class AppModule : Module() {
+class AppModule(application: Application) : Module() {
   init {
+    // Context
+    bind(Context::class.java).toInstance(application)
+
     //Navigation
     val cicerone = Cicerone.create()
     bind(Router::class.java).toInstance(cicerone.router)

@@ -7,13 +7,12 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
-import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.sedsoftware.wexchanger.R
+import com.sedsoftware.wexchanger.commons.IconsCollection
 import com.sedsoftware.wexchanger.commons.annotation.Layout
 import com.sedsoftware.wexchanger.commons.extension.colorFromAttr
 import com.sedsoftware.wexchanger.commons.extension.disableAnimations
 import com.sedsoftware.wexchanger.commons.extension.enableAnimations
-import com.sedsoftware.wexchanger.commons.extension.iconics
 import com.sedsoftware.wexchanger.commons.extension.string
 import com.sedsoftware.wexchanger.commons.listener.BackButtonListener
 import com.sedsoftware.wexchanger.commons.provider.ActionBarProvider
@@ -23,8 +22,7 @@ import com.sedsoftware.wexchanger.presentation.base.BaseActivity
 import com.sedsoftware.wexchanger.presentation.features.main.containers.market.MarketContainerFragment
 import com.sedsoftware.wexchanger.presentation.features.main.containers.orders.OrdersContainerFragment
 import com.sedsoftware.wexchanger.presentation.navigation.AppScreen
-import kotlinx.android.synthetic.main.activity_main.home_bottom_navigation
-import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.commands.Back
@@ -33,6 +31,7 @@ import ru.terrakok.cicerone.commands.Forward
 import ru.terrakok.cicerone.commands.Replace
 import ru.terrakok.cicerone.commands.SystemMessage
 import toothpick.Toothpick
+import javax.inject.Inject
 
 @Layout(R.layout.activity_main)
 class MainActivity : BaseActivity(), MainActivityView, ActionBarProvider, RouterProvider {
@@ -43,6 +42,9 @@ class MainActivity : BaseActivity(), MainActivityView, ActionBarProvider, Router
     const val BOTTOM_TAB_WALLET = 2
     const val BOTTOM_TAB_TRACKER = 3
   }
+
+  @Inject
+  lateinit var icons: IconsCollection
 
   @InjectPresenter
   lateinit var presenter: MainActivityPresenter
@@ -146,32 +148,12 @@ class MainActivity : BaseActivity(), MainActivityView, ActionBarProvider, Router
   }
 
   private fun initBottomNavigation() {
-    val marketTabItem =
-      AHBottomNavigationItem(string(R.string.tab_market), iconics(CommunityMaterial.Icon.cmd_home))
 
-    val ordersTabItem =
-      AHBottomNavigationItem(
-        string(R.string.tab_orders),
-        iconics(CommunityMaterial.Icon.cmd_currency_btc)
-      )
-
-    val walletTabItem =
-      AHBottomNavigationItem(
-        string(R.string.tab_wallet),
-        iconics(CommunityMaterial.Icon.cmd_wallet)
-      )
-
-    val trackerTabItem =
-      AHBottomNavigationItem(
-        string(R.string.tab_tracker),
-        iconics(CommunityMaterial.Icon.cmd_radar)
-      )
-
-    val settingsTabItem =
-      AHBottomNavigationItem(
-        string(R.string.tab_settings),
-        iconics(CommunityMaterial.Icon.cmd_settings)
-      )
+    val marketTabItem = AHBottomNavigationItem(string(R.string.tab_market), icons.home)
+    val ordersTabItem = AHBottomNavigationItem(string(R.string.tab_orders), icons.btc)
+    val walletTabItem = AHBottomNavigationItem(string(R.string.tab_wallet), icons.wallet)
+    val trackerTabItem = AHBottomNavigationItem(string(R.string.tab_tracker), icons.tracker)
+    val settingsTabItem = AHBottomNavigationItem(string(R.string.tab_settings), icons.settings)
 
     home_bottom_navigation.addItems(
       listOf(marketTabItem, ordersTabItem, walletTabItem, trackerTabItem, settingsTabItem)
