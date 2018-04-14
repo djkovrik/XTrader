@@ -1,6 +1,6 @@
 package com.sedsoftware.domain.entity
 
-data class CurrencyPair(
+data class CurrencyPairInfo(
   val name: String,
   val first: String,
   val second: String,

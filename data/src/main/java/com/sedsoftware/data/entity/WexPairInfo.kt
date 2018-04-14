@@ -2,7 +2,7 @@ package com.sedsoftware.data.entity
 
 import com.squareup.moshi.Json
 
-data class WexCurrencyPairInfo(
+data class WexPairInfo(
   @Json(name = "decimal_places") val decimalPlaces: Int,
   @Json(name = "min_price") val minPrice: Float,
   @Json(name = "max_price") val maxPrice: Float,

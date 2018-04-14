@@ -2,7 +2,7 @@ package com.sedsoftware.domain.interactor
 
 import com.sedsoftware.domain.common.ErrorCallback
 import com.sedsoftware.domain.common.SuccessCallback
-import com.sedsoftware.domain.entity.CurrencyPair
+import com.sedsoftware.domain.entity.CurrencyPairInfo
 import com.sedsoftware.domain.exception.EmptyServerResponse
 import com.sedsoftware.domain.executor.Executor
 import com.sedsoftware.domain.repository.CurrencyPairsRepository
@@ -14,7 +14,7 @@ class GetCurrencyPairsUseCase @Inject constructor(
   executor: Executor
 ) : UseCase(executor) {
 
-  fun getPairs(onSuccess: SuccessCallback<List<CurrencyPair>>, onError: ErrorCallback) =
+  fun getPairs(onSuccess: SuccessCallback<List<CurrencyPairInfo>>, onError: ErrorCallback) =
     postExecute {
       repository.getCurrencyPairsList().consumeEach { pairsList ->
         when {
