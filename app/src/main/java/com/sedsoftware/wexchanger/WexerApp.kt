@@ -5,6 +5,7 @@ import com.sedsoftware.wexchanger.di.AppScope
 import com.sedsoftware.wexchanger.di.module.AppModule
 import com.sedsoftware.wexchanger.di.module.NetworkingModule
 import com.squareup.leakcanary.LeakCanary
+import io.realm.Realm
 import timber.log.Timber
 import toothpick.Toothpick
 import toothpick.configuration.Configuration
@@ -26,6 +27,7 @@ class WexerApp : Application() {
     initTimber()
     initToothpick()
     initScopes()
+    initRealm()
   }
 
   @Suppress("ConstantConditionIf")
@@ -53,5 +55,9 @@ class WexerApp : Application() {
     Toothpick
       .openScope(AppScope.APPLICATION)
       .installModules(SmoothieApplicationModule(this),  AppModule(this), NetworkingModule())
+  }
+
+  private fun initRealm() {
+    Realm.init(this)
   }
 }
