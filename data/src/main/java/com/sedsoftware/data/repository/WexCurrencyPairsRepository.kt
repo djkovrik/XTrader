@@ -14,6 +14,7 @@ class WexCurrencyPairsRepository @Inject constructor(
 
   override suspend fun getCurrencyPairsList(): ReceiveChannel<List<CurrencyPairInfo>> = produce {
     val pairsList = wexApi.loadCurrencyPairsList().await()
-    send(wexPairsMapper.mapToDomain(pairsList))
+    val mappedList = wexPairsMapper.mapDataToDb(pairsList)
+//    send(wexPairsMapper.mapToDomain(pairsList))
   }
 }

@@ -7,21 +7,6 @@ import javax.inject.Inject
 
 class WexPairDataMapper @Inject constructor() {
 
-  fun mapToDomain(from: WexPairsList): List<CurrencyPairInfo> =
-    from.pairs.map { (pairName, pairInfo) ->
-      CurrencyPairInfo(
-        name = pairName,
-        first = pairName.substringBefore("_"),
-        second = pairName.substringAfter("_"),
-        decimalPlaces = pairInfo.decimalPlaces,
-        minPrice = pairInfo.minPrice,
-        maxPrice = pairInfo.maxPrice,
-        minAmount = pairInfo.minAmount,
-        hidden = pairInfo.hidden == 1,
-        fee = pairInfo.fee
-      )
-    }
-
   fun mapDataToDb(from: WexPairsList): List<WexPairInfoDbModel> =
     from.pairs.map { (pairName, pairInfo) ->
       WexPairInfoDbModel(
