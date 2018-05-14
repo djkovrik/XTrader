@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">WEXchanger</string>
+  <string name="app_name">XTrader</string>
 
   <string name="tab_market">Market</string>
   <string name="tab_orders">Orders</string>

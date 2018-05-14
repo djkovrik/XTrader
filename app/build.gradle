@@ -58,7 +58,7 @@ androidExtensions {
 
 kapt {
     arguments {
-        arg("toothpick_registry_package_name", "com.sedsoftware.wexchanger")
+        arg("toothpick_registry_package_name", "com.sedsoftware.xtrader")
         arg("toothpick_registry_children_package_names ", "com.sedsoftware.data, com.sedsoftware.device")
     }
 }

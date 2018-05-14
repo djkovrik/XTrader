@@ -12,7 +12,7 @@
 -dontnote kotlin.properties.**
 -dontnote kotlin.reflect.jvm.internal.**
 -dontnote com.sedsoftware.domain.**
--dontnote com.sedsoftware.wexchanger.**
+-dontnote com.sedsoftware.xtrader.**
 
 # TODO Remove this with next proguard update
 -dontoptimize
