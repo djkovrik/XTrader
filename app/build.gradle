@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'realm-android'
 
 androidGitVersion {
     codeFormat 'MNNPPP'
@@ -11,7 +10,7 @@ androidGitVersion {
 }
 
 android {
-    compileSdkVersion Versions.COMPILED_SDK_VERSION
+    compileSdkVersion Versions.COMPILE_SDK_VERSION
 
     compileOptions.incremental = false
 
