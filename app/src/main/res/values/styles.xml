@@ -1,18 +1,2 @@
 <resources>
-
-  <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="colorPrimary">@color/primaryColor</item>
-    <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-    <item name="colorAccent">@color/secondaryColor</item>
-    <!-- Custom defined colors -->
-    <item name="colorTabIconActive">@color/tabColorActive</item>
-    <item name="colorTabIconInactive">@color/tabColorInactive</item>
-  </style>
-
-  <style name="AppToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-    <item name="android:textColorPrimary">@android:color/white</item>
-    <item name="android:textColorSecondary">@android:color/white</item>
-  </style>
-
 </resources>

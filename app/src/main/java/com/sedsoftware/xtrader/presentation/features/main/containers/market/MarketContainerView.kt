@@ -1,5 +1,0 @@
-package com.sedsoftware.xtrader.presentation.features.main.containers.market
-
-import com.arellomobile.mvp.MvpView
-
-interface MarketContainerView : MvpView

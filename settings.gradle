@@ -1,1 +1,4 @@
-include ':app', ':domain', ':data', ':device'
+include ':app'
+
+include 'buildSrc'
+project(':buildSrc').projectDir = new File(rootDir, 'dependencies/buildSrc')

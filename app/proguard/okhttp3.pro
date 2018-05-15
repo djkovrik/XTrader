@@ -1,2 +1,0 @@
--dontwarn okhttp3.**
--keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
