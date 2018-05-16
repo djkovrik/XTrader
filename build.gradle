@@ -34,13 +34,5 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-detekt {
-    version = Versions.DETEKT_VERSION
-
-    profile("main") {
-        config = "$rootDir/tools/static-analysis/detekt-config.yml"
-        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
-        output = "$projectDir/build/reports/detekt.xml"
-        baseline = "$projectDir/build/reports/baseline.xml"
-    }
-}
+apply from: 'config/gradle/detekt.gradle'
+apply from: 'config/gradle/androidgit.gradle'

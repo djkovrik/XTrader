@@ -1,4 +1,2 @@
 include ':app'
-
-include 'buildSrc'
-project(':buildSrc').projectDir = new File(rootDir, 'dependencies/buildSrc')
+// project(':app').projectDir = new File(rootDir, 'sources/buildSrc')
