@@ -4,7 +4,7 @@ detekt {
   profile("main") {
     config = "$rootDir/config/static-analysis/detekt-config.yml"
     filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
-    output = "$projectDir/build/reports/detekt.xml"
-    baseline = "$projectDir/build/reports/baseline.xml"
+    output = "$projectDir/reports/detekt.xml"
+    baseline = "$projectDir/reports/baseline.xml"
   }
 }
