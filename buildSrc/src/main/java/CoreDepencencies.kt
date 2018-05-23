@@ -1,4 +1,5 @@
 import Versions.DAGGER_VERSION
+import Versions.JAVAX_INJECT_VERSION
 import Versions.MOSHI_VERSION
 import Versions.OKHTTP_VERSION
 import Versions.RETROFIT_COROUTINES_ADAPTER_VERSION
@@ -7,6 +8,7 @@ import Versions.RETROFIT_VERSION
 object CoreDepencencies {
   const val dagger = "com.google.dagger:dagger:$DAGGER_VERSION"
   const val daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+  const val javaxAnnotation = "javax.inject:javax.inject:$JAVAX_INJECT_VERSION"
   const val retrofit = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
   const val moshi = "com.squareup.moshi:moshi:$MOSHI_VERSION"
   const val okhttp = "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"

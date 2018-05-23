@@ -37,6 +37,7 @@ object Versions {
 
   // Core
   const val DAGGER_VERSION = "2.16"
+  const val JAVAX_INJECT_VERSION = "1"
   const val RETROFIT_VERSION = "2.4.0"
   const val MOSHI_VERSION = "1.6.0"
   const val RETROFIT_COROUTINES_ADAPTER_VERSION = "1.0.0"
