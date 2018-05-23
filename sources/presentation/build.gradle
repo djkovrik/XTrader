@@ -41,4 +41,5 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
 
+    implementation KotlinDependencies.kotlin
 }

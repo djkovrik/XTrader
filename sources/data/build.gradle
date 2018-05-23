@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
   compileSdkVersion Versions.COMPILE_SDK_VERSION_P
@@ -23,4 +24,6 @@ android {
 dependencies {
   implementation project(':domain')
 
+  implementation KotlinDependencies.kotlin
+  implementation KotlinDependencies.kotlinCoroutines
 }

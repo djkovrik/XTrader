@@ -1,8 +1,7 @@
-apply plugin: 'java-library'
+apply plugin: 'java'
+apply plugin: 'kotlin'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
 }
-
-sourceCompatibility = "7"
-targetCompatibility = "7"
