@@ -12,7 +12,7 @@ import Versions.ROOM_VERSION
 import Versions.WORKMANAGER_VERSION
 
 object JetPackDependencies {
-  const val appVompat = "androidx.appcompat:appcompat:$APPCOMPAT_VERSION"
+  const val appCompat = "androidx.appcompat:appcompat:$APPCOMPAT_VERSION"
   const val cardView = "androidx.cardview:cardview:$CARDVIEW_VERSION"
   const val materialComponents = "com.google.android.material:material:$MATERIAL_COMPONENTS_VERSION"
   const val recyclerView = "androidx.recyclerview:recyclerview:$RECYCLER_VIEW_VERSION"
