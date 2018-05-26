@@ -1,7 +1,9 @@
-include ':presentation'
+include ':presentation', ':device'
 project(':presentation').projectDir = new File(rootDir, 'sources/presentation')
 include ':data'
 project(':data').projectDir = new File(rootDir, 'sources/data')
 include ':domain'
 project(':domain').projectDir = new File(rootDir, 'sources/domain')
+include ':device'
+project(':device').projectDir = new File(rootDir, 'sources/device')
 

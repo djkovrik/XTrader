@@ -4,6 +4,5 @@ apply plugin: 'kotlin'
 dependencies {
     implementation KotlinDependencies.kotlin
     implementation KotlinDependencies.kotlinCoroutines
-
     implementation CoreDepencencies.javaxAnnotation
 }

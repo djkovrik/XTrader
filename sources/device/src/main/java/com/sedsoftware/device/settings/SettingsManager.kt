@@ -1,4 +1,4 @@
-package com.sedsoftware.data.settings
+package com.sedsoftware.device.settings
 
 import android.content.SharedPreferences
 import android.content.res.Resources

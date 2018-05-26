@@ -27,8 +27,5 @@ dependencies {
   implementation KotlinDependencies.kotlin
   implementation KotlinDependencies.kotlinCoroutines
   implementation KotlinDependencies.kotlinCoroutinesAndroid
-
-  implementation JetPackDependencies.appCompat
-
   implementation CoreDepencencies.javaxAnnotation
 }

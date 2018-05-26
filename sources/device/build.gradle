@@ -1,9 +1,5 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-
-
 
 android {
     compileSdkVersion Versions.COMPILE_SDK_VERSION_P
@@ -15,32 +11,20 @@ android {
         versionName androidGitVersion.name()
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        
-        resConfigs "en", "ru"
     }
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
-            proguardFiles fileTree('proguard').asList().toArray()
-        }
-        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
-androidExtensions {
-    experimental = true
-}
-
 dependencies {
-    implementation project(':data')
-    implementation project(':device')
     implementation project(':domain')
 
     implementation KotlinDependencies.kotlin
+    implementation JetPackDependencies.appCompat
+    implementation CoreDepencencies.javaxAnnotation
 }
