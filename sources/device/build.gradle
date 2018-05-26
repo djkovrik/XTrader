@@ -2,32 +2,32 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion Versions.COMPILE_SDK_VERSION_P
+  compileSdkVersion Versions.COMPILE_SDK_VERSION_P
 
-    defaultConfig {
-        minSdkVersion Versions.MIN_SDK_VERSION
-        targetSdkVersion Versions.TARGET_SDK_VERSION
-        versionCode androidGitVersion.code()
-        versionName androidGitVersion.name()
+  defaultConfig {
+    minSdkVersion Versions.MIN_SDK_VERSION
+    targetSdkVersion Versions.TARGET_SDK_VERSION
+    versionCode androidGitVersion.code()
+    versionName androidGitVersion.name()
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
 }
 
 dependencies {
-    implementation project(':domain')
+  implementation project(':domain')
 
-    implementation KotlinDependencies.kotlin
-    implementation JetPackDependencies.appCompat
-    implementation CoreDepencencies.javaxAnnotation
+  implementation KotlinDependencies.kotlin
+  implementation JetPackDependencies.appCompat
+  implementation CoreDepencencies.javaxAnnotation
 
-    testImplementation TestingDependencies.junit
-    testImplementation TestingDependencies.expekt
+  testImplementation TestingDependencies.junit
+  testImplementation TestingDependencies.expekt
 }

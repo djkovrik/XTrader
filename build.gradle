@@ -1,21 +1,21 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    repositories {
-        google()
-        jcenter()
-        maven { url "https://plugins.gradle.org/m2/" }
-    }
-    dependencies {
-        classpath Plugins.ANDROID_GRADLE
-        classpath Plugins.KOTLIN_GRADLE_PLUGIN
-        classpath Plugins.DETEKT
-        classpath Plugins.GRADLE_VERSIONS
-        classpath Plugins.GRADLE_VERSIONING
+  repositories {
+    google()
+    jcenter()
+    maven {url "https://plugins.gradle.org/m2/"}
+  }
+  dependencies {
+    classpath Plugins.ANDROID_GRADLE
+    classpath Plugins.KOTLIN_GRADLE_PLUGIN
+    classpath Plugins.DETEKT
+    classpath Plugins.GRADLE_VERSIONS
+    classpath Plugins.GRADLE_VERSIONING
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+  }
 }
 
 apply plugin: 'io.gitlab.arturbosch.detekt'
@@ -23,15 +23,15 @@ apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'com.gladed.androidgitversion'
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url "https://jitpack.io" }
-    }
+  repositories {
+    google()
+    jcenter()
+    maven {url "https://jitpack.io"}
+  }
 }
 
 task clean(type: Delete) {
-    delete rootProject.buildDir
+  delete rootProject.buildDir
 }
 
 apply from: 'config/gradle/detekt.gradle'

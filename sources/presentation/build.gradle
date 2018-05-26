@@ -6,41 +6,41 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
-    compileSdkVersion Versions.COMPILE_SDK_VERSION_P
+  compileSdkVersion Versions.COMPILE_SDK_VERSION_P
 
-    defaultConfig {
-        minSdkVersion Versions.MIN_SDK_VERSION
-        targetSdkVersion Versions.TARGET_SDK_VERSION
-        versionCode androidGitVersion.code()
-        versionName androidGitVersion.name()
+  defaultConfig {
+    minSdkVersion Versions.MIN_SDK_VERSION
+    targetSdkVersion Versions.TARGET_SDK_VERSION
+    versionCode androidGitVersion.code()
+    versionName androidGitVersion.name()
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        
-        resConfigs "en", "ru"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    resConfigs "en", "ru"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+      proguardFiles fileTree('proguard').asList().toArray()
     }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
-            proguardFiles fileTree('proguard').asList().toArray()
-        }
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    debug {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
 }
 
 androidExtensions {
-    experimental = true
+  experimental = true
 }
 
 dependencies {
-    implementation project(':data')
-    implementation project(':device')
-    implementation project(':domain')
+  implementation project(':data')
+  implementation project(':device')
+  implementation project(':domain')
 
-    implementation KotlinDependencies.kotlin
+  implementation KotlinDependencies.kotlin
 }
