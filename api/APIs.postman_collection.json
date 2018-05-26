@@ -6,6 +6,842 @@
 	},
 	"item": [
 		{
+			"name": "bitfinex",
+			"description": "bitfinex api",
+			"item": [
+				{
+					"name": "public",
+					"description": "",
+					"item": [
+						{
+							"name": "Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/symbols_details",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"symbols_details"
+									]
+								},
+								"description": "Get a list of valid symbol IDs and the pair details\r\n\r\n**Response Details**\r\n~~~\r\npair\t\t\t\t[string]\tThe pair code\r\nprice_precision\t\t[integer]\tMaximum number of significant digits for price in this pair\r\ninitial_margin\t\t[decimal]\tInitial margin required to open a position in this pair\r\nminimum_margin\t\t[decimal]\tMinimal margin to maintain (in %)\r\nmaximum_order_size\t[decimal]\tMaximum order size of the pair\r\nminimum_order_size\t[decimal]\tMinimum order size of the pair\r\nexpiration\t\t\t[string]\tExpiration date for limited contracts/pairs\r\nmargin\t\t\t\t[boolean]\tmargin trading enabled for this pair\r\n~~~\r\n\r\n**Ratelimit: 5 req/min**"
+							},
+							"response": []
+						},
+						{
+							"name": "Ticker",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/pubticker/btcusd",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"pubticker",
+										"btcusd"
+									]
+								},
+								"description": "The ticker is a high level overview of the state of the market. It shows you the current best bid and ask, as well as the last trade price. It also includes information such as daily volume and how much the price has moved over the last day\r\n\r\n**PATH PARAMS**\t\r\n~~~\r\nsymbol\t\tstring\t\tREQUIRED\tbtcusd\r\nThe symbol you want information about. You can find the list of valid symbols by calling the /symbols endpoint.\r\n~~~\r\n\r\n**Response Details**\r\n~~~\r\nmid\t\t\t[price]\t\t(bid + ask) / 2\r\nbid\t\t\t[price]\t\tInnermost bid\r\nask\t\t\t[price]\t\tInnermost ask\r\nlast_price\t[price]\t\tThe price at which the last order executed\r\nlow\t\t\t[price]\t\tLowest trade price of the last 24 hours\r\nhigh\t\t[price]\t\tHighest trade price of the last 24 hours\r\nvolume\t\t[price]\t\tTrading volume of the last 24 hours\r\ntimestamp\t[time]\t\tThe timestamp at which this information was valid\r\n~~~\r\n\r\n**Ratelimit: 30 req/min**"
+							},
+							"response": []
+						},
+						{
+							"name": "Depth",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/book/btcusd",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"book",
+										"btcusd"
+									]
+								},
+								"description": "Get the full order book\r\n\r\n**PATH PARAMS**\r\n~~~\r\nsymbol\tstring\tREQUIRED\tbtcusd\r\n~~~\r\n\r\n**Request Details**\r\n~~~\r\nKey\t\t\t\tRequired\tType\tDefault\t\tDescription\r\nlimit_bids\t\tfalse\t\t[int]\t50\t\t\tLimit the number of bids returned. May be 0 in which case the array of bids is empty\r\nlimit_asks\t\tfalse\t\t[int]\t50\t\t\tLimit the number of asks returned. May be 0 in which case the array of asks is empty\r\ngroup\t\t\tfalse\t\t[0/1]\t1\t\t\tIf 1, orders are grouped by price in the orderbook. If 0, orders are not grouped and sorted individually\r\n~~~\r\n\r\n**Response Detail**\r\n~~~\r\nkey\t\t\tType\r\nbids\t\t[array]\r\nprice\t\t[price]\r\namount\t\t[decimal]\r\ntimestamp\t[time]\r\nasks\t\t[array]\r\nprice\t\t[price]\r\namount\t\t[decimal]\r\ntimestamp\t[time]\r\n~~~\r\n**Ratelimit: 60 req/min**"
+							},
+							"response": []
+						},
+						{
+							"name": "Trades",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/trades/btcusd",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"trades",
+										"btcusd"
+									]
+								},
+								"description": "Get a list of the most recent trades for the given symbol\r\n\r\n**PATH PARAMS**\r\n~~~\r\nsymbol\tstring\tREQUIRED\tbtcusd\r\n~~~\r\n\r\n**Request Details**\r\n~~~\r\nKey\t\t\t\tRequired\tType\t\tDefault\t\tDescription\r\ntimestamp\t\tfalse\t\t[time]\t\t\t\t\tOnly show trades at or after this timestamp\r\nlimit_trades\tfalse\t\t[int]\t\t50\t\t\tLimit the number of trades returned. Must be >= 1\r\n~~~\r\n**Response Details**\r\n~~~\r\nKey\t\t\tType\t\tDescription\r\ntid\t\t\t[integer]\t\r\ntimestamp\t[time]\t\r\nprice\t\t[price]\t\r\namount\t\t[decimal]\t\r\nexchange\t[string]\t\"bitfinex\"\r\ntype\t\t[string]\t“sell” or “buy” (can be “” if undetermined)\r\n~~~\r\n**Ratelimit: 45 req/min**"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "trade",
+					"description": "",
+					"item": [
+						{
+							"name": "Trade",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/order/new",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"order",
+										"new"
+									]
+								},
+								"description": "Submit a new Order\r\n\r\n**FORM DATA**\r\n~~~\r\nsymbol\t\t\t\tstring\t\tREQUIRED\t\tThe name of the symbol (see /symbols).\r\namount\t\t\t\tfloat\t\tREQUIRED\t\tOrder size: how much you want to buy or sell\r\nprice\t\t\t\tfloat\t\tREQUIRED\t\tPrice to buy or sell at. Must be positive. Use random number for market orders.\r\nside\t\t\t\tstring\t\tREQUIRED\t\tEither “buy” or “sell”.\r\ntype\t\t\t\tstring\t\tREQUIRED\t\tEither “market” / “limit” / “stop” / “trailing-stop” / “fill-or-kill” / “exchange market” / “exchange limit” / “exchange stop” / “exchange trailing-stop” /\r\n\t\t\t\t\t\t\t\t\t\t\t\t“exchange fill-or-kill”. (type starting by “exchange ” are exchange orders, others are margin trading orders)\r\nexchange\t\t\tstring\t\t\t\t\t\t\"bitfinex\"\r\nis_hidden\t\t\tboolean\t\t\t\t\t\ttrue if the order should be hidden.\r\nis_postonly\t\t\tboolean\t\t\t\t\t\ttrue if the order should be post only. Only relevant for limit orders.\r\nuse_all_available\tint32\t\t\t\t\t\t1 will post an order that will use all of your available balance.\r\nocoorder\t\t\tboolean\t\tREQUIRED\t\tSet an additional STOP OCO order that will be linked with the current order.\r\nbuy_price_oco\t\tfloat\t\tREQUIRED\t\tIf ocoorder is true, this field represent the price of the OCO stop order to place\r\nsell_price_oco\t\tfloat\t\tREQUIRED\t\tIf ocoorder is true, this field represent the price of the OCO stop order to place\r\n~~~\r\n**Response Details**\r\n~~~\r\nKey\t\t\tType\t\tDescription\r\norder_id\t[int64]\t\tAn order object containing the order’s ID as well as all the information provided by /order/status\r\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "ActiveOrders",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/orders",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"orders"
+									]
+								},
+								"description": "View your active orders\r\n\r\n**Response Details**\r\n\r\nAn array of the results of /order/status for all your live orders."
+							},
+							"response": []
+						},
+						{
+							"name": "OrderInfo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/order/status",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"order",
+										"status"
+									]
+								},
+								"description": "Get the status of an order. Is it active? Was it cancelled? To what extent has it been executed? etc.\r\n\r\n**FORM DATA**\r\n~~~\r\norder_id\tint64\tREQUIRED\tThe order ID given by /order/new.\r\n~~~\r\n\r\n**Response Details**\r\n~~~\r\nKey\t\t\t\t\tType\t\t\tDescription\r\nsymbol\t\t\t\t[string]\t\tThe symbol name the order belongs to\r\nexchange\t\t\t[string]\t\t“bitfinex”\r\nprice\t\t\t\t[decimal]\t\tThe price the order was issued at (can be null for market orders)\r\navg_execution_price\t[decimal]\t\tThe average price at which this order as been executed so far. 0 if the order has not been executed at all\r\nside\t\t\t\t[string]\t\tEither “buy” or “sell”\r\ntype\t\t\t\t[string]\t\tEither “market” / “limit” / “stop” / “trailing-stop”\r\ntimestamp\t\t\t[time]\t\t\tThe timestamp the order was submitted\r\nis_live\t\t\t\t[bool]\t\t\tCould the order still be filled?\r\nis_cancelled\t\t[bool]\t\t\tHas the order been cancelled?\r\nis_hidden\t\t\t[bool]\t\t\tIs the order hidden?\r\noco_order\t\t\t[int64]\t\t\tIf the order is an OCO order, the ID of the linked order. Otherwise, null\r\nwas_forced\t\t\t[bool]\t\t\tFor margin only true if it was forced by the system\r\nexecuted_amount\t\t[decimal]\t\tHow much of the order has been executed so far in its history?\r\nremaining_amount\t[decimal]\t\tHow much is still remaining to be submitted?\r\noriginal_amount\t\t[decimal]\t\tWhat was the order originally submitted for?\r\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "CancelOrder",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/order/cancel",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"order",
+										"cancel"
+									]
+								},
+								"description": "Cancel an order\r\n\r\n**FORM DATA**\r\n~~~\r\norder_id\tint64\tREQUIRED\tThe order ID given by /order/new\r\n~~~\r\n \r\n**Response Details**\r\n\r\nResult of /order/status for the cancelled order."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "account",
+					"description": "",
+					"item": [
+						{
+							"name": "GetUserInfo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/account_infos",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"account_infos"
+									]
+								},
+								"description": "Return information about your account (trading fees)\r\n\r\n**HEADERS**\t\r\n~~~\r\nX-BFX-APIKEY\t\tstring\t\tYour API Key\r\nX-BFX-PAYLOAD\t\tstring\t\tJSON String of Payload in base64\r\nX-BFX-SIGNATURE\t\tstring\t\tSHA-384 HMAC of the Payload using your API Secret as the key\r\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "GetUserFees",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/account_fees",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"account_fees"
+									]
+								},
+								"description": "See the fees applied to your withdrawals"
+							},
+							"response": []
+						},
+						{
+							"name": "GetUserBalances",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/balances",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"balances"
+									]
+								},
+								"description": "See your balances\r\n\r\n**Response Details**\r\n\r\nAn array of wallet balances.\r\n~~~\r\nKey\t\t\tType\t\tDescription\r\ntype\t\t[string]\t“trading”, “deposit” or “exchange”\r\ncurrency\t[string]\tCurrency\r\namount\t\t[decimal]\tHow much balance of this currency in this wallet\r\navailable\t[decimal]\tHow much X there is in this wallet that is available to trade\r\n~~~\r\n**Ratelimit: 20 req/min**"
+							},
+							"response": []
+						},
+						{
+							"name": "Deposit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/deposit/new",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"deposit",
+										"new"
+									]
+								},
+								"description": "Return your deposit address to make a new deposit.\r\n\r\n**FORM DATA**\r\n~~~\r\nrequest\t\t\tstring\t\tREQUIRED\t\t\"/v1/deposit/new\"\r\nnonce\t\t\tstring\t\tREQUIRED\t\tDate.now().toString()\r\nmethod\t\t\tstring\t\tREQUIRED\t\tMethod of deposit (methods accepted: “bitcoin”, “litecoin”, “ethereum”, “tetheruso\", \"ethereumc\", \"zcash\", \"monero\", \"iota\", \"bcash\").\r\nwallet_name\t\tstring\t\tREQUIRED\t\tWallet to deposit in (accepted: “trading”, “exchange”, “deposit”). Your wallet needs to already exist\r\nrenew\t\t\tint32\t\t\t\t\t\tDefault is 0. If set to 1, will return a new unused deposit address\r\n~~~\r\n\r\n**Important\t\"tetheruso\" deposit method works only for verified accounts**\r\n\r\n**Response Details**\r\n~~~\r\nKey\t\t\tType\t\tDescription\r\nresult\t\t[string]\t“success” or “error”\r\nmethod\t\t[string]\t\r\ncurrency\t[string]\t\r\naddress\t\t[string]\tThe deposit address (or error message if result = “error”)\r\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "TradeHistory",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/orders/hist",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"orders",
+										"hist"
+									]
+								},
+								"description": "View your latest inactive orders\r\n\r\nLimited to last 3 days and 1 request per minute\r\n\r\n**QUERY PARAMS**\r\n~~~\r\nlimit\t\tint32\t\tLimit number of results\r\n~~~\r\n \r\n**Response Details**\r\n\r\nAn array of the results of /order/status for your latest inactive orders."
+							},
+							"response": []
+						},
+						{
+							"name": "Withdraw",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.bitfinex.com/v1/withdraw",
+									"protocol": "https",
+									"host": [
+										"api",
+										"bitfinex",
+										"com"
+									],
+									"path": [
+										"v1",
+										"withdraw"
+									]
+								},
+								"description": "Allow you to request a withdrawal from one of your wallet\n\n**QUERY PARAMS**\t\n~~~\nwithdraw_type\t\t\t\tstring\t\t\tREQUIRED\t\t\tdefines the currency your are trying to withdraw, see the \"Withdrawal Types\" section below for accepted values\nwalletselected\t\t\t\tstring\t\t\tREQUIRED\t\t\tThe wallet to withdraw from, can be “trading”, “exchange”, or “deposit”.\namount\t\t\t\t\t\tstring\t\t\tREQUIRED\t\t\tAmount to withdraw.\naddress\t\t\t\t\t\tstring\t\t\tREQUIRED\t\t\t(1) Destination address for withdrawal.\npayment_id\t\t\t\t\tstring\t\t\t\t\t\t\t\tOptional hex string to identify a Monero transaction\naccount_name\t\t\t\tstring\t\t\t\t\t\t\t\tAccount name\naccount_number\t\t\t\tstring\t\t\tREQUIRED\t\t\tAccount number\nswift\t\t\t\t\t\tstring\t\t\t\t\t\t\t\tThe SWIFT code for your bank.\nbank_name\t\t\t\t\tstring\t\t\tREQUIRED\t\t\tBank name\nbank_address\t\t\t\tstring\t\t\tREQUIRED\t\t\tBank address\nbank_city\t\t\t\t\tstring\t\t\tREQUIRED\t\t\tBank city\nbank_country\t\t\t\tstring\t\t\tREQUIRED\t\t\tBank country\ndetail_payment\t\t\t\tstring\t\t\t\t\t\t\t\tMessage to beneficiary\nexpressWire\t\t\t\t\tint32\t\t\t\t\t\t\t\t“1” to submit an express wire withdrawal, “0” or omit for a normal withdrawal\nintermediary_bank_name\t\tstring\t\t\t\t\t\t\t\tIntermediary bank name\nintermediary_bank_address\tstring\t\t\t\t\t\t\t\tIntermediary bank address\nintermediary_bank_city\t\tstring\t\t\t\t\t\t\t\tIntermediary bank city\nintermediary_bank_country\tstring\t\t\t\t\t\t\t\tIntermediary bank country\nintermediary_bank_account\tstring\t\t\t\t\t\t\t\tIntermediary bank account\nintermediary_bank_swift\t\tstring\t\t\t\t\t\t\t\tIntermediary bank SWIFT\n~~~\n\n**Note**\n~~~\nFor ALL withdrawals, you must supply the Withdrawal Type, the Wallet and the Amount.\n\nFor CRYPTOCURRENCY withdrawals, you will also supply the Address where the funds should be sent. If it is a monero transaction, you can also include a Payment ID.\n\nFor WIRE WITHDRAWALS, you will need to fill in the beneficiary bank information.\n\nIn some cases your bank will require the use of an intermediary bank, if this is the case, please supply those fields as well.\n\nWhen submitting a Ripple Withdrawal via API, you should include tag in the payment_id field\n~~~\n\n**Response Details**\n~~~\nKey\t\t\t\tType\t\tDescription\nstatus\t\t\t[string]\t“success” or “error”.\nmessage\t\t\t[string]\tSuccess or error message\nwithdrawal_id\t[int]\t\tID of the withdrawal (0 if unsuccessful)\n~~~\n\n**Withdrawal Types**\n\n\"bitcoin\", \"litecoin\", \"ethereum\", \"ethereumc\", \"tetheruso\", \"zcash\", \"monero\", \"iota\", \"ripple\", \"dash\", \"adjustment\", \"wire\", \"eos\", \"santiment\", \"omisego\", \"bcash\", \"neo\", \"metaverse\", \"qtum\", \"aventus\", \"eidoo\", \"datacoin\", \"tetheruse\", \"bgold\", \"qash\", \"yoyow\", \"golem\", \"status\", \"tethereue\", \"bat\", \"mna\", \"fun\", \"zrx\", \"tnb\", \"spk\", \"trx\", \"rcn\", \"rlc\", \"aid\", \"sng\", \"rep\", \"elf\""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2aec12f6-d772-4bcd-b906-f01787db283a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "183fbbec-6835-43f0-9407-7f1b190d860b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "bittrex",
+			"description": "",
+			"item": [
+				{
+					"name": "public",
+					"description": "",
+					"item": [
+						{
+							"name": "Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/public/getmarkets",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"public",
+										"getmarkets"
+									]
+								},
+								"description": "Used to get the open and available trading markets at Bittrex along with other meta data"
+							},
+							"response": []
+						},
+						{
+							"name": "Ticker",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/public/getticker?market=BTC-LTC",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"public",
+										"getticker"
+									],
+									"query": [
+										{
+											"key": "market",
+											"value": "BTC-LTC"
+										}
+									]
+								},
+								"description": "Used to get the current tick values for a market\n~~~\nParameter\t\tRequired\t\tDescription\nmarket\t\t\trequired\t\ta string literal for the market (ex: BTC-LTC)\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "Depth",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-LTC&type=both",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"public",
+										"getorderbook"
+									],
+									"query": [
+										{
+											"key": "market",
+											"value": "BTC-LTC"
+										},
+										{
+											"key": "type",
+											"value": "both"
+										}
+									]
+								},
+								"description": "Used to retrieve the latest trades that have occured for a specific market\r\n\r\n**Parameters**\r\n~~~\r\nParameter\t\tRequired\t\tDescription\r\nmarket\t\t\trequired\t\ta string literal for the market (ex: BTC-LTC)\r\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "Trades",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/public/getmarkethistory?market=btc-ltc",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"public",
+										"getmarkethistory"
+									],
+									"query": [
+										{
+											"key": "market",
+											"value": "btc-ltc"
+										}
+									]
+								},
+								"description": "Used to retrieve the latest trades that have occured for a specific market\r\n\r\n**Parameters**\r\n~~~\r\nParameter\t\tRequired\t\tDescription\r\nmarket\t\t\trequired\t\ta string literal for the market (ex: BTC-LTC)\r\n~~~"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "trade",
+					"description": "",
+					"item": [
+						{
+							"name": "Trade - Buy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/market/buylimit?apikey=API_KEY&market=BTC-LTC&quantity=1.2&rate=1.3",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"market",
+										"buylimit"
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "API_KEY"
+										},
+										{
+											"key": "market",
+											"value": "BTC-LTC"
+										},
+										{
+											"key": "quantity",
+											"value": "1.2"
+										},
+										{
+											"key": "rate",
+											"value": "1.3"
+										}
+									]
+								},
+								"description": "Used to place a buy order in a specific market. Use buylimit to place limit orders. Make sure you have the proper permissions set on your API keys for this call to work\n\n***Parameters***\n~~~\nParameter\t\tRequired\t\tDescription\nmarket\t\t\trequired\t\ta string literal for the market (ex: BTC-LTC)\nquantity\t\trequired\t\tthe amount to purchase\nrate\t\t\trequired\t\tthe rate at which to place the order\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "Trade - Sell",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/market/selllimit?apikey=API_KEY&market=BTC-LTC&quantity=1.2&rate=1.3",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"market",
+										"selllimit"
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "API_KEY"
+										},
+										{
+											"key": "market",
+											"value": "BTC-LTC"
+										},
+										{
+											"key": "quantity",
+											"value": "1.2"
+										},
+										{
+											"key": "rate",
+											"value": "1.3"
+										}
+									]
+								},
+								"description": "Used to place an sell order in a specific market. Use selllimit to place limit orders. Make sure you have the proper permissions set on your API keys for this call to work\n\n***Parameters***\n~~~\nParameter\t\tRequired\t\tDescription\nmarket\t\t\trequired\t\ta string literal for the market (ex: BTC-LTC)\nquantity\t\trequired\t\tthe amount to purchase\nrate\t\t\trequired\t\tthe rate at which to place the order\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "ActiveOrders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/market/getopenorders?apikey=API_KEY&market=BTC-LTC",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"market",
+										"getopenorders"
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "API_KEY"
+										},
+										{
+											"key": "market",
+											"value": "BTC-LTC"
+										}
+									]
+								},
+								"description": "Get all orders that you currently have opened. A specific market can be requested\n\n**Parameters**\n~~~\nParameter\t\tRequired\t\tDescription\nmarket\t\t\toptional\t\ta string literal for the market (ie. BTC-LTC)\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "OrderInfo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/account/getorder&uuid=ORDER_UUID",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"account",
+										"getorder&uuid=ORDER_UUID"
+									]
+								},
+								"description": "Used to retrieve a single order by uuid\r\n\r\n**Parameters**\r\n~~~\r\nParameter\t\tRequired\t\tDescription\r\nuuid\t\t\trequired\t\tthe uuid of the buy or sell order\r\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "CancelOrder",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/market/cancel?apikey=API_KEY&uuid=ORDER_UUID",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"market",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "API_KEY"
+										},
+										{
+											"key": "uuid",
+											"value": "ORDER_UUID"
+										}
+									]
+								},
+								"description": "Used to cancel a buy or sell order\n\n**Parameters**\n~~~\nParameter\t\t\tRequired\t\t\tDescription\nuuid\t\t\t\trequired\t\t\tuuid of buy or sell order\n~~~"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "account",
+					"description": "",
+					"item": [
+						{
+							"name": "GetUserInfo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/account/getbalances?apikey=API_KEY ",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"account",
+										"getbalances"
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "API_KEY "
+										}
+									]
+								},
+								"description": "Used to retrieve all balances from your account"
+							},
+							"response": []
+						},
+						{
+							"name": "Deposit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/account/getdepositaddress?apikey=API_KEY&currency=VTC",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"account",
+										"getdepositaddress"
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "API_KEY"
+										},
+										{
+											"key": "currency",
+											"value": "VTC"
+										}
+									]
+								},
+								"description": "Used to retrieve or generate an address for a specific currency. If one does not exist, the call will fail and return ADDRESS_GENERATING until one is available.\n\n\n**Parameters**\n~~~\nParameter\t\tRequired\t\tDescription\ncurrency\t\trequired\t\ta string literal for the market (ie. BTC-LTC)\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "TradeHistory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/account/getorderhistory?apikey=API_KEY ",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"account",
+										"getorderhistory"
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "API_KEY "
+										}
+									]
+								},
+								"description": "Used to retrieve your order history.\r\n\r\n**Parameters**\r\n~~~\r\nParameter\tRequired\tDescription\r\nmarket\t\toptional\ta string literal for the market (ie. BTC-LTC). If omitted, will return for all markets\r\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "Withdraw",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://bittrex.com/api/v1.1/account/withdraw?apikey=API_KEY&currency=EAC&quantity=20.40&address=EAC_ADDRESS",
+									"protocol": "https",
+									"host": [
+										"bittrex",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1.1",
+										"account",
+										"withdraw"
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "API_KEY"
+										},
+										{
+											"key": "currency",
+											"value": "EAC"
+										},
+										{
+											"key": "quantity",
+											"value": "20.40"
+										},
+										{
+											"key": "address",
+											"value": "EAC_ADDRESS"
+										}
+									]
+								},
+								"description": "Used to withdraw funds from your account. Note: please account for txfee.\r\n\r\n**Parameters**\r\n~~~\r\nParameter\t\tRequired\t\tDescription\r\ncurrency\t\trequired\t\ta string literal for the market (ie. BTC-LTC)\r\nquantity\t\trequired\t\tthe quantity of coins to withdraw\r\naddress\t\t\trequired\t\tthe address where to send the funds\r\npaymentid\t\toptional\t\tused for CryptoNotes/BitShareX/Nxt/XRP and any other coin that has a memo/message/tag/paymentid option\r\n~~~"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
 			"name": "wex",
 			"description": "wex.nz api",
 			"item": [
@@ -149,45 +985,6 @@
 					"name": "trade",
 					"description": "Данный API предоставляет возможность торговать на бирже и получать информацию об аккаунте.\r\n\r\nДля использования данного API необходимо создать API-ключ.\r\n\r\nAPI-ключ можно создать в профиле, раздел API-ключи. После создания API-ключа вам выдается ключ и секрет.\r\n\r\nОбратите внимание на то, что получить секрет ключа можно только в первый час после создания ключа.\r\n\r\nДанные API-ключа используются для аутентификации.\r\n\r\nВсе запросы к TradeAPI идут по следующему URL: https://wex.nz/tapi\r\n\r\nИмя метода отправляется посредством POST-параметра method.\r\n\r\nВсе параметры методов отправляется через POST-параметры.\r\n\r\nВсе ответы от сервера приходят в формате JSON.\r\n\r\nДля каждого запроса необходима аутентификация. Как произвести аутентификацию можно прочитать в соответствующем разделе данной документации.\r\n\r\n\r\nПри успешном выполнении запроса приходит ответ типа:\r\n~~~\r\n{\r\n\t\"success\":1,\r\n\t\"return\":{<ответ>}\r\n}\r\n~~~\r\nОтвет при ошибке:\r\n~~~\r\n{\r\n\t\"success\":0,\r\n\t\"error\":\"<ошибка>\"\r\n}\r\n~~~\r\nТак же при ошибке может придти ответ не в JSON формате. Как правило это случается при превышении лимитов к API либо при непредвиденных ошибках.\r\n\r\nАутентификация происходит посредством отправки следующих HTTP-заголовков:\r\n\r\nKey — API-ключ. Пример API-ключа: 46G9R9D6-WJ77XOIP-XH9HH5VQ-A3XN3YOZ-8T1R8I8T\r\n\r\nAPI-ключ создается в профиле, раздел API-ключи.\r\n\r\nSign — Подпись. POST-параметры (?nonce=1&param0=val0), подписанные секретным ключом с помощью HMAC-SHA512\r\n\r\nТак же для успешной аутентификации необходимо посылать POST-параметр nonce с инкрементым каждый запрос числовым значением.\r\n\r\n\r\nПример использования значения nonce:\r\n\r\n1 запрос: nonce=1\r\n\r\n2 запрос: nonce=2\r\n\r\n3 запрос: nonce=10\r\n\r\n4 запрос: nonce=10 — выдаст ошибку, потому что nonce равен прошлому запросу\r\n\r\n5 запрос: nonce=11\r\n\r\n6 запрос: nonce=9 — выдаст ошибку, потому что nonce меньше, чем значение nonce на API-ключе\r\n\r\n\r\nМинимальное значение nonce - 1, максимальное - 4294967294.\r\n\r\nДля обнуления значения nonce необходимо создать новый ключ.",
 					"item": [
-						{
-							"name": "GetUserInfo",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Key ",
-										"value": "key"
-									},
-									{
-										"key": "Sign",
-										"value": "sign"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "method",
-											"value": "getInfo",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "https://wex.nz/tapi",
-									"protocol": "https",
-									"host": [
-										"wex",
-										"nz"
-									],
-									"path": [
-										"tapi"
-									]
-								},
-								"description": "Возвращает информацию о текущем балансе пользователя, привилегиях API-ключа, количество открытых ордеров и время сервера.\r\n\r\n**Для использования данного метода необходима привилегия ключа info.**\r\n\r\nПараметры: Нету.\r\n\r\n**Пример ответа:**\r\n~~~\r\n{\r\n\t\"success\":1,\r\n\t\"return\":{\r\n\t\t\"funds\":{\r\n\t\t\t\"usd\":325,\r\n\t\t\t\"btc\":23.998,\r\n\t\t\t\"ltc\":0,\r\n\t\t\t...\r\n\t\t},\r\n\t\t\"rights\":{\r\n\t\t\t\"info\":1,\r\n\t\t\t\"trade\":0,\r\n\t\t\t\"withdraw\":0\r\n\t\t},\r\n\t\t\"transaction_count\":0,\r\n\t\t\"open_orders\":1,\r\n\t\t\"server_time\":1342123547\r\n\t}\r\n}\r\n~~~\r\n**funds:** Баланс аккаунта доступный к использованию. Не включает деньги на ваших открытых ордерах.\r\n\r\n**rights:** Привилегии текущего API-ключа. Привилегия withdraw в данный момент нигде не используется.\r\n\r\n**transaction_count:** Устарело, всегда 0.\r\n\r\n**open_orders:** Количество ваших открытых ордеров.\r\n\r\n**server_time:** Время сервера (MSK)."
-							},
-							"response": []
-						},
 						{
 							"name": "Trade",
 							"request": {
@@ -343,19 +1140,48 @@
 								"description": "Метод предназначен для отмены ордера.\r\n\r\n**Для использования данного метода необходима привилегия ключа trade.**\r\n\r\n**Параметры:**\r\n~~~\r\nпараметр\tописание\t\t\t\tпринимает значение\r\norder_id\tидентификатор ордера\tчисловые\r\n~~~\r\n\r\nПример ответа:\r\n~~~\r\n{\r\n\t\"success\":1,\r\n\t\"return\":{\r\n\t\t\"order_id\":343154,\r\n\t\t\"funds\":{\r\n\t\t\t\"usd\":325,\r\n\t\t\t\"btc\":24.998,\r\n\t\t\t\"ltc\":0,\r\n\t\t\t...\r\n\t\t}\r\n\t}\r\n}\r\n~~~\r\n**order_id:** Идентификатор отмененного ордера.\r\n\r\n**funds:** Баланс после запроса."
 							},
 							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7a1be655-7c94-44ce-8ad0-212356f23c75",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						},
 						{
-							"name": "TradeHistory",
+							"listen": "test",
+							"script": {
+								"id": "ea67b390-273a-4645-bb5a-90c7c63639e5",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "account",
+					"description": "",
+					"item": [
+						{
+							"name": "GetUserInfo",
 							"request": {
 								"method": "POST",
 								"header": [
 									{
-										"key": "Key",
-										"value": "Key"
+										"key": "Key ",
+										"value": "key"
 									},
 									{
 										"key": "Sign",
-										"value": "Sign"
+										"value": "sign"
 									}
 								],
 								"body": {
@@ -363,7 +1189,7 @@
 									"formdata": [
 										{
 											"key": "method",
-											"value": "TradeHistory",
+											"value": "getInfo",
 											"type": "text"
 										}
 									]
@@ -379,7 +1205,7 @@
 										"tapi"
 									]
 								},
-								"description": "Возвращает историю сделок.\r\n\r\n**Для использования данного метода необходима привилегия ключа info.**\r\n\r\n**Необязательные параметры:**\r\n~~~\r\nпараметр\tописание\t\t\t\t\t\t\t\tпринимает значение\tстандартное значение\r\nfrom\t\tномер сделки, с которой начинать вывод\tчисловые\t\t\t0\r\ncount\t\tколичество сделок на вывод\t\t\t\tчисловые\t\t\t1000\r\nfrom_id\t\tid сделки, с которой начинать вывод\t\tчисловые\t\t\t0\r\nend_id\t\tid сделки, на которой заканчивать вывод\tчисловые\t\t\t∞\r\norder\t\tсортировка\t\t\t\t\t\t\t\tASC или DESC\t\tDESC\r\nsince\t\tс какого времени начинать вывод\t\t\tUNIX time\t\t\t0\r\nend\t\t\tна каком времени заканчивать вывод\t\tUNIX time\t\t\t∞\r\npair\t\tпара, по которой выводить сделки\t\tbtc_usd (пример)\tвсе пары\r\n~~~\r\nПри использовании параметров since или end, параметр order автоматически принимает значение ASC.\r\n\r\nПри использовании параметра since максимальная дата по которой можно получить историю - неделю назад.\r\n\r\n**Пример ответа:**\r\n~~~\r\n{\r\n\t\"success\":1,\r\n\t\"return\":{\r\n\t\t\"166830\":{\r\n\t\t\t\"pair\":\"btc_usd\",\r\n\t\t\t\"type\":\"sell\",\r\n\t\t\t\"amount\":1,\r\n\t\t\t\"rate\":450,\r\n\t\t\t\"order_id\":343148,\r\n\t\t\t\"is_your_order\":1,\r\n\t\t\t\"timestamp\":1342445793\r\n\t\t}\r\n\t}\r\n}\r\n~~~\r\n\r\n**pair:** Пара на которой была сделка.\r\n\r\n**type:** Тип сделки, buy/sell.\r\n\r\n**amount:** Количество купленного/проданного.\r\n\r\n**rate:** Цена покупки/продажи.\r\n\r\n**order_id:** Идентификатор ордера.\r\n\r\n**is_your_order:** Значение 1 если order_id является вашим ордером, в противном случае 0.\r\n\r\n**timestamp:** Время сделки."
+								"description": "Возвращает информацию о текущем балансе пользователя, привилегиях API-ключа, количество открытых ордеров и время сервера.\r\n\r\n**Для использования данного метода необходима привилегия ключа info.**\r\n\r\nПараметры: Нету.\r\n\r\n**Пример ответа:**\r\n~~~\r\n{\r\n\t\"success\":1,\r\n\t\"return\":{\r\n\t\t\"funds\":{\r\n\t\t\t\"usd\":325,\r\n\t\t\t\"btc\":23.998,\r\n\t\t\t\"ltc\":0,\r\n\t\t\t...\r\n\t\t},\r\n\t\t\"rights\":{\r\n\t\t\t\"info\":1,\r\n\t\t\t\"trade\":0,\r\n\t\t\t\"withdraw\":0\r\n\t\t},\r\n\t\t\"transaction_count\":0,\r\n\t\t\"open_orders\":1,\r\n\t\t\"server_time\":1342123547\r\n\t}\r\n}\r\n~~~\r\n**funds:** Баланс аккаунта доступный к использованию. Не включает деньги на ваших открытых ордерах.\r\n\r\n**rights:** Привилегии текущего API-ключа. Привилегия withdraw в данный момент нигде не используется.\r\n\r\n**transaction_count:** Устарело, всегда 0.\r\n\r\n**open_orders:** Количество ваших открытых ордеров.\r\n\r\n**server_time:** Время сервера (MSK)."
 							},
 							"response": []
 						},
@@ -423,7 +1249,46 @@
 							"response": []
 						},
 						{
-							"name": "WithdrawCoin",
+							"name": "TradeHistory",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Key",
+										"value": "Key"
+									},
+									{
+										"key": "Sign",
+										"value": "Sign"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "method",
+											"value": "TradeHistory",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://wex.nz/tapi",
+									"protocol": "https",
+									"host": [
+										"wex",
+										"nz"
+									],
+									"path": [
+										"tapi"
+									]
+								},
+								"description": "Возвращает историю сделок.\r\n\r\n**Для использования данного метода необходима привилегия ключа info.**\r\n\r\n**Необязательные параметры:**\r\n~~~\r\nпараметр\tописание\t\t\t\t\t\t\t\tпринимает значение\tстандартное значение\r\nfrom\t\tномер сделки, с которой начинать вывод\tчисловые\t\t\t0\r\ncount\t\tколичество сделок на вывод\t\t\t\tчисловые\t\t\t1000\r\nfrom_id\t\tid сделки, с которой начинать вывод\t\tчисловые\t\t\t0\r\nend_id\t\tid сделки, на которой заканчивать вывод\tчисловые\t\t\t∞\r\norder\t\tсортировка\t\t\t\t\t\t\t\tASC или DESC\t\tDESC\r\nsince\t\tс какого времени начинать вывод\t\t\tUNIX time\t\t\t0\r\nend\t\t\tна каком времени заканчивать вывод\t\tUNIX time\t\t\t∞\r\npair\t\tпара, по которой выводить сделки\t\tbtc_usd (пример)\tвсе пары\r\n~~~\r\nПри использовании параметров since или end, параметр order автоматически принимает значение ASC.\r\n\r\nПри использовании параметра since максимальная дата по которой можно получить историю - неделю назад.\r\n\r\n**Пример ответа:**\r\n~~~\r\n{\r\n\t\"success\":1,\r\n\t\"return\":{\r\n\t\t\"166830\":{\r\n\t\t\t\"pair\":\"btc_usd\",\r\n\t\t\t\"type\":\"sell\",\r\n\t\t\t\"amount\":1,\r\n\t\t\t\"rate\":450,\r\n\t\t\t\"order_id\":343148,\r\n\t\t\t\"is_your_order\":1,\r\n\t\t\t\"timestamp\":1342445793\r\n\t\t}\r\n\t}\r\n}\r\n~~~\r\n\r\n**pair:** Пара на которой была сделка.\r\n\r\n**type:** Тип сделки, buy/sell.\r\n\r\n**amount:** Количество купленного/проданного.\r\n\r\n**rate:** Цена покупки/продажи.\r\n\r\n**order_id:** Идентификатор ордера.\r\n\r\n**is_your_order:** Значение 1 если order_id является вашим ордером, в противном случае 0.\r\n\r\n**timestamp:** Время сделки."
+							},
+							"response": []
+						},
+						{
+							"name": "Withdraw",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -462,462 +1327,7 @@
 							"response": []
 						}
 					],
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "7a1be655-7c94-44ce-8ad0-212356f23c75",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "ea67b390-273a-4645-bb5a-90c7c63639e5",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"_postman_isSubFolder": true
-				},
-				{
-					"name": "push",
-					"description": "Данный апи предоставляет возможность получения доступа к торговой информации в реальном времени.\r\n\r\nС помощью него вы можете получить информацию о изменениях в стакане и о сделках в реальном времени.\r\n\r\nДанный API предоставляется используя сервиc Pusher. Вы можете почитать документацию Pusher здесь:\r\nhttps://pusher.com/docs\r\n\r\nКлюч приложения - ee987526a24ba107824c\r\n\r\nТак же не забудьте указать кластер (cluster) - eu",
-					"item": [
-						{
-							"name": "depth",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": ""
-								},
-								"description": "На данных каналах рассылается информация о изменениях в стаканах.\r\n\r\nКаналы имеют формат вида `<pair_name>.depth`, например `btc_usd.depth`\r\n\r\nСобытие всегда имеет название depth и присылается при изменении стакана.\r\n\r\n**Пример события:**\r\n~~~\r\n{\r\n  \"ask\": [\r\n    [\r\n      \"2508.179\",\r\n      0\r\n    ],\r\n    [\r\n      \"2466.842\",\r\n      \"0.15\"\r\n    ],\r\n\t...\r\n  ],\r\n  \"bid\": [\r\n\t...\r\n  ]\r\n}\r\n~~~\r\n**ask:** изменения в стакане на продажу.\r\n\r\n**bid:** изменения в стакане на покупку.\r\n\r\nВсе изменения стакана присылаются в виде массивов, где первым значением является цена, а вторым изменение по данной цене.\r\n\r\nЕсли изменение имеет значение 0, то это означает, что по данной цене в стакане больше нет предложений (ордер был отменен либо исполнен полностью).\r\n\r\nИзменение отличное от нуля отражает текущее предложение по цене в стакане."
-							},
-							"response": []
-						},
-						{
-							"name": "trades",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": ""
-								},
-								"description": "На данных каналах рассылается информация о сделках.\r\n\r\nКаналы имеют формат вида `<pair_name>.trades`, например `btc_usd.trades`\r\n\r\nСобытие всегда имеет название trades и присылается при новых сделках на паре.\r\n\r\n**Пример события:**\r\n~~~\r\n[\r\n  [\r\n    \"buy\",\r\n    \"2467.762\",\r\n    \"0.02862282\"\r\n  ],\r\n  [\r\n    \"sell\",\r\n    \"2463.105\",\r\n    \"0.00428728\"\r\n  ],\r\n  ...\r\n]\r\n~~~\r\n**buy:** сделка покупки.\r\n\r\n**sell:** сделка продажи."
-							},
-							"response": []
-						}
-					],
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "18b88526-0a37-4f89-8903-d9f3bebaae07",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "2b13d1e5-3fcb-4ad1-8f86-7554f0eb0231",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
-					"_postman_isSubFolder": true
-				}
-			]
-		},
-		{
-			"name": "bitfinex",
-			"description": "bitfinex api",
-			"item": [
-				{
-					"name": "public",
-					"description": "",
-					"item": [
-						{
-							"name": "Info",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/symbols_details",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"symbols_details"
-									]
-								},
-								"description": "**Response Details**\r\n~~~\r\npair\t\t\t\t[string]\tThe pair code\r\nprice_precision\t\t[integer]\tMaximum number of significant digits for price in this pair\r\ninitial_margin\t\t[decimal]\tInitial margin required to open a position in this pair\r\nminimum_margin\t\t[decimal]\tMinimal margin to maintain (in %)\r\nmaximum_order_size\t[decimal]\tMaximum order size of the pair\r\nminimum_order_size\t[decimal]\tMinimum order size of the pair\r\nexpiration\t\t\t[string]\tExpiration date for limited contracts/pairs\r\nmargin\t\t\t\t[boolean]\tmargin trading enabled for this pair\r\n~~~\r\n\r\n**Ratelimit: 5 req/min**"
-							},
-							"response": []
-						},
-						{
-							"name": "Ticker",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/pubticker/btcusd",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"pubticker",
-										"btcusd"
-									]
-								},
-								"description": "**PATH PARAMS**\t\r\n~~~\r\nsymbol\t\tstring\t\tREQUIRED\tbtcusd\r\nThe symbol you want information about. You can find the list of valid symbols by calling the /symbols endpoint.\r\n~~~\r\n\r\n**Response Details**\r\n~~~\r\nmid\t\t\t[price]\t\t(bid + ask) / 2\r\nbid\t\t\t[price]\t\tInnermost bid\r\nask\t\t\t[price]\t\tInnermost ask\r\nlast_price\t[price]\t\tThe price at which the last order executed\r\nlow\t\t\t[price]\t\tLowest trade price of the last 24 hours\r\nhigh\t\t[price]\t\tHighest trade price of the last 24 hours\r\nvolume\t\t[price]\t\tTrading volume of the last 24 hours\r\ntimestamp\t[time]\t\tThe timestamp at which this information was valid\r\n~~~\r\n\r\n**Ratelimit: 30 req/min**"
-							},
-							"response": []
-						},
-						{
-							"name": "Depth",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/book/btcusd",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"book",
-										"btcusd"
-									]
-								},
-								"description": "**PATH PARAMS**\r\n~~~\r\nsymbol\tstring\tREQUIRED\tbtcusd\r\n~~~\r\n\r\n**Request Details**\r\n~~~\r\nKey\t\t\t\tRequired\tType\tDefault\t\tDescription\r\nlimit_bids\t\tfalse\t\t[int]\t50\t\t\tLimit the number of bids returned. May be 0 in which case the array of bids is empty\r\nlimit_asks\t\tfalse\t\t[int]\t50\t\t\tLimit the number of asks returned. May be 0 in which case the array of asks is empty\r\ngroup\t\t\tfalse\t\t[0/1]\t1\t\t\tIf 1, orders are grouped by price in the orderbook. If 0, orders are not grouped and sorted individually\r\n~~~\r\n\r\n**Response Detail**\r\n~~~\r\nkey\t\t\tType\r\nbids\t\t[array]\r\nprice\t\t[price]\r\namount\t\t[decimal]\r\ntimestamp\t[time]\r\nasks\t\t[array]\r\nprice\t\t[price]\r\namount\t\t[decimal]\r\ntimestamp\t[time]\r\n~~~\r\n**Ratelimit: 60 req/min**"
-							},
-							"response": []
-						},
-						{
-							"name": "Trades",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/trades/btcusd",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"trades",
-										"btcusd"
-									]
-								},
-								"description": "**PATH PARAMS**\r\n~~~\r\nsymbol\tstring\tREQUIRED\tbtcusd\r\n~~~\r\n\r\n**Request Details**\r\n~~~\r\nKey\t\t\t\tRequired\tType\t\tDefault\t\tDescription\r\ntimestamp\t\tfalse\t\t[time]\t\t\t\t\tOnly show trades at or after this timestamp\r\nlimit_trades\tfalse\t\t[int]\t\t50\t\t\tLimit the number of trades returned. Must be >= 1\r\n~~~\r\n**Response Details**\r\n~~~\r\nKey\t\t\tType\t\tDescription\r\ntid\t\t\t[integer]\t\r\ntimestamp\t[time]\t\r\nprice\t\t[price]\t\r\namount\t\t[decimal]\t\r\nexchange\t[string]\t\"bitfinex\"\r\ntype\t\t[string]\t“sell” or “buy” (can be “” if undetermined)\r\n~~~\r\n**Ratelimit: 45 req/min**"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "auth",
-					"description": "",
-					"item": [
-						{
-							"name": "GetUserInfo",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/account_infos",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"account_infos"
-									]
-								},
-								"description": "Return information about your account (trading fees)\r\n\r\n**HEADERS**\t\r\n~~~\r\nX-BFX-APIKEY\t\tstring\t\tYour API Key\r\nX-BFX-PAYLOAD\t\tstring\t\tJSON String of Payload in base64\r\nX-BFX-SIGNATURE\t\tstring\t\tSHA-384 HMAC of the Payload using your API Secret as the key\r\n~~~"
-							},
-							"response": []
-						},
-						{
-							"name": "GetUserFees",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/account_fees",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"account_fees"
-									]
-								},
-								"description": "See the fees applied to your withdrawals"
-							},
-							"response": []
-						},
-						{
-							"name": "GetUserBalances",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/balances",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"balances"
-									]
-								},
-								"description": "See your balances\r\n\r\n**Response Details**\r\n\r\nAn array of wallet balances.\r\n~~~\r\nKey\t\t\tType\t\tDescription\r\ntype\t\t[string]\t“trading”, “deposit” or “exchange”\r\ncurrency\t[string]\tCurrency\r\namount\t\t[decimal]\tHow much balance of this currency in this wallet\r\navailable\t[decimal]\tHow much X there is in this wallet that is available to trade\r\n~~~\r\n**Ratelimit: 20 req/min**"
-							},
-							"response": []
-						},
-						{
-							"name": "Trade",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/order/new",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"order",
-										"new"
-									]
-								},
-								"description": "Submit a new Order\r\n\r\n**FORM DATA**\r\n~~~\r\nsymbol\t\t\t\tstring\t\tREQUIRED\t\tThe name of the symbol (see /symbols).\r\namount\t\t\t\tfloat\t\tREQUIRED\t\tOrder size: how much you want to buy or sell\r\nprice\t\t\t\tfloat\t\tREQUIRED\t\tPrice to buy or sell at. Must be positive. Use random number for market orders.\r\nside\t\t\t\tstring\t\tREQUIRED\t\tEither “buy” or “sell”.\r\ntype\t\t\t\tstring\t\tREQUIRED\t\tEither “market” / “limit” / “stop” / “trailing-stop” / “fill-or-kill” / “exchange market” / “exchange limit” / “exchange stop” / “exchange trailing-stop” /\r\n\t\t\t\t\t\t\t\t\t\t\t\t“exchange fill-or-kill”. (type starting by “exchange ” are exchange orders, others are margin trading orders)\r\nexchange\t\t\tstring\t\t\t\t\t\t\"bitfinex\"\r\nis_hidden\t\t\tboolean\t\t\t\t\t\ttrue if the order should be hidden.\r\nis_postonly\t\t\tboolean\t\t\t\t\t\ttrue if the order should be post only. Only relevant for limit orders.\r\nuse_all_available\tint32\t\t\t\t\t\t1 will post an order that will use all of your available balance.\r\nocoorder\t\t\tboolean\t\tREQUIRED\t\tSet an additional STOP OCO order that will be linked with the current order.\r\nbuy_price_oco\t\tfloat\t\tREQUIRED\t\tIf ocoorder is true, this field represent the price of the OCO stop order to place\r\nsell_price_oco\t\tfloat\t\tREQUIRED\t\tIf ocoorder is true, this field represent the price of the OCO stop order to place\r\n~~~\r\n**Response Details**\r\n~~~\r\nKey\t\t\tType\t\tDescription\r\norder_id\t[int64]\t\tAn order object containing the order’s ID as well as all the information provided by /order/status\r\n~~~"
-							},
-							"response": []
-						},
-						{
-							"name": "ActiveOrders",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/orders",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"orders"
-									]
-								},
-								"description": "View your active orders\r\n\r\n**Response Details**\r\n\r\nAn array of the results of /order/status for all your live orders."
-							},
-							"response": []
-						},
-						{
-							"name": "OrderInfo",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/order/status",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"order",
-										"status"
-									]
-								},
-								"description": "Get the status of an order. Is it active? Was it cancelled? To what extent has it been executed? etc.\r\n\r\n**FORM DATA**\r\n~~~\r\norder_id\tint64\tREQUIRED\tThe order ID given by /order/new.\r\n~~~\r\n\r\n**Response Details**\r\n~~~\r\nKey\t\t\t\t\tType\t\t\tDescription\r\nsymbol\t\t\t\t[string]\t\tThe symbol name the order belongs to\r\nexchange\t\t\t[string]\t\t“bitfinex”\r\nprice\t\t\t\t[decimal]\t\tThe price the order was issued at (can be null for market orders)\r\navg_execution_price\t[decimal]\t\tThe average price at which this order as been executed so far. 0 if the order has not been executed at all\r\nside\t\t\t\t[string]\t\tEither “buy” or “sell”\r\ntype\t\t\t\t[string]\t\tEither “market” / “limit” / “stop” / “trailing-stop”\r\ntimestamp\t\t\t[time]\t\t\tThe timestamp the order was submitted\r\nis_live\t\t\t\t[bool]\t\t\tCould the order still be filled?\r\nis_cancelled\t\t[bool]\t\t\tHas the order been cancelled?\r\nis_hidden\t\t\t[bool]\t\t\tIs the order hidden?\r\noco_order\t\t\t[int64]\t\t\tIf the order is an OCO order, the ID of the linked order. Otherwise, null\r\nwas_forced\t\t\t[bool]\t\t\tFor margin only true if it was forced by the system\r\nexecuted_amount\t\t[decimal]\t\tHow much of the order has been executed so far in its history?\r\nremaining_amount\t[decimal]\t\tHow much is still remaining to be submitted?\r\noriginal_amount\t\t[decimal]\t\tWhat was the order originally submitted for?\r\n~~~"
-							},
-							"response": []
-						},
-						{
-							"name": "CancelOrder",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/order/cancel",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"order",
-										"cancel"
-									]
-								},
-								"description": "Cancel an order\r\n\r\n**FORM DATA**\r\n~~~\r\norder_id\tint64\tREQUIRED\tThe order ID given by /order/new\r\n~~~\r\n \r\n**Response Details**\r\n\r\nResult of /order/status for the cancelled order."
-							},
-							"response": []
-						},
-						{
-							"name": "TradeHistory",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/orders/hist",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"orders",
-										"hist"
-									]
-								},
-								"description": "View your latest inactive orders\r\n\r\nLimited to last 3 days and 1 request per minute\r\n\r\n**QUERY PARAMS**\r\n~~~\r\nlimit\t\tint32\t\tLimit number of results\r\n~~~\r\n \r\n**Response Details**\r\n\r\nAn array of the results of /order/status for your latest inactive orders."
-							},
-							"response": []
-						},
-						{
-							"name": "Deposit",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/deposit/new",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"deposit",
-										"new"
-									]
-								},
-								"description": "Return your deposit address to make a new deposit.\r\n\r\n**FORM DATA**\r\n~~~\r\nrequest\t\t\tstring\t\tREQUIRED\t\t\"/v1/deposit/new\"\r\nnonce\t\t\tstring\t\tREQUIRED\t\tDate.now().toString()\r\nmethod\t\t\tstring\t\tREQUIRED\t\tMethod of deposit (methods accepted: “bitcoin”, “litecoin”, “ethereum”, “tetheruso\", \"ethereumc\", \"zcash\", \"monero\", \"iota\", \"bcash\").\r\nwallet_name\t\tstring\t\tREQUIRED\t\tWallet to deposit in (accepted: “trading”, “exchange”, “deposit”). Your wallet needs to already exist\r\nrenew\t\t\tint32\t\t\t\t\t\tDefault is 0. If set to 1, will return a new unused deposit address\r\n~~~\r\n\r\n**Important\t\"tetheruso\" deposit method works only for verified accounts**\r\n\r\n**Response Details**\r\n~~~\r\nKey\t\t\tType\t\tDescription\r\nresult\t\t[string]\t“success” or “error”\r\nmethod\t\t[string]\t\r\ncurrency\t[string]\t\r\naddress\t\t[string]\tThe deposit address (or error message if result = “error”)\r\n~~~"
-							},
-							"response": []
-						},
-						{
-							"name": "Withdrawal",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "https://api.bitfinex.com/v1/withdraw",
-									"protocol": "https",
-									"host": [
-										"api",
-										"bitfinex",
-										"com"
-									],
-									"path": [
-										"v1",
-										"withdraw"
-									]
-								},
-								"description": "Allow you to request a withdrawal from one of your wallet\n\n**QUERY PARAMS**\t\n~~~\nwithdraw_type\t\t\t\tstring\t\t\tREQUIRED\t\t\tdefines the currency your are trying to withdraw, see the \"Withdrawal Types\" section below for accepted values\nwalletselected\t\t\t\tstring\t\t\tREQUIRED\t\t\tThe wallet to withdraw from, can be “trading”, “exchange”, or “deposit”.\namount\t\t\t\t\t\tstring\t\t\tREQUIRED\t\t\tAmount to withdraw.\naddress\t\t\t\t\t\tstring\t\t\tREQUIRED\t\t\t(1) Destination address for withdrawal.\npayment_id\t\t\t\t\tstring\t\t\t\t\t\t\t\tOptional hex string to identify a Monero transaction\naccount_name\t\t\t\tstring\t\t\t\t\t\t\t\tAccount name\naccount_number\t\t\t\tstring\t\t\tREQUIRED\t\t\tAccount number\nswift\t\t\t\t\t\tstring\t\t\t\t\t\t\t\tThe SWIFT code for your bank.\nbank_name\t\t\t\t\tstring\t\t\tREQUIRED\t\t\tBank name\nbank_address\t\t\t\tstring\t\t\tREQUIRED\t\t\tBank address\nbank_city\t\t\t\t\tstring\t\t\tREQUIRED\t\t\tBank city\nbank_country\t\t\t\tstring\t\t\tREQUIRED\t\t\tBank country\ndetail_payment\t\t\t\tstring\t\t\t\t\t\t\t\tMessage to beneficiary\nexpressWire\t\t\t\t\tint32\t\t\t\t\t\t\t\t“1” to submit an express wire withdrawal, “0” or omit for a normal withdrawal\nintermediary_bank_name\t\tstring\t\t\t\t\t\t\t\tIntermediary bank name\nintermediary_bank_address\tstring\t\t\t\t\t\t\t\tIntermediary bank address\nintermediary_bank_city\t\tstring\t\t\t\t\t\t\t\tIntermediary bank city\nintermediary_bank_country\tstring\t\t\t\t\t\t\t\tIntermediary bank country\nintermediary_bank_account\tstring\t\t\t\t\t\t\t\tIntermediary bank account\nintermediary_bank_swift\t\tstring\t\t\t\t\t\t\t\tIntermediary bank SWIFT\n~~~\n\n**Note**\n~~~\nFor ALL withdrawals, you must supply the Withdrawal Type, the Wallet and the Amount.\n\nFor CRYPTOCURRENCY withdrawals, you will also supply the Address where the funds should be sent. If it is a monero transaction, you can also include a Payment ID.\n\nFor WIRE WITHDRAWALS, you will need to fill in the beneficiary bank information.\n\nIn some cases your bank will require the use of an intermediary bank, if this is the case, please supply those fields as well.\n\nWhen submitting a Ripple Withdrawal via API, you should include tag in the payment_id field\n~~~\n\n**Response Details**\n~~~\nKey\t\t\t\tType\t\tDescription\nstatus\t\t\t[string]\t“success” or “error”.\nmessage\t\t\t[string]\tSuccess or error message\nwithdrawal_id\t[int]\t\tID of the withdrawal (0 if unsuccessful)\n~~~\n\n**Withdrawal Types**\n\n\"bitcoin\", \"litecoin\", \"ethereum\", \"ethereumc\", \"tetheruso\", \"zcash\", \"monero\", \"iota\", \"ripple\", \"dash\", \"adjustment\", \"wire\", \"eos\", \"santiment\", \"omisego\", \"bcash\", \"neo\", \"metaverse\", \"qtum\", \"aventus\", \"eidoo\", \"datacoin\", \"tetheruse\", \"bgold\", \"qash\", \"yoyow\", \"golem\", \"status\", \"tethereue\", \"bat\", \"mna\", \"fun\", \"zrx\", \"tnb\", \"spk\", \"trx\", \"rcn\", \"rlc\", \"aid\", \"sng\", \"rep\", \"elf\""
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				}
-			],
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "2aec12f6-d772-4bcd-b906-f01787db283a",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "183fbbec-6835-43f0-9407-7f1b190d860b",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
 				}
 			]
 		}
