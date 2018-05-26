@@ -27,4 +27,7 @@ dependencies {
     implementation KotlinDependencies.kotlin
     implementation JetPackDependencies.appCompat
     implementation CoreDepencencies.javaxAnnotation
+
+    testImplementation TestingDependencies.junit
+    testImplementation TestingDependencies.expekt
 }
