@@ -6,6 +6,280 @@
 	},
 	"item": [
 		{
+			"name": "binance",
+			"description": "",
+			"item": [
+				{
+					"name": "public",
+					"description": "",
+					"item": [
+						{
+							"name": "Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v1/exchangeInfo",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"exchangeInfo"
+									]
+								},
+								"description": "Current exchange trading rules and symbol information\r\n\r\nWeight: 1\r\n\r\nParameters: NONE"
+							},
+							"response": []
+						},
+						{
+							"name": "Ticker",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v3/ticker/bookTicker?symbol=LTCBTC",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v3",
+										"ticker",
+										"bookTicker"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "LTCBTC"
+										}
+									]
+								},
+								"description": "Best price/qty on the order book for a symbol or symbols.\r\n\r\nWeight: 1\r\n\r\n**Parameters:**\r\n~~~\r\nName\t\tType\tMandatory\tDescription\r\nsymbol\t\tSTRING\tNO\t\r\n~~~\r\nIf the symbol is not sent, bookTickers for all symbols will be returned in an array."
+							},
+							"response": []
+						},
+						{
+							"name": "Depth",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v1/depth",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"depth"
+									]
+								},
+								"description": "Weight: Adjusted based on the limit:\r\n~~~\r\nLimit\t\t\t\t\t\tWeight\r\n5,\t10, 20, 50, 100\t\t\t1\r\n500\t\t\t\t\t\t\t5\r\n1000\t\t\t\t\t\t10\r\n~~~\r\n\r\n**Parameters:**\r\n~~~\r\nName\t\tType\t\tMandatory\t\t\tDescription\r\nsymbol\t\tSTRING\t\tYES\t\r\nlimit\t\tINT\t\t\tNO\t\t\t\t\tDefault 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000]\r\n~~~\r\n*Caution: setting limit=0 can return a lot of data.**"
+							},
+							"response": []
+						},
+						{
+							"name": "Trades",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v1/trades",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"trades"
+									]
+								},
+								"description": "Get recent trades (up to last 500).\r\n\r\nWeight: 1\r\n\r\n**Parameters:**\r\n~~~\r\nName\t\tType\t\tMandatory\tDescription\r\nsymbol\t\tSTRING\t\tYES\t\r\nlimit\t\tINT\t\t\tNO\t\t\tDefault 500; max 500.\r\n~~~"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "trade",
+					"description": "",
+					"item": [
+						{
+							"name": "Trade",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v3/order",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v3",
+										"order"
+									]
+								},
+								"description": "Send in a new order\n\n**Parameters:**\n~~~\nName\t\t\t\tType\t\tMandatory\tDescription\nsymbol\t\t\t\tSTRING\t\tYES\t\nside\t\t\t\tENUM\t\tYES\t\ntype\t\t\t\tENUM\t\tYES\t\ntimeInForce\t\t\tENUM\t\tNO\t\nquantity\t\t\tDECIMAL\t\tYES\t\nprice\t\t\t\tDECIMAL\t\tNO\t\nnewClientOrderId\tSTRING\t\tNO\t\t\tA unique id for the order. Automatically generated if not sent.\nstopPrice\t\t\tDECIMAL\t\tNO\t\t\tUsed with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.\nicebergQty\t\t\tDECIMAL\t\tNO\t\t\tUsed with LIMIT, STOP_LOSS_LIMIT, and TAKE_PROFIT_LIMIT to create an iceberg order.\nnewOrderRespType\tENUM\t\tNO\t\t\tSet the response JSON. ACK, RESULT, or FULL; default: RESULT.\nrecvWindow\t\t\tLONG\t\tNO\t\ntimestamp\t\t\tLONG\t\tYES\t\n~~~\n\n**Additional mandatory parameters based on type:**\n~~~\nType\t\t\t\tAdditional mandatory parameters\nLIMIT\t\t\t\ttimeInForce, quantity, price\nMARKET\t\t\t\tquantity\nSTOP_LOSS\t\t\tquantity, stopPrice\nSTOP_LOSS_LIMIT\t\ttimeInForce, quantity, price, stopPrice\nTAKE_PROFIT\t\t\tquantity, stopPrice\nTAKE_PROFIT_LIMIT\ttimeInForce, quantity, price, stopPrice\nLIMIT_MAKER\t\t\tquantity, price\n~~~\n**Other info:**\n\nLIMIT_MAKER are LIMIT orders that will be rejected if they would immediately match and trade as a taker.\n\nSTOP_LOSS and TAKE_PROFIT will execute a MARKET order when the stopPrice is reached.\n\nAny LIMIT or LIMIT_MAKER type order can be made an iceberg order by sending an icebergQty.\n\nAny order with an icebergQty MUST have timeInForce set to GTC.\n\nTrigger order price rules against market price for both MARKET and LIMIT versions:\n\nPrice above market price: STOP_LOSS BUY, TAKE_PROFIT SELL\n\nPrice below market price: STOP_LOSS SELL, TAKE_PROFIT BUY"
+							},
+							"response": []
+						},
+						{
+							"name": "ActiveOrders",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v3/allOrders",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v3",
+										"allOrders"
+									]
+								},
+								"description": "Get all account orders; active, canceled, or filled.\r\n\r\nWeight: 5\r\n\r\n**Parameters:**\r\n~~~\r\nName\t\t\tType\t\tMandatory\tDescription\r\nsymbol\t\t\tSTRING\t\tYES\t\r\norderId\t\t\tLONG\t\tNO\t\r\nlimit\t\t\tINT\t\t\tNO\t\t\tDefault 500; max 500.\r\nrecvWindow\t\tLONG\t\tNO\t\r\ntimestamp\t\tLONG\t\tYES\t\r\n~~~\r\nIf orderId is set, it will get orders >= that orderId. Otherwise most recent orders are returned."
+							},
+							"response": []
+						},
+						{
+							"name": "OrderInfo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v3/order",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v3",
+										"order"
+									]
+								},
+								"description": "Check an order's status.\r\n\r\nWeight: 1\r\n\r\n**Parameters:**\r\n~~~\r\nName\t\t\t\tType\t\tMandatory\tDescription\r\nsymbol\t\t\t\tSTRING\t\tYES\t\r\norderId\t\t\t\tLONG\t\tNO\t\r\norigClientOrderId\tSTRING\t\tNO\t\r\nrecvWindow\t\t\tLONG\t\tNO\t\r\ntimestamp\t\t\tLONG\t\tYES\t\r\n~~~\r\nEither orderId or origClientOrderId must be sent."
+							},
+							"response": []
+						},
+						{
+							"name": "CancelOrder",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v3/order",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v3",
+										"order"
+									]
+								},
+								"description": "Cancel an active order.\r\n\r\nWeight: 1\r\n\r\n**Parameters:**\r\n~~~\r\nName\t\t\t\tType\t\tMandatory\tDescription\r\nsymbol\t\t\t\tSTRING\t\tYES\t\r\norderId\t\t\t\tLONG\t\tNO\t\r\norigClientOrderId\tSTRING\t\tNO\t\r\nnewClientOrderId\tSTRING\t\tNO\tUsed to uniquely identify this cancel. Automatically generated by default.\r\nrecvWindow\t\t\tLONG\t\tNO\t\r\ntimestamp\t\t\tLONG\t\tYES\t\r\n~~~\r\nEither orderId or origClientOrderId must be sent."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "account",
+					"description": "",
+					"item": [
+						{
+							"name": "GetUserInfo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v3/account",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v3",
+										"account"
+									]
+								},
+								"description": "Get current account information.\r\n\r\nWeight: 5\r\n\r\n**Parameters:**\r\n~~~\r\nName\t\tType\tMandatory\tDescription\r\nrecvWindow\tLONG\tNO\t\r\ntimestamp\tLONG\tYES\t\r\n~~~"
+							},
+							"response": []
+						},
+						{
+							"name": "TradeHistory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.binance.com/api/v3/myTrades",
+									"protocol": "https",
+									"host": [
+										"api",
+										"binance",
+										"com"
+									],
+									"path": [
+										"api",
+										"v3",
+										"myTrades"
+									]
+								},
+								"description": "Get trades for a specific account and symbol.\r\n\r\nWeight: 5\r\n\r\n**Parameters:**\r\n~~~\r\nName\t\tType\t\tMandatory\tDescription\r\nsymbol\t\tSTRING\t\tYES\t\r\nlimit\t\tINT\t\t\tNO\t\t\tDefault 500; max 500.\r\nfromId\t\tLONG\t\tNO\t\t\tTradeId to fetch from. Default gets most recent trades.\r\nrecvWindow\tLONG\t\tNO\t\r\ntimestamp\tLONG\t\tYES\t\r\n~~~"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
 			"name": "bitfinex",
 			"description": "bitfinex api",
 			"item": [
