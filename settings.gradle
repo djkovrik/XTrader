@@ -1,9 +1,11 @@
-include ':presentation', ':device'
-project(':presentation').projectDir = new File(rootDir, 'sources/presentation')
-include ':data'
-project(':data').projectDir = new File(rootDir, 'sources/data')
-include ':domain'
-project(':domain').projectDir = new File(rootDir, 'sources/domain')
+include ':injector'
+project(':injector').projectDir = new File(rootDir, 'sources/base/injector')
+include ':core'
+project(':core').projectDir = new File(rootDir, 'sources/base/core')
 include ':device'
-project(':device').projectDir = new File(rootDir, 'sources/device')
+project(':device').projectDir = new File(rootDir, 'sources/base/device')
+include ':uicore'
+project(':uicore').projectDir = new File(rootDir, 'sources/base/uicore')
 
+include ':navigation'
+project(':navigation').projectDir = new File(rootDir, 'sources/features/navigation')

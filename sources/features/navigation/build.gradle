@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+  compileSdkVersion Versions.COMPILE_SDK_VERSION_P
+
+  defaultConfig {
+    minSdkVersion Versions.MIN_SDK_VERSION
+    targetSdkVersion Versions.TARGET_SDK_VERSION
+    versionCode androidGitVersion.code()
+    versionName androidGitVersion.name()
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    resConfigs "en", "ru"
+  }
+
+  buildTypes {
+    debug {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+}
+
+androidExtensions {
+  experimental = true
+}
+
+dependencies {
+  implementation KotlinDependencies.kotlin
+  implementation CoreDepencencies.dagger
+}

@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion Versions.COMPILE_SDK_VERSION_P
+
+  defaultConfig {
+    minSdkVersion Versions.MIN_SDK_VERSION
+    targetSdkVersion Versions.TARGET_SDK_VERSION
+    versionCode androidGitVersion.code()
+    versionName androidGitVersion.name()
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    resConfigs "en", "ru"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//      minifyEnabled true
+//      shrinkResources true
+//      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+//      proguardFiles fileTree('proguard').asList().toArray()
+    }
+    debug {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+
+
+dependencies {
+  implementation KotlinDependencies.kotlin
+  implementation CoreDepencencies.dagger
+  kapt CoreDepencencies.daggerCompiler
+}
