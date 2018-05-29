@@ -35,6 +35,11 @@ android {
 
 
 dependencies {
+  implementation project(':core')
+  implementation project(':uicore')
+  implementation project(':device')
+  implementation project(':navigation')
+
   implementation KotlinDependencies.kotlin
   implementation CoreDepencencies.dagger
   kapt CoreDepencencies.daggerCompiler

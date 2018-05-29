@@ -34,6 +34,9 @@ androidExtensions {
 }
 
 dependencies {
+  implementation project(':core')
+  implementation project(':uicore')
+
   implementation KotlinDependencies.kotlin
   implementation CoreDepencencies.dagger
 }

@@ -29,6 +29,8 @@ android {
 }
 
 dependencies {
+  implementation project(':core')
+
   implementation KotlinDependencies.kotlin
   implementation CoreDepencencies.dagger
 }

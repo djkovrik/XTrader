@@ -29,6 +29,12 @@ android {
 }
 
 dependencies {
+  implementation project(':core')
+
   implementation KotlinDependencies.kotlin
   implementation CoreDepencencies.dagger
+  implementation JetPackDependencies.appCompat
+
+  testImplementation TestingDependencies.junit
+  testImplementation TestingDependencies.expekt
 }
