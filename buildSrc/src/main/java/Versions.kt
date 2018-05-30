@@ -48,8 +48,9 @@ object Versions {
   const val MP_ANDROID_CHART_VERSION = "v3.0.3"
 
   // Testing
-  const val TEST_RUNNER_VERSION = "1.0.2"
-  const val ESPRESSO_VERSION = "3.0.2"
+  const val TEST_RUNNER_VERSION = "1.1.0-alpha1"
+  const val TEST_RULES_VERSION = "1.1.0-alpha1"
+  const val ESPRESSO_VERSION = "3.1.0-alpha1"
   const val JUNIT_VERSION = "4.12"
   const val MOCKITO_VERSION = "2.18.0"
   const val MOCKITO_KOTLIN_VERSION = "1.5.0"

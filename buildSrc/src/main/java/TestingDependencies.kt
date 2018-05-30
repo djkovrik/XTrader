@@ -5,14 +5,15 @@ import Versions.KAKAO_VERSION
 import Versions.MOCKITO_KOTLIN_VERSION
 import Versions.MOCKITO_VERSION
 import Versions.SPEK_VERSION
+import Versions.TEST_RULES_VERSION
 import Versions.TEST_RUNNER_VERSION
 
 object TestingDependencies {
-  const val androidTestRunner = "com.android.support.test:runner:$TEST_RUNNER_VERSION"
-  const val androidTestRules = "com.android.support.test:rules:$TEST_RUNNER_VERSION"
-  const val espresso = "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
-  const val espressoIntents = "com.android.support.test.espresso:espresso-intents:$ESPRESSO_VERSION"
-  const val espressoIdling = "com.android.support.test.espresso.idling:idling-concurrent:$ESPRESSO_VERSION"
+  const val androidTestRunner = "androidx.test:runner:$TEST_RUNNER_VERSION"
+  const val androidTestRules = "androidx.test:rules:$TEST_RULES_VERSION"
+  const val espresso = "androidx.test.espresso:espresso-core::$ESPRESSO_VERSION"
+  const val espressoIntents = "androidx.test.espresso:espresso-intents:$ESPRESSO_VERSION"
+  const val espressoIdling = "androidx.test.espresso:espresso-idling-resource:$ESPRESSO_VERSION"
 
   const val junit = "junit:junit:$JUNIT_VERSION"
   const val mockito = "org.mockito:mockito-core:$MOCKITO_VERSION"
