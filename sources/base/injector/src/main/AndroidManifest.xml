@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
   package="com.sedsoftware.xtrader">
 
   <uses-permission android:name="android.permission.INTERNET" />
@@ -12,6 +13,6 @@
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"></application>
-
+    android:supportsRtl="true"
+    tools:ignore="GoogleAppIndexingWarning" />
 </manifest>
