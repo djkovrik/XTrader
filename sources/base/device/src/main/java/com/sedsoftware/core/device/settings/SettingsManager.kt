@@ -1,9 +1,9 @@
-package com.sedsoftware.device.settings
+package com.sedsoftware.core.device.settings
 
 import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.annotation.StringRes
-import com.sedsoftware.domain.device.Settings
+import com.sedsoftware.core.device.Settings
 import javax.inject.Inject
 
 class SettingsManager @Inject constructor(

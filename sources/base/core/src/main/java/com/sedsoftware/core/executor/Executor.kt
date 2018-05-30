@@ -1,4 +1,4 @@
-package com.sedsoftware.domain.executor
+package com.sedsoftware.core.executor
 
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.Job

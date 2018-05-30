@@ -1,4 +1,4 @@
-package com.sedsoftware.domain.repository
+package com.sedsoftware.core.repository
 
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.channels.ProducerScope

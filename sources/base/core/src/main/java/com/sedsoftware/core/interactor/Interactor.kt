@@ -1,6 +1,6 @@
-package com.sedsoftware.domain.interactor
+package com.sedsoftware.core.interactor
 
-import com.sedsoftware.domain.executor.Executor
+import com.sedsoftware.core.executor.Executor
 
 abstract class Interactor(private val executor: Executor) {
 

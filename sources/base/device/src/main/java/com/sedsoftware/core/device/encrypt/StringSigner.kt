@@ -1,4 +1,4 @@
-package com.sedsoftware.device.encrypt
+package com.sedsoftware.core.device.encrypt
 
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
