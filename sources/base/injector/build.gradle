@@ -41,6 +41,7 @@ dependencies {
   implementation project(':navigation')
 
   implementation KotlinDependencies.kotlin
+
   implementation CoreDepencencies.dagger
   kapt CoreDepencencies.daggerCompiler
 }
