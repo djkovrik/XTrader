@@ -17,6 +17,10 @@ android {
   }
 
   buildTypes {
+    debug {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -25,14 +29,8 @@ android {
 //      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
 //      proguardFiles fileTree('proguard').asList().toArray()
     }
-    debug {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
   }
 }
-
-
 
 dependencies {
   implementation project(':core')

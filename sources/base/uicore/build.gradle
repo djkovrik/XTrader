@@ -34,4 +34,6 @@ dependencies {
   implementation KotlinDependencies.kotlin
 
   implementation CoreDepencencies.dagger
+
+  implementation JetPackDependencies.appCompat
 }

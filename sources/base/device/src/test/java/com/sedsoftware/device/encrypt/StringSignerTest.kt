@@ -1,4 +1,4 @@
-package com.sedsoftware.core.device.encrypt
+package com.sedsoftware.device.encrypt
 
 import com.winterbe.expekt.should
 import org.junit.Test
