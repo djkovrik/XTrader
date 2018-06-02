@@ -14,7 +14,9 @@ interface DeviceToolsComponent : DeviceToolsProvider {
   interface Builder {
 
     fun build(): DeviceToolsComponent
-    @BindsInstance fun app(app: App): Builder
+
+    @BindsInstance
+    fun app(app: App): Builder
   }
 
   class Initializer private constructor() {

@@ -13,6 +13,7 @@ class XTraderApp : Application(), App {
 
   override fun onCreate() {
     super.onCreate()
+
     appComponent.inject(this)
 
     initStetho()

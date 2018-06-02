@@ -31,10 +31,7 @@ class SettingsImpl @Inject constructor(
     }
   }
 
-  private inline fun <reified T : Any> SharedPreferences.getValue(
-    key: String,
-    defaultValue: T? = null
-  ): T =
+  private inline fun <reified T : Any> SharedPreferences.getValue(key: String, defaultValue: T? = null): T =
     when (T::class) {
       String::class -> getString(key, defaultValue as? String ?: "") as T
       Int::class -> getInt(key, defaultValue as? Int ?: -1) as T
