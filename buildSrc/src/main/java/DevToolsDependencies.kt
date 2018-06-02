@@ -7,4 +7,5 @@ object DevToolsDependencies {
   const val leakCanary = "com.squareup.leakcanary:leakcanary-android:$LEAK_CANARY_VERSION"
   const val leakCanaryNoOp = "com.squareup.leakcanary:leakcanary-android-no-op:$LEAK_CANARY_VERSION"
   const val stetho = "com.facebook.stetho:stetho:$STETHO_VERSION"
+  const val stethoNoOp = "net.igenius:stetho-no-op:1.1"
 }
