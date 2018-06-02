@@ -1,11 +1,12 @@
 package com.sedsoftware.device.encrypt
 
+import com.sedsoftware.core.device.Signer
 import com.winterbe.expekt.should
 import org.junit.Test
 
 class StringSignerTest {
 
-  private val signer = StringSigner()
+  private val signer: Signer = SignerImpl()
 
   companion object {
     private const val SIGNATURE_KEY = "thisismysupersecurekey"
@@ -26,7 +27,7 @@ class StringSignerTest {
 
     // Assert
     stringsMap.forEach { (text, signedTest) ->
-      signedTest.should.equal(signer.makeSignSha1(text, SIGNATURE_KEY))
+      signedTest.should.equal(signer.signWithSha1(text, SIGNATURE_KEY))
     }
   }
 
@@ -45,7 +46,7 @@ class StringSignerTest {
 
     // Assert
     stringsMap.forEach { (text, signedTest) ->
-      signedTest.should.equal(signer.makeSignSha256(text, SIGNATURE_KEY))
+      signedTest.should.equal(signer.signWithSha256(text, SIGNATURE_KEY))
     }
   }
 }

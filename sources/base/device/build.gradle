@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
   compileSdkVersion Versions.COMPILE_SDK_VERSION_P
@@ -34,8 +35,11 @@ dependencies {
   implementation KotlinDependencies.kotlin
 
   implementation CoreDepencencies.dagger
+  kapt CoreDepencencies.daggerCompiler
 
   implementation JetPackDependencies.appCompat
+
+  implementation DevToolsDependencies.timber
 
   testImplementation TestingDependencies.junit
   testImplementation TestingDependencies.expekt

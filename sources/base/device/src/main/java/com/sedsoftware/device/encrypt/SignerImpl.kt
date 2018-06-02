@@ -1,19 +1,21 @@
 package com.sedsoftware.device.encrypt
 
+import com.sedsoftware.core.device.Signer
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
-
-class StringSigner {
+class SignerImpl : Signer {
 
   companion object {
     private const val SHA1_ALGORITHM = "HmacSHA1"
     private const val SHA256_ALGORITHM = "HmacSHA256"
   }
 
-  fun makeSignSha1(text: String, key: String): String = text.signWith(key, SHA1_ALGORITHM)
+  override fun signWithSha1(text: String, key: String): String =
+    text.signWith(key, SHA1_ALGORITHM)
 
-  fun makeSignSha256(text: String, key: String): String = text.signWith(key, SHA256_ALGORITHM)
+  override fun signWithSha256(text: String, key: String): String =
+    text.signWith(key, SHA256_ALGORITHM)
 
   private fun String.signWith(key: String, algorithm: String): String {
     val keySpec = SecretKeySpec(key.toByteArray(), algorithm)

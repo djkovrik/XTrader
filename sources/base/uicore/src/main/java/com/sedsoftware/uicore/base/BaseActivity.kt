@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity : AppCompatActivity() {
 
-  abstract val layoutId: Int
+  abstract fun inject()
+  abstract fun getLayoutId(): Int
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(layoutId)
+    inject()
+    setContentView(getLayoutId())
   }
 }

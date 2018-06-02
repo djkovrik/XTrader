@@ -1,5 +1,3 @@
 package com.sedsoftware.core.device
 
-interface Settings {
-
-}
+interface Settings
