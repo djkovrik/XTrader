@@ -1,5 +1,6 @@
 import Versions.ESPRESSO_VERSION
 import Versions.EXPEKT_VERSION
+import Versions.JUNIT_PLATFORM_ENGINE_VERSION
 import Versions.JUNIT_VERSION
 import Versions.KAKAO_VERSION
 import Versions.MOCKITO_KOTLIN_VERSION
@@ -16,6 +17,7 @@ object TestingDependencies {
   const val espressoIdling = "androidx.test.espresso:espresso-idling-resource:$ESPRESSO_VERSION"
 
   const val junit = "junit:junit:$JUNIT_VERSION"
+  const val junitPlatform = "org.junit.platform:junit-platform-engine:$JUNIT_PLATFORM_ENGINE_VERSION"
   const val mockito = "org.mockito:mockito-core:$MOCKITO_VERSION"
   const val mockitoKotlin = "com.nhaarman:mockito-kotlin-kt1.1:$MOCKITO_KOTLIN_VERSION"
   const val mockitoAndroid = "org.mockito:mockito-android:$MOCKITO_VERSION"

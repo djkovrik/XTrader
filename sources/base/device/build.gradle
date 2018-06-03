@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
   compileSdkVersion Versions.COMPILE_SDK_VERSION_P
@@ -29,6 +30,16 @@ android {
 
 }
 
+android.testOptions {
+  junitPlatform {
+    filters {
+      engines {
+        include 'spek'
+      }
+    }
+  }
+}
+
 dependencies {
   implementation project(':core')
 
@@ -41,6 +52,11 @@ dependencies {
 
   implementation DevToolsDependencies.timber
 
+  testImplementation junit5.unitTests()
+
   testImplementation TestingDependencies.junit
+  testImplementation TestingDependencies.junitPlatform
   testImplementation TestingDependencies.expekt
+  testImplementation TestingDependencies.spekApi
+  testImplementation TestingDependencies.spekEngine
 }

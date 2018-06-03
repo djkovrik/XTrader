@@ -12,6 +12,7 @@ object Versions {
   const val GRADLE_VERSIONS_VERSION = "0.17.0"
   const val GRADLE_VERSIONING_VERSION = "0.4.3"
   const val SAFE_ARGS_VERSION = "1.0.0-alpha01"
+  const val ANDROID_JUNIT5_VERSION = "1.0.32"
 
   // Kotlin
   const val KOTLIN_VERSION = "1.2.41"
@@ -52,6 +53,7 @@ object Versions {
   const val TEST_RULES_VERSION = "1.1.0-alpha1"
   const val ESPRESSO_VERSION = "3.1.0-alpha1"
   const val JUNIT_VERSION = "4.12"
+  const val JUNIT_PLATFORM_ENGINE_VERSION = "1.2.0"
   const val MOCKITO_VERSION = "2.18.0"
   const val MOCKITO_KOTLIN_VERSION = "1.5.0"
   const val SPEK_VERSION = "1.1.5"
