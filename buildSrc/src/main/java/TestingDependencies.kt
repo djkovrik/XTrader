@@ -19,7 +19,7 @@ object TestingDependencies {
   const val junit = "junit:junit:$JUNIT_VERSION"
   const val junitPlatform = "org.junit.platform:junit-platform-engine:$JUNIT_PLATFORM_ENGINE_VERSION"
   const val mockito = "org.mockito:mockito-core:$MOCKITO_VERSION"
-  const val mockitoKotlin = "com.nhaarman:mockito-kotlin-kt1.1:$MOCKITO_KOTLIN_VERSION"
+  const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$MOCKITO_KOTLIN_VERSION"
   const val mockitoAndroid = "org.mockito:mockito-android:$MOCKITO_VERSION"
   const val spekApi = "org.jetbrains.spek:spek-api:$SPEK_VERSION"
   const val spekEngine = "org.jetbrains.spek:spek-junit-platform-engine:$SPEK_VERSION"
