@@ -5,18 +5,18 @@ object Versions {
   const val COMPILE_SDK_VERSION = 27
   const val COMPILE_SDK_VERSION_P = "android-P"
   const val TARGET_SDK_VERSION = 27
-  const val GRADLE_ANDROID_VERSION = "3.2.0-alpha17"
+  const val GRADLE_ANDROID_VERSION = "3.2.0-alpha18"
 
   // Plugins
   const val DETEKT_VERSION = "1.0.0.RC7"
-  const val GRADLE_VERSIONS_VERSION = "0.17.0"
+  const val GRADLE_VERSIONS_VERSION = "0.19.0"
   const val GRADLE_VERSIONING_VERSION = "0.4.3"
-  const val SAFE_ARGS_VERSION = "1.0.0-alpha01"
+  const val SAFE_ARGS_VERSION = "1.0.0-alpha02"
   const val ANDROID_JUNIT5_VERSION = "1.0.32"
 
   // Kotlin
-  const val KOTLIN_VERSION = "1.2.41"
-  const val KOTLIN_COROUTINES_VERSION = "0.23.0"
+  const val KOTLIN_VERSION = "1.2.50"
+  const val KOTLIN_COROUTINES_VERSION = "0.23.3"
 
   // JetPack - AppCompat
   const val APPCOMPAT_VERSION = "1.0.0-alpha1"
@@ -30,8 +30,8 @@ object Versions {
   const val LIFECYCLE_VERSION = "2.0.0-alpha1"
   const val ROOM_VERSION = "2.0.0-alpha1"
   const val PAGING_VERSION = "2.0.0-alpha1"
-  const val NAVIGATION_VERSION = "1.0.0-alpha01"
-  const val WORKMANAGER_VERSION = "2.0.0-alpha1"
+  const val NAVIGATION_VERSION = "1.0.0-alpha02"
+  const val WORKMANAGER_VERSION = "2.0.0-alpha2"
 
   // JetPack - KTX
   const val KTX_VERSION = "1.0.0-alpha1"
