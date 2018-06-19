@@ -5,7 +5,7 @@
     name="Injector module"
     description="Creates injector module from the main application module.">
 
-    <category value="Application" />
+    <category value="Modular" />
 
     <formfactor value="Mobile" />
 
