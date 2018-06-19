@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="Injector module"
+    description="Creates injector module from main application module.">
+
+</template>
