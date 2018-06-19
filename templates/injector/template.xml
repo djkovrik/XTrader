@@ -3,6 +3,26 @@
     format="5"
     revision="5"
     name="Injector module"
-    description="Creates injector module from main application module.">
+    description="Creates injector module from the main application module.">
+
+    <category value="Application" />
+
+    <formfactor value="Mobile" />
+
+    <thumbs>
+        <thumb>mobile-module.png</thumb>
+    </thumbs>
+
+    <parameter
+        id="applicationClass"
+        name="Application Name"
+        type="string"
+        constraints="class|nonempty"
+        suggest="App"
+        default="App"
+        help="The name of the application class to create." />
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
 
 </template>
