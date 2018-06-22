@@ -14,13 +14,40 @@
     </thumbs>
 
     <parameter
+      id="applicationInterface"
+      name="Main Application interface"
+      type="string"
+      constraints="class|nonempty"
+      suggest="App"
+      default="App"
+      help="The name of the application interface to create." />
+
+    <parameter
         id="applicationClass"
-        name="Application Name"
+        name="Application implementation"
         type="string"
         constraints="class|nonempty"
-        suggest="App"
-        default="App"
-        help="The name of the application class to create." />
+        suggest="RealApp"
+        default="RealApp"
+        help="Implements defined Application interface and Application class from Android." />
+
+    <parameter
+      id="applicationProviderClass"
+      name="Application provider interface"
+      type="string"
+      constraints="class|nonempty"
+      suggest="ApplicationProvider"
+      default="ApplicationProvider"
+      help="ApplicationProvider interface name from core module." />
+
+    <parameter
+      id="corePackageName"
+      name="Core package name"
+      type="string"
+      constraints="class|nonempty"
+      suggest="com.sedsoftware"
+      default="com.sedsoftware"
+      help="Path to core package module." />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />
