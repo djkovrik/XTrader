@@ -7,14 +7,13 @@ import ${packageName}.di.${applicationClass}Component
 
 class ${applicationClass} : Application(), ${applicationInterface} {
 
-  private val appComponent: ${applicationInterface}Component by lazy { ${applicationInterface}Component.Initializer.init(this@${applicationClass}) }
+    private val appComponent: ${applicationInterface}Component by lazy { ${applicationInterface}Component.Initializer.init(this@${applicationClass}) }
 
-  override fun onCreate() {
-    super.onCreate()
+    override fun onCreate() {
+        super.onCreate()
 
-    appComponent.inject(this)
-  }
+        appComponent.inject(this)
+    }
 
-  override fun getAppComponent(): ${applicationProviderClass} = appComponent
-
+    override fun getAppComponent(): ${applicationProviderClass} = appComponent
 }
