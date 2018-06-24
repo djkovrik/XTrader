@@ -2,7 +2,7 @@ package ${packageName}
 
 import android.app.Application
 import ${corePackageName}.${applicationInterface}
-import ${corePackageName}.di.provider.${applicationProviderClass}
+import ${corePackageName}.di.provider.${applicationProviderInterface}
 import ${packageName}.di.${applicationClass}Component
 
 class ${applicationClass} : Application(), ${applicationInterface} {
@@ -15,5 +15,5 @@ class ${applicationClass} : Application(), ${applicationInterface} {
         appComponent.inject(this)
     }
 
-    override fun getAppComponent(): ${applicationProviderClass} = appComponent
+    override fun getAppComponent(): ${applicationProviderInterface} = appComponent
 }

@@ -16,7 +16,7 @@ public final class ${applicationClass} extends Application implements ${applicat
         appComponent.inject(this);
     }
 
-    public static ${applicationInterface}Component getComponent() {
+    public static ${applicationProviderInterface} getComponent() {
         if (appComponent == null) {
             appComponent = ${applicationInterface}Component.Initializer.init(this);
         }
