@@ -15,16 +15,16 @@
 
     <parameter
         id="applicationInterface"
-        name="Main Application interface"
+        name="Main Application interface name"
         type="string"
         constraints="class|nonempty"
         suggest="App"
         default="App"
-        help="The name of the application interface to create." />
+        help="Name of the Application interface from core module." />
 
     <parameter
         id="applicationClass"
-        name="Application implementation"
+        name="Application implementation class name"
         type="string"
         constraints="class|nonempty"
         suggest="RealApp"
@@ -33,18 +33,18 @@
 
     <parameter
         id="applicationProviderInterface"
-        name="Application provider interface"
+        name="Application provider interface name"
         type="string"
         constraints="class|nonempty"
         suggest="ApplicationProvider"
         default="ApplicationProvider"
-        help="ApplicationProvider interface name from core module." />
+        help="Name of the ApplicationProvider interface from core module." />
 
     <parameter
         id="corePackageName"
         name="Core package name"
         type="string"
-        constraints="package"
+        constraints="package|nonempty"
         suggest="com.sedsoftware.core"
         default="com.sedsoftware.core"
         help="Path to core package module." />
