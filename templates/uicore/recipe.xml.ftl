@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<recipe>
 
     <#include "hierarchy_recipe.xml.ftl" />
 
@@ -7,6 +8,12 @@
 
     <instantiate from="root/build.gradle.ftl"
         to="${escapeXmlAttribute(projectOut)}/build.gradle" />
+
+    <instantiate from="root/res/values/strings.xml.ftl"
+        to="${escapeXmlAttribute(resOut)}/values/strings.xml" />
+
+    <merge from="root/src/app_package/common/Manifest.xml.ftl"
+        to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
 
     <#if generateKotlin>
     	<#include "kotlin_files_recipe.xml.ftl" />

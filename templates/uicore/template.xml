@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<template
+  format="5"
+  revision="5"
+  name="UI Core module"
+  description="Creates a new UI core module.">
+
+    <category value="Modular" />
+
+    <formfactor value="Mobile" />
+
+    <thumbs>
+        <thumb>mobile-module.png</thumb>
+    </thumbs>
+
+    <parameter
+        id="moduleName"
+        name="UI core module name"
+        type="string"
+        constraints="nonempty|module|unique"
+        default="uicore"/>
+
+    <parameter
+        id="uiCorePackageName"
+        name="Package name"
+        type="string"
+        constraints="nonempty|package"
+        suggest="com.sedsoftware.uicore"
+        default="com.sedsoftware.uicore"
+        help="Path to UI core package module." />
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
