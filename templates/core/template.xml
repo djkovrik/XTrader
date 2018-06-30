@@ -2,41 +2,50 @@
 <template
     format="5"
     revision="5"
-    name="Java Library"
-    description="Creates a new Java library.">
+    name="Core module"
+    description="Creates a new core module.">
 
-    <category value="Application" />
+    <category value="Modular" />
+
+    <formfactor value="Mobile" />
 
     <thumbs>
         <thumb>template_new_project.png</thumb>
     </thumbs>
 
     <parameter
-        id="projectName"
-        name="Library name"
+        id="moduleName"
+        name="Core module name"
         type="string"
         constraints="nonempty|module|unique"
-        default="lib"/>
+        default="core"/>
 
     <parameter
-        id="packageName"
-        name="Java package name"
+        id="applicationInterface"
+        name="Main Application interface"
+        type="string"
+        constraints="class|nonempty"
+        suggest="App"
+        default="App"
+        help="The name of the application interface to create." />
+
+    <parameter
+        id="applicationProviderInterface"
+        name="Application provider interface"
+        type="string"
+        constraints="class|nonempty"
+        suggest="ApplicationProvider"
+        default="ApplicationProvider"
+        help="The name of the application provider interface to create." />
+
+    <parameter
+        id="corePackageName"
+        name="Package name"
         type="string"
         constraints="nonempty|package"
-        default="com.example"/>
-
-    <parameter
-        id="className"
-        name="Java class name"
-        type="string"
-        constraints="nonempty|class"
-        default="MyClass"/>
-
-    <parameter
-        id="makeIgnore"
-        name="Create .gitignore file"
-        type="boolean"
-        default="true" />
+        suggest="com.sedsoftware.core"
+        default="com.sedsoftware.core"
+        help="Path to core package module." />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

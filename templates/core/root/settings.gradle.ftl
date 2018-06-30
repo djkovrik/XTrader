@@ -1,1 +1,1 @@
-include ':${projectName}'
+include ':${moduleName}'
