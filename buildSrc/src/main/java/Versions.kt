@@ -15,8 +15,8 @@ object Versions {
   const val ANDROID_JUNIT5_VERSION = "1.0.32"
 
   // Kotlin
-  const val KOTLIN_VERSION = "1.2.50"
-  const val KOTLIN_COROUTINES_VERSION = "0.23.3"
+  const val KOTLIN_VERSION = "1.2.51"
+  const val KOTLIN_COROUTINES_VERSION = "0.23.4"
 
   // JetPack - AppCompat
   const val APPCOMPAT_VERSION = "1.0.0-alpha1"
@@ -54,8 +54,6 @@ object Versions {
   const val ESPRESSO_VERSION = "3.1.0-alpha1"
   const val JUNIT_VERSION = "4.12"
   const val JUNIT_PLATFORM_ENGINE_VERSION = "1.2.0"
-  const val MOCKITO_VERSION = "2.18.3"
-  const val MOCKITO_KOTLIN_VERSION = "2.0.0-alpha04"
   const val SPEK_VERSION = "1.1.5"
   const val EXPEKT_VERSION = "0.5.0"
   const val KAKAO_VERSION = "1.3.0"
