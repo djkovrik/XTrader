@@ -5,14 +5,13 @@ object Versions {
   const val COMPILE_SDK_VERSION = 27
   const val COMPILE_SDK_VERSION_P = "android-P"
   const val TARGET_SDK_VERSION = 27
-  const val GRADLE_ANDROID_VERSION = "3.2.0-beta02"
+  const val GRADLE_ANDROID_VERSION = "3.3.0-alpha03"
 
   // Plugins
   const val DETEKT_VERSION = "1.0.0.RC7"
   const val GRADLE_VERSIONS_VERSION = "0.19.0"
   const val GRADLE_VERSIONING_VERSION = "0.4.3"
   const val SAFE_ARGS_VERSION = "1.0.0-alpha02"
-  const val ANDROID_JUNIT5_VERSION = "1.0.32"
 
   // Kotlin
   const val KOTLIN_VERSION = "1.2.51"
@@ -54,6 +53,7 @@ object Versions {
   const val ESPRESSO_VERSION = "3.1.0-alpha1"
   const val JUNIT_VERSION = "4.12"
   const val JUNIT_PLATFORM_ENGINE_VERSION = "1.2.0"
+  const val JUNIT_PLATFORM_RUNNER_VERSION = "1.0.0"
   const val SPEK_VERSION = "1.1.5"
   const val EXPEKT_VERSION = "0.5.0"
   const val KAKAO_VERSION = "1.3.0"

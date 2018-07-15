@@ -12,7 +12,6 @@ buildscript {
     classpath Plugins.DETEKT
     classpath Plugins.GRADLE_VERSIONS
     classpath Plugins.GRADLE_VERSIONING
-    classpath Plugins.ANDROID_JUNIT5
   }
 }
 

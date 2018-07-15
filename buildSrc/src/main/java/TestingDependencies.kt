@@ -1,10 +1,9 @@
 import Versions.ESPRESSO_VERSION
 import Versions.EXPEKT_VERSION
 import Versions.JUNIT_PLATFORM_ENGINE_VERSION
+import Versions.JUNIT_PLATFORM_RUNNER_VERSION
 import Versions.JUNIT_VERSION
 import Versions.KAKAO_VERSION
-import Versions.MOCKITO_KOTLIN_VERSION
-import Versions.MOCKITO_VERSION
 import Versions.SPEK_VERSION
 import Versions.TEST_RULES_VERSION
 import Versions.TEST_RUNNER_VERSION
@@ -18,9 +17,7 @@ object TestingDependencies {
 
   const val junit = "junit:junit:$JUNIT_VERSION"
   const val junitPlatform = "org.junit.platform:junit-platform-engine:$JUNIT_PLATFORM_ENGINE_VERSION"
-  const val mockito = "org.mockito:mockito-core:$MOCKITO_VERSION"
-  const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$MOCKITO_KOTLIN_VERSION"
-  const val mockitoAndroid = "org.mockito:mockito-android:$MOCKITO_VERSION"
+  const val junitPlatformRunner = "org.junit.platform:junit-platform-runner:$JUNIT_PLATFORM_RUNNER_VERSION"
   const val spekApi = "org.jetbrains.spek:spek-api:$SPEK_VERSION"
   const val spekEngine = "org.jetbrains.spek:spek-junit-platform-engine:$SPEK_VERSION"
   const val expekt = "com.winterbe:expekt:$EXPEKT_VERSION"
