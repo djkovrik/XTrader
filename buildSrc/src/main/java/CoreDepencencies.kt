@@ -1,3 +1,4 @@
+import Versions.ADAPTER_DELEGATES_VERSION
 import Versions.DAGGER_VERSION
 import Versions.MOSHI_VERSION
 import Versions.OKHTTP_VERSION
@@ -5,6 +6,7 @@ import Versions.RETROFIT_COROUTINES_ADAPTER_VERSION
 import Versions.RETROFIT_VERSION
 
 object CoreDepencencies {
+  const val adapterDelegates = "com.hannesdorfmann:adapterdelegates3:$ADAPTER_DELEGATES_VERSION"
   const val dagger = "com.google.dagger:dagger:$DAGGER_VERSION"
   const val daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
   const val retrofit = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
