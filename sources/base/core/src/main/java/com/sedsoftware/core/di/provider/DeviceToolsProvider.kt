@@ -6,9 +6,9 @@ import com.sedsoftware.core.device.Signer
 
 interface DeviceToolsProvider {
 
-  fun provideContext(): App
+    fun provideContext(): App
 
-  fun provideLogger(): Logger
+    fun provideLogger(): Logger
 
-  fun provideSigner(): Signer
+    fun provideSigner(): Signer
 }

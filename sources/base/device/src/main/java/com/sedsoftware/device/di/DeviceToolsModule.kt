@@ -17,28 +17,28 @@ import javax.inject.Singleton
 @Module
 class DeviceToolsModule {
 
-  @Provides
-  @Singleton
-  fun provideLogger(): Logger =
-    LoggerImpl()
+    @Provides
+    @Singleton
+    fun provideLogger(): Logger =
+        LoggerImpl()
 
-  @Provides
-  @Singleton
-  fun provideSigner(): Signer =
-    SignerImpl()
+    @Provides
+    @Singleton
+    fun provideSigner(): Signer =
+        SignerImpl()
 
-  @Provides
-  @Singleton
-  fun provideResources(context: Context): Resources =
-    context.resources
+    @Provides
+    @Singleton
+    fun provideResources(context: Context): Resources =
+        context.resources
 
-  @Provides
-  @Singleton
-  fun provideSharedPreferences(context: Context): SharedPreferences =
-    PreferenceManager.getDefaultSharedPreferences(context)
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(context: Context): SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
 
-  @Provides
-  @Singleton
-  fun provideSettings(resources: Resources, preferences: SharedPreferences): Settings =
-    SettingsImpl(resources, preferences)
+    @Provides
+    @Singleton
+    fun provideSettings(resources: Resources, preferences: SharedPreferences): Settings =
+        SettingsImpl(resources, preferences)
 }

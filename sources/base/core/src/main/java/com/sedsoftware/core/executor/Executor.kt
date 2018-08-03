@@ -5,7 +5,7 @@ import kotlinx.coroutines.experimental.Job
 
 interface Executor {
 
-  fun <T> ui(uiFunc: suspend () -> T): Job
+    fun <T> ui(uiFunc: suspend () -> T): Job
 
-  fun <T> bg(bgFunc: suspend () -> T): Deferred<T>
+    fun <T> bg(bgFunc: suspend () -> T): Deferred<T>
 }

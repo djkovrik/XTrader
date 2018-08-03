@@ -9,30 +9,30 @@ import timber.log.Timber
 
 class XTraderApp : Application(), App {
 
-  private val appComponent: AppComponent by lazy { AppComponent.Initializer.init(this@XTraderApp) }
+    private val appComponent: AppComponent by lazy { AppComponent.Initializer.init(this@XTraderApp) }
 
-  override fun onCreate() {
-    super.onCreate()
+    override fun onCreate() {
+        super.onCreate()
 
-    appComponent.inject(this)
+        appComponent.inject(this)
 
-    initStetho()
-    initTimber()
-  }
-
-  override fun getAppComponent(): ApplicationProvider = appComponent
-
-  private fun initStetho() {
-    if (BuildConfig.DEBUG) {
-      Stetho.initializeWithDefaults(this)
+        initStetho()
+        initTimber()
     }
-  }
 
-  private fun initTimber() {
-    Timber.uprootAll()
+    override fun getAppComponent(): ApplicationProvider = appComponent
 
-    if (BuildConfig.DEBUG) {
-      Timber.plant(Timber.DebugTree())
+    private fun initStetho() {
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this)
+        }
     }
-  }
+
+    private fun initTimber() {
+        Timber.uprootAll()
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
 }

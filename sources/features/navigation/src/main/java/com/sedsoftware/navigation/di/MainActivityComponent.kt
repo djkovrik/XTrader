@@ -7,20 +7,20 @@ import dagger.Component
 
 @ActivityScope
 @Component(
-  dependencies = [ApplicationProvider::class],
-  modules = [MainActivityModule::class]
+    dependencies = [ApplicationProvider::class],
+    modules = [MainActivityModule::class]
 )
 interface MainActivityComponent {
 
-  fun inject(activity: MainActivity)
+    fun inject(activity: MainActivity)
 
-  class Initializer private constructor() {
-    companion object {
+    class Initializer private constructor() {
+        companion object {
 
-      fun init(appComponent: ApplicationProvider): MainActivityComponent =
-        DaggerMainActivityComponent.builder()
-          .applicationProvider(appComponent)
-          .build()
+            fun init(appComponent: ApplicationProvider): MainActivityComponent =
+                DaggerMainActivityComponent.builder()
+                    .applicationProvider(appComponent)
+                    .build()
+        }
     }
-  }
 }

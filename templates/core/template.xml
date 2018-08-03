@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <template
-    format="5"
-    revision="5"
     name="Core module"
-    description="Creates a new core module.">
+    description="Creates a new core module."
+    format="5"
+    revision="5">
 
     <category value="Modular" />
 
@@ -14,38 +14,38 @@
     </thumbs>
 
     <parameter
-        id="moduleName"
         name="Core module name"
-        type="string"
         constraints="nonempty|module|unique"
-        default="core"/>
+        default="core"
+        id="moduleName"
+        type="string" />
 
     <parameter
-        id="applicationInterface"
         name="Main Application interface"
-        type="string"
         constraints="class|nonempty"
-        suggest="App"
         default="App"
-        help="The name of the application interface to create." />
+        help="The name of the application interface to create."
+        id="applicationInterface"
+        suggest="App"
+        type="string" />
 
     <parameter
-        id="applicationProviderInterface"
         name="Application provider interface"
-        type="string"
         constraints="class|nonempty"
-        suggest="ApplicationProvider"
         default="ApplicationProvider"
-        help="The name of the application provider interface to create." />
+        help="The name of the application provider interface to create."
+        id="applicationProviderInterface"
+        suggest="ApplicationProvider"
+        type="string" />
 
     <parameter
-        id="corePackageName"
         name="Package name"
-        type="string"
         constraints="nonempty|package"
-        suggest="com.sedsoftware.core"
         default="com.sedsoftware.core"
-        help="Path to core package module." />
+        help="Path to core package module."
+        id="corePackageName"
+        suggest="com.sedsoftware.core"
+        type="string" />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

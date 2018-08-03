@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <template
-    format="5"
-    revision="5"
     name="Injector module"
-    description="Converts main application module to injector module.">
+    description="Converts main application module to injector module."
+    format="5"
+    revision="5">
 
     <category value="Modular" />
 
@@ -14,42 +14,41 @@
     </thumbs>
 
     <parameter
-        id="applicationInterface"
         name="Main Application interface name"
-        type="string"
         constraints="class|nonempty"
-        suggest="App"
         default="App"
-        help="Name of the Application interface from core module." />
+        help="Name of the Application interface from core module."
+        id="applicationInterface"
+        suggest="App"
+        type="string" />
 
     <parameter
-        id="applicationClass"
         name="Application implementation class name"
-        type="string"
         constraints="class|nonempty"
-        suggest="RealApp"
         default="RealApp"
-        help="Implements defined Application interface and Application class from Android." />
+        help="Implements defined Application interface and Application class from Android."
+        id="applicationClass"
+        suggest="RealApp"
+        type="string" />
 
-    <parameter
-        id="applicationProviderInterface"
-        name="Application provider interface name"
-        type="string"
+    <parameter name="Application provider interface name"
         constraints="class|nonempty"
-        suggest="ApplicationProvider"
         default="ApplicationProvider"
-        help="Name of the ApplicationProvider interface from core module." />
+        help="Name of the ApplicationProvider interface from core module."
+        id="applicationProviderInterface"
+        suggest="ApplicationProvider"
+        type="string" />
 
     <parameter
-        id="corePackageName"
         name="Core package name"
-        type="string"
         constraints="package|nonempty"
-        suggest="com.sedsoftware.core"
         default="com.sedsoftware.core"
-        help="Path to core package module." />
+        help="Path to core package module."
+        id="corePackageName"
+        suggest="com.sedsoftware.core"
+        type="string" />
 
-        <globals file="globals.xml.ftl" />
-        <execute file="recipe.xml.ftl" />
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
 
 </template>

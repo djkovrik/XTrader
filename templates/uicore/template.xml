@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <template
-  format="5"
-  revision="5"
-  name="UI Core module"
-  description="Creates a new UI core module.">
+    name="UI Core module"
+    description="Creates a new UI core module."
+    format="5"
+    revision="5">
 
     <category value="Modular" />
 
@@ -14,20 +14,20 @@
     </thumbs>
 
     <parameter
-        id="moduleName"
         name="UI core module name"
-        type="string"
         constraints="nonempty|module|unique"
-        default="uicore"/>
+        default="uicore"
+        id="moduleName"
+        type="string" />
 
     <parameter
-        id="uiCorePackageName"
         name="Package name"
-        type="string"
         constraints="nonempty|package"
-        suggest="com.sedsoftware.uicore"
         default="com.sedsoftware.uicore"
-        help="Path to UI core package module." />
+        help="Path to UI core package module."
+        id="uiCorePackageName"
+        suggest="com.sedsoftware.uicore"
+        type="string" />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

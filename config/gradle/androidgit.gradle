@@ -1,5 +1,5 @@
 androidGitVersion {
-  codeFormat 'MNNPPP'
-  format '%tag%%.count%%-commit%'
-  prefix 'v'
+    codeFormat 'MNNPPP'
+    format '%tag%%.count%%-commit%'
+    prefix 'v'
 }

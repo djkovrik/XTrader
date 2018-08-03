@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <!-- Main app theme -->
-  <color name="primaryColor">#2196f3</color>
-  <color name="primaryLightColor">#6ec6ff</color>
-  <color name="primaryDarkColor">#0069c0</color>
+    <!-- Main app theme -->
+    <color name="primaryColor">#2196f3</color>
+    <color name="primaryLightColor">#6ec6ff</color>
+    <color name="primaryDarkColor">#0069c0</color>
 </resources>

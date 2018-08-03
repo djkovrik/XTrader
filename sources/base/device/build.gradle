@@ -3,48 +3,48 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-  compileSdkVersion Versions.COMPILE_SDK_VERSION
+    compileSdkVersion Versions.COMPILE_SDK_VERSION
 
-  defaultConfig {
-    minSdkVersion Versions.MIN_SDK_VERSION
-    targetSdkVersion Versions.TARGET_SDK_VERSION
-    versionCode androidGitVersion.code()
-    versionName androidGitVersion.name()
+    defaultConfig {
+        minSdkVersion Versions.MIN_SDK_VERSION
+        targetSdkVersion Versions.TARGET_SDK_VERSION
+        versionCode androidGitVersion.code()
+        versionName androidGitVersion.name()
 
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-    resConfigs "en", "ru"
-  }
-
-  buildTypes {
-    debug {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        resConfigs "en", "ru"
     }
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
-  }
 
 }
 
 dependencies {
-  implementation project(':core')
+    implementation project(':core')
 
-  implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlin
 
-  implementation CoreDepencencies.dagger
-  kapt CoreDepencencies.daggerCompiler
+    implementation CoreDepencencies.dagger
+    kapt CoreDepencencies.daggerCompiler
 
-  implementation JetPackDependencies.appCompat
+    implementation JetPackDependencies.appCompat
 
-  implementation DevToolsDependencies.timber
+    implementation DevToolsDependencies.timber
 
-  testImplementation TestingDependencies.junit
-  testImplementation TestingDependencies.junitPlatform
-  testImplementation TestingDependencies.junitPlatformRunner
-  testImplementation TestingDependencies.expekt
-  testImplementation TestingDependencies.spekApi
-  testImplementation TestingDependencies.spekEngine
+    testImplementation TestingDependencies.junit
+    testImplementation TestingDependencies.junitPlatform
+    testImplementation TestingDependencies.junitPlatformRunner
+    testImplementation TestingDependencies.expekt
+    testImplementation TestingDependencies.spekApi
+    testImplementation TestingDependencies.spekEngine
 }

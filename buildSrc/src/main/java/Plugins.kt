@@ -6,16 +6,16 @@ import Versions.KOTLIN_VERSION
 import Versions.SAFE_ARGS_VERSION
 
 object Plugins {
-  const val ANDROID_GRADLE =
-    "com.android.tools.build:gradle:$GRADLE_ANDROID_VERSION"
-  const val KOTLIN_GRADLE_PLUGIN =
-    "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
-  const val DETEKT =
-    "gradle.plugin.io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$DETEKT_VERSION"
-  const val GRADLE_VERSIONS =
-    "com.github.ben-manes:gradle-versions-plugin:$GRADLE_VERSIONS_VERSION"
-  const val GRADLE_VERSIONING =
-    "gradle.plugin.com.gladed.gradle.androidgitversion:gradle-android-git-version:$GRADLE_VERSIONING_VERSION"
-  const val SAFE_ARGS =
-    "android.arch.navigation:navigation-safe-args-gradle-plugin:$SAFE_ARGS_VERSION"
+    const val ANDROID_GRADLE =
+        "com.android.tools.build:gradle:$GRADLE_ANDROID_VERSION"
+    const val KOTLIN_GRADLE_PLUGIN =
+        "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
+    const val DETEKT =
+        "gradle.plugin.io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$DETEKT_VERSION"
+    const val GRADLE_VERSIONS =
+        "com.github.ben-manes:gradle-versions-plugin:$GRADLE_VERSIONS_VERSION"
+    const val GRADLE_VERSIONING =
+        "gradle.plugin.com.gladed.gradle.androidgitversion:gradle-android-git-version:$GRADLE_VERSIONING_VERSION"
+    const val SAFE_ARGS =
+        "android.arch.navigation:navigation-safe-args-gradle-plugin:$SAFE_ARGS_VERSION"
 }

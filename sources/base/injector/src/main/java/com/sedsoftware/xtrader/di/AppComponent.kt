@@ -11,19 +11,19 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent : ApplicationProvider {
 
-  fun inject(app: XTraderApp)
+    fun inject(app: XTraderApp)
 
-  class Initializer private constructor() {
-    companion object {
+    class Initializer private constructor() {
+        companion object {
 
-      fun init(app: XTraderApp): AppComponent {
+            fun init(app: XTraderApp): AppComponent {
 
-        val deviceToolsProvider = DeviceToolsComponent.Initializer.init(app)
+                val deviceToolsProvider = DeviceToolsComponent.Initializer.init(app)
 
-        return DaggerAppComponent.builder()
-          .deviceToolsProvider(deviceToolsProvider)
-          .build()
-      }
+                return DaggerAppComponent.builder()
+                    .deviceToolsProvider(deviceToolsProvider)
+                    .build()
+            }
+        }
     }
-  }
 }

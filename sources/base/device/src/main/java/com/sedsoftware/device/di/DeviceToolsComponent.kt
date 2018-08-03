@@ -10,22 +10,22 @@ import javax.inject.Singleton
 @Component(modules = [DeviceToolsModule::class])
 interface DeviceToolsComponent : DeviceToolsProvider {
 
-  @Component.Builder
-  interface Builder {
+    @Component.Builder
+    interface Builder {
 
-    fun build(): DeviceToolsComponent
+        fun build(): DeviceToolsComponent
 
-    @BindsInstance
-    fun app(app: App): Builder
-  }
-
-  class Initializer private constructor() {
-    companion object {
-
-      fun init(app: App): DeviceToolsProvider =
-        DaggerDeviceToolsComponent.builder()
-          .app(app)
-          .build()
+        @BindsInstance
+        fun app(app: App): Builder
     }
-  }
+
+    class Initializer private constructor() {
+        companion object {
+
+            fun init(app: App): DeviceToolsProvider =
+                DaggerDeviceToolsComponent.builder()
+                    .app(app)
+                    .build()
+        }
+    }
 }

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.sedsoftware.navigation">
+    package="com.sedsoftware.navigation">
 
-  <application>
+    <application>
 
-    <activity
-      android:name=".MainActivity"
-      android:launchMode="singleTop"
-      android:theme="@style/Theme.MyApp">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.MyApp">
 
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-    </activity>
+        </activity>
 
-  </application>
+    </application>
 
 </manifest>
