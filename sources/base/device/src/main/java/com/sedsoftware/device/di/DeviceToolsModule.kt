@@ -1,9 +1,9 @@
 package com.sedsoftware.device.di
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.preference.PreferenceManager
+import com.sedsoftware.core.App
 import com.sedsoftware.core.device.Logger
 import com.sedsoftware.core.device.Settings
 import com.sedsoftware.core.device.Signer
@@ -29,13 +29,13 @@ class DeviceToolsModule {
 
     @Provides
     @Singleton
-    fun provideResources(context: Context): Resources =
-        context.resources
+    fun provideResources(app: App): Resources =
+        app.getApplicationContext().resources
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(context: Context): SharedPreferences =
-        PreferenceManager.getDefaultSharedPreferences(context)
+    fun provideSharedPreferences(app: App): SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(app.getApplicationContext())
 
     @Provides
     @Singleton
