@@ -2,7 +2,7 @@ package com.sedsoftware.core.common.enum.currency
 
 import com.sedsoftware.core.common.enum.Currency
 
-enum class CurrencyBinance(override val value: String) : Currency {
+enum class CurrencyBinance(override val label: String) : Currency {
     ADA("Cardano"),
     ADX("AdEx"),
     AE("Aeternity"),
