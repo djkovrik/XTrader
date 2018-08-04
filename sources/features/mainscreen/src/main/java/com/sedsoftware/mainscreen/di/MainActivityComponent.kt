@@ -1,8 +1,8 @@
-package com.sedsoftware.navigation.di
+package com.sedsoftware.mainscreen.di
 
 import com.sedsoftware.core.di.provider.ApplicationProvider
 import com.sedsoftware.core.di.scope.ActivityScope
-import com.sedsoftware.navigation.MainActivity
+import com.sedsoftware.mainscreen.MainActivity
 import dagger.Component
 
 @ActivityScope

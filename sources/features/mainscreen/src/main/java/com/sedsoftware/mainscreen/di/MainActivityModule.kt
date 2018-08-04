@@ -1,4 +1,4 @@
-package com.sedsoftware.navigation.di
+package com.sedsoftware.mainscreen.di
 
 import dagger.Module
 

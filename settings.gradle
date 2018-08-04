@@ -7,5 +7,5 @@ project(':device').projectDir = new File(rootDir, 'sources/base/device')
 include ':uicore'
 project(':uicore').projectDir = new File(rootDir, 'sources/base/uicore')
 
-include ':navigation'
-project(':navigation').projectDir = new File(rootDir, 'sources/features/navigation')
+include ':mainscreen'
+project(':mainscreen').projectDir = new File(rootDir, 'sources/features/mainscreen')
