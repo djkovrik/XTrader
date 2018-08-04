@@ -33,6 +33,8 @@ dependencies {
     implementation project(':core')
 
     implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
+    implementation KotlinDependencies.kotlinCoroutinesAndroid
 
     implementation CoreDepencencies.dagger
     kapt CoreDepencencies.daggerCompiler

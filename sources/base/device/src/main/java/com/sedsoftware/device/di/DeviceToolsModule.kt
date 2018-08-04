@@ -7,8 +7,10 @@ import com.sedsoftware.core.App
 import com.sedsoftware.core.device.Logger
 import com.sedsoftware.core.device.Settings
 import com.sedsoftware.core.device.Signer
-import com.sedsoftware.device.encrypt.SignerImpl
-import com.sedsoftware.device.log.LoggerImpl
+import com.sedsoftware.core.executor.Executor
+import com.sedsoftware.device.encrypt.ParamsSigner
+import com.sedsoftware.device.executor.ThreadExecutor
+import com.sedsoftware.device.log.AppLogger
 import com.sedsoftware.device.settings.SettingsImpl
 import dagger.Module
 import dagger.Provides
@@ -19,13 +21,13 @@ class DeviceToolsModule {
 
     @Provides
     @Singleton
-    fun provideLogger(): Logger =
-        LoggerImpl()
+    fun provideExecutor(): Executor =
+        ThreadExecutor()
 
     @Provides
     @Singleton
-    fun provideSigner(): Signer =
-        SignerImpl()
+    fun provideLogger(): Logger =
+        AppLogger()
 
     @Provides
     @Singleton
@@ -41,4 +43,9 @@ class DeviceToolsModule {
     @Singleton
     fun provideSettings(resources: Resources, preferences: SharedPreferences): Settings =
         SettingsImpl(resources, preferences)
+
+    @Provides
+    @Singleton
+    fun provideSigner(): Signer =
+        ParamsSigner()
 }

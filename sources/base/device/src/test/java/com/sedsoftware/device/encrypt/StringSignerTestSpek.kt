@@ -14,7 +14,7 @@ class StringSignerTestSpek : Spek({
 
     given("String signer") {
 
-        val signer by memoized { SignerImpl() }
+        val signer by memoized { ParamsSigner() }
 
         context("with given key") {
 

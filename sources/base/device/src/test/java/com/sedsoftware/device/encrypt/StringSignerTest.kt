@@ -6,7 +6,7 @@ import org.junit.Test
 
 class StringSignerTest {
 
-    private val signer: Signer = SignerImpl()
+    private val signer: Signer = ParamsSigner()
 
     companion object {
         private const val SIGNATURE_KEY = "thisismysupersecurekey"
