@@ -4,7 +4,7 @@ object Versions {
     const val MIN_SDK_VERSION = 21
     const val COMPILE_SDK_VERSION = 28
     const val TARGET_SDK_VERSION = 28
-    const val GRADLE_ANDROID_VERSION = "3.3.0-alpha04"
+    const val GRADLE_ANDROID_VERSION = "3.3.0-alpha05"
 
     // Plugins
     const val DETEKT_VERSION = "1.0.0.RC8"
@@ -36,7 +36,7 @@ object Versions {
 
     // Core
     const val ADAPTER_DELEGATES_VERSION = "3.0.1"
-    const val DAGGER_VERSION = "2.16"
+    const val DAGGER_VERSION = "2.17"
     const val RETROFIT_VERSION = "2.4.0"
     const val MOSHI_VERSION = "1.6.0"
     const val RETROFIT_COROUTINES_ADAPTER_VERSION = "1.0.0"
