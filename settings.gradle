@@ -4,8 +4,8 @@ include ':core'
 project(':core').projectDir = new File(rootDir, 'sources/base/core')
 include ':device'
 project(':device').projectDir = new File(rootDir, 'sources/base/device')
-include ':uicore'
-project(':uicore').projectDir = new File(rootDir, 'sources/base/uicore')
+include ':core_ui'
+project(':core_ui').projectDir = new File(rootDir, 'sources/base/core_ui')
 
-include ':mainscreen'
-project(':mainscreen').projectDir = new File(rootDir, 'sources/features/mainscreen')
+include ':screen_main'
+project(':screen_main').projectDir = new File(rootDir, 'sources/screens/screen_main')

@@ -36,7 +36,7 @@ androidExtensions {
 
 dependencies {
     implementation project(':core')
-    implementation project(':uicore')
+    implementation project(':core_ui')
 
     implementation KotlinDependencies.kotlin
 

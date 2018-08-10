@@ -34,9 +34,9 @@ android {
 
 dependencies {
     implementation project(':core')
-    implementation project(':uicore')
+    implementation project(':core_ui')
     implementation project(':device')
-    implementation project(':mainscreen')
+    implementation project(':screen_main')
 
     implementation KotlinDependencies.kotlin
 

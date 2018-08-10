@@ -1,10 +1,10 @@
-package com.sedsoftware.mainscreen
+package com.sedsoftware.screen_main
 
 import android.os.Bundle
 import com.sedsoftware.core.App
 import com.sedsoftware.core.device.Logger
-import com.sedsoftware.mainscreen.di.MainActivityComponent
-import com.sedsoftware.uicore.base.BaseActivity
+import com.sedsoftware.screen_main.di.MainActivityComponent
+import com.sedsoftware.core_ui.base.BaseActivity
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {

@@ -23,10 +23,10 @@
     <parameter
         name="Package name"
         constraints="nonempty|package"
-        default="com.sedsoftware.uicore"
+        default="com.sedsoftware.core_ui"
         help="Path to UI core package module."
         id="uiCorePackageName"
-        suggest="com.sedsoftware.uicore"
+        suggest="com.sedsoftware.core_ui"
         type="string" />
 
     <globals file="globals.xml.ftl" />
