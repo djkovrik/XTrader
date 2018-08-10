@@ -9,3 +9,6 @@ project(':core_ui').projectDir = new File(rootDir, 'sources/base/core_ui')
 
 include ':screen_main'
 project(':screen_main').projectDir = new File(rootDir, 'sources/screens/screen_main')
+
+include ':ex_binance'
+project(':ex_binance').projectDir = new File(rootDir, 'sources/exchanges/ex_binance')

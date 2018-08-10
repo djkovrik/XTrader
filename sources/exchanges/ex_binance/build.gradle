@@ -1,5 +1,6 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -24,29 +25,33 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//      minifyEnabled true
-//      shrinkResources true
-//      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
-//      proguardFiles fileTree('proguard').asList().toArray()
         }
     }
+
+}
+
+androidExtensions {
+    experimental = true
 }
 
 dependencies {
     implementation project(':core')
-    implementation project(':core_ui')
-    implementation project(':device')
-    implementation project(':ex_binance')
-    implementation project(':screen_main')
 
     implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
 
     implementation CoreDepencencies.dagger
     kapt CoreDepencencies.daggerCompiler
 
-    implementation DevToolsDependencies.timber
-    debugImplementation DevToolsDependencies.leakCanary
-    releaseImplementation DevToolsDependencies.leakCanaryNoOp
-    debugImplementation DevToolsDependencies.stetho
-    releaseImplementation DevToolsDependencies.stethoNoOp
+    implementation CoreDepencencies.retrofit
+    implementation CoreDepencencies.retrofitCoroutinesAdapter
+    implementation CoreDepencencies.okhttp
+    implementation CoreDepencencies.moshi
+    implementation CoreDepencencies.retrofitMoshiConverter
+
+    implementation JetPackDependencies.lifecycleExtensions
+    kapt JetPackDependencies.lifecycleCompiler
+
+    implementation JetPackDependencies.room
+    kapt JetPackDependencies.roomCompiler
 }
