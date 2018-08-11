@@ -1,13 +1,13 @@
 package com.sedsoftware.core.repository.info
 
 import com.sedsoftware.core.common.Producer
-import com.sedsoftware.core.entity.Currency
-import com.sedsoftware.core.entity.info.CurrencyTrade
+import com.sedsoftware.core.entity.CurrencyPair
+import com.sedsoftware.core.entity.info.CurrencyPairTrade
 import com.sedsoftware.core.repository.Repository
 
 interface CurrencyTradesRepository : Repository {
 
-    suspend fun fetchCurrencyTrades()
+    suspend fun fetchCurrencyPairTrades(pair: CurrencyPair)
 
-    suspend fun getCurrencyTrades(currency: Currency): Producer<List<CurrencyTrade>>
+    suspend fun getCurrencyPairTrades(pair: CurrencyPair): Producer<List<CurrencyPairTrade>>
 }

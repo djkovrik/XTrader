@@ -1,15 +1,15 @@
 package com.sedsoftware.core.repository.info
 
 import com.sedsoftware.core.common.Producer
-import com.sedsoftware.core.entity.Currency
-import com.sedsoftware.core.entity.info.CurrencyDepth
+import com.sedsoftware.core.entity.CurrencyPair
+import com.sedsoftware.core.entity.info.CurrencyPairDepth
 import com.sedsoftware.core.repository.Repository
 
 interface CurrencyDepthRepository : Repository {
 
-    suspend fun fetchCurrencyDepths()
+    suspend fun fetchCurrencyPairDepths(pair: CurrencyPair)
 
-    suspend fun getCurrencyBids(currency: Currency): Producer<List<CurrencyDepth>>
+    suspend fun getCurrencyPairAsks(pair: CurrencyPair): Producer<List<CurrencyPairDepth>>
 
-    suspend fun getCurrencyAsks(currency: Currency): Producer<List<CurrencyDepth>>
+    suspend fun getCurrencyPairBids(pair: CurrencyPair): Producer<List<CurrencyPairDepth>>
 }
