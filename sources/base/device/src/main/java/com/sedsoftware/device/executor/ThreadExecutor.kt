@@ -1,5 +1,6 @@
 package com.sedsoftware.device.executor
 
+import com.sedsoftware.core.common.Suspendable
 import com.sedsoftware.core.executor.Executor
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.Deferred
@@ -11,13 +12,18 @@ import javax.inject.Inject
 
 class ThreadExecutor @Inject constructor() : Executor {
 
-    override fun <T> ui(uiFunc: suspend () -> T): Job =
+    override fun <T> ui(func: Suspendable<T>): Job =
         launch(UI) {
-            uiFunc()
+            func()
         }
 
-    override fun <T> bg(bgFunc: suspend () -> T): Deferred<T> =
+    override fun <T> bg(func: Suspendable<T>): Job =
+        launch(CommonPool) {
+            func()
+        }
+
+    override fun <T> bgWithResult(func: Suspendable<T>): Deferred<T> =
         async(CommonPool) {
-            bgFunc()
+            func()
         }
 }
