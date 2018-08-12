@@ -1,3 +1,5 @@
 package ${corePackageName}.di.provider;
 
-interface ApplicationProvider
+public interface ApplicationProvider {
+
+}

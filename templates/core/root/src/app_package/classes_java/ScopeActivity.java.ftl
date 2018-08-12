@@ -6,4 +6,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Scope
 @Retention(RUNTIME)
-public @interface ActivityScope
+public @interface ActivityScope {
+
+}

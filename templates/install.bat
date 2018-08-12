@@ -6,7 +6,7 @@ SET INJECTOR_DESTINATION=%ANDROID_STUDIO_PATH%\plugins\android\lib\templates\oth
 
 xcopy /s /y "core" "%CORE_DESTINATION%"
 :: xcopy /s /y "uicore" "%UICORE_DESTINATION%"
-xcopy /s /y "injector" "%INJECTOR_DESTINATION%"
+:: xcopy /s /y "injector" "%INJECTOR_DESTINATION%"
 
 echo "Installation completed."
 pause

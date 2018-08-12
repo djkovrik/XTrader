@@ -1,23 +1,18 @@
 <?xml version="1.0"?>
 <template
-    name="Core module"
-    description="Creates a new core module."
     format="5"
-    revision="5">
+    revision="5"
+    name="Core module"
+    description="Creates a new core module">
 
     <category value="Modular" />
-
     <formfactor value="Mobile" />
-
-    <thumbs>
-        <thumb>template_new_project.png</thumb>
-    </thumbs>
 
     <parameter
         name="Core module name"
         constraints="nonempty|module|unique"
         default="core"
-        id="moduleName"
+        id="coreModuleName"
         type="string" />
 
     <parameter
@@ -46,6 +41,10 @@
         id="corePackageName"
         suggest="com.sedsoftware.core"
         type="string" />
+
+    <thumbs>
+        <thumb>template_new_project.png</thumb>
+    </thumbs>
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

@@ -1,1 +1,1 @@
-include ':${moduleName}'
+include ':${coreModuleName}'
