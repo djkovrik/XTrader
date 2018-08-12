@@ -19,10 +19,6 @@
 
     <#include "root://gradle-projects/common/proguard_recipe.xml.ftl"/>
 
-    <#if generateKotlin>
-        <#include "kotlin_files_recipe.xml.ftl" />
-    <#else>
-        <#include "java_files_recipe.xml.ftl" />
-    </#if>
+    <#include "kotlin_files_recipe.xml.ftl" />
 
 </recipe>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <template
-    name="Injector module"
+    name="Injector module (Kotlin)"
     description="Converts main application module to injector module."
     format="5"
     revision="5">
@@ -23,10 +23,10 @@
         type="string" />
 
     <parameter
-        name="Application implementation class name"
+        name="Application class name"
         constraints="class|nonempty"
         default="RealApp"
-        help="Implements defined Application interface and Application class from Android."
+        help="Application class which implements main Application interface."
         id="applicationClass"
         suggest="RealApp"
         type="string" />

@@ -2,7 +2,7 @@
 <template
     format="5"
     revision="5"
-    name="Core module"
+    name="Core module (Kotlin)"
     description="Creates a new core module">
 
     <category value="Modular" />
@@ -10,9 +10,20 @@
 
     <parameter
         name="Core module name"
-        constraints="nonempty|module|unique"
+        constraints="module|nonempty"
         default="core"
+        help="Core module name."
         id="coreModuleName"
+        suggest="core"
+        type="string" />
+
+    <parameter
+        name="Core package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.core"
+        help="Path to core package module."
+        id="corePackageName"
+        suggest="com.sedsoftware.core"
         type="string" />
 
     <parameter
@@ -31,15 +42,6 @@
         help="The name of the application provider interface to create."
         id="applicationProviderInterface"
         suggest="ApplicationProvider"
-        type="string" />
-
-    <parameter
-        name="Package name"
-        constraints="nonempty|package"
-        default="com.sedsoftware.core"
-        help="Path to core package module."
-        id="corePackageName"
-        suggest="com.sedsoftware.core"
         type="string" />
 
     <thumbs>

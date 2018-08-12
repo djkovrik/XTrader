@@ -4,6 +4,4 @@
     <global id="topOut" value="." />
     <global id="projectOut" value="." />
 
-    <#include "root://activities/common/kotlin_globals.xml.ftl" />
-
 </globals>
