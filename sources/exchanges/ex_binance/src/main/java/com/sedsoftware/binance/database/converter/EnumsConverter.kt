@@ -12,7 +12,7 @@ class EnumsConverter {
     fun toCandleInterval(text: String): CandleInterval = enumValueOf(text)
 
     @TypeConverter
-    fun fromCurrencyBinance(currency: CandleInterval): String = currency.name
+    fun fromCurrencyBinance(currency: CurrencyBinance): String = currency.name
 
     @TypeConverter
     fun toCurrencyBinance(text: String): CurrencyBinance = enumValueOf(text)

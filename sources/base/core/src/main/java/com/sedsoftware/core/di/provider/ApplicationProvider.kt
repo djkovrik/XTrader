@@ -1,3 +1,5 @@
 package com.sedsoftware.core.di.provider
 
-interface ApplicationProvider : DeviceToolsProvider
+import com.sedsoftware.core.di.provider.exchange.BinanceProvider
+
+interface ApplicationProvider : BinanceProvider, DeviceToolsProvider
