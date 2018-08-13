@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "trades")
-data class BinanceTrade(
+data class BinanceTrades(
     @PrimaryKey
     @ColumnInfo(name = "id")
     val id: Long,

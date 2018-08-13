@@ -7,7 +7,7 @@ import com.sedsoftware.binance.enums.OrderType
 import com.sedsoftware.binance.enums.SymbolStatus
 
 @Entity(tableName = "symbols")
-data class BinanceSymbol(
+data class BinanceSymbols(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Long,

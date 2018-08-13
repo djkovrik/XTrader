@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.sedsoftware.binance.enums.OrderType
 
-@Entity(tableName = "depth")
-data class BinanceDepth(
+@Entity(tableName = "depths")
+data class BinanceDepths(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Long,
