@@ -4,8 +4,7 @@ import com.sedsoftware.core.entity.Currency
 import com.sedsoftware.core.entity.Exchange
 
 enum class CurrencyBinance(
-    override val label: String,
-    override val exchange: Exchange = CurrentExchange.BINANCE
+    override val label: String
 ) : Currency {
     ADA("Cardano"),
     ADX("AdEx"),
