@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sedsoftware.screen_main">
+    package="com.sedsoftware.mainscreen">
 
     <application>
 
         <activity
-            android:name="com.sedsoftware.screen_main.MainActivity"
+            android:name="com.sedsoftware.mainscreen.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/Theme.MyApp">
 

@@ -1,4 +1,4 @@
-package com.sedsoftware.core_ui.base
+package com.sedsoftware.coreui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
