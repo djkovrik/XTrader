@@ -1,4 +1,4 @@
-package com.sedsoftware.binance.enums
+package com.sedsoftware.binance.common.enums
 
 import com.sedsoftware.core.entity.Currency
 import com.sedsoftware.core.entity.Exchange

@@ -1,4 +1,4 @@
-package com.sedsoftware.binance.enums
+package com.sedsoftware.binance.common.enums
 
 enum class CandleInterval(val value: String) {
     MINUTE_1("1m"),

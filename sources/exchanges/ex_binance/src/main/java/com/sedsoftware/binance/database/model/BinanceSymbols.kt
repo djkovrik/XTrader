@@ -3,8 +3,8 @@ package com.sedsoftware.binance.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.sedsoftware.binance.enums.OrderType
-import com.sedsoftware.binance.enums.SymbolStatus
+import com.sedsoftware.binance.common.enums.OrderType
+import com.sedsoftware.binance.common.enums.SymbolStatus
 
 @Entity(tableName = "symbols")
 data class BinanceSymbols(

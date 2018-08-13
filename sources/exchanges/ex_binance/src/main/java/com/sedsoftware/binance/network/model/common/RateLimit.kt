@@ -1,6 +1,6 @@
 package com.sedsoftware.binance.network.model.common
 
-import com.sedsoftware.binance.enums.RateLimitInterval
+import com.sedsoftware.binance.common.enums.RateLimitInterval
 
 data class RateLimit(
     val rateLimitType: String,

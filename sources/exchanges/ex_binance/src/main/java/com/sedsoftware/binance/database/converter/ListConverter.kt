@@ -1,7 +1,7 @@
 package com.sedsoftware.binance.database.converter
 
 import androidx.room.TypeConverter
-import com.sedsoftware.binance.enums.OrderType
+import com.sedsoftware.binance.common.enums.OrderType
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types

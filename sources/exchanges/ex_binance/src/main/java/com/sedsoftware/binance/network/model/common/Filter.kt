@@ -1,6 +1,6 @@
 package com.sedsoftware.binance.network.model.common
 
-import com.sedsoftware.binance.enums.Filters
+import com.sedsoftware.binance.common.enums.Filters
 
 data class Filter(
     val filterType: Filters,

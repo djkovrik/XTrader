@@ -1,4 +1,4 @@
-package com.sedsoftware.binance.enums
+package com.sedsoftware.binance.common.enums
 
 enum class RateLimitInterval {
     SECOND,
