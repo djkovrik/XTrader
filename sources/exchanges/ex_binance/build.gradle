@@ -47,6 +47,8 @@ dependencies {
     implementation CoreDepencencies.retrofitCoroutinesAdapter
     implementation CoreDepencencies.okhttp
     implementation CoreDepencencies.moshi
+    implementation CoreDepencencies.moshiKotlin
+    implementation CoreDepencencies.moshiAdapters
     implementation CoreDepencencies.retrofitMoshiConverter
 
     implementation JetPackDependencies.lifecycleExtensions
