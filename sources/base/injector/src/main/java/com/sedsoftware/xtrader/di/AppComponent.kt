@@ -9,10 +9,12 @@ import com.sedsoftware.xtrader.XTraderApp
 import dagger.Component
 import javax.inject.Singleton
 
-@Component(dependencies = [
-    BinanceProvider::class,
-    DeviceToolsProvider::class
-])
+@Component(
+    dependencies = [
+        BinanceProvider::class,
+        DeviceToolsProvider::class
+    ]
+)
 @Singleton
 interface AppComponent : ApplicationProvider {
 

@@ -5,8 +5,14 @@ import com.sedsoftware.core.di.provider.exchange.BinanceProvider
 import dagger.Component
 
 @Component(
-    dependencies = [DeviceToolsProvider::class],
-    modules = [BinanceModule::class]
+    dependencies = [
+        DeviceToolsProvider::class
+    ],
+    modules = [
+        BinanceExportModule::class,
+        BinanceDatabaseModule::class,
+        BinanceNetworkModule::class
+    ]
 )
 interface BinanceComponent : BinanceProvider {
     class Initializer private constructor() {

@@ -7,8 +7,12 @@ import dagger.Component
 
 @ActivityScope
 @Component(
-    dependencies = [ApplicationProvider::class],
-    modules = [MainActivityModule::class]
+    dependencies = [
+        ApplicationProvider::class
+    ],
+    modules = [
+        MainActivityModule::class
+    ]
 )
 interface MainActivityComponent {
 

@@ -7,7 +7,11 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [DeviceToolsModule::class])
+@Component(
+    modules = [
+        DeviceToolsModule::class
+    ]
+)
 interface DeviceToolsComponent : DeviceToolsProvider {
 
     @Component.Builder
