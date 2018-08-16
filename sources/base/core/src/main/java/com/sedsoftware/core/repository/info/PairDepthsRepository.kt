@@ -5,9 +5,7 @@ import com.sedsoftware.core.entity.CurrencyPair
 import com.sedsoftware.core.entity.info.CurrencyPairDepth
 import com.sedsoftware.core.repository.Repository
 
-interface CurrencyDepthRepository : Repository {
-
-    suspend fun fetchCurrencyPairDepths(pair: CurrencyPair)
+interface PairDepthsRepository : Repository {
 
     suspend fun getCurrencyPairAsks(pair: CurrencyPair): Producer<List<CurrencyPairDepth>>
 

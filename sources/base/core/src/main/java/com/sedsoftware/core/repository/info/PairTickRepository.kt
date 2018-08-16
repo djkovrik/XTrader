@@ -5,9 +5,7 @@ import com.sedsoftware.core.entity.CurrencyPair
 import com.sedsoftware.core.entity.info.CurrencyPairTick
 import com.sedsoftware.core.repository.Repository
 
-interface CurrencyTickRepository : Repository {
-
-    suspend fun fetchCurrencyTick(pair: CurrencyPair)
+interface PairTickRepository : Repository {
 
     suspend fun getCurrencyTick(pair: CurrencyPair): Producer<CurrencyPairTick>
 }
