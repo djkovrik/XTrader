@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 import com.sedsoftware.binance.common.params.Filters
 import com.sedsoftware.binance.common.params.OrderType
 import com.sedsoftware.binance.common.params.SymbolStatus
-import java.util.Date
 
 @Entity(tableName = "symbols")
 data class BinanceSymbolDbModel(
@@ -15,8 +14,8 @@ data class BinanceSymbolDbModel(
     val id: Long = 0,
     @ColumnInfo(name = "symbol")
     val symbol: String,
-    @ColumnInfo(name = "last_sync_date")
-    val syncDate: Date,
+    @ColumnInfo(name = "last_sync_timestamp")
+    val syncDate: Long,
     @ColumnInfo(name = "status")
     val status: SymbolStatus,
     @ColumnInfo(name = "base_asset")

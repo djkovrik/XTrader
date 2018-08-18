@@ -3,7 +3,7 @@ package com.sedsoftware.binance.entity
 import com.sedsoftware.core.entity.CurrencyPair
 import com.sedsoftware.core.entity.info.CurrencyPairDepth
 
-class BinanceCurrencyPairDepth(
+data class BinanceCurrencyPairDepth(
     override val pair: CurrencyPair,
     override val amount: Float,
     override val price: Float,

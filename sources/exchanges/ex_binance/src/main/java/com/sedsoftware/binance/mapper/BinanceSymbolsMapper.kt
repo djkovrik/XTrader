@@ -1,10 +1,9 @@
 package com.sedsoftware.binance.mapper
 
-import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.database.model.BinanceSymbolDbModel
+import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.network.model.SymbolInfoModel
 import com.sedsoftware.core.entity.Currency
-import java.util.Date
 import javax.inject.Inject
 
 class BinanceSymbolsMapper @Inject constructor() {
@@ -15,13 +14,13 @@ class BinanceSymbolsMapper @Inject constructor() {
     fun mapMarketSymbolsFromDb(from: List<BinanceSymbolDbModel>): List<Currency> =
         from.map { enumValueOf<BinanceCurrency>(it.quoteAsset) }
 
-    fun mapFromCloudToDb(from: List<SymbolInfoModel>, currentDate: Date): List<BinanceSymbolDbModel> =
+    fun mapFromCloudToDb(from: List<SymbolInfoModel>, currentDate: Long): List<BinanceSymbolDbModel> =
         from.map { mapSymbolToDb(it, currentDate) }
 
-    private fun mapSymbolToDb(from: SymbolInfoModel, date: Date): BinanceSymbolDbModel =
+    private fun mapSymbolToDb(from: SymbolInfoModel, timestamp: Long): BinanceSymbolDbModel =
         BinanceSymbolDbModel(
             symbol = from.symbol,
-            syncDate = date,
+            syncDate = timestamp,
             status = from.status,
             baseAsset = from.baseAsset,
             baseAssetPrecision = from.baseAssetPrecision,
