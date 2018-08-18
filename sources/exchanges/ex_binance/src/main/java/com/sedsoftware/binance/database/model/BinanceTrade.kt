@@ -3,10 +3,10 @@ package com.sedsoftware.binance.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+import java.util.Date
 
 @Entity(tableName = "trades")
-data class BinanceTrades(
+data class BinanceTrade(
     @PrimaryKey
     @ColumnInfo(name = "id")
     val id: Long,

@@ -10,17 +10,17 @@ import com.sedsoftware.binance.database.dao.BinanceDepthsDao
 import com.sedsoftware.binance.database.dao.BinanceSymbolsDao
 import com.sedsoftware.binance.database.dao.BinanceTicksDao
 import com.sedsoftware.binance.database.dao.BinanceTradesDao
-import com.sedsoftware.binance.database.model.BinanceDepths
-import com.sedsoftware.binance.database.model.BinanceSymbols
-import com.sedsoftware.binance.database.model.BinanceTicks
-import com.sedsoftware.binance.database.model.BinanceTrades
+import com.sedsoftware.binance.database.model.BinanceDepth
+import com.sedsoftware.binance.database.model.BinanceSymbol
+import com.sedsoftware.binance.database.model.BinanceTick
+import com.sedsoftware.binance.database.model.BinanceTrade
 
 @Database(
     entities = [
-        BinanceDepths::class,
-        BinanceSymbols::class,
-        BinanceTicks::class,
-        BinanceTrades::class
+        BinanceDepth::class,
+        BinanceSymbol::class,
+        BinanceTick::class,
+        BinanceTrade::class
     ],
     version = BinanceDatabase.DATABASE_VERSION)
 @TypeConverters(DateConverter::class, EnumsConverter::class, ListConverter::class)

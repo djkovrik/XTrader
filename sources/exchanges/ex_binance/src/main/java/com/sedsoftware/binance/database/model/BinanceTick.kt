@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "ticks")
-data class BinanceTicks(
+data class BinanceTick(
     @PrimaryKey
     @ColumnInfo(name = "symbol_id")
     val symbol: String,

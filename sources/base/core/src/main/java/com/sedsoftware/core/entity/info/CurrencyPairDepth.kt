@@ -7,4 +7,5 @@ interface CurrencyPairDepth {
     val amount: Float
     val price: Float
     val total: Float
+    val isBid: Boolean
 }

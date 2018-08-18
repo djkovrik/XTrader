@@ -3,16 +3,20 @@ package com.sedsoftware.binance.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.sedsoftware.binance.common.params.Filters
 import com.sedsoftware.binance.common.params.OrderType
 import com.sedsoftware.binance.common.params.SymbolStatus
+import java.util.Date
 
 @Entity(tableName = "symbols")
-data class BinanceSymbols(
+data class BinanceSymbol(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Long,
+    val id: Long = 0,
     @ColumnInfo(name = "symbol")
     val symbol: String,
+    @ColumnInfo(name = "last_sync_date")
+    val syncDate: Date,
     @ColumnInfo(name = "status")
     val status: SymbolStatus,
     @ColumnInfo(name = "base_asset")
@@ -26,5 +30,7 @@ data class BinanceSymbols(
     @ColumnInfo(name = "order_types")
     val orderTypes: List<OrderType>,
     @ColumnInfo(name = "iceberg_allowed")
-    val icebergAllowed: Boolean
+    val icebergAllowed: Boolean,
+    @ColumnInfo(name = "filters")
+    val filters: List<Filters>
 )
