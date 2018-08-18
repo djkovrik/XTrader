@@ -11,6 +11,7 @@ object Versions {
     const val GRADLE_VERSIONS_VERSION = "0.20.0"
     const val GRADLE_VERSIONING_VERSION = "0.4.4"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha02"
+    const val ANDROID_JUNIT5_VERSION = "1.2.0.0"
 
     // Kotlin
     const val KOTLIN_VERSION = "1.2.60"
@@ -40,7 +41,7 @@ object Versions {
     const val RETROFIT_VERSION = "2.4.0"
     const val MOSHI_VERSION = "1.6.0"
     const val RETROFIT_COROUTINES_ADAPTER_VERSION = "1.0.0"
-    const val OKHTTP_VERSION = "3.10.0"
+    const val OKHTTP_VERSION = "3.11.0"
 
     // UI
     const val MATERIAL_VALUES_VERSION = "1.1.1"
@@ -48,13 +49,12 @@ object Versions {
     const val MP_ANDROID_CHART_VERSION = "v3.0.3"
 
     // Testing
+    const val JUNIT5_VERSION = "5.2.0"
+    const val JUNIT5_RUNNER_VERSION = "0.2.2"
     const val TEST_RUNNER_VERSION = "1.1.0-alpha1"
     const val TEST_RULES_VERSION = "1.1.0-alpha1"
     const val ESPRESSO_VERSION = "3.1.0-alpha1"
-    const val JUNIT_VERSION = "4.12"
-    const val JUNIT_PLATFORM_ENGINE_VERSION = "1.3.0-M1"
-    const val JUNIT_PLATFORM_RUNNER_VERSION = "1.3.0-M1"
-    const val SPEK_VERSION = "1.2.0"
+    const val SPEK_VERSION = "2.0.0-alpha.1"
     const val EXPEKT_VERSION = "0.5.0"
     const val KAKAO_VERSION = "1.3.0"
 
