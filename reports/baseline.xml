@@ -4,6 +4,6 @@
   <Whitelist timestamp="1534445692181">
     <ID>MagicNumber:ParamsSigner.kt$ParamsSigner$4</ID>
     <ID>MaxLineLength:CoreDepencencies.kt$CoreDepencencies$const val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$RETROFIT_COROUTINES_ADAPTER_VERSION"</ID>
-    <ID>WildcardImport:EnumsConverter.kt$import com.sedsoftware.binance.common.enums.*</ID>
+    <ID>WildcardImport:EnumsConverter.kt$import com.sedsoftware.binance.common.params.*</ID>
   </Whitelist>
 </SmellBaseline>

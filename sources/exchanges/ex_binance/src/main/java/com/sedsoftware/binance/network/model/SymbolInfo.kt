@@ -1,8 +1,8 @@
 package com.sedsoftware.binance.network.model
 
-import com.sedsoftware.binance.common.enums.Filters
-import com.sedsoftware.binance.common.enums.OrderType
-import com.sedsoftware.binance.common.enums.SymbolStatus
+import com.sedsoftware.binance.common.params.Filters
+import com.sedsoftware.binance.common.params.OrderType
+import com.sedsoftware.binance.common.params.SymbolStatus
 
 data class SymbolInfo(
     val symbol: String,

@@ -1,7 +1,7 @@
 package com.sedsoftware.binance.database.converter
 
 import androidx.room.TypeConverter
-import com.sedsoftware.binance.common.enums.*
+import com.sedsoftware.binance.common.params.*
 
 class EnumsConverter {
 

@@ -1,7 +1,6 @@
-package com.sedsoftware.binance.common.enums
+package com.sedsoftware.binance.common.params
 
 import com.sedsoftware.core.entity.Currency
-import com.sedsoftware.core.entity.Exchange
 
 enum class CurrencyBinance(
     override val label: String
