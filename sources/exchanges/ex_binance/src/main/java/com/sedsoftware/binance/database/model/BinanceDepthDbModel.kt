@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.sedsoftware.binance.common.params.OrderSide
 
 @Entity(tableName = "depths")
-data class BinanceDepth(
+data class BinanceDepthDbModel(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Long = 0,

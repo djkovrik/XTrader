@@ -1,4 +1,4 @@
-package com.sedsoftware.binance.common
+package com.sedsoftware.binance.entity
 
 import com.sedsoftware.core.entity.Currency
 import com.sedsoftware.core.entity.CurrencyPair

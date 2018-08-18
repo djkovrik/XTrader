@@ -9,7 +9,7 @@ import com.sedsoftware.binance.common.params.SymbolStatus
 import java.util.Date
 
 @Entity(tableName = "symbols")
-data class BinanceSymbol(
+data class BinanceSymbolDbModel(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Long = 0,

@@ -1,7 +1,7 @@
 package com.sedsoftware.binance.network
 
-import com.sedsoftware.binance.network.model.SymbolTick
-import com.sedsoftware.binance.network.model.SymbolTrade
+import com.sedsoftware.binance.network.model.SymbolTickModel
+import com.sedsoftware.binance.network.model.SymbolTradeModel
 import com.sedsoftware.binance.network.model.dto.PairDepthDto
 import com.sedsoftware.binance.network.model.dto.PairsInfoDto
 import kotlinx.coroutines.experimental.Deferred
@@ -17,8 +17,8 @@ interface BinanceApi {
     fun getPairDepth(@Query("symbol") symbol: String): Deferred<PairDepthDto>
 
     @GET("/api/v3/ticker/bookTicker")
-    fun getPairTick(@Query("symbol") symbol: String): Deferred<SymbolTick>
+    fun getPairTick(@Query("symbol") symbol: String): Deferred<SymbolTickModel>
 
     @GET("/api/v1/trades")
-    fun getPairTrades(@Query("symbol") symbol: String): Deferred<List<SymbolTrade>>
+    fun getPairTrades(@Query("symbol") symbol: String): Deferred<List<SymbolTradeModel>>
 }

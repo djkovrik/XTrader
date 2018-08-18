@@ -1,6 +1,6 @@
 package com.sedsoftware.binance.network.model
 
-data class SymbolTick(
+data class SymbolTickModel(
     val symbol: String,
     val bidPrice: String,
     val bidQty: String,

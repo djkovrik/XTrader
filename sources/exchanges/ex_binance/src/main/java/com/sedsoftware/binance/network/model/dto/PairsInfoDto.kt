@@ -1,7 +1,7 @@
 package com.sedsoftware.binance.network.model.dto
 
 import com.sedsoftware.binance.common.params.Filters
-import com.sedsoftware.binance.network.model.SymbolInfo
+import com.sedsoftware.binance.network.model.SymbolInfoModel
 import com.sedsoftware.binance.network.model.common.RateLimit
 
 data class PairsInfoDto(
@@ -9,5 +9,5 @@ data class PairsInfoDto(
     val serverTime: Long,
     val rateLimits: RateLimit,
     val exchangeFilters: List<Filters>,
-    val symbols: List<SymbolInfo>
+    val symbols: List<SymbolInfoModel>
 )

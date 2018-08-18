@@ -1,5 +1,6 @@
-package com.sedsoftware.core.entity
+package com.sedsoftware.core.entity.misc
 
+import com.sedsoftware.core.entity.Exchange
 import java.util.Date
 
 interface ExchangePairsState {

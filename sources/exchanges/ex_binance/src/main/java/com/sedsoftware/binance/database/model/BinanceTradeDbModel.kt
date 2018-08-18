@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.Date
 
 @Entity(tableName = "trades")
-data class BinanceTrade(
+data class BinanceTradeDbModel(
     @PrimaryKey
     @ColumnInfo(name = "id")
     val id: Long,

@@ -1,6 +1,6 @@
 package com.sedsoftware.binance.network.model
 
-data class SymbolTrade(
+data class SymbolTradeModel(
     val id: Long,
     val price: Float,
     val qty: Float,

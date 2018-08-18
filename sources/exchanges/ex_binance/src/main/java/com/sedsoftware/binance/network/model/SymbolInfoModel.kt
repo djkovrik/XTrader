@@ -4,7 +4,7 @@ import com.sedsoftware.binance.common.params.Filters
 import com.sedsoftware.binance.common.params.OrderType
 import com.sedsoftware.binance.common.params.SymbolStatus
 
-data class SymbolInfo(
+data class SymbolInfoModel(
     val symbol: String,
     val status: SymbolStatus,
     val baseAsset: String,
