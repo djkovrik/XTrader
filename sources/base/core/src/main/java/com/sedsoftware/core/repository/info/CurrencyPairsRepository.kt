@@ -11,5 +11,5 @@ interface CurrencyPairsRepository : Repository {
 
     suspend fun getAllBaseCurrencies(): Producer<List<Currency>>
 
-    suspend fun getMarketCurrenciesForBase(baseCurrency: Currency): Producer<List<Currency>>
+    suspend fun getCurrenciesPairsForBase(baseCurrency: Currency): Producer<List<CurrencyPair>>
 }

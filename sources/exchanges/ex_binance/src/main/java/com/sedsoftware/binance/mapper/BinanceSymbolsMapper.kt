@@ -2,6 +2,8 @@ package com.sedsoftware.binance.mapper
 
 import com.sedsoftware.binance.database.model.BinanceSymbolDbModel
 import com.sedsoftware.binance.entity.BinanceCurrency
+import com.sedsoftware.binance.entity.BinanceCurrencyPair
+import com.sedsoftware.binance.entity.BinanceExchange
 import com.sedsoftware.binance.network.model.SymbolInfoModel
 import javax.inject.Inject
 
@@ -24,6 +26,13 @@ class BinanceSymbolsMapper @Inject constructor() {
     fun mapBaseSymbolsFromDb(from: List<BinanceSymbolDbModel>): List<BinanceCurrency> =
         from.map { enumValueOf<BinanceCurrency>(it.baseAsset) }
 
-    fun mapMarketSymbolsFromDb(from: List<BinanceSymbolDbModel>): List<BinanceCurrency> =
-        from.map { enumValueOf<BinanceCurrency>(it.quoteAsset) }
+    fun mapMarketPairsFromDb(from: List<BinanceSymbolDbModel>): List<BinanceCurrencyPair> =
+        from.map {
+            BinanceCurrencyPair(
+                exchange = BinanceExchange.BINANCE,
+                baseCurrency = enumValueOf<BinanceCurrency>(it.baseAsset),
+                marketCurrency = enumValueOf<BinanceCurrency>(it.quoteAsset),
+                symbol = it.symbol
+            )
+        }
 }
