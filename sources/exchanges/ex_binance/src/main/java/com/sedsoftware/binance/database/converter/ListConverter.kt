@@ -1,6 +1,7 @@
 package com.sedsoftware.binance.database.converter
 
 import androidx.room.TypeConverter
+import com.sedsoftware.binance.common.params.Filters
 import com.sedsoftware.binance.common.params.OrderType
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -19,16 +20,29 @@ class ListConverter {
             .build()
     }
 
-    private val jsonAdapter: JsonAdapter<List<OrderType>> by lazy {
+    private val jsonAdapterOrderType: JsonAdapter<List<OrderType>> by lazy {
         val orderTypeList = Types.newParameterizedType(List::class.java, OrderType::class.java)
         return@lazy moshi.adapter<List<OrderType>>(orderTypeList)
     }
 
-    @TypeConverter
-    fun fromList(list: List<OrderType>): String =
-        jsonAdapter.toJson(list)
+    private val jsonAdapterFilters: JsonAdapter<List<Filters>> by lazy {
+        val filtersList = Types.newParameterizedType(List::class.java, Filters::class.java)
+        return@lazy moshi.adapter<List<Filters>>(filtersList)
+    }
 
     @TypeConverter
-    fun toList(text: String): List<OrderType> =
-        jsonAdapter.fromJson(text) ?: emptyList()
+    fun fromListOrderType(list: List<OrderType>): String =
+        jsonAdapterOrderType.toJson(list)
+
+    @TypeConverter
+    fun toListOrderType(text: String): List<OrderType> =
+        jsonAdapterOrderType.fromJson(text) ?: emptyList()
+
+    @TypeConverter
+    fun fromListFilters(list: List<Filters>): String =
+        jsonAdapterFilters.toJson(list)
+
+    @TypeConverter
+    fun toListFilters(text: String): List<Filters> =
+        jsonAdapterFilters.fromJson(text) ?: emptyList()
 }
