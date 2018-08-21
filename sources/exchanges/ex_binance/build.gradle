@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
+apply plugin: "de.mannodermaus.android-junit5"
 
 android {
     compileSdkVersion Versions.COMPILE_SDK_VERSION
@@ -13,6 +14,7 @@ android {
         versionName androidGitVersion.name()
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder"
 
         resConfigs "en", "ru"
     }
@@ -28,10 +30,15 @@ android {
         }
     }
 
-}
-
-androidExtensions {
-    experimental = true
+    testOptions {
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2'
+                }
+            }
+        }
+    }
 }
 
 dependencies {
@@ -56,4 +63,9 @@ dependencies {
 
     implementation JetPackDependencies.room
     kapt JetPackDependencies.roomCompiler
+
+    testImplementation TestingDependencies.spekDsl
+    testImplementation TestingDependencies.spekRunner
+
+    testImplementation TestingDependencies.expekt
 }
