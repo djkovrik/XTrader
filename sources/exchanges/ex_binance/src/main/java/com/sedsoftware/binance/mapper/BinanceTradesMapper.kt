@@ -11,9 +11,9 @@ class BinanceTradesMapper @Inject constructor() {
         BinanceTradeDbModel(
             id = from.id,
             time = from.time,
-            qty = from.qty,
-            price = from.price,
-            total = from.qty * from.price,
+            qty = from.qty.toFloat(),
+            price = from.price.toFloat(),
+            total = from.qty.toFloat() * from.price.toFloat(),
             isBuyerMaker = from.isBuyerMaker,
             isBestMatch = from.isBestMatch
         )
