@@ -16,15 +16,7 @@ class BinanceTicksMapperTest : Spek({
         val mapper by memoized { BinanceTicksMapper() }
         val fakeDataSource by memoized(CachingMode.SCOPE) { FakeTickData() }
 
-        lateinit var parsedEntity: SymbolTickModel
-
-        context("Parsing json from cloud") {
-            parsedEntity = fakeDataSource.getRawParsedData()
-
-            it("Should return correct entity") {
-                parsedEntity.should.equal(fakeDataSource.getPredefinedParsedEntity())
-            }
-        }
+        val parsedEntity = fakeDataSource.getPredefinedParsedEntity()
 
         lateinit var mappedDbEntity: BinanceTickDbModel
 
@@ -32,7 +24,7 @@ class BinanceTicksMapperTest : Spek({
             mappedDbEntity = mapper.mapFromCloudToDb(parsedEntity)
 
             it("should return correct value") {
-                mappedDbEntity.should.equal(fakeDataSource.getDatabasEntity())
+                mappedDbEntity.should.equal(fakeDataSource.getDatabaseEntity())
             }
         }
 

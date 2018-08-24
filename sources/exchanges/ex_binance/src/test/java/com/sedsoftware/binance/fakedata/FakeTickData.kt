@@ -37,7 +37,7 @@ class FakeTickData {
             askQty = "13.39000000"
         )
 
-    fun getDatabasEntity(): BinanceTickDbModel =
+    fun getDatabaseEntity(): BinanceTickDbModel =
         BinanceTickDbModel(
             symbol = "LTCBTC",
             bidPrice = 0.008542f,

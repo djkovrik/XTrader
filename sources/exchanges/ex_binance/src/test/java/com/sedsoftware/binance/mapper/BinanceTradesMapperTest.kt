@@ -16,15 +16,7 @@ class BinanceTradesMapperTest : Spek({
         val mapper by memoized { BinanceTradesMapper() }
         val fakeDataSource by memoized(CachingMode.SCOPE) { FakeTradesData() }
 
-        lateinit var parsedList: List<SymbolTradeModel>
-
-        context("Parsing json from cloud") {
-            parsedList = fakeDataSource.getRawParsedData()
-
-            it("Should return correct list") {
-                parsedList.should.equal(fakeDataSource.getPredefinedParsedList())
-            }
-        }
+        val parsedList = fakeDataSource.getPredefinedParsedList()
 
         lateinit var mappedDbEntities: List<BinanceTradeDbModel>
 
