@@ -2,7 +2,6 @@ package com.sedsoftware.binance.fakedata
 
 import com.sedsoftware.binance.database.model.BinanceTradeDbModel
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTrade
-import com.sedsoftware.binance.fakedata.json.SymbolTrades
 import com.sedsoftware.binance.network.model.SymbolTradeModel
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -25,8 +24,8 @@ class FakeTradesData {
         return@lazy moshi.adapter<List<SymbolTradeModel>>(filtersList)
     }
 
-    fun getRawParsedData(): List<SymbolTradeModel> =
-        jsonAdapter.fromJson(SymbolTrades.JSON) ?: emptyList()
+    fun getRawParsedData(jsonText: String): List<SymbolTradeModel> =
+        jsonAdapter.fromJson(jsonText) ?: emptyList()
 
 
     fun getPredefinedParsedList(): List<SymbolTradeModel> =

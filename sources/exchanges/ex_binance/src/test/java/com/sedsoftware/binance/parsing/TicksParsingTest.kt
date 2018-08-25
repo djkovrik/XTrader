@@ -1,6 +1,7 @@
 package com.sedsoftware.binance.parsing
 
 import com.sedsoftware.binance.fakedata.FakeTickData
+import com.sedsoftware.binance.readStringFromResource
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.lifecycle.CachingMode
@@ -13,7 +14,8 @@ class TicksParsingTest : Spek({
         val fakeDataSource by memoized(CachingMode.SCOPE) { FakeTickData() }
 
         context("Parsing json") {
-            val parsedEntity = fakeDataSource.getRawParsedData()
+            val jsonText = readStringFromResource("/symbol_tick.json")
+            val parsedEntity = fakeDataSource.getRawParsedData(jsonText)
 
             it("Should return correct entity") {
                 parsedEntity.should.equal(fakeDataSource.getPredefinedParsedEntity())

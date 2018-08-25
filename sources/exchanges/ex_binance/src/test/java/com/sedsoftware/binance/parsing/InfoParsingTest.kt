@@ -1,6 +1,7 @@
 package com.sedsoftware.binance.parsing
 
 import com.sedsoftware.binance.fakedata.FakeInfoData
+import com.sedsoftware.binance.readStringFromResource
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.lifecycle.CachingMode
@@ -13,11 +14,11 @@ class InfoParsingTest : Spek({
         val fakeDataSource by memoized(CachingMode.SCOPE) { FakeInfoData() }
 
         context("Parsing json") {
-            val parsedDto = fakeDataSource.getRawParsedData()
-            val predefinedDto = fakeDataSource.getPredefinedParsedDto()
+            val jsonText = readStringFromResource("/symbols_info.json")
+            val parsedDto = fakeDataSource.getRawParsedData(jsonText)
 
             it("Should return correct entity") {
-                parsedDto.should.equal(predefinedDto)
+                parsedDto.should.equal(fakeDataSource.getPredefinedParsedDto())
             }
         }
     }

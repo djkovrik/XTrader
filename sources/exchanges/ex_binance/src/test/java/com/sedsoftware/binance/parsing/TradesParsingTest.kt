@@ -1,6 +1,7 @@
 package com.sedsoftware.binance.parsing
 
 import com.sedsoftware.binance.fakedata.FakeTradesData
+import com.sedsoftware.binance.readStringFromResource
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.lifecycle.CachingMode
@@ -13,7 +14,8 @@ class TradesParsingTest : Spek({
         val fakeDataSource by memoized(CachingMode.SCOPE) { FakeTradesData() }
 
         context("Parsing json") {
-            val parsedList = fakeDataSource.getRawParsedData()
+            val jsonText = readStringFromResource("/symbol_trades.json")
+            val parsedList = fakeDataSource.getRawParsedData(jsonText)
 
             it("Should return correct list") {
                 parsedList.should.equal(fakeDataSource.getPredefinedParsedList())

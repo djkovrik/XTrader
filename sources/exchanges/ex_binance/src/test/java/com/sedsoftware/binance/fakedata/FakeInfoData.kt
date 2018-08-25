@@ -9,7 +9,6 @@ import com.sedsoftware.binance.database.model.BinanceSymbolDbModel
 import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.entity.BinanceCurrencyPair
 import com.sedsoftware.binance.entity.BinanceExchange
-import com.sedsoftware.binance.fakedata.json.SymbolsInfo
 import com.sedsoftware.binance.network.model.SymbolInfoModel
 import com.sedsoftware.binance.network.model.common.Filter
 import com.sedsoftware.binance.network.model.common.RateLimit
@@ -33,8 +32,8 @@ class FakeInfoData {
         return@lazy moshi.adapter(PairsInfoDto::class.java)
     }
 
-    fun getRawParsedData(): PairsInfoDto =
-        jsonAdapter.fromJson(SymbolsInfo.JSON) ?: getEmptyInfo()
+    fun getRawParsedData(jsonText: String): PairsInfoDto =
+        jsonAdapter.fromJson(jsonText) ?: getEmptyInfo()
 
 
     fun getPredefinedParsedDto(): PairsInfoDto =

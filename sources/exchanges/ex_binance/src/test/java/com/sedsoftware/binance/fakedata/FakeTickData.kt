@@ -3,7 +3,6 @@ package com.sedsoftware.binance.fakedata
 import com.sedsoftware.binance.database.model.BinanceTickDbModel
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTick
 import com.sedsoftware.binance.entity.BinanceExchange
-import com.sedsoftware.binance.fakedata.json.SymbolTick
 import com.sedsoftware.binance.network.model.SymbolTickModel
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -24,8 +23,8 @@ class FakeTickData {
         return@lazy moshi.adapter(SymbolTickModel::class.java)
     }
 
-    fun getRawParsedData(): SymbolTickModel =
-        jsonAdapter.fromJson(SymbolTick.JSON) ?: SymbolTickModel("", "", "", "", "")
+    fun getRawParsedData(jsonText: String): SymbolTickModel =
+        jsonAdapter.fromJson(jsonText) ?: SymbolTickModel("", "", "", "", "")
 
 
     fun getPredefinedParsedEntity(): SymbolTickModel =
