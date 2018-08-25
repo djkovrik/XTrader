@@ -56,6 +56,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     GTO("Gifto"),
     GVT("Genesis Vision"),
     GXS("GXChain"),
+    HC("HyperCash"),
     HOT("Holo"),
     HSR("Hshare"),
     ICN("Iconomi"),
