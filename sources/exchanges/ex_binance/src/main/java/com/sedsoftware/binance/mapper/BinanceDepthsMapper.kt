@@ -6,22 +6,46 @@ import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.entity.BinanceCurrencyPair
 import com.sedsoftware.binance.entity.BinanceCurrencyPairDepth
 import com.sedsoftware.binance.entity.BinanceExchange
+import com.sedsoftware.binance.network.model.dto.PairDepthDto
 import com.sedsoftware.core.entity.CurrencyPair
 import javax.inject.Inject
 
 class BinanceDepthsMapper @Inject constructor() {
 
-    fun mapFromCloudToDb(pair: CurrencyPair, element: Pair<String, String>, isBid: Boolean): BinanceDepthDbModel =
-        BinanceDepthDbModel(
-            baseCurrencyName = pair.baseCurrency.name,
-            baseCurrencyLabel = pair.baseCurrency.label,
-            marketCurrencyName = pair.marketCurrency.name,
-            marketCurrencyLabel = pair.marketCurrency.label,
-            amount = element.first.toFloat(),
-            price = element.second.toFloat(),
-            total = element.first.toFloat() * element.second.toFloat(),
-            orderSide = if (isBid) OrderSide.SELL else OrderSide.BUY
-        )
+    fun mapFromCloudToDb(pair: CurrencyPair, depthsInfo: PairDepthDto): List<BinanceDepthDbModel> {
+
+        val result = mutableListOf<BinanceDepthDbModel>()
+
+        depthsInfo.bids.forEach { bid ->
+            val entity = BinanceDepthDbModel(
+                baseCurrencyName = pair.baseCurrency.name,
+                baseCurrencyLabel = pair.baseCurrency.label,
+                marketCurrencyName = pair.marketCurrency.name,
+                marketCurrencyLabel = pair.marketCurrency.label,
+                amount = bid[1].toString().toFloat(),
+                price = bid[0].toString().toFloat(),
+                total = bid[0].toString().toFloat() * bid[1].toString().toFloat(),
+                orderSide = OrderSide.SELL
+            )
+            result.add(entity)
+        }
+
+        depthsInfo.asks.forEach { ask ->
+            val entity = BinanceDepthDbModel(
+                baseCurrencyName = pair.baseCurrency.name,
+                baseCurrencyLabel = pair.baseCurrency.label,
+                marketCurrencyName = pair.marketCurrency.name,
+                marketCurrencyLabel = pair.marketCurrency.label,
+                amount = ask[1].toString().toFloat(),
+                price = ask[0].toString().toFloat(),
+                total = ask[0].toString().toFloat() * ask[1].toString().toFloat(),
+                orderSide = OrderSide.BUY
+            )
+            result.add(entity)
+        }
+
+        return result
+    }
 
     fun mapFromDbToEntity(from: BinanceDepthDbModel): BinanceCurrencyPairDepth {
 
@@ -37,7 +61,7 @@ class BinanceDepthsMapper @Inject constructor() {
             amount = from.amount,
             price = from.price,
             total = from.total,
-            isBid = from.orderSide == OrderSide.BUY
+            isBid = from.orderSide == OrderSide.SELL
         )
     }
 }
