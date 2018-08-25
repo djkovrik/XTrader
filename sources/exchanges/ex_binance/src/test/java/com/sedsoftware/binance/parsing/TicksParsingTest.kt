@@ -15,7 +15,7 @@ class TicksParsingTest : Spek({
 
         context("Parsing json") {
             val jsonText = readStringFromResource("/symbol_tick.json")
-            val parsedEntity = fakeDataSource.getRawParsedData(jsonText)
+            val parsedEntity = fakeDataSource.getRawParsedEntity(jsonText)
 
             it("Should return correct entity") {
                 parsedEntity.should.equal(fakeDataSource.getPredefinedParsedEntity())

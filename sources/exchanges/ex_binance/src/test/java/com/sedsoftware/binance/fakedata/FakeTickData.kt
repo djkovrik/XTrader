@@ -23,7 +23,7 @@ class FakeTickData {
         return@lazy moshi.adapter(SymbolTickModel::class.java)
     }
 
-    fun getRawParsedData(jsonText: String): SymbolTickModel =
+    fun getRawParsedEntity(jsonText: String): SymbolTickModel =
         jsonAdapter.fromJson(jsonText) ?: SymbolTickModel("", "", "", "", "")
 
 
@@ -36,7 +36,7 @@ class FakeTickData {
             askQty = "13.39000000"
         )
 
-    fun getDatabaseEntity(): BinanceTickDbModel =
+    fun getPredefinedDatabaseEntity(): BinanceTickDbModel =
         BinanceTickDbModel(
             symbol = "LTCBTC",
             bidPrice = 0.008542f,
@@ -45,7 +45,7 @@ class FakeTickData {
             askQty = 13.39f
         )
 
-    fun getDomainEntity(): BinanceCurrencyPairTick =
+    fun getPredefinedDomainEntity(): BinanceCurrencyPairTick =
         BinanceCurrencyPairTick(
             exchange = BinanceExchange.BINANCE,
             symbol = "LTCBTC",

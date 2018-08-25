@@ -23,7 +23,7 @@ class BinanceTicksMapperTest : Spek({
             mappedDbEntity = mapper.mapFromCloudToDb(parsedEntity)
 
             it("should return correct value") {
-                mappedDbEntity.should.equal(fakeDataSource.getDatabaseEntity())
+                mappedDbEntity.should.equal(fakeDataSource.getPredefinedDatabaseEntity())
             }
         }
 
@@ -33,7 +33,7 @@ class BinanceTicksMapperTest : Spek({
             mappedDomainEntity = mapper.mapFromDbToEntity(mappedDbEntity)
 
             it("should return correct value") {
-                mappedDomainEntity.should.equal(fakeDataSource.getDomainEntity())
+                mappedDomainEntity.should.equal(fakeDataSource.getPredefinedDomainEntity())
             }
         }
     }

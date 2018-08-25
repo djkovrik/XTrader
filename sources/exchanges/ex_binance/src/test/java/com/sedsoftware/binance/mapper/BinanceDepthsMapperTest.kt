@@ -24,7 +24,6 @@ class BinanceDepthsMapperTest : Spek({
 
         val mapper by memoized { BinanceDepthsMapper() }
         val fakeDataSource by memoized(CachingMode.SCOPE) { FakeDepthsData() }
-
         val parsedDto = fakeDataSource.getPredefinedParsedDto()
 
         lateinit var mappedDbEntities: List<BinanceDepthDbModel>

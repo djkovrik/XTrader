@@ -26,7 +26,7 @@ class FakeDepthsData {
         return@lazy moshi.adapter<PairDepthDto>(filtersList)
     }
 
-    fun getRawParsedData(jsonText: String): PairDepthDto =
+    fun getRawParsedDto(jsonText: String): PairDepthDto =
         jsonAdapter.fromJson(jsonText) ?: PairDepthDto(0L, emptyList(), emptyList())
 
     fun getPredefinedParsedDto(): PairDepthDto =

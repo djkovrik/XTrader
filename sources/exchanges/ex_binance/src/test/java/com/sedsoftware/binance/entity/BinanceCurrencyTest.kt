@@ -15,7 +15,7 @@ class BinanceCurrencyTest : Spek({
 
         context("Parse existing currency pairs") {
             val jsonText = readStringFromResource("/symbols_info_full.json")
-            val parsedDto = fakeDataSource.getRawParsedData(jsonText)
+            val parsedDto = fakeDataSource.getRawParsedDto(jsonText)
 
             parsedDto.symbols.forEach { symbol ->
 

@@ -32,7 +32,7 @@ class FakeSymbolsInfoData {
         return@lazy moshi.adapter(PairsInfoDto::class.java)
     }
 
-    fun getRawParsedData(jsonText: String): PairsInfoDto =
+    fun getRawParsedDto(jsonText: String): PairsInfoDto =
         jsonAdapter.fromJson(jsonText) ?: getEmptyInfo()
 
 
@@ -146,7 +146,7 @@ class FakeSymbolsInfoData {
             )
         )
 
-    fun getDatabaseEntities(timestamp: Long): List<BinanceSymbolDbModel> =
+    fun getPredefinedDatabaseEntities(timestamp: Long): List<BinanceSymbolDbModel> =
         listOf(
             BinanceSymbolDbModel(
                 symbol = "ETHBTC",
@@ -236,10 +236,10 @@ class FakeSymbolsInfoData {
             )
         )
 
-    fun getBaseSymbolsDomainEntities(): List<BinanceCurrency> =
+    fun getPredefinedBaseDomainEntities(): List<BinanceCurrency> =
         listOf(BinanceCurrency.ETH, BinanceCurrency.HC)
 
-    fun getCurrencyPairDomainEntities(): List<BinanceCurrencyPair> =
+    fun getPredefinedPairsDomainEntities(): List<BinanceCurrencyPair> =
         listOf(
             BinanceCurrencyPair(
                 exchange = BinanceExchange.BINANCE,

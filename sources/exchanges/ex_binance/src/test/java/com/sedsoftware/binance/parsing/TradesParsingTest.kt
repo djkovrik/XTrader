@@ -15,10 +15,10 @@ class TradesParsingTest : Spek({
 
         context("Parsing json") {
             val jsonText = readStringFromResource("/symbol_trades.json")
-            val parsedList = fakeDataSource.getRawParsedData(jsonText)
+            val parsedList = fakeDataSource.getRawParsedEntities(jsonText)
 
             it("Should return correct list") {
-                parsedList.should.equal(fakeDataSource.getPredefinedParsedList())
+                parsedList.should.equal(fakeDataSource.getPredefinedParsedEntities())
             }
         }
     }

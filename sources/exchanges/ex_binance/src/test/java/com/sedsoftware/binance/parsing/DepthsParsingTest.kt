@@ -15,7 +15,7 @@ class DepthsParsingTest : Spek({
 
         context("Parsing json") {
             val jsonText = readStringFromResource("/symbol_depths.json")
-            val parsedEntity = fakeDataSource.getRawParsedData(jsonText)
+            val parsedEntity = fakeDataSource.getRawParsedDto(jsonText)
 
             it("Should return correct entity") {
                 parsedEntity.should.equal(fakeDataSource.getPredefinedParsedDto())

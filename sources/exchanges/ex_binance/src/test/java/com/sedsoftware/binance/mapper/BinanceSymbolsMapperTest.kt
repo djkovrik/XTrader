@@ -25,7 +25,7 @@ class BinanceSymbolsMapperTest : Spek({
             mappedDbEntities = parsedDto.symbols.map { mapper.mapFromCloudToDb(it, timestamp) }
 
             it("should return correct value") {
-                mappedDbEntities.should.equal(fakeDataSource.getDatabaseEntities(timestamp))
+                mappedDbEntities.should.equal(fakeDataSource.getPredefinedDatabaseEntities(timestamp))
             }
         }
 
@@ -33,7 +33,7 @@ class BinanceSymbolsMapperTest : Spek({
             val mappedDomainEntities = mapper.mapBaseSymbolsFromDb(mappedDbEntities)
 
             it("should return correct values") {
-                mappedDomainEntities.should.equal(fakeDataSource.getBaseSymbolsDomainEntities())
+                mappedDomainEntities.should.equal(fakeDataSource.getPredefinedBaseDomainEntities())
             }
         }
 
@@ -41,7 +41,7 @@ class BinanceSymbolsMapperTest : Spek({
             val mappedDomainPairs = mapper.mapMarketPairsFromDb(mappedDbEntities)
 
             it("should return correct values") {
-                mappedDomainPairs.should.equal(fakeDataSource.getCurrencyPairDomainEntities())
+                mappedDomainPairs.should.equal(fakeDataSource.getPredefinedPairsDomainEntities())
             }
         }
     }

@@ -15,7 +15,7 @@ class BinanceTradesMapperTest : Spek({
         val mapper by memoized { BinanceTradesMapper() }
         val fakeDataSource by memoized(CachingMode.SCOPE) { FakeTradesData() }
 
-        val parsedList = fakeDataSource.getPredefinedParsedList()
+        val parsedList = fakeDataSource.getPredefinedParsedEntities()
 
         lateinit var mappedDbEntities: List<BinanceTradeDbModel>
 
@@ -23,7 +23,7 @@ class BinanceTradesMapperTest : Spek({
             mappedDbEntities = parsedList.map { mapper.mapFromCloudToDb(it) }
 
             it("should return correct list") {
-                mappedDbEntities.should.equal(fakeDataSource.getDatabasEntities())
+                mappedDbEntities.should.equal(fakeDataSource.getPredefinedDatabaseEntities())
             }
         }
 
@@ -33,7 +33,7 @@ class BinanceTradesMapperTest : Spek({
             mappedDomainEntities = mappedDbEntities.map { mapper.mapFromDbToEntity(it) }
 
             it("should return correct list") {
-                mappedDomainEntities.should.equal(fakeDataSource.getDomainEntities())
+                mappedDomainEntities.should.equal(fakeDataSource.getPredefinedDomainEntities())
             }
         }
     }

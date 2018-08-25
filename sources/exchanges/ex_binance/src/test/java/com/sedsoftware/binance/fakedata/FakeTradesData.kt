@@ -24,11 +24,11 @@ class FakeTradesData {
         return@lazy moshi.adapter<List<SymbolTradeModel>>(filtersList)
     }
 
-    fun getRawParsedData(jsonText: String): List<SymbolTradeModel> =
+    fun getRawParsedEntities(jsonText: String): List<SymbolTradeModel> =
         jsonAdapter.fromJson(jsonText) ?: emptyList()
 
 
-    fun getPredefinedParsedList(): List<SymbolTradeModel> =
+    fun getPredefinedParsedEntities(): List<SymbolTradeModel> =
         listOf(
             SymbolTradeModel(
                 id = 15340801,
@@ -56,7 +56,7 @@ class FakeTradesData {
             )
         )
 
-    fun getDatabasEntities(): List<BinanceTradeDbModel> =
+    fun getPredefinedDatabaseEntities(): List<BinanceTradeDbModel> =
         listOf(
             BinanceTradeDbModel(
                 id = 15340801,
@@ -87,7 +87,7 @@ class FakeTradesData {
             )
         )
 
-    fun getDomainEntities(): List<BinanceCurrencyPairTrade> =
+    fun getPredefinedDomainEntities(): List<BinanceCurrencyPairTrade> =
         listOf(
             BinanceCurrencyPairTrade(
                 id = 15340801,
