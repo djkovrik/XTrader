@@ -95,6 +95,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     OMG("OmiseGO"),
     ONT("Ontology"),
     OST("OST"),
+    PHX("Phoenix"),
     PIVX("Private Instant Verified Transaction"),
     POA("POA Network"),
     POE("Po.et"),

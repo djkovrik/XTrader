@@ -1,7 +1,7 @@
 package com.sedsoftware.binance.mapper
 
 import com.sedsoftware.binance.database.model.BinanceSymbolDbModel
-import com.sedsoftware.binance.fakedata.FakeInfoData
+import com.sedsoftware.binance.fakedata.FakeSymbolsInfoData
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.lifecycle.CachingMode
@@ -15,7 +15,7 @@ class BinanceSymbolsMapperTest : Spek({
         val timestamp = Date().time
 
         val mapper by memoized { BinanceSymbolsMapper() }
-        val fakeDataSource by memoized(CachingMode.SCOPE) { FakeInfoData() }
+        val fakeDataSource by memoized(CachingMode.SCOPE) { FakeSymbolsInfoData() }
 
         val parsedDto = fakeDataSource.getPredefinedParsedDto()
 

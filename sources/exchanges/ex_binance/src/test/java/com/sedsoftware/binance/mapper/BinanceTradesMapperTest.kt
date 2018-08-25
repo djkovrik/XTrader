@@ -3,7 +3,6 @@ package com.sedsoftware.binance.mapper
 import com.sedsoftware.binance.database.model.BinanceTradeDbModel
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTrade
 import com.sedsoftware.binance.fakedata.FakeTradesData
-import com.sedsoftware.binance.network.model.SymbolTradeModel
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.lifecycle.CachingMode

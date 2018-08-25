@@ -19,7 +19,7 @@ import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.util.Date
 
-class FakeInfoData {
+class FakeSymbolsInfoData {
 
     private val moshi: Moshi by lazy {
         Moshi.Builder()

@@ -1,6 +1,6 @@
 package com.sedsoftware.binance.parsing
 
-import com.sedsoftware.binance.fakedata.FakeInfoData
+import com.sedsoftware.binance.fakedata.FakeSymbolsInfoData
 import com.sedsoftware.binance.readStringFromResource
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
@@ -11,7 +11,7 @@ class InfoParsingTest : Spek({
 
     describe("Symbol tick parser") {
 
-        val fakeDataSource by memoized(CachingMode.SCOPE) { FakeInfoData() }
+        val fakeDataSource by memoized(CachingMode.SCOPE) { FakeSymbolsInfoData() }
 
         context("Parsing json") {
             val jsonText = readStringFromResource("/symbols_info.json")
