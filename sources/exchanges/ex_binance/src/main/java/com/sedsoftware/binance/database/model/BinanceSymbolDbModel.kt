@@ -3,9 +3,9 @@ package com.sedsoftware.binance.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.sedsoftware.binance.common.params.Filters
 import com.sedsoftware.binance.common.params.OrderType
 import com.sedsoftware.binance.common.params.SymbolStatus
+import com.sedsoftware.binance.network.model.common.Filter
 
 @Entity(tableName = "symbols")
 data class BinanceSymbolDbModel(
@@ -31,5 +31,5 @@ data class BinanceSymbolDbModel(
     @ColumnInfo(name = "iceberg_allowed")
     val icebergAllowed: Boolean,
     @ColumnInfo(name = "filters")
-    val filters: List<Filters>
+    val filters: List<Filter>
 )

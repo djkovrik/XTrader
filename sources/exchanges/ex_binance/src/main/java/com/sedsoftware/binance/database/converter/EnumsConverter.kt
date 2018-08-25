@@ -18,10 +18,10 @@ class EnumsConverter {
     fun toCurrencyBinance(text: String): CurrencyBinance = enumValueOf(text)
 
     @TypeConverter
-    fun fromFilters(filter: Filters): String = filter.name
+    fun fromFilters(filter: FilterType): String = filter.name
 
     @TypeConverter
-    fun toFilters(text: String): Filters = enumValueOf(text)
+    fun toFilters(text: String): FilterType = enumValueOf(text)
 
     @TypeConverter
     fun fromOrderSide(side: OrderSide): String = side.name

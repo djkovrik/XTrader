@@ -1,14 +1,14 @@
 package com.sedsoftware.binance.database.converter
 
 import androidx.room.TypeConverter
-import com.sedsoftware.binance.common.params.Filters
 import com.sedsoftware.binance.common.params.OrderType
+import com.sedsoftware.binance.network.model.common.Filter
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import java.util.*
+import java.util.Date
 
 
 class ListConverter {
@@ -25,9 +25,9 @@ class ListConverter {
         return@lazy moshi.adapter<List<OrderType>>(orderTypeList)
     }
 
-    private val jsonAdapterFilters: JsonAdapter<List<Filters>> by lazy {
-        val filtersList = Types.newParameterizedType(List::class.java, Filters::class.java)
-        return@lazy moshi.adapter<List<Filters>>(filtersList)
+    private val jsonAdapterFilters: JsonAdapter<List<Filter>> by lazy {
+        val filtersList = Types.newParameterizedType(List::class.java, Filter::class.java)
+        return@lazy moshi.adapter<List<Filter>>(filtersList)
     }
 
     @TypeConverter
@@ -39,10 +39,10 @@ class ListConverter {
         jsonAdapterOrderType.fromJson(text) ?: emptyList()
 
     @TypeConverter
-    fun fromListFilters(list: List<Filters>): String =
+    fun fromListFilters(list: List<Filter>): String =
         jsonAdapterFilters.toJson(list)
 
     @TypeConverter
-    fun toListFilters(text: String): List<Filters> =
+    fun toListFilters(text: String): List<Filter> =
         jsonAdapterFilters.fromJson(text) ?: emptyList()
 }

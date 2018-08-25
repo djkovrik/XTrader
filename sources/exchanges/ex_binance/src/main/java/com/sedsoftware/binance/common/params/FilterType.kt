@@ -1,6 +1,6 @@
 package com.sedsoftware.binance.common.params
 
-enum class Filters {
+enum class FilterType {
     PRICE_FILTER,
     LOT_SIZE,
     MIN_NOTIONAL,

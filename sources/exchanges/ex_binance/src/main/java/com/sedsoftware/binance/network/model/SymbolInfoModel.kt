@@ -1,8 +1,8 @@
 package com.sedsoftware.binance.network.model
 
-import com.sedsoftware.binance.common.params.Filters
 import com.sedsoftware.binance.common.params.OrderType
 import com.sedsoftware.binance.common.params.SymbolStatus
+import com.sedsoftware.binance.network.model.common.Filter
 
 data class SymbolInfoModel(
     val symbol: String,
@@ -13,5 +13,5 @@ data class SymbolInfoModel(
     val quotePrecision: Int,
     val orderTypes: List<OrderType>,
     val icebergAllowed: Boolean,
-    val filters: List<Filters>
+    val filters: List<Filter>
 )
