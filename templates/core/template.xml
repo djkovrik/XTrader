@@ -8,45 +8,45 @@
     <category value="Modular" />
     <formfactor value="Mobile" />
 
+    <thumbs>
+        <thumb>template_new_project.png</thumb>
+    </thumbs>
+
     <parameter
+        id="coreModuleName"
         name="Core module name"
         constraints="module|nonempty"
         default="core"
         help="Core module name."
-        id="coreModuleName"
         suggest="core"
         type="string" />
 
     <parameter
+        id="corePackageName"
         name="Core package name"
         constraints="package|nonempty"
         default="com.sedsoftware.core"
-        help="Path to core package module."
-        id="corePackageName"
-        suggest="com.sedsoftware.core"
+        help="Path to core module package."
+        suggest="com.sedsoftware.${coreModuleName}"
         type="string" />
 
     <parameter
+        id="applicationInterface"
         name="Main Application interface"
         constraints="class|nonempty"
         default="App"
         help="The name of the application interface to create."
-        id="applicationInterface"
         suggest="App"
         type="string" />
 
     <parameter
+        id="applicationProviderInterface"
         name="Application provider interface"
         constraints="class|nonempty"
-        default="ApplicationProvider"
+        default="AppProvider"
         help="The name of the application provider interface to create."
-        id="applicationProviderInterface"
-        suggest="ApplicationProvider"
+        suggest="${applicationInterface}Provider"
         type="string" />
-
-    <thumbs>
-        <thumb>template_new_project.png</thumb>
-    </thumbs>
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

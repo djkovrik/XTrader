@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <template
-    name="Injector module (Kotlin)"
-    description="Converts main application module to injector module."
     format="5"
-    revision="5">
+    revision="5"
+    name="Injector module (Kotlin)"
+    description="Converts main application module to injector module.">
 
     <category value="Modular" />
-
     <formfactor value="Mobile" />
 
     <thumbs>
@@ -14,47 +13,48 @@
     </thumbs>
 
     <parameter
+        id="applicationInterface"
         name="Main Application interface name"
         constraints="class|nonempty"
         default="App"
         help="Name of the Application interface from core module."
-        id="applicationInterface"
         suggest="App"
         type="string" />
 
     <parameter
+        id="applicationClass"
         name="Application class name"
         constraints="class|nonempty"
         default="RealApp"
         help="Application class which implements main Application interface."
-        id="applicationClass"
         suggest="RealApp"
         type="string" />
 
-    <parameter name="Application provider interface name"
-        constraints="class|nonempty"
-        default="ApplicationProvider"
-        help="Name of the ApplicationProvider interface from core module."
+    <parameter
         id="applicationProviderInterface"
-        suggest="ApplicationProvider"
+        name="Application provider interface name"
+        constraints="class|nonempty"
+        default="AppProvider"
+        help="Name of the ApplicationProvider interface from core module."
+        suggest="${applicationInterface}Provider"
         type="string" />
 
     <parameter
+        id="coreModuleName"
         name="Core module name"
         constraints="module|nonempty"
         default="core"
         help="Core module name."
-        id="coreModuleName"
         suggest="core"
         type="string" />
 
     <parameter
+        id="corePackageName"
         name="Core package name"
         constraints="package|nonempty"
         default="com.sedsoftware.core"
         help="Path to core package module."
-        id="corePackageName"
-        suggest="com.sedsoftware.core"
+        suggest="com.sedsoftware.${coreModuleName}"
         type="string" />
 
     <globals file="globals.xml.ftl" />
