@@ -1,1 +1,1 @@
-<manifest package="${featurePackageName}" />
+<manifest package="${providerPackageName}" />

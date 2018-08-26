@@ -6,16 +6,19 @@
         to="${escapeXmlAttribute(topOut)}/settings.gradle" />
 
     <instantiate from="root/build.gradle.ftl"
-        to="${escapeXmlAttribute(topOut)}/${coreModuleName}/build.gradle" />
+        to="${escapeXmlAttribute(topOut)}/${providerModuleName}/build.gradle" />
 
     <instantiate from="root/src/AndroidManifest.xml.ftl"
-        to="${escapeXmlAttribute(topOut)}/${coreModuleName}/src/main/AndroidManifest.xml" />
+        to="${escapeXmlAttribute(topOut)}/${providerModuleName}/src/main/AndroidManifest.xml" />
 
     <instantiate from="root/src/res/values/strings.xml.ftl"
-        to="${escapeXmlAttribute(topOut)}/${coreModuleName}/src/main/res/values/strings.xml" />
+        to="${escapeXmlAttribute(topOut)}/${providerModuleName}/src/main/res/values/strings.xml" />
 
     <copy from="root://gradle-projects/common/gitignore"
-        to="${escapeXmlAttribute(projectOut)}/.gitignore" />
+        to="${escapeXmlAttribute(topOut)}/${providerModuleName}/.gitignore" />
+
+    <merge from="root/merge_build.gradle.ftl"
+        to="${escapeXmlAttribute(topOut)}/app/build.gradle" />
 
     <#include "root://gradle-projects/common/proguard_recipe.xml.ftl"/>
 

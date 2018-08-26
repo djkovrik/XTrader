@@ -5,7 +5,8 @@ import ${packageName}.${applicationClass}
 import dagger.Component
 import javax.inject.Singleton
 
-@Component(dependencies = [/*Add component dependencies here*/])
+// FIXME Add providers to dependencies here:
+@Component(dependencies = [  ])
 @Singleton
 interface ${applicationInterface}Component : ${applicationProviderInterface} {
 
@@ -15,11 +16,11 @@ interface ${applicationInterface}Component : ${applicationProviderInterface} {
         companion object {
 
             fun init(app: ${applicationClass}): ${applicationInterface}Component {
-            /* Init providers here */
-            /* val someProvider = SomeComponent.Initializer.init(app) */
+            // FIXME Init providers here:
+            // val someProvider = SomeComponent.Initializer.init(app)
 
             return DaggerAppComponent.builder()
-              /* .someProvider(someProvider) */
+              // .someProvider(someProvider)
               .build()
             }
         }

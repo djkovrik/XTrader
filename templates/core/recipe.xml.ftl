@@ -15,7 +15,7 @@
         to="${escapeXmlAttribute(topOut)}/${coreModuleName}/src/main/res/values/strings.xml" />
 
     <copy from="root://gradle-projects/common/gitignore"
-        to="${escapeXmlAttribute(projectOut)}/.gitignore" />
+        to="${escapeXmlAttribute(topOut)}/${coreModuleName}/.gitignore" />
 
     <#include "root://gradle-projects/common/proguard_recipe.xml.ftl"/>
 

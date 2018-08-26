@@ -1,3 +1,3 @@
 <resources>
-    <string name="app_name">${escapeXmlString(coreModuleName)}</string>
+    <string name="app_name">${escapeXmlString(providerModuleName)}</string>
 </resources>

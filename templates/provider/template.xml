@@ -16,16 +16,16 @@
         id="providerName"
         name="Provider name"
         constraints="module|nonempty"
-        default="Provider"
+        default="Tools"
         help="Provider module name."
-        suggest="Provider"
+        suggest="Tools"
         type="string" />
 
     <parameter
         id="providerModuleName"
         name="Provider module name"
         constraints="module|nonempty"
-        default="provider"
+        default="tools"
         help="Provider module name."
         suggest="${extractLetters(providerName)?lower_case}"
         type="string" />

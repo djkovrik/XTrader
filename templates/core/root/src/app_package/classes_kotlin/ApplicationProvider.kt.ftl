@@ -1,3 +1,3 @@
 package ${corePackageName}.di.provider
 
-interface ApplicationProvider
+interface ${applicationProviderInterface}
