@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="Provider module (Kotlin)"
+    description="Creates a new module which provides interface implementations.">
+
+    <category value="Modular" />
+    <formfactor value="Mobile" />
+
+    <thumbs>
+        <thumb>template_new_project.png</thumb>
+    </thumbs>
+
+    <parameter
+        id="providerName"
+        name="Provider name"
+        constraints="module|nonempty"
+        default="Provider"
+        help="Provider module name."
+        suggest="Provider"
+        type="string" />
+
+    <parameter
+        id="providerModuleName"
+        name="Provider module name"
+        constraints="module|nonempty"
+        default="provider"
+        help="Provider module name."
+        suggest="${extractLetters(providerName)?lower_case}"
+        type="string" />
+
+    <parameter
+        id="providerPackageName"
+        name="Provider package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.provider"
+        help="Path to provider module package."
+        suggest="com.sedsoftware.${extractLetters(providerName)?lower_case}"
+        type="string" />
+
+    <parameter
+        id="coreModuleName"
+        name="Core module name"
+        constraints="module|nonempty"
+        default="core"
+        help="Core module name."
+        suggest="core"
+        type="string" />
+
+    <parameter
+        id="corePackageName"
+        name="Core package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.core"
+        help="Path to core module package."
+        suggest="com.sedsoftware.${coreModuleName}"
+        type="string" />
+
+    <parameter
+        id="applicationInterface"
+        name="Main Application interface name"
+        constraints="class|nonempty"
+        default="App"
+        help="Name of the Application interface from core module."
+        suggest="App"
+        type="string" />
+
+    <parameter
+        id="includeSample"
+        name="Include sample code"
+        type="boolean"
+        default="false"
+        help="If true, generates sample code which provides Logger and Settings implementations." />
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
