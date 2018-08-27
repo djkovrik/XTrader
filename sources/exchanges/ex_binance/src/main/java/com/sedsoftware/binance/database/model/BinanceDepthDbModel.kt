@@ -10,6 +10,8 @@ data class BinanceDepthDbModel(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Long = 0,
+    @ColumnInfo(name = "symbol")
+    val symbol: String,
     @ColumnInfo(name = "base_currency_name")
     val baseCurrencyName: String,
     @ColumnInfo(name = "base_currency_label")

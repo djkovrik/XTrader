@@ -71,6 +71,7 @@ class FakeDepthsData {
     fun getPredefinedDatabaseEntities(pair: BinanceCurrencyPair): List<BinanceDepthDbModel> =
         listOf(
             BinanceDepthDbModel(
+                symbol = pair.baseCurrency.name + pair.marketCurrency.name,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
                 marketCurrencyName = pair.marketCurrency.name,
@@ -81,6 +82,7 @@ class FakeDepthsData {
                 orderSide = OrderSide.SELL
             ),
             BinanceDepthDbModel(
+                symbol = pair.baseCurrency.name + pair.marketCurrency.name,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
                 marketCurrencyName = pair.marketCurrency.name,
@@ -91,6 +93,7 @@ class FakeDepthsData {
                 orderSide = OrderSide.SELL
             ),
             BinanceDepthDbModel(
+                symbol = pair.baseCurrency.name + pair.marketCurrency.name,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
                 marketCurrencyName = pair.marketCurrency.name,
@@ -101,6 +104,7 @@ class FakeDepthsData {
                 orderSide = OrderSide.SELL
             ),
             BinanceDepthDbModel(
+                symbol = pair.baseCurrency.name + pair.marketCurrency.name,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
                 marketCurrencyName = pair.marketCurrency.name,
@@ -111,6 +115,7 @@ class FakeDepthsData {
                 orderSide = OrderSide.BUY
             ),
             BinanceDepthDbModel(
+                symbol = pair.baseCurrency.name + pair.marketCurrency.name,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
                 marketCurrencyName = pair.marketCurrency.name,
@@ -121,6 +126,7 @@ class FakeDepthsData {
                 orderSide = OrderSide.BUY
             ),
             BinanceDepthDbModel(
+                symbol = pair.baseCurrency.name + pair.marketCurrency.name,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
                 marketCurrencyName = pair.marketCurrency.name,

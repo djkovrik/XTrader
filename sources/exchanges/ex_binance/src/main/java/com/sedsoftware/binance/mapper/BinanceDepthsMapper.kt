@@ -18,6 +18,7 @@ class BinanceDepthsMapper @Inject constructor() {
 
         depthsInfo.bids.forEach { bid ->
             val entity = BinanceDepthDbModel(
+                symbol = pair.baseCurrency.name + pair.marketCurrency.name,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
                 marketCurrencyName = pair.marketCurrency.name,
@@ -32,6 +33,7 @@ class BinanceDepthsMapper @Inject constructor() {
 
         depthsInfo.asks.forEach { ask ->
             val entity = BinanceDepthDbModel(
+                symbol = pair.baseCurrency.name + pair.marketCurrency.name,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
                 marketCurrencyName = pair.marketCurrency.name,
@@ -53,7 +55,7 @@ class BinanceDepthsMapper @Inject constructor() {
             exchange = BinanceExchange.BINANCE,
             baseCurrency = enumValueOf<BinanceCurrency>(from.baseCurrencyName),
             marketCurrency = enumValueOf<BinanceCurrency>(from.marketCurrencyName),
-            symbol = from.baseCurrencyName + from.marketCurrencyName
+            symbol = from.symbol
         )
 
         return BinanceCurrencyPairDepth(
