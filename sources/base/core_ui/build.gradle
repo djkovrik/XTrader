@@ -32,8 +32,10 @@ dependencies {
     implementation project(':core')
 
     implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
 
     implementation CoreDepencencies.dagger
 
     implementation JetPackDependencies.appCompat
+    implementation JetPackDependencies.lifecycleExtensions
 }
