@@ -9,10 +9,8 @@ import com.sedsoftware.binance.network.model.common.Filter
 
 @Entity(tableName = "symbols")
 data class BinanceSymbolDbModel(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    val id: Long = 0,
-    @ColumnInfo(name = "symbol")
+    @PrimaryKey
+    @ColumnInfo(name = "symbol_id")
     val symbol: String,
     @ColumnInfo(name = "last_sync_timestamp")
     val syncDate: Long,

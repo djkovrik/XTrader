@@ -1,7 +1,10 @@
 package com.sedsoftware.binance.fakedata
 
 import com.sedsoftware.binance.database.model.BinanceTradeDbModel
+import com.sedsoftware.binance.entity.BinanceCurrency
+import com.sedsoftware.binance.entity.BinanceCurrencyPair
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTrade
+import com.sedsoftware.binance.entity.BinanceExchange
 import com.sedsoftware.binance.network.model.SymbolTradeModel
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -61,6 +64,7 @@ class FakeTradesData {
             BinanceTradeDbModel(
                 id = 15340801,
                 time = 1534957951247,
+                symbol = "LTCBTC",
                 qty = 12.25f,
                 price = 0.008589f,
                 total = 12.25f * 0.008589f,
@@ -70,6 +74,7 @@ class FakeTradesData {
             BinanceTradeDbModel(
                 id = 15340802,
                 time = 1534957951264,
+                symbol = "LTCBTC",
                 qty = 19.12f,
                 price = 0.008589f,
                 total = 19.12f * 0.008589f,
@@ -79,6 +84,7 @@ class FakeTradesData {
             BinanceTradeDbModel(
                 id = 15341300,
                 time = 1534960156201,
+                symbol = "LTCBTC",
                 qty = 0.59f,
                 price = 0.008553f,
                 total = 0.59f * 0.008553f,
@@ -91,6 +97,12 @@ class FakeTradesData {
         listOf(
             BinanceCurrencyPairTrade(
                 id = 15340801,
+                pair = BinanceCurrencyPair(
+                    exchange = BinanceExchange.BINANCE,
+                    baseCurrency = BinanceCurrency.LTC,
+                    marketCurrency = BinanceCurrency.BTC,
+                    symbol = "LTCBTC"
+                ),
                 timestamp = 1534957951247,
                 quantity = 12.25f,
                 price = 0.008589f,
@@ -99,6 +111,12 @@ class FakeTradesData {
             ),
             BinanceCurrencyPairTrade(
                 id = 15340802,
+                pair = BinanceCurrencyPair(
+                    exchange = BinanceExchange.BINANCE,
+                    baseCurrency = BinanceCurrency.LTC,
+                    marketCurrency = BinanceCurrency.BTC,
+                    symbol = "LTCBTC"
+                ),
                 timestamp = 1534957951264,
                 quantity = 19.12f,
                 price = 0.008589f,
@@ -107,6 +125,12 @@ class FakeTradesData {
             ),
             BinanceCurrencyPairTrade(
                 id = 15341300,
+                pair = BinanceCurrencyPair(
+                    exchange = BinanceExchange.BINANCE,
+                    baseCurrency = BinanceCurrency.LTC,
+                    marketCurrency = BinanceCurrency.BTC,
+                    symbol = "LTCBTC"
+                ),
                 timestamp = 1534960156201,
                 quantity = 0.59f,
                 price = 0.008553f,

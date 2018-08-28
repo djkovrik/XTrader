@@ -11,6 +11,8 @@ data class BinanceTradeDbModel(
     val id: Long,
     @ColumnInfo(name = "time")
     val time: Long,
+    @ColumnInfo(name = "symbol")
+    val symbol: String,
     @ColumnInfo(name = "quantity")
     val qty: Float,
     @ColumnInfo(name = "price")
