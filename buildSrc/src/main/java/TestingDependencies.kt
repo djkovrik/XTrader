@@ -1,7 +1,7 @@
 
 import Versions.ESPRESSO_VERSION
 import Versions.EXPEKT_VERSION
-import Versions.JUNIT5_VERSION
+import Versions.JUNIT5_RUNNER_VERSION
 import Versions.KAKAO_VERSION
 import Versions.SPEK_VERSION
 import Versions.TEST_RULES_VERSION
@@ -16,8 +16,7 @@ object TestingDependencies {
 
     const val spekDsl = "org.spekframework.spek2:spek-dsl-jvm:$SPEK_VERSION"
     const val spekRunner = "org.spekframework.spek2:spek-runner-junit5:$SPEK_VERSION"
-    const val JUNIT5_JUPITER_API = "org.junit.jupiter:junit-jupiter-api:$JUNIT5_VERSION"
-    const val JUNIT5_JUPITER_ENGINE = "org.junit.jupiter:junit-jupiter-engine:$JUNIT5_VERSION"
+    const val junit5Instrumentation = "de.mannodermaus.junit5:android-instrumentation-test-runner:$JUNIT5_RUNNER_VERSION"
 
     const val expekt = "com.winterbe:expekt:$EXPEKT_VERSION"
     const val kakao = "com.agoda.kakao:kakao:$KAKAO_VERSION"

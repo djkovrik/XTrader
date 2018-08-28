@@ -22,8 +22,14 @@ import com.sedsoftware.binance.database.model.BinanceTradeDbModel
         BinanceTickDbModel::class,
         BinanceTradeDbModel::class
     ],
-    version = BinanceDatabase.DATABASE_VERSION)
-@TypeConverters(DateConverter::class, EnumsConverter::class, ListConverter::class)
+    version = BinanceDatabase.DATABASE_VERSION,
+    exportSchema = false
+)
+@TypeConverters(
+    DateConverter::class,
+    EnumsConverter::class,
+    ListConverter::class
+)
 abstract class BinanceDatabase : RoomDatabase() {
 
     companion object {

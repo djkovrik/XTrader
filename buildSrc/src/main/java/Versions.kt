@@ -49,6 +49,7 @@ object Versions {
     const val MP_ANDROID_CHART_VERSION = "v3.0.3"
 
     // Testing
+    const val JUNIT4_VERSION = "4.12"
     const val JUNIT5_VERSION = "5.2.0"
     const val JUNIT5_RUNNER_VERSION = "0.2.2"
     const val TEST_RUNNER_VERSION = "1.1.0-alpha1"

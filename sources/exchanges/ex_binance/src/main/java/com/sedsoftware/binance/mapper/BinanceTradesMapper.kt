@@ -22,8 +22,8 @@ class BinanceTradesMapper @Inject constructor() {
 
     fun mapFromDbToEntity(pair: BinanceCurrencyPair, from: BinanceTradeDbModel): BinanceCurrencyPairTrade =
         BinanceCurrencyPairTrade(
-            id = from.id,
             pair = pair,
+            id = from.id,
             timestamp = from.time,
             quantity = from.qty,
             price = from.price,

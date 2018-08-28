@@ -66,6 +66,8 @@ dependencies {
 
     testImplementation TestingDependencies.spekDsl
     testImplementation TestingDependencies.spekRunner
-
     testImplementation TestingDependencies.expekt
+
+    androidTestImplementation TestingDependencies.androidTestRunner
+    androidTestRuntimeOnly TestingDependencies.junit5Instrumentation
 }
