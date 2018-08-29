@@ -3,25 +3,25 @@ package com.sedsoftware.device.log
 import com.sedsoftware.core.device.Logger
 import timber.log.Timber
 
-class AppLogger : Logger {
+class LoggerImpl : Logger {
 
     override fun d(message: String) {
-        Timber.d(message)
+        Timber.asTree().d(message)
     }
 
     override fun e(message: String) {
-        Timber.e(message)
+        Timber.asTree().e(message)
     }
 
     override fun i(message: String) {
-        Timber.i(message)
+        Timber.asTree().i(message)
     }
 
     override fun v(message: String) {
-        Timber.v(message)
+        Timber.asTree().v(message)
     }
 
     override fun w(message: String) {
-        Timber.w(message)
+        Timber.asTree().w(message)
     }
 }
