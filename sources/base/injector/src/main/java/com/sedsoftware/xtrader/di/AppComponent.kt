@@ -11,8 +11,8 @@ import javax.inject.Singleton
 
 @Component(
     dependencies = [
-        BinanceProvider::class,
-        DeviceToolsProvider::class
+        DeviceToolsProvider::class,
+        BinanceProvider::class
     ]
 )
 @Singleton

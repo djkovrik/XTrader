@@ -2,10 +2,10 @@ include ':injector'
 project(':injector').projectDir = new File(rootDir, 'sources/base/injector')
 include ':core'
 project(':core').projectDir = new File(rootDir, 'sources/base/core')
-include ':device'
-project(':device').projectDir = new File(rootDir, 'sources/base/device')
 include ':core_ui'
 project(':core_ui').projectDir = new File(rootDir, 'sources/base/core_ui')
+include ':device'
+project(':device').projectDir = new File(rootDir, 'sources/base/device')
 
 include ':screen_main'
 project(':screen_main').projectDir = new File(rootDir, 'sources/screens/screen_main')

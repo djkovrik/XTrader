@@ -57,6 +57,5 @@ dependencies {
 
     testImplementation TestingDependencies.spekDsl
     testImplementation TestingDependencies.spekRunner
-
     testImplementation TestingDependencies.expekt
 }
