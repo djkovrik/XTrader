@@ -1,8 +1,8 @@
 package com.sedsoftware.mainscreen.di.viewmodel
 
-import com.sedsoftware.core.factory.ViewModelFactory
+import androidx.lifecycle.ViewModelProvider
 
 interface ViewModelFactoryProvider {
 
-    fun provideViewModelFactory(): ViewModelFactory
+    fun provideViewModelFactory(): ViewModelProvider.Factory
 }

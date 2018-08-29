@@ -1,8 +1,8 @@
 package com.sedsoftware.mainscreen.di.viewmodel
 
-import com.sedsoftware.core.di.key.ViewModelOwnerKey
-import com.sedsoftware.core.factory.ViewModelFactory
-import com.sedsoftware.core.marker.ViewModelOwner
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.sedsoftware.coreui.di.key.ViewModelKey
 import com.sedsoftware.mainscreen.MainViewModel
 import dagger.Binds
 import dagger.Module
@@ -12,10 +12,10 @@ import dagger.multibindings.IntoMap
 abstract class ViewModelFactoryModule {
 
     @Binds
-    abstract fun bindViewModelOwnerFactory(factory: ViewModelOwnerFactory): ViewModelFactory
+    abstract fun bindViewModelOwnerFactory(factory: ViewModelOwnerFactory): ViewModelProvider.Factory
 
     @Binds
     @IntoMap
-    @ViewModelOwnerKey(MainViewModel::class)
-    abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModelOwner
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
 }
