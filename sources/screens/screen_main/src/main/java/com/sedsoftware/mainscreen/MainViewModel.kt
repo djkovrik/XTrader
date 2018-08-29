@@ -1,6 +1,6 @@
 package com.sedsoftware.mainscreen
 
-import androidx.lifecycle.ViewModel
+import com.sedsoftware.coreui.base.BaseViewModel
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor():  ViewModel()
+class MainViewModel @Inject constructor() : BaseViewModel()

@@ -1,10 +1,9 @@
 package com.sedsoftware.mainscreen
 
 import android.os.Bundle
-import com.sedsoftware.core.App
 import com.sedsoftware.core.device.Logger
-import com.sedsoftware.mainscreen.di.MainActivityComponent
 import com.sedsoftware.coreui.base.BaseActivity
+import com.sedsoftware.mainscreen.di.MainActivityComponent
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -16,7 +15,7 @@ class MainActivity : BaseActivity() {
 
     override fun inject() {
         MainActivityComponent.Initializer
-            .init((applicationContext as App).getAppComponent())
+            .init(appComponent)
             .inject(this@MainActivity)
     }
 
