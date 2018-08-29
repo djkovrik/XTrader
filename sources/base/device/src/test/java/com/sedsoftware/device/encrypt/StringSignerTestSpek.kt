@@ -8,7 +8,7 @@ class StringSignerTestSpek : Spek({
 
     describe("String signer") {
 
-        val signer by memoized { ParamsSigner() }
+        val signer by memoized { SignerImpl() }
         val signKey = "thisismysupersecurekey"
 
         context("signing with sha1") {

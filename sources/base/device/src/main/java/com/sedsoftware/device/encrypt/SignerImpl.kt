@@ -4,7 +4,7 @@ import com.sedsoftware.core.device.Signer
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
-class ParamsSigner : Signer {
+class SignerImpl : Signer {
 
     companion object {
         private const val SHA1_ALGORITHM = "HmacSHA1"
