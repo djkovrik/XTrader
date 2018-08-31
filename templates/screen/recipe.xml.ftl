@@ -24,4 +24,6 @@
     <copy from="root://gradle-projects/common/gitignore"
         to="${escapeXmlAttribute(topOut)}/${screenModuleName}/.gitignore" />
 
+    <#include "kotlin_files_recipe.xml.ftl" />
+
 </recipe>
