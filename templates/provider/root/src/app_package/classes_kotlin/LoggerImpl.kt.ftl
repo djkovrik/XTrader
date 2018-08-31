@@ -1,10 +1,11 @@
 package ${providerPackageName}
 
+import android.util.Log
 import ${corePackageName}.${providerModuleName}.Logger
 
 class LoggerImpl : Logger {
 
     override fun d(message: String) {
-        // Timber.d(message)
+        Log.d("Logger", message)
     }
 }

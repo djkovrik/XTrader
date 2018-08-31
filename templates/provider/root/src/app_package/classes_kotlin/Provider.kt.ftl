@@ -4,7 +4,7 @@ import ${corePackageName}.${applicationInterface}
 import ${corePackageName}.${providerModuleName}.Logger
 import ${corePackageName}.${providerModuleName}.Settings
 </#if>
-// FIXME Add this interface to ${applicationInterface}Provider.kt
+// FIXME(1) Add this interface to ${applicationInterface}Provider.kt
 interface ${providerName}Provider {
 <#if includeSample>
     fun provideContext(): ${applicationInterface}
