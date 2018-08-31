@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="Screen module (Kotlin)"
+    description="Creates a new module for separate app screen.">
+
+    <category value="Modular" />
+    <formfactor value="Mobile" />
+
+    <thumbs>
+        <thumb>template_new_project.png</thumb>
+    </thumbs>
+
+    <parameter
+        id="screenName"
+        name="Screen name"
+        constraints="unique|nonempty"
+        default="ScreenName"
+        help="The base name of the screen to create."
+        suggest="ScreenName"
+        type="string" />
+
+    <parameter
+        id="screenModuleName"
+        name="Screen module name"
+        constraints="module|nonempty"
+        default="screenname"
+        help="Screen module name."
+        suggest="${extractLetters(screenName)?lower_case}"
+        type="string" />
+
+    <parameter
+        id="screenType"
+        name="View class type"
+        default="activity"
+        help="The type of dagger implementation"
+        type="enum">
+            <option id="activity">Activity</option>
+            <option id="fragment">Fragment</option>
+    </parameter>
+
+    <parameter
+        id="screenClass"
+        name="View class name"
+        constraints="class|unique|nonempty"
+        default="ScreenFragment"
+        help="The name of the view class to create."
+        suggest="${screenName}${underscoreToCamelCase(screenType)}"
+        type="string" />
+
+    <parameter
+        id="screenLayoutName"
+        name="View layout name"
+        constraints="layout|unique|nonempty"
+        default="activity_main"
+        help="The name of the layout to create for the view class."
+        suggest="${screenType}_${camelCaseToUnderscore(screenName)}"
+        type="string"/>
+
+    <parameter
+        id="isLauncher"
+        name="Launcher Activity"
+        default="false"
+        help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher"
+        type="boolean"/>
+
+    <parameter
+        id="screenPackageName"
+        name="Screen package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.screenname"
+        help="Path to screen module package."
+        suggest="com.sedsoftware.${extractLetters(screenName)?lower_case}"
+        type="string" />
+
+    <parameter
+        id="screenViewClass"
+        name="View name"
+        constraints="class|nonempty|unique"
+        default="ScreenNameView"
+        help="The name of the View to create"
+        suggest="${underscoreToCamelCase(classToResource(screenName))}View"
+        type="string" />
+
+    <parameter
+        id="screenPresenterClass"
+        name="Presenter name"
+        constraints="class|nonempty|unique"
+        default="ScreenNamePresenter"
+        help="The name of the Presenter to create"
+        suggest="${underscoreToCamelCase(classToResource(screenName))}Presenter"
+        type="string" />
+
+    <parameter
+        id="screenComponentClass"
+        name="Component name"
+        constraints="class|nonempty|unique"
+        default="ScreenNameViewComponent"
+        help="The name of the Component to create"
+        suggest="${underscoreToCamelCase(screenViewClass)}Component"
+        type="string"/>
+
+    <parameter
+        id="screenModuleClass"
+        name="Module name"
+        constraints="class|nonempty|unique"
+        default="ScreenNameViewModule"
+        help="The name of the Module to create"
+        suggest="${underscoreToCamelCase(screenViewClass)}Module"
+        type="string"/>
+
+    <parameter
+        id="coreModuleName"
+        name="Core module name"
+        constraints="module|nonempty"
+        default="core"
+        help="Core module name."
+        suggest="core"
+        type="string" />
+
+    <parameter
+        id="corePackageName"
+        name="Core package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.core"
+        help="Path to core module package."
+        suggest="com.sedsoftware.${coreModuleName}"
+        type="string" />
+
+    <parameter
+        id="applicationInterface"
+        name="Main Application interface name"
+        constraints="class|nonempty"
+        default="App"
+        help="Name of the Application interface from core module."
+        suggest="App"
+        type="string" />
+
+    <parameter
+        id="cicerone"
+        name="Include Cicerone?"
+        default="true"
+        type="boolean" />
+
+    <parameter
+        id="moxy"
+        name="Include Moxy?"
+        default="true"
+        type="boolean"/>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
