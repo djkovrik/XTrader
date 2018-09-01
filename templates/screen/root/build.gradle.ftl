@@ -28,6 +28,16 @@ dependencies {
 
     implementation project(':${coreModuleName}')
 
+    <#if cicerone>
+    implementation "ru.terrakok.cicerone:cicerone:3.0.0"
+    </#if>
+
+    <#if moxy>
+    implementation "com.arello-mobile:moxy:1.5.3"
+    implementation "com.arello-mobile:moxy-app-compat:1.5.3"
+    kapt "com.arello-mobile:moxy-compiler:1.5.3"
+    </#if>
+
     implementation "com.google.dagger:dagger:2.17"
     kapt "com.google.dagger:dagger-compiler:2.17"
 }

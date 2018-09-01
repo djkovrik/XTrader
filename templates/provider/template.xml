@@ -41,7 +41,7 @@
 
     <parameter
         id="coreModuleName"
-        name="Core module name"
+        name="Existing core module name"
         constraints="module|nonempty"
         default="core"
         help="Core module name."
@@ -50,7 +50,7 @@
 
     <parameter
         id="corePackageName"
-        name="Core package name"
+        name="Existing core package name"
         constraints="package|nonempty"
         default="com.sedsoftware.core"
         help="Path to core module package."
@@ -59,7 +59,7 @@
 
     <parameter
         id="applicationInterface"
-        name="Main Application interface name"
+        name="Existing main Application interface name"
         constraints="class|nonempty"
         default="App"
         help="Name of the Application interface from core module."

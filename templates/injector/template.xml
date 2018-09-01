@@ -32,7 +32,7 @@
 
     <parameter
         id="applicationProviderInterface"
-        name="Application provider interface name"
+        name="Existing Application provider interface name"
         constraints="class|nonempty"
         default="AppProvider"
         help="Name of the ApplicationProvider interface from core module."
@@ -41,7 +41,7 @@
 
     <parameter
         id="coreModuleName"
-        name="Core module name"
+        name="Existing core module name"
         constraints="module|nonempty"
         default="core"
         help="Core module name."
@@ -50,7 +50,7 @@
 
     <parameter
         id="corePackageName"
-        name="Core package name"
+        name="Existing core package name"
         constraints="package|nonempty"
         default="com.sedsoftware.core"
         help="Path to core package module."
