@@ -16,16 +16,16 @@
         id="screenName"
         name="Screen name"
         constraints="unique|nonempty"
-        default="ScreenName"
+        default="NewScreen"
         help="The base name of the screen to create."
-        suggest="ScreenName"
+        suggest="NewScreen"
         type="string" />
 
     <parameter
         id="screenModuleName"
         name="Screen module name"
         constraints="module|nonempty"
-        default="screenname"
+        default="newscreen"
         help="Screen module name."
         suggest="${extractLetters(screenName)?lower_case}"
         type="string" />
@@ -69,7 +69,7 @@
         id="screenPackageName"
         name="Screen package name"
         constraints="package|nonempty"
-        default="com.sedsoftware.screenname"
+        default="com.sedsoftware.newscreen"
         help="Path to screen module package."
         suggest="com.sedsoftware.${extractLetters(screenName)?lower_case}"
         type="string" />
@@ -78,7 +78,7 @@
         id="screenViewClass"
         name="View name"
         constraints="class|nonempty|unique"
-        default="ScreenNameView"
+        default="NewScreenView"
         help="The name of the View to create"
         suggest="${underscoreToCamelCase(classToResource(screenName))}View"
         type="string" />
@@ -87,7 +87,7 @@
         id="screenPresenterClass"
         name="Presenter name"
         constraints="class|nonempty|unique"
-        default="ScreenNamePresenter"
+        default="NewScreenPresenter"
         help="The name of the Presenter to create"
         suggest="${underscoreToCamelCase(classToResource(screenName))}Presenter"
         type="string" />
@@ -96,7 +96,7 @@
         id="screenComponentClass"
         name="Component name"
         constraints="class|nonempty|unique"
-        default="ScreenNameViewComponent"
+        default="NewScreenViewComponent"
         help="The name of the Component to create"
         suggest="${underscoreToCamelCase(screenViewClass)}Component"
         type="string"/>
@@ -105,7 +105,7 @@
         id="screenModuleClass"
         name="Module name"
         constraints="class|nonempty|unique"
-        default="ScreenNameViewModule"
+        default="NewScreenViewModule"
         help="The name of the Module to create"
         suggest="${underscoreToCamelCase(screenViewClass)}Module"
         type="string"/>
@@ -126,15 +126,6 @@
         default="com.sedsoftware.core"
         help="Path to core module package."
         suggest="com.sedsoftware.${coreModuleName}"
-        type="string" />
-
-    <parameter
-        id="applicationInterface"
-        name="Main Application interface name"
-        constraints="class|nonempty"
-        default="App"
-        help="Name of the Application interface from core module."
-        suggest="App"
         type="string" />
 
     <parameter
