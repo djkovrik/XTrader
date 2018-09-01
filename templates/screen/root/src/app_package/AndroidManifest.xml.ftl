@@ -1,29 +1,22 @@
-<#import "shared_manifest_macros.ftl" as manifestMacros>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-			package="${packageName}">
+    package="${screenPackageName}">
 
     <application>
-        <activity android:name="${relativePackage}.${screenClass}"
-            <#if generateActivityTitle!true>
-                <#if isNewProject>
-                    android:label="@string/app_name"
-                <#else>
-                    android:label="@string/title_${activityToLayout(screenClass)}"
-                </#if>
+
+        <activity
+            android:name="${screenPackageName}.view.${screenClass}"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme">
+            <#if isLauncher == true>
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
             </#if>
-            <#if hasNoActionBar>
-                android:theme="@style/${themeNameNoActionBar}"
-            <#elseif (requireTheme!false) && !hasApplicationTheme && appCompat>
-                android:theme="@style/${themeName}"
-            </#if>
-            <#if buildApi gte 16 && parentActivityClass != "">
-                android:parentActivityName="${parentActivityClass}"
-            </#if>>
-            <#if parentActivityClass != "">
-                <meta-data android:name="android.support.PARENT_ACTIVITY"
-                    android:value="${parentActivityClass}" />
-            </#if>
-            <@manifestMacros.commonActivityBody />
+
         </activity>
+
     </application>
+
 </manifest>

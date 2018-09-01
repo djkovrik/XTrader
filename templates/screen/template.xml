@@ -132,9 +132,9 @@
         id="coreUiModuleName"
         name="Existing Core UI module name"
         constraints="module|nonempty"
-        default="core"
+        default="coreui"
         help="Core module name."
-        suggest="core"
+        suggest="coreui"
         type="string" />
 
     <parameter
@@ -143,7 +143,25 @@
         constraints="package|nonempty"
         default="com.sedsoftware.core"
         help="Path to core module package."
-        suggest="com.sedsoftware.${coreModuleName}"
+        suggest="com.sedsoftware.${coreUiModuleName}"
+        type="string" />
+
+    <parameter
+        id="applicationInterface"
+        name="Existing main Application interface"
+        constraints="class|nonempty"
+        default="App"
+        help="Name of the application interface to create."
+        suggest="App"
+        type="string" />
+
+    <parameter
+        id="applicationProviderInterface"
+        name="Existing Application provider interface"
+        constraints="class|nonempty"
+        default="AppProvider"
+        help="The name of the application provider interface to create."
+        suggest="${applicationInterface}Provider"
         type="string" />
 
     <parameter

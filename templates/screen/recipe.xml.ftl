@@ -15,10 +15,13 @@
     <instantiate from="root/src/res/values/strings.xml.ftl"
         to="${escapeXmlAttribute(topOut)}/${screenModuleName}/src/main/res/values/strings.xml" />
 
+    <instantiate from="root/src/res/values/styles.xml.ftl"
+        to="${escapeXmlAttribute(topOut)}/${screenModuleName}/src/main/res/values/styles.xml" />
+
     <instantiate from="root/src/res/layout/view_layout.xml.ftl"
         to="${escapeXmlAttribute(topOut)}/${screenModuleName}/src/main/res/layout/${screenLayoutName}.xml" />
 
-    <merge from="root/src/app_package/AndroidManifest.xml.ftl"
+    <instantiate from="root/src/app_package/AndroidManifest.xml.ftl"
         to="${escapeXmlAttribute(topOut)}/${screenModuleName}/src/main/AndroidManifest.xml" />
 
     <copy from="root://gradle-projects/common/gitignore"

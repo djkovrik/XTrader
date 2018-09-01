@@ -4,7 +4,6 @@ import ${coreUiPackageName}.base.BasePresenter
 import ${screenPackageName}.view.${screenViewClass}
 
 import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
 
 <#if cicerone>
 import ru.terrakok.cicerone.Router

@@ -1,10 +1,10 @@
 package ${screenPackageName}.view
 
-import ${coreUiPackageName}.base.BaseView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import com.arellomobile.mvp.MvpView
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface ${screenViewClass}: BaseView {
+interface ${screenViewClass}: MvpView {
 
 }

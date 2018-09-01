@@ -36,9 +36,15 @@
         <instantiate from="root/src/app_package/classes_kotlin/View.kt.ftl"
             to="${escapeXmlAttribute(topOut)}/${screenModuleName}/src/main/java/${slashedPackageName(screenPackageName)}/view/${screenViewClass}.kt" />
 
-        <instantiate from=root/"src/app_package/classes_kotlin/Presenter.kt.ftl"
+        <instantiate from="root/src/app_package/classes_kotlin/Presenter.kt.ftl"
             to="${escapeXmlAttribute(topOut)}/${screenModuleName}/src/main/java/${slashedPackageName(screenPackageName)}/presenter/${screenPresenterClass}.kt" />
 
     </#if>
+
+    <instantiate from="root/src/app_package/classes_kotlin/Component.kt.ftl"
+        to="${escapeXmlAttribute(topOut)}/${screenModuleName}/src/main/java/${slashedPackageName(screenPackageName)}/di/${screenComponentClass}.kt" />
+
+    <instantiate from="root/src/app_package/classes_kotlin/Module.kt.ftl"
+        to="${escapeXmlAttribute(topOut)}/${screenModuleName}/src/main/java/${slashedPackageName(screenPackageName)}/di/${screenModuleClass}.kt" />
 
 </recipe>

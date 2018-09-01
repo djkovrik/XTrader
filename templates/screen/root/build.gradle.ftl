@@ -24,10 +24,12 @@ android {
 dependencies {
     ${getConfigurationName("implementation")} fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
     implementation project(':${coreModuleName}')
     implementation project(':${coreUiModuleName}')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "com.android.support:appcompat-v7:27.1.1"
 
     <#if cicerone>
     implementation "ru.terrakok.cicerone:cicerone:3.0.0"

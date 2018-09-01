@@ -7,6 +7,8 @@ import ${screenPackageName}.R
 import ${coreUiPackageName}.base.BaseActivity
 import ${screenPackageName}.view.${screenViewClass}
 import ${screenPackageName}.presenter.${screenPresenterClass}
+import ${screenPackageName}.di.${screenComponentClass}
+import ${corePackageName}.${applicationInterface}
 <#if cicerone>
 import ru.terrakok.cicerone.Navigator
 </#if>
@@ -28,12 +30,14 @@ class ${screenClass}: BaseActivity(), ${screenViewClass} {
     override var navigator: Navigator = Navigator { }
     </#if>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     @LayoutRes
     override fun layoutRes() = R.layout.${screenLayoutName}
+
+    override fun injectDependencies() {
+        ${screenComponentClass}.Initializer
+                .init((applicationContext as ${applicationInterface}).getAppComponent())
+                .inject(this@${screenClass})
+    }
 
     override fun viewCreated() {
 
