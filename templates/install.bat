@@ -1,4 +1,4 @@
-SET ANDROID_STUDIO_PATH=D:\Android Studio Canary
+SET ANDROID_STUDIO_PATH=D:\Android Studio
 
 SET CORE_DESTINATION=%ANDROID_STUDIO_PATH%\plugins\android\lib\templates\other\ModularCore\
 SET COREUI_DESTINATION=%ANDROID_STUDIO_PATH%\plugins\android\lib\templates\other\ModularCoreUI\

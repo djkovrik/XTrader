@@ -28,6 +28,10 @@ dependencies {
 
     implementation project(':${coreModuleName}')
 
+    <#if cicerone>
+    implementation "ru.terrakok.cicerone:cicerone:3.0.0"
+    </#if>
+
     implementation "com.google.dagger:dagger:2.17"
     kapt "com.google.dagger:dagger-compiler:2.17"
 }

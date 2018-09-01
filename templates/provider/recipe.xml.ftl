@@ -20,6 +20,16 @@
     <merge from="root/merge_build.gradle.ftl"
         to="${escapeXmlAttribute(topOut)}/app/build.gradle" />
 
+    <#if cicerone>
+
+        <merge from="root/merge_core_build.gradle.ftl"
+            to="${escapeXmlAttribute(topOut)}/app/build.gradle" />
+
+        <merge from="root/merge_core_build.gradle.ftl"
+            to="${escapeXmlAttribute(topOut)}/${coreModuleName}/build.gradle" />
+
+     </#if>
+
     <#include "kotlin_files_recipe.xml.ftl" />
 
 </recipe>

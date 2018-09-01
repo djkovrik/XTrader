@@ -18,7 +18,8 @@ interface ${screenComponentClass} {
         companion object {
             fun init(appComponent: ${applicationProviderInterface}): ${screenComponentClass} =
                     Dagger${screenComponentClass}.builder()
-                            .applicationProvider(appComponent)
+                            // TODO Check app provider name here:
+                            .appProvider(appComponent)
                             .build()
         }
     }

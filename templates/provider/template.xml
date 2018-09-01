@@ -67,11 +67,18 @@
         type="string" />
 
     <parameter
-        id="includeSample"
-        name="Include sample code"
+        id="sample"
+        name="Include sample code?"
         type="boolean"
         default="false"
         help="If true, generates sample code which provides Logger and Settings implementations." />
+
+    <parameter
+        id="cicerone"
+        name="Include Cicerone?"
+        default="false"
+        help="If true, provides Cicerone router and navHolder."
+        type="boolean" />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />
