@@ -2,7 +2,7 @@
 <template
     format="5"
     revision="5"
-    name="Core module (Kotlin)"
+    name="Core - Main module (Kotlin)"
     description="Creates a new core module">
 
     <category value="Modular" />

@@ -31,6 +31,15 @@
         type="string" />
 
     <parameter
+        id="screenPackageName"
+        name="Screen package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.newscreen"
+        help="Path to screen module package."
+        suggest="com.sedsoftware.${extractLetters(screenName)?lower_case}"
+        type="string" />
+
+    <parameter
         id="screenType"
         name="View class type"
         default="activity"
@@ -44,7 +53,7 @@
         id="screenClass"
         name="View class name"
         constraints="class|unique|nonempty"
-        default="ScreenFragment"
+        default="NewScreenFragment"
         help="The name of the view class to create."
         suggest="${screenName}${underscoreToCamelCase(screenType)}"
         type="string" />
@@ -64,15 +73,6 @@
         default="false"
         help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher"
         type="boolean"/>
-
-    <parameter
-        id="screenPackageName"
-        name="Screen package name"
-        constraints="package|nonempty"
-        default="com.sedsoftware.newscreen"
-        help="Path to screen module package."
-        suggest="com.sedsoftware.${extractLetters(screenName)?lower_case}"
-        type="string" />
 
     <parameter
         id="screenViewClass"
@@ -106,13 +106,13 @@
         name="Module name"
         constraints="class|nonempty|unique"
         default="NewScreenViewModule"
-        help="The name of the Module to create"
+        help="The name of the module to create"
         suggest="${underscoreToCamelCase(screenViewClass)}Module"
         type="string"/>
 
     <parameter
         id="coreModuleName"
-        name="Core module name"
+        name="Existing Core module name"
         constraints="module|nonempty"
         default="core"
         help="Core module name."
@@ -121,7 +121,25 @@
 
     <parameter
         id="corePackageName"
-        name="Core package name"
+        name="Existing Core package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.core"
+        help="Path to core module package."
+        suggest="com.sedsoftware.${coreModuleName}"
+        type="string" />
+
+    <parameter
+        id="coreUiModuleName"
+        name="Existing Core UI module name"
+        constraints="module|nonempty"
+        default="core"
+        help="Core module name."
+        suggest="core"
+        type="string" />
+
+    <parameter
+        id="coreUiPackageName"
+        name="Existing Core UI package name"
         constraints="package|nonempty"
         default="com.sedsoftware.core"
         help="Path to core module package."

@@ -4,18 +4,18 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 
 import ${screenPackageName}.R
-${screenPackageName}.view.${screenViewClass}
-${screenPackageName}.presenter.${screenPresenterClass}
+import ${coreUiPackageName}.base.BaseActivity
+import ${screenPackageName}.view.${screenViewClass}
+import ${screenPackageName}.presenter.${screenPresenterClass}
 <#if cicerone>
 import ru.terrakok.cicerone.Navigator
 </#if>
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.arellomobile.mvp.MvpAppCompatActivity
 
 import javax.inject.Inject
 
-class ${screenClass}: MvpAppCompatActivity(), ${screenViewClass} {
+class ${screenClass}: BaseActivity(), ${screenViewClass} {
 
     @Inject
     @InjectPresenter

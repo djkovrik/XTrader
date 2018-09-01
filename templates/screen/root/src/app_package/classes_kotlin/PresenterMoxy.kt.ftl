@@ -1,5 +1,6 @@
 package ${screenPackageName}.presenter
 
+import ${coreUiPackageName}.base.BasePresenter
 import ${screenPackageName}.view.${screenViewClass}
 
 import com.arellomobile.mvp.InjectViewState
@@ -11,6 +12,6 @@ import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 @InjectViewState
-class ${screenPresenterClass} @Inject constructor(<#if cicerone>private val router: Router</#if>): MvpPresenter<${screenViewClass}>() {
+class ${screenPresenterClass} @Inject constructor(<#if cicerone>private val router: Router</#if>): BasePresenter<${screenViewClass}>() {
 
 }

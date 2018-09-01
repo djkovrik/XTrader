@@ -9,6 +9,9 @@
     <instantiate from="root/build.gradle.ftl"
         to="${escapeXmlAttribute(topOut)}/${coreUiModuleName}/build.gradle" />
 
+    <merge from="root/merge_build.gradle.ftl"
+        to="${escapeXmlAttribute(topOut)}/app/build.gradle" />
+
     <instantiate from="root/src/AndroidManifest.xml.ftl"
         to="${escapeXmlAttribute(topOut)}/${coreUiModuleName}/src/main/AndroidManifest.xml" />
 

@@ -2,7 +2,7 @@
 <template
     format="5"
     revision="5"
-    name="Core UI module (Kotlin)"
+    name="Core - UI module (Kotlin)"
     description="Creates a new core module for UI components.">
 
     <category value="Modular" />
@@ -32,7 +32,7 @@
 
     <parameter
         id="coreModuleName"
-        name="Existing core module name"
+        name="Existing Core module name"
         constraints="module|nonempty"
         default="core"
         help="Core module name."
@@ -41,7 +41,7 @@
 
     <parameter
         id="corePackageName"
-        name="Existing core package name"
+        name="Existing Core package name"
         constraints="package|nonempty"
         default="com.sedsoftware.core"
         help="Path to core module package."

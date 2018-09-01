@@ -41,7 +41,7 @@
 
     <parameter
         id="coreModuleName"
-        name="Existing core module name"
+        name="Existing Core module name"
         constraints="module|nonempty"
         default="core"
         help="Core module name."
@@ -50,7 +50,7 @@
 
     <parameter
         id="corePackageName"
-        name="Existing core package name"
+        name="Existing Core package name"
         constraints="package|nonempty"
         default="com.sedsoftware.core"
         help="Path to core module package."

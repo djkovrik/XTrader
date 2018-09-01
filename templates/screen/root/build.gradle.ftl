@@ -27,6 +27,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation project(':${coreModuleName}')
+    implementation project(':${coreUiModuleName}')
 
     <#if cicerone>
     implementation "ru.terrakok.cicerone:cicerone:3.0.0"

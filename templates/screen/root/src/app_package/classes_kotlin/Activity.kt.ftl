@@ -3,7 +3,7 @@ package ${screenPackageName}.view
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 
-import ${corePackageName}.base.BaseActivity
+import ${coreUiPackageName}.base.BaseActivity
 import ${screenPackageName}.R
 import ${screenPackageName}.view.${screenViewClass}
 import ${screenPackageName}.presenter.${screenPresenterClassClass}

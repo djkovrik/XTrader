@@ -1,6 +1,6 @@
 package ${screenPackageName}.presenter
 
-import ${corePackageName}.base.BasePresenterImpl
+import ${coreUiPackageName}.base.BasePresenterImpl
 import ${screenPackageName}.view.${viewClass}
 
 import javax.inject.Inject

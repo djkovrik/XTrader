@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import ${screenPackageName}.R
-import ${corePackageName}.base.BaseFragment
+import ${coreUiPackageName}.base.BaseFragment
 import ${screenPackageName}.view.${screenViewClass}
 import ${screenPackageName}.presenter.${screenPresenterClass}
 
