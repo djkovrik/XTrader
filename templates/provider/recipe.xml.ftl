@@ -20,8 +20,6 @@
     <merge from="root/merge_build.gradle.ftl"
         to="${escapeXmlAttribute(topOut)}/app/build.gradle" />
 
-    <#include "root://gradle-projects/common/proguard_recipe.xml.ftl"/>
-
     <#include "kotlin_files_recipe.xml.ftl" />
 
 </recipe>

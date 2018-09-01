@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="Core UI module (Kotlin)"
+    description="Creates a new core module for UI components.">
+
+    <category value="Modular" />
+    <formfactor value="Mobile" />
+
+    <thumbs>
+        <thumb>template_new_project.png</thumb>
+    </thumbs>
+
+    <parameter
+        id="coreUiModuleName"
+        name="Core UI module name"
+        constraints="module|nonempty"
+        default="coreui"
+        help="Core module name."
+        suggest="coreui"
+        type="string" />
+
+    <parameter
+        id="coreUiPackageName"
+        name="Core UI package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.coreui"
+        help="Path to core module package."
+        suggest="com.sedsoftware.${coreUiModuleName}"
+        type="string" />
+
+    <parameter
+        id="coreModuleName"
+        name="Existing core module name"
+        constraints="module|nonempty"
+        default="core"
+        help="Core module name."
+        suggest="core"
+        type="string" />
+
+    <parameter
+        id="corePackageName"
+        name="Existing core package name"
+        constraints="package|nonempty"
+        default="com.sedsoftware.core"
+        help="Path to core module package."
+        suggest="com.sedsoftware.${coreModuleName}"
+        type="string" />
+
+    <parameter
+        id="cicerone"
+        name="Include Cicerone?"
+        default="true"
+        type="boolean" />
+
+    <parameter
+        id="moxy"
+        name="Include Moxy?"
+        default="true"
+        type="boolean"/>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
