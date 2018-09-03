@@ -2,6 +2,7 @@ import Versions.APPCOMPAT_VERSION
 import Versions.CARDVIEW_VERSION
 import Versions.CONSTRAINT_LAYOUT_VERSION
 import Versions.KTX_VERSION
+import Versions.LEGACY_SUPPORT_UTILS_VERSION
 import Versions.LIFECYCLE_VERSION
 import Versions.MATERIAL_COMPONENTS_VERSION
 import Versions.NAVIGATION_VERSION
@@ -40,4 +41,6 @@ object JetPackDependencies {
     const val workManagerTestHelpers = "android.arch.work:work-testing:$NAVIGATION_VERSION"
 
     const val KTX = "androidx.core:core-ktx:$KTX_VERSION"
+
+    const val legacyUtils = "androidx.legacy:legacy-support-core-utils:$LEGACY_SUPPORT_UTILS_VERSION"
 }

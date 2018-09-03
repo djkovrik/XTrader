@@ -41,6 +41,8 @@ dependencies {
 
     implementation KotlinDependencies.kotlin
 
+    implementation JetPackDependencies.legacyUtils
+
     implementation CoreDepencencies.dagger
     kapt CoreDepencencies.daggerCompiler
 
