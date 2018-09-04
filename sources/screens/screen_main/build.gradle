@@ -12,7 +12,7 @@ android {
         versionCode androidGitVersion.code()
         versionName androidGitVersion.name()
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         resConfigs "en", "ru"
     }
@@ -37,6 +37,8 @@ androidExtensions {
 dependencies {
     implementation project(':core')
     implementation project(':core_ui')
+    implementation project(':screen_first_launch')
+    implementation project(':screen_home')
 
     implementation KotlinDependencies.kotlin
 
