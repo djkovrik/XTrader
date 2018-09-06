@@ -46,4 +46,6 @@ dependencies {
   implementation JetPackDependencies.appCompat
   implementation JetPackDependencies.constraintLayout
   implementation JetPackDependencies.materialComponents
+
+  implementation UiDependencies.materialValues
 }

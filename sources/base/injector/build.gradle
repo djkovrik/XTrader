@@ -38,6 +38,8 @@ dependencies {
     implementation project(':device')
     implementation project(':ex_binance')
     implementation project(':screen_main')
+    implementation project(':screen_intro')
+    implementation project(':screen_home')
 
     implementation KotlinDependencies.kotlin
 

@@ -12,8 +12,8 @@ import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
 
-    abstract fun inject()
     abstract fun getLayoutId(): Int
+    abstract fun inject()
 
     protected val appComponent: ApplicationProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity?.applicationContext as App).getAppComponent()

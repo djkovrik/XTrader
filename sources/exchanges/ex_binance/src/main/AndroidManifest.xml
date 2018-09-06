@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sedsoftware.binance" />
+<manifest package="com.sedsoftware.binance" />

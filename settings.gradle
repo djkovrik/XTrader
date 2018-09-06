@@ -1,4 +1,4 @@
-include ':injector', ':screen_home', ':screen_first_launch'
+include ':injector', ':screen_home'
 project(':injector').projectDir = new File(rootDir, 'sources/base/injector')
 include ':core'
 project(':core').projectDir = new File(rootDir, 'sources/base/core')
@@ -9,8 +9,8 @@ project(':device').projectDir = new File(rootDir, 'sources/base/device')
 
 include ':screen_main'
 project(':screen_main').projectDir = new File(rootDir, 'sources/screens/screen_main')
-include ':screen_first_launch'
-project(':screen_first_launch').projectDir = new File(rootDir, 'sources/screens/screen_first_launch')
+include ':screen_intro'
+project(':screen_intro').projectDir = new File(rootDir, 'sources/screens/screen_intro')
 include ':screen_home'
 project(':screen_home').projectDir = new File(rootDir, 'sources/screens/screen_home')
 
