@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.sedsoftware.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/navigate_from_splash_to_home"
+            app:destination="@id/homeScreenFragment" />
+        <action
+            android:id="@+id/navigate_from_splash_to_intro"
+            app:destination="@id/introScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/introScreenFragment"
+        android:name="com.sedsoftware.introscreen.IntroScreenFragment"
+        android:label="IntroScreenFragment"
+        tools:layout="@layout/fragment_intro_screen">
+        <action
+            android:id="@+id/navigate_from_intro_to_home"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.sedsoftware.homescreen.HomeScreenFragment"
+        android:label="HomeScreenFragment"
+        tools:layout="@layout/fragment_home_screen" />
+</navigation>
