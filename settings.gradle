@@ -1,4 +1,4 @@
-include ':injector', ':screen_home'
+include ':injector'
 project(':injector').projectDir = new File(rootDir, 'sources/base/injector')
 include ':core'
 project(':core').projectDir = new File(rootDir, 'sources/base/core')
@@ -15,5 +15,7 @@ include ':screen_home'
 project(':screen_home').projectDir = new File(rootDir, 'sources/screens/screen_home')
 
 
+include ':exchange_manager'
+project(':exchange_manager').projectDir = new File(rootDir, 'sources/exchanges/exchange_manager')
 include ':ex_binance'
 project(':ex_binance').projectDir = new File(rootDir, 'sources/exchanges/ex_binance')
