@@ -1,4 +1,4 @@
-package com.sedsoftware.binance.di
+package com.sedsoftware.binance.di.module
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import com.sedsoftware.binance.network.BinanceApi
