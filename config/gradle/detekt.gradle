@@ -1,3 +1,5 @@
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
 detekt {
     version = Versions.DETEKT_VERSION
 
@@ -6,5 +8,6 @@ detekt {
         filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
         output = "$projectDir/reports/detekt.xml"
         baseline = "$projectDir/reports/baseline.xml"
+        parallel = true
     }
 }

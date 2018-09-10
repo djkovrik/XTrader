@@ -16,9 +16,10 @@ buildscript {
     }
 }
 
-apply plugin: 'io.gitlab.arturbosch.detekt'
 apply plugin: 'com.github.ben-manes.versions'
-apply plugin: 'com.gladed.androidgitversion'
+
+apply from: 'config/gradle/androidgit.gradle'
+apply from: 'config/gradle/detekt.gradle'
 
 allprojects {
     repositories {
@@ -33,6 +34,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-apply from: 'config/gradle/detekt.gradle'
-apply from: 'config/gradle/androidgit.gradle'

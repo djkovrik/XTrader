@@ -2,6 +2,7 @@ package com.sedsoftware.binance.entity
 
 import com.sedsoftware.core.entity.Currency
 
+@Suppress("LargeClass")
 enum class BinanceCurrency(override val label: String) : Currency {
     ADA("Cardano"),
     ADX("AdEx"),

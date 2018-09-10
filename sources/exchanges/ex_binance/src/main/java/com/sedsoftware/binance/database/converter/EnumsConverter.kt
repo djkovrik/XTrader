@@ -1,7 +1,16 @@
 package com.sedsoftware.binance.database.converter
 
 import androidx.room.TypeConverter
-import com.sedsoftware.binance.common.params.*
+import com.sedsoftware.binance.common.params.CandleInterval
+import com.sedsoftware.binance.common.params.CurrencyBinance
+import com.sedsoftware.binance.common.params.FilterType
+import com.sedsoftware.binance.common.params.OrderSide
+import com.sedsoftware.binance.common.params.OrderStatus
+import com.sedsoftware.binance.common.params.OrderType
+import com.sedsoftware.binance.common.params.RateLimitInterval
+import com.sedsoftware.binance.common.params.RateLimitType
+import com.sedsoftware.binance.common.params.SymbolStatus
+import com.sedsoftware.binance.common.params.TimeInForce
 
 class EnumsConverter {
 

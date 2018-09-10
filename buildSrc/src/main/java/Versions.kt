@@ -41,7 +41,7 @@ object Versions {
     const val DAGGER_VERSION = "2.17"
     const val RETROFIT_VERSION = "2.4.0"
     const val MOSHI_VERSION = "1.6.0"
-    const val RETROFIT_COROUTINES_ADAPTER_VERSION = "1.0.0"
+    const val COROUTINES_ADAPTER_VERSION = "1.0.0"
     const val OKHTTP_VERSION = "3.11.0"
 
     // UI

@@ -1,11 +1,9 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
-    <Blacklist timestamp="1526498573170"></Blacklist>
-    <Whitelist timestamp="1534445692181">
-        <ID>MagicNumber:ParamsSigner.kt$ParamsSigner$4</ID>
-        <ID>MaxLineLength:CoreDepencencies.kt$CoreDepencencies$const val retrofitCoroutinesAdapter =
-            "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$RETROFIT_COROUTINES_ADAPTER_VERSION"
-        </ID>
-        <ID>WildcardImport:EnumsConverter.kt$import com.sedsoftware.binance.common.params.*</ID>
-    </Whitelist>
+  <Blacklist timestamp="1536602621027"></Blacklist>
+  <Whitelist timestamp="1536602621026">
+    <ID>MagicNumber:SignerImpl.kt$SignerImpl$4</ID>
+    <ID>TooGenericExceptionCaught:ViewModelOwnerFactory.kt$ViewModelOwnerFactory$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:ViewModelOwnerFactory.kt$ViewModelOwnerFactory$throw RuntimeException(e)</ID>
+  </Whitelist>
 </SmellBaseline>

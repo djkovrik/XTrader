@@ -1,3 +1,5 @@
+apply plugin: 'com.gladed.androidgitversion'
+
 androidGitVersion {
     codeFormat 'MNNPPP'
     format '%tag%%.count%%-commit%'

@@ -1,4 +1,3 @@
 package com.sedsoftware.splash.di
 
-class SplashFragmentComponent {
-}
+class SplashFragmentComponent
