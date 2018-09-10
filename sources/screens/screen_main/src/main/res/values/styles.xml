@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
+    <!-- MAIN THEME -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="themeName">@string/theme_main</item>
+        <!-- OVERRIDES -->
+        <!-- Base -->
+        <item name="colorPrimary">@color/primaryMain</item>
+        <item name="colorPrimaryDark">@color/primaryDarkMain</item>
+        <item name="colorAccent">@color/accentMain</item>
+        <!-- Window -->
+        <item name="android:windowBackground">@color/backgroundMain</item>
+        <!-- Text -->
+        <item name="android:textColorPrimary">@color/textMain</item>
+        <item name="android:textColorPrimaryInverse">@color/textInverseMain</item>
+        <item name="android:textColorSecondary">@color/textMain</item>
+        <item name="android:textColorSecondaryInverse">@color/textInverseMain</item>
+        <!-- CUSTOM -->
+        <!-- Attribute colors -->
+        <item name="colorAccentNegative">@color/accentNegativeMain</item>
+        <item name="colorAccentSecondary">@color/accentSecondaryMain</item>
+        <item name="colorBackground">@color/backgroundMain</item>
+        <item name="colorBackgroundSecondary">@color/backgroundSecondaryMain</item>
+        <item name="colorBackgroundCard">@color/backgroundCardMain</item>
+        <item name="colorTextNegative">@color/textNegativeMain</item>
+        <item name="colorTextPositive">@color/textPositiveMain</item>
+
+    </style>
 
 </resources>

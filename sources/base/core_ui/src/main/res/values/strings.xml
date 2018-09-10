@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">uicore</string>
+    <string name="theme_main">Main</string>
 </resources>
