@@ -8,10 +8,10 @@ import com.sedsoftware.coreapi.device.Logger
 import com.sedsoftware.coreapi.device.Settings
 import com.sedsoftware.coreapi.device.Signer
 import com.sedsoftware.coreapi.executor.Executor
-import com.sedsoftware.device.encrypt.SignerImpl
-import com.sedsoftware.device.executor.ExecutorImpl
-import com.sedsoftware.device.log.LoggerImpl
-import com.sedsoftware.device.settings.SettingsImpl
+import com.sedsoftware.device.encrypt.StringSigner
+import com.sedsoftware.device.executor.AppExecutor
+import com.sedsoftware.device.log.AppLogger
+import com.sedsoftware.device.settings.AppSettings
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -22,12 +22,12 @@ class DeviceToolsModule {
     @Provides
     @Singleton
     fun provideExecutor(): Executor =
-        ExecutorImpl()
+        AppExecutor()
 
     @Provides
     @Singleton
     fun provideLogger(): Logger =
-        LoggerImpl()
+        AppLogger()
 
     @Provides
     @Singleton
@@ -42,10 +42,10 @@ class DeviceToolsModule {
     @Provides
     @Singleton
     fun provideSettings(resources: Resources, preferences: SharedPreferences): Settings =
-        SettingsImpl(resources, preferences)
+        AppSettings(resources, preferences)
 
     @Provides
     @Singleton
     fun provideSigner(): Signer =
-        SignerImpl()
+        StringSigner()
 }

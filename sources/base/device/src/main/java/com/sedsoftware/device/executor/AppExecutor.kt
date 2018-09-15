@@ -10,7 +10,7 @@ import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
 
-class ExecutorImpl @Inject constructor() : Executor {
+class AppExecutor @Inject constructor() : Executor {
 
     override fun <T> ui(func: Suspendable<T>): Job =
         launch(UI) {

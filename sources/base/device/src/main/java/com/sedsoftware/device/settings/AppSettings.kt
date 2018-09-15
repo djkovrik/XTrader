@@ -6,7 +6,7 @@ import androidx.annotation.StringRes
 import com.sedsoftware.coreapi.device.Settings
 import javax.inject.Inject
 
-class SettingsImpl @Inject constructor(
+class AppSettings @Inject constructor(
     private val resources: Resources,
     private val preferences: SharedPreferences
 ) : Settings {
@@ -41,5 +41,5 @@ class SettingsImpl @Inject constructor(
             else -> throw UnsupportedOperationException("Not implemented yet")
         }
 
-    private fun SettingsImpl.key(@StringRes resId: Int): String = resources.getString(resId)
+    private fun AppSettings.key(@StringRes resId: Int): String = resources.getString(resId)
 }

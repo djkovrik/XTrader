@@ -3,7 +3,7 @@ package com.sedsoftware.device.log
 import com.sedsoftware.coreapi.device.Logger
 import timber.log.Timber
 
-class LoggerImpl : Logger {
+class AppLogger : Logger {
 
     override fun d(message: String) {
         Timber.asTree().d(message)
