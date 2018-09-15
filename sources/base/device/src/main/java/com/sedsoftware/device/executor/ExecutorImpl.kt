@@ -1,7 +1,7 @@
 package com.sedsoftware.device.executor
 
-import com.sedsoftware.core.common.Suspendable
-import com.sedsoftware.core.executor.Executor
+import com.sedsoftware.coreapi.executor.Executor
+import com.sedsoftware.coreutils.common.Suspendable
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.Job

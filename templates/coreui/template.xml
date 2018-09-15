@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
-<template
-    format="5"
-    revision="5"
-    name="Core - UI module (Kotlin)"
-    description="Creates a new core module for UI components.">
+<template name="Core - UI module (Kotlin)" description="Creates a new core module for UI components." format="5"
+    revision="5">
 
     <category value="Modular" />
     <formfactor value="Mobile" />
@@ -12,53 +9,23 @@
         <thumb>template_new_project.png</thumb>
     </thumbs>
 
-    <parameter
-        id="coreUiModuleName"
-        name="Core UI module name"
-        constraints="module|nonempty"
-        default="coreui"
-        help="Core module name."
-        suggest="coreui"
-        type="string" />
+    <parameter name="Core UI module name" constraints="module|nonempty" default="coreui" help="Core module name."
+        id="coreUiModuleName" suggest="coreui" type="string" />
 
-    <parameter
-        id="coreUiPackageName"
-        name="Core UI package name"
-        constraints="package|nonempty"
-        default="com.sedsoftware.coreui"
-        help="Path to core module package."
-        suggest="com.sedsoftware.${coreUiModuleName}"
-        type="string" />
+    <parameter name="Core UI package name" constraints="package|nonempty" default="com.sedsoftware.coreui"
+        help="Path to core module package." id="coreUiPackageName"
+        suggest="com.sedsoftware.${coreUiModuleName}" type="string" />
 
-    <parameter
-        id="coreModuleName"
-        name="Existing Core module name"
-        constraints="module|nonempty"
-        default="core"
-        help="Core module name."
-        suggest="core"
-        type="string" />
+    <parameter name="Existing Core module name" constraints="module|nonempty" default="core" help="Core module name."
+        id="coreModuleName" suggest="core" type="string" />
 
-    <parameter
-        id="corePackageName"
-        name="Existing Core package name"
-        constraints="package|nonempty"
-        default="com.sedsoftware.core"
-        help="Path to core module package."
-        suggest="com.sedsoftware.${coreModuleName}"
-        type="string" />
+    <parameter name="Existing Core package name" constraints="package|nonempty" default="com.sedsoftware.coreapi"
+        help="Path to core module package." id="corePackageName"
+        suggest="com.sedsoftware.${coreModuleName}" type="string" />
 
-    <parameter
-        id="cicerone"
-        name="Include Cicerone?"
-        default="true"
-        type="boolean" />
+    <parameter name="Include Cicerone?" default="true" id="cicerone" type="boolean" />
 
-    <parameter
-        id="moxy"
-        name="Include Moxy?"
-        default="true"
-        type="boolean"/>
+    <parameter name="Include Moxy?" default="true" id="moxy" type="boolean" />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

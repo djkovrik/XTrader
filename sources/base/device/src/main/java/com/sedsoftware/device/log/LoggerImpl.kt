@@ -1,6 +1,6 @@
 package com.sedsoftware.device.log
 
-import com.sedsoftware.core.device.Logger
+import com.sedsoftware.coreapi.device.Logger
 import timber.log.Timber
 
 class LoggerImpl : Logger {

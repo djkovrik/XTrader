@@ -3,11 +3,11 @@ package com.sedsoftware.device.di
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.preference.PreferenceManager
-import com.sedsoftware.core.App
-import com.sedsoftware.core.device.Logger
-import com.sedsoftware.core.device.Settings
-import com.sedsoftware.core.device.Signer
-import com.sedsoftware.core.executor.Executor
+import com.sedsoftware.coreapi.App
+import com.sedsoftware.coreapi.device.Logger
+import com.sedsoftware.coreapi.device.Settings
+import com.sedsoftware.coreapi.device.Signer
+import com.sedsoftware.coreapi.executor.Executor
 import com.sedsoftware.device.encrypt.SignerImpl
 import com.sedsoftware.device.executor.ExecutorImpl
 import com.sedsoftware.device.log.LoggerImpl

@@ -1,6 +1,6 @@
 package com.sedsoftware.device.encrypt
 
-import com.sedsoftware.core.device.Signer
+import com.sedsoftware.coreapi.device.Signer
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 

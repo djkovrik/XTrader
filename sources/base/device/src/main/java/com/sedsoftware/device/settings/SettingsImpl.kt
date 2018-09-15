@@ -3,7 +3,7 @@ package com.sedsoftware.device.settings
 import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.annotation.StringRes
-import com.sedsoftware.core.device.Settings
+import com.sedsoftware.coreapi.device.Settings
 import javax.inject.Inject
 
 class SettingsImpl @Inject constructor(

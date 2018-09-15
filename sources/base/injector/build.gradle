@@ -33,11 +33,12 @@ android {
 }
 
 dependencies {
-    implementation project(':core')
-    implementation project(':core_ui')
+    implementation project(':core-api')
+    implementation project(':core-ui')
+    implementation project(':core-utils')
     implementation project(':device')
-    implementation project(':exchange_manager')
-    implementation project(':screen_main')
+    implementation project(':exchange-manager')
+    implementation project(':screen-main')
 
     implementation KotlinDependencies.kotlin
 
