@@ -4,24 +4,24 @@ object Versions {
     const val MIN_SDK_VERSION = 21
     const val COMPILE_SDK_VERSION = 28
     const val TARGET_SDK_VERSION = 28
-    const val GRADLE_ANDROID_VERSION = "3.3.0-alpha08"
+    const val GRADLE_ANDROID_VERSION = "3.3.0-alpha10"
 
     // Plugins
     const val DETEKT_VERSION = "1.0.0.RC8"
     const val GRADLE_VERSIONS_VERSION = "0.20.0"
-    const val GRADLE_VERSIONING_VERSION = "0.4.4"
+    const val GRADLE_VERSIONING_VERSION = "0.4.5"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha05"
     const val ANDROID_JUNIT5_VERSION = "1.2.0.0"
 
     // Kotlin
-    const val KOTLIN_VERSION = "1.2.61"
+    const val KOTLIN_VERSION = "1.2.70"
     const val KOTLIN_COROUTINES_VERSION = "0.24.0"
 
     // JetPack - AppCompat
     const val APPCOMPAT_VERSION = "1.0.0-rc02"
     const val CARDVIEW_VERSION = "1.0.0-rc02"
     const val PREFERENCE_VERSION = "1.0.0-rc02"
-    const val MATERIAL_COMPONENTS_VERSION = "1.0.0-rc01"
+    const val MATERIAL_COMPONENTS_VERSION = "1.0.0-rc02"
     const val RECYCLER_VIEW_VERSION = "1.0.0-rc02"
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-alpha2"
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0-rc02"
@@ -53,7 +53,7 @@ object Versions {
     const val JUNIT4_VERSION = "4.12"
     const val JUNIT5_VERSION = "5.2.0"
     const val JUNIT5_RUNNER_VERSION = "0.2.2"
-    const val TEST_RUNNER_VERSION = "1.1.0-alpha1"
+    const val TEST_RUNNER_VERSION = "1.1.0-alpha4"
     const val TEST_RULES_VERSION = "1.1.0-alpha1"
     const val ESPRESSO_VERSION = "3.1.0-alpha1"
     const val SPEK_VERSION = "2.0.0-alpha.2"
