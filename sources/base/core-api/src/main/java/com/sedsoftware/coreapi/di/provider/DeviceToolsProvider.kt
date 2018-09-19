@@ -17,4 +17,5 @@ interface DeviceToolsProvider {
     fun provideSettings(): Settings
 
     fun provideSigner(): Signer
+
 }

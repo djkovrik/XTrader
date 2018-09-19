@@ -5,7 +5,9 @@ import android.content.res.Resources
 import androidx.annotation.StringRes
 import com.sedsoftware.coreapi.device.Settings
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AppSettings @Inject constructor(
     private val resources: Resources,
     private val preferences: SharedPreferences

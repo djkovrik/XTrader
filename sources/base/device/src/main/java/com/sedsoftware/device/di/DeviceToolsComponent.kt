@@ -9,6 +9,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
+        PlatformToolsModule::class,
         DeviceToolsModule::class
     ]
 )

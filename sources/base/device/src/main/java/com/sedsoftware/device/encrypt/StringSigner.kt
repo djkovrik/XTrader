@@ -3,8 +3,11 @@ package com.sedsoftware.device.encrypt
 import com.sedsoftware.coreapi.device.Signer
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class StringSigner : Signer {
+@Singleton
+class StringSigner @Inject constructor() : Signer {
 
     companion object {
         private const val SHA1_ALGORITHM = "HmacSHA1"

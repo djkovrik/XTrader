@@ -9,7 +9,9 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AppExecutor @Inject constructor() : Executor {
 
     override fun <T> ui(func: Suspendable<T>): Job =

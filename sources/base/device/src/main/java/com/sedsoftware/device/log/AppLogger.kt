@@ -2,8 +2,11 @@ package com.sedsoftware.device.log
 
 import com.sedsoftware.coreapi.device.Logger
 import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class AppLogger : Logger {
+@Singleton
+class AppLogger @Inject constructor() : Logger {
 
     override fun d(message: String) {
         Timber.asTree().d(message)
