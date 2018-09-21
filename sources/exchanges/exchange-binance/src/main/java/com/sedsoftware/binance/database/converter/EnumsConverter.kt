@@ -2,7 +2,7 @@ package com.sedsoftware.binance.database.converter
 
 import androidx.room.TypeConverter
 import com.sedsoftware.binance.common.params.CandleInterval
-import com.sedsoftware.binance.common.params.CurrencyBinance
+import com.sedsoftware.binance.common.CurrencyBinance
 import com.sedsoftware.binance.common.params.FilterType
 import com.sedsoftware.binance.common.params.OrderSide
 import com.sedsoftware.binance.common.params.OrderStatus

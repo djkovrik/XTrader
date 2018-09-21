@@ -1,6 +1,6 @@
 package com.sedsoftware.binance.entity
 
-import com.sedsoftware.coreapi.entity.Currency
+import com.sedsoftware.coreentity.Currency
 
 @Suppress("LargeClass")
 enum class BinanceCurrency(override val label: String) : Currency {

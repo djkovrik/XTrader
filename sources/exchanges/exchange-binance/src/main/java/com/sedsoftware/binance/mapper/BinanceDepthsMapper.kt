@@ -7,7 +7,7 @@ import com.sedsoftware.binance.entity.BinanceCurrencyPair
 import com.sedsoftware.binance.entity.BinanceCurrencyPairDepth
 import com.sedsoftware.binance.entity.BinanceExchange
 import com.sedsoftware.binance.network.model.dto.PairDepthDto
-import com.sedsoftware.coreapi.entity.CurrencyPair
+import com.sedsoftware.coreentity.CurrencyPair
 import javax.inject.Inject
 
 class BinanceDepthsMapper @Inject constructor() {

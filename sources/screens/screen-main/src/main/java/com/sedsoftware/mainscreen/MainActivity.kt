@@ -1,7 +1,7 @@
 package com.sedsoftware.mainscreen
 
 import android.os.Bundle
-import com.sedsoftware.coreapi.device.Logger
+import com.sedsoftware.coredeviceapi.device.Logger
 import com.sedsoftware.coreui.base.BaseActivity
 import com.sedsoftware.mainscreen.di.MainActivityComponent
 import javax.inject.Inject

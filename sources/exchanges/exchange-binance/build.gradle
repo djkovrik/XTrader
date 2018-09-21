@@ -42,7 +42,9 @@ android {
 }
 
 dependencies {
-    implementation project(':core-api')
+    implementation project(':core-di')
+    implementation project(':core-entity')
+    implementation project(':core-util')
 
     implementation KotlinDependencies.kotlin
     implementation KotlinDependencies.kotlinCoroutines

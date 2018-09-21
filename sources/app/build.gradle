@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.COMPILE_SDK_VERSION
+
+    defaultConfig {
+        minSdkVersion Versions.MIN_SDK_VERSION
+        targetSdkVersion Versions.TARGET_SDK_VERSION
+        versionCode androidGitVersion.code()
+        versionName androidGitVersion.name()
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resConfigs "en", "ru"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//      minifyEnabled true
+//      shrinkResources true
+//      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+//      proguardFiles fileTree('proguard').asList().toArray()
+        }
+    }
+}
+
+dependencies {
+    implementation project(':core-di')
+    implementation project(':core-entity')
+    implementation project(':core-repository')
+    implementation project(':core-interactor')
+    implementation project(':core-ui')
+    implementation project(':core-util')
+    implementation project(':core-device-api')
+    implementation project(':core-device-impl')
+    implementation project(':screen-main')
+    implementation project(':screen-intro')
+    implementation project(':screen-home')
+    implementation project(':exchange-manager')
+    implementation project(':exchange-binance')
+
+    implementation KotlinDependencies.kotlin
+
+    implementation JetPackDependencies.legacyUtils
+
+    implementation CoreDepencencies.dagger
+    kapt CoreDepencencies.daggerCompiler
+
+    implementation DevToolsDependencies.timber
+    debugImplementation DevToolsDependencies.leakCanary
+    releaseImplementation DevToolsDependencies.leakCanaryNoOp
+    debugImplementation DevToolsDependencies.stetho
+    releaseImplementation DevToolsDependencies.stethoNoOp
+}

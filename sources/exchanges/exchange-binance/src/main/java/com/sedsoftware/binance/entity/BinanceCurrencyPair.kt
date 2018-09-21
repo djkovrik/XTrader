@@ -1,8 +1,8 @@
 package com.sedsoftware.binance.entity
 
-import com.sedsoftware.coreapi.entity.Currency
-import com.sedsoftware.coreapi.entity.CurrencyPair
-import com.sedsoftware.coreapi.entity.Exchange
+import com.sedsoftware.coreentity.Currency
+import com.sedsoftware.coreentity.CurrencyPair
+import com.sedsoftware.coreentity.Exchange
 
 data class BinanceCurrencyPair(
     override val exchange: Exchange,

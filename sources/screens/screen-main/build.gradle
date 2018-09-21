@@ -35,11 +35,13 @@ androidExtensions {
 }
 
 dependencies {
-    implementation project(':core-api')
+    implementation project(':core-di')
+    implementation project(':core-device-api')
     implementation project(':core-ui')
-    implementation project(':core-utils')
+    implementation project(':core-util')
     implementation project(':screen-intro')
     implementation project(':screen-home')
+
 
     implementation KotlinDependencies.kotlin
 
