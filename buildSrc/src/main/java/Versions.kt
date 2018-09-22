@@ -4,7 +4,7 @@ object Versions {
     const val MIN_SDK_VERSION = 21
     const val COMPILE_SDK_VERSION = 28
     const val TARGET_SDK_VERSION = 28
-    const val GRADLE_ANDROID_VERSION = "3.3.0-alpha10"
+    const val GRADLE_ANDROID_VERSION = "3.3.0-alpha11"
 
     // Plugins
     const val DETEKT_VERSION = "1.0.0.RC8"
@@ -18,19 +18,19 @@ object Versions {
     const val KOTLIN_COROUTINES_VERSION = "0.24.0"
 
     // JetPack - AppCompat
-    const val APPCOMPAT_VERSION = "1.0.0-rc02"
+    const val APPCOMPAT_VERSION = "1.0.0"
     const val CARDVIEW_VERSION = "1.0.0-rc02"
     const val PREFERENCE_VERSION = "1.0.0-rc02"
-    const val MATERIAL_COMPONENTS_VERSION = "1.0.0-rc02"
+    const val MATERIAL_COMPONENTS_VERSION = "1.0.0"
     const val RECYCLER_VIEW_VERSION = "1.0.0-rc02"
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-alpha2"
-    const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0-rc02"
+    const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
 
     // JetPack - Architecture
-    const val LIFECYCLE_VERSION = "2.0.0-rc01"
+    const val LIFECYCLE_VERSION = "2.0.0"
     const val ROOM_VERSION = "2.0.0-rc01"
     const val PAGING_VERSION = "2.0.0-rc01"
-    const val NAVIGATION_VERSION = "1.0.0-alpha05"
+    const val NAVIGATION_VERSION = "1.0.0-alpha06"
     const val WORKMANAGER_VERSION = "2.0.0-alpha8"
 
     // JetPack - KTX
