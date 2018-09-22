@@ -5,7 +5,7 @@ import com.sedsoftware.binance.entity.BinanceCurrency.BTC
 import com.sedsoftware.binance.entity.BinanceCurrency.LTC
 import com.sedsoftware.binance.entity.BinanceCurrencyPair
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTrade
-import com.sedsoftware.binance.entity.BinanceExchange.BINANCE
+import com.sedsoftware.coreentity.ExchangeType.BINANCE
 import com.sedsoftware.binance.fakedata.FakeTradesData
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek

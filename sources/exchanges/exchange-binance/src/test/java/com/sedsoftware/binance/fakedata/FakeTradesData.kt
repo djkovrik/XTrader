@@ -4,7 +4,7 @@ import com.sedsoftware.binance.database.model.BinanceTradeDbModel
 import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.entity.BinanceCurrencyPair
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTrade
-import com.sedsoftware.binance.entity.BinanceExchange
+import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.binance.network.model.SymbolTradeModel
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -98,7 +98,7 @@ class FakeTradesData {
             BinanceCurrencyPairTrade(
                 id = 15340801,
                 pair = BinanceCurrencyPair(
-                    exchange = BinanceExchange.BINANCE,
+                    exchange = ExchangeType.BINANCE,
                     baseCurrency = BinanceCurrency.LTC,
                     marketCurrency = BinanceCurrency.BTC,
                     symbol = "LTCBTC"
@@ -112,7 +112,7 @@ class FakeTradesData {
             BinanceCurrencyPairTrade(
                 id = 15340802,
                 pair = BinanceCurrencyPair(
-                    exchange = BinanceExchange.BINANCE,
+                    exchange = ExchangeType.BINANCE,
                     baseCurrency = BinanceCurrency.LTC,
                     marketCurrency = BinanceCurrency.BTC,
                     symbol = "LTCBTC"
@@ -126,7 +126,7 @@ class FakeTradesData {
             BinanceCurrencyPairTrade(
                 id = 15341300,
                 pair = BinanceCurrencyPair(
-                    exchange = BinanceExchange.BINANCE,
+                    exchange = ExchangeType.BINANCE,
                     baseCurrency = BinanceCurrency.LTC,
                     marketCurrency = BinanceCurrency.BTC,
                     symbol = "LTCBTC"

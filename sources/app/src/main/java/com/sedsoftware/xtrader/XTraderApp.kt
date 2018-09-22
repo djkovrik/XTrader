@@ -2,8 +2,8 @@ package com.sedsoftware.xtrader
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import com.sedsoftware.coreapi.App
-import com.sedsoftware.coreapi.di.provider.ApplicationProvider
+import com.sedsoftware.coredi.App
+import com.sedsoftware.coredi.provider.ApplicationProvider
 import com.sedsoftware.xtrader.di.AppComponent
 import timber.log.Timber
 

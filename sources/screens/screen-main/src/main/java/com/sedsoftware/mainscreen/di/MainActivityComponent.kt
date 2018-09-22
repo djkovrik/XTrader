@@ -1,7 +1,7 @@
 package com.sedsoftware.mainscreen.di
 
-import com.sedsoftware.coreapi.di.provider.ApplicationProvider
-import com.sedsoftware.coreapi.di.scope.ActivityScope
+import com.sedsoftware.coredi.provider.ApplicationProvider
+import com.sedsoftware.coredi.scope.ActivityScope
 import com.sedsoftware.mainscreen.MainActivity
 import com.sedsoftware.mainscreen.di.viewmodel.ViewModelFactoryProvider
 import com.sedsoftware.mainscreen.di.viewmodel.ViewModuleComponent

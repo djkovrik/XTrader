@@ -1,3 +1,3 @@
-package com.sedsoftware.coreapi.di.provider
+package com.sedsoftware.coredi.provider
 
 interface ApplicationProvider : DeviceToolsProvider, ExchangeManagerProvider

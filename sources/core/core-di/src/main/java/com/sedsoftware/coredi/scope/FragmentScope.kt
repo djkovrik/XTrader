@@ -1,4 +1,4 @@
-package com.sedsoftware.coreapi.di.scope
+package com.sedsoftware.coredi.scope
 
 import javax.inject.Scope
 

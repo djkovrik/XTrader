@@ -2,7 +2,7 @@ package com.sedsoftware.mainscreen.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.coreui.di.key.ViewModelKey
+import com.sedsoftware.coredi.key.ViewModelKey
 import com.sedsoftware.mainscreen.MainViewModel
 import dagger.Binds
 import dagger.Module

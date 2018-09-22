@@ -1,6 +1,6 @@
 package com.sedsoftware.exchangemanager.di
 
-import com.sedsoftware.binance.entity.BinanceExchange
+import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.coreentity.Exchange
 import dagger.Module
 import dagger.Provides
@@ -12,5 +12,5 @@ class ExchangeManagerModule {
     @Provides
     @IntoSet
     fun provideBinanceExchange(): Exchange =
-        BinanceExchange.BINANCE
+        ExchangeType.BINANCE
 }

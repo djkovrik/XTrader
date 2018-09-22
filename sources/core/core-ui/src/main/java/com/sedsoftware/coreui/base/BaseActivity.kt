@@ -2,8 +2,8 @@ package com.sedsoftware.coreui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.sedsoftware.coreapi.App
-import com.sedsoftware.coreapi.di.provider.ApplicationProvider
+import com.sedsoftware.coredi.App
+import com.sedsoftware.coredi.provider.ApplicationProvider
 
 abstract class BaseActivity : AppCompatActivity() {
 

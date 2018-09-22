@@ -36,4 +36,6 @@ dependencies {
     implementation KotlinDependencies.kotlinCoroutines
 
     implementation CoreDepencencies.dagger
+
+    implementation JetPackDependencies.lifecycleExtensions
 }

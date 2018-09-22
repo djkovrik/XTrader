@@ -3,7 +3,7 @@ package com.sedsoftware.coredeviceimpl.di
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.preference.PreferenceManager
-import com.sedsoftware.coreapi.App
+import com.sedsoftware.coredi.App
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

@@ -1,4 +1,4 @@
-package com.sedsoftware.coreui.di.key
+package com.sedsoftware.coredi.key
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

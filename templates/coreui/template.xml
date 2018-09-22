@@ -19,7 +19,7 @@
     <parameter name="Existing Core module name" constraints="module|nonempty" default="core" help="Core module name."
         id="coreModuleName" suggest="core" type="string" />
 
-    <parameter name="Existing Core package name" constraints="package|nonempty" default="com.sedsoftware.coreapi"
+    <parameter name="Existing Core package name" constraints="package|nonempty" default="com.sedsoftware.core"
         help="Path to core module package." id="corePackageName"
         suggest="com.sedsoftware.${coreModuleName}" type="string" />
 

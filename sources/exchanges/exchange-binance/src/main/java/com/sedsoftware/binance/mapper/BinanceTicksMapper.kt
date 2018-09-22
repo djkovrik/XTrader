@@ -2,7 +2,7 @@ package com.sedsoftware.binance.mapper
 
 import com.sedsoftware.binance.database.model.BinanceTickDbModel
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTick
-import com.sedsoftware.binance.entity.BinanceExchange
+import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.binance.network.model.SymbolTickModel
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ class BinanceTicksMapper @Inject constructor() {
 
     fun mapFromDbToEntity(from: BinanceTickDbModel): BinanceCurrencyPairTick =
         BinanceCurrencyPairTick(
-            exchange = BinanceExchange.BINANCE,
+            exchange = ExchangeType.BINANCE,
             symbol = from.symbol,
             bidPrice = from.bidPrice,
             bidQuantity = from.bidQty,

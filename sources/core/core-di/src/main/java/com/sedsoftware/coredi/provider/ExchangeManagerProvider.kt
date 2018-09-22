@@ -1,4 +1,4 @@
-package com.sedsoftware.coreapi.di.provider
+package com.sedsoftware.coredi.provider
 
 import com.sedsoftware.coreentity.Exchange
 

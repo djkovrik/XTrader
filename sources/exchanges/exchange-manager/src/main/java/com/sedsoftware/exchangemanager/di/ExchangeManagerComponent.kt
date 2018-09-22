@@ -2,8 +2,8 @@ package com.sedsoftware.exchangemanager.di
 
 import com.sedsoftware.binance.di.BinanceComponent
 import com.sedsoftware.binance.di.BinanceProvider
-import com.sedsoftware.coreapi.di.provider.DeviceToolsProvider
-import com.sedsoftware.coreapi.di.provider.ExchangeManagerProvider
+import com.sedsoftware.coredi.provider.DeviceToolsProvider
+import com.sedsoftware.coredi.provider.ExchangeManagerProvider
 import dagger.Component
 
 @Component(

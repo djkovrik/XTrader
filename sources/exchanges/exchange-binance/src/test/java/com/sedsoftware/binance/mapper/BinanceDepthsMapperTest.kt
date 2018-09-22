@@ -4,7 +4,7 @@ import com.sedsoftware.binance.database.model.BinanceDepthDbModel
 import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.entity.BinanceCurrencyPair
 import com.sedsoftware.binance.entity.BinanceCurrencyPairDepth
-import com.sedsoftware.binance.entity.BinanceExchange
+import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.binance.fakedata.FakeDepthsData
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
@@ -16,7 +16,7 @@ class BinanceDepthsMapperTest : Spek({
     describe("Symbol info mapper") {
 
         val currencyPair = BinanceCurrencyPair(
-            exchange = BinanceExchange.BINANCE,
+            exchange = ExchangeType.BINANCE,
             baseCurrency = BinanceCurrency.LTC,
             marketCurrency = BinanceCurrency.BTC,
             symbol = "LTCBTC"

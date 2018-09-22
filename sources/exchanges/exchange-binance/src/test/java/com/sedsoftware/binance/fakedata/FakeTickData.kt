@@ -2,7 +2,7 @@ package com.sedsoftware.binance.fakedata
 
 import com.sedsoftware.binance.database.model.BinanceTickDbModel
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTick
-import com.sedsoftware.binance.entity.BinanceExchange
+import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.binance.network.model.SymbolTickModel
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -47,7 +47,7 @@ class FakeTickData {
 
     fun getPredefinedDomainEntity(): BinanceCurrencyPairTick =
         BinanceCurrencyPairTick(
-            exchange = BinanceExchange.BINANCE,
+            exchange = ExchangeType.BINANCE,
             symbol = "LTCBTC",
             bidPrice = 0.008542f,
             bidQuantity = 0.78f,

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.coreapi.App
-import com.sedsoftware.coreapi.di.provider.ApplicationProvider
+import com.sedsoftware.coredi.App
+import com.sedsoftware.coredi.provider.ApplicationProvider
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {

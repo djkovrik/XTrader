@@ -8,11 +8,11 @@ import com.sedsoftware.binance.common.params.SymbolStatus
 import com.sedsoftware.binance.database.model.BinanceSymbolDbModel
 import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.entity.BinanceCurrencyPair
-import com.sedsoftware.binance.entity.BinanceExchange
 import com.sedsoftware.binance.network.model.SymbolInfoModel
 import com.sedsoftware.binance.network.model.common.Filter
 import com.sedsoftware.binance.network.model.common.RateLimit
 import com.sedsoftware.binance.network.model.dto.PairsInfoDto
+import com.sedsoftware.coreentity.ExchangeType
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
@@ -242,13 +242,13 @@ class FakeSymbolsInfoData {
     fun getPredefinedPairsDomainEntities(): List<BinanceCurrencyPair> =
         listOf(
             BinanceCurrencyPair(
-                exchange = BinanceExchange.BINANCE,
+                exchange = ExchangeType.BINANCE,
                 baseCurrency = BinanceCurrency.ETH,
                 marketCurrency = BinanceCurrency.BTC,
                 symbol = "ETHBTC"
             ),
             BinanceCurrencyPair(
-                exchange = BinanceExchange.BINANCE,
+                exchange = ExchangeType.BINANCE,
                 baseCurrency = BinanceCurrency.HC,
                 marketCurrency = BinanceCurrency.ETH,
                 symbol = "HCETH"

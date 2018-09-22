@@ -3,7 +3,7 @@ package com.sedsoftware.binance.di
 import com.sedsoftware.binance.di.module.BinanceDatabaseModule
 import com.sedsoftware.binance.di.module.BinanceExportModule
 import com.sedsoftware.binance.di.module.BinanceNetworkModule
-import com.sedsoftware.coreapi.di.provider.DeviceToolsProvider
+import com.sedsoftware.coredi.provider.DeviceToolsProvider
 import dagger.Component
 
 @Component(
