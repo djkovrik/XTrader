@@ -1,3 +1,5 @@
 package com.sedsoftware.coredeviceapi.device
 
-interface Settings
+interface Settings {
+    var isExchangesDownloaded: Boolean
+}

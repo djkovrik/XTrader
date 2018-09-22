@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.annotation.StringRes
 import com.sedsoftware.coredeviceapi.device.Settings
+import com.sedsoftware.coredeviceimpl.R
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -21,6 +22,12 @@ class AppSettings @Inject constructor(
         }
     }
 
+    override var isExchangesDownloaded: Boolean
+        get() =
+            preferences.getValue(key(R.string.pref_key_exchanges_downloaded), false)
+        set(value) {
+            preferences.setValue(key(R.string.pref_key_exchanges_downloaded), value)
+        }
 
     private fun SharedPreferences.setValue(key: String, value: Any) {
         when (value) {
@@ -43,5 +50,5 @@ class AppSettings @Inject constructor(
             else -> throw UnsupportedOperationException("Not implemented yet")
         }
 
-    private fun AppSettings.key(@StringRes resId: Int): String = resources.getString(resId)
+    private fun key(@StringRes resId: Int): String = resources.getString(resId)
 }
