@@ -1,4 +1,4 @@
-package com.sedsoftware.splash
+package com.sedsoftware.mainscreen.screens.splash
 
 import com.sedsoftware.coreui.base.BaseFragment
 import com.sedsoftware.mainscreen.R

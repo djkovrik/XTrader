@@ -1,4 +1,4 @@
-package com.sedsoftware.mainscreen.di.viewmodel
+package com.sedsoftware.mainscreen.screens.main.di.viewmodel
 
 import dagger.Component
 import javax.inject.Singleton

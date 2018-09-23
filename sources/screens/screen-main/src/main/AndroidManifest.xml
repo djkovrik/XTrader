@@ -5,7 +5,7 @@
     <application>
 
         <activity
-            android:name="com.sedsoftware.mainscreen.MainActivity"
+            android:name="com.sedsoftware.mainscreen.screens.main.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme">
 

@@ -1,4 +1,4 @@
-package com.sedsoftware.mainscreen.di
+package com.sedsoftware.mainscreen.screens.main.di
 
 import dagger.Module
 

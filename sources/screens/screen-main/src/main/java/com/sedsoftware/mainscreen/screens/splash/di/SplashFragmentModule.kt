@@ -1,4 +1,4 @@
-package com.sedsoftware.splash.di
+package com.sedsoftware.mainscreen.screens.splash.di
 
 import dagger.Module
 

@@ -1,10 +1,10 @@
-package com.sedsoftware.mainscreen.di
+package com.sedsoftware.mainscreen.screens.main.di
 
 import com.sedsoftware.coredi.provider.ApplicationProvider
 import com.sedsoftware.coredi.scope.ActivityScope
-import com.sedsoftware.mainscreen.MainActivity
-import com.sedsoftware.mainscreen.di.viewmodel.ViewModelFactoryProvider
-import com.sedsoftware.mainscreen.di.viewmodel.ViewModuleComponent
+import com.sedsoftware.mainscreen.screens.main.MainActivity
+import com.sedsoftware.mainscreen.screens.main.di.viewmodel.ViewModelFactoryProvider
+import com.sedsoftware.mainscreen.screens.main.di.viewmodel.ViewModuleComponent
 import dagger.Component
 
 @ActivityScope
