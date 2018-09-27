@@ -1,7 +1,7 @@
 package com.sedsoftware.exchangemanager.di
 
-import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.coreentity.Exchange
+import com.sedsoftware.coreentity.ExchangeType
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet

@@ -2,8 +2,8 @@ package com.sedsoftware.binance.fakedata
 
 import com.sedsoftware.binance.database.model.BinanceTickDbModel
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTick
-import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.binance.network.model.SymbolTickModel
+import com.sedsoftware.coreentity.ExchangeType
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter

@@ -2,8 +2,8 @@ package com.sedsoftware.binance.mapper
 
 import com.sedsoftware.binance.database.model.BinanceTickDbModel
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTick
-import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.binance.network.model.SymbolTickModel
+import com.sedsoftware.coreentity.ExchangeType
 import javax.inject.Inject
 
 class BinanceTicksMapper @Inject constructor() {

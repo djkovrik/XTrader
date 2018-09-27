@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
     <Blacklist timestamp="1536602621027"></Blacklist>
-    <Whitelist timestamp="1536602621026">
-        <ID>MagicNumber:SignerImpl.kt$SignerImpl$4</ID>
+    <Whitelist timestamp="1538064831333">
+        <ID>MagicNumber:StringSigner.kt$StringSigner$4</ID>
         <ID>TooGenericExceptionCaught:ViewModelOwnerFactory.kt$ViewModelOwnerFactory$e: Exception</ID>
         <ID>TooGenericExceptionThrown:ViewModelOwnerFactory.kt$ViewModelOwnerFactory$throw RuntimeException(e)</ID>
     </Whitelist>

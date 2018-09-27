@@ -3,8 +3,8 @@ package com.sedsoftware.binance.mapper
 import com.sedsoftware.binance.database.model.BinanceSymbolDbModel
 import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.entity.BinanceCurrencyPair
-import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.binance.network.model.SymbolInfoModel
+import com.sedsoftware.coreentity.ExchangeType
 import javax.inject.Inject
 
 class BinanceSymbolsMapper @Inject constructor() {

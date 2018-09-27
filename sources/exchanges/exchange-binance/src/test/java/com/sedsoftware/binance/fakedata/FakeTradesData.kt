@@ -4,8 +4,8 @@ import com.sedsoftware.binance.database.model.BinanceTradeDbModel
 import com.sedsoftware.binance.entity.BinanceCurrency
 import com.sedsoftware.binance.entity.BinanceCurrencyPair
 import com.sedsoftware.binance.entity.BinanceCurrencyPairTrade
-import com.sedsoftware.coreentity.ExchangeType
 import com.sedsoftware.binance.network.model.SymbolTradeModel
+import com.sedsoftware.coreentity.ExchangeType
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
