@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.sedsoftware.splash.SplashFragment"
+        android:name="com.sedsoftware.screens.splash.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash_screen">
         <action
