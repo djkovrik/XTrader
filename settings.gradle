@@ -27,3 +27,5 @@ include ':screen-intro'
 project(':screen-intro').projectDir = new File(rootDir, 'sources/screens/screen-intro')
 include ':screen-home'
 project(':screen-home').projectDir = new File(rootDir, 'sources/screens/screen-home')
+include ':screen-pin'
+project(':screen-pin').projectDir = new File(rootDir, 'sources/screens/screen-pin')
