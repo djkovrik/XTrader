@@ -1,13 +1,13 @@
 package com.sedsoftware.screens.main.di
 
 import com.sedsoftware.core.di.provider.ApplicationProvider
-import com.sedsoftware.core.di.scope.ActivityScope
+import com.sedsoftware.core.di.scope.PerScreen
 import com.sedsoftware.screens.main.MainActivity
 import com.sedsoftware.screens.main.di.viewmodel.ViewModelFactoryProvider
 import com.sedsoftware.screens.main.di.viewmodel.ViewModuleComponent
 import dagger.Component
 
-@ActivityScope
+@PerScreen
 @Component(
     dependencies = [
         ApplicationProvider::class,
