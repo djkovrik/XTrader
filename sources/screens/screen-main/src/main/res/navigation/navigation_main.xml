@@ -16,6 +16,9 @@
         <action
             android:id="@+id/navigate_from_splash_to_intro"
             app:destination="@id/introScreenFragment" />
+        <action
+            android:id="@+id/navigate_from_splash_to_pin"
+            app:destination="@id/pinScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/introScreenFragment"
@@ -24,6 +27,15 @@
         tools:layout="@layout/fragment_intro_screen">
         <action
             android:id="@+id/navigate_from_intro_to_home"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinScreenFragment"
+        android:name="com.sedsoftware.screens.pin.PinScreenFragment"
+        android:label="PinScreenFragment"
+        tools:layout="@layout/fragment_pin_screen">
+        <action
+            android:id="@+id/navigate_from_pin_to_home"
             app:destination="@id/homeScreenFragment" />
     </fragment>
     <fragment
