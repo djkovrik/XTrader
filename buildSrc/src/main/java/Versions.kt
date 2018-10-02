@@ -4,7 +4,7 @@ object Versions {
     const val MIN_SDK_VERSION = 21
     const val COMPILE_SDK_VERSION = 28
     const val TARGET_SDK_VERSION = 28
-    const val GRADLE_ANDROID_VERSION = "3.3.0-alpha11"
+    const val GRADLE_ANDROID_VERSION = "3.3.0-alpha13"
 
     // Plugins
     const val DETEKT_VERSION = "1.0.0.RC8"
@@ -14,7 +14,7 @@ object Versions {
     const val ANDROID_JUNIT5_VERSION = "1.2.0.0"
 
     // Kotlin
-    const val KOTLIN_VERSION = "1.2.70"
+    const val KOTLIN_VERSION = "1.2.71"
     const val KOTLIN_COROUTINES_VERSION = "0.24.0"
 
     // JetPack - AppCompat
@@ -28,7 +28,7 @@ object Versions {
 
     // JetPack - Architecture
     const val LIFECYCLE_VERSION = "2.0.0"
-    const val ROOM_VERSION = "2.0.0-rc01"
+    const val ROOM_VERSION = "2.0.0"
     const val PAGING_VERSION = "2.0.0-rc01"
     const val NAVIGATION_VERSION = "1.0.0-alpha06"
     const val WORKMANAGER_VERSION = "2.0.0-alpha8"
@@ -40,7 +40,7 @@ object Versions {
     const val ADAPTER_DELEGATES_VERSION = "3.0.1"
     const val DAGGER_VERSION = "2.17"
     const val RETROFIT_VERSION = "2.4.0"
-    const val MOSHI_VERSION = "1.6.0"
+    const val MOSHI_VERSION = "1.7.0"
     const val COROUTINES_ADAPTER_VERSION = "1.0.0"
     const val OKHTTP_VERSION = "3.11.0"
 
