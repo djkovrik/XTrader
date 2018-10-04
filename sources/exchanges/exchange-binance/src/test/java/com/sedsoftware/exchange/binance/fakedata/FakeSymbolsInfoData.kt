@@ -1,5 +1,6 @@
 package com.sedsoftware.exchange.binance.fakedata
 
+import com.sedsoftware.core.domain.entity.ExchangeType
 import com.sedsoftware.exchange.binance.common.params.FilterType
 import com.sedsoftware.exchange.binance.common.params.OrderType
 import com.sedsoftware.exchange.binance.common.params.RateLimitInterval
@@ -12,7 +13,6 @@ import com.sedsoftware.exchange.binance.network.model.SymbolInfoModel
 import com.sedsoftware.exchange.binance.network.model.common.Filter
 import com.sedsoftware.exchange.binance.network.model.common.RateLimit
 import com.sedsoftware.exchange.binance.network.model.dto.PairsInfoDto
-import com.sedsoftware.coreentity.ExchangeType
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
