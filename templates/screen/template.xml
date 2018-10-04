@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
-<template
-    format="5"
-    revision="5"
-    name="Screen module (Kotlin)"
-    description="Creates a new module for separate app screen.">
+<template name="Screen module (Kotlin)" description="Creates a new module for separate app screen." format="5"
+    revision="5">
 
     <category value="Modular" />
     <formfactor value="Mobile" />
@@ -12,169 +9,75 @@
         <thumb>template_new_project.png</thumb>
     </thumbs>
 
-    <parameter
-        id="screenName"
-        name="Screen name"
-        constraints="unique|nonempty"
-        default="NewScreen"
-        help="The base name of the screen to create."
-        suggest="NewScreen"
-        type="string" />
+    <parameter name="Screen name" constraints="unique|nonempty" default="NewScreen" help="The base name of the screen to create."
+        id="screenName" suggest="NewScreen" type="string" />
 
-    <parameter
-        id="screenModuleName"
-        name="Screen module name"
-        constraints="module|nonempty"
-        default="newscreen"
-        help="Screen module name."
-        suggest="${extractLetters(screenName)?lower_case}"
-        type="string" />
+    <parameter name="Screen module name" constraints="module|nonempty" default="newscreen" help="Screen module name."
+        id="screenModuleName" suggest="${extractLetters(screenName)?lower_case}" type="string" />
 
-    <parameter
-        id="screenPackageName"
-        name="Screen package name"
-        constraints="package|nonempty"
-        default="com.sedsoftware.newscreen"
-        help="Path to screen module package."
-        suggest="com.sedsoftware.${extractLetters(screenName)?lower_case}"
-        type="string" />
+    <parameter name="Screen package name" constraints="package|nonempty" default="com.sedsoftware.newscreen"
+        help="Path to screen module package." id="screenPackageName"
+        suggest="com.sedsoftware.${extractLetters(screenName)?lower_case}" type="string" />
 
-    <parameter
-        id="screenType"
-        name="View class type"
-        default="activity"
-        help="The type of dagger implementation"
+    <parameter name="View class type" default="activity" help="The type of dagger implementation" id="screenType"
         type="enum">
-            <option id="activity">Activity</option>
-            <option id="fragment">Fragment</option>
+        <option id="activity">Activity</option>
+        <option id="fragment">Fragment</option>
     </parameter>
 
-    <parameter
-        id="screenClass"
-        name="View class name"
-        constraints="class|unique|nonempty"
-        default="NewScreenFragment"
-        help="The name of the view class to create."
-        suggest="${screenName}${underscoreToCamelCase(screenType)}"
+    <parameter name="View class name" constraints="class|unique|nonempty" default="NewScreenFragment" help="The name of the view class to create."
+        id="screenClass" suggest="${screenName}${underscoreToCamelCase(screenType)}"
         type="string" />
 
-    <parameter
-        id="screenLayoutName"
-        name="View layout name"
-        constraints="layout|unique|nonempty"
-        default="activity_main"
-        help="The name of the layout to create for the view class."
-        suggest="${screenType}_${camelCaseToUnderscore(screenName)}"
-        type="string"/>
+    <parameter name="View layout name" constraints="layout|unique|nonempty" default="activity_main"
+        help="The name of the layout to create for the view class." id="screenLayoutName"
+        suggest="${screenType}_${camelCaseToUnderscore(screenName)}" type="string" />
 
-    <parameter
+    <parameter name="Launcher Activity" default="false" help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher"
         id="isLauncher"
-        name="Launcher Activity"
-        default="false"
-        help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher"
-        type="boolean"/>
-
-    <parameter
-        id="screenViewClass"
-        name="View name"
-        constraints="class|nonempty|unique"
-        default="NewScreenView"
-        help="The name of the View to create"
-        suggest="${underscoreToCamelCase(classToResource(screenName))}View"
-        type="string" />
-
-    <parameter
-        id="screenPresenterClass"
-        name="Presenter name"
-        constraints="class|nonempty|unique"
-        default="NewScreenPresenter"
-        help="The name of the Presenter to create"
-        suggest="${underscoreToCamelCase(classToResource(screenName))}Presenter"
-        type="string" />
-
-    <parameter
-        id="screenComponentClass"
-        name="Component name"
-        constraints="class|nonempty|unique"
-        default="NewScreenViewComponent"
-        help="The name of the Component to create"
-        suggest="${underscoreToCamelCase(screenViewClass)}Component"
-        type="string"/>
-
-    <parameter
-        id="screenModuleClass"
-        name="Module name"
-        constraints="class|nonempty|unique"
-        default="NewScreenViewModule"
-        help="The name of the module to create"
-        suggest="${underscoreToCamelCase(screenViewClass)}Module"
-        type="string"/>
-
-    <parameter
-        id="coreModuleName"
-        name="Existing Core module name"
-        constraints="module|nonempty"
-        default="core"
-        help="Core module name."
-        suggest="core"
-        type="string" />
-
-    <parameter
-        id="corePackageName"
-        name="Existing Core package name"
-        constraints="package|nonempty"
-        default="com.sedsoftware.core"
-        help="Path to core module package."
-        suggest="com.sedsoftware.${coreModuleName}"
-        type="string" />
-
-    <parameter
-        id="coreUiModuleName"
-        name="Existing Core UI module name"
-        constraints="module|nonempty"
-        default="coreui"
-        help="Core module name."
-        suggest="coreui"
-        type="string" />
-
-    <parameter
-        id="coreUiPackageName"
-        name="Existing Core UI package name"
-        constraints="package|nonempty"
-        default="com.sedsoftware.core"
-        help="Path to core module package."
-        suggest="com.sedsoftware.${coreUiModuleName}"
-        type="string" />
-
-    <parameter
-        id="applicationInterface"
-        name="Existing main Application interface"
-        constraints="class|nonempty"
-        default="App"
-        help="Name of the application interface to create."
-        suggest="App"
-        type="string" />
-
-    <parameter
-        id="applicationProviderInterface"
-        name="Existing Application provider interface"
-        constraints="class|nonempty"
-        default="AppProvider"
-        help="The name of the application provider interface to create."
-        suggest="${applicationInterface}Provider"
-        type="string" />
-
-    <parameter
-        id="cicerone"
-        name="Include Cicerone?"
-        default="true"
         type="boolean" />
 
-    <parameter
-        id="moxy"
-        name="Include Moxy?"
-        default="true"
-        type="boolean"/>
+    <parameter name="View name" constraints="class|nonempty|unique" default="NewScreenView" help="The name of the View to create"
+        id="screenViewClass" suggest="${underscoreToCamelCase(classToResource(screenName))}View"
+        type="string" />
+
+    <parameter name="Presenter name" constraints="class|nonempty|unique" default="NewScreenPresenter"
+        help="The name of the Presenter to create" id="screenPresenterClass"
+        suggest="${underscoreToCamelCase(classToResource(screenName))}Presenter" type="string" />
+
+    <parameter name="Component name" constraints="class|nonempty|unique" default="NewScreenViewComponent"
+        help="The name of the Component to create" id="screenComponentClass"
+        suggest="${underscoreToCamelCase(screenViewClass)}Component" type="string" />
+
+    <parameter name="Module name" constraints="class|nonempty|unique" default="NewScreenViewModule"
+        help="The name of the module to create" id="screenModuleClass"
+        suggest="${underscoreToCamelCase(screenViewClass)}Module" type="string" />
+
+    <parameter name="Existing Core module name" constraints="module|nonempty" default="core" help="Core module name."
+        id="coreModuleName" suggest="core" type="string" />
+
+    <parameter name="Existing Core package name" constraints="package|nonempty" default="com.sedsoftware.core"
+        help="Path to core module package." id="corePackageName"
+        suggest="com.sedsoftware.${coreModuleName}" type="string" />
+
+    <parameter name="Existing Core UI module name" constraints="module|nonempty" default="coreui"
+        help="Core module name." id="coreUiModuleName" suggest="coreui" type="string" />
+
+    <parameter name="Existing Core UI package name" constraints="package|nonempty" default="com.sedsoftware.coredi"
+        help="Path to core module package." id="coreUiPackageName"
+        suggest="com.sedsoftware.${coreUiModuleName}" type="string" />
+
+    <parameter name="Existing main Application interface" constraints="class|nonempty" default="App"
+        help="Name of the application interface to create." id="applicationInterface" suggest="App" type="string" />
+
+    <parameter name="Existing Application provider interface" constraints="class|nonempty"
+        default="AppProvider" help="The name of the application provider interface to create."
+        id="applicationProviderInterface" suggest="${applicationInterface}Provider"
+        type="string" />
+
+    <parameter name="Include Cicerone?" default="true" id="cicerone" type="boolean" />
+
+    <parameter name="Include Moxy?" default="true" id="moxy" type="boolean" />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

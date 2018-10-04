@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- MAIN THEME -->
+    <color name="primaryMain">#6236d5</color>
+    <color name="primaryDarkMain">#463b9d</color>
+    <color name="accentMain">#00de56</color>
+    <color name="accentNegativeMain">#ff5c5c</color>
+    <color name="accentSecondaryMain">#26bcff</color>
+    <color name="backgroundMain">#313152</color>
+    <color name="backgroundSecondaryMain">#443598</color>
+    <color name="backgroundCardMain">#383864</color>
+    <color name="textMain">#ffffff</color>
+    <color name="textInverseMain">#263238</color>
+    <color name="textNegativeMain">#ff5c5c</color>
+    <color name="textPositiveMain">#00de56</color>
+
+</resources>

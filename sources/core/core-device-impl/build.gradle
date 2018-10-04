@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply plugin: "de.mannodermaus.android-junit5"
+
+android {
+    compileSdkVersion Versions.COMPILE_SDK_VERSION
+
+    defaultConfig {
+        minSdkVersion Versions.MIN_SDK_VERSION
+        targetSdkVersion Versions.TARGET_SDK_VERSION
+        versionCode androidGitVersion.code()
+        versionName androidGitVersion.name()
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder"
+
+
+        resConfigs "en", "ru"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(':core-device-api')
+    implementation project(':core-di')
+    implementation project(':core-utils')
+
+    implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
+    implementation KotlinDependencies.kotlinCoroutinesAndroid
+
+    implementation CoreDepencencies.dagger
+    kapt CoreDepencencies.daggerCompiler
+
+    implementation JetPackDependencies.appCompat
+
+    implementation DevToolsDependencies.timber
+
+    testImplementation TestingDependencies.spekDsl
+    testImplementation TestingDependencies.spekRunner
+    testImplementation TestingDependencies.expekt
+
+    androidTestImplementation TestingDependencies.androidTestRunner
+    androidTestRuntimeOnly TestingDependencies.junit5Instrumentation
+}

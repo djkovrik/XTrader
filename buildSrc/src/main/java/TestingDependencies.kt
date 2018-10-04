@@ -1,4 +1,3 @@
-
 import Versions.ESPRESSO_VERSION
 import Versions.EXPEKT_VERSION
 import Versions.JUNIT5_RUNNER_VERSION

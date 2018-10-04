@@ -1,8 +1,8 @@
 import Versions.ADAPTER_DELEGATES_VERSION
+import Versions.COROUTINES_ADAPTER_VERSION
 import Versions.DAGGER_VERSION
 import Versions.MOSHI_VERSION
 import Versions.OKHTTP_VERSION
-import Versions.COROUTINES_ADAPTER_VERSION
 import Versions.RETROFIT_VERSION
 
 object CoreDepencencies {

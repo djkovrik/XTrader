@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
-<template
-    format="5"
-    revision="5"
-    name="Injector module (Kotlin)"
-    description="Converts main application module to injector module.">
+<template name="Injector module (Kotlin)" description="Converts main application module to injector module." format="5"
+    revision="5">
 
     <category value="Modular" />
     <formfactor value="Mobile" />
@@ -12,50 +9,23 @@
         <thumb>mobile-module.png</thumb>
     </thumbs>
 
-    <parameter
-        id="applicationInterface"
-        name="Main Application interface name"
-        constraints="class|nonempty"
-        default="App"
-        help="Name of the Application interface from core module."
-        suggest="App"
+    <parameter name="Main Application interface name" constraints="class|nonempty" default="App"
+        help="Name of the Application interface from core module." id="applicationInterface" suggest="App" type="string" />
+
+    <parameter name="Application class name" constraints="class|nonempty" default="RealApp" help="Application class which implements main Application interface."
+        id="applicationClass" suggest="RealApp" type="string" />
+
+    <parameter name="Existing Application provider interface name" constraints="class|nonempty"
+        default="AppProvider" help="Name of the ApplicationProvider interface from core module."
+        id="applicationProviderInterface" suggest="${applicationInterface}Provider"
         type="string" />
 
-    <parameter
-        id="applicationClass"
-        name="Application class name"
-        constraints="class|nonempty"
-        default="RealApp"
-        help="Application class which implements main Application interface."
-        suggest="RealApp"
-        type="string" />
+    <parameter name="Existing Core module name" constraints="module|nonempty" default="core" help="Core module name."
+        id="coreModuleName" suggest="core" type="string" />
 
-    <parameter
-        id="applicationProviderInterface"
-        name="Existing Application provider interface name"
-        constraints="class|nonempty"
-        default="AppProvider"
-        help="Name of the ApplicationProvider interface from core module."
-        suggest="${applicationInterface}Provider"
-        type="string" />
-
-    <parameter
-        id="coreModuleName"
-        name="Existing Core module name"
-        constraints="module|nonempty"
-        default="core"
-        help="Core module name."
-        suggest="core"
-        type="string" />
-
-    <parameter
-        id="corePackageName"
-        name="Existing Core package name"
-        constraints="package|nonempty"
-        default="com.sedsoftware.core"
-        help="Path to core package module."
-        suggest="com.sedsoftware.${coreModuleName}"
-        type="string" />
+    <parameter name="Existing Core package name" constraints="package|nonempty" default="com.sedsoftware.core"
+        help="Path to core package module." id="corePackageName"
+        suggest="com.sedsoftware.${coreModuleName}" type="string" />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

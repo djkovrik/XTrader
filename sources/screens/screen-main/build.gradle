@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.COMPILE_SDK_VERSION
+
+    defaultConfig {
+        minSdkVersion Versions.MIN_SDK_VERSION
+        targetSdkVersion Versions.TARGET_SDK_VERSION
+        versionCode androidGitVersion.code()
+        versionName androidGitVersion.name()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        resConfigs "en", "ru"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation project(':core-di')
+    implementation project(':core-device-api')
+    implementation project(':core-presentation')
+    implementation project(':core-utils')
+    implementation project(':screen-intro')
+    implementation project(':screen-home')
+    implementation project(':screen-pin')
+    implementation project(':screen-splash')
+
+
+    implementation KotlinDependencies.kotlin
+
+    implementation CoreDepencencies.dagger
+    kapt CoreDepencencies.daggerCompiler
+
+    implementation JetPackDependencies.appCompat
+    implementation JetPackDependencies.materialComponents
+    implementation JetPackDependencies.navigation
+    implementation JetPackDependencies.navigationUi
+
+    implementation UiDependencies.materialValues
+}

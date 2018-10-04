@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<template
-    format="5"
-    revision="5"
-    name="Core - Main module (Kotlin)"
-    description="Creates a new core module">
+<template name="Core - Main module (Kotlin)" description="Creates a new core module" format="5" revision="5">
 
     <category value="Modular" />
     <formfactor value="Mobile" />
@@ -12,41 +8,19 @@
         <thumb>template_new_project.png</thumb>
     </thumbs>
 
-    <parameter
-        id="coreModuleName"
-        name="Core module name"
-        constraints="module|nonempty"
-        default="core"
-        help="Core module name."
-        suggest="core"
-        type="string" />
+    <parameter name="Core module name" constraints="module|nonempty" default="core" help="Core module name."
+        id="coreModuleName" suggest="core" type="string" />
 
-    <parameter
-        id="corePackageName"
-        name="Core package name"
-        constraints="package|nonempty"
-        default="com.sedsoftware.core"
-        help="Path to core module package."
-        suggest="com.sedsoftware.${coreModuleName}"
-        type="string" />
+    <parameter name="Core package name" constraints="package|nonempty" default="com.sedsoftware.core"
+        help="Path to core module package." id="corePackageName"
+        suggest="com.sedsoftware.${coreModuleName}" type="string" />
 
-    <parameter
-        id="applicationInterface"
-        name="Main Application interface"
-        constraints="class|nonempty"
-        default="App"
-        help="The name of the application interface to create."
-        suggest="App"
-        type="string" />
+    <parameter name="Main Application interface" constraints="class|nonempty" default="App" help="The name of the application interface to create."
+        id="applicationInterface" suggest="App" type="string" />
 
-    <parameter
-        id="applicationProviderInterface"
-        name="Application provider interface"
-        constraints="class|nonempty"
-        default="AppProvider"
-        help="The name of the application provider interface to create."
-        suggest="${applicationInterface}Provider"
-        type="string" />
+    <parameter name="Application provider interface" constraints="class|nonempty" default="AppProvider"
+        help="The name of the application provider interface to create." id="applicationProviderInterface"
+        suggest="${applicationInterface}Provider" type="string" />
 
     <globals file="globals.xml.ftl" />
     <execute file="recipe.xml.ftl" />

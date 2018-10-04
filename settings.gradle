@@ -1,21 +1,31 @@
-include ':injector'
-project(':injector').projectDir = new File(rootDir, 'sources/base/injector')
-include ':core'
-project(':core').projectDir = new File(rootDir, 'sources/base/core')
-include ':core_ui'
-project(':core_ui').projectDir = new File(rootDir, 'sources/base/core_ui')
-include ':device'
-project(':device').projectDir = new File(rootDir, 'sources/base/device')
+include ':app'
+project(':app').projectDir = new File(rootDir, 'sources/app')
 
-include ':screen_main'
-project(':screen_main').projectDir = new File(rootDir, 'sources/screens/screen_main')
-include ':screen_intro'
-project(':screen_intro').projectDir = new File(rootDir, 'sources/screens/screen_intro')
-include ':screen_home'
-project(':screen_home').projectDir = new File(rootDir, 'sources/screens/screen_home')
+include ':core-device-api'
+project(':core-device-api').projectDir = new File(rootDir, 'sources/core/core-device-api')
+include ':core-device-impl'
+project(':core-device-impl').projectDir = new File(rootDir, 'sources/core/core-device-impl')
+include ':core-di'
+project(':core-di').projectDir = new File(rootDir, 'sources/core/core-di')
+include ':core-domain'
+project(':core-domain').projectDir = new File(rootDir, 'sources/core/core-domain')
+include ':core-presentation'
+project(':core-presentation').projectDir = new File(rootDir, 'sources/core/core-presentation')
+include ':core-utils'
+project(':core-utils').projectDir = new File(rootDir, 'sources/core/core-utils')
 
+include ':exchange-manager'
+project(':exchange-manager').projectDir = new File(rootDir, 'sources/exchanges/exchange-manager')
+include ':exchange-binance'
+project(':exchange-binance').projectDir = new File(rootDir, 'sources/exchanges/exchange-binance')
 
-include ':exchange_manager'
-project(':exchange_manager').projectDir = new File(rootDir, 'sources/exchanges/exchange_manager')
-include ':ex_binance'
-project(':ex_binance').projectDir = new File(rootDir, 'sources/exchanges/ex_binance')
+include ':screen-main'
+project(':screen-main').projectDir = new File(rootDir, 'sources/screens/screen-main')
+include ':screen-splash'
+project(':screen-splash').projectDir = new File(rootDir, 'sources/screens/screen-splash')
+include ':screen-intro'
+project(':screen-intro').projectDir = new File(rootDir, 'sources/screens/screen-intro')
+include ':screen-home'
+project(':screen-home').projectDir = new File(rootDir, 'sources/screens/screen-home')
+include ':screen-pin'
+project(':screen-pin').projectDir = new File(rootDir, 'sources/screens/screen-pin')
