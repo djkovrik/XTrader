@@ -3,6 +3,7 @@
 
     <style name="XTText">
         <item name="android:fontFamily">@font/lato</item>
+        <item name="android:textColor">?attr/colorText</item>
     </style>
 
     <style name="XTTextLogo" parent="XTText">
