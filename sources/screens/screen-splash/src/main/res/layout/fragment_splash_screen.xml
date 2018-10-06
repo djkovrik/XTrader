@@ -34,10 +34,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/SpinKitView.ThreeBounce"
+        app:SpinKit_Color="?attr/colorAccent"
         android:layout_gravity="bottom"
         android:layout_marginBottom="@dimen/material_baseline_grid_4x"
         app:layout_constraintBottom_toBottomOf="parent"
