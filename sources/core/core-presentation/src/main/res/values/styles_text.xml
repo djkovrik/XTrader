@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="XTTextLogo">
-        <item name="android:textSize">28sp</item>
-        <item name="android:textStyle">bold</item>
+    <style name="XTText">
+        <item name="android:fontFamily">@font/lato</item>
     </style>
 
-    <style name="XTTextLabel">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
+    <style name="XTTextLogo" parent="XTText">
+        <item name="android:textSize">36sp</item>
     </style>
 
-    <style name="XTTextLabelSecondary" parent="XTTextLabel">
-        <item name="android:alpha">0.7</item>
-    </style>
-
-    <style name="XTTextNormal" />
+    <style name="XTTextNormal" parent="XTText" />
 
     <style name="XTTextNormalSecondary" parent="XTTextNormal">
         <item name="android:alpha">0.7</item>
