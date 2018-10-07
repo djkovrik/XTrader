@@ -18,6 +18,7 @@ import java.util.Locale
 /**
  * Created by ybq.
  */
+@Suppress("MagicNumber", "SpreadOperator")
 class SpriteAnimatorBuilder(private val sprite: Sprite) {
 
     companion object {

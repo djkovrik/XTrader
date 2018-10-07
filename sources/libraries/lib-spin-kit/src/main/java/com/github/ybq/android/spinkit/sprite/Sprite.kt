@@ -19,6 +19,7 @@ import com.github.ybq.android.spinkit.animation.IntProperty
 /**
  * Created by ybq.
  */
+@Suppress("MagicNumber")
 abstract class Sprite : Drawable(), ValueAnimator.AnimatorUpdateListener, Animatable, Drawable.Callback {
 
     var scale = 1f
@@ -47,8 +48,8 @@ abstract class Sprite : Drawable(), ValueAnimator.AnimatorUpdateListener, Animat
     private var pivotY: Float = 0.toFloat()
 
     private var animator: ValueAnimator? = null
-    private val mCamera: Camera = Camera()
-    private val mMatrix: Matrix = Matrix()
+    private val spriteCamera: Camera = Camera()
+    private val spriteMatrix: Matrix = Matrix()
 
     private var innerAlpha: Int = 255
 
@@ -130,14 +131,14 @@ abstract class Sprite : Drawable(), ValueAnimator.AnimatorUpdateListener, Animat
         canvas.rotate(rotate.toFloat(), pivotX, pivotY)
 
         if (rotateX != 0 || rotateY != 0) {
-            mCamera.save()
-            mCamera.rotateX(rotateX.toFloat())
-            mCamera.rotateY(rotateY.toFloat())
-            mCamera.getMatrix(mMatrix)
-            mMatrix.preTranslate(-pivotX, -pivotY)
-            mMatrix.postTranslate(pivotX, pivotY)
-            mCamera.restore()
-            canvas.concat(mMatrix)
+            spriteCamera.save()
+            spriteCamera.rotateX(rotateX.toFloat())
+            spriteCamera.rotateY(rotateY.toFloat())
+            spriteCamera.getMatrix(spriteMatrix)
+            spriteMatrix.preTranslate(-pivotX, -pivotY)
+            spriteMatrix.postTranslate(pivotX, pivotY)
+            spriteCamera.restore()
+            canvas.concat(spriteMatrix)
         }
         drawSelf(canvas)
     }
@@ -172,8 +173,8 @@ abstract class Sprite : Drawable(), ValueAnimator.AnimatorUpdateListener, Animat
             animator = onCreateAnimation()
         }
         if (animator != null) {
-            animator!!.addUpdateListener(this)
-            animator!!.startDelay = animationDelay.toLong()
+            animator?.addUpdateListener(this)
+            animator?.startDelay = animationDelay.toLong()
         }
         return animator
     }

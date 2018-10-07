@@ -22,6 +22,7 @@ import android.view.animation.Interpolator
 /**
  * A path interpolator implementation compatible with API 4+.
  */
+@Suppress("MagicNumber")
 internal class PathInterpolatorDonut(path: Path) : Interpolator {
 
     companion object {

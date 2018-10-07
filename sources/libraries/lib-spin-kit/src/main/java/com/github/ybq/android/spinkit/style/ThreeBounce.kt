@@ -11,6 +11,7 @@ import com.github.ybq.android.spinkit.sprite.SpriteContainer
 /**
  * Created by ybq.
  */
+@Suppress("MagicNumber", "SpreadOperator")
 class ThreeBounce : SpriteContainer() {
 
     override fun onCreateChild(): Array<Sprite?> {
@@ -31,9 +32,9 @@ class ThreeBounce : SpriteContainer() {
         val top = innerBounds.centerY() - radius
         val bottom = innerBounds.centerY() + radius
 
-        for (i in 0 until childCount) {
-            val left = innerBounds.width() * i / 3 + innerBounds.left
-            getChildAt(i)!!.setDrawBounds(
+        for (index in 0 until childCount) {
+            val left = innerBounds.width() * index / 3 + innerBounds.left
+            getChildAt(index)!!.setDrawBounds(
                 left, top, left + radius * 2, bottom
             )
         }
@@ -47,7 +48,10 @@ class ThreeBounce : SpriteContainer() {
 
         override fun onCreateAnimation(): ValueAnimator? {
             val fractions = floatArrayOf(0f, 0.4f, 0.8f, 1f)
-            return SpriteAnimatorBuilder(this).scale(fractions, 0f, 1f, 0f, 0f).duration(1400).easeInOut(*fractions)
+            return SpriteAnimatorBuilder(this)
+                .scale(fractions, 0f, 1f, 0f, 0f)
+                .duration(1400)
+                .easeInOut(*fractions)
                 .build()
         }
     }

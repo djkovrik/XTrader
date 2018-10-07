@@ -24,9 +24,9 @@ class KeyFrameInterpolator(
     override fun getInterpolation(input: Float): Float {
         var localInput = input
         if (fractions.size > 1) {
-            for (i in 0 until fractions.size - 1) {
-                val start = fractions[i]
-                val end = fractions[i + 1]
+            for (index in 0 until fractions.size - 1) {
+                val start = fractions[index]
+                val end = fractions[index + 1]
                 val duration = end - start
                 if (localInput in start..end) {
                     localInput = (localInput - start) / duration

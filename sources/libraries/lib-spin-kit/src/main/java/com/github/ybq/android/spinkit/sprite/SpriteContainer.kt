@@ -9,6 +9,7 @@ import com.github.ybq.android.spinkit.animation.AnimationUtils
 /**
  * Created by ybq.
  */
+@Suppress("SpreadOperator")
 abstract class SpriteContainer : Sprite() {
 
     private var sprites: Array<out Sprite?>

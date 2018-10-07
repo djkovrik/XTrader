@@ -17,9 +17,9 @@ import com.github.ybq.android.spinkit.sprite.Sprite
 class SpinKitView(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) :
     ProgressBar(context, attrs, defStyleAttr, defStyleRes) {
 
-    private val mStyle: Style
-    private var mColor: Int = 0
-    private var mSprite: Sprite? = null
+    private val spinStyle: Style
+    private var spinColor: Int = 0
+    private var spinSprite: Sprite? = null
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.SpinKitViewStyle)
@@ -30,37 +30,37 @@ class SpinKitView(context: Context, attrs: AttributeSet?, defStyleAttr: Int, def
             attrs, R.styleable.SpinKitView, defStyleAttr,
             defStyleRes
         )
-        mStyle = Style.values()[a.getInt(R.styleable.SpinKitView_SpinKit_Style, 0)]
-        mColor = a.getColor(R.styleable.SpinKitView_SpinKit_Color, Color.WHITE)
+        spinStyle = Style.values()[a.getInt(R.styleable.SpinKitView_SpinKit_Style, 0)]
+        spinColor = a.getColor(R.styleable.SpinKitView_SpinKit_Color, Color.WHITE)
         a.recycle()
         init()
         isIndeterminate = true
     }
 
     private fun init() {
-        val sprite = SpriteFactory.create(mStyle)?.apply { color = mColor }
+        val sprite = SpriteFactory.create(spinStyle)?.apply { color = spinColor }
         indeterminateDrawable = sprite
     }
 
-    override fun setIndeterminateDrawable(d: Drawable?) {
-        if (d !is Sprite) {
-            throw IllegalArgumentException("this d must be instanceof Sprite")
+    override fun setIndeterminateDrawable(drawable: Drawable?) {
+        if (drawable !is Sprite) {
+            throw IllegalArgumentException("this drawable must be instanceof Sprite")
         }
-        setIndeterminateDrawable(d)
+        setIndeterminateDrawable(drawable)
     }
 
-    private fun setIndeterminateDrawable(d: Sprite) {
-        super.setIndeterminateDrawable(d)
-        mSprite = d
-        if (mSprite?.color == 0) {
-            mSprite?.color = mColor
+    private fun setIndeterminateDrawable(drawable: Sprite) {
+        super.setIndeterminateDrawable(drawable)
+        spinSprite = drawable
+        if (spinSprite?.color == 0) {
+            spinSprite?.color = spinColor
         }
         onSizeChanged(width, height, width, height)
         validateSprite()
     }
 
     override fun getIndeterminateDrawable(): Sprite? {
-        return mSprite
+        return spinSprite
     }
 
     override fun setVisibility(visibility: Int) {
@@ -70,16 +70,16 @@ class SpinKitView(context: Context, attrs: AttributeSet?, defStyleAttr: Int, def
 
     private fun validateSprite() {
         if (visibility == View.VISIBLE) {
-            mSprite?.start()
+            spinSprite?.start()
         } else {
-            mSprite?.stop()
+            spinSprite?.stop()
         }
     }
 
 
     fun setColor(color: Int) {
-        this.mColor = color
-        mSprite?.color = color
+        this.spinColor = color
+        spinSprite?.color = color
         invalidate()
     }
 
@@ -100,9 +100,9 @@ class SpinKitView(context: Context, attrs: AttributeSet?, defStyleAttr: Int, def
     override fun onScreenStateChanged(screenState: Int) {
         super.onScreenStateChanged(screenState)
         if (screenState == View.SCREEN_STATE_OFF) {
-            mSprite?.stop()
+            spinSprite?.stop()
         } else {
-            mSprite?.start()
+            spinSprite?.start()
         }
     }
 }

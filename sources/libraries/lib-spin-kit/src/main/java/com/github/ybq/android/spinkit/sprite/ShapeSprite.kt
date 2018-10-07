@@ -8,9 +8,10 @@ import android.graphics.Paint
 /**
  * Created by ybq.
  */
+@Suppress("MagicNumber")
 abstract class ShapeSprite : Sprite() {
 
-    private val mPaint: Paint
+    private val shapePaint: Paint
     private var useColor: Int = 0
 
     abstract fun drawShape(canvas: Canvas, paint: Paint)
@@ -23,9 +24,9 @@ abstract class ShapeSprite : Sprite() {
 
     init {
         this.color = Color.WHITE
-        mPaint = Paint()
-        mPaint.isAntiAlias = true
-        mPaint.color = useColor
+        shapePaint = Paint()
+        shapePaint.isAntiAlias = true
+        shapePaint.color = useColor
     }
 
     override fun setAlpha(value: Int) {
@@ -34,19 +35,19 @@ abstract class ShapeSprite : Sprite() {
     }
 
     private fun updateUseColor() {
-        var alpha = alpha
-        alpha += alpha shr 7
+        var innerAlpha = alpha
+        innerAlpha += innerAlpha shr 7
         val baseAlpha = color.ushr(24)
-        val useAlpha = baseAlpha * alpha shr 8
+        val useAlpha = baseAlpha * innerAlpha shr 8
         useColor = (color shl 8).ushr(8) or (useAlpha shl 24)
     }
 
     override fun setColorFilter(colorFilter: ColorFilter?) {
-        mPaint.colorFilter = colorFilter
+        shapePaint.colorFilter = colorFilter
     }
 
     override fun drawSelf(canvas: Canvas) {
-        mPaint.color = useColor
-        drawShape(canvas, mPaint)
+        shapePaint.color = useColor
+        drawShape(canvas, shapePaint)
     }
 }

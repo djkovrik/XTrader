@@ -5,6 +5,7 @@ import android.view.animation.Interpolator
 /**
  * Created by ybq.
  */
+@Suppress("MagicNumber")
 object Ease {
 
     fun inOut(): Interpolator =

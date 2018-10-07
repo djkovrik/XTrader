@@ -6,14 +6,15 @@ import android.graphics.Rect
 /**
  * Created by ybq.
  */
+@Suppress("MagicNumber")
 abstract class CircleLayoutContainer : SpriteContainer() {
 
     override fun drawChild(canvas: Canvas) {
-        for (i in 0 until childCount) {
-            val sprite = getChildAt(i)
+        for (index in 0 until childCount) {
+            val sprite = getChildAt(index)
             val count = canvas.save()
             canvas.rotate(
-                (i * 360 / childCount).toFloat(),
+                (index * 360 / childCount).toFloat(),
                 bounds.centerX().toFloat(),
                 bounds.centerY().toFloat()
             )
@@ -31,7 +32,7 @@ abstract class CircleLayoutContainer : SpriteContainer() {
         val right = innerBounds.centerX() + radius
         for (i in 0 until childCount) {
             val sprite = getChildAt(i)
-            sprite!!.setDrawBounds(left, innerBounds.top, right, innerBounds.top + radius * 2)
+            sprite?.setDrawBounds(left, innerBounds.top, right, innerBounds.top + radius * 2)
         }
     }
 }

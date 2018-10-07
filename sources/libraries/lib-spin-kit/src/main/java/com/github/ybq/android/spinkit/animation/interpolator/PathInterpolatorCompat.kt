@@ -25,6 +25,7 @@ import android.view.animation.Interpolator
  * platform implementation will be used and on older platforms a compatible alternative
  * implementation will be used.
  */
+@Suppress("MagicNumber")
 object PathInterpolatorCompat {
 
     /**
