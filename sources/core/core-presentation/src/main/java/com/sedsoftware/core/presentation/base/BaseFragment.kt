@@ -1,5 +1,6 @@
 package com.sedsoftware.core.presentation.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,8 +23,11 @@ abstract class BaseFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onAttach(context: Context?) {
         inject()
-        return inflater.inflate(getLayoutId(), container, false)
+        super.onAttach(context)
     }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        inflater.inflate(getLayoutId(), container, false)
 }
