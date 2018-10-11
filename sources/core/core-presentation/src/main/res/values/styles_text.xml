@@ -7,12 +7,12 @@
     </style>
 
     <style name="XTTextLogo" parent="XTText">
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">48sp</item>
     </style>
 
-    <style name="XTTextNormal" parent="XTText" />
+    <style name="XTTextPrimary" parent="XTText" />
 
-    <style name="XTTextNormalSecondary" parent="XTTextNormal">
+    <style name="XTTextSecondary" parent="XTTextPrimary">
         <item name="android:alpha">0.7</item>
     </style>
 
