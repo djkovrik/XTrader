@@ -29,3 +29,6 @@ include ':screen-home'
 project(':screen-home').projectDir = new File(rootDir, 'sources/screens/screen-home')
 include ':screen-pin'
 project(':screen-pin').projectDir = new File(rootDir, 'sources/screens/screen-pin')
+
+include ':lib-spin-kit'
+project(':lib-spin-kit').projectDir = new File(rootDir, 'sources/libraries/lib-spin-kit')

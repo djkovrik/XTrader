@@ -11,11 +11,6 @@
         <item name="colorAccent">@color/accentMain</item>
         <!-- Window -->
         <item name="android:windowBackground">@color/backgroundMain</item>
-        <!-- Text -->
-        <item name="android:textColorPrimary">@color/textMain</item>
-        <item name="android:textColorPrimaryInverse">@color/textInverseMain</item>
-        <item name="android:textColorSecondary">@color/textMain</item>
-        <item name="android:textColorSecondaryInverse">@color/textInverseMain</item>
         <!-- CUSTOM -->
         <!-- Attribute colors -->
         <item name="colorAccentNegative">@color/accentNegativeMain</item>
@@ -23,6 +18,8 @@
         <item name="colorBackground">@color/backgroundMain</item>
         <item name="colorBackgroundSecondary">@color/backgroundSecondaryMain</item>
         <item name="colorBackgroundCard">@color/backgroundCardMain</item>
+        <item name="colorText">@color/textMain</item>
+        <item name="colorTextInverse">@color/textInverseMain</item>
         <item name="colorTextNegative">@color/textNegativeMain</item>
         <item name="colorTextPositive">@color/textPositiveMain</item>
 

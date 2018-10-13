@@ -5,33 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
         android:id="@+id/logo"
         style="@style/XTTextLogo"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/app_logo_size"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/material_baseline_grid_9.5x"
-        android:text="@string/logo"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
+        android:layout_marginEnd="@dimen/material_baseline_grid_1x"
+        android:layout_marginStart="@dimen/material_baseline_grid_1x"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/a11y_app_logo"
+        android:cropToPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/logo_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/logo_text"
+        style="@style/XTTextSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
+        android:layout_marginEnd="@dimen/material_baseline_grid_1x"
+        android:layout_marginStart="@dimen/material_baseline_grid_1x"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
+        android:text="@string/splash_text"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
     <TextView
         android:id="@+id/label_wait"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/material_baseline_grid_2x"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
+        style="@style/XTTextSecondary"
         android:text="@string/label_please_wait"
         app:layout_constraintBottom_toTopOf="@+id/progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/SpinKitView.ThreeBounce"
+        app:SpinKit_Color="?attr/colorAccent"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="@dimen/material_baseline_grid_3x"
+        android:layout_marginBottom="@dimen/material_baseline_grid_4x"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
