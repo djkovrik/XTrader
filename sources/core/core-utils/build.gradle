@@ -32,7 +32,7 @@ dependencies {
     implementation KotlinDependencies.kotlin
     implementation KotlinDependencies.kotlinCoroutines
 
-    implementation CoreDepencencies.dagger
+    implementation CoreDependencies.dagger
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.materialComponents

@@ -37,7 +37,7 @@ object Versions {
     const val KTX_VERSION = "1.0.0-alpha1"
 
     // Core
-    const val ADAPTER_DELEGATES_VERSION = "3.0.1"
+    const val ADAPTER_DELEGATES_VERSION = "4.0.0"
     const val DAGGER_VERSION = "2.17"
     const val RETROFIT_VERSION = "2.4.0"
     const val MOSHI_VERSION = "1.7.0"

@@ -49,16 +49,16 @@ dependencies {
     implementation KotlinDependencies.kotlin
     implementation KotlinDependencies.kotlinCoroutines
 
-    implementation CoreDepencencies.dagger
-    kapt CoreDepencencies.daggerCompiler
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
 
-    implementation CoreDepencencies.retrofit
-    implementation CoreDepencencies.retrofitCoroutinesAdapter
-    implementation CoreDepencencies.okhttp
-    implementation CoreDepencencies.moshi
-    implementation CoreDepencencies.moshiKotlin
-    implementation CoreDepencencies.moshiAdapters
-    implementation CoreDepencencies.retrofitMoshiConverter
+    implementation CoreDependencies.retrofit
+    implementation CoreDependencies.retrofitCoroutinesAdapter
+    implementation CoreDependencies.okhttp
+    implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
+    implementation CoreDependencies.moshiAdapters
+    implementation CoreDependencies.retrofitMoshiConverter
 
     implementation JetPackDependencies.lifecycleExtensions
     kapt JetPackDependencies.lifecycleCompiler

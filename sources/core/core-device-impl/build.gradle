@@ -51,8 +51,8 @@ dependencies {
     implementation KotlinDependencies.kotlinCoroutines
     implementation KotlinDependencies.kotlinCoroutinesAndroid
 
-    implementation CoreDepencencies.dagger
-    kapt CoreDepencencies.daggerCompiler
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
 

@@ -39,8 +39,10 @@ dependencies {
 
     implementation KotlinDependencies.kotlin
 
-    implementation CoreDepencencies.dagger
-    kapt CoreDepencencies.daggerCompiler
+    implementation CoreDependencies.adapterDelegates
+
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.constraintLayout
