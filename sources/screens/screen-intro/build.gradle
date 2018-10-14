@@ -36,6 +36,7 @@ androidExtensions {
 
 dependencies {
     implementation project(':core-presentation')
+    implementation project(':lib-spin-kit')
 
     implementation KotlinDependencies.kotlin
 
@@ -46,6 +47,8 @@ dependencies {
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.constraintLayout
+    implementation JetPackDependencies.recyclerView
+    implementation JetPackDependencies.recyclerViewSelection
     implementation JetPackDependencies.materialComponents
 
     implementation UiDependencies.materialValues
