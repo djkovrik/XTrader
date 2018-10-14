@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="app_logo_size_intro">120dp</dimen>
+    <dimen name="app_logo_size_intro">140dp</dimen>
+    <dimen name="exchange_item_corner_radius">8dp</dimen>
+    <dimen name="exchange_item_border_width">2dp</dimen>
 </resources>

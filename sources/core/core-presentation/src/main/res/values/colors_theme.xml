@@ -13,5 +13,5 @@
     <color name="textInverseMain">#263238</color>
     <color name="textNegativeMain">#ff5c5c</color>
     <color name="textPositiveMain">#00de56</color>
-
+    <color name="borderExchangeItemMain">#80ffffff</color>
 </resources>

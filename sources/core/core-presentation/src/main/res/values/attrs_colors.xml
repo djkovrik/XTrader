@@ -9,4 +9,5 @@
     <attr name="colorTextInverse" format="color" />
     <attr name="colorTextNegative" format="color" />
     <attr name="colorTextPositive" format="color" />
+    <attr name="colorExchangeBorder" format="color"/>
 </resources>
