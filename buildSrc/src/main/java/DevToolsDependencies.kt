@@ -1,3 +1,4 @@
+import Versions.CHUCK_VERSION
 import Versions.LEAK_CANARY_VERSION
 import Versions.STETHO_VERSION
 import Versions.TIMBER_VERSION
@@ -8,4 +9,6 @@ object DevToolsDependencies {
     const val leakCanaryNoOp = "com.squareup.leakcanary:leakcanary-android-no-op:$LEAK_CANARY_VERSION"
     const val stetho = "com.facebook.stetho:stetho:$STETHO_VERSION"
     const val stethoNoOp = "net.igenius:stetho-no-op:1.1"
+    const val chuk = "com.readystatesoftware.chuck:library:$CHUCK_VERSION"
+    const val chukNoOp = "com.readystatesoftware.chuck:library-no-op:$CHUCK_VERSION"
 }

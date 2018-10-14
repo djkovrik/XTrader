@@ -2,6 +2,7 @@ package com.sedsoftware.xtrader
 
 import android.app.Application
 import com.facebook.stetho.Stetho
+import com.frogermcs.androiddevmetrics.AndroidDevMetrics
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.provider.ApplicationProvider
 import com.sedsoftware.xtrader.di.AppComponent
@@ -18,6 +19,7 @@ class XTraderApp : Application(), App {
 
         initStetho()
         initTimber()
+        initDevMetrics()
     }
 
     override fun getAppComponent(): ApplicationProvider = appComponent
@@ -33,6 +35,12 @@ class XTraderApp : Application(), App {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
+        }
+    }
+
+    private fun initDevMetrics() {
+        if (BuildConfig.DEBUG) {
+            AndroidDevMetrics.initWith(this)
         }
     }
 }

@@ -56,12 +56,14 @@ object Versions {
     const val TEST_RUNNER_VERSION = "1.1.0-alpha4"
     const val TEST_RULES_VERSION = "1.1.0-alpha1"
     const val ESPRESSO_VERSION = "3.1.0-alpha1"
-    const val SPEK_VERSION = "2.0.0-alpha.2"
+    const val SPEK_VERSION = "2.0.0-rc.1"
     const val EXPEKT_VERSION = "0.5.0"
     const val KAKAO_VERSION = "1.3.0"
 
     // Development tools
-    const val TIMBER_VERSION = "4.7.1"
+    const val TIMBER_VERSION = "4.7.0"
     const val LEAK_CANARY_VERSION = "1.6.1"
     const val STETHO_VERSION = "1.5.0"
+    const val DEV_METRICS_VERSION = "0.6"
+    const val CHUCK_VERSION = "1.1.0"
 }

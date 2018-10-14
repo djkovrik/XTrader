@@ -13,6 +13,7 @@ buildscript {
         classpath Plugins.JUNIT5
         classpath Plugins.GRADLE_VERSIONS
         classpath Plugins.GRADLE_VERSIONING
+        classpath Plugins.DEVICE_METRICS
     }
 }
 
