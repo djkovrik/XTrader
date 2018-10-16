@@ -1,32 +1,5 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-
-android {
-    compileSdkVersion Versions.COMPILE_SDK_VERSION
-
-    defaultConfig {
-        minSdkVersion Versions.MIN_SDK_VERSION
-        targetSdkVersion Versions.TARGET_SDK_VERSION
-        versionCode androidGitVersion.code()
-        versionName androidGitVersion.name()
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        resConfigs "en", "ru"
-    }
-
-    buildTypes {
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
+apply plugin: 'java'
+apply plugin: 'kotlin'
 
 dependencies {
     implementation project(':core-device-api')
