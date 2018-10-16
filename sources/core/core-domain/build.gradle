@@ -34,6 +34,4 @@ dependencies {
 
     implementation KotlinDependencies.kotlin
     implementation KotlinDependencies.kotlinCoroutines
-
-    implementation CoreDependencies.dagger
 }
