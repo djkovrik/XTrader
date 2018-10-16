@@ -5,7 +5,9 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [ViewModelFactoryModule::class]
+    modules = [
+        ViewModelFactoryModule::class
+    ]
 )
 interface ViewModuleComponent : ViewModelFactoryProvider {
     class Initializer private constructor() {

@@ -25,9 +25,11 @@ interface AppComponent : ApplicationProvider {
 
             fun init(app: XTraderApp): AppComponent {
 
-                val deviceToolsProvider = DeviceToolsComponent.Initializer.init(app)
+                val deviceToolsProvider =
+                    DeviceToolsComponent.Initializer.init(app)
 
-                val exchangeManagerProvider = ExchangeManagerComponent.Initializer.init(deviceToolsProvider)
+                val exchangeManagerProvider =
+                    ExchangeManagerComponent.Initializer.init(deviceToolsProvider)
 
                 return DaggerAppComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)

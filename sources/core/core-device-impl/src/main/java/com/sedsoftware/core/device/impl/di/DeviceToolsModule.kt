@@ -15,14 +15,14 @@ import dagger.Provides
 class DeviceToolsModule {
 
     @Provides
-    fun provideExecutor(executor: AppExecutor): Executor = executor
+    fun provideExecutor(executorImplementation: AppExecutor): Executor = executorImplementation
 
     @Provides
-    fun provideLogger(logger: AppLogger): Logger = logger
+    fun provideLogger(loggerImplementation: AppLogger): Logger = loggerImplementation
 
     @Provides
-    fun provideSettings(settings: AppSettings): Settings = settings
+    fun provideSettings(settingsImplementation: AppSettings): Settings = settingsImplementation
 
     @Provides
-    fun provideSigner(signer: StringSigner): Signer = signer
+    fun provideSigner(signerImplementation: StringSigner): Signer = signerImplementation
 }
