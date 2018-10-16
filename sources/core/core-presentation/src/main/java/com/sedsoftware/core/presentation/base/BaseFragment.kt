@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.provider.ApplicationProvider
+import com.sedsoftware.core.di.provider.AppProvider
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
@@ -16,7 +16,7 @@ abstract class BaseFragment : Fragment() {
     abstract fun getLayoutId(): Int
     abstract fun inject()
 
-    protected val appComponent: ApplicationProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
+    protected val appComponent: AppProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity?.applicationContext as App).getAppComponent()
     }
 

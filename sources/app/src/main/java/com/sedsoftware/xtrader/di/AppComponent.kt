@@ -1,7 +1,7 @@
 package com.sedsoftware.xtrader.di
 
 import com.sedsoftware.core.device.impl.di.DeviceToolsComponent
-import com.sedsoftware.core.di.provider.ApplicationProvider
+import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.core.di.provider.ExchangeManagerProvider
 import com.sedsoftware.exchange.manager.di.ExchangeManagerComponent
@@ -16,7 +16,7 @@ import javax.inject.Singleton
     ]
 )
 @Singleton
-interface AppComponent : ApplicationProvider {
+interface AppComponent : AppProvider {
 
     fun inject(app: XTraderApp)
 

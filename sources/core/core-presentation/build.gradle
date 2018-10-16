@@ -40,4 +40,5 @@ dependencies {
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.materialComponents
     implementation JetPackDependencies.lifecycleExtensions
+    implementation JetPackDependencies.navigation
 }
