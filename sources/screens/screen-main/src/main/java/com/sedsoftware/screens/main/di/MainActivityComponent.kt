@@ -2,8 +2,7 @@ package com.sedsoftware.screens.main.di
 
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.scope.PerScreen
-import com.sedsoftware.core.presentation.navigation.NavControllerProvider
-import com.sedsoftware.screens.main.MainActivity
+import com.sedsoftware.core.presentation.navigation.NavControllerHolder
 import com.sedsoftware.screens.main.di.viewmodel.ViewModelFactoryProvider
 import com.sedsoftware.screens.main.di.viewmodel.ViewModuleComponent
 import dagger.BindsInstance
@@ -19,9 +18,7 @@ import dagger.Component
         MainActivityModule::class
     ]
 )
-interface MainActivityComponent {
-
-    fun inject(activity: MainActivity)
+interface MainActivityComponent : MainActivityToolsProvider {
 
     @Component.Builder
     interface Builder {
@@ -31,7 +28,7 @@ interface MainActivityComponent {
         fun viewModelFactoryProvider(factoryProvider: ViewModelFactoryProvider): Builder
 
         @BindsInstance
-        fun navControllerProvider(navControllerProvider: NavControllerProvider): Builder
+        fun navControllerHolder(navControllerHolder: NavControllerHolder): Builder
 
         fun build(): MainActivityComponent
     }
@@ -39,14 +36,14 @@ interface MainActivityComponent {
     class Initializer private constructor() {
         companion object {
 
-            fun init(appProvider: AppProvider, hostActivity: NavControllerProvider): MainActivityComponent {
+            fun init(appProvider: AppProvider, hostActivity: NavControllerHolder): MainActivityToolsProvider {
 
                 val viewModelFactoryProvider = ViewModuleComponent.Initializer.init()
 
                 return DaggerMainActivityComponent.builder()
                     .appProvider(appProvider)
                     .viewModelFactoryProvider(viewModelFactoryProvider)
-                    .navControllerProvider(hostActivity)
+                    .navControllerHolder(hostActivity)
                     .build()
             }
         }
