@@ -1,9 +1,10 @@
-package com.sedsoftware.screens.main.di
+package com.sedsoftware.core.presentation.di
 
+import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.navigation.NavControllerHolder
-import com.sedsoftware.screens.main.MainActivity
 
 interface MainActivityToolsProvider {
-    fun inject(activity: MainActivity)
     fun provideNavControllerHolder(): NavControllerHolder
+
+    fun inject(activity: BaseActivity)
 }

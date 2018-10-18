@@ -2,6 +2,7 @@ package com.sedsoftware.screens.main.di
 
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.scope.PerScreen
+import com.sedsoftware.core.presentation.di.MainActivityToolsProvider
 import com.sedsoftware.core.presentation.navigation.NavControllerHolder
 import com.sedsoftware.screens.main.di.viewmodel.ViewModelFactoryProvider
 import com.sedsoftware.screens.main.di.viewmodel.ViewModuleComponent

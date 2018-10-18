@@ -7,17 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.provider.AppProvider
+import com.sedsoftware.core.presentation.di.ActivityComponentHolder
+import com.sedsoftware.core.presentation.di.MainActivityToolsProvider
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
 
-    abstract fun getLayoutId(): Int
     abstract fun inject()
+    abstract fun getLayoutId(): Int
 
-    protected val appComponent: AppProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
-        (activity?.applicationContext as App).getAppComponent()
+    protected val parentActivityComponent: MainActivityToolsProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
+        (activity as? ActivityComponentHolder)?.getActivityComponent()
+                ?: throw RuntimeException("Parent activity must implement MainActivityComponentHolder interface")
     }
 
     @Inject
