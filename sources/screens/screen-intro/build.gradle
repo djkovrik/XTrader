@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation project(':core-di')
     implementation project(':core-presentation')
     implementation project(':lib-spin-kit')
 

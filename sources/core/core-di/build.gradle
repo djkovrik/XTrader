@@ -38,4 +38,5 @@ dependencies {
     implementation CoreDependencies.dagger
 
     implementation JetPackDependencies.lifecycleExtensions
+    implementation JetPackDependencies.navigation
 }

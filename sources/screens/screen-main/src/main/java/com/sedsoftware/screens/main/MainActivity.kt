@@ -4,19 +4,19 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.sedsoftware.core.device.api.Logger
+import com.sedsoftware.core.di.holder.ActivityComponentHolder
+import com.sedsoftware.core.di.holder.NavControllerHolder
+import com.sedsoftware.core.di.provider.ActivityToolsProvider
 import com.sedsoftware.core.presentation.base.BaseActivity
-import com.sedsoftware.core.presentation.di.ActivityComponentHolder
-import com.sedsoftware.core.presentation.di.MainActivityToolsProvider
-import com.sedsoftware.core.presentation.navigation.NavControllerHolder
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), NavControllerHolder, ActivityComponentHolder {
+class MainActivity : BaseActivity(), ActivityComponentHolder, NavControllerHolder {
 
     @Inject
     lateinit var logger: Logger
 
-    private val mainActivityComponent: MainActivityToolsProvider by lazy {
+    private val mainActivityComponent: ActivityToolsProvider by lazy {
         MainActivityComponent.Initializer.init(appComponent, this)
     }
 
@@ -30,7 +30,7 @@ class MainActivity : BaseActivity(), NavControllerHolder, ActivityComponentHolde
     override fun getNavController(): NavController =
         Navigation.findNavController(this, R.id.nav_controller_main)
 
-    override fun getActivityComponent(): MainActivityToolsProvider =
+    override fun getActivityComponent(): ActivityToolsProvider =
         mainActivityComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {

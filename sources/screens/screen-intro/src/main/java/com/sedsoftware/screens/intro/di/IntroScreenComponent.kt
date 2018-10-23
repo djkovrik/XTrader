@@ -1,3 +1,32 @@
 package com.sedsoftware.screens.intro.di
 
-class IntroScreenComponent
+import com.sedsoftware.core.di.provider.ActivityToolsProvider
+import com.sedsoftware.core.di.scope.PerScreen
+import com.sedsoftware.screens.intro.IntroScreenFragment
+import dagger.Component
+
+@PerScreen
+@Component(
+    dependencies = [
+        ActivityToolsProvider::class
+    ],
+    modules = [
+        IntroScreenModule::class
+    ]
+)
+interface IntroScreenComponent {
+
+    fun inject(fragment: IntroScreenFragment)
+
+    class Initializer private constructor() {
+        companion object {
+
+            fun init(activityToolsProvider: ActivityToolsProvider): IntroScreenComponent {
+
+                return DaggerIntroScreenComponent.builder()
+                    .activityToolsProvider(activityToolsProvider)
+                    .build()
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
+import com.sedsoftware.screens.intro.di.IntroScreenComponent
 
 class IntroScreenFragment : BaseFragment() {
 
@@ -15,5 +16,7 @@ class IntroScreenFragment : BaseFragment() {
     }
 
     override fun inject() {
+        IntroScreenComponent.Initializer.init(parentActivityComponent)
+            .inject(this@IntroScreenFragment)
     }
 }
