@@ -1,13 +1,21 @@
 apply plugin: 'io.gitlab.arturbosch.detekt'
 
 detekt {
-    version = Versions.DETEKT_VERSION
+    toolVersion = Versions.DETEKT_VERSION
 
-    profile("main") {
-        config = "$rootDir/config/static-analysis/detekt-config.yml"
-        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
-        output = "$projectDir/reports/detekt.xml"
-        baseline = "$projectDir/reports/baseline.xml"
-        parallel = true
+    input = files("src/main/kotlin")
+    filters = ".*/resources/.*,.*/build/.*"
+    config = files("$rootDir/config/static-analysis/detekt-config.yml")
+    parallel = true
+
+    reports {
+        xml {
+            enabled = true
+            destination = file("$projectDir/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("$projectDir/reports/detekt.html")
+        }
     }
 }
