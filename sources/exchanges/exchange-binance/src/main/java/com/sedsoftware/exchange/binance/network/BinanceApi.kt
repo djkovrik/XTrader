@@ -4,7 +4,7 @@ import com.sedsoftware.exchange.binance.network.model.SymbolTickModel
 import com.sedsoftware.exchange.binance.network.model.SymbolTradeModel
 import com.sedsoftware.exchange.binance.network.model.dto.PairDepthDto
 import com.sedsoftware.exchange.binance.network.model.dto.PairsInfoDto
-import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 
