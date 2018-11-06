@@ -3,7 +3,7 @@ package com.sedsoftware.core.device.impl.di
 import com.sedsoftware.core.device.api.Logger
 import com.sedsoftware.core.device.api.Settings
 import com.sedsoftware.core.device.api.Signer
-import com.sedsoftware.core.device.api.executor.Executor
+import com.sedsoftware.core.device.api.Executor
 import com.sedsoftware.core.device.impl.encrypt.StringSigner
 import com.sedsoftware.core.device.impl.executor.AppExecutor
 import com.sedsoftware.core.device.impl.log.AppLogger
