@@ -36,6 +36,7 @@ dependencies {
     implementation project(':lib-spin-kit')
 
     implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
 
     implementation CoreDependencies.adapterDelegates
 

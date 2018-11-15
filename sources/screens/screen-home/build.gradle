@@ -34,6 +34,7 @@ dependencies {
     implementation project(':core-presentation')
 
     implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
