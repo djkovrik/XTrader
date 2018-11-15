@@ -14,10 +14,12 @@ buildscript {
         classpath Plugins.GRADLE_VERSIONS
         classpath Plugins.GRADLE_VERSIONING
         classpath Plugins.DEVICE_METRICS
+        classpath Plugins.SCAN
     }
 }
 
 apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'com.gradle.build-scan'
 
 apply from: 'config/gradle/androidgit.gradle'
 apply from: 'config/gradle/detekt.gradle'
@@ -27,8 +29,16 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+        maven { url "https://plugins.gradle.org/m2" }
         maven { url "http://dl.bintray.com/igenius-code/maven" }
         maven { url "https://dl.bintray.com/spekframework/spek-dev" }
+    }
+
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+
+//        publishAlways()
     }
 
     afterEvaluate {

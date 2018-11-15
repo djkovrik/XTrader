@@ -12,6 +12,7 @@ object Versions {
     const val GRADLE_VERSIONING_VERSION = "0.4.5"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
     const val ANDROID_JUNIT5_VERSION = "1.3.1.1"
+    const val GRADLE_SCAN_VERSION = "1.16"
 
     // Kotlin
     const val KOTLIN_VERSION = "1.3.10"
