@@ -39,7 +39,7 @@ interface MainActivityComponent : ActivityToolsProvider {
 
             fun init(appProvider: AppProvider, hostActivity: NavControllerHolder): ActivityToolsProvider {
 
-                val viewModelFactoryProvider = ViewModuleComponent.Initializer.init()
+                val viewModelFactoryProvider = ViewModuleComponent.Initializer.init(appProvider)
 
                 return DaggerMainActivityComponent.builder()
                     .appProvider(appProvider)

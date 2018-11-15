@@ -10,13 +10,13 @@ class IntroScreenFragment : BaseFragment() {
 
     override fun getLayoutId(): Int = R.layout.fragment_intro_screen
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setBackgroundColor(R.attr.colorPrimaryDark)
-    }
-
     override fun inject() {
         IntroScreenComponent.Initializer.init(parentActivityComponent)
             .inject(this@IntroScreenFragment)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setBackgroundColor(R.attr.colorPrimaryDark)
     }
 }

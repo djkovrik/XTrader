@@ -31,11 +31,16 @@ android {
 }
 
 dependencies {
+    implementation project(':core-di')
     implementation project(':core-presentation')
+    implementation project(':core-utils')
     implementation project(':lib-spin-kit')
 
     implementation KotlinDependencies.kotlin
     implementation KotlinDependencies.kotlinCoroutines
+
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.constraintLayout
