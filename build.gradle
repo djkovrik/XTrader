@@ -30,6 +30,13 @@ allprojects {
         maven { url "http://dl.bintray.com/igenius-code/maven" }
         maven { url "https://dl.bintray.com/spekframework/spek-dev" }
     }
+
+    afterEvaluate {
+        extensions.findByName('kapt')?.arguments {
+            arg("dagger.formatGeneratedSource", "disabled")
+            arg("dagger.gradle.incremental", "enabled")
+        }
+    }
 }
 
 task clean(type: Delete) {
