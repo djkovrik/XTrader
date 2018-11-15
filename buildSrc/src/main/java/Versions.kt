@@ -11,14 +11,14 @@ object Versions {
     const val GRADLE_VERSIONS_VERSION = "0.20.0"
     const val GRADLE_VERSIONING_VERSION = "0.4.5"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
-    const val ANDROID_JUNIT5_VERSION = "1.3.1.0"
+    const val ANDROID_JUNIT5_VERSION = "1.3.1.1"
 
     // Kotlin
-    const val KOTLIN_VERSION = "1.3.0"
-    const val KOTLIN_COROUTINES_VERSION = "1.0.0"
+    const val KOTLIN_VERSION = "1.3.10"
+    const val KOTLIN_COROUTINES_VERSION = "1.0.1"
 
     // JetPack - AppCompat
-    const val APPCOMPAT_VERSION = "1.0.0"
+    const val APPCOMPAT_VERSION = "1.0.2"
     const val CARDVIEW_VERSION = "1.0.0-rc02"
     const val PREFERENCE_VERSION = "1.0.0-rc02"
     const val MATERIAL_COMPONENTS_VERSION = "1.0.0"
@@ -40,7 +40,7 @@ object Versions {
     const val ADAPTER_DELEGATES_VERSION = "4.0.0"
     const val DAGGER_VERSION = "2.19"
     const val RETROFIT_VERSION = "2.4.0"
-    const val MOSHI_VERSION = "1.7.0"
+    const val MOSHI_VERSION = "1.8.0"
     const val COROUTINES_ADAPTER_VERSION = "1.0.0"
     const val OKHTTP_VERSION = "3.11.0"
 
