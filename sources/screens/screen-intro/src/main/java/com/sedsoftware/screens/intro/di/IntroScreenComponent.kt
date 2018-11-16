@@ -1,6 +1,6 @@
 package com.sedsoftware.screens.intro.di
 
-import com.sedsoftware.core.di.provider.ActivityToolsProvider
+import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.di.scope.PerScreen
 import com.sedsoftware.screens.intro.IntroScreenFragment
 import dagger.Component
@@ -8,7 +8,7 @@ import dagger.Component
 @PerScreen
 @Component(
     dependencies = [
-        ActivityToolsProvider::class
+        MainActivityToolsProvider::class
     ],
     modules = [
         IntroScreenModule::class
@@ -21,10 +21,10 @@ interface IntroScreenComponent {
     class Initializer private constructor() {
         companion object {
 
-            fun init(activityToolsProvider: ActivityToolsProvider): IntroScreenComponent {
+            fun init(activityToolsProvider: MainActivityToolsProvider): IntroScreenComponent {
 
                 return DaggerIntroScreenComponent.builder()
-                    .activityToolsProvider(activityToolsProvider)
+                    .mainActivityToolsProvider(activityToolsProvider)
                     .build()
             }
         }

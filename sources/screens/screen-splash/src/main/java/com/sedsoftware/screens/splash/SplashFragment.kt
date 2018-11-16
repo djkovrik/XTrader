@@ -32,7 +32,7 @@ class SplashFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setBackgroundColor(R.attr.colorPrimaryDark)
 
-        splashViewModel.closeSplash()
+        splashViewModel.requestForNextAvailableScreen()
     }
 
     private fun handleSplashFailure(failure: Failure?) {
