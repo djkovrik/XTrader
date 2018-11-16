@@ -1,13 +1,13 @@
 package com.sedsoftware.screens.main.di
 
 import com.sedsoftware.core.di.holder.NavControllerHolder
-import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.di.provider.AppProvider
-import com.sedsoftware.core.di.scope.PerScreen
+import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
-@PerScreen
+@Singleton
 @Component(
     dependencies = [
         AppProvider::class

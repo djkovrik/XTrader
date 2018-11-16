@@ -1,11 +1,11 @@
 package com.sedsoftware.screens.splash.di
 
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.core.di.scope.PerScreen
 import com.sedsoftware.screens.splash.SplashFragment
 import dagger.Component
+import javax.inject.Singleton
 
-@PerScreen
+@Singleton
 @Component(
     dependencies = [
         MainActivityToolsProvider::class
