@@ -1,9 +1,10 @@
-package com.sedsoftware.screens.main.di.viewmodel
+package com.sedsoftware.screens.main.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.key.ViewModelKey
 import com.sedsoftware.screens.main.MainViewModel
+import com.sedsoftware.screens.main.factory.ViewModelOwnerFactory
 import com.sedsoftware.screens.splash.SplashViewModel
 import dagger.Binds
 import dagger.Module

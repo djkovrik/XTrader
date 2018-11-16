@@ -1,12 +1,12 @@
-package com.sedsoftware.screens.main.di.viewmodel
+package com.sedsoftware.screens.main.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.sedsoftware.core.di.scope.PerScreen
 import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 
-@Singleton
+@PerScreen
 @Suppress("UNCHECKED_CAST")
 class ViewModelOwnerFactory @Inject constructor(
     private val creators: Map<Class<out ViewModel>,

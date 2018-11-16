@@ -1,22 +1,20 @@
 package com.sedsoftware.screens.main.di
 
+import com.sedsoftware.core.di.holder.NavControllerHolder
+import com.sedsoftware.core.di.provider.ActivityToolsProvider
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.scope.PerScreen
-import com.sedsoftware.core.di.provider.ActivityToolsProvider
-import com.sedsoftware.core.di.holder.NavControllerHolder
-import com.sedsoftware.screens.main.di.viewmodel.ViewModelFactoryProvider
-import com.sedsoftware.screens.main.di.viewmodel.ViewModuleComponent
 import dagger.BindsInstance
 import dagger.Component
 
 @PerScreen
 @Component(
     dependencies = [
-        AppProvider::class,
-        ViewModelFactoryProvider::class
+        AppProvider::class
     ],
     modules = [
-        MainActivityModule::class
+        MainActivityModule::class,
+        ViewModelFactoryModule::class
     ]
 )
 interface MainActivityComponent : ActivityToolsProvider {
@@ -25,8 +23,6 @@ interface MainActivityComponent : ActivityToolsProvider {
     interface Builder {
 
         fun appProvider(appProvider: AppProvider): Builder
-
-        fun viewModelFactoryProvider(factoryProvider: ViewModelFactoryProvider): Builder
 
         @BindsInstance
         fun navControllerHolder(navControllerHolder: NavControllerHolder): Builder
@@ -39,11 +35,8 @@ interface MainActivityComponent : ActivityToolsProvider {
 
             fun init(appProvider: AppProvider, hostActivity: NavControllerHolder): ActivityToolsProvider {
 
-                val viewModelFactoryProvider = ViewModuleComponent.Initializer.init(appProvider)
-
                 return DaggerMainActivityComponent.builder()
                     .appProvider(appProvider)
-                    .viewModelFactoryProvider(viewModelFactoryProvider)
                     .navControllerHolder(hostActivity)
                     .build()
             }
