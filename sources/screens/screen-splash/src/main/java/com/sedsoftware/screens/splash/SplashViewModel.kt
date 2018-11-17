@@ -11,7 +11,7 @@ class SplashViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     companion object {
-        private const val SPLASH_DELAY_MS = 2500L
+        private const val SPLASH_DELAY_MS = 5000L
     }
 
     fun requestForNextAvailableScreen() {

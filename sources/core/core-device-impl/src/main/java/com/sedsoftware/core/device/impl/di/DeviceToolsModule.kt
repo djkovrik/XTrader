@@ -1,28 +1,28 @@
 package com.sedsoftware.core.device.impl.di
 
+import com.sedsoftware.core.device.api.Executor
 import com.sedsoftware.core.device.api.Logger
 import com.sedsoftware.core.device.api.Settings
 import com.sedsoftware.core.device.api.Signer
-import com.sedsoftware.core.device.api.Executor
 import com.sedsoftware.core.device.impl.encrypt.StringSigner
 import com.sedsoftware.core.device.impl.executor.AppExecutor
 import com.sedsoftware.core.device.impl.log.AppLogger
 import com.sedsoftware.core.device.impl.settings.AppSettings
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
-class DeviceToolsModule {
+abstract class DeviceToolsModule {
 
-    @Provides
-    fun provideExecutor(executorImplementation: AppExecutor): Executor = executorImplementation
+    @Binds
+    abstract fun provideExecutor(executorImplementation: AppExecutor): Executor
 
-    @Provides
-    fun provideLogger(loggerImplementation: AppLogger): Logger = loggerImplementation
+    @Binds
+    abstract fun provideLogger(loggerImplementation: AppLogger): Logger
 
-    @Provides
-    fun provideSettings(settingsImplementation: AppSettings): Settings = settingsImplementation
+    @Binds
+    abstract fun provideSettings(settingsImplementation: AppSettings): Settings
 
-    @Provides
-    fun provideSigner(signerImplementation: StringSigner): Signer = signerImplementation
+    @Binds
+    abstract fun provideSigner(signerImplementation: StringSigner): Signer
 }
