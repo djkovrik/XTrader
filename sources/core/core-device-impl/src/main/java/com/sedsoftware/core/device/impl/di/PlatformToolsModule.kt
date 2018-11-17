@@ -1,5 +1,6 @@
 package com.sedsoftware.core.device.impl.di
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.preference.PreferenceManager
@@ -13,11 +14,16 @@ class PlatformToolsModule {
 
     @Provides
     @Singleton
-    fun provideResources(app: App): Resources =
-        app.getApplicationContext().resources
+    fun provideContext(app: App): Context =
+        app.getApplicationContext()
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(app: App): SharedPreferences =
-        PreferenceManager.getDefaultSharedPreferences(app.getApplicationContext())
+    fun provideResources(context: Context): Resources =
+        context.resources
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(context: Context): SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
 }

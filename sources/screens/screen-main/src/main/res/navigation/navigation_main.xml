@@ -12,14 +12,21 @@
         tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/navigate_from_splash_to_home"
-            app:destination="@id/homeScreenFragment" />
+            app:destination="@id/homeScreenFragment"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/navigate_from_splash_to_intro"
-            app:destination="@id/introScreenFragment" />
+            app:destination="@id/introScreenFragment"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/navigate_from_splash_to_pin"
-            app:destination="@id/pinScreenFragment" />
+            app:destination="@id/pinScreenFragment"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/introScreenFragment"
         android:name="com.sedsoftware.screens.intro.IntroScreenFragment"
@@ -29,6 +36,7 @@
             android:id="@+id/navigate_from_intro_to_home"
             app:destination="@id/homeScreenFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/pinScreenFragment"
         android:name="com.sedsoftware.screens.pin.PinScreenFragment"
@@ -38,9 +46,11 @@
             android:id="@+id/navigate_from_pin_to_home"
             app:destination="@id/homeScreenFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/homeScreenFragment"
         android:name="com.sedsoftware.screens.home.HomeScreenFragment"
         android:label="HomeScreenFragment"
         tools:layout="@layout/fragment_home_screen" />
+
 </navigation>

@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/logo"
         style="@style/XTTextLogo"
-        android:layout_width="@dimen/app_logo_size"
+        android:layout_width="@dimen/app_logo_size_splash"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/material_baseline_grid_1x"
         android:layout_marginEnd="@dimen/material_baseline_grid_1x"

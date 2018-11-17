@@ -22,7 +22,7 @@
         <item name="colorTextInverse">@color/textInverseMain</item>
         <item name="colorTextNegative">@color/textNegativeMain</item>
         <item name="colorTextPositive">@color/textPositiveMain</item>
-
+        <item name="colorExchangeBorder">@color/borderExchangeItemMain</item>
     </style>
 
 </resources>

@@ -11,6 +11,5 @@ class ExchangeManagerModule {
 
     @Provides
     @IntoSet
-    fun provideBinanceExchange(): Exchange =
-        ExchangeType.BINANCE
+    fun provideBinanceExchange(): Exchange = ExchangeType.BINANCE
 }

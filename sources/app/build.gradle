@@ -54,8 +54,8 @@ dependencies {
 
     implementation JetPackDependencies.legacyUtils
 
-    implementation CoreDepencencies.dagger
-    kapt CoreDepencencies.daggerCompiler
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
 
     implementation DevToolsDependencies.timber
     debugImplementation DevToolsDependencies.leakCanary

@@ -1,36 +1,43 @@
 package com.sedsoftware.screens.main.di
 
-import com.sedsoftware.core.di.provider.ApplicationProvider
-import com.sedsoftware.core.di.scope.PerScreen
-import com.sedsoftware.screens.main.MainActivity
-import com.sedsoftware.screens.main.di.viewmodel.ViewModelFactoryProvider
-import com.sedsoftware.screens.main.di.viewmodel.ViewModuleComponent
+import com.sedsoftware.core.di.holder.NavControllerHolder
+import com.sedsoftware.core.di.provider.AppProvider
+import com.sedsoftware.core.di.provider.MainActivityToolsProvider
+import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
-@PerScreen
+@Singleton
 @Component(
     dependencies = [
-        ApplicationProvider::class,
-        ViewModelFactoryProvider::class
+        AppProvider::class
     ],
     modules = [
-        MainActivityModule::class
+        MainActivityModule::class,
+        ViewModelFactoryModule::class
     ]
 )
-interface MainActivityComponent {
+interface MainActivityComponent : MainActivityToolsProvider {
 
-    fun inject(activity: MainActivity)
+    @Component.Builder
+    interface Builder {
+
+        fun appProvider(appProvider: AppProvider): Builder
+
+        @BindsInstance
+        fun navControllerHolder(navControllerHolder: NavControllerHolder): Builder
+
+        fun build(): MainActivityComponent
+    }
 
     class Initializer private constructor() {
         companion object {
 
-            fun init(appComponent: ApplicationProvider): MainActivityComponent {
-
-                val viewModelFactoryProvider = ViewModuleComponent.Initializer.init()
+            fun init(appProvider: AppProvider, hostActivity: NavControllerHolder): MainActivityToolsProvider {
 
                 return DaggerMainActivityComponent.builder()
-                    .applicationProvider(appComponent)
-                    .viewModelFactoryProvider(viewModelFactoryProvider)
+                    .appProvider(appProvider)
+                    .navControllerHolder(hostActivity)
                     .build()
             }
         }

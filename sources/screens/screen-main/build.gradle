@@ -30,25 +30,22 @@ android {
 
 }
 
-androidExtensions {
-    experimental = true
-}
-
 dependencies {
     implementation project(':core-di')
+    implementation project(':core-domain')
     implementation project(':core-device-api')
     implementation project(':core-presentation')
     implementation project(':core-utils')
-    implementation project(':screen-intro')
-    implementation project(':screen-home')
-    implementation project(':screen-pin')
     implementation project(':screen-splash')
-
+    implementation project(':screen-intro')
+    implementation project(':screen-pin')
+    implementation project(':screen-home')
 
     implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
 
-    implementation CoreDepencencies.dagger
-    kapt CoreDepencencies.daggerCompiler
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.materialComponents

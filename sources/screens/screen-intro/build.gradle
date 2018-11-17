@@ -30,20 +30,24 @@ android {
 
 }
 
-androidExtensions {
-    experimental = true
-}
-
 dependencies {
+    implementation project(':core-di')
     implementation project(':core-presentation')
+    implementation project(':core-utils')
+    implementation project(':lib-spin-kit')
 
     implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
 
-    implementation CoreDepencencies.dagger
-    kapt CoreDepencencies.daggerCompiler
+    implementation CoreDependencies.adapterDelegates
+
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.constraintLayout
+    implementation JetPackDependencies.recyclerView
+    implementation JetPackDependencies.recyclerViewSelection
     implementation JetPackDependencies.materialComponents
 
     implementation UiDependencies.materialValues

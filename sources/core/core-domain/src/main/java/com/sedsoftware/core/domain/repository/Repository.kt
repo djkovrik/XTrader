@@ -1,13 +1,17 @@
 package com.sedsoftware.core.domain.repository
 
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.channels.ProducerScope
-import kotlinx.coroutines.experimental.channels.produce
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.ProducerScope
+import kotlinx.coroutines.channels.produce
+import kotlinx.coroutines.coroutineScope
 
+@ExperimentalCoroutinesApi
 interface Repository {
 
-    fun <T> produce(producer: suspend ProducerScope<T>.() -> Unit) =
-        produce(CommonPool) {
-            producer()
+    suspend fun <T> produceValues(producer: suspend ProducerScope<T>.() -> Unit) =
+        coroutineScope {
+            produce<T> {
+                producer()
+            }
         }
 }

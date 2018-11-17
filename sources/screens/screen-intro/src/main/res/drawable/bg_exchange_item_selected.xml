@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="?attr/colorBackground" />
+
+    <stroke
+        android:width="@dimen/exchange_item_border_width"
+        android:color="?attr/colorBackground" />
+
+    <corners android:radius="@dimen/exchange_item_corner_radius" />
+
+</shape>
