@@ -32,4 +32,4 @@ before_script:
 script:
   - "./gradlew assembleDebug --continue"
   - "./gradlew testDebugUnitTest --continue"
-  - "./gradlew detektCheck --project-cache-dir=../cache --continue"
+  - "./gradlew detekt --project-cache-dir=../cache --continue"
