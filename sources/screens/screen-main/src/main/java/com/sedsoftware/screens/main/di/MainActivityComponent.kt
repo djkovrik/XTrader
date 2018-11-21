@@ -3,7 +3,6 @@ package com.sedsoftware.screens.main.di
 import com.sedsoftware.core.di.holder.NavControllerHolder
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,8 +12,7 @@ import javax.inject.Singleton
         AppProvider::class
     ],
     modules = [
-        MainActivityModule::class,
-        ViewModelFactoryModule::class
+        MainActivityModule::class
     ]
 )
 interface MainActivityComponent : MainActivityToolsProvider {
@@ -23,9 +21,6 @@ interface MainActivityComponent : MainActivityToolsProvider {
     interface Builder {
 
         fun appProvider(appProvider: AppProvider): Builder
-
-        @BindsInstance
-        fun navControllerHolder(navControllerHolder: NavControllerHolder): Builder
 
         fun build(): MainActivityComponent
     }
@@ -37,7 +32,6 @@ interface MainActivityComponent : MainActivityToolsProvider {
 
                 return DaggerMainActivityComponent.builder()
                     .appProvider(appProvider)
-                    .navControllerHolder(hostActivity)
                     .build()
             }
         }
