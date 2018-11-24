@@ -11,7 +11,7 @@ import com.sedsoftware.screens.main.di.MainActivityComponent
 class MainActivity : BaseActivity(), ActivityComponentHolder, NavControllerHolder {
 
     private val mainActivityComponent: MainActivityToolsProvider by lazy {
-        MainActivityComponent.Initializer.init(appComponent, this)
+        MainActivityComponent.Initializer.init(appComponent)
     }
 
     override fun inject() {

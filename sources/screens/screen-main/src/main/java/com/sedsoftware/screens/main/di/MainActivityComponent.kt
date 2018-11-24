@@ -1,15 +1,15 @@
 package com.sedsoftware.screens.main.di
 
-import com.sedsoftware.core.di.holder.NavControllerHolder
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
+import com.sedsoftware.core.di.provider.ViewModelFactoryProvider
+import com.sedsoftware.core.di.scope.ActivityScope
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
+@ActivityScope
 @Component(
     dependencies = [
-        AppProvider::class
+        ViewModelFactoryProvider::class
     ],
     modules = [
         MainActivityModule::class
@@ -17,21 +17,15 @@ import javax.inject.Singleton
 )
 interface MainActivityComponent : MainActivityToolsProvider {
 
-    @Component.Builder
-    interface Builder {
-
-        fun appProvider(appProvider: AppProvider): Builder
-
-        fun build(): MainActivityComponent
-    }
-
     class Initializer private constructor() {
         companion object {
 
-            fun init(appProvider: AppProvider, hostActivity: NavControllerHolder): MainActivityToolsProvider {
+            fun init(appProvider: AppProvider): MainActivityToolsProvider {
+
+                val viewModelFactoryProvider = ViewModelFactoryComponent.Initializer.init(appProvider)
 
                 return DaggerMainActivityComponent.builder()
-                    .appProvider(appProvider)
+                    .viewModelFactoryProvider(viewModelFactoryProvider)
                     .build()
             }
         }
