@@ -13,8 +13,8 @@ import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
 
-    abstract fun inject()
     abstract fun getLayoutId(): Int
+    abstract fun inject()
 
     protected val parentActivityComponent: MainActivityToolsProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity as? ActivityComponentHolder)?.getActivityComponent()

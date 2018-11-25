@@ -14,12 +14,12 @@ class MainActivity : BaseActivity(), ActivityComponentHolder, NavControllerHolde
         MainActivityComponent.Initializer.init(appComponent)
     }
 
+    override fun getLayoutId(): Int =
+        R.layout.activity_main
+
     override fun inject() {
         mainActivityComponent.inject(this@MainActivity)
     }
-
-    override fun getLayoutId(): Int =
-        R.layout.activity_main
 
     override fun getNavController(): NavController =
         Navigation.findNavController(this, R.id.nav_controller_main)

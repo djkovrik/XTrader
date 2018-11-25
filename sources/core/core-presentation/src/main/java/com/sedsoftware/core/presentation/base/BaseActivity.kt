@@ -7,8 +7,8 @@ import com.sedsoftware.core.di.provider.AppProvider
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    abstract fun inject()
     abstract fun getLayoutId(): Int
+    abstract fun inject()
 
     protected val appComponent: AppProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
         (applicationContext as App).getAppComponent()
