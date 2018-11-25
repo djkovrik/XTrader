@@ -1,7 +1,7 @@
 package com.sedsoftware.screens.main.di
 
 import com.sedsoftware.core.di.provider.AppProvider
-import com.sedsoftware.core.di.provider.MainActivityToolsProvider
+import com.sedsoftware.core.di.provider.ViewModelFactoryProvider
 import dagger.Component
 import javax.inject.Singleton
 
@@ -14,12 +14,12 @@ import javax.inject.Singleton
         ViewModelFactoryModule::class
     ]
 )
-interface ViewModelFactoryComponent : MainActivityToolsProvider {
+interface ViewModelFactoryComponent : ViewModelFactoryProvider {
 
     class Initializer private constructor() {
         companion object {
 
-            fun init(appProvider: AppProvider): MainActivityToolsProvider {
+            fun init(appProvider: AppProvider): ViewModelFactoryProvider {
 
                 return DaggerViewModelFactoryComponent.builder()
                     .appProvider(appProvider)
