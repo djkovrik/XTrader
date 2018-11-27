@@ -1,4 +1,4 @@
-package com.sedsoftware.core.presentation.navigation
+package com.sedsoftware.core.navigation
 
 import android.os.Bundle
 import androidx.navigation.NavDirections

@@ -1,4 +1,4 @@
-package com.sedsoftware.core.presentation.navigation
+package com.sedsoftware.core.navigation
 
 sealed class NavRoutes {
 
