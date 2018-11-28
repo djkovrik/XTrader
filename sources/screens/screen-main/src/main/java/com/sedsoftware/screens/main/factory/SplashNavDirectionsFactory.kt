@@ -3,7 +3,7 @@ package com.sedsoftware.screens.main.factory
 import android.os.Bundle
 import androidx.navigation.NavDirections
 import com.sedsoftware.core.di.scope.ActivityScope
-import com.sedsoftware.core.navigation.NavDirectionsFactory
+import com.sedsoftware.core.navigation.factory.NavDirectionsFactory
 import com.sedsoftware.core.navigation.NavRoutes
 import com.sedsoftware.screens.main.R
 import javax.inject.Inject

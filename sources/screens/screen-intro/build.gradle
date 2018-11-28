@@ -50,6 +50,8 @@ dependencies {
     implementation JetPackDependencies.recyclerView
     implementation JetPackDependencies.recyclerViewSelection
     implementation JetPackDependencies.materialComponents
+    implementation JetPackDependencies.navigation
+    implementation JetPackDependencies.navigationUi
 
     implementation UiDependencies.materialValues
 }

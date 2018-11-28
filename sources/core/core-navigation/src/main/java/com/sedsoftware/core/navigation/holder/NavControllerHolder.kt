@@ -1,4 +1,4 @@
-package com.sedsoftware.core.di.holder
+package com.sedsoftware.core.navigation.holder
 
 import androidx.navigation.NavController
 

@@ -2,8 +2,10 @@ package com.sedsoftware.screens.splash
 
 import android.os.Bundle
 import android.view.View
+import com.sedsoftware.core.navigation.factory.NavDirectionsFactory
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.failure
+import com.sedsoftware.core.presentation.extension.navDirectionsFactory
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.common.Failure
@@ -16,9 +18,12 @@ class SplashFragment : BaseFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_splash_screen
 
     override fun inject() {
-        SplashViewComponent.Initializer.init(parentActivityComponent)
+        SplashViewComponent.Initializer.init(parentActivityComponent, this)
             .inject(this@SplashFragment)
     }
+
+    override fun getNavDirectionsFactory(): NavDirectionsFactory =
+        navDirectionsFactory(directionsFactoryMap, SplashFragment::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
