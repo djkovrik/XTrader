@@ -3,6 +3,7 @@ package com.sedsoftware.screens.splash
 import android.os.Bundle
 import android.view.View
 import com.sedsoftware.core.navigation.factory.NavDirectionsFactory
+import com.sedsoftware.core.navigation.holder.NavControllerHolder
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.navDirectionsFactory
@@ -18,7 +19,7 @@ class SplashFragment : BaseFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_splash_screen
 
     override fun inject() {
-        SplashViewComponent.Initializer.init(parentActivityComponent, this)
+        SplashViewComponent.Initializer.init(parentActivityComponent, activity as NavControllerHolder, this)
             .inject(this@SplashFragment)
     }
 
