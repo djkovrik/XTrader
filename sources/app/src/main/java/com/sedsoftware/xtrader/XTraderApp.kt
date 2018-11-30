@@ -19,7 +19,7 @@ class XTraderApp : Application(), App {
 
         initStetho()
         initTimber()
-        initDevMetrics()
+//        initDevMetrics()
     }
 
     override fun getAppComponent(): AppProvider = appComponent

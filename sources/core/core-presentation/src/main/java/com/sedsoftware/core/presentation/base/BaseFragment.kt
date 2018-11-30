@@ -16,7 +16,10 @@ import javax.inject.Provider
 
 abstract class BaseFragment : Fragment(), NavDirectionsFactoryHolder {
 
-    abstract fun getLayoutId(): Int
+    abstract val layoutResId: Int
+
+    abstract override fun getNavDirectionsFactory(): NavDirectionsFactory
+
     abstract fun inject()
 
     protected val parentActivityComponent: MainActivityToolsProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
@@ -30,13 +33,11 @@ abstract class BaseFragment : Fragment(), NavDirectionsFactoryHolder {
     @Inject
     lateinit var directionsFactoryMap: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<NavDirectionsFactory>>
 
-    abstract override fun getNavDirectionsFactory(): NavDirectionsFactory
-
     override fun onAttach(context: Context?) {
         inject()
         super.onAttach(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(getLayoutId(), container, false)
+        inflater.inflate(layoutResId, container, false)
 }

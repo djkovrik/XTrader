@@ -7,7 +7,8 @@ import com.sedsoftware.core.di.provider.AppProvider
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    abstract fun getLayoutId(): Int
+    abstract val layoutResId: Int
+
     abstract fun inject()
 
     protected val appComponent: AppProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
@@ -17,6 +18,6 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         inject()
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        setContentView(layoutResId)
     }
 }

@@ -8,7 +8,8 @@ import com.sedsoftware.core.presentation.base.BaseFragment
 
 class HomeScreenFragment : BaseFragment() {
 
-    override fun getLayoutId(): Int = R.layout.fragment_home_screen
+    override val layoutResId: Int
+        get() = R.layout.fragment_home_screen
 
     override fun inject() {
     }

@@ -18,18 +18,11 @@ class SplashFragment : BaseFragment() {
 
     private lateinit var splashViewModel: SplashViewModel
 
-    override fun getLayoutId(): Int = R.layout.fragment_splash_screen
+    override val layoutResId: Int
+        get() = R.layout.fragment_splash_screen
 
     @Inject
     lateinit var coordinator: SplashCoordinator
-
-    override fun inject() {
-        SplashViewComponent.Initializer.init(parentActivityComponent, activity as NavControllerHolder, this)
-            .inject(this@SplashFragment)
-    }
-
-    override fun getNavDirectionsFactory(): NavDirectionsFactory =
-        navDirectionsFactory(directionsFactoryMap, SplashFragment::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +38,14 @@ class SplashFragment : BaseFragment() {
 
         coordinator.start()
     }
+
+    override fun inject() {
+        SplashViewComponent.Initializer.init(parentActivityComponent, activity as NavControllerHolder, this)
+            .inject(this@SplashFragment)
+    }
+
+    override fun getNavDirectionsFactory(): NavDirectionsFactory =
+        navDirectionsFactory(directionsFactoryMap, SplashFragment::class.java)
 
     private fun handleSplashFailure(failure: Failure?) {
 
