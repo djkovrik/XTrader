@@ -24,7 +24,7 @@ class IntroScreenFragment : BaseFragment() {
             .inject(this@IntroScreenFragment)
     }
 
-    override fun getNavDirectionsFactory(): NavDirectionsFactory {
+    override fun get(): NavDirectionsFactory {
         return object : NavDirectionsFactory {
             override fun create(route: NavRoutes, arguments: Bundle?): NavDirections {
                 return object : NavDirections {

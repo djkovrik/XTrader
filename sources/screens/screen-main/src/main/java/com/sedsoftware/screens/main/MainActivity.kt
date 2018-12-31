@@ -24,6 +24,6 @@ class MainActivity : BaseActivity(), ActivityComponentHolder, NavControllerHolde
     override fun getActivityComponent(): MainActivityToolsProvider =
         mainActivityComponent
 
-    override fun getNavController(): NavController =
+    override fun get(): NavController =
         Navigation.findNavController(this, R.id.nav_controller_main)
 }

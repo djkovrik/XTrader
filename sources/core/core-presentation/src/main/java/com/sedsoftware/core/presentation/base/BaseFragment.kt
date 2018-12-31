@@ -18,7 +18,7 @@ abstract class BaseFragment : Fragment(), NavDirectionsFactoryHolder {
 
     abstract val layoutResId: Int
 
-    abstract override fun getNavDirectionsFactory(): NavDirectionsFactory
+    abstract override fun get(): NavDirectionsFactory
 
     abstract fun inject()
 
@@ -31,7 +31,7 @@ abstract class BaseFragment : Fragment(), NavDirectionsFactoryHolder {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     @Inject
-    lateinit var directionsFactoryMap: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<NavDirectionsFactory>>
+    lateinit var directionFactories: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<NavDirectionsFactory>>
 
     override fun onAttach(context: Context?) {
         inject()

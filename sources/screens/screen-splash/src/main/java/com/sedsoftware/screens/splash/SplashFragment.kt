@@ -44,8 +44,8 @@ class SplashFragment : BaseFragment() {
             .inject(this@SplashFragment)
     }
 
-    override fun getNavDirectionsFactory(): NavDirectionsFactory =
-        navDirectionsFactory(directionsFactoryMap, SplashFragment::class.java)
+    override fun get(): NavDirectionsFactory =
+        navDirectionsFactory(directionFactories, SplashFragment::class.java)
 
     private fun handleSplashFailure(failure: Failure?) {
 
