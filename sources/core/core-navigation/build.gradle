@@ -10,7 +10,7 @@ android {
     versionCode androidGitVersion.code()
     versionName androidGitVersion.name()
 
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     resConfigs "en", "ru"
   }
