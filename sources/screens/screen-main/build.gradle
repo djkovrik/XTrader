@@ -33,7 +33,7 @@ android {
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
-    implementation project(':core-device-api')
+    implementation project(':core-tools-api')
     implementation project(':core-presentation')
     implementation project(':core-navigation')
     implementation project(':core-utils')

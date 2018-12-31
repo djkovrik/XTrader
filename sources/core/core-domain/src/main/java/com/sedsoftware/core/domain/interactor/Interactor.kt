@@ -1,6 +1,6 @@
 package com.sedsoftware.core.domain.interactor
 
-import com.sedsoftware.core.device.api.Executor
+import com.sedsoftware.core.tools.api.Executor
 import com.sedsoftware.core.utils.common.Suspendable
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job

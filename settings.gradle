@@ -1,10 +1,10 @@
 include ':app'
 project(':app').projectDir = new File(rootDir, 'sources/app')
 
-include ':core-device-api'
-project(':core-device-api').projectDir = new File(rootDir, 'sources/core/core-device-api')
-include ':core-device-impl'
-project(':core-device-impl').projectDir = new File(rootDir, 'sources/core/core-device-impl')
+include ':core-tools-api'
+project(':core-tools-api').projectDir = new File(rootDir, 'sources/core/core-tools-api')
+include ':core-tools-impl'
+project(':core-tools-impl').projectDir = new File(rootDir, 'sources/core/core-tools-impl')
 include ':core-di'
 project(':core-di').projectDir = new File(rootDir, 'sources/core/core-di')
 include ':core-domain'

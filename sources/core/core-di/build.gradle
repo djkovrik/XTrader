@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-    implementation project(':core-device-api')
+    implementation project(':core-tools-api')
     implementation project(':core-domain')
     implementation project(':core-navigation')
 

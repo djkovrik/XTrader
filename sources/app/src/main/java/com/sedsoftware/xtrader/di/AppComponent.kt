@@ -1,6 +1,6 @@
 package com.sedsoftware.xtrader.di
 
-import com.sedsoftware.core.device.impl.di.DeviceToolsComponent
+import com.sedsoftware.core.tools.impl.di.DeviceToolsComponent
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.core.di.provider.ExchangeManagerProvider

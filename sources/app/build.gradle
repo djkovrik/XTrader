@@ -38,8 +38,8 @@ dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
     implementation project(':core-presentation')
-    implementation project(':core-device-api')
-    implementation project(':core-device-impl')
+    implementation project(':core-tools-api')
+    implementation project(':core-tools-impl')
     implementation project(':core-utils')
 
     implementation project(':screen-main')

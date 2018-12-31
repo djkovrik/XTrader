@@ -1,6 +1,6 @@
 package com.sedsoftware.screens.splash.navigation
 
-import com.sedsoftware.core.device.api.Settings
+import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.di.scope.FragmentScope
 import com.sedsoftware.core.navigation.NavRoutes
 import com.sedsoftware.core.navigation.coordinator.SplashCoordinator
