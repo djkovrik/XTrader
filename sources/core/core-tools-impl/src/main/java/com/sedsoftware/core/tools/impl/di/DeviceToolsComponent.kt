@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         PlatformToolsModule::class,
-        DeviceToolsModule::class
+        AppToolsModule::class
     ]
 )
 interface DeviceToolsComponent : DeviceToolsProvider {

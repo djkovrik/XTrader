@@ -12,17 +12,17 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class DeviceToolsModule {
+abstract class AppToolsModule {
 
     @Binds
-    abstract fun provideExecutor(executorImplementation: AppExecutor): Executor
+    abstract fun provideExecutor(implementation: AppExecutor): Executor
 
     @Binds
-    abstract fun provideLogger(loggerImplementation: AppLogger): Logger
+    abstract fun provideLogger(implementation: AppLogger): Logger
 
     @Binds
-    abstract fun provideSettings(settingsImplementation: AppSettings): Settings
+    abstract fun provideSettings(implementation: AppSettings): Settings
 
     @Binds
-    abstract fun provideSigner(signerImplementation: StringSigner): Signer
+    abstract fun provideSigner(implementation: StringSigner): Signer
 }

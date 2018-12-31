@@ -33,7 +33,7 @@ abstract class BaseFragment : Fragment(), NavDirectionsFactoryHolder {
     @Inject
     lateinit var directionFactories: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<NavDirectionsFactory>>
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         inject()
         super.onAttach(context)
     }

@@ -35,11 +35,6 @@ fun Fragment.navDirectionsFactory(
 fun Fragment.string(@StringRes resId: Int): String =
     context?.string(resId).orEmpty()
 
-/**
- * Sets window background color via decorView to prevent overdraw.
- *
- * @param colorAttrId Color reference.
- */
 fun Fragment.setBackgroundColor(@AttrRes colorAttrId: Int) {
     activity?.let { it.window?.decorView?.setBackgroundColor(it.colorFromAttr(colorAttrId)) }
 }
