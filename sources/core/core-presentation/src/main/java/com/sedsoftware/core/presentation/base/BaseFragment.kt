@@ -9,16 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.holder.ActivityComponentHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.core.navigation.factory.NavDirectionsFactory
-import com.sedsoftware.core.navigation.holder.NavDirectionsFactoryHolder
 import javax.inject.Inject
-import javax.inject.Provider
 
-abstract class BaseFragment : Fragment(), NavDirectionsFactoryHolder {
+abstract class BaseFragment : Fragment() {
 
     abstract val layoutResId: Int
-
-    abstract override fun get(): NavDirectionsFactory
 
     abstract fun inject()
 
@@ -29,9 +24,6 @@ abstract class BaseFragment : Fragment(), NavDirectionsFactoryHolder {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    @Inject
-    lateinit var directionFactories: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<NavDirectionsFactory>>
 
     override fun onAttach(context: Context) {
         inject()
