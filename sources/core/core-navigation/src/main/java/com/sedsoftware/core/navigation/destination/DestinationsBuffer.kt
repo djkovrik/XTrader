@@ -1,7 +1,7 @@
 package com.sedsoftware.core.navigation.destination
 
 import androidx.navigation.NavController
-import com.sedsoftware.core.navigation.routing.NavControllerHolder
+import com.sedsoftware.core.navigation.NavControllerHolder
 import java.util.LinkedList
 import java.util.Queue
 

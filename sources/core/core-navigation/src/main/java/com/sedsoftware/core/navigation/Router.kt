@@ -1,10 +1,12 @@
-package com.sedsoftware.core.navigation.routing
+package com.sedsoftware.core.navigation
 
 import com.sedsoftware.core.navigation.destination.Destination
 import com.sedsoftware.core.navigation.destination.DestinationsBuffer
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-class Router {
+@Singleton
+class Router @Inject constructor() {
 
     val destinationsBuffer = DestinationsBuffer()
 

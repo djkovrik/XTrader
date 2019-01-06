@@ -1,4 +1,4 @@
-package com.sedsoftware.core.navigation.routing
+package com.sedsoftware.core.navigation
 
 sealed class NavigationRoute {
 
