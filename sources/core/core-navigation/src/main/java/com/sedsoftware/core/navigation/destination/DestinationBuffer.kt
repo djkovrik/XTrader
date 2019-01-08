@@ -5,7 +5,7 @@ import com.sedsoftware.core.navigation.NavControllerHolder
 import java.util.LinkedList
 import java.util.Queue
 
-class DestinationsBuffer : NavControllerHolder {
+class DestinationBuffer : NavControllerHolder {
     private var controller: NavController? = null
     private var pendingDestinations: Queue<Destination> = LinkedList()
 

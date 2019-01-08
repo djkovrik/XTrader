@@ -9,9 +9,6 @@ import dagger.Component
 @Component(
     dependencies = [
         AppProvider::class
-    ],
-    modules = [
-        MainActivityModule::class
     ]
 )
 interface MainActivityComponent : MainActivityToolsProvider {

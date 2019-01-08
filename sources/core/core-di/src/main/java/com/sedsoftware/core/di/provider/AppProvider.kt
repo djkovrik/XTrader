@@ -1,3 +1,8 @@
 package com.sedsoftware.core.di.provider
 
-interface AppProvider : DeviceToolsProvider, ExchangeManagerProvider, NavigationProvider, ViewModelFactoryProvider
+interface AppProvider :
+    DestinationsProvider,
+    DeviceToolsProvider,
+    ExchangeManagerProvider,
+    NavigationProvider,
+    ViewModelFactoryProvider

@@ -1,12 +1,14 @@
 package com.sedsoftware.xtrader.di
 
 import com.sedsoftware.core.di.provider.AppProvider
+import com.sedsoftware.core.di.provider.DestinationsProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.core.di.provider.ExchangeManagerProvider
 import com.sedsoftware.core.di.provider.NavigationProvider
 import com.sedsoftware.core.di.provider.ViewModelFactoryProvider
 import com.sedsoftware.core.tools.impl.di.DeviceToolsComponent
 import com.sedsoftware.exchange.manager.di.ExchangeManagerComponent
+import com.sedsoftware.screens.main.di.DestinationsComponent
 import com.sedsoftware.screens.main.di.NavigationComponent
 import com.sedsoftware.screens.main.di.ViewModelFactoryComponent
 import com.sedsoftware.xtrader.XTraderApp
@@ -16,6 +18,7 @@ import javax.inject.Singleton
 @Component(
     dependencies = [
         DeviceToolsProvider::class,
+        DestinationsProvider::class,
         ExchangeManagerProvider::class,
         NavigationProvider::class,
         ViewModelFactoryProvider::class
@@ -34,6 +37,9 @@ interface AppComponent : AppProvider {
                 val deviceToolsProvider =
                     DeviceToolsComponent.Initializer.init(app)
 
+                val destinationsProvider =
+                    DestinationsComponent.Initializer.init()
+
                 val exchangeManagerProvider =
                     ExchangeManagerComponent.Initializer.init(deviceToolsProvider)
 
@@ -45,6 +51,7 @@ interface AppComponent : AppProvider {
 
                 return DaggerAppComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)
+                    .destinationsProvider(destinationsProvider)
                     .exchangeManagerProvider(exchangeManagerProvider)
                     .navigationProvider(navigationProvider)
                     .viewModelFactoryProvider(viewModelFactoryProvider)
