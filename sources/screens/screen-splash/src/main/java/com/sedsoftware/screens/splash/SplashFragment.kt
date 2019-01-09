@@ -27,6 +27,8 @@ class SplashFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBackgroundColor(R.attr.colorPrimaryDark)
+
+        splashViewModel.navigateToNextDestination()
     }
 
     override fun inject() {

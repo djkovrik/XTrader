@@ -47,7 +47,7 @@ interface AppComponent : AppProvider {
                     NavigationComponent.Initializer.init()
 
                 val viewModelFactoryProvider =
-                    ViewModelFactoryComponent.Initializer.init(destinationsProvider)
+                    ViewModelFactoryComponent.Initializer.init(destinationsProvider, deviceToolsProvider)
 
                 return DaggerAppComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)
