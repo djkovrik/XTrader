@@ -13,7 +13,7 @@ class MainActivity : BaseActivity(), ActivityComponentHolder {
     @Inject
     lateinit var navControllerHolder: NavControllerHolder
 
-    private val mainActivityComponent: MainActivityToolsProvider by lazy {
+    private val mainActivityComponent: MainActivityComponent by lazy {
         MainActivityComponent.Initializer.init(appComponent)
     }
 
@@ -21,7 +21,7 @@ class MainActivity : BaseActivity(), ActivityComponentHolder {
         get() = R.layout.activity_main
 
     override fun inject() {
-        mainActivityComponent.inject(this@MainActivity)
+        mainActivityComponent.inject(this)
     }
 
     override fun getActivityComponent(): MainActivityToolsProvider =
@@ -34,8 +34,7 @@ class MainActivity : BaseActivity(), ActivityComponentHolder {
 
     override fun onResumeFragments() {
         super.onResumeFragments()
-        Navigation.findNavController(this, R.id.nav_controller_main).let { controller ->
-            navControllerHolder.setNavController(controller)
-        }
+        val controller = Navigation.findNavController(this, R.id.nav_controller_main)
+        navControllerHolder.setNavController(controller)
     }
 }
