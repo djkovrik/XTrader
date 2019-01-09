@@ -2,6 +2,7 @@ package com.sedsoftware.screens.main.di
 
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.navigation.Router
+import com.sedsoftware.core.navigation.XTNavigator
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,6 +12,11 @@ class NavigationModule {
 
     @Provides
     @Singleton
-    fun provideNavControllerHolder(router: Router): NavControllerHolder =
-        router.destinationsBuffer
+    fun provideRouter(xtNavigator: XTNavigator): Router =
+        xtNavigator.getRouter()
+
+    @Provides
+    @Singleton
+    fun provideNavControllerHolder(xtNavigator: XTNavigator): NavControllerHolder =
+        xtNavigator.getNavControllerHolder()
 }

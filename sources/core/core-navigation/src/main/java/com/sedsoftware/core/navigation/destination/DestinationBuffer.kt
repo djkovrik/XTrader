@@ -4,8 +4,11 @@ import androidx.navigation.NavController
 import com.sedsoftware.core.navigation.NavControllerHolder
 import java.util.LinkedList
 import java.util.Queue
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class DestinationBuffer : NavControllerHolder {
+@Singleton
+class DestinationBuffer @Inject constructor() : NavControllerHolder {
     private var controller: NavController? = null
     private var pendingDestinations: Queue<Destination> = LinkedList()
 

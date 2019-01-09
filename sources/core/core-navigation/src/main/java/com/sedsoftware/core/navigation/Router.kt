@@ -2,13 +2,13 @@ package com.sedsoftware.core.navigation
 
 import com.sedsoftware.core.navigation.destination.Destination
 import com.sedsoftware.core.navigation.destination.DestinationBuffer
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class Router @Inject constructor() {
+class Router {
 
-    val destinationsBuffer = DestinationBuffer()
+    private val destinationsBuffer = DestinationBuffer()
+
+    fun getNavControllerHolder(): NavControllerHolder =
+        destinationsBuffer
 
     fun navigateTo(destination: Destination) {
         destinationsBuffer.goToDestination(destination)
