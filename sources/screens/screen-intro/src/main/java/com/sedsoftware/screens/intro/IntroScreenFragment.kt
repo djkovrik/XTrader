@@ -8,13 +8,13 @@ import com.sedsoftware.screens.intro.di.IntroScreenComponent
 
 class IntroScreenFragment : BaseFragment() {
 
-    override val layoutResId: Int
-        get() = R.layout.fragment_intro_screen
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBackgroundColor(R.attr.colorPrimaryDark)
     }
+
+    override fun getLayoutResId(): Int =
+        R.layout.fragment_intro_screen
 
     override fun inject() {
         IntroScreenComponent.Initializer.init(parentActivityComponent)

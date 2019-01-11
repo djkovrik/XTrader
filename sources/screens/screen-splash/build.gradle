@@ -32,12 +32,10 @@ android {
 
 dependencies {
     implementation project(':core-di')
-    implementation project(':core-domain')
     implementation project(':core-presentation')
     implementation project(':core-navigation')
     implementation project(':core-tools-api')
 
-    implementation project(':core-utils')
     implementation project(':lib-spin-kit')
 
     implementation KotlinDependencies.kotlin

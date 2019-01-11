@@ -17,8 +17,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder {
         MainActivityComponent.Initializer.init(appComponent)
     }
 
-    override val layoutResId: Int
-        get() = R.layout.activity_main
+    override fun getLayoutResId(): Int = R.layout.activity_main
 
     override fun inject() {
         mainActivityComponent.inject(this)

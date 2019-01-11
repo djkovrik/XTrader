@@ -9,22 +9,11 @@ import dagger.Component
 @Component(
     dependencies = [
         MainActivityToolsProvider::class
-    ],
-    modules = [
-        SplashViewModule::class
     ]
 )
 interface SplashViewComponent {
 
     fun inject(fragment: SplashFragment)
-
-    @Component.Builder
-    interface Builder {
-
-        fun mainActivityToolsProvider(provider: MainActivityToolsProvider): Builder
-
-        fun build(): SplashViewComponent
-    }
 
     class Initializer private constructor() {
         companion object {

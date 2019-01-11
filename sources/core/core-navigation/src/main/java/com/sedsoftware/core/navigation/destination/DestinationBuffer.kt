@@ -12,8 +12,8 @@ class DestinationBuffer @Inject constructor() : NavControllerHolder {
     private var controller: NavController? = null
     private var pendingDestinations: Queue<Destination> = LinkedList()
 
-    override fun setNavController(controller: NavController) {
-        this.controller = controller
+    override fun setNavController(newController: NavController) {
+        this.controller = newController
         while (pendingDestinations.isNotEmpty()) {
             this.controller?.let { goToDestination(pendingDestinations.poll()) } ?: break
         }

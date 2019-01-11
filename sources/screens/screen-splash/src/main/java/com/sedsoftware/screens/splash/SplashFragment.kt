@@ -5,11 +5,8 @@ import android.view.View
 import com.sedsoftware.core.navigation.NavigationRoute
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.destinations
-import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
-import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.tools.api.Settings
-import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.screens.splash.di.SplashViewComponent
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -20,19 +17,6 @@ class SplashFragment : BaseFragment() {
     @Inject
     lateinit var settings: Settings
 
-    private lateinit var splashViewModel: SplashViewModel
-
-    override val layoutResId: Int
-        get() = R.layout.fragment_splash_screen
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        splashViewModel = viewModel(viewModelFactory) {
-            failure(failure, ::handleSplashFailure)
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBackgroundColor(R.attr.colorPrimaryDark)
@@ -40,13 +24,12 @@ class SplashFragment : BaseFragment() {
         navigateToNextScreen()
     }
 
+    override fun getLayoutResId(): Int =
+        R.layout.fragment_splash_screen
+
     override fun inject() {
         SplashViewComponent.Initializer.init(parentActivityComponent)
             .inject(this@SplashFragment)
-    }
-
-    private fun handleSplashFailure(failure: Failure?) {
-
     }
 
     private fun navigateToNextScreen() {
