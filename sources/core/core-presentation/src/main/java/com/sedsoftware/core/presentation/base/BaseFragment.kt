@@ -20,12 +20,6 @@ import kotlin.coroutines.CoroutineContext
 
 abstract class BaseFragment : Fragment(), CoroutineScope {
 
-    abstract val layoutResId: Int
-
-    abstract fun inject()
-
-    lateinit var job: Job
-
     protected val parentActivityComponent: MainActivityToolsProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity as? ActivityToolsHolder)?.getActivityToolsProvider()
                 ?: throw RuntimeException("Parent activity must implement ActivityComponentHolder interface")
@@ -39,6 +33,12 @@ abstract class BaseFragment : Fragment(), CoroutineScope {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var job: Job
+
+    abstract fun getLayoutResId(): Int
+
+    abstract fun inject()
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
@@ -54,7 +54,7 @@ abstract class BaseFragment : Fragment(), CoroutineScope {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(layoutResId, container, false)
+        inflater.inflate(getLayoutResId(), container, false)
 
     override fun onDestroy() {
         super.onDestroy()

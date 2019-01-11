@@ -9,19 +9,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.sedsoftware.core.navigation.destination.DestinationFactory
 import com.sedsoftware.core.presentation.base.BaseFragment
 
-inline fun <reified T : ViewModel> Fragment.viewModel(factory: Factory, body: T.() -> Unit): T {
-    val viewModel = ViewModelProviders.of(this, factory)[T::class.java]
-    viewModel.body()
-    return viewModel
-}
-
-fun Fragment.string(@StringRes resId: Int): String =
-    context?.string(resId).orEmpty()
-
-fun Fragment.setBackgroundColor(@AttrRes colorAttrId: Int) {
-    activity?.let { it.window?.decorView?.setBackgroundColor(it.colorFromAttr(colorAttrId)) }
-}
-
 val BaseFragment.destinations: DestinationFactory
     get() {
         val factory = destinationFactories[this::class.java]
@@ -34,3 +21,16 @@ val BaseFragment.destinations: DestinationFactory
             throw RuntimeException(e)
         }
     }
+
+inline fun <reified T : ViewModel> Fragment.viewModel(factory: Factory, body: T.() -> Unit): T {
+    val viewModel = ViewModelProviders.of(this, factory)[T::class.java]
+    viewModel.body()
+    return viewModel
+}
+
+fun Fragment.string(@StringRes resId: Int): String =
+    context?.string(resId).orEmpty()
+
+fun Fragment.setBackgroundColor(@AttrRes colorAttrId: Int) {
+    activity?.let { it.window?.decorView?.setBackgroundColor(it.colorFromAttr(colorAttrId)) }
+}
