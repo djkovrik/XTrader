@@ -1,14 +1,14 @@
 package com.sedsoftware.screens.main
 
 import androidx.navigation.Navigation
-import com.sedsoftware.core.di.holder.ActivityComponentHolder
+import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), ActivityComponentHolder {
+class MainActivity : BaseActivity(), ActivityToolsHolder {
 
     @Inject
     lateinit var navControllerHolder: NavControllerHolder
@@ -24,7 +24,7 @@ class MainActivity : BaseActivity(), ActivityComponentHolder {
         mainActivityComponent.inject(this)
     }
 
-    override fun getActivityComponent(): MainActivityToolsProvider =
+    override fun getActivityToolsProvider(): MainActivityToolsProvider =
         mainActivityComponent
 
     override fun onPause() {

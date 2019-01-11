@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.core.di.holder.ActivityComponentHolder
+import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.navigation.Router
 import com.sedsoftware.core.navigation.destination.DestinationFactory
@@ -27,7 +27,7 @@ abstract class BaseFragment : Fragment(), CoroutineScope {
     lateinit var job: Job
 
     protected val parentActivityComponent: MainActivityToolsProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
-        (activity as? ActivityComponentHolder)?.getActivityComponent()
+        (activity as? ActivityToolsHolder)?.getActivityToolsProvider()
                 ?: throw RuntimeException("Parent activity must implement ActivityComponentHolder interface")
     }
 

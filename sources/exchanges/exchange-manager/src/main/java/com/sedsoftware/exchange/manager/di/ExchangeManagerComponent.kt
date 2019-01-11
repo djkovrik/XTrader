@@ -1,6 +1,6 @@
 package com.sedsoftware.exchange.manager.di
 
-import com.sedsoftware.core.di.provider.BinanceProvider
+import com.sedsoftware.core.di.provider.exchange.BinanceProvider
 import com.sedsoftware.core.di.provider.ExchangeManagerProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.exchange.binance.di.BinanceComponent
