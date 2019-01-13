@@ -12,19 +12,13 @@
         tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/navigate_from_splash_to_home"
-            app:destination="@id/homeScreenFragment"
-            app:popUpTo="@+id/splashFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/homeScreenFragment" />
         <action
             android:id="@+id/navigate_from_splash_to_intro"
-            app:destination="@id/introScreenFragment"
-            app:popUpTo="@+id/splashFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/introScreenFragment" />
         <action
             android:id="@+id/navigate_from_splash_to_pin"
-            app:destination="@id/pinScreenFragment"
-            app:popUpTo="@+id/splashFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/pinScreenFragment" />
     </fragment>
 
     <fragment

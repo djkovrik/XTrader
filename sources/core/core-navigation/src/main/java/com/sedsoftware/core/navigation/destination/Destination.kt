@@ -5,9 +5,6 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
 
 interface Destination : NavDirections {
-    val navOptions: NavOptions?
-        get() = null
-
-    val navExtras: Navigator.Extras?
-        get() = null
+    fun getNavOptions(): NavOptions? = null
+    fun getNavExtras(): Navigator.Extras? = null
 }

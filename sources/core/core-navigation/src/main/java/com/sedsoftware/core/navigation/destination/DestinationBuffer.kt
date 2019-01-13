@@ -27,8 +27,8 @@ class DestinationBuffer @Inject constructor() : NavControllerHolder {
         controller?.navigate(
             destination.actionId,
             destination.arguments,
-            destination.navOptions,
-            destination.navExtras
+            destination.getNavOptions(),
+            destination.getNavExtras()
         ) ?: pendingDestinations.add(destination)
     }
 }
