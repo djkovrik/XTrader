@@ -9,13 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.core.navigation.Router
-import com.sedsoftware.core.navigation.destination.DestinationFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import javax.inject.Inject
-import javax.inject.Provider
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseFragment : Fragment(), CoroutineScope {
@@ -24,12 +21,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope {
         (activity as? ActivityToolsHolder)?.getActivityToolsProvider()
                 ?: throw RuntimeException("Parent activity must implement ActivityComponentHolder interface")
     }
-
-    @Inject
-    lateinit var router: Router
-
-    @Inject
-    lateinit var destinationFactories: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<DestinationFactory>>
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

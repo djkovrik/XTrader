@@ -31,7 +31,6 @@ android {
 dependencies {
     implementation project(':core-tools-api')
     implementation project(':core-domain')
-    implementation project(':core-navigation')
 
     implementation KotlinDependencies.kotlin
     implementation KotlinDependencies.kotlinCoroutines

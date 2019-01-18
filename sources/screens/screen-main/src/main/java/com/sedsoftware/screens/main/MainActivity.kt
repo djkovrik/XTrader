@@ -1,20 +1,17 @@
 package com.sedsoftware.screens.main
 
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.presentation.base.BaseActivity
+import com.sedsoftware.core.presentation.navigation.NavControllerHolder
 import com.sedsoftware.screens.main.di.MainActivityComponent
-import javax.inject.Inject
 
-class MainActivity : BaseActivity(), ActivityToolsHolder {
-
-    @Inject
-    lateinit var navControllerHolder: NavControllerHolder
+class MainActivity : BaseActivity(), ActivityToolsHolder, NavControllerHolder {
 
     private val mainActivityComponent: MainActivityComponent by lazy {
-        MainActivityComponent.Initializer.init(appComponent)
+        MainActivityComponent.Initializer.init(appComponent, this@MainActivity)
     }
 
     override fun getLayoutResId(): Int = R.layout.activity_main
@@ -26,14 +23,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder {
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
         mainActivityComponent
 
-    override fun onPause() {
-        navControllerHolder.removeNavController()
-        super.onPause()
-    }
-
-    override fun onResumeFragments() {
-        super.onResumeFragments()
-        val controller = Navigation.findNavController(this, R.id.nav_controller_main)
-        navControllerHolder.setNavController(controller)
-    }
+    override fun getNavController(): NavController =
+        Navigation.findNavController(this, R.id.nav_controller_main)
 }

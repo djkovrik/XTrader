@@ -31,7 +31,6 @@ android {
 
 dependencies {
     implementation project(':core-di')
-    implementation project(':core-navigation')
     implementation project(':core-utils')
 
     implementation KotlinDependencies.kotlin
