@@ -1,13 +1,22 @@
 package com.sedsoftware.screens.main.di
 
-import com.sedsoftware.core.di.coordinator.SplashCoordinator
-import com.sedsoftware.screens.main.navigation.ActualSplashCoordinator
-import dagger.Binds
+import com.sedsoftware.core.navigation.NavControllerHolder
+import com.sedsoftware.core.navigation.Router
+import com.sedsoftware.core.navigation.Navigator
 import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-abstract class NavigationModule {
+class NavigationModule {
 
-    @Binds
-    abstract fun provideSplashCoordinator(splashCoordinator: ActualSplashCoordinator): SplashCoordinator
+    @Provides
+    @Singleton
+    fun provideRouter(navigator: Navigator): Router =
+        navigator.getRouter()
+
+    @Provides
+    @Singleton
+    fun provideNavControllerHolder(navigator: Navigator): NavControllerHolder =
+        navigator.getNavControllerHolder()
 }

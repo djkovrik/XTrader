@@ -35,6 +35,7 @@ dependencies {
     implementation project(':core-domain')
     implementation project(':core-tools-api')
     implementation project(':core-presentation')
+    implementation project(':core-navigation')
     implementation project(':core-utils')
     implementation project(':screen-splash')
     implementation project(':screen-intro')

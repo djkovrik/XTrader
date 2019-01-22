@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Versions.COMPILE_SDK_VERSION
@@ -31,18 +29,9 @@ android {
 }
 
 dependencies {
-    implementation project(':core-presentation')
-    implementation project(':core-navigation')
-
     implementation KotlinDependencies.kotlin
-    implementation KotlinDependencies.kotlinCoroutines
 
     implementation CoreDependencies.dagger
-    kapt CoreDependencies.daggerCompiler
 
-    implementation JetPackDependencies.appCompat
-    implementation JetPackDependencies.constraintLayout
-    implementation JetPackDependencies.materialComponents
-
-    implementation UiDependencies.materialValues
+    implementation JetPackDependencies.navigation
 }

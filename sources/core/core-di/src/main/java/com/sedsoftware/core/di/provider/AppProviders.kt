@@ -3,6 +3,8 @@ package com.sedsoftware.core.di.provider
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.domain.entity.Exchange
+import com.sedsoftware.core.navigation.NavControllerHolder
+import com.sedsoftware.core.navigation.Router
 import com.sedsoftware.core.tools.api.Executor
 import com.sedsoftware.core.tools.api.Logger
 import com.sedsoftware.core.tools.api.Settings
@@ -10,6 +12,7 @@ import com.sedsoftware.core.tools.api.Signer
 
 interface AppProvider :
     DeviceToolsProvider,
+    NavigationProvider,
     ViewModelFactoryProvider
 
 interface DeviceToolsProvider {
@@ -18,6 +21,11 @@ interface DeviceToolsProvider {
     fun provideLogger(): Logger
     fun provideSettings(): Settings
     fun provideSigner(): Signer
+}
+
+interface NavigationProvider {
+    fun provideNavControllerHolder(): NavControllerHolder
+    fun provideRouter(): Router
 }
 
 interface ViewModelFactoryProvider : ExchangeManagerProvider {

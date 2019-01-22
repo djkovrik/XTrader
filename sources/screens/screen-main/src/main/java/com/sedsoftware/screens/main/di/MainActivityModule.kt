@@ -1,16 +1,13 @@
 package com.sedsoftware.screens.main.di
 
-import androidx.navigation.NavController
-import com.sedsoftware.core.di.scope.ActivityScope
-import com.sedsoftware.core.di.holder.NavControllerHolder
+import com.sedsoftware.core.di.coordinator.SplashCoordinator
+import com.sedsoftware.screens.main.navigation.ActualSplashCoordinator
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
-class MainActivityModule {
+abstract class MainActivityModule {
 
-    @Provides
-    @ActivityScope
-    fun provideNavController(navControllerHolder: NavControllerHolder): NavController =
-        navControllerHolder.getNavController()
+    @Binds
+    abstract fun provideSplashCoordinator(splashCoordinator: ActualSplashCoordinator): SplashCoordinator
 }

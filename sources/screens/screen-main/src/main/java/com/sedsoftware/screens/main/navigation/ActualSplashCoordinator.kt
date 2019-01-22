@@ -1,21 +1,22 @@
 package com.sedsoftware.screens.main.navigation
 
-import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
 import com.sedsoftware.core.di.coordinator.SplashCoordinator
 import com.sedsoftware.core.di.scope.ActivityScope
+import com.sedsoftware.core.navigation.Router
+import com.sedsoftware.core.navigation.destination.Destination
 import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.screens.main.R
 import javax.inject.Inject
 
 @ActivityScope
 class ActualSplashCoordinator @Inject constructor(
-    private val navController: NavController,
+    private val router: Router,
     private val settings: Settings
 ) : SplashCoordinator {
 
-    private val navOptions: NavOptions by lazy {
+    private val options: NavOptions by lazy {
         NavOptions.Builder()
             .setEnterAnim(R.anim.nav_default_enter_anim)
             .setExitAnim(R.anim.nav_default_exit_anim)
@@ -25,19 +26,30 @@ class ActualSplashCoordinator @Inject constructor(
             .build()
     }
 
-    override fun navigateToNextScreen(navExtras: Navigator.Extras) {
+    override fun navigateToNextScreen(extras: Navigator.Extras) {
         if (settings.isExchangesDownloaded) {
             navigateFromSplashToHome()
         } else {
-            navigateFromSplashToIntro(navExtras)
+            navigateFromSplashToIntro(extras)
         }
     }
 
     private fun navigateFromSplashToHome() {
-        navController.navigate(R.id.navigate_from_splash_to_home, null, navOptions)
+        router.navigateTo(
+            Destination(
+                routeId = R.id.navigate_from_splash_to_home,
+                routeOptions = options
+            )
+        )
     }
 
-    private fun navigateFromSplashToIntro(navExtras: Navigator.Extras) {
-        navController.navigate(R.id.navigate_from_splash_to_intro, null, navOptions, navExtras)
+    private fun navigateFromSplashToIntro(extras: Navigator.Extras) {
+        router.navigateTo(
+            Destination(
+                routeId = R.id.navigate_from_splash_to_intro,
+                routeOptions = options,
+                routeExtras = extras
+            )
+        )
     }
 }

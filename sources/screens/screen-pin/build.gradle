@@ -32,6 +32,8 @@ android {
 
 dependencies {
     implementation project(':core-presentation')
+    implementation project(':core-navigation')
+
     implementation KotlinDependencies.kotlin
     implementation KotlinDependencies.kotlinCoroutines
 
