@@ -47,7 +47,6 @@ dependencies {
     implementation JetPackDependencies.constraintLayout
     implementation JetPackDependencies.materialComponents
     implementation JetPackDependencies.navigation
-    implementation JetPackDependencies.navigationUi
 
     implementation UiDependencies.materialValues
 }

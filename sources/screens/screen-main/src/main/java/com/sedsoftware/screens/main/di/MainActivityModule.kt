@@ -2,7 +2,7 @@ package com.sedsoftware.screens.main.di
 
 import androidx.navigation.NavController
 import com.sedsoftware.core.di.scope.ActivityScope
-import com.sedsoftware.core.presentation.navigation.NavControllerHolder
+import com.sedsoftware.core.di.holder.NavControllerHolder
 import dagger.Module
 import dagger.Provides
 

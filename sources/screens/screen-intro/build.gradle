@@ -53,7 +53,6 @@ dependencies {
     implementation JetPackDependencies.recyclerViewSelection
     implementation JetPackDependencies.materialComponents
     implementation JetPackDependencies.navigation
-    implementation JetPackDependencies.navigationUi
 
     implementation UiDependencies.materialValues
 }

@@ -17,6 +17,7 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/a11y_app_logo"
         android:cropToPadding="true"
+        android:transitionName="@string/transition_logo"
         app:layout_constraintBottom_toTopOf="@+id/logo_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

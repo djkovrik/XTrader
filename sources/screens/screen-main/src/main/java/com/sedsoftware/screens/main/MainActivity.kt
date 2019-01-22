@@ -5,7 +5,7 @@ import androidx.navigation.Navigation
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.presentation.base.BaseActivity
-import com.sedsoftware.core.presentation.navigation.NavControllerHolder
+import com.sedsoftware.core.di.holder.NavControllerHolder
 import com.sedsoftware.screens.main.di.MainActivityComponent
 
 class MainActivity : BaseActivity(), ActivityToolsHolder, NavControllerHolder {

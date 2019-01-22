@@ -3,7 +3,7 @@ package com.sedsoftware.screens.main.di
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.di.scope.ActivityScope
-import com.sedsoftware.core.presentation.navigation.NavControllerHolder
+import com.sedsoftware.core.di.holder.NavControllerHolder
 import com.sedsoftware.screens.main.MainActivity
 import dagger.BindsInstance
 import dagger.Component
@@ -14,7 +14,8 @@ import dagger.Component
         AppProvider::class
     ],
     modules = [
-        MainActivityModule::class
+        MainActivityModule::class,
+        NavigationModule::class
     ]
 )
 interface MainActivityComponent : MainActivityToolsProvider {
