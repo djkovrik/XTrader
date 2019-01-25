@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="XTText">
-        <item name="android:fontFamily">@font/lato</item>
-        <item name="android:textColor">?attr/colorText</item>
-    </style>
+    <!--<style name="XTText">-->
+        <!--<item name="android:fontFamily">@font/lato</item>-->
+    <!--</style>-->
 
-    <style name="XTTextLogo" parent="XTText">
-        <item name="android:textSize">48sp</item>
-    </style>
+    <!--<style name="XTTextLogo" parent="XTText">-->
+        <!--<item name="android:textSize">48sp</item>-->
+    <!--</style>-->
 
-    <style name="XTTextPrimary" parent="XTText" />
+    <!--<style name="XTTextPrimary" parent="XTText" />-->
 
-    <style name="XTTextSecondary" parent="XTTextPrimary">
-        <item name="android:alpha">0.8</item>
-    </style>
+    <!--<style name="XTTextSecondary" parent="XTTextPrimary">-->
+        <!--<item name="android:alpha">0.8</item>-->
+    <!--</style>-->
 
 </resources>

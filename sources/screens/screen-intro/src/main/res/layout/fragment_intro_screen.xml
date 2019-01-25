@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <TextView
         android:id="@+id/logo"
-        style="@style/XTTextLogo"
-        android:layout_width="@dimen/app_logo_size_intro"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/material_baseline_grid_1x"
         android:layout_marginEnd="@dimen/material_baseline_grid_2x"
         android:layout_marginStart="@dimen/material_baseline_grid_2x"
         android:layout_marginTop="@dimen/material_baseline_grid_2x"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/a11y_app_logo"
+        android:text="@string/app_name"
         android:transitionName="@string/transition_logo"
         app:layout_constraintBottom_toTopOf="@+id/intro_welcome_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/intro_welcome_text"
-        style="@style/XTTextSecondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -35,7 +30,7 @@
         android:layout_marginStart="@dimen/material_baseline_grid_2x"
         android:layout_marginTop="@dimen/material_baseline_grid_1x"
         android:gravity="center"
-        android:text="@string/welcome_text"
+        android:text="@string/intro_text"
         app:layout_constraintBottom_toTopOf="@+id/intro_exchange_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,10 +48,9 @@
         app:layout_constraintBottom_toTopOf="@+id/intro_button_download"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intro_welcome_text"
-        tools:listitem="@layout/fragment_intro_exchange_item_normal" />
+        app:layout_constraintTop_toBottomOf="@+id/intro_welcome_text" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/intro_button_download"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,7 +67,6 @@
 
     <TextView
         android:id="@+id/intro_note_text"
-        style="@style/XTTextSecondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/material_baseline_grid_2x"
@@ -81,7 +74,7 @@
         android:layout_marginStart="@dimen/material_baseline_grid_2x"
         android:layout_marginTop="@dimen/material_baseline_grid_1x"
         android:gravity="center"
-        android:text="@string/welcome_note"
+        android:text="@string/intro_note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

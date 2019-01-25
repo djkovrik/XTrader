@@ -1,11 +1,19 @@
 <resources>
-    <string name="app_name">uicore</string>
-
-    <!-- Themes -->
-    <string name="theme_main">Main</string>
+    <!-- Main -->
+    <string name="app_name">XTrader</string>
 
     <!-- Messages and labels -->
     <string name="label_please_wait">Please wait…</string>
+
+    <!-- Buttons -->
+    <string name="btn_download">Download</string>
+
+    <!-- Splash screen -->
+    <string name="splash_text">Your ultimate trade assistant</string>
+
+    <!-- Intro screen -->
+    <string name="intro_text">Welcome! To continue please choose exchanges and download currency pairs.</string>
+    <string name="intro_note">Note: you can manage exchanges data later using currency pairs manager from settings menu.</string>
 
     <!-- A11y -->
     <string name="a11y_app_logo">App logo</string>

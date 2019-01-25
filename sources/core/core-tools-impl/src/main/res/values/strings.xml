@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">coredeviceimpl</string>
-
-    // Keys
-    <string name="pref_key_exchanges_downloaded">pref_key_exchanges_downloaded</string>
-</resources>

@@ -43,4 +43,6 @@ dependencies {
     implementation JetPackDependencies.materialComponents
     implementation JetPackDependencies.lifecycleExtensions
     implementation JetPackDependencies.navigation
+
+    implementation UiDependencies.materialValues
 }
