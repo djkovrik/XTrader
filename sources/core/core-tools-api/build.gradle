@@ -1,9 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
+apply from: '../../java-config.gradle'
+
 dependencies {
     implementation project(':core-utils')
-
-    implementation KotlinDependencies.kotlin
-    implementation KotlinDependencies.kotlinCoroutines
 }

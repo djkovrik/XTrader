@@ -1,0 +1,4 @@
+dependencies {
+    implementation KotlinDependencies.kotlin
+    implementation KotlinDependencies.kotlinCoroutines
+}
