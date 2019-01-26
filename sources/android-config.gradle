@@ -4,8 +4,8 @@ android {
     defaultConfig {
         minSdkVersion Versions.MIN_SDK_VERSION
         targetSdkVersion Versions.TARGET_SDK_VERSION
-        versionCode androidGitVersion.code()
-        versionName androidGitVersion.name()
+        versionCode Versions.VERSION_CODE
+        versionName Versions.VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

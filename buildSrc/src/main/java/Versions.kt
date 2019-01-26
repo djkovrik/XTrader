@@ -4,12 +4,13 @@ object Versions {
     const val MIN_SDK_VERSION = 21
     const val COMPILE_SDK_VERSION = 28
     const val TARGET_SDK_VERSION = 28
-    const val GRADLE_ANDROID_VERSION = "3.4.0-alpha02"
+    const val VERSION_CODE = 1
+    const val VERSION_NAME = "0.0.1"
 
     // Plugins
+    const val GRADLE_ANDROID_VERSION = "3.4.0-alpha02"
     const val DETEKT_VERSION = "1.0.0.RC9.2"
     const val GRADLE_VERSIONS_VERSION = "0.20.0"
-    const val GRADLE_VERSIONING_VERSION = "0.4.7"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
     const val ANDROID_JUNIT5_VERSION = "1.3.2.0"
     const val GRADLE_SCAN_VERSION = "1.16"
