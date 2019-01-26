@@ -15,8 +15,8 @@ object Versions {
     const val GRADLE_SCAN_VERSION = "1.16"
 
     // Kotlin
-    const val KOTLIN_VERSION = "1.3.11"
-    const val KOTLIN_COROUTINES_VERSION = "1.1.0"
+    const val KOTLIN_VERSION = "1.3.20"
+    const val KOTLIN_COROUTINES_VERSION = "1.1.1"
 
     // JetPack - AppCompat
     const val APPCOMPAT_VERSION = "1.1.0-alpha01"
@@ -29,9 +29,9 @@ object Versions {
 
     // JetPack - Architecture
     const val LIFECYCLE_VERSION = "2.1.0-alpha01"
-    const val ROOM_VERSION = "2.1.0-alpha03"
+    const val ROOM_VERSION = "2.1.0-alpha04"
     const val PAGING_VERSION = "2.0.0-rc01"
-    const val NAVIGATION_VERSION = "1.0.0-alpha09"
+    const val NAVIGATION_VERSION = "1.0.0-alpha11"
     const val WORKMANAGER_VERSION = "2.0.0-alpha8"
 
     // JetPack - KTX
@@ -39,7 +39,7 @@ object Versions {
 
     // Core
     const val ADAPTER_DELEGATES_VERSION = "4.0.0"
-    const val DAGGER_VERSION = "2.20"
+    const val DAGGER_VERSION = "2.21"
     const val RETROFIT_VERSION = "2.5.0"
     const val MOSHI_VERSION = "1.8.0"
     const val COROUTINES_ADAPTER_VERSION = "1.0.0"
@@ -63,7 +63,7 @@ object Versions {
 
     // Development tools
     const val TIMBER_VERSION = "4.7.1"
-    const val LEAK_CANARY_VERSION = "1.6.2"
+    const val LEAK_CANARY_VERSION = "1.6.3"
     const val STETHO_VERSION = "1.5.0"
     const val DEV_METRICS_VERSION = "0.6"
     const val CHUCK_VERSION = "1.1.0"
