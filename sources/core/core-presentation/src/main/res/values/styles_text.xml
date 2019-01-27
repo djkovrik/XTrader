@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--<style name="XTText">-->
-        <!--<item name="android:fontFamily">@font/lato</item>-->
-    <!--</style>-->
+    <style name="XTextLogo">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/logo_text_size</item>
+    </style>
 
-    <!--<style name="XTTextLogo" parent="XTText">-->
-        <!--<item name="android:textSize">48sp</item>-->
-    <!--</style>-->
+    <style name="XTextPrimary">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+    </style>
 
-    <!--<style name="XTTextPrimary" parent="XTText" />-->
+    <style name="XTTextSecondary" parent="XTextPrimary">
+        <item name="android:alpha">0.8</item>
+    </style>
 
-    <!--<style name="XTTextSecondary" parent="XTTextPrimary">-->
-        <!--<item name="android:alpha">0.8</item>-->
-    <!--</style>-->
+    <style name="XTextButton" parent="XTextPrimary" />
+
+    <style name="XTextCaption" parent="XTextPrimary">
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
