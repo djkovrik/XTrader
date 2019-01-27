@@ -26,7 +26,7 @@ dependencies {
     implementation project(':core-utils')
 
     implementation project(':screen-main')
-    implementation project(':screen-splash')
+    implementation project(':screen-startup')
     implementation project(':screen-intro')
     implementation project(':screen-home')
 

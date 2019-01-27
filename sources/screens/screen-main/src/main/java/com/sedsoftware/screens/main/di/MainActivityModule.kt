@@ -1,7 +1,7 @@
 package com.sedsoftware.screens.main.di
 
-import com.sedsoftware.core.di.coordinator.SplashCoordinator
-import com.sedsoftware.screens.main.navigation.ActualSplashCoordinator
+import com.sedsoftware.core.di.coordinator.StartupCoordinator
+import com.sedsoftware.screens.main.navigation.ActualStartupCoordinator
 import dagger.Binds
 import dagger.Module
 
@@ -9,5 +9,5 @@ import dagger.Module
 abstract class MainActivityModule {
 
     @Binds
-    abstract fun provideSplashCoordinator(splashCoordinator: ActualSplashCoordinator): SplashCoordinator
+    abstract fun provideSplashCoordinator(splashCoordinator: ActualStartupCoordinator): StartupCoordinator
 }

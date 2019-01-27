@@ -8,9 +8,6 @@
     <!-- Buttons -->
     <string name="btn_download">Download</string>
 
-    <!-- Splash screen -->
-    <string name="splash_text">Your ultimate trade assistant</string>
-
     <!-- Intro screen -->
     <string name="intro_text">Welcome! To continue please choose exchanges and download currency pairs.</string>
     <string name="intro_note">Note: you can manage exchanges data later using currency pairs manager from settings menu.</string>

@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/startupFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.sedsoftware.screens.splash.SplashFragment"
-        android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash_screen">
+        android:id="@+id/startupFragment"
+        android:name="com.sedsoftware.screens.startup.StartupFragment"
+        android:label="StartupFragment"
+        tools:layout="@layout/fragment_startup_screen">
         <action
-            android:id="@+id/navigate_from_splash_to_home"
+            android:id="@+id/navigate_from_startup_to_home"
             app:destination="@id/homeScreenFragment" />
         <action
-            android:id="@+id/navigate_from_splash_to_intro"
+            android:id="@+id/navigate_from_startup_to_intro"
             app:destination="@id/introScreenFragment" />
         <action
-            android:id="@+id/navigate_from_splash_to_pin"
+            android:id="@+id/navigate_from_startup_to_pin"
             app:destination="@id/pinScreenFragment" />
     </fragment>
 
