@@ -7,7 +7,7 @@
         <activity
             android:name="com.sedsoftware.screens.main.MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme">
+            android:theme="@style/SplashTheme">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,6 @@
 package com.sedsoftware.core.presentation.extension
 
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -14,3 +15,7 @@ inline fun <reified T : ViewModel> Fragment.viewModel(factory: Factory, body: T.
 
 fun Fragment.string(@StringRes resId: Int): String =
     context?.string(resId).orEmpty()
+
+fun Fragment.setBackgroundColor(@ColorRes colorId: Int) {
+    activity?.let { it.window?.decorView?.setBackgroundColor(it.color(colorId)) }
+}
