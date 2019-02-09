@@ -3,7 +3,7 @@ package com.sedsoftware.screens.main.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.key.ViewModelKey
-import com.sedsoftware.screens.intro.IntroScreenViewModel
+import com.sedsoftware.screens.intro.viewmodel.IntroDownloadsViewModel
 import com.sedsoftware.screens.main.factory.ViewModelOwnerFactory
 import dagger.Binds
 import dagger.Module
@@ -17,6 +17,6 @@ abstract class ViewModelFactoryModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(IntroScreenViewModel::class)
-    abstract fun bindIntroViewModel(introScreenViewModel: IntroScreenViewModel): ViewModel
+    @ViewModelKey(IntroDownloadsViewModel::class)
+    abstract fun bindIntroViewModel(introScreenViewModel: IntroDownloadsViewModel): ViewModel
 }
