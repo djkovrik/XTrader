@@ -1,5 +1,7 @@
 package com.sedsoftware.core.di.coordinator
 
-interface StartupCoordinator {
+import androidx.lifecycle.LifecycleObserver
+
+interface StartupCoordinator : LifecycleObserver {
     fun navigateToNextScreen()
 }

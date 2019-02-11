@@ -44,7 +44,7 @@ object Versions {
     const val RETROFIT_VERSION = "2.5.0"
     const val MOSHI_VERSION = "1.8.0"
     const val COROUTINES_ADAPTER_VERSION = "1.0.0"
-    const val OKHTTP_VERSION = "3.13.1"
+    const val OKHTTP_VERSION = "3.12.1"
 
     // UI
     const val MATERIAL_VALUES_VERSION = "1.1.1"

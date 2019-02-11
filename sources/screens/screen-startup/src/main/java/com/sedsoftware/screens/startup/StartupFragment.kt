@@ -14,8 +14,7 @@ class StartupFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        coordinator.navigateToNextScreen()
+        lifecycle.addObserver(coordinator)
     }
 
     override fun getLayoutResId(): Int =

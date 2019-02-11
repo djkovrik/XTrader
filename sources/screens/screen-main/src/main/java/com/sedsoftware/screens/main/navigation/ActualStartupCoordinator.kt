@@ -1,5 +1,7 @@
 package com.sedsoftware.screens.main.navigation
 
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.navigation.NavOptions
 import com.sedsoftware.core.di.coordinator.StartupCoordinator
 import com.sedsoftware.core.di.scope.ActivityScope
@@ -25,6 +27,7 @@ class ActualStartupCoordinator @Inject constructor(
             .build()
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     override fun navigateToNextScreen() {
         val nextRoute = if (settings.isExchangesDownloaded) {
             R.id.navigate_from_startup_to_home
