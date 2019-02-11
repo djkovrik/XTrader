@@ -1,7 +1,8 @@
 package com.sedsoftware.screens.intro.di
 
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.screens.intro.IntroScreenFragment
+import com.sedsoftware.screens.intro.IntroDownloadsFragment
+import com.sedsoftware.screens.intro.IntroGreetingsFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,7 +17,8 @@ import javax.inject.Singleton
 )
 interface IntroScreenComponent {
 
-    fun inject(fragment: IntroScreenFragment)
+    fun inject(fragment: IntroGreetingsFragment)
+    fun inject(fragment: IntroDownloadsFragment)
 
     class Initializer private constructor() {
         companion object {

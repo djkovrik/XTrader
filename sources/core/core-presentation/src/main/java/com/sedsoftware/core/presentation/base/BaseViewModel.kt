@@ -13,7 +13,7 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    var failure: MutableLiveData<Failure> = MutableLiveData()
+    var viewModelFailure: MutableLiveData<Failure> = MutableLiveData()
 
     private val job: Job = Job()
 
@@ -23,6 +23,6 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
     }
 
     protected fun handleFailure(failure: Failure) {
-        this.failure.value = failure
+        this.viewModelFailure.value = failure
     }
 }
