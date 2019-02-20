@@ -9,10 +9,9 @@
     <string name="btn_download">Download</string>
 
     <!-- Intro screen -->
-    <string name="intro_text">Welcome! To continue please choose exchanges and download currency pairs.</string>
-    <string name="intro_note">Note: you can manage exchanges data later using currency pairs manager from settings menu.</string>
-
-    <!-- A11y -->
-    <string name="a11y_app_logo">App logo</string>
+    <string name="greetings_text1">Welcome!</string>
+    <string name="greetings_text2">Before using XTrader you have to download currency pairs for chosen exchanges.</string>
+    <string name="greetings_note">Note that you can manage exchanges data later from settings menu.</string>
+    <string name="greetings_button">OK</string>
 
 </resources>

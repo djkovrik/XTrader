@@ -7,7 +7,7 @@
     </style>
 
     <style name="XTextPrimary">
-        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="XTTextSecondary" parent="XTextPrimary">

@@ -1,12 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
   <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Greetings" />
+      android:id="@+id/logo"
+      style="@style/XTextLogo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/greetings_first"
+        style="@style/XTextPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/greetings_text1" />
+
+
+    <TextView
+        android:id="@+id/greetings_second"
+        style="@style/XTextPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/greetings_text2" />
+
+    <TextView
+        android:id="@+id/greetings_note"
+        style="@style/XTTextSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/greetings_note" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/greetings_button"
+        android:textColor="@color/colorButtonText"
+        app:cornerRadius="@dimen/button_corner_radius"
+        app:iconGravity="textStart"
+        app:icon="@drawable/ic_tick"
+        app:iconTint="@color/colorButtonText"
+        app:rippleColor="@color/colorAccentDark" />
 
 </LinearLayout>
