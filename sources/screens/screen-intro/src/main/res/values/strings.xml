@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Messages and labels -->
-    <string name="label_please_wait">Please wait…</string>
 
     <!-- Buttons -->
-    <string name="btn_download">Download</string>
+    <string name="btn_greetings_download">Download</string>
+    <string name="btn_greetings_continue">Continue</string>
 
     <!-- Intro screen -->
-    <string name="greetings_text1">Welcome!</string>
-    <string name="greetings_text2">Before using XTrader you have to download currency pairs for chosen exchanges.</string>
-    <string name="greetings_note">Note that you can manage exchanges data later from settings menu.</string>
-    <string name="greetings_button">OK</string>
+    <string name="label_greetings1">Welcome!</string>
+    <string name="label_greetings2">Before using XTrader you have to download currency pairs for chosen exchanges.</string>
+    <string name="label_greetings_note">Note that you can manage exchanges data later from settings menu.</string>
 
 </resources>
