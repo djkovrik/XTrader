@@ -35,14 +35,11 @@
         android:text="@string/greetings_note" />
 
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="@string/greetings_button"
-        android:textColor="@color/colorButtonText"
-        app:cornerRadius="@dimen/button_corner_radius"
         app:iconGravity="textStart"
         app:icon="@drawable/ic_tick"
         app:iconTint="@color/colorButtonText"

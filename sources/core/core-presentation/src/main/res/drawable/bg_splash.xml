@@ -4,9 +4,8 @@
     <item android:drawable="@color/colorBackground" />
 
     <item
-        android:drawable="@drawable/ic_label"
+        android:drawable="@drawable/ic_app_label"
         android:gravity="center">
-
 
     </item>
 

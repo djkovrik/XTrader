@@ -6,4 +6,5 @@
     <color name="colorAccentDark">@color/material_color_grey_800</color>
     <color name="colorBackground">@color/material_color_white</color>
     <color name="colorButtonText">@color/material_color_white</color>
+    <color name="colorLauncherIconBackground">#F5F5F5</color>
 </resources>
