@@ -10,9 +10,9 @@ object Versions {
     // Plugins
     const val GRADLE_ANDROID_VERSION = "3.4.0-alpha02"
     const val DETEKT_VERSION = "1.0.0.RC9.2"
-    const val GRADLE_VERSIONS_VERSION = "0.20.0"
+    const val GRADLE_VERSIONS_VERSION = "0.21.0"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
-    const val ANDROID_JUNIT5_VERSION = "1.3.2.0"
+    const val ANDROID_JUNIT5_VERSION = "1.4.0.0"
     const val GRADLE_SCAN_VERSION = "1.16"
 
     // Kotlin
@@ -20,10 +20,10 @@ object Versions {
     const val KOTLIN_COROUTINES_VERSION = "1.1.1"
 
     // JetPack - AppCompat
-    const val APPCOMPAT_VERSION = "1.1.0-alpha01"
+    const val APPCOMPAT_VERSION = "1.1.0-alpha02"
     const val CARDVIEW_VERSION = "1.0.0-rc02"
     const val PREFERENCE_VERSION = "1.0.0-rc02"
-    const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha03"
+    const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha04"
     const val RECYCLER_VIEW_VERSION = "1.1.0-alpha01"
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-alpha3"
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
@@ -32,7 +32,7 @@ object Versions {
     const val LIFECYCLE_VERSION = "2.1.0-alpha02"
     const val ROOM_VERSION = "2.1.0-alpha04"
     const val PAGING_VERSION = "2.0.0-rc01"
-    const val NAVIGATION_VERSION = "1.0.0-beta01"
+    const val NAVIGATION_VERSION = "1.0.0-rc02"
     const val WORKMANAGER_VERSION = "2.0.0-alpha8"
 
     // JetPack - KTX
@@ -44,7 +44,7 @@ object Versions {
     const val RETROFIT_VERSION = "2.5.0"
     const val MOSHI_VERSION = "1.8.0"
     const val COROUTINES_ADAPTER_VERSION = "1.0.0"
-    const val OKHTTP_VERSION = "3.12.1"
+    const val OKHTTP_VERSION = "3.13.1"
 
     // UI
     const val MATERIAL_VALUES_VERSION = "1.1.1"
@@ -55,7 +55,7 @@ object Versions {
     const val JUNIT4_VERSION = "4.12"
     const val JUNIT5_VERSION = "5.2.0"
     const val JUNIT5_RUNNER_VERSION = "0.2.2"
-    const val TEST_RUNNER_VERSION = "1.1.2-alpha01"
+    const val TEST_RUNNER_VERSION = "1.1.2-alpha02"
     const val TEST_RULES_VERSION = "1.1.0-alpha1"
     const val ESPRESSO_VERSION = "3.1.0-alpha1"
     const val SPEK_VERSION = "2.0.0"
