@@ -10,13 +10,13 @@
     </style>
 
     <style name="XTButtonNormal" parent="XTButton">
-        <item name="android:paddingStart">@dimen/normal_button_padding</item>
-        <item name="android:paddingEnd">@dimen/normal_button_padding</item>
+        <item name="android:paddingStart">@dimen/button_padding_normal</item>
+        <item name="android:paddingEnd">@dimen/button_padding_normal</item>
     </style>
 
     <style name="XTButtonWide" parent="XTButton">
-        <item name="android:paddingStart">@dimen/wide_button_padding</item>
-        <item name="android:paddingEnd">@dimen/wide_button_padding</item>
+        <item name="android:paddingStart">@dimen/button_padding_wide</item>
+        <item name="android:paddingEnd">@dimen/button_padding_wide</item>
     </style>
 
 </resources>

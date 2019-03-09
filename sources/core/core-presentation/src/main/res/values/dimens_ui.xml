@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="button_corner_radius">24dp</dimen>
-    <dimen name="normal_button_padding">16dp</dimen>
-    <dimen name="wide_button_padding">32dp</dimen>
+    <dimen name="button_padding_normal">32dp</dimen>
+    <dimen name="button_padding_wide">48dp</dimen>
 </resources>
