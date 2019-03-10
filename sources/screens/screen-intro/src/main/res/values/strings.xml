@@ -7,9 +7,10 @@
 
     <!-- Intro screen -->
     <string name="label_greetings1">Welcome!</string>
-    <string name="label_greetings2">Before using XTrader you have to choose and\n
-                                    download currency pairs at least of for one\n
+    <string name="label_greetings2">Before using XTrader you have to choose and download currency pairs at least of for one
                                     of supported exchanges.</string>
     <string name="label_greetings_note">Note that you can manage currency pairs and \nexchanges data later from settings menu.</string>
 
+    <!-- A11y -->
+    <string name="a11y_app_logo">App logo</string>
 </resources>
