@@ -19,23 +19,14 @@ class ActualIntroCoordinator @Inject constructor(
             .setExitAnim(R.anim.nav_default_exit_anim)
             .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
             .setPopExitAnim(R.anim.nav_default_pop_exit_anim)
-//            .setPopUpTo(R.id.startupFragment, true)
+            .setPopUpTo(R.id.introScreenFragment, true)
             .build()
-    }
-
-    override fun navigateToDownloads() {
-        router.navigateTo(
-            Destination(
-                routeId = R.id.navigate_from_greetings_to_downloads,
-                routeOptions = options
-            )
-        )
     }
 
     override fun navigateToHome() {
         router.navigateTo(
             Destination(
-                routeId = R.id.navigate_from_downloads_to_home,
+                routeId = R.id.navigate_from_intro_to_home,
                 routeOptions = options
             )
         )

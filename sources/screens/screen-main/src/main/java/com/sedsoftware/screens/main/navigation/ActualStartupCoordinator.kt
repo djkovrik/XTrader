@@ -32,7 +32,7 @@ class ActualStartupCoordinator @Inject constructor(
         val nextRoute = if (settings.isExchangesDownloaded) {
             R.id.navigate_from_startup_to_home
         } else {
-            R.id.navigate_from_startup_to_greetings
+            R.id.navigate_from_startup_to_intro
         }
 
         router.navigateTo(
