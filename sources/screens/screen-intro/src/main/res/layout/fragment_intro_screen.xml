@@ -73,12 +73,12 @@
         android:layout_marginStart="16dp"
         android:gravity="center_horizontal"
         android:text="@string/label_greetings_note"
-        app:layout_constraintBottom_toTopOf="@+id/materialButton"
+        app:layout_constraintBottom_toTopOf="@+id/intro_button_download"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/intro_button_download"
         style="@style/XTButtonWide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
