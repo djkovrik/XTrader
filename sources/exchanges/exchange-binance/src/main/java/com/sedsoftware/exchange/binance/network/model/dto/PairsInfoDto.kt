@@ -1,8 +1,8 @@
 package com.sedsoftware.exchange.binance.network.model.dto
 
-import com.sedsoftware.exchange.binance.common.params.FilterType
+import com.sedsoftware.exchange.binance.network.model.params.FilterType
 import com.sedsoftware.exchange.binance.network.model.SymbolInfoModel
-import com.sedsoftware.exchange.binance.network.model.common.RateLimit
+import com.sedsoftware.exchange.binance.network.model.params.RateLimit
 
 data class PairsInfoDto(
     val timezone: String,

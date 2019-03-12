@@ -2,7 +2,7 @@ package com.sedsoftware.screens.intro.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.entity.ExchangeType
+import com.sedsoftware.core.domain.ExchangeType
 import com.sedsoftware.core.presentation.base.BaseViewModel
 import com.sedsoftware.screens.intro.model.ExchangeItem
 import javax.inject.Inject

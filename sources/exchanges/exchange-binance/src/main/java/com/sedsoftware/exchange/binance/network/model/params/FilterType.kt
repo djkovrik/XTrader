@@ -1,4 +1,4 @@
-package com.sedsoftware.exchange.binance.common.params
+package com.sedsoftware.exchange.binance.network.model.params
 
 enum class FilterType {
     PRICE_FILTER,

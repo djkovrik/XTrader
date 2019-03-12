@@ -1,6 +1,4 @@
-package com.sedsoftware.exchange.binance.network.model.common
-
-import com.sedsoftware.exchange.binance.common.params.FilterType
+package com.sedsoftware.exchange.binance.network.model.params
 
 data class Filter(
     val filterType: FilterType,

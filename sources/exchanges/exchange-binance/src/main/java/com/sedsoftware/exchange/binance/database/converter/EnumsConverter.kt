@@ -1,54 +1,25 @@
 package com.sedsoftware.exchange.binance.database.converter
 
 import androidx.room.TypeConverter
-import com.sedsoftware.exchange.binance.common.CurrencyBinance
-import com.sedsoftware.exchange.binance.common.params.CandleInterval
-import com.sedsoftware.exchange.binance.common.params.FilterType
-import com.sedsoftware.exchange.binance.common.params.OrderSide
-import com.sedsoftware.exchange.binance.common.params.OrderStatus
-import com.sedsoftware.exchange.binance.common.params.OrderType
-import com.sedsoftware.exchange.binance.common.params.RateLimitInterval
-import com.sedsoftware.exchange.binance.common.params.RateLimitType
 import com.sedsoftware.exchange.binance.common.params.SymbolStatus
-import com.sedsoftware.exchange.binance.common.params.TimeInForce
+import com.sedsoftware.exchange.binance.entity.BinanceCurrency
+import com.sedsoftware.exchange.binance.network.model.params.FilterType
+import com.sedsoftware.exchange.binance.network.model.params.RateLimitInterval
+import com.sedsoftware.exchange.binance.network.model.params.RateLimitType
 
 class EnumsConverter {
 
     @TypeConverter
-    fun fromCandleInterval(interval: CandleInterval): String = interval.name
+    fun fromBinanceCurrency(currency: BinanceCurrency): String = currency.name
 
     @TypeConverter
-    fun toCandleInterval(text: String): CandleInterval = enumValueOf(text)
-
-    @TypeConverter
-    fun fromCurrencyBinance(currency: CurrencyBinance): String = currency.name
-
-    @TypeConverter
-    fun toCurrencyBinance(text: String): CurrencyBinance = enumValueOf(text)
+    fun toBinanceCurrency(text: String): BinanceCurrency = enumValueOf(text)
 
     @TypeConverter
     fun fromFilters(filter: FilterType): String = filter.name
 
     @TypeConverter
     fun toFilters(text: String): FilterType = enumValueOf(text)
-
-    @TypeConverter
-    fun fromOrderSide(side: OrderSide): String = side.name
-
-    @TypeConverter
-    fun toOrderSide(text: String): OrderSide = enumValueOf(text)
-
-    @TypeConverter
-    fun fromOrderStatus(status: OrderStatus): String = status.name
-
-    @TypeConverter
-    fun toOrderStatus(text: String): OrderStatus = enumValueOf(text)
-
-    @TypeConverter
-    fun fromOrderType(type: OrderType): String = type.name
-
-    @TypeConverter
-    fun toOrderType(text: String): OrderType = enumValueOf(text)
 
     @TypeConverter
     fun fromRateLimitInterval(interval: RateLimitInterval): String = interval.name
@@ -67,10 +38,4 @@ class EnumsConverter {
 
     @TypeConverter
     fun toSymbolStatus(text: String): SymbolStatus = enumValueOf(text)
-
-    @TypeConverter
-    fun fromTimeInForce(time: TimeInForce): String = time.name
-
-    @TypeConverter
-    fun toTimeInForce(text: String): TimeInForce = enumValueOf(text)
 }

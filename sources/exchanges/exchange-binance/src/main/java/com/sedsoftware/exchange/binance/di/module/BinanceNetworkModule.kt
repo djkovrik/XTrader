@@ -18,8 +18,7 @@ class BinanceNetworkModule {
     @Provides
     @Singleton
     fun provideBinanceApi(): BinanceApi =
-        Retrofit
-            .Builder()
+        Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create())

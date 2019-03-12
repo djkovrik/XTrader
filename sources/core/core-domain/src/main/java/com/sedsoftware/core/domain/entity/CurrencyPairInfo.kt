@@ -1,6 +1,4 @@
-package com.sedsoftware.core.domain.entity.info
-
-import com.sedsoftware.core.domain.entity.CurrencyPair
+package com.sedsoftware.core.domain.entity
 
 interface CurrencyPairInfo : CurrencyPair {
     val minimumPrice: Float

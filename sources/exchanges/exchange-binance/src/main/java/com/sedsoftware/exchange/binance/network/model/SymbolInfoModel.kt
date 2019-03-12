@@ -2,7 +2,7 @@ package com.sedsoftware.exchange.binance.network.model
 
 import com.sedsoftware.exchange.binance.common.params.OrderType
 import com.sedsoftware.exchange.binance.common.params.SymbolStatus
-import com.sedsoftware.exchange.binance.network.model.common.Filter
+import com.sedsoftware.exchange.binance.network.model.params.Filter
 
 data class SymbolInfoModel(
     val symbol: String,
@@ -13,5 +13,7 @@ data class SymbolInfoModel(
     val quotePrecision: Int,
     val orderTypes: List<OrderType>,
     val icebergAllowed: Boolean,
+    val isSpotTradingAllowed: Boolean,
+    val isMarginTradingAllowed: Boolean,
     val filters: List<Filter>
 )
