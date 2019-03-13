@@ -8,13 +8,13 @@ import org.spekframework.spek2.lifecycle.MemoizedValue
 // Source: https://github.com/spekframework/spek/issues/426
 
 fun <R> LifecycleAware.blockingMemoized(
-    mode: CachingMode = CachingMode.GROUP,
+    mode: CachingMode = CachingMode.SCOPE,
     factory: suspend () -> R
 ): MemoizedValue<R> =
     memoized(mode, factory = { runBlocking { factory() } })
 
 fun <R> LifecycleAware.blockingMemoized(
-    mode: CachingMode = CachingMode.GROUP,
+    mode: CachingMode = CachingMode.SCOPE,
     factory: suspend () -> R,
     destructor: suspend (R) -> Unit
 ): MemoizedValue<R> =

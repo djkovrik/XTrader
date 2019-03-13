@@ -35,10 +35,10 @@ class PairsInfoTest : Spek({
             }
         }
 
-        context("Check that all symbols defined") {
+        val baseSymbols by blockingMemoized { response?.symbols?.map { it.baseAsset }?.toSet() ?: emptySet() }
+        val quoteSymbols by blockingMemoized { response?.symbols?.map { it.quoteAsset }?.toSet() ?: emptySet() }
 
-            val baseSymbols by blockingMemoized { response?.symbols?.map { it.baseAsset }?.toSet() ?: emptySet() }
-            val quoteSymbols by blockingMemoized { response?.symbols?.map { it.quoteAsset }?.toSet() ?: emptySet() }
+        context("Check that all symbols defined") {
 
             baseSymbols.forEach { symbol ->
                 it("Base symbol $symbol should have defined value") {
@@ -54,10 +54,6 @@ class PairsInfoTest : Spek({
         }
 
         context("Check that no currencies removed") {
-
-            val baseSymbols by blockingMemoized { response?.symbols?.map { it.baseAsset }?.toSet() ?: emptySet() }
-            val quoteSymbols by blockingMemoized { response?.symbols?.map { it.quoteAsset }?.toSet() ?: emptySet() }
-
             BinanceCurrency.values().forEach { symbol ->
                 it("Currency ${symbol.name} from BinanceCurrency still valid") {
                     (baseSymbols.contains(symbol.name) || quoteSymbols.contains(symbol.name)).should.be.`true`
