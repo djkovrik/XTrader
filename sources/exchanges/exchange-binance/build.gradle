@@ -22,6 +22,8 @@ dependencies {
     implementation project(':core-domain')
     implementation project(':core-utils')
 
+    testImplementation project(':core-tests')
+
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 

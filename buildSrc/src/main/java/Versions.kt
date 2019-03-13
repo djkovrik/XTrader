@@ -61,6 +61,7 @@ object Versions {
     const val SPEK_VERSION = "2.0.1"
     const val EXPEKT_VERSION = "0.5.0"
     const val KAKAO_VERSION = "1.3.0"
+    const val FUEL_VERSION = "2.0.1"
 
     // Development tools
     const val TIMBER_VERSION = "4.7.1"
