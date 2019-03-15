@@ -1,17 +1,17 @@
-package com.sedsoftware.exchange.binance.network.model.dto
+package com.sedsoftware.exchange.binance.network.model
 
 import com.sedsoftware.core.tests.blockingMemoized
 import com.sedsoftware.core.tests.get
 import com.sedsoftware.exchange.binance.Urls
 import com.sedsoftware.exchange.binance.entity.BinanceCurrency
-import com.sedsoftware.exchange.binance.network.model.PairsInfo
+import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsInfoMapper
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class PairsInfoTest : Spek({
 
-    val response: PairsInfo? by blockingMemoized { get(Urls.CURRENCY_PAIRS, PairsInfo::class.java) }
+    val response: PairsInfo? by blockingMemoized { get(Urls.GET_CURRENCY_PAIRS, PairsInfo::class.java) }
 
     describe("Binance exchangeInfo response test") {
 
@@ -58,6 +58,20 @@ class PairsInfoTest : Spek({
             BinanceCurrency.values().forEach { symbol ->
                 it("Currency ${symbol.name} from BinanceCurrency still valid") {
                     (baseSymbols.contains(symbol.name) || quoteSymbols.contains(symbol.name)).should.be.`true`
+                }
+            }
+        }
+
+        context("Check mapper") {
+            val mapper = BinanceSymbolsInfoMapper()
+
+            it("Maps server time correctly") {
+                response?.let { mapper.mapSyncInfoToDb(it).lastSyncDate.should.be.above(0) }
+            }
+
+            it("Maps symbols correctly") {
+                response?.let { pairsInfo ->
+                    mapper.mapSymbolsToDb(pairsInfo).should.not.be.empty
                 }
             }
         }

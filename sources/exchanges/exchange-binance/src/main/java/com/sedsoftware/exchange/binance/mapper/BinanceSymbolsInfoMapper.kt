@@ -7,7 +7,7 @@ import com.sedsoftware.exchange.binance.network.model.PairsInfo
 import com.sedsoftware.exchange.binance.network.model.SymbolInfoModel
 import javax.inject.Inject
 
-class BinanceSymbolsMapper @Inject constructor() {
+class BinanceSymbolsInfoMapper @Inject constructor() {
 
     fun mapSymbolsToDb(from: PairsInfo): List<BinanceSymbolDbModel> =
         from.symbols.map { mapSymbolToDb(it) }
