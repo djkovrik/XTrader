@@ -4,6 +4,7 @@ import com.sedsoftware.core.tests.blockingMemoized
 import com.sedsoftware.core.tests.get
 import com.sedsoftware.exchange.binance.Urls
 import com.sedsoftware.exchange.binance.entity.BinanceCurrency
+import com.sedsoftware.exchange.binance.network.model.PairsInfo
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe

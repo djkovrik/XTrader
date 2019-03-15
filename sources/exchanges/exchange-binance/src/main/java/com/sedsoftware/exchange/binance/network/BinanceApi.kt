@@ -1,6 +1,6 @@
 package com.sedsoftware.exchange.binance.network
 
-import com.sedsoftware.exchange.binance.network.model.dto.PairsInfo
+import com.sedsoftware.exchange.binance.network.model.PairsInfo
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 

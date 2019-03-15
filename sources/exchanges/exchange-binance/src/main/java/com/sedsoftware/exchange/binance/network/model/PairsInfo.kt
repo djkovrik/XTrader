@@ -1,6 +1,5 @@
-package com.sedsoftware.exchange.binance.network.model.dto
+package com.sedsoftware.exchange.binance.network.model
 
-import com.sedsoftware.exchange.binance.network.model.SymbolInfoModel
 import com.sedsoftware.exchange.binance.network.model.params.FilterType
 import com.sedsoftware.exchange.binance.network.model.params.RateLimit
 
