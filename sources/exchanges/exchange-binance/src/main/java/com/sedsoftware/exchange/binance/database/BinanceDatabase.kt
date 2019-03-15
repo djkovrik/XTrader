@@ -7,11 +7,14 @@ import com.sedsoftware.exchange.binance.database.converter.DateConverter
 import com.sedsoftware.exchange.binance.database.converter.EnumsConverter
 import com.sedsoftware.exchange.binance.database.converter.ListConverter
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
+import com.sedsoftware.exchange.binance.database.dao.BinanceSyncInfoDao
 import com.sedsoftware.exchange.binance.database.model.BinanceSymbolDbModel
+import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
 
 @Database(
     entities = [
-        BinanceSymbolDbModel::class
+        BinanceSymbolDbModel::class,
+        BinanceSyncInfoDbModel::class
     ],
     version = BinanceDatabase.DATABASE_VERSION,
     exportSchema = false
@@ -29,4 +32,5 @@ abstract class BinanceDatabase : RoomDatabase() {
     }
 
     abstract fun getBinanceSymbolsDao(): BinanceSymbolsDao
+    abstract fun getBinanceSyncInfoDao(): BinanceSyncInfoDao
 }

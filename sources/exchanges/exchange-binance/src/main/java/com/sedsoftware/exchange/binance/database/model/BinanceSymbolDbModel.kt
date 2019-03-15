@@ -12,8 +12,6 @@ data class BinanceSymbolDbModel(
     @PrimaryKey
     @ColumnInfo(name = "symbol_id")
     val symbol: String,
-    @ColumnInfo(name = "last_sync_timestamp")
-    val syncDate: Long,
     @ColumnInfo(name = "status")
     val status: SymbolStatus,
     @ColumnInfo(name = "base_asset")
