@@ -18,7 +18,6 @@ object JetPackDependencies {
     const val materialComponents = "com.google.android.material:material:$MATERIAL_COMPONENTS_VERSION"
     const val recyclerView = "androidx.recyclerview:recyclerview:$RECYCLER_VIEW_VERSION"
     const val preference = "androidx.preference:preference:$PREFERENCE_VERSION"
-    const val recyclerViewSelection = "androidx.recyclerview:recyclerview-selection:$RECYCLER_VIEW_VERSION"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:$CONSTRAINT_LAYOUT_VERSION"
 
     const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$LIFECYCLE_VERSION"

@@ -20,19 +20,19 @@ object Versions {
     const val KOTLIN_COROUTINES_VERSION = "1.1.1"
 
     // JetPack - AppCompat
-    const val APPCOMPAT_VERSION = "1.1.0-alpha02"
+    const val APPCOMPAT_VERSION = "1.1.0-alpha03"
     const val CARDVIEW_VERSION = "1.0.0-rc02"
     const val PREFERENCE_VERSION = "1.0.0-rc02"
     const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha04"
-    const val RECYCLER_VIEW_VERSION = "1.1.0-alpha01"
+    const val RECYCLER_VIEW_VERSION = "1.1.0-alpha03"
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-alpha3"
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
 
     // JetPack - Architecture
-    const val LIFECYCLE_VERSION = "2.1.0-alpha02"
+    const val LIFECYCLE_VERSION = "2.1.0-alpha03"
     const val ROOM_VERSION = "2.1.0-alpha04"
     const val PAGING_VERSION = "2.0.0-rc01"
-    const val NAVIGATION_VERSION = "1.0.0-rc02"
+    const val NAVIGATION_VERSION = "1.0.0"
     const val WORKMANAGER_VERSION = "2.0.0-alpha8"
 
     // JetPack - KTX
@@ -44,7 +44,7 @@ object Versions {
     const val RETROFIT_VERSION = "2.5.0"
     const val MOSHI_VERSION = "1.8.0"
     const val COROUTINES_ADAPTER_VERSION = "1.0.0"
-    const val OKHTTP_VERSION = "3.13.1"
+    const val OKHTTP_VERSION = "3.14.0"
 
     // UI
     const val MATERIAL_VALUES_VERSION = "1.1.1"
