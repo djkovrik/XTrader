@@ -14,6 +14,7 @@ class IntroScreenViewModel @Inject constructor(
     var exchanges: MutableLiveData<List<ExchangeItem>> = MutableLiveData()
 
     fun showExchanges() {
+
         // Dummy list
         exchanges.value = listOf(
             ExchangeType.BINANCE,

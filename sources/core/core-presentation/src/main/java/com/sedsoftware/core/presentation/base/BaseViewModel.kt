@@ -2,25 +2,21 @@ package com.sedsoftware.core.presentation.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.sedsoftware.core.utils.common.Failure
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
-abstract class BaseViewModel : ViewModel(), CoroutineScope {
-
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main
+abstract class BaseViewModel : ViewModel() {
 
     var viewModelFailure: MutableLiveData<Failure> = MutableLiveData()
 
-    private val job: Job = Job()
+    protected fun launch(block: () -> Unit) =
+        viewModelScope.launch { block.invoke() }
 
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel()
-    }
+    protected fun <T> async(block: () -> T): Deferred<T> =
+        viewModelScope.async { block.invoke() }
 
     protected fun handleFailure(failure: Failure) {
         this.viewModelFailure.value = failure

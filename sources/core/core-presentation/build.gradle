@@ -14,6 +14,7 @@ dependencies {
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.materialComponents
     implementation JetPackDependencies.lifecycleExtensions
+    implementation JetPackDependencies.lifecycleKtx
     implementation JetPackDependencies.navigation
 
     implementation UiDependencies.materialValues

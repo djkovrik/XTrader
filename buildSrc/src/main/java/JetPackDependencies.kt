@@ -21,6 +21,7 @@ object JetPackDependencies {
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:$CONSTRAINT_LAYOUT_VERSION"
 
     const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$LIFECYCLE_VERSION"
+    const val lifecycleKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE_VERSION"
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:$LIFECYCLE_VERSION"
 
     const val room = "androidx.room:room-runtime:$ROOM_VERSION"
