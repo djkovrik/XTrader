@@ -5,8 +5,8 @@ import com.sedsoftware.core.di.App
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.navigation.Router
-import com.sedsoftware.core.tools.api.Executor
 import com.sedsoftware.core.tools.api.Logger
+import com.sedsoftware.core.tools.api.NetworkHandler
 import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.tools.api.Signer
 
@@ -17,8 +17,8 @@ interface AppProvider :
 
 interface DeviceToolsProvider {
     fun provideApp(): App
-    fun provideExecutor(): Executor
     fun provideLogger(): Logger
+    fun provideNetworkHandler(): NetworkHandler
     fun provideSettings(): Settings
     fun provideSigner(): Signer
 }
