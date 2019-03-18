@@ -1,15 +1,21 @@
 package com.sedsoftware.exchange.manager.di
 
-import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.ExchangeType
+import com.sedsoftware.core.di.qualifier.Exchange
+import com.sedsoftware.core.domain.ExchangeType.BINANCE
+import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import dagger.Module
 import dagger.Provides
-import dagger.multibindings.IntoSet
+import dagger.multibindings.ElementsIntoSet
 
 @Module
 class ExchangeManagerModule {
 
     @Provides
-    @IntoSet
-    fun provideBinanceExchange(): Exchange = ExchangeType.BINANCE
+    @ElementsIntoSet
+    fun provideCurrencyPairLoaders(
+        @Exchange(BINANCE) binance: CurrencyPairLoader
+    ): Set<CurrencyPairLoader> =
+        setOf(
+            binance
+        )
 }

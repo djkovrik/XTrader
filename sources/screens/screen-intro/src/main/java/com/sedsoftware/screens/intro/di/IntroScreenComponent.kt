@@ -5,12 +5,12 @@ import com.sedsoftware.screens.intro.IntroScreenFragment
 import dagger.Component
 import javax.inject.Singleton
 
-@Singleton
 @Component(
     dependencies = [
         MainActivityToolsProvider::class
     ]
 )
+@Singleton
 interface IntroScreenComponent {
 
     fun inject(fragment: IntroScreenFragment)

@@ -6,7 +6,6 @@ import com.sedsoftware.core.di.provider.ViewModelFactoryProvider
 import dagger.Component
 import javax.inject.Singleton
 
-@Singleton
 @Component(
     dependencies = [
         DeviceToolsProvider::class,
@@ -16,6 +15,7 @@ import javax.inject.Singleton
         ViewModelFactoryModule::class
     ]
 )
+@Singleton
 interface ViewModelFactoryComponent : ViewModelFactoryProvider {
 
     class Initializer private constructor() {

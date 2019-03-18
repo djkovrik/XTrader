@@ -52,7 +52,7 @@ class IntroScreenFragment : BaseFragment() {
             setHasFixedSize(true)
         }
 
-        introViewModel.showExchanges()
+//        introViewModel.showExchanges()
     }
 
     private fun handleExchangeList(list: List<ExchangeItem>?) {

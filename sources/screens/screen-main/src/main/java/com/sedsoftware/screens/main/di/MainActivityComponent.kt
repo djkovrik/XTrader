@@ -6,7 +6,6 @@ import com.sedsoftware.core.di.scope.ActivityScope
 import com.sedsoftware.screens.main.MainActivity
 import dagger.Component
 
-@ActivityScope
 @Component(
     dependencies = [
         AppProvider::class
@@ -15,6 +14,7 @@ import dagger.Component
         MainActivityModule::class
     ]
 )
+@ActivityScope
 interface MainActivityComponent : MainActivityToolsProvider {
 
     fun inject(activity: MainActivity)

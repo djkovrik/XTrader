@@ -6,13 +6,13 @@ import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
-@Singleton
 @Component(
     modules = [
-        PlatformToolsModule::class,
-        AppToolsModule::class
+        AppToolsModule::class,
+        PlatformToolsModule::class
     ]
 )
+@Singleton
 interface DeviceToolsComponent : DeviceToolsProvider {
 
     @Component.Builder

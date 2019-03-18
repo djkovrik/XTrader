@@ -6,6 +6,7 @@ import com.sedsoftware.exchange.binance.di.module.BinanceDatabaseModule
 import com.sedsoftware.exchange.binance.di.module.BinanceExportModule
 import com.sedsoftware.exchange.binance.di.module.BinanceNetworkModule
 import dagger.Component
+import javax.inject.Singleton
 
 @Component(
     dependencies = [
@@ -17,6 +18,7 @@ import dagger.Component
         BinanceNetworkModule::class
     ]
 )
+@Singleton
 interface BinanceComponent : BinanceProvider {
     class Initializer private constructor() {
         companion object {

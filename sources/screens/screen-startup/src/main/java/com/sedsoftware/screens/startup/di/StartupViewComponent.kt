@@ -5,12 +5,12 @@ import com.sedsoftware.core.di.scope.FragmentScope
 import com.sedsoftware.screens.startup.StartupFragment
 import dagger.Component
 
-@FragmentScope
 @Component(
     dependencies = [
         MainActivityToolsProvider::class
     ]
 )
+@FragmentScope
 interface StartupViewComponent {
 
     fun inject(fragment: StartupFragment)

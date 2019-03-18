@@ -4,12 +4,12 @@ import com.sedsoftware.core.di.provider.NavigationProvider
 import dagger.Component
 import javax.inject.Singleton
 
-@Singleton
 @Component(
     modules = [
         NavigationModule::class
     ]
 )
+@Singleton
 interface NavigationComponent : NavigationProvider {
 
     class Initializer private constructor() {
