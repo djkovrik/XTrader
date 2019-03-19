@@ -23,10 +23,12 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
             states.add(state)
         }
 
-        assert(exchanges.size == states.size) { " Exchanges and states size should be equal" }
+        assert(exchanges.size == states.size) { "Exchanges and states size should be equal" }
 
         notifyDataSetChanged()
     }
+
+    internal var clickListener: (Exchange, DownloadState) -> Unit = { _, _ -> }
 
     private val exchanges = mutableListOf<Exchange>()
     private val states = mutableListOf<DownloadState>()
@@ -36,7 +38,7 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder as ExchangeItemViewHolder
-        holder.bindTo(exchanges[position], states[position])
+        holder.bind(exchanges[position], states[position], clickListener)
     }
 
     override fun setHasStableIds(hasStableIds: Boolean) {
@@ -52,8 +54,9 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
     class ExchangeItemViewHolder(parent: ViewGroup) :
         RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_intro_screen_item)) {
 
-        fun bindTo(exchange: Exchange, downloadState: DownloadState) {
+        fun bind(exchange: Exchange, downloadState: DownloadState, clickListener: (Exchange, DownloadState) -> Unit) {
             itemView.intro_exchange_name.text = exchange.label
+            itemView.intro_exchange_name.setOnClickListener { clickListener(exchange, downloadState) }
         }
     }
 }

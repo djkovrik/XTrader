@@ -53,6 +53,10 @@ class IntroScreenFragment : BaseFragment() {
             setHasFixedSize(true)
         }
 
+        exchangesAdapter.clickListener = { exchange, downloadState ->
+            introViewModel.onExchangeClicked(exchange, downloadState)
+        }
+
         introViewModel.showExchanges()
     }
 
