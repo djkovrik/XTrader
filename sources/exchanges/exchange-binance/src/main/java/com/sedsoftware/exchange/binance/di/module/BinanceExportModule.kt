@@ -12,5 +12,5 @@ abstract class BinanceExportModule {
 
     @Binds
     @ExchangeName(BINANCE)
-    abstract fun bindBinancePairsDownloader(implementation: BinancePairLoader): CurrencyPairLoader
+    abstract fun bindBinancePairLoader(implementation: BinancePairLoader): CurrencyPairLoader
 }

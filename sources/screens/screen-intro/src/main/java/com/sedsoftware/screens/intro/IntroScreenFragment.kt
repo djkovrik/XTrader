@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sedsoftware.core.di.coordinator.IntroCoordinator
+import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.common.Failure
+import com.sedsoftware.core.utils.enums.DownloadState
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
-import com.sedsoftware.screens.intro.model.ExchangeItem
 import com.sedsoftware.screens.intro.viewmodel.IntroScreenViewModel
 import kotlinx.android.synthetic.main.fragment_intro_screen.intro_exchange_list
 import javax.inject.Inject
@@ -38,7 +39,7 @@ class IntroScreenFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
 
         introViewModel = viewModel(viewModelFactory) {
-            observe(exchanges, ::handleExchangeList)
+            observe(exchanges, ::handleExchangeMap)
             failure(viewModelFailure, ::handleDownloadsFailure)
         }
     }
@@ -52,11 +53,11 @@ class IntroScreenFragment : BaseFragment() {
             setHasFixedSize(true)
         }
 
-//        introViewModel.showExchanges()
+        introViewModel.showExchanges()
     }
 
-    private fun handleExchangeList(list: List<ExchangeItem>?) {
-        exchangesAdapter.items = list.orEmpty()
+    private fun handleExchangeMap(exchanges: Map<Exchange, DownloadState>?) {
+        exchanges?.let { exchangesAdapter.items = it }
     }
 
     private fun handleDownloadsFailure(failure: Failure?) {
