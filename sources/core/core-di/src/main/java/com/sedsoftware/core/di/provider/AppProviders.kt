@@ -2,8 +2,9 @@ package com.sedsoftware.core.di.provider
 
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.qualifier.Exchange
+import com.sedsoftware.core.di.qualifier.ExchangeName
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
+import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.navigation.Router
@@ -35,11 +36,11 @@ interface ViewModelFactoryProvider : ExchangeManagerProvider {
 }
 
 interface ExchangeManagerProvider : BinanceProvider {
-    fun provideExchangePairLoaders(): Set<@JvmSuppressWildcards CurrencyPairLoader>
+    fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
 }
 
 interface BinanceProvider {
 
-    @Exchange(BINANCE)
+    @ExchangeName(BINANCE)
     fun provideBinancePairLoader(): CurrencyPairLoader
 }
