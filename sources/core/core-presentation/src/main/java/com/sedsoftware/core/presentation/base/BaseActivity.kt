@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.provider.AppProvider
+import com.sedsoftware.core.presentation.R
+import com.sedsoftware.core.presentation.extension.setBackgroundColor
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -19,5 +21,6 @@ abstract class BaseActivity : AppCompatActivity() {
         inject()
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResId())
+        setBackgroundColor(R.color.colorBackground)
     }
 }
