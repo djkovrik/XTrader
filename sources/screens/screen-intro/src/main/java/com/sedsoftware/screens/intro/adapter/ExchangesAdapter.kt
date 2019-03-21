@@ -1,5 +1,6 @@
 package com.sedsoftware.screens.intro.adapter
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -7,7 +8,8 @@ import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.core.utils.enums.DownloadState
 import com.sedsoftware.screens.intro.R
-import kotlinx.android.synthetic.main.fragment_intro_screen_item.view.intro_exchange_name
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_name
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -52,11 +54,14 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
         position.toLong()
 
     class ExchangeItemViewHolder(parent: ViewGroup) :
-        RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_intro_screen_item)) {
+        RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_intro_screen_item)), LayoutContainer {
+
+        override val containerView: View?
+            get() = itemView
 
         fun bind(exchange: Exchange, downloadState: DownloadState, clickListener: (Exchange, DownloadState) -> Unit) {
-            itemView.intro_exchange_name.text = exchange.label
-            itemView.intro_exchange_name.setOnClickListener { clickListener(exchange, downloadState) }
+            intro_exchange_name.text = exchange.label
+            intro_exchange_name.setOnClickListener { clickListener(exchange, downloadState) }
         }
     }
 }

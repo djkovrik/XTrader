@@ -5,6 +5,10 @@ apply plugin: 'kotlin-kapt'
 
 apply from: '../../android-config.gradle'
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
