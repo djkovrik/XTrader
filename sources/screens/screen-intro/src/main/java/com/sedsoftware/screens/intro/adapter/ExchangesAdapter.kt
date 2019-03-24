@@ -10,6 +10,7 @@ import com.sedsoftware.core.utils.enums.DownloadState
 import com.sedsoftware.screens.intro.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_name
+import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_status
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -30,7 +31,7 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
         notifyDataSetChanged()
     }
 
-    internal var clickListener: (Exchange, DownloadState) -> Unit = { _, _ -> }
+    internal var clickListener: (Exchange) -> Unit = { _ -> }
 
     private val exchanges = mutableListOf<Exchange>()
     private val states = mutableListOf<DownloadState>()
@@ -59,9 +60,10 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
         override val containerView: View?
             get() = itemView
 
-        fun bind(exchange: Exchange, downloadState: DownloadState, clickListener: (Exchange, DownloadState) -> Unit) {
+        fun bind(exchange: Exchange, downloadState: DownloadState, clickListener: (Exchange) -> Unit) {
             intro_exchange_name.text = exchange.label
-            intro_exchange_name.setOnClickListener { clickListener(exchange, downloadState) }
+            intro_exchange_status.text = downloadState.name
+            intro_exchange_name.setOnClickListener { clickListener(exchange) }
         }
     }
 }

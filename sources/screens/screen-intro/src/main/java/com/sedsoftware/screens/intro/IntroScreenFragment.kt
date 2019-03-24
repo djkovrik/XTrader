@@ -39,8 +39,8 @@ class IntroScreenFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
 
         introViewModel = viewModel(viewModelFactory) {
-            observe(exchanges, ::handleExchangeMap)
-            failure(viewModelFailure, ::handleDownloadsFailure)
+            observe(loadersList, ::displayLoadersList)
+            failure(viewModelFailure, ::displayFailure)
         }
     }
 
@@ -53,18 +53,18 @@ class IntroScreenFragment : BaseFragment() {
             setHasFixedSize(true)
         }
 
-        exchangesAdapter.clickListener = { exchange, downloadState ->
-            introViewModel.onExchangeClicked(exchange, downloadState)
+        exchangesAdapter.clickListener = { exchange ->
+            introViewModel.onExchangeClicked(exchange)
         }
 
         introViewModel.showExchanges()
     }
 
-    private fun handleExchangeMap(exchanges: Map<Exchange, DownloadState>?) {
+    private fun displayLoadersList(exchanges: Map<Exchange, DownloadState>?) {
         exchanges?.let { exchangesAdapter.items = it }
     }
 
-    private fun handleDownloadsFailure(failure: Failure?) {
+    private fun displayFailure(failure: Failure?) {
 
     }
 }
