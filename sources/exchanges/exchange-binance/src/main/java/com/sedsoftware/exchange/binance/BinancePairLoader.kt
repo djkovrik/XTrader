@@ -8,6 +8,7 @@ import com.sedsoftware.core.utils.common.Either.Right
 import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.core.utils.common.Success
 import com.sedsoftware.exchange.binance.repository.PairsInfoRepository
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,7 +19,8 @@ class BinancePairLoader @Inject constructor(
     private val settings: Settings
 ) : CurrencyPairLoader {
 
-    override fun fetchCurrencyPairs(): Either<Failure, Success> {
+    override suspend fun fetchCurrencyPairs(): Either<Failure, Success> {
+        delay(2500L)
         return Right(Success.PairsLoadingCompleted)
     }
 }

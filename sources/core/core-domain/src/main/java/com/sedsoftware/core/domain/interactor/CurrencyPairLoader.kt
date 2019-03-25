@@ -5,5 +5,5 @@ import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.core.utils.common.Success
 
 interface CurrencyPairLoader {
-    fun fetchCurrencyPairs(): Either<Failure, Success>
+    suspend fun fetchCurrencyPairs(): Either<Failure, Success>
 }
