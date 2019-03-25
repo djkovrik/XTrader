@@ -17,20 +17,20 @@ class IntroScreenViewModel @Inject constructor(
 
     var loadersList: MutableLiveData<Map<Exchange, DownloadState>> = MutableLiveData()
 
-    private var currentDownloadsState: MutableMap<Exchange, DownloadState> = mutableMapOf()
+    private var currentLoadersList: MutableMap<Exchange, DownloadState> = mutableMapOf()
 
     fun showExchanges() {
         val initialMap = mutableMapOf<Exchange, DownloadState>()
         loaders.keys.forEach { exchange ->
             initialMap[exchange] = DownloadState.AVAILABLE
         }
-        currentDownloadsState = initialMap
-        refreshExchangeList()
+        currentLoadersList = initialMap
+        loadersList.value = currentLoadersList
     }
 
     fun onExchangeClicked(exchange: Exchange) {
         logger.d("Downloading started for ${exchange.name} pairs")
-        currentDownloadsState[exchange] = DownloadState.IN_PROGRESS
+        setDownloadState(exchange, DownloadState.IN_PROGRESS)
 
         launch {
             loaders[exchange]
@@ -41,18 +41,18 @@ class IntroScreenViewModel @Inject constructor(
 
     private fun handleLoadingError(failure: Failure, exchange: Exchange) {
         logger.d("Downloading error for ${exchange.name}")
-        currentDownloadsState[exchange] = DownloadState.ERROR
+        setDownloadState(exchange, DownloadState.ERROR)
         handleFailure(failure)
-        refreshExchangeList()
     }
 
     private fun handleLoadingCompletion(exchange: Exchange) {
         logger.d("Downloading completed for ${exchange.name}")
-        currentDownloadsState[exchange] = DownloadState.COMPLETED
-        refreshExchangeList()
+        setDownloadState(exchange, DownloadState.COMPLETED)
+
     }
 
-    private fun refreshExchangeList() {
-        loadersList.value = currentDownloadsState
+    private fun setDownloadState(exchange: Exchange, state: DownloadState) {
+        currentLoadersList[exchange] = state
+        loadersList.value = currentLoadersList
     }
 }
