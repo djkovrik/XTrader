@@ -8,10 +8,11 @@
 
     <style name="XTextPrimary">
         <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
 
     <style name="XTTextSecondary" parent="XTextPrimary">
-        <item name="android:alpha">0.8</item>
+        <item name="android:alpha">0.6</item>
     </style>
 
     <style name="XTextButton" parent="XTextPrimary" />
