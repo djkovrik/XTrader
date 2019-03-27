@@ -2,20 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/material_list_single_line_with_avatar_normal_height"
     android:orientation="horizontal">
 
     <TextView
+        style="@style/XTextCaption"
         android:id="@+id/intro_exchange_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/material_list_text_first_position_margin_start"
+        android:layout_marginStart="@dimen/material_list_text_first_position_margin_start"
         tools:text="Binance" />
-
-    <TextView
-        android:id="@+id/intro_exchange_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        tools:text="Available" />
 
 </LinearLayout>

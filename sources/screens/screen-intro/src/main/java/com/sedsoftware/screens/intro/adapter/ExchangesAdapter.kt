@@ -10,7 +10,6 @@ import com.sedsoftware.core.utils.enums.DownloadState
 import com.sedsoftware.screens.intro.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_name
-import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_status
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -23,6 +22,24 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
 
         newValue.forEach { (exchange, state) ->
             exchanges.add(exchange)
+            exchanges.add(exchange)
+            exchanges.add(exchange)
+            exchanges.add(exchange)
+            exchanges.add(exchange)
+            exchanges.add(exchange)
+            exchanges.add(exchange)
+            exchanges.add(exchange)
+            exchanges.add(exchange)
+            exchanges.add(exchange)
+            states.add(state)
+            states.add(state)
+            states.add(state)
+            states.add(state)
+            states.add(state)
+            states.add(state)
+            states.add(state)
+            states.add(state)
+            states.add(state)
             states.add(state)
         }
 
@@ -49,7 +66,7 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
     }
 
     override fun getItemCount(): Int =
-        items.size
+        items.size + 9
 
     override fun getItemId(position: Int): Long =
         position.toLong()
@@ -62,7 +79,6 @@ class ExchangesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView
 
         fun bind(exchange: Exchange, downloadState: DownloadState, clickListener: (Exchange) -> Unit) {
             intro_exchange_name.text = exchange.label
-            intro_exchange_status.text = downloadState.name
             intro_exchange_name.setOnClickListener { clickListener(exchange) }
         }
     }
