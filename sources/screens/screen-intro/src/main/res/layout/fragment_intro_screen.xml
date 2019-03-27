@@ -9,56 +9,61 @@
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
         android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
         android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
         android:layout_marginTop="@dimen/material_baseline_grid_4x"
         android:contentDescription="@string/a11y_app_logo"
         android:src="@drawable/ic_app_label"
-        app:layout_constraintBottom_toTopOf="@+id/greetings_first"
+        app:layout_constraintBottom_toTopOf="@+id/greetings_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <TextView
-        android:id="@+id/greetings_first"
+        android:id="@+id/greetings_text"
         style="@style/XTextPrimary"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
-        android:layout_marginTop="@dimen/material_baseline_grid_1x"
-        android:text="@string/label_greetings1"
+        android:layout_marginEnd="@dimen/material_baseline_grid_4x"
+        android:layout_marginStart="@dimen/material_baseline_grid_4x"
+        android:gravity="center_horizontal"
+        android:text="@string/label_greetings"
+        app:layout_constraintBottom_toTopOf="@+id/intro_exchange_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 
-    <TextView
-        android:id="@+id/greetings_second"
-        style="@style/XTextPrimary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
-        android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
-        android:gravity="center_horizontal"
-        android:text="@string/label_greetings2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greetings_first" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/intro_exchange_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/material_baseline_grid_2x"
-        android:layout_marginTop="@dimen/material_baseline_grid_2x"
-        android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
-        android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
+        android:layout_marginEnd="@dimen/material_list_text_first_position_margin_start"
+        android:layout_marginStart="@dimen/material_list_text_first_position_margin_start"
         android:clipToPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/greetings_note"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greetings_text" />
+
+    <TextView
+        android:id="@+id/greetings_note"
+        style="@style/XTTextSecondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
+        android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+        android:layout_marginStart="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
+        android:gravity="center_horizontal"
+        android:text="@string/label_note"
         app:layout_constraintBottom_toTopOf="@+id/intro_button_download"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greetings_second" />
+        app:layout_constraintTop_toBottomOf="@+id/intro_exchange_list" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/intro_button_download"
@@ -68,9 +73,11 @@
         android:layout_marginBottom="@dimen/material_baseline_grid_2x"
         android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
         android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
         android:text="@string/btn_greetings_continue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greetings_note" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

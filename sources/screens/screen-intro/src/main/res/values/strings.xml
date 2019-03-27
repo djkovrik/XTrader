@@ -6,8 +6,8 @@
     <string name="btn_greetings_continue">Continue</string>
 
     <!-- Intro screen -->
-    <string name="label_greetings1">Welcome!</string>
-    <string name="label_greetings2">Before using XTrader you have to download \ncurrency pairs for any of the supported exchanges.</string>
+    <string name="label_greetings">Before starting please download currency pairs for any of the supported exchanges:</string>
+    <string name="label_note">Note: you can manage it later from settings menu.</string>
 
     <!-- A11y -->
     <string name="a11y_app_logo">App logo</string>
