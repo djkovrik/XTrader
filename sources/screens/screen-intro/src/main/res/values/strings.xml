@@ -2,8 +2,8 @@
 <resources>
 
     <!-- Buttons -->
-    <string name="btn_greetings_download">Download</string>
     <string name="btn_greetings_continue">Continue</string>
+    <string name="btn_greetings_download">Download</string>
 
     <!-- Intro screen -->
     <string name="label_greetings">Before starting please download currency pairs for any of the supported exchanges:</string>

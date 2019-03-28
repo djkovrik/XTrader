@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="XTButton" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:backgroundTint">@color/colorAccent</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textColor">@color/colorButtonText</item>
-        <item name="cornerRadius">@dimen/button_corner_radius</item>
-        <item name="rippleColor">@color/colorAccentDark</item>
+    <style name="XTButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorNormalButtonText</item>
+        <item name="cornerRadius">@dimen/button_corner_radius_normal</item>
     </style>
 
     <style name="XTButtonNormal" parent="XTButton">
@@ -18,5 +16,17 @@
         <item name="android:paddingStart">@dimen/button_padding_wide</item>
         <item name="android:paddingEnd">@dimen/button_padding_wide</item>
     </style>
+
+    <style name="XTButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorOutlinedButtonText</item>
+        <item name="strokeColor">@color/colorOutlinedButtonStroke</item>
+        <item name="cornerRadius">@dimen/button_corner_radius_small</item>
+        <item name="android:insetTop">@dimen/button_vertical_inset</item>
+        <item name="android:insetBottom">@dimen/button_vertical_inset</item>
+        <item name="android:insetLeft">@dimen/button_horizontal_inset</item>
+        <item name="android:insetRight">@dimen/button_horizontal_inset</item>
+    </style>
+
 
 </resources>

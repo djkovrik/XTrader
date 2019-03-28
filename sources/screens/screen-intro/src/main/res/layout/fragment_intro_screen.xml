@@ -43,6 +43,7 @@
         android:layout_marginBottom="@dimen/material_baseline_grid_1x"
         android:layout_marginEnd="@dimen/material_list_text_first_position_margin_start"
         android:layout_marginStart="@dimen/material_list_text_first_position_margin_start"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
         android:clipToPadding="true"
         app:layout_constraintBottom_toTopOf="@+id/greetings_note"
         app:layout_constraintEnd_toEndOf="parent"

@@ -20,6 +20,8 @@
     <style name="XTextCaption" parent="XTextPrimary">
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textSize">@dimen/caption_text_size</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
     </style>
 
 </resources>

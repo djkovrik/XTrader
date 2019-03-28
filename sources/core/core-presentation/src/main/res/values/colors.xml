@@ -7,10 +7,14 @@
     <color name="colorAccentDark">@color/material_color_grey_800</color>
 
     <!-- TEXT -->
-    <color name="colorButtonText">@color/material_color_white</color>
     <color name="colorTextPrimary">@color/material_color_black</color>
 
     <!-- BACKGROUNDS -->
     <color name="colorBackground">@color/material_color_white</color>
     <color name="colorLauncherIconBackground">#F5F5F5</color>
+
+    <!-- UI -->
+    <color name="colorNormalButtonText">@color/material_color_white</color>
+    <color name="colorOutlinedButtonText">@color/colorPrimary</color>
+    <color name="colorOutlinedButtonStroke">@color/colorPrimary</color>
 </resources>
