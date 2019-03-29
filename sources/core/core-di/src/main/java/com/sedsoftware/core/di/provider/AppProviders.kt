@@ -6,6 +6,7 @@ import com.sedsoftware.core.di.qualifier.ExchangeName
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
+import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.navigation.Router
 import com.sedsoftware.core.tools.api.Logger
@@ -37,6 +38,7 @@ interface ViewModelFactoryProvider : ExchangeManagerProvider {
 
 interface ExchangeManagerProvider : BinanceProvider {
     fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
+    fun provideIconsProvider(): AssetsProvider
 }
 
 interface BinanceProvider {
