@@ -5,19 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/material_list_single_line_with_avatar_normal_height">
 
+    <ImageView
+        android:id="@+id/intro_exchange_logo"
+        android:layout_width="@dimen/material_list_avatar_size"
+        android:layout_height="@dimen/material_list_avatar_size"
+        android:layout_marginEnd="@dimen/material_baseline_grid_1x"
+        android:layout_marginStart="@dimen/material_baseline_grid_1x"
+        android:contentDescription="@string/a11y_app_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/intro_exchange_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/intro_exchange_name"
         style="@style/XTextCaption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/material_baseline_grid_1x"
+        android:layout_marginStart="@dimen/material_baseline_grid_1x"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/intro_button_download"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/intro_exchange_logo"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Binance" />
 
@@ -27,8 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|end"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:text="@string/btn_greetings_download"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

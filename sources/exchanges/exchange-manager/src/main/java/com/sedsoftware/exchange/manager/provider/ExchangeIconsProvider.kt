@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Singleton
 class ExchangeAssetsProvider @Inject constructor() : AssetsProvider {
 
-    override fun provideLogo(exchange: Exchange): Int =
+    override fun getLogoResource(exchange: Exchange): Int =
         when (exchange) {
             ExchangeType.BINANCE -> R.drawable.logo_binance
             else -> 0
