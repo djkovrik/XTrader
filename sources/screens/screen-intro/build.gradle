@@ -16,7 +16,6 @@ dependencies {
     implementation project(':core-navigation')
     implementation project(':core-tools-api')
     implementation project(':core-utils')
-    implementation project(':lib-spin-kit')
 
     implementation CoreDependencies.adapterDelegates
 

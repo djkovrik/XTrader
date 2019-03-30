@@ -10,7 +10,6 @@ dependencies {
     implementation project(':core-presentation')
     implementation project(':core-navigation')
     implementation project(':core-tools-api')
-    implementation project(':lib-spin-kit')
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
