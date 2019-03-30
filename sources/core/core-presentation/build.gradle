@@ -1,8 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 apply from: '../../android-config.gradle'
+
+androidExtensions {
+    experimental = true
+}
 
 dependencies {
     implementation project(':core-di')
@@ -16,6 +21,7 @@ dependencies {
     implementation JetPackDependencies.lifecycleExtensions
     implementation JetPackDependencies.lifecycleKtx
     implementation JetPackDependencies.navigation
+    implementation JetPackDependencies.KTX
 
     implementation UiDependencies.materialValues
 }

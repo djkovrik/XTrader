@@ -23,10 +23,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/material_baseline_grid_1x"
         android:layout_marginStart="@dimen/material_baseline_grid_1x"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/intro_button_download"
         app:layout_constraintStart_toEndOf="@+id/intro_exchange_logo"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Binance" />
+
+    <com.sedsoftware.core.presentation.custom.view.DownloadButton
+        android:id="@+id/intro_button_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        app:color_completed="@color/colorSuccess"
+        app:color_error="@color/colorError"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/intro_exchange_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:text_available="@string/btn_greetings_download_available"
+        app:text_completed="@string/btn_greetings_download_completed"
+        app:text_error="@string/btn_greetings_download_error" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
