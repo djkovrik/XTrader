@@ -17,4 +17,5 @@
     <color name="colorNormalButtonText">@color/material_color_white</color>
     <color name="colorOutlinedButtonText">@color/colorPrimary</color>
     <color name="colorOutlinedButtonStroke">@color/colorPrimary</color>
+    <color name="colorImageDim">@color/material_color_grey_600</color>
 </resources>

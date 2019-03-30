@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.provider.AssetsProvider
+import com.sedsoftware.core.presentation.extension.dim
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.core.utils.enums.DownloadState
 import com.sedsoftware.screens.intro.R
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_logo
-import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_name
+import kotlinx.android.synthetic.main.fragment_intro_screen_item.*
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -26,24 +26,6 @@ class ExchangesAdapter @Inject constructor(
 
         newValue.forEach { (exchange, state) ->
             exchanges.add(exchange)
-            exchanges.add(exchange)
-            exchanges.add(exchange)
-            exchanges.add(exchange)
-            exchanges.add(exchange)
-            exchanges.add(exchange)
-            exchanges.add(exchange)
-            exchanges.add(exchange)
-            exchanges.add(exchange)
-            exchanges.add(exchange)
-            states.add(state)
-            states.add(state)
-            states.add(state)
-            states.add(state)
-            states.add(state)
-            states.add(state)
-            states.add(state)
-            states.add(state)
-            states.add(state)
             states.add(state)
         }
 
@@ -70,7 +52,7 @@ class ExchangesAdapter @Inject constructor(
     }
 
     override fun getItemCount(): Int =
-        items.size + 9
+        items.size
 
     override fun getItemId(position: Int): Long =
         position.toLong()
@@ -84,7 +66,9 @@ class ExchangesAdapter @Inject constructor(
         fun bind(exchange: Exchange, state: DownloadState, provider: AssetsProvider, listener: (Exchange) -> Unit) {
             intro_exchange_name.text = exchange.label
             intro_exchange_logo.setImageResource(provider.getLogoResource(exchange))
-            intro_exchange_name.setOnClickListener { listener(exchange) }
+            intro_exchange_logo.dim(state != DownloadState.COMPLETED)
+
+            intro_button_download.setOnClickListener { listener(exchange) }
         }
     }
 }
