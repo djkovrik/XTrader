@@ -32,6 +32,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     BTS("BitShares"),
     BTT("BitTorent"),
     CDT("Blox"),
+    CELR("Celer Network"),
     CHAT("ChatCoin"),
     CLOAK("CloakCoin"),
     CMT("CyberMiles"),
