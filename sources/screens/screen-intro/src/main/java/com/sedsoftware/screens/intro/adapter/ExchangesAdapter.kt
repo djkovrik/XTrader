@@ -67,6 +67,9 @@ class ExchangesAdapter @Inject constructor(
             intro_exchange_name.text = exchange.label
             intro_exchange_logo.setImageResource(provider.getLogoResource(exchange))
             intro_exchange_logo.dim(state != DownloadState.COMPLETED)
+            intro_button_download.setState(state)
+
+            intro_button_download.clickListener = { listener(exchange) }
         }
     }
 }

@@ -25,6 +25,13 @@ class DownloadButton : ViewAnimator, LayoutContainer {
         init(attrs)
     }
 
+    var clickListener: () -> Unit = {}
+        set(value) {
+            field = value
+            button?.setOnClickListener { field.invoke() }
+            error_text?.setOnClickListener { field.invoke() }
+        }
+
     private var state: DownloadState = DownloadState.AVAILABLE
     private var textAvailable: String? = null
     private var textCompleted: String? = null
