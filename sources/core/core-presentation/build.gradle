@@ -21,7 +21,6 @@ dependencies {
     implementation JetPackDependencies.lifecycleExtensions
     implementation JetPackDependencies.lifecycleKtx
     implementation JetPackDependencies.navigation
-    implementation JetPackDependencies.KTX
 
     implementation UiDependencies.materialValues
 }
