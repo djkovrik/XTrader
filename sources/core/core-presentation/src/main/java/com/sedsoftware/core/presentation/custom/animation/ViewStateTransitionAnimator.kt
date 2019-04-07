@@ -13,7 +13,7 @@ open class ViewStateTransitionAnimator : FrameLayout, ViewStateTransition.Callba
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
-    fun enqueue(transition: ViewStateTransition) {
+    fun perform(transition: ViewStateTransition) {
         animationsQueue.add(transition)
         if (!isAnimationRunning) {
             isAnimationRunning = true

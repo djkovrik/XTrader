@@ -7,8 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import com.sedsoftware.core.presentation.R
 import com.sedsoftware.core.presentation.custom.DownloadState
+import com.sedsoftware.core.presentation.custom.DownloadState.AVAILABLE
+import com.sedsoftware.core.presentation.custom.DownloadState.COMPLETED
+import com.sedsoftware.core.presentation.custom.DownloadState.ERROR
+import com.sedsoftware.core.presentation.custom.DownloadState.IN_PROGRESS
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransitionAnimator
-import com.sedsoftware.core.presentation.extension.gone
+import com.sedsoftware.core.presentation.custom.view.transitions.AvailableToProgressTransition
+import com.sedsoftware.core.presentation.custom.view.transitions.ErrorToProgressTransition
+import com.sedsoftware.core.presentation.custom.view.transitions.ProgressToCompletedTransition
+import com.sedsoftware.core.presentation.custom.view.transitions.ProgressToErrorTransition
 import com.sedsoftware.core.presentation.extension.show
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_download_button.button
@@ -37,12 +44,8 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
             error_text?.setOnClickListener { field.invoke() }
         }
 
-    private val stateViews: Map<DownloadState, View> = mapOf(
-        DownloadState.AVAILABLE to button,
-        DownloadState.IN_PROGRESS to progress,
-        DownloadState.COMPLETED to completed,
-        DownloadState.ERROR to error
-    )
+
+    private lateinit var views: Map<DownloadState, View>
 
     private var currentState: DownloadState? = null
     private var textAvailable: String? = null
@@ -73,30 +76,39 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
         colorCompleted?.let { completed.setTextColor(it) }
         colorError?.let { error_text.setTextColor(it) }
         colorError?.let { error_image.setColorFilter(it, PorterDuff.Mode.SRC_IN) }
+
+        views = mapOf(
+            AVAILABLE to button,
+            IN_PROGRESS to progress,
+            COMPLETED to completed,
+            ERROR to error
+        )
     }
 
+    // Possible transitions:
+    //  AVAILABLE -> IN_PROGRESS
+    //  IN_PROGRESS -> COMPLETED
+    //  IN_PROGRESS -> ERROR
+    //  ERROR -> IN_PROGRESS
     fun setState(state: DownloadState) {
-        when (currentState) {
-            DownloadState.AVAILABLE -> {
-                // Possible transitions:
-                //  AVAILABLE -> IN_PROGRESS
-
-            }
-            DownloadState.IN_PROGRESS -> {
-                // Possible transitions:
-                //  IN_PROGRESS -> COMPLETED
-                //  IN_PROGRESS -> ERROR
-
-            }
-            DownloadState.ERROR -> {
-                // Possible transitions:
-                //  ERROR -> IN_PROGRESS
-            }
-            else -> {
-                stateViews.values.forEach { it.gone() }
-                stateViews[state]?.show()
+        when {
+            currentState == null -> {
                 currentState = state
+                views[state]?.show()
+            }
+            currentState == AVAILABLE && state == IN_PROGRESS -> {
+                perform(AvailableToProgressTransition(views[AVAILABLE], views[IN_PROGRESS]))
+            }
+            currentState == IN_PROGRESS && state == COMPLETED -> {
+                perform(ProgressToCompletedTransition(views[IN_PROGRESS], views[COMPLETED]))
+            }
+            currentState == IN_PROGRESS && state == ERROR -> {
+                perform(ProgressToErrorTransition(views[IN_PROGRESS], views[ERROR]))
+            }
+            currentState == ERROR && state == IN_PROGRESS -> {
+                perform(ErrorToProgressTransition(views[ERROR], views[IN_PROGRESS]))
             }
         }
+        currentState = state
     }
 }

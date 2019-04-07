@@ -8,8 +8,8 @@ interface ViewStateTransition {
         fun completed()
     }
 
-    val from: View
-    val to: View
+    val from: View?
+    val to: View?
 
     fun run(callback: Callback)
 }
