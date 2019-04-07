@@ -8,7 +8,7 @@ import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.presentation.extension.dim
 import com.sedsoftware.core.presentation.extension.inflate
-import com.sedsoftware.core.utils.enums.DownloadState
+import com.sedsoftware.core.presentation.custom.DownloadState
 import com.sedsoftware.screens.intro.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.fragment_intro_screen_item.*

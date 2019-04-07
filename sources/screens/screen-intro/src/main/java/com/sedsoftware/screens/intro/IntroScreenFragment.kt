@@ -10,7 +10,7 @@ import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.common.Failure
-import com.sedsoftware.core.utils.enums.DownloadState
+import com.sedsoftware.core.presentation.custom.DownloadState
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.viewmodel.IntroScreenViewModel

@@ -5,22 +5,27 @@ import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ViewAnimator
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import com.sedsoftware.core.presentation.R
-import com.sedsoftware.core.utils.enums.DownloadState
+import com.sedsoftware.core.presentation.custom.DownloadState
+import com.sedsoftware.core.presentation.custom.animation.ViewStateTransitionAnimator
+import com.sedsoftware.core.presentation.extension.gone
+import com.sedsoftware.core.presentation.extension.show
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.view_download_button.*
+import kotlinx.android.synthetic.main.view_download_button.button
+import kotlinx.android.synthetic.main.view_download_button.completed
+import kotlinx.android.synthetic.main.view_download_button.error
+import kotlinx.android.synthetic.main.view_download_button.error_image
+import kotlinx.android.synthetic.main.view_download_button.error_text
+import kotlinx.android.synthetic.main.view_download_button.progress
 
-class DownloadButton : ViewAnimator, LayoutContainer {
+class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
 
-    constructor(context: Context?) : super(context) {
+    constructor(context: Context) : super(context) {
         LayoutInflater.from(context).inflate(R.layout.view_download_button, this, true)
         init(null)
     }
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         LayoutInflater.from(context).inflate(R.layout.view_download_button, this, true)
         init(attrs)
     }
@@ -32,7 +37,14 @@ class DownloadButton : ViewAnimator, LayoutContainer {
             error_text?.setOnClickListener { field.invoke() }
         }
 
-    private var state: DownloadState = DownloadState.AVAILABLE
+    private val stateViews: Map<DownloadState, View> = mapOf(
+        DownloadState.AVAILABLE to button,
+        DownloadState.IN_PROGRESS to progress,
+        DownloadState.COMPLETED to completed,
+        DownloadState.ERROR to error
+    )
+
+    private var currentState: DownloadState? = null
     private var textAvailable: String? = null
     private var textCompleted: String? = null
     private var textError: String? = null
@@ -61,40 +73,29 @@ class DownloadButton : ViewAnimator, LayoutContainer {
         colorCompleted?.let { completed.setTextColor(it) }
         colorError?.let { error_text.setTextColor(it) }
         colorError?.let { error_image.setColorFilter(it, PorterDuff.Mode.SRC_IN) }
-
-        refreshDisplayingState()
     }
 
     fun setState(state: DownloadState) {
-        this.state = state
-        refreshDisplayingState()
-    }
-
-    private fun refreshDisplayingState() {
-        when (state) {
+        when (currentState) {
             DownloadState.AVAILABLE -> {
-                button.isVisible = true
-                progress.isGone = true
-                completed.isGone = true
-                error.isGone = true
+                // Possible transitions:
+                //  AVAILABLE -> IN_PROGRESS
+
             }
             DownloadState.IN_PROGRESS -> {
-                button.isGone = true
-                progress.isVisible = true
-                completed.isGone = true
-                error.isGone = true
-            }
-            DownloadState.COMPLETED -> {
-                button.isGone = true
-                progress.isGone = true
-                completed.isVisible = true
-                error.isGone = true
+                // Possible transitions:
+                //  IN_PROGRESS -> COMPLETED
+                //  IN_PROGRESS -> ERROR
+
             }
             DownloadState.ERROR -> {
-                button.isGone = true
-                progress.isGone = true
-                completed.isGone = true
-                error.isVisible = true
+                // Possible transitions:
+                //  ERROR -> IN_PROGRESS
+            }
+            else -> {
+                stateViews.values.forEach { it.gone() }
+                stateViews[state]?.show()
+                currentState = state
             }
         }
     }
