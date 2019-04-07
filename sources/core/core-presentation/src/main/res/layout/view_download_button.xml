@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/button_intro_width"
+    android:layout_height="@dimen/button_intro_height"
+    android:layout_gravity="center">
 
-    <com.google.android.material.button.MaterialButton
+    <TextView
         android:id="@+id/button"
-        style="@style/XTButtonOutlined"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/XTButtonTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_button"
         android:visibility="gone"
+        android:gravity="center"
         tools:text="Download" />
 
     <ProgressBar
         android:id="@+id/progress"
-        android:layout_width="@dimen/button_progress_bar_size"
-        android:layout_height="@dimen/button_progress_bar_size"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="gone"
         android:layout_gravity="center" />
 
     <LinearLayout
         android:id="@+id/error"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:visibility="gone"
+        android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
 
         <TextView
             android:id="@+id/error_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/material_list_normal_primary_text_size"
             android:layout_margin="@dimen/material_baseline_grid_0.5x"
             tools:text="Retry" />
 
@@ -47,10 +49,10 @@
 
     <TextView
         android:id="@+id/completed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:visibility="gone"
         tools:text="Completed!" />
 
-</merge>
+</FrameLayout>

@@ -17,16 +17,9 @@
         <item name="android:paddingEnd">@dimen/button_padding_wide</item>
     </style>
 
-    <style name="XTButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="XTButtonTextView">
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/colorOutlinedButtonText</item>
-        <item name="strokeColor">@color/colorOutlinedButtonStroke</item>
-        <item name="cornerRadius">@dimen/button_corner_radius_small</item>
-        <item name="android:insetTop">@dimen/button_vertical_inset</item>
-        <item name="android:insetBottom">@dimen/button_vertical_inset</item>
-        <item name="android:insetLeft">@dimen/button_horizontal_inset</item>
-        <item name="android:insetRight">@dimen/button_horizontal_inset</item>
     </style>
-
 
 </resources>
