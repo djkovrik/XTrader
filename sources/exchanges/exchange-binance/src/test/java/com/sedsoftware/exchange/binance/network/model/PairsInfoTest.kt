@@ -1,5 +1,6 @@
 package com.sedsoftware.exchange.binance.network.model
 
+import com.sedsoftware.core.adapters.OffsetDateTimeAdapter
 import com.sedsoftware.core.tests.blockingMemoized
 import com.sedsoftware.core.tests.get
 import com.sedsoftware.exchange.binance.Urls
@@ -8,10 +9,15 @@ import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsInfoMapper
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
+import org.threeten.bp.Instant
+import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.ZoneOffset
 
 class PairsInfoTest : Spek({
 
-    val response: PairsInfo? by blockingMemoized { get(Urls.GET_CURRENCY_PAIRS, PairsInfo::class.java) }
+    val adapter = OffsetDateTimeAdapter()
+    val now: OffsetDateTime = Instant.now().atZone(ZoneOffset.UTC).toOffsetDateTime()
+    val response: PairsInfo? by blockingMemoized { get(Urls.GET_CURRENCY_PAIRS, adapter, PairsInfo::class.java) }
 
     describe("Binance exchangeInfo response test") {
 
@@ -25,14 +31,29 @@ class PairsInfoTest : Spek({
             it("timezone should not be empty") {
                 response?.timezone.should.not.be.empty
             }
-            it("serverTime should be above zero") {
-                response?.serverTime.should.be.above(0)
-            }
             it("rateLimits should not be empty") {
                 response?.rateLimits.should.not.be.empty
             }
             it("symbols should not be empty") {
                 response?.symbols.should.not.be.empty
+            }
+        }
+
+        context("Check server date mapping") {
+            it("serverTime should not be null") {
+                response?.serverTime.should.not.be.`null`
+            }
+            it("serverTime should have correct year") {
+                response?.serverTime?.year.should.be.equal(now.year)
+            }
+            it("serverTime should have correct month") {
+                response?.serverTime?.month.should.be.equal(now.month)
+            }
+            it("serverTime should have correct day") {
+                response?.serverTime?.dayOfMonth.should.be.equal(now.dayOfMonth)
+            }
+            it("serverTime should have correct hour") {
+                response?.serverTime?.hour.should.be.equal(now.hour)
             }
         }
 
@@ -66,7 +87,7 @@ class PairsInfoTest : Spek({
             val mapper = BinanceSymbolsInfoMapper()
 
             it("Maps server time correctly") {
-                response?.let { mapper.mapSyncInfoToDb(it).lastSyncDate.should.be.above(0) }
+                response?.let { mapper.mapSyncInfoToDb(it).lastSyncDate.should.not.be.`null` }
             }
 
             it("Maps symbols correctly") {
