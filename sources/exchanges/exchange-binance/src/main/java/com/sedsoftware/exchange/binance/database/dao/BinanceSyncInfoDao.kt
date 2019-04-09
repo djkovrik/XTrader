@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
-import java.util.Date
+import org.threeten.bp.OffsetDateTime
 
 @Dao
 abstract class BinanceSyncInfoDao {
@@ -13,6 +13,6 @@ abstract class BinanceSyncInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(item: BinanceSyncInfoDbModel): Long
 
-    @Query("SELECT last_sync_timestamp FROM sync_info WHERE name LIKE :name")
-    abstract fun getLastSyncDate(name: String): Date
+    @Query("SELECT last_sync_date FROM sync_info WHERE name LIKE :name")
+    abstract fun getLastSyncDate(name: String): OffsetDateTime
 }

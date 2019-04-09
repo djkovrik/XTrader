@@ -4,5 +4,7 @@ apply plugin: 'kotlin'
 apply from: '../../java-config.gradle'
 
 dependencies {
-
+    implementation CoreDependencies.threetenabp
+    implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
 }

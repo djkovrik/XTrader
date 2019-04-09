@@ -25,6 +25,8 @@ dependencies {
 
     testImplementation project(':core-tests')
 
+    implementation CoreDependencies.threetenabp
+
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 

@@ -5,17 +5,6 @@ apply plugin: 'com.frogermcs.androiddevmetrics'
 
 apply from: '../android-config.gradle'
 
-//android {
-//    buildTypes {
-//        release {
-//            minifyEnabled true
-//            shrinkResources true
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
-//            proguardFiles fileTree('proguard').asList().toArray()
-//        }
-//    }
-//}
-
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
@@ -34,6 +23,8 @@ dependencies {
     implementation project(':exchange-binance')
 
     implementation JetPackDependencies.legacyUtils
+
+    implementation CoreDependencies.threetenabp
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
