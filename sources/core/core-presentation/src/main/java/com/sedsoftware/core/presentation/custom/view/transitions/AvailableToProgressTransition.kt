@@ -1,61 +1,47 @@
 package com.sedsoftware.core.presentation.custom.view.transitions
 
-import android.animation.Animator
-import android.animation.Animator.AnimatorListener
 import android.view.View
+import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator
+import at.wirecube.additiveanimations.additive_animator.AnimationEndListener
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransition
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransition.Callback
-import com.sedsoftware.core.presentation.extension.gone
+import com.sedsoftware.core.presentation.custom.animation.ViewStateTransitionAnimator
+import com.sedsoftware.core.presentation.extension.hide
 import com.sedsoftware.core.presentation.extension.show
 
 class AvailableToProgressTransition(override val from: View?, override val to: View?) : ViewStateTransition {
 
     override fun run(callback: Callback) {
-        hideFromView(callback)
+        animateFrom(callback)
     }
 
-    private fun hideFromView(callback: Callback) {
-        from?.animate()
-            ?.scaleX(0f)
-            ?.scaleY(0f)
-            ?.setDuration(500)
-            ?.setListener(object : AnimatorListener {
-                override fun onAnimationRepeat(animation: Animator?) {
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
-                    from.gone()
-                    showToView(callback)
-                }
-
-                override fun onAnimationCancel(animation: Animator?) {
-                }
-
-                override fun onAnimationStart(animation: Animator?) {
+    private fun animateFrom(callback: Callback) {
+        AdditiveAnimator.animate(from)
+            .setDuration(ViewStateTransitionAnimator.ANIMATION_DURATION)
+            .alpha(0f)
+            .scale(0f)
+            .addEndAction(object : AnimationEndListener() {
+                override fun onAnimationEnd(wasCancelled: Boolean) {
+                    from?.hide()
+                    to?.alpha = 0f
+                    animateTo(callback)
                 }
             })
-            ?.start()
+            .start()
     }
 
-    private fun showToView(callback: Callback) {
-        to?.animate()
-            ?.alpha(1f)
-            ?.setDuration(500)
-            ?.setListener(object : AnimatorListener {
-                override fun onAnimationRepeat(animation: Animator?) {
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
+    private fun animateTo(callback: Callback) {
+        AdditiveAnimator.animate(to)
+            .setDuration(ViewStateTransitionAnimator.ANIMATION_DURATION)
+            .addStartAction {
+                to?.show()
+            }
+            .alpha(1f)
+            .addEndAction(object : AnimationEndListener() {
+                override fun onAnimationEnd(wasCancelled: Boolean) {
                     callback.completed()
                 }
-
-                override fun onAnimationCancel(animation: Animator?) {
-                }
-
-                override fun onAnimationStart(animation: Animator?) {
-                    to.show()
-                }
             })
-            ?.start()
+            .start()
     }
 }

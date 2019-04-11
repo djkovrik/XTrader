@@ -100,13 +100,13 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
                 perform(AvailableToProgressTransition(views[AVAILABLE], views[IN_PROGRESS]))
             }
             currentState == IN_PROGRESS && state == COMPLETED -> {
-                perform(ProgressToCompletedTransition(views[IN_PROGRESS], views[COMPLETED]))
+//                perform(ProgressToCompletedTransition(views[IN_PROGRESS], views[COMPLETED]))
             }
             currentState == IN_PROGRESS && state == ERROR -> {
-                perform(ProgressToErrorTransition(views[IN_PROGRESS], views[ERROR]))
+//                perform(ProgressToErrorTransition(views[IN_PROGRESS], views[ERROR]))
             }
             currentState == ERROR && state == IN_PROGRESS -> {
-                perform(ErrorToProgressTransition(views[ERROR], views[IN_PROGRESS]))
+//                perform(ErrorToProgressTransition(views[ERROR], views[IN_PROGRESS]))
             }
         }
         currentState = state

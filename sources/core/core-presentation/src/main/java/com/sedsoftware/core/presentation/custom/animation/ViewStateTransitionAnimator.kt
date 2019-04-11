@@ -7,6 +7,11 @@ import java.util.LinkedList
 import java.util.Queue
 
 open class ViewStateTransitionAnimator : FrameLayout, ViewStateTransition.Callback {
+
+    companion object {
+        const val ANIMATION_DURATION = 750L
+    }
+
     private val animationsQueue: Queue<ViewStateTransition> = LinkedList()
     private var isAnimationRunning: Boolean = false
 
