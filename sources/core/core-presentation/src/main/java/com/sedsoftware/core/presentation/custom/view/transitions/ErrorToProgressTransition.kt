@@ -1,61 +1,35 @@
 package com.sedsoftware.core.presentation.custom.view.transitions
 
-import android.animation.Animator
-import android.animation.Animator.AnimatorListener
 import android.view.View
+import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator
+import at.wirecube.additiveanimations.additive_animator.AnimationEndListener
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransition
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransition.Callback
-import com.sedsoftware.core.presentation.extension.gone
+import com.sedsoftware.core.presentation.custom.view.DownloadButton
+import com.sedsoftware.core.presentation.extension.hide
 import com.sedsoftware.core.presentation.extension.show
 
 class ErrorToProgressTransition(override val from: View?, override val to: View?) : ViewStateTransition {
 
     override fun run(callback: Callback) {
-        hideFromView(callback)
+        animateBoth(callback)
     }
 
-    private fun hideFromView(callback: Callback) {
-        from?.animate()
-            ?.scaleX(0f)
-            ?.scaleY(0f)
-            ?.setDuration(500)
-            ?.setListener(object : AnimatorListener {
-                override fun onAnimationRepeat(animation: Animator?) {
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
-                    from.gone()
-                    showToView(callback)
-                }
-
-                override fun onAnimationCancel(animation: Animator?) {
-                }
-
-                override fun onAnimationStart(animation: Animator?) {
-                }
-            })
-            ?.start()
-    }
-
-    private fun showToView(callback: Callback) {
-        to?.animate()
-            ?.alpha(1f)
-            ?.setDuration(500)
-            ?.setListener(object : AnimatorListener {
-                override fun onAnimationRepeat(animation: Animator?) {
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
+    private fun animateBoth(callback: Callback) {
+        to?.translationY = DownloadButton.VERTICAL_VIEW_SHIFT
+        AdditiveAnimator()
+            .setDuration(DownloadButton.ANIMATION_DURATION)
+            .targets(from, to)
+            .translationYBy(-DownloadButton.VERTICAL_VIEW_SHIFT)
+            .addStartAction {
+                to?.show()
+            }
+            .addEndAction(object : AnimationEndListener() {
+                override fun onAnimationEnd(wasCancelled: Boolean) {
+                    from?.hide()
                     callback.completed()
                 }
-
-                override fun onAnimationCancel(animation: Animator?) {
-                }
-
-                override fun onAnimationStart(animation: Animator?) {
-                    to.show()
-                }
             })
-            ?.start()
+            .start()
     }
 }

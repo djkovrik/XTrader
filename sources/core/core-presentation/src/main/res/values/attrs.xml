@@ -2,8 +2,10 @@
 <resources>
     <declare-styleable name="DownloadButton">
         <attr name="text_available" format="string" />
+        <attr name="text_in_progress" format="string" />
         <attr name="text_completed" format="string" />
         <attr name="text_error" format="string" />
+        <attr name="color_in_progress" format="color" />
         <attr name="color_completed" format="color" />
         <attr name="color_error" format="color" />
     </declare-styleable>

@@ -5,6 +5,7 @@
     <string name="btn_greetings_continue">Continue</string>
 
     <string name="btn_greetings_download_available">Download</string>
+    <string name="btn_greetings_download_in_progress">In progress…</string>
     <string name="btn_greetings_download_error">Retry</string>
     <string name="btn_greetings_download_completed">Completed!</string>
 

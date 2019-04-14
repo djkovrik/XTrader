@@ -16,6 +16,7 @@
     <!-- UI -->
     <color name="colorError">@color/material_color_red_700</color>
     <color name="colorSuccess">@color/material_color_green_700</color>
+    <color name="colorInProgress">@color/colorAccentDark</color>
     <color name="colorNormalButtonText">@color/material_color_white</color>
     <color name="colorOutlinedButtonText">@color/colorPrimary</color>
     <color name="colorOutlinedButtonStroke">@color/colorPrimary</color>

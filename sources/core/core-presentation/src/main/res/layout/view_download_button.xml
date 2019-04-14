@@ -15,20 +15,21 @@
         android:gravity="center"
         tools:text="Download" />
 
-    <ProgressBar
+    <TextView
         android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:visibility="gone"
-        android:layout_gravity="center" />
+        tools:text="Downloading..." />
 
     <LinearLayout
         android:id="@+id/error"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:visibility="gone"
         android:orientation="horizontal"
+        android:visibility="gone"
         tools:ignore="UseCompoundDrawables">
 
         <TextView
@@ -40,8 +41,8 @@
 
         <ImageView
             android:id="@+id/error_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/button_retry_icon_size"
+            android:layout_height="@dimen/button_retry_icon_size"
             android:src="@drawable/ic_redo"
             tools:ignore="ContentDescription" />
 

@@ -27,6 +27,11 @@ import kotlinx.android.synthetic.main.view_download_button.progress
 
 class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
 
+    companion object {
+        const val ANIMATION_DURATION = 150L
+        const val VERTICAL_VIEW_SHIFT = 100f
+    }
+
     constructor(context: Context) : super(context) {
         LayoutInflater.from(context).inflate(R.layout.view_download_button, this, true)
         init(null)
@@ -49,8 +54,10 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
 
     private var currentState: DownloadState? = null
     private var textAvailable: String? = null
+    private var textInProgress: String? = null
     private var textCompleted: String? = null
     private var textError: String? = null
+    private var colorInProgress: Int? = null
     private var colorCompleted: Int? = null
     private var colorError: Int? = null
 
@@ -61,18 +68,22 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
         val typedArray = context?.obtainStyledAttributes(attrs, R.styleable.DownloadButton)
 
         textAvailable = typedArray?.getString(R.styleable.DownloadButton_text_available)
+        textInProgress = typedArray?.getString(R.styleable.DownloadButton_text_in_progress)
         textCompleted = typedArray?.getString(R.styleable.DownloadButton_text_completed)
         textError = typedArray?.getString(R.styleable.DownloadButton_text_error)
 
+        colorInProgress = typedArray?.getInt(R.styleable.DownloadButton_color_in_progress, 0)
         colorCompleted = typedArray?.getInt(R.styleable.DownloadButton_color_completed, 0)
         colorError = typedArray?.getInt(R.styleable.DownloadButton_color_error, 0)
 
         typedArray?.recycle()
 
         textAvailable?.let { button.text = it }
+        textInProgress?.let { progress.text = it }
         textCompleted?.let { completed.text = it }
         textError?.let { error_text.text = it }
 
+        colorInProgress?.let { progress.setTextColor(it) }
         colorCompleted?.let { completed.setTextColor(it) }
         colorError?.let { error_text.setTextColor(it) }
         colorError?.let { error_image.setColorFilter(it, PorterDuff.Mode.SRC_IN) }
@@ -85,11 +96,6 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
         )
     }
 
-    // Possible transitions:
-    //  AVAILABLE -> IN_PROGRESS
-    //  IN_PROGRESS -> COMPLETED
-    //  IN_PROGRESS -> ERROR
-    //  ERROR -> IN_PROGRESS
     fun setState(state: DownloadState) {
         when {
             currentState == null -> {
@@ -100,13 +106,13 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
                 perform(AvailableToProgressTransition(views[AVAILABLE], views[IN_PROGRESS]))
             }
             currentState == IN_PROGRESS && state == COMPLETED -> {
-//                perform(ProgressToCompletedTransition(views[IN_PROGRESS], views[COMPLETED]))
+                perform(ProgressToCompletedTransition(views[IN_PROGRESS], views[COMPLETED]))
             }
             currentState == IN_PROGRESS && state == ERROR -> {
-//                perform(ProgressToErrorTransition(views[IN_PROGRESS], views[ERROR]))
+                perform(ProgressToErrorTransition(views[IN_PROGRESS], views[ERROR]))
             }
             currentState == ERROR && state == IN_PROGRESS -> {
-//                perform(ErrorToProgressTransition(views[ERROR], views[IN_PROGRESS]))
+                perform(ErrorToProgressTransition(views[ERROR], views[IN_PROGRESS]))
             }
         }
         currentState = state
