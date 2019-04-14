@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.view_download_button.progress
 class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
 
     companion object {
-        const val ANIMATION_DURATION = 150L
+        const val ANIMATION_DURATION = 200L
         const val VERTICAL_VIEW_SHIFT = 100f
     }
 

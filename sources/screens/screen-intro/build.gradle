@@ -28,5 +28,6 @@ dependencies {
     implementation JetPackDependencies.materialComponents
     implementation JetPackDependencies.navigation
 
+    implementation UiDependencies.additiveAnimations
     implementation UiDependencies.materialValues
 }
