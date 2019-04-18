@@ -47,6 +47,7 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
             field = value
             button?.setOnClickListener { field.invoke() }
             error_text?.setOnClickListener { field.invoke() }
+            error_image?.setOnClickListener { field.invoke() }
         }
 
 

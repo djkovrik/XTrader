@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- MAIN -->
-    <color name="colorPrimary">@color/material_color_grey_800</color>
-    <color name="colorPrimaryDark">@color/material_color_grey_900</color>
-    <color name="colorAccent">@color/material_color_grey_600</color>
-    <color name="colorAccentDark">@color/material_color_grey_800</color>
+    <color name="colorPrimary">@color/material_color_blue_grey_700</color>
+    <color name="colorPrimaryLight">@color/material_color_blue_grey_600</color>
+    <color name="colorPrimaryDark">@color/material_color_blue_grey_800</color>
+    <color name="colorAccent">@color/material_color_orange_400</color>
+    <color name="colorAccentLight">@color/material_color_orange_300</color>
+    <color name="colorAccentDark">@color/material_color_orange_800</color>
 
     <!-- TEXT -->
-    <color name="colorTextPrimary">@color/material_color_black</color>
+    <color name="colorTextPrimary">@color/material_color_white</color>
+    <color name="colorTextSecondary">@color/colorPrimaryDark</color>
 
     <!-- BACKGROUNDS -->
-    <color name="colorBackground">@color/material_color_white</color>
-    <color name="colorLauncherIconBackground">#F5F5F5</color>
+    <color name="colorBackground">@color/material_color_blue_grey_600</color>
+    <color name="colorLauncherIconBackground">@color/material_color_blue_grey_600</color>
 
     <!-- UI -->
-    <color name="colorError">@color/material_color_red_700</color>
-    <color name="colorSuccess">@color/material_color_green_700</color>
-    <color name="colorInProgress">@color/colorAccentDark</color>
-    <color name="colorNormalButtonText">@color/material_color_white</color>
-    <color name="colorOutlinedButtonText">@color/colorPrimary</color>
-    <color name="colorOutlinedButtonStroke">@color/colorPrimary</color>
-    <color name="colorImageDim">@color/material_color_grey_600</color>
+    <color name="colorError">@color/material_color_red_accent</color>
+    <color name="colorSuccess">@color/material_color_light_green_500</color>
+    <color name="colorInProgress">@color/colorAccentLight</color>
+    <color name="colorNormalButtonText">@color/colorTextSecondary</color>
+    <color name="colorNormalButtonBackground">@color/colorAccent</color>
+    <color name="colorOutlinedButtonText">@color/colorAccent</color>
+    <color name="colorOutlinedButtonStroke">@color/colorAccent</color>
+    <color name="colorImageDim">@color/colorPrimaryDark</color>
 </resources>

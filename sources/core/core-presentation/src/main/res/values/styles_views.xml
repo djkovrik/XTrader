@@ -4,6 +4,7 @@
     <style name="XTButton" parent="Widget.MaterialComponents.Button">
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/colorNormalButtonText</item>
+        <item name="android:backgroundTint">@color/colorNormalButtonBackground</item>
         <item name="cornerRadius">@dimen/button_corner_radius_normal</item>
     </style>
 
