@@ -8,29 +8,29 @@ object Versions {
     const val VERSION_NAME = "0.0.1"
 
     // Plugins
-    const val GRADLE_ANDROID_VERSION = "3.4.0-alpha02"
+    const val GRADLE_ANDROID_VERSION = "3.4.0"
     const val DETEKT_VERSION = "1.0.0.RC9.2"
     const val GRADLE_VERSIONS_VERSION = "0.21.0"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
-    const val ANDROID_JUNIT5_VERSION = "1.4.0.0"
-    const val GRADLE_SCAN_VERSION = "1.16"
+    const val ANDROID_JUNIT5_VERSION = "1.4.2.0"
+    const val GRADLE_SCAN_VERSION = "2.2.1"
 
     // Kotlin
-    const val KOTLIN_VERSION = "1.3.21"
-    const val KOTLIN_COROUTINES_VERSION = "1.1.1"
+    const val KOTLIN_VERSION = "1.3.30"
+    const val KOTLIN_COROUTINES_VERSION = "1.2.0"
 
     // JetPack - AppCompat
-    const val APPCOMPAT_VERSION = "1.1.0-alpha03"
+    const val APPCOMPAT_VERSION = "1.1.0-alpha04"
     const val CARDVIEW_VERSION = "1.0.0-rc02"
     const val PREFERENCE_VERSION = "1.0.0-rc02"
-    const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha04"
-    const val RECYCLER_VIEW_VERSION = "1.1.0-alpha03"
-    const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-alpha3"
+    const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha05"
+    const val RECYCLER_VIEW_VERSION = "1.1.0-alpha04"
+    const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-alpha4"
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
 
     // JetPack - Architecture
-    const val LIFECYCLE_VERSION = "2.1.0-alpha03"
-    const val ROOM_VERSION = "2.1.0-alpha04"
+    const val LIFECYCLE_VERSION = "2.1.0-alpha04"
+    const val ROOM_VERSION = "2.1.0-alpha06"
     const val PAGING_VERSION = "2.0.0-rc01"
     const val NAVIGATION_VERSION = "1.0.0"
     const val WORKMANAGER_VERSION = "2.0.0-alpha8"
@@ -44,20 +44,20 @@ object Versions {
     const val RETROFIT_VERSION = "2.5.0"
     const val MOSHI_VERSION = "1.8.0"
     const val COROUTINES_ADAPTER_VERSION = "1.0.0"
-    const val OKHTTP_VERSION = "3.14.0"
+    const val OKHTTP_VERSION = "3.14.1"
     const val THREE_TEN_ABP_VERSION = "1.2.0"
 
     // UI
     const val MATERIAL_VALUES_VERSION = "1.1.1"
     const val MATERIAL_DIALOGS_VERSION = "0.9.6.0"
     const val MP_ANDROID_CHART_VERSION = "v3.0.3"
-    const val ADDITIVE_ANIMATIONS_VERSION = "1.6.2"
+    const val ADDITIVE_ANIMATIONS_VERSION = "1.7.1"
 
     // Testing
     const val JUNIT4_VERSION = "4.12"
     const val JUNIT5_VERSION = "5.2.0"
     const val JUNIT5_RUNNER_VERSION = "0.2.2"
-    const val TEST_RUNNER_VERSION = "1.1.2-alpha02"
+    const val TEST_RUNNER_VERSION = "1.2.0-alpha03"
     const val TEST_RULES_VERSION = "1.1.0-alpha1"
     const val ESPRESSO_VERSION = "3.1.0-alpha1"
     const val SPEK_VERSION = "2.0.1"
@@ -68,7 +68,6 @@ object Versions {
     // Development tools
     const val TIMBER_VERSION = "4.7.1"
     const val LEAK_CANARY_VERSION = "1.6.3"
-    const val STETHO_VERSION = "1.5.0"
     const val DEV_METRICS_VERSION = "0.6"
     const val CHUCK_VERSION = "1.1.0"
 }

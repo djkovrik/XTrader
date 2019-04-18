@@ -24,12 +24,10 @@ class ProgressToCompletedTransition(override val from: View?, override val to: V
             .addStartAction {
                 to?.show()
             }
-            .addEndAction(object : AnimationEndListener() {
-                override fun onAnimationEnd(wasCancelled: Boolean) {
-                    from?.hide()
-                    callback.completed()
-                }
-            })
+            .addEndAction {
+                from?.hide()
+                callback.completed()
+            }
             .start()
     }
 }

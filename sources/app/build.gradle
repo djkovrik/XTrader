@@ -30,7 +30,6 @@ dependencies {
     kapt CoreDependencies.daggerCompiler
 
     implementation DevToolsDependencies.timber
-    implementation DevToolsDependencies.stetho
     debugImplementation DevToolsDependencies.leakCanary
     releaseImplementation DevToolsDependencies.leakCanaryNoOp
 }

@@ -1,7 +1,6 @@
 package com.sedsoftware.xtrader
 
 import android.app.Application
-import com.facebook.stetho.Stetho
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.provider.AppProvider
@@ -32,7 +31,6 @@ class XTraderApp : Application(), App {
 
         if (BuildConfig.DEBUG) {
 //            AndroidDevMetrics.initWith(this)
-            Stetho.initializeWithDefaults(this)
             Timber.plant(Timber.DebugTree())
         }
     }

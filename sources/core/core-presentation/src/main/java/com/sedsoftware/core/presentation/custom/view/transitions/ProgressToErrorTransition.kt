@@ -2,7 +2,6 @@ package com.sedsoftware.core.presentation.custom.view.transitions
 
 import android.view.View
 import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator
-import at.wirecube.additiveanimations.additive_animator.AnimationEndListener
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransition
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransition.Callback
 import com.sedsoftware.core.presentation.custom.view.DownloadButton
@@ -24,12 +23,10 @@ class ProgressToErrorTransition(override val from: View?, override val to: View?
             .addStartAction {
                 to?.show()
             }
-            .addEndAction(object : AnimationEndListener() {
-                override fun onAnimationEnd(wasCancelled: Boolean) {
-                    from?.hide()
-                    callback.completed()
-                }
-            })
+            .addEndAction {
+                from?.hide()
+                callback.completed()
+            }
             .start()
     }
 }
