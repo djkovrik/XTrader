@@ -1,11 +1,13 @@
 package com.sedsoftware.screens.main
 
+import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.screens.main.di.MainActivityComponent
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), ActivityToolsHolder {
@@ -25,6 +27,9 @@ class MainActivity : BaseActivity(), ActivityToolsHolder {
 
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
         mainActivityComponent
+
+    override fun getRootContainer(): ViewGroup =
+        root_container
 
     override fun onPause() {
         navControllerHolder.removeNavController()
