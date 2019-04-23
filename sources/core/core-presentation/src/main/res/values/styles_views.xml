@@ -23,4 +23,18 @@
         <item name="android:textColor">@color/colorOutlinedButtonText</item>
     </style>
 
+    <style name="XTNotificationTextBottom">
+        <item name="android:textColor">@color/colorNotificationTextBottom</item>
+        <item name="android:textSize">@dimen/material_subheader_text_size</item>
+    </style>
+
+    <style name="XTNotificationTextTop">
+        <item name="android:textColor">@color/colorNotificationTextTop</item>
+        <item name="android:textSize">@dimen/material_subheader_text_size</item>
+    </style>
+
+    <style name="XTNotificationButton">
+        <item name="android:textSize">@dimen/material_subheader_text_size</item>
+    </style>
+
 </resources>

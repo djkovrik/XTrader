@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_notification_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|bottom"
+    android:background="@color/colorNotificationSuccess"
+    android:orientation="horizontal"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/notification_text_bottom"
+        style="@style/XTNotificationTextBottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:paddingBottom="@dimen/material_baseline_grid_1.5x"
+        android:paddingEnd="@dimen/material_baseline_grid_2x"
+        android:paddingStart="@dimen/material_baseline_grid_2x"
+        android:paddingTop="@dimen/material_baseline_grid_1.5x"
+        tools:text="This is bottom notification text" />
+
+    <TextView
+        android:id="@+id/notification_button_bottom"
+        style="@style/XTNotificationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="@dimen/material_baseline_grid_1.5x"
+        android:paddingEnd="@dimen/material_baseline_grid_2x"
+        android:paddingStart="@dimen/material_baseline_grid_2x"
+        android:paddingTop="@dimen/material_baseline_grid_1.5x"
+        tools:text="OK" />
+
+</LinearLayout>

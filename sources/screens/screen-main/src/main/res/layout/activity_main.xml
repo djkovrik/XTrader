@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include layout="@layout/notification_top" />
+
     <fragment
         android:id="@+id/nav_controller_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -14,5 +16,8 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation_main" />
+
+    <include layout="@layout/notification_bottom" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -18,11 +18,19 @@
 
     <!-- UI -->
     <color name="colorError">@color/material_color_red_accent</color>
-    <color name="colorSuccess">@color/material_color_light_green_500</color>
+    <color name="colorSuccess">@color/material_color_green_400</color>
     <color name="colorInProgress">@color/colorAccentLight</color>
     <color name="colorNormalButtonText">@color/colorTextSecondary</color>
     <color name="colorNormalButtonBackground">@color/colorAccent</color>
     <color name="colorOutlinedButtonText">@color/colorAccent</color>
     <color name="colorOutlinedButtonStroke">@color/colorAccent</color>
     <color name="colorImageDim">@color/colorPrimaryDark</color>
+
+    <!-- Notifications -->
+    <color name="colorNotificationError">@color/colorError</color>
+    <color name="colorNotificationSuccess">@color/colorSuccess</color>
+    <color name="colorNotificationInfo">@color/colorAccentLight</color>
+    <color name="colorNotificationSemiTransparent">#80000000</color>
+    <color name="colorNotificationTextBottom">@color/colorTextSecondary</color>
+    <color name="colorNotificationTextTop">@color/colorTextPrimary</color>
 </resources>
