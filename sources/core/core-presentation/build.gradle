@@ -24,6 +24,5 @@ dependencies {
     implementation JetPackDependencies.lifecycleKtx
     implementation JetPackDependencies.navigation
 
-    implementation UiDependencies.additiveAnimations
     implementation UiDependencies.materialValues
 }

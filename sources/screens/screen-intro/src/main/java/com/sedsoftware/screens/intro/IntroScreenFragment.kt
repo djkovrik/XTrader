@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
-import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator
 import com.sedsoftware.core.di.coordinator.IntroCoordinator
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.custom.DownloadState
+import com.sedsoftware.core.presentation.extension.addEndAction
+import com.sedsoftware.core.presentation.extension.addStartAction
 import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.gone
 import com.sedsoftware.core.presentation.extension.observe
@@ -63,11 +64,11 @@ class IntroScreenFragment : BaseFragment() {
             introViewModel.onExchangeClicked(exchange)
         }
 
-        setupPreAnimationViewPositions()
+        setupViewPositions()
         animateViews()
     }
 
-    private fun setupPreAnimationViewPositions() {
+    private fun setupViewPositions() {
         logo.gone()
         logo.alpha = 0f
         greetings_text.alpha = 0f
@@ -78,25 +79,37 @@ class IntroScreenFragment : BaseFragment() {
     }
 
     private fun animateViews() {
-        AdditiveAnimator()
-            .setStartDelay(ANIMATIONS_DELAY)
-            .setDuration(ANIMATIONS_DURATION)
+        var currentDelay = START_ANIMATION_DELAY
+
+        logo.animate()
+            .alpha(1f)
             .setInterpolator(LinearInterpolator())
-            .target(logo)
+            .setDuration(ANIMATION_DURATION)
+            .setStartDelay(currentDelay)
             .addStartAction { logo.show() }
+
+        currentDelay += ANIMATION_DURATION
+
+        greetings_text.animate()
             .alpha(1f)
-            .then()
-            .target(greetings_text)
-            .alpha(1f)
-            .then()
-            .target(intro_button_continue)
-            .addStartAction { intro_button_continue.show() }
+            .setDuration(ANIMATION_DURATION)
+            .setStartDelay(currentDelay)
             .addEndAction { introViewModel.showExchanges() }
+
+        intro_button_continue.animate()
+            .alpha(1f)
             .translationY(0f)
+            .setDuration(ANIMATION_DURATION)
+            .setStartDelay(currentDelay)
+            .addStartAction { intro_button_continue.show() }
+
+        currentDelay += ANIMATION_DURATION
+
+        greetings_note.animate()
             .alpha(1f)
-            .then()
-            .target(greetings_note)
-            .alpha(1f)
+            .setInterpolator(LinearInterpolator())
+            .setDuration(ANIMATION_DURATION)
+            .setStartDelay(currentDelay)
             .start()
     }
 
@@ -109,7 +122,7 @@ class IntroScreenFragment : BaseFragment() {
     }
 
     private companion object {
-        const val ANIMATIONS_DELAY = 50L
-        const val ANIMATIONS_DURATION = 250L
+        const val START_ANIMATION_DELAY = 50L
+        const val ANIMATION_DURATION = 250L
     }
 }

@@ -51,7 +51,6 @@ object Versions {
     const val MATERIAL_VALUES_VERSION = "1.1.1"
     const val MATERIAL_DIALOGS_VERSION = "0.9.6.0"
     const val MP_ANDROID_CHART_VERSION = "v3.0.3"
-    const val ADDITIVE_ANIMATIONS_VERSION = "1.7.1"
 
     // Testing
     const val JUNIT4_VERSION = "4.12"

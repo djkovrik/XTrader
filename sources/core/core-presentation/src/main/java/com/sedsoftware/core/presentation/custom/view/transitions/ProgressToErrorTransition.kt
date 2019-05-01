@@ -1,12 +1,8 @@
 package com.sedsoftware.core.presentation.custom.view.transitions
 
 import android.view.View
-import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransition
 import com.sedsoftware.core.presentation.custom.animation.ViewStateTransition.Callback
-import com.sedsoftware.core.presentation.custom.view.DownloadButton
-import com.sedsoftware.core.presentation.extension.hide
-import com.sedsoftware.core.presentation.extension.show
 
 class ProgressToErrorTransition(override val from: View?, override val to: View?) : ViewStateTransition {
 
@@ -15,18 +11,18 @@ class ProgressToErrorTransition(override val from: View?, override val to: View?
     }
 
     private fun animateBoth(callback: Callback) {
-        to?.translationY = -DownloadButton.VERTICAL_VIEW_SHIFT
-        AdditiveAnimator()
-            .setDuration(DownloadButton.ANIMATION_DURATION)
-            .targets(from, to)
-            .translationYBy(DownloadButton.VERTICAL_VIEW_SHIFT)
-            .addStartAction {
-                to?.show()
-            }
-            .addEndAction {
-                from?.hide()
-                callback.completed()
-            }
-            .start()
+//        to?.translationY = -DownloadButton.VERTICAL_VIEW_SHIFT
+//        AdditiveAnimator()
+//            .setDuration(DownloadButton.ANIMATION_DURATION)
+//            .targets(from, to)
+//            .translationYBy(DownloadButton.VERTICAL_VIEW_SHIFT)
+//            .addStartAction {
+//                to?.show()
+//            }
+//            .addEndAction {
+//                from?.hide()
+//                callback.completed()
+//            }
+//            .start()
     }
 }
