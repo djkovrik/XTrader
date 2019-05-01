@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/material_list_single_line_with_avatar_normal_height">
+    android:layout_height="@dimen/material_list_single_line_with_avatar_normal_height"
+    android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+    android:layout_marginStart="@dimen/material_baseline_grid_2x">
 
     <ImageView
         android:id="@+id/intro_exchange_logo"
         android:layout_width="@dimen/material_list_avatar_size"
         android:layout_height="@dimen/material_list_avatar_size"
-        android:layout_marginEnd="@dimen/material_baseline_grid_1x"
-        android:layout_marginStart="@dimen/material_baseline_grid_1x"
         android:contentDescription="@string/a11y_app_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/intro_exchange_name"
