@@ -14,7 +14,7 @@ object Plugins {
     const val KOTLIN_GRADLE_PLUGIN =
         "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
     const val DETEKT =
-        "gradle.plugin.io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$DETEKT_VERSION"
+        "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$DETEKT_VERSION"
     const val GRADLE_VERSIONS =
         "com.github.ben-manes:gradle-versions-plugin:$GRADLE_VERSIONS_VERSION"
     const val DEVICE_METRICS =

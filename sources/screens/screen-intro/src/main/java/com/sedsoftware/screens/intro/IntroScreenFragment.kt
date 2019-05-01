@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sedsoftware.core.di.coordinator.IntroCoordinator
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.base.BaseFragment
-import com.sedsoftware.core.presentation.params.DownloadState
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartAction
 import com.sedsoftware.core.presentation.extension.failure
@@ -15,6 +14,7 @@ import com.sedsoftware.core.presentation.extension.gone
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.show
 import com.sedsoftware.core.presentation.extension.viewModel
+import com.sedsoftware.core.presentation.params.DownloadState
 import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
@@ -75,7 +75,7 @@ class IntroScreenFragment : BaseFragment() {
         greetings_note.alpha = 0f
         intro_button_continue.gone()
         intro_button_continue.alpha = 0f
-        intro_button_continue.translationY = 100f
+        intro_button_continue.translationY = BASE_VIEW_TRANSLATION
     }
 
     private fun animateViews() {
@@ -124,5 +124,6 @@ class IntroScreenFragment : BaseFragment() {
     private companion object {
         const val START_ANIMATION_DELAY = 50L
         const val ANIMATION_DURATION = 250L
+        const val BASE_VIEW_TRANSLATION = 100f
     }
 }

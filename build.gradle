@@ -9,8 +9,8 @@ buildscript {
     dependencies {
         classpath Plugins.ANDROID_GRADLE
         classpath Plugins.KOTLIN_GRADLE_PLUGIN
-        classpath Plugins.DETEKT
         classpath Plugins.JUNIT5
+        classpath Plugins.DETEKT
         classpath Plugins.GRADLE_VERSIONS
         classpath Plugins.DEVICE_METRICS
         classpath Plugins.SCAN
@@ -19,17 +19,27 @@ buildscript {
 
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'com.gradle.build-scan'
+apply plugin: 'io.gitlab.arturbosch.detekt'
 
-apply from: 'config/gradle/detekt.gradle'
+detekt {
+    input = files("$projectDir/sources/")
+    config = files("$projectDir/config/detekt/base-config.yml")
+    baseline = file("$projectDir/reports/baseline.xml")
+    parallel = true
+
+    reports {
+        html {
+            enabled = true
+            destination = file("$projectDir/reports/detekt.html")
+        }
+    }
+}
 
 allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://jitpack.io" }
         maven { url "https://plugins.gradle.org/m2" }
-        maven { url "http://dl.bintray.com/igenius-code/maven" }
-        maven { url "https://dl.bintray.com/spekframework/spek-dev" }
     }
 
     buildScan {

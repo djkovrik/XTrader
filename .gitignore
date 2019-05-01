@@ -4,3 +4,4 @@
 /local.properties
 /build
 /reports/detekt.xml/
+/reports/detekt.html

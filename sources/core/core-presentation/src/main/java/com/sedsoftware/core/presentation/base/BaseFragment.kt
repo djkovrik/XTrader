@@ -15,7 +15,7 @@ abstract class BaseFragment : Fragment() {
 
     protected val parentActivityComponent: MainActivityToolsProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity as? ActivityToolsHolder)?.getActivityToolsProvider()
-                ?: throw RuntimeException("Parent activity must implement ActivityComponentHolder interface")
+                ?: throw UnsupportedOperationException("Parent activity must implement ActivityToolsHolder interface")
     }
 
     @Inject
@@ -32,16 +32,4 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(getLayoutResId(), container, false)
-
-//    protected fun notify(@StringRes message: Int) =
-//        XTSnackbar.make(rootView, BaseTransientBottomBar.LENGTH_SHORT)
-//            .setText(string(message))
-//            .show()
-//
-//    protected fun notifyWithAction(@StringRes message: Int, @StringRes actionText: Int, action: () -> Any) {
-//        XTSnackbar.make(rootView, BaseTransientBottomBar.LENGTH_SHORT)
-//            .setText(string(message))
-//            .setAction(string(actionText), View.OnClickListener { action.invoke() })
-//            .show()
-//    }
 }

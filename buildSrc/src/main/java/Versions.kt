@@ -9,7 +9,7 @@ object Versions {
 
     // Plugins
     const val GRADLE_ANDROID_VERSION = "3.4.0"
-    const val DETEKT_VERSION = "1.0.0.RC9.2"
+    const val DETEKT_VERSION = "1.0.0-RC14"
     const val GRADLE_VERSIONS_VERSION = "0.21.0"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
     const val ANDROID_JUNIT5_VERSION = "1.4.2.0"
