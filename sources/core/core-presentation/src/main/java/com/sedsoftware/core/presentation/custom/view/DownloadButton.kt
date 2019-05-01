@@ -18,12 +18,7 @@ import com.sedsoftware.core.presentation.custom.view.transitions.ProgressToCompl
 import com.sedsoftware.core.presentation.custom.view.transitions.ProgressToErrorTransition
 import com.sedsoftware.core.presentation.extension.show
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.view_download_button.button
-import kotlinx.android.synthetic.main.view_download_button.completed
-import kotlinx.android.synthetic.main.view_download_button.error
-import kotlinx.android.synthetic.main.view_download_button.error_image
-import kotlinx.android.synthetic.main.view_download_button.error_text
-import kotlinx.android.synthetic.main.view_download_button.progress
+import kotlinx.android.synthetic.main.view_download_button.*
 
 class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
 
@@ -58,12 +53,12 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
     private var textInProgress: String? = null
     private var textCompleted: String? = null
     private var textError: String? = null
+    private var colorAvailable: Int? = null
     private var colorInProgress: Int? = null
     private var colorCompleted: Int? = null
     private var colorError: Int? = null
 
-    override val containerView: View?
-        get() = this
+    override val containerView: View? = this
 
     private fun init(attrs: AttributeSet?) {
         val typedArray = context?.obtainStyledAttributes(attrs, R.styleable.DownloadButton)
@@ -73,6 +68,7 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
         textCompleted = typedArray?.getString(R.styleable.DownloadButton_text_completed)
         textError = typedArray?.getString(R.styleable.DownloadButton_text_error)
 
+        colorAvailable = typedArray?.getInt(R.styleable.DownloadButton_color_available, 0)
         colorInProgress = typedArray?.getInt(R.styleable.DownloadButton_color_in_progress, 0)
         colorCompleted = typedArray?.getInt(R.styleable.DownloadButton_color_completed, 0)
         colorError = typedArray?.getInt(R.styleable.DownloadButton_color_error, 0)
@@ -84,6 +80,7 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
         textCompleted?.let { completed.text = it }
         textError?.let { error_text.text = it }
 
+        colorAvailable?.let { button.setTextColor(it) }
         colorInProgress?.let { progress.setTextColor(it) }
         colorCompleted?.let { completed.setTextColor(it) }
         colorError?.let { error_text.setTextColor(it) }

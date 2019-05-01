@@ -12,9 +12,7 @@ import com.sedsoftware.core.presentation.extension.dim
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.screens.intro.R
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_button_download
-import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_logo
-import kotlinx.android.synthetic.main.fragment_intro_screen_item.intro_exchange_name
+import kotlinx.android.synthetic.main.fragment_intro_screen_item.*
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -62,20 +60,14 @@ class ExchangesAdapter @Inject constructor(
         super.setHasStableIds(true)
     }
 
-    override fun getItemCount(): Int =
-        items.size
+    override fun getItemCount(): Int = items.size
 
-    override fun getItemId(position: Int): Long =
-        position.toLong()
+    override fun getItemId(position: Int): Long = position.toLong()
 
     private fun setAnimation(itemView: View, position: Int) {
         if (position > lastPosition) {
-
             AnimationUtils.loadAnimation(itemView.context, R.anim.recyclerview_item_appear)
-                .apply {
-                    itemView.startAnimation(this)
-                }
-
+                .apply { itemView.startAnimation(this) }
             lastPosition = position
         }
     }
@@ -83,8 +75,7 @@ class ExchangesAdapter @Inject constructor(
     class ExchangeItemViewHolder(parent: ViewGroup) :
         ViewHolder(parent.inflate(R.layout.fragment_intro_screen_item)), LayoutContainer {
 
-        override val containerView: View?
-            get() = itemView
+        override val containerView: View? = itemView
 
         fun bind(exchange: Exchange, state: DownloadState, provider: AssetsProvider, listener: (Exchange) -> Unit) {
             intro_exchange_name.text = exchange.label

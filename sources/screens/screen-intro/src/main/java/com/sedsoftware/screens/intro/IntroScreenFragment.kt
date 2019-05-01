@@ -18,11 +18,7 @@ import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.viewmodel.IntroScreenViewModel
-import kotlinx.android.synthetic.main.fragment_intro_screen.greetings_note
-import kotlinx.android.synthetic.main.fragment_intro_screen.greetings_text
-import kotlinx.android.synthetic.main.fragment_intro_screen.intro_button_continue
-import kotlinx.android.synthetic.main.fragment_intro_screen.intro_exchange_list
-import kotlinx.android.synthetic.main.fragment_intro_screen.logo
+import kotlinx.android.synthetic.main.fragment_intro_screen.*
 import javax.inject.Inject
 
 class IntroScreenFragment : BaseFragment() {
@@ -72,7 +68,6 @@ class IntroScreenFragment : BaseFragment() {
     }
 
     private fun setupPreAnimationViewPositions() {
-
         logo.gone()
         logo.alpha = 0f
         greetings_text.alpha = 0f
@@ -96,14 +91,13 @@ class IntroScreenFragment : BaseFragment() {
             .then()
             .target(intro_button_continue)
             .addStartAction { intro_button_continue.show() }
+            .addEndAction { introViewModel.showExchanges() }
             .translationY(0f)
             .alpha(1f)
             .then()
             .target(greetings_note)
             .alpha(1f)
             .start()
-
-        introViewModel.showExchanges()
     }
 
     private fun displayLoadersList(exchanges: Map<Exchange, DownloadState>?) {
