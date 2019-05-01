@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sedsoftware.core.di.coordinator.IntroCoordinator
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.base.BaseFragment
-import com.sedsoftware.core.presentation.custom.DownloadState
+import com.sedsoftware.core.presentation.params.DownloadState
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartAction
 import com.sedsoftware.core.presentation.extension.failure

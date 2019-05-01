@@ -1,4 +1,4 @@
-package com.sedsoftware.core.presentation.custom.behavior
+package com.sedsoftware.core.presentation.behavior
 
 import android.content.Context
 import android.util.AttributeSet

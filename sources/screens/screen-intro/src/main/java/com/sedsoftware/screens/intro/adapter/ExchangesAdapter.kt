@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.provider.AssetsProvider
-import com.sedsoftware.core.presentation.custom.DownloadState
+import com.sedsoftware.core.presentation.params.DownloadState
 import com.sedsoftware.core.presentation.extension.dim
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.screens.intro.R

@@ -1,4 +1,4 @@
-package com.sedsoftware.core.presentation.custom
+package com.sedsoftware.core.presentation.params
 
 enum class DownloadState {
     AVAILABLE,

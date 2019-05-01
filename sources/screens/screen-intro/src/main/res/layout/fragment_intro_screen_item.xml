@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Binance" />
 
-    <com.sedsoftware.core.presentation.custom.view.DownloadButton
+    <com.sedsoftware.core.presentation.view.DownloadButton
         android:id="@+id/intro_button_download"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

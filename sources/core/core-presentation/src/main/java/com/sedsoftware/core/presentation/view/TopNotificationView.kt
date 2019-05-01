@@ -1,4 +1,4 @@
-package com.sedsoftware.core.presentation.custom.view
+package com.sedsoftware.core.presentation.view
 
 import android.annotation.SuppressLint
 import android.content.Context

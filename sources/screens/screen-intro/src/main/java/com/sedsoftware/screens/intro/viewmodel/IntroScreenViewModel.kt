@@ -7,7 +7,7 @@ import com.sedsoftware.core.presentation.base.BaseViewModel
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.tools.api.Logger
 import com.sedsoftware.core.utils.common.Failure
-import com.sedsoftware.core.presentation.custom.DownloadState
+import com.sedsoftware.core.presentation.params.DownloadState
 import javax.inject.Inject
 
 class IntroScreenViewModel @Inject constructor(

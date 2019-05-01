@@ -1,4 +1,4 @@
-package com.sedsoftware.core.presentation.custom.animation
+package com.sedsoftware.core.presentation.animation
 
 import android.content.Context
 import android.util.AttributeSet
@@ -9,10 +9,15 @@ import java.util.Queue
 open class ViewStateTransitionAnimator : FrameLayout, ViewStateTransition.Callback {
 
     private val animationsQueue: Queue<ViewStateTransition> = LinkedList()
+
     private var isAnimationRunning: Boolean = false
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+
+    override fun completed() {
+        startNextQueuedAnimation()
+    }
 
     fun perform(transition: ViewStateTransition) {
         animationsQueue.add(transition)
@@ -20,10 +25,6 @@ open class ViewStateTransitionAnimator : FrameLayout, ViewStateTransition.Callba
             isAnimationRunning = true
             startNextQueuedAnimation()
         }
-    }
-
-    override fun completed() {
-        startNextQueuedAnimation()
     }
 
     private fun startNextQueuedAnimation() {
