@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import javax.inject.Inject
@@ -20,6 +21,9 @@ abstract class BaseFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var snackbarDelegate: SnackbarDelegate
 
     abstract fun getLayoutResId(): Int
 
