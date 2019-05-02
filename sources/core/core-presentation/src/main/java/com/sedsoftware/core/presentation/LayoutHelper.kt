@@ -8,13 +8,6 @@ import com.sedsoftware.core.presentation.extension.toDp
 class LayoutHelper {
 
     companion object {
-        @Suppress("LongParameterList", "MaxLineLength")
-        fun createFrame(width: Int, height: Int, gravity: Int, leftMargin: Int, topMargin: Int, rightMargin: Int, bottomMargin: Int): FrameLayout.LayoutParams {
-            val layoutParams = FrameLayout.LayoutParams(getSize(width), getSize(height), gravity)
-            layoutParams.setMargins(leftMargin.toDp(), topMargin.toDp(), rightMargin.toDp(), bottomMargin.toDp())
-            return layoutParams
-        }
-
         fun createFrame(width: Int, height: Int, gravity: Int): FrameLayout.LayoutParams {
             return FrameLayout.LayoutParams(getSize(width), getSize(height), gravity)
         }

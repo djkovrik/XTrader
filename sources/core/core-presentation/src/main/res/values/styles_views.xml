@@ -24,17 +24,17 @@
     </style>
 
     <style name="XTNotificationTextBottom">
-        <item name="android:textColor">@color/colorNotificationTextBottom</item>
-        <item name="android:textSize">@dimen/material_subheader_text_size</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
 
-    <style name="XTNotificationTextTop">
-        <item name="android:textColor">@color/colorNotificationTextTop</item>
-        <item name="android:textSize">@dimen/material_subheader_text_size</item>
+    <style name="XTNotificationText">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
     </style>
 
     <style name="XTNotificationButton">
-        <item name="android:textSize">@dimen/material_subheader_text_size</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
 
 </resources>

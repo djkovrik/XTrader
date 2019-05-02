@@ -93,40 +93,16 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
                 views[newState]?.show()
             }
             currentState == AVAILABLE && newState == IN_PROGRESS -> {
-                perform(
-                    DownloadButtonTransition(
-                        views[AVAILABLE],
-                        views[IN_PROGRESS],
-                        VIEW_SHIFT
-                    )
-                )
+                perform(DownloadButtonTransition(views[AVAILABLE], views[IN_PROGRESS], VIEW_SHIFT))
             }
             currentState == IN_PROGRESS && newState == COMPLETED -> {
-                perform(
-                    DownloadButtonTransition(
-                        views[IN_PROGRESS],
-                        views[COMPLETED],
-                        VIEW_SHIFT
-                    )
-                )
+                perform(DownloadButtonTransition(views[IN_PROGRESS], views[COMPLETED], VIEW_SHIFT))
             }
             currentState == IN_PROGRESS && newState == ERROR -> {
-                perform(
-                    DownloadButtonTransition(
-                        views[IN_PROGRESS],
-                        views[ERROR],
-                        -VIEW_SHIFT
-                    )
-                )
+                perform(DownloadButtonTransition(views[IN_PROGRESS], views[ERROR], -VIEW_SHIFT))
             }
             currentState == ERROR && newState == IN_PROGRESS -> {
-                perform(
-                    DownloadButtonTransition(
-                        views[ERROR],
-                        views[IN_PROGRESS],
-                        VIEW_SHIFT
-                    )
-                )
+                perform(DownloadButtonTransition(views[ERROR], views[IN_PROGRESS], VIEW_SHIFT))
             }
         }
         currentState = newState

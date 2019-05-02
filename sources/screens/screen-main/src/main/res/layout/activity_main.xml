@@ -7,7 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include layout="@layout/notification_top" />
+    <TextView
+        android:id="@+id/notification_top_text"
+        style="@style/XTNotificationText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/colorNotificationBackground"
+        android:paddingBottom="@dimen/material_baseline_grid_1.5x"
+        android:paddingEnd="@dimen/material_baseline_grid_2x"
+        android:paddingStart="@dimen/material_baseline_grid_2x"
+        android:paddingTop="@dimen/material_baseline_grid_1.5x"
+        android:visibility="gone"
+        tools:text="This is top notification text" />
 
     <fragment
         android:id="@+id/nav_controller_main"
@@ -17,7 +29,40 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation_main" />
 
-    <include layout="@layout/notification_bottom" />
+    <LinearLayout
+        android:id="@+id/notification_bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:background="@color/colorNotificationBackground"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
+        <TextView
+            android:id="@+id/notification_bottom_text"
+            style="@style/XTNotificationTextBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/material_baseline_grid_1.5x"
+            android:paddingEnd="@dimen/material_baseline_grid_2x"
+            android:paddingStart="@dimen/material_baseline_grid_2x"
+            android:paddingTop="@dimen/material_baseline_grid_1.5x"
+            tools:text="This is bottom notification text" />
+
+        <TextView
+            android:id="@+id/notification_bottom_button"
+            style="@style/XTNotificationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingBottom="@dimen/material_baseline_grid_1.5x"
+            android:paddingEnd="@dimen/material_baseline_grid_2x"
+            android:paddingStart="@dimen/material_baseline_grid_2x"
+            android:paddingTop="@dimen/material_baseline_grid_1.5x"
+            tools:text="OK" />
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
