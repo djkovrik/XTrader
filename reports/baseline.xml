@@ -1,10 +1,16 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
   <Blacklist timestamp="1536602621027"></Blacklist>
-  <Whitelist timestamp="1556785443203">
+  <Whitelist timestamp="1556901862816">
+    <ID>ComplexCondition:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$minFlingVelocity &lt;= absVelocityX &amp;&amp; absVelocityX &lt;= maxFlingVelocity &amp;&amp; absVelocityY &lt; absVelocityX &amp;&amp; absVelocityY &lt; absVelocityX &amp;&amp; swiping</ID>
+    <ID>ComplexMethod:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
+    <ID>LongMethod:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
     <ID>MagicNumber:BinancePairLoader.kt$BinancePairLoader$2500L</ID>
     <ID>MagicNumber:StringSigner.kt$StringSigner$4</ID>
+    <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$1000</ID>
+    <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$16</ID>
     <ID>ReturnCount:PathInterpolatorDonut.kt$PathInterpolatorDonut$override fun getInterpolation(t: Float): Float</ID>
+    <ID>ReturnCount:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
     <ID>TooGenericExceptionCaught:ViewModelOwnerFactory.kt$ViewModelOwnerFactory$e: Exception</ID>
     <ID>TooGenericExceptionThrown:ViewModelOwnerFactory.kt$ViewModelOwnerFactory$throw RuntimeException(e)</ID>
     <ID>TooManyFunctions:Sprite.kt$Sprite : DrawableAnimatorUpdateListenerAnimatableCallback</ID>

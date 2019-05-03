@@ -10,6 +10,8 @@ import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.navigation.NavControllerHolder
+import com.sedsoftware.core.presentation.SwipeToDismissTouchListener
+import com.sedsoftware.core.presentation.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,6 +27,9 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
     @Inject
     lateinit var navControllerHolder: NavControllerHolder
 
+    private var topNotificationTranslation = 0f
+    private var bottomNotificationTranslation = 0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         mainActivityComponent.inject(this)
         super.onCreate(savedInstanceState)
@@ -32,12 +37,24 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
         setBackgroundColor(R.color.colorBackground)
 
         notification_top_text.post {
-            notification_top_text.translationY = -notification_top_text.measuredHeight.toFloat()
+            topNotificationTranslation = -notification_top_text.measuredHeight.toFloat()
+            notification_top_text.translationY = topNotificationTranslation
         }
 
         notification_bottom_container.post {
-            notification_bottom_container.translationY = notification_bottom_container.measuredHeight.toFloat()
+            bottomNotificationTranslation = notification_bottom_container.measuredHeight.toFloat()
+            notification_bottom_container.translationY = bottomNotificationTranslation
         }
+
+        notification_top_text.setOnTouchListener(
+            SwipeToDismissTouchListener(
+                notification_top_text,
+                object : DismissCallbacks {
+                    override fun onDismiss(view: View) {
+                        notification_top_text.translationY = topNotificationTranslation
+                    }
+                }
+            ))
     }
 
     override fun onResumeFragments() {
