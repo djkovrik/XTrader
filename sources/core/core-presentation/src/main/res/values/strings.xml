@@ -2,4 +2,7 @@
     <!-- Main -->
     <string name="app_name">XTrader</string>
 
+    <!-- Buttons -->
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>

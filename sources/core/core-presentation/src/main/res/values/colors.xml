@@ -26,5 +26,5 @@
     <color name="colorOutlinedButtonText">@color/colorAccent</color>
     <color name="colorOutlinedButtonStroke">@color/colorAccent</color>
     <color name="colorImageDim">@color/colorPrimaryDark</color>
-    <color name="colorNotificationBackground">#80000000</color>
+    <color name="colorNotificationBackground">#99000000</color>
 </resources>

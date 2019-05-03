@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
@@ -36,4 +37,12 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(getLayoutResId(), container, false)
+
+    protected fun notify(@StringRes textResId: Int) {
+        snackbarDelegate.notify(textResId)
+    }
+
+    protected fun notifyWithAction(@StringRes textResId: Int, @StringRes buttonResId: Int, action: () -> Unit) {
+        snackbarDelegate.notifyWithAction(textResId, buttonResId, action)
+    }
 }

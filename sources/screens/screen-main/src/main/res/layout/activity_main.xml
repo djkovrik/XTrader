@@ -18,7 +18,6 @@
         android:paddingEnd="@dimen/material_baseline_grid_2x"
         android:paddingStart="@dimen/material_baseline_grid_2x"
         android:paddingTop="@dimen/material_baseline_grid_1.5x"
-        android:visibility="gone"
         tools:text="This is top notification text" />
 
     <fragment
@@ -35,8 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
         android:background="@color/colorNotificationBackground"
-        android:orientation="horizontal"
-        android:visibility="gone">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/notification_bottom_text"

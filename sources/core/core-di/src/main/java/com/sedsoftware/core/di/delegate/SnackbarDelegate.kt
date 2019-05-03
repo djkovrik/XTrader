@@ -1,7 +1,6 @@
 package com.sedsoftware.core.di.delegate
 
 interface SnackbarDelegate {
-    fun notifyTop(textResId: Int)
-    fun notifyBottom(textResId: Int)
-    fun notifyBottomWithAction(textResId: Int, buttonResId: Int, action: () -> Unit)
+    fun notify(textResId: Int)
+    fun notifyWithAction(textResId: Int, buttonResId: Int, action: () -> Unit)
 }
