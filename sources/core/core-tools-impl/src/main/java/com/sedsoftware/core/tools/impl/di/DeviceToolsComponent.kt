@@ -15,22 +15,18 @@ import javax.inject.Singleton
 @Singleton
 interface DeviceToolsComponent : DeviceToolsProvider {
 
-    @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        fun app(app: App): Builder
-
-        fun build(): DeviceToolsComponent
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance app: App): DeviceToolsComponent
     }
 
     class Initializer private constructor() {
         companion object {
 
             fun init(app: App): DeviceToolsProvider =
-                DaggerDeviceToolsComponent.builder()
-                    .app(app)
-                    .build()
+                DaggerDeviceToolsComponent
+                    .factory()
+                    .create(app)
         }
     }
 }
