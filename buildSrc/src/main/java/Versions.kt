@@ -43,7 +43,7 @@ object Versions {
     const val DAGGER_VERSION = "2.22.1"
     const val RETROFIT_VERSION = "2.5.0"
     const val MOSHI_VERSION = "1.8.0"
-    const val COROUTINES_ADAPTER_VERSION = "1.0.0"
+    const val COROUTINES_ADAPTER_VERSION = "0.9.2"
     const val OKHTTP_VERSION = "3.14.1"
     const val THREE_TEN_ABP_VERSION = "1.2.0"
 
@@ -68,5 +68,4 @@ object Versions {
     const val TIMBER_VERSION = "4.7.1"
     const val LEAK_CANARY_VERSION = "2.0-alpha-1"
     const val DEV_METRICS_VERSION = "0.7"
-    const val CHUCK_VERSION = "1.1.0"
 }

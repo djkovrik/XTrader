@@ -7,4 +7,7 @@ dependencies {
     implementation CoreDependencies.threetenabp
     implementation CoreDependencies.moshi
     implementation CoreDependencies.moshiKotlin
+
+    implementation CoreDependencies.retrofit
+    implementation CoreDependencies.retrofitCoroutinesAdapter
 }

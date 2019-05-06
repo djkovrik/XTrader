@@ -74,6 +74,7 @@
         android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
         android:layout_marginTop="@dimen/material_baseline_grid_1x"
         android:text="@string/btn_greetings_continue"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
