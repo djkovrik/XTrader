@@ -49,11 +49,11 @@ class PairsInfoRepository @Inject constructor(
             }
         }
 
-    private fun storePairsInfo(info: PairsInfo) {
+    private suspend fun storePairsInfo(info: PairsInfo) {
         symbolsDao.insert(mapper.mapSymbolsToDb(info))
     }
 
-    private fun storeSyncInfo(info: PairsInfo) {
+    private suspend fun storeSyncInfo(info: PairsInfo) {
         syncInfoDao.insert(mapper.mapSyncInfoToDb(info))
     }
 

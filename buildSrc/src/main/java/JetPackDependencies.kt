@@ -25,6 +25,7 @@ object JetPackDependencies {
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:$LIFECYCLE_VERSION"
 
     const val room = "androidx.room:room-runtime:$ROOM_VERSION"
+    const val roomKtx = "androidx.room:room-ktx:$ROOM_VERSION"
     const val roomCompiler = "androidx.room:room-compiler:$ROOM_VERSION"
 
     const val paging = "androidx.paging:paging-runtime:$PAGING_VERSION"

@@ -8,11 +8,11 @@ import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
 import org.threeten.bp.OffsetDateTime
 
 @Dao
-abstract class BinanceSyncInfoDao {
+interface BinanceSyncInfoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insert(item: BinanceSyncInfoDbModel): Long
+    suspend fun insert(item: BinanceSyncInfoDbModel): Long
 
     @Query("SELECT last_sync_date FROM sync_info WHERE name LIKE :name")
-    abstract fun getLastSyncDate(name: String): OffsetDateTime
+    suspend fun getLastSyncDate(name: String): OffsetDateTime
 }

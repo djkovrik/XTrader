@@ -7,17 +7,17 @@ import androidx.room.Query
 import com.sedsoftware.exchange.binance.database.model.BinanceSymbolDbModel
 
 @Dao
-abstract class BinanceSymbolsDao {
+interface BinanceSymbolsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insert(list: List<BinanceSymbolDbModel>): List<Long>
+    suspend fun insert(list: List<BinanceSymbolDbModel>): List<Long>
 
     @Query("SELECT * FROM symbols")
-    abstract fun getAllCurrencies(): List<BinanceSymbolDbModel>
+    suspend fun getAllCurrencies(): List<BinanceSymbolDbModel>
 
     @Query("SELECT * FROM symbols WHERE base_asset LIKE :baseName")
-    abstract fun getPairsForBase(baseName: String): List<BinanceSymbolDbModel>
+    suspend fun getPairsForBase(baseName: String): List<BinanceSymbolDbModel>
 
     @Query("DELETE FROM symbols")
-    abstract fun clearAll()
+    suspend fun clearAll()
 }

@@ -37,6 +37,7 @@ dependencies {
     kapt JetPackDependencies.lifecycleCompiler
 
     implementation JetPackDependencies.room
+    implementation JetPackDependencies.roomKtx
     kapt JetPackDependencies.roomCompiler
 
     testImplementation TestingDependencies.spekDsl
