@@ -9,5 +9,4 @@ dependencies {
     implementation CoreDependencies.moshiKotlin
 
     implementation CoreDependencies.retrofit
-    implementation CoreDependencies.retrofitCoroutinesAdapter
 }

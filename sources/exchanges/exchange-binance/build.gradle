@@ -31,7 +31,6 @@ dependencies {
     kapt CoreDependencies.daggerCompiler
 
     implementation CoreDependencies.retrofit
-    implementation CoreDependencies.retrofitCoroutinesAdapter
     implementation CoreDependencies.okhttp
     implementation CoreDependencies.moshi
     implementation CoreDependencies.moshiKotlin

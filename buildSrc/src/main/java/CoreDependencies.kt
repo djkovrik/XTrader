@@ -1,5 +1,4 @@
 import Versions.ADAPTER_DELEGATES_VERSION
-import Versions.COROUTINES_ADAPTER_VERSION
 import Versions.DAGGER_VERSION
 import Versions.MOSHI_VERSION
 import Versions.OKHTTP_VERSION
@@ -17,6 +16,4 @@ object CoreDependencies {
     const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:$MOSHI_VERSION"
     const val okhttp = "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:$RETROFIT_VERSION"
-    const val retrofitCoroutinesAdapter =
-        "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$COROUTINES_ADAPTER_VERSION"
 }

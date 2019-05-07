@@ -1,6 +1,5 @@
 package com.sedsoftware.exchange.binance.di.module
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.sedsoftware.core.adapters.OffsetDateTimeAdapter
 import com.sedsoftware.exchange.binance.network.BinanceApi
 import com.squareup.moshi.Moshi
@@ -29,7 +28,6 @@ class BinanceNetworkModule {
     fun provideBinanceApi(moshi: Moshi): BinanceApi =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(BinanceApi::class.java)

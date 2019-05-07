@@ -41,9 +41,8 @@ object Versions {
     // Core
     const val ADAPTER_DELEGATES_VERSION = "4.0.0"
     const val DAGGER_VERSION = "2.22.1"
-    const val RETROFIT_VERSION = "2.5.0"
+    const val RETROFIT_VERSION = "2.5.1-SNAPSHOT"
     const val MOSHI_VERSION = "1.8.0"
-    const val COROUTINES_ADAPTER_VERSION = "0.9.2"
     const val OKHTTP_VERSION = "3.14.1"
     const val THREE_TEN_ABP_VERSION = "1.2.0"
 

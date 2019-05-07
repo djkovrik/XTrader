@@ -35,7 +35,7 @@ class PairsInfoRepository @Inject constructor(
     }
 
     suspend fun getRemotePairsInfo(): Either<Failure, Success> =
-        when (val result = safeApiCall { api.getCurrencyPairs().await() }) {
+        when (val result = safeApiCall { api.getCurrencyPairs() }) {
             is Left -> left(result.a)
             is Right -> {
                 try {
