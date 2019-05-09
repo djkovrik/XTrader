@@ -8,8 +8,6 @@ import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.core.utils.common.Failure.LocalPersistenceError
 import com.sedsoftware.core.utils.common.Success
 import com.sedsoftware.core.utils.common.Success.PairsLoadingCompleted
-import com.sedsoftware.core.utils.extension.left
-import com.sedsoftware.core.utils.extension.right
 import com.sedsoftware.core.utils.network.safeApiCall
 import com.sedsoftware.exchange.binance.database.BinanceDatabase
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
@@ -36,20 +34,21 @@ class PairsInfoRepository @Inject constructor(
 
     suspend fun getRemotePairsInfo(): Either<Failure, Success> =
         when (val result = safeApiCall { api.getCurrencyPairs() }) {
-            is Left -> left(result.a)
+            is Left -> Left(result.a)
             is Right -> {
                 try {
                     storePairsInfo(result.b)
                     storeSyncInfo(result.b)
                     markAsDownloaded()
                 } catch (exception: Exception) {
-                    left(LocalPersistenceError(exception))
+                    Left(LocalPersistenceError(exception))
                 }
-                right(PairsLoadingCompleted)
+                Right(PairsLoadingCompleted)
             }
         }
 
     private suspend fun storePairsInfo(info: PairsInfo) {
+        symbolsDao.clearAll()
         symbolsDao.insert(mapper.mapSymbolsToDb(info))
     }
 
@@ -58,7 +57,7 @@ class PairsInfoRepository @Inject constructor(
     }
 
     private fun markAsDownloaded() {
-        if (settings.isExchangesDownloaded) {
+        if (!settings.isExchangesDownloaded) {
             settings.isExchangesDownloaded = true
         }
     }
