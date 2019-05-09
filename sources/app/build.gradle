@@ -29,6 +29,7 @@ dependencies {
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 
-    implementation DevToolsDependencies.timber
     implementation DevToolsDependencies.leakCanary
+    implementation DevToolsDependencies.stetho
+    implementation DevToolsDependencies.timber
 }

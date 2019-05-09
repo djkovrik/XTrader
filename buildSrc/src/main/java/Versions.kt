@@ -14,6 +14,7 @@ object Versions {
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
     const val ANDROID_JUNIT5_VERSION = "1.4.2.0"
     const val GRADLE_SCAN_VERSION = "2.2.1"
+    const val DEV_METRICS_VERSION = "0.7"
 
     // Kotlin
     const val KOTLIN_VERSION = "1.3.31"
@@ -66,5 +67,5 @@ object Versions {
     // Development tools
     const val TIMBER_VERSION = "4.7.1"
     const val LEAK_CANARY_VERSION = "2.0-alpha-1"
-    const val DEV_METRICS_VERSION = "0.7"
+    const val STETHO_VERSION = "1.5.1"
 }
