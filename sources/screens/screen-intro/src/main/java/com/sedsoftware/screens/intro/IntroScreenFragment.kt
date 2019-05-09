@@ -70,11 +70,11 @@ class IntroScreenFragment : BaseFragment() {
 
     private fun setupViewPositions() {
         logo.gone()
-        logo.alpha = 0f
-        greetings_text.alpha = 0f
-        greetings_note.alpha = 0f
+        logo.alpha = ALPHA_ZERO
+        greetings_text.alpha = ALPHA_ZERO
+        greetings_note.alpha = ALPHA_ZERO
         intro_button_continue.gone()
-        intro_button_continue.alpha = 0f
+        intro_button_continue.alpha = ALPHA_ZERO
         intro_button_continue.translationY = BASE_VIEW_TRANSLATION
     }
 
@@ -82,7 +82,7 @@ class IntroScreenFragment : BaseFragment() {
         var currentDelay = START_ANIMATION_DELAY
 
         logo.animate()
-            .alpha(1f)
+            .alpha(ALPHA_NORMAL)
             .setInterpolator(LinearInterpolator())
             .setDuration(ANIMATION_DURATION)
             .setStartDelay(currentDelay)
@@ -91,22 +91,20 @@ class IntroScreenFragment : BaseFragment() {
         currentDelay += ANIMATION_DURATION
 
         greetings_text.animate()
-            .alpha(1f)
+            .alpha(ALPHA_NORMAL)
             .setDuration(ANIMATION_DURATION)
             .setStartDelay(currentDelay)
             .addEndAction { introViewModel.showExchanges() }
 
         intro_button_continue.animate()
-            .alpha(1f)
-            .translationY(0f)
+            .alpha(ALPHA_GRAYED)
+            .translationY(TRANSLATION_DEFAULT)
             .setDuration(ANIMATION_DURATION)
             .setStartDelay(currentDelay)
             .addStartAction { intro_button_continue.show() }
 
-        currentDelay += ANIMATION_DURATION
-
         greetings_note.animate()
-            .alpha(1f)
+            .alpha(ALPHA_NORMAL)
             .setInterpolator(LinearInterpolator())
             .setDuration(ANIMATION_DURATION)
             .setStartDelay(currentDelay)
@@ -115,15 +113,27 @@ class IntroScreenFragment : BaseFragment() {
 
     private fun displayLoadersList(exchanges: Map<Exchange, DownloadState>?) {
         exchanges?.let { exchangesAdapter.items = it }
+        val states = exchanges?.values?.toSet() ?: emptySet()
+        if (states.contains(DownloadState.COMPLETED)) {
+            enableButton()
+        }
     }
 
     private fun displayFailure(failure: Failure?) {
 
     }
 
+    private fun enableButton() {
+
+    }
+
     private companion object {
         const val START_ANIMATION_DELAY = 50L
         const val ANIMATION_DURATION = 250L
+        const val TRANSLATION_DEFAULT = 0f
         const val BASE_VIEW_TRANSLATION = 100f
+        const val ALPHA_ZERO = 0f
+        const val ALPHA_GRAYED = 0.7f
+        const val ALPHA_NORMAL = 1f
     }
 }
