@@ -3,7 +3,7 @@ import Versions.ANDROID_JUNIT5_VERSION
 import Versions.DETEKT_VERSION
 import Versions.DEV_METRICS_VERSION
 import Versions.GRADLE_ANDROID_VERSION
-import Versions.GRADLE_SCAN_VERSION
+import Versions.GRADLE_BUILD_SCAN_VERSION
 import Versions.GRADLE_VERSIONS_VERSION
 import Versions.KOTLIN_VERSION
 import Versions.SAFE_ARGS_VERSION
@@ -24,5 +24,5 @@ object Plugins {
     const val JUNIT5 =
         "de.mannodermaus.gradle.plugins:android-junit5:$ANDROID_JUNIT5_VERSION"
     const val SCAN =
-        "com.gradle:build-scan-plugin:$GRADLE_SCAN_VERSION"
+        "com.gradle:build-scan-plugin:$GRADLE_BUILD_SCAN_VERSION"
 }
