@@ -124,7 +124,8 @@ class IntroScreenFragment : BaseFragment() {
     }
 
     private fun enableButton() {
-
+        intro_button_continue.alpha = ALPHA_NORMAL
+        intro_button_continue.isEnabled = true
     }
 
     private companion object {
