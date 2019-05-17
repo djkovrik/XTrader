@@ -34,5 +34,16 @@ project(':screen-home').projectDir = new File(rootDir, 'sources/screens/screen-h
 include ':screen-pin'
 project(':screen-pin').projectDir = new File(rootDir, 'sources/screens/screen-pin')
 
+include ':screen-wallet'
+project(':screen-wallet').projectDir = new File(rootDir, 'sources/screens/screen-wallet')
+include ':screen-orders'
+project(':screen-orders').projectDir = new File(rootDir, 'sources/screens/screen-orders')
+include ':screen-market'
+project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
+include ':screen-tracker'
+project(':screen-tracker').projectDir = new File(rootDir, 'sources/screens/screen-tracker')
+include ':screen-tools'
+project(':screen-tools').projectDir = new File(rootDir, 'sources/screens/screen-tools')
+
 include ':lib-spin-kit'
 project(':lib-spin-kit').projectDir = new File(rootDir, 'sources/libraries/lib-spin-kit')

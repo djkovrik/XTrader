@@ -12,10 +12,16 @@ dependencies {
     implementation project(':core-presentation')
     implementation project(':core-navigation')
     implementation project(':core-utils')
+
     implementation project(':screen-startup')
     implementation project(':screen-intro')
     implementation project(':screen-pin')
     implementation project(':screen-home')
+    implementation project(':screen-wallet')
+    implementation project(':screen-orders')
+    implementation project(':screen-market')
+    implementation project(':screen-tracker')
+    implementation project(':screen-tools')
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
