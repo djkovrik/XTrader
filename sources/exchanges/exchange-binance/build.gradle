@@ -37,7 +37,7 @@ dependencies {
     implementation CoreDependencies.moshiAdapters
     implementation CoreDependencies.retrofitMoshiConverter
 
-    implementation JetPackDependencies.lifecycleExtensions
+    implementation JetPackDependencies.lifecycle
     kapt JetPackDependencies.lifecycleCompiler
 
     implementation JetPackDependencies.room

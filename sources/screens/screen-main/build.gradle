@@ -17,19 +17,14 @@ dependencies {
     implementation project(':screen-intro')
     implementation project(':screen-pin')
     implementation project(':screen-home')
-    implementation project(':screen-wallet')
-    implementation project(':screen-orders')
-    implementation project(':screen-market')
-    implementation project(':screen-tracker')
-    implementation project(':screen-tools')
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.materialComponents
-    implementation JetPackDependencies.navigation
     implementation JetPackDependencies.navigationUi
+    implementation JetPackDependencies.navigationFragment
 
     implementation UiDependencies.materialValues
 }

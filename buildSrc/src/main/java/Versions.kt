@@ -30,22 +30,17 @@ object Versions {
 
     // JetPack - AppCompat
     const val APPCOMPAT_VERSION = "1.1.0-alpha05"
-    const val CARDVIEW_VERSION = "1.0.0-rc02"
-    const val PREFERENCE_VERSION = "1.0.0-rc02"
     const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha06"
-    const val RECYCLER_VIEW_VERSION = "1.1.0-alpha05"
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-beta1"
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
 
     // JetPack - Architecture
     const val LIFECYCLE_VERSION = "2.2.0-alpha01"
     const val ROOM_VERSION = "2.1.0-beta01"
-    const val PAGING_VERSION = "2.0.0-rc01"
-    const val NAVIGATION_VERSION = "1.0.0"
-    const val WORKMANAGER_VERSION = "2.0.0-alpha8"
+    const val NAVIGATION_VERSION = "2.1.0-alpha04"
 
     // JetPack - KTX
-    const val KTX_VERSION = "1.0.0-alpha1"
+    const val KTX_VERSION = "1.0.1"
 
     // UI
     const val MATERIAL_VALUES_VERSION = "1.1.1"
@@ -53,7 +48,6 @@ object Versions {
     const val MP_ANDROID_CHART_VERSION = "v3.0.3"
 
     // Testing
-    const val JUNIT4_VERSION = "4.12"
     const val JUNIT5_VERSION = "5.2.0"
     const val JUNIT5_RUNNER_VERSION = "0.2.2"
     const val TEST_RUNNER_VERSION = "1.2.0-beta01"

@@ -22,9 +22,8 @@ dependencies {
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.constraintLayout
-    implementation JetPackDependencies.recyclerView
     implementation JetPackDependencies.materialComponents
-    implementation JetPackDependencies.navigation
+    implementation JetPackDependencies.navigationRuntime
 
     implementation UiDependencies.materialValues
 }

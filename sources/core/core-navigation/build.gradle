@@ -6,5 +6,5 @@ apply from: '../../android-config.gradle'
 dependencies {
     implementation CoreDependencies.dagger
 
-    implementation JetPackDependencies.navigation
+    implementation JetPackDependencies.navigationRuntime
 }

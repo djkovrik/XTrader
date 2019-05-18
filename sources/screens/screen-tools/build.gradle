@@ -13,7 +13,6 @@ dependencies {
     kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
-    implementation JetPackDependencies.constraintLayout
     implementation JetPackDependencies.materialComponents
 
     implementation UiDependencies.materialValues
