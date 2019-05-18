@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bottom_wallet">Wallet</string>
+    <string name="bottom_orders">Orders</string>
+    <string name="bottom_market">Market</string>
+    <string name="bottom_tracker">Tracker</string>
+    <string name="bottom_tools">Tools</string>
+</resources>

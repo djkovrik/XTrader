@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/wallet"
+        android:contentDescription="@string/bottom_wallet"
+        android:icon="@drawable/ic_wallet"
+        android:title="@string/bottom_wallet" />
+
+    <item
+        android:id="@+id/orders"
+        android:contentDescription="@string/bottom_orders"
+        android:icon="@drawable/ic_orders"
+        android:title="@string/bottom_orders" />
+
+    <item
+        android:id="@+id/market"
+        android:contentDescription="@string/bottom_market"
+        android:icon="@drawable/ic_market"
+        android:title="@string/bottom_market" />
+
+    <item
+        android:id="@+id/tracker"
+        android:contentDescription="@string/bottom_tracker"
+        android:icon="@drawable/ic_tracker"
+        android:title="@string/bottom_tracker" />
+
+    <item
+        android:id="@+id/tools"
+        android:contentDescription="@string/bottom_tools"
+        android:icon="@drawable/ic_tools"
+        android:title="@string/bottom_tools" />
+
+</menu>

@@ -103,6 +103,8 @@ class IntroScreenFragment : BaseFragment() {
             .setStartDelay(currentDelay)
             .addStartAction { intro_button_continue.show() }
 
+        currentDelay += ANIMATION_DURATION
+
         greetings_note.animate()
             .alpha(ALPHA_NORMAL)
             .setInterpolator(LinearInterpolator())
