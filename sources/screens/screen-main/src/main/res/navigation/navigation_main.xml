@@ -11,14 +11,14 @@
         android:label="StartupFragment"
         tools:layout="@layout/fragment_startup_screen">
         <action
-            android:id="@+id/navigate_from_startup_to_home"
-            app:destination="@id/homeScreenFragment" />
-        <action
             android:id="@+id/navigate_from_startup_to_pin"
             app:destination="@id/pinScreenFragment" />
         <action
             android:id="@+id/navigate_from_startup_to_intro"
             app:destination="@id/introScreenFragment" />
+        <action
+            android:id="@+id/navigate_from_startup_to_market"
+            app:destination="@id/marketScreenFragment" />
     </fragment>
 
     <fragment
@@ -27,8 +27,8 @@
         android:label="PinScreenFragment"
         tools:layout="@layout/fragment_pin_screen">
         <action
-            android:id="@+id/navigate_from_pin_to_home"
-            app:destination="@id/homeScreenFragment" />
+            android:id="@+id/navigate_from_pin_to_market"
+            app:destination="@id/marketScreenFragment" />
     </fragment>
 
     <fragment
@@ -37,14 +37,46 @@
         android:label="IntroScreenFragment"
         tools:layout="@layout/fragment_intro_screen">
         <action
-            android:id="@+id/navigate_from_intro_to_home"
-            app:destination="@id/homeScreenFragment" />
+            android:id="@+id/navigate_from_intro_to_market"
+            app:destination="@id/marketScreenFragment" />
     </fragment>
-
     <fragment
-        android:id="@+id/homeScreenFragment"
-        android:name="com.sedsoftware.screens.home.HomeScreenFragment"
-        android:label="HomeScreenFragment"
-        tools:layout="@layout/fragment_home_screen" />
+        android:id="@+id/marketScreenFragment"
+        android:name="com.sedsoftware.screens.market.MarketScreenFragment"
+        android:label="MarketScreenFragment"
+        tools:layout="@layout/fragment_market_screen">
+        <action
+            android:id="@+id/navigate_from_market_to_orders"
+            app:destination="@id/ordersScreenFragment" />
+        <action
+            android:id="@+id/navigate_from_market_to_wallet"
+            app:destination="@id/walletScreenFragment" />
+        <action
+            android:id="@+id/navigate_from_market_to_tracker"
+            app:destination="@id/trackerScreenFragment" />
+        <action
+            android:id="@+id/navigate_from_market_to_tools"
+            app:destination="@id/toolsScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersScreenFragment"
+        android:name="com.sedsoftware.screens.orders.OrdersScreenFragment"
+        android:label="OrdersScreenFragment"
+        tools:layout="@layout/fragment_orders_screen" />
+    <fragment
+        android:id="@+id/walletScreenFragment"
+        android:name="com.sedsoftware.screens.wallet.WalletScreenFragment"
+        android:label="WalletScreenFragment"
+        tools:layout="@layout/fragment_wallet_screen" />
+    <fragment
+        android:id="@+id/trackerScreenFragment"
+        android:name="com.sedsoftware.screens.tracker.TrackerScreenFragment"
+        android:label="TrackerScreenFragment"
+        tools:layout="@layout/fragment_tracker_screen" />
+    <fragment
+        android:id="@+id/toolsScreenFragment"
+        android:name="com.sedsoftware.screens.tools.ToolsScreenFragment"
+        android:label="ToolsScreenFragment"
+        tools:layout="@layout/fragment_tools_screen" />
 
 </navigation>

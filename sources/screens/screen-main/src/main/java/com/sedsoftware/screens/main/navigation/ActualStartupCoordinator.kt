@@ -30,7 +30,7 @@ class ActualStartupCoordinator @Inject constructor(
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     override fun navigateToNextScreen() {
         val nextRoute = if (settings.isExchangesDownloaded) {
-            R.id.navigate_from_startup_to_home
+            R.id.navigate_from_startup_to_market
         } else {
             R.id.navigate_from_startup_to_intro
         }

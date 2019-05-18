@@ -19,7 +19,6 @@ dependencies {
     implementation project(':screen-startup')
     implementation project(':screen-intro')
     implementation project(':screen-pin')
-    implementation project(':screen-home')
     implementation project(':screen-wallet')
     implementation project(':screen-orders')
     implementation project(':screen-market')

@@ -26,7 +26,7 @@ class ActualIntroCoordinator @Inject constructor(
     override fun navigateToHome() {
         router.navigateTo(
             Destination(
-                routeId = R.id.navigate_from_intro_to_home,
+                routeId = R.id.navigate_from_intro_to_market,
                 routeOptions = options
             )
         )
