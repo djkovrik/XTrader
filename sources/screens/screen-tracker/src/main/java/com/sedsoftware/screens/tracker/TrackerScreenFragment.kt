@@ -1,11 +1,11 @@
-package com.sedsoftware.screens.tools
+package com.sedsoftware.screens.tracker
 
 import com.sedsoftware.core.presentation.base.BaseFragment
 
-class FragmentToolsScreen : BaseFragment() {
+class TrackerScreenFragment : BaseFragment() {
 
     override fun getLayoutResId(): Int =
-        R.layout.fragment_tools_screen
+        R.layout.fragment_tracker_screen
 
     override fun inject() {
     }
