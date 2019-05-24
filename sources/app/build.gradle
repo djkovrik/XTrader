@@ -35,7 +35,7 @@ dependencies {
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 
-    implementation DevToolsDependencies.leakCanary
-    implementation DevToolsDependencies.stetho
+    debugImplementation DevToolsDependencies.leakCanary
+    debugImplementation DevToolsDependencies.stetho
     implementation DevToolsDependencies.timber
 }
