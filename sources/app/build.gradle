@@ -31,6 +31,7 @@ dependencies {
     implementation JetPackDependencies.legacyUtils
 
     implementation CoreDependencies.threetenabp
+    implementation CoreDependencies.okhttp
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler

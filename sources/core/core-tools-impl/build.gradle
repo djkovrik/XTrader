@@ -25,6 +25,9 @@ dependencies {
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 
+    implementation CoreDependencies.okhttp
+    implementation CoreDependencies.okhttpLoggingInterceptor
+
     implementation JetPackDependencies.appCompat
 
     implementation DevToolsDependencies.timber

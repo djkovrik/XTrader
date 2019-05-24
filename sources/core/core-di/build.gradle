@@ -10,5 +10,7 @@ dependencies {
 
     implementation CoreDependencies.dagger
 
+    implementation CoreDependencies.okhttp
+
     implementation JetPackDependencies.lifecycle
 }

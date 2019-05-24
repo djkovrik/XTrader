@@ -15,5 +15,6 @@ object CoreDependencies {
     const val moshiAdapters = "com.squareup.moshi:moshi-adapters:$MOSHI_VERSION"
     const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:$MOSHI_VERSION"
     const val okhttp = "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
+    const val okhttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:$RETROFIT_VERSION"
 }

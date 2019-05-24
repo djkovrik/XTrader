@@ -9,7 +9,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AppToolsModule::class,
-        PlatformToolsModule::class
+        PlatformToolsModule::class,
+        NetworkToolsModule::class
     ]
 )
 @Singleton
