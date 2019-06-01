@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 apply from: '../../android-config.gradle'
 
@@ -13,4 +14,5 @@ dependencies {
     implementation CoreDependencies.okhttp
 
     implementation JetPackDependencies.lifecycle
+    kapt JetPackDependencies.lifecycleCompiler
 }

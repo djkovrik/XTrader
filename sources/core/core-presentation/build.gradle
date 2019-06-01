@@ -20,7 +20,10 @@ dependencies {
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.lifecycle
-    implementation JetPackDependencies.lifecycleKtx
+    implementation JetPackDependencies.lifecycleRuntimeKtx
+    implementation JetPackDependencies.lifecycleViewModelKtx
+    kapt JetPackDependencies.lifecycleCompiler
+
     implementation JetPackDependencies.materialComponents
 
     implementation UiDependencies.materialValues
