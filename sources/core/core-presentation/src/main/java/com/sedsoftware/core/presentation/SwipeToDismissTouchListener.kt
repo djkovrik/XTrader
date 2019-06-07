@@ -12,7 +12,6 @@ import android.view.animation.AccelerateInterpolator
 import com.sedsoftware.core.presentation.extension.addEndAction
 
 // Based on https://raw.githubusercontent.com/romannurik/Android-SwipeToDismiss
-
 class SwipeToDismissTouchListener(
     private val targetView: View,
     private val callback: DismissCallbacks
