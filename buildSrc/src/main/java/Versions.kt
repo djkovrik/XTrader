@@ -25,8 +25,8 @@ object Versions {
     const val GRADLE_VERSIONS_VERSION = "0.21.0"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
     const val ANDROID_JUNIT5_VERSION = "1.4.2.0"
-    const val GRADLE_BUILD_SCAN_VERSION = "2.3"
     const val DEV_METRICS_VERSION = "0.7"
+    const val ANDROID_JAR_VERSION = "0.1"
 
     // JetPack - AppCompat
     const val APPCOMPAT_VERSION = "1.1.0-beta01"

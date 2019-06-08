@@ -13,26 +13,21 @@ buildscript {
         classpath Plugins.GRADLE_VERSIONS
         classpath Plugins.DEVICE_METRICS
         classpath Plugins.JUNIT5
-//        classpath Plugins.SCAN
+        classpath Plugins.ANDROID_JAR
     }
 }
 
-apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'io.gitlab.arturbosch.detekt'
 apply from: 'sources/detekt-config.gradle'
-//apply plugin: 'com.gradle.build-scan'
+apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'com.stepango.androidjar'
 
 allprojects {
+    ext.androidJar = androidjar.find(Versions.TARGET_SDK_VERSION)
     repositories {
         google()
         jcenter()
     }
-
-//    buildScan {
-//        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-//        termsOfServiceAgree = 'yes'
-//        publishAlways()
-//    }
 }
 
 task clean(type: Delete) {
