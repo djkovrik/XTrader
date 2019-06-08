@@ -5,7 +5,7 @@ apply plugin: "de.mannodermaus.android-junit5"
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
-apply from: '../../spek-config.gradle'
+apply from: '../../spek-android-config.gradle'
 
 dependencies {
     implementation project(':core-di')

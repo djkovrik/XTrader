@@ -1,7 +1,6 @@
-apply plugin: 'java'
 apply plugin: 'kotlin'
 
-apply from: '../../java-config.gradle'
+apply from: '../../kotlin-config.gradle'
 
 dependencies {
     implementation project(':core-tools-api')
