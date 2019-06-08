@@ -9,11 +9,11 @@ object Versions {
 
     // Core
     const val ADAPTER_DELEGATES_VERSION = "4.0.0"
-    const val DAGGER_VERSION = "2.22.1"
-    const val RETROFIT_VERSION = "2.5.1-SNAPSHOT"
+    const val DAGGER_VERSION = "2.23.1"
+    const val RETROFIT_VERSION = "2.6.0"
     const val MOSHI_VERSION = "1.8.0"
     const val OKHTTP_VERSION = "3.14.1"
-    const val THREE_TEN_ABP_VERSION = "1.2.0"
+    const val THREE_TEN_ABP_VERSION = "1.2.1"
 
     // Kotlin
     const val KOTLIN_VERSION = "1.3.31"
@@ -29,18 +29,18 @@ object Versions {
     const val DEV_METRICS_VERSION = "0.7"
 
     // JetPack - AppCompat
-    const val APPCOMPAT_VERSION = "1.1.0-alpha05"
-    const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha06"
+    const val APPCOMPAT_VERSION = "1.1.0-beta01"
+    const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha07"
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-beta1"
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
 
     // JetPack - Architecture
     const val LIFECYCLE_VERSION = "2.2.0-alpha01"
-    const val ROOM_VERSION = "2.1.0-beta01"
-    const val NAVIGATION_VERSION = "2.1.0-alpha04"
+    const val ROOM_VERSION = "2.1.0-rc01"
+    const val NAVIGATION_VERSION = "2.1.0-alpha05"
 
     // JetPack - KTX
-    const val KTX_VERSION = "1.0.1"
+    const val KTX_VERSION = "1.2.0-alpha01"
 
     // UI
     const val MATERIAL_VALUES_VERSION = "1.1.1"
@@ -50,16 +50,16 @@ object Versions {
     // Testing
     const val JUNIT5_VERSION = "5.2.0"
     const val JUNIT5_RUNNER_VERSION = "0.2.2"
-    const val TEST_RUNNER_VERSION = "1.2.0-beta01"
+    const val TEST_RUNNER_VERSION = "1.2.0"
     const val TEST_RULES_VERSION = "1.1.0-alpha1"
     const val ESPRESSO_VERSION = "3.1.0-alpha1"
-    const val SPEK_VERSION = "2.0.4"
+    const val SPEK_VERSION = "2.0.5"
     const val EXPEKT_VERSION = "0.5.0"
     const val KAKAO_VERSION = "1.3.0"
     const val FUEL_VERSION = "2.1.0"
 
     // Development tools
     const val TIMBER_VERSION = "4.7.1"
-    const val LEAK_CANARY_VERSION = "2.0-alpha-1"
+    const val LEAK_CANARY_VERSION = "2.0-alpha-2"
     const val STETHO_VERSION = "1.5.1"
 }
