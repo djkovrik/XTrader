@@ -4,18 +4,8 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "de.mannodermaus.android-junit5"
 
 apply from: '../../android-config.gradle'
-
-android {
-    testOptions {
-        junitPlatform {
-            filters {
-                engines {
-                    include 'spek2'
-                }
-            }
-        }
-    }
-}
+apply from: '../../kapt-config.gradle'
+apply from: '../../spek-config.gradle'
 
 dependencies {
     implementation project(':core-tools-api')

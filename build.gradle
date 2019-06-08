@@ -9,31 +9,18 @@ buildscript {
     dependencies {
         classpath Plugins.ANDROID_GRADLE
         classpath Plugins.KOTLIN_GRADLE_PLUGIN
-        classpath Plugins.JUNIT5
         classpath Plugins.DETEKT
         classpath Plugins.GRADLE_VERSIONS
         classpath Plugins.DEVICE_METRICS
-        classpath Plugins.SCAN
+        classpath Plugins.JUNIT5
+//        classpath Plugins.SCAN
     }
 }
 
 apply plugin: 'com.github.ben-manes.versions'
-apply plugin: 'com.gradle.build-scan'
 apply plugin: 'io.gitlab.arturbosch.detekt'
-
-detekt {
-    input = files("$projectDir/sources/")
-    config = files("$projectDir/config/detekt/base-config.yml")
-    baseline = file("$projectDir/reports/baseline.xml")
-    parallel = true
-
-    reports {
-        html {
-            enabled = true
-            destination = file("$projectDir/reports/detekt.html")
-        }
-    }
-}
+apply from: 'sources/detekt-config.gradle'
+//apply plugin: 'com.gradle.build-scan'
 
 allprojects {
     repositories {
@@ -41,19 +28,11 @@ allprojects {
         jcenter()
     }
 
-    buildScan {
-        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-        termsOfServiceAgree = 'yes'
-
+//    buildScan {
+//        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+//        termsOfServiceAgree = 'yes'
 //        publishAlways()
-    }
-
-    afterEvaluate {
-        extensions.findByName('kapt')?.arguments {
-            arg("dagger.formatGeneratedSource", "disabled")
-            arg("dagger.gradle.incremental", "enabled")
-        }
-    }
+//    }
 }
 
 task clean(type: Delete) {

@@ -1,0 +1,13 @@
+detekt {
+    input = files("$projectDir/sources/")
+    config = files("$projectDir/config/detekt/base-config.yml")
+    baseline = file("$projectDir/reports/baseline.xml")
+    parallel = true
+
+    reports {
+        html {
+            enabled = true
+            destination = file("$projectDir/reports/detekt.html")
+        }
+    }
+}

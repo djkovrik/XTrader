@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 apply from: '../../android-config.gradle'
+apply from: '../../kapt-config.gradle'
 
 dependencies {
     implementation project(':core-tools-api')

@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.frogermcs.androiddevmetrics'
 
 apply from: '../android-config.gradle'
+apply from: '../kapt-config.gradle'
 
 dependencies {
     implementation project(':core-di')
