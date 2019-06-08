@@ -104,6 +104,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     NXS("Nexus"),
     OAX("OpenANX"),
     OMG("OmiseGO"),
+    ONE("Harmony"),
     ONG("Ontology Gas"),
     ONT("Ontology"),
     OST("OST"),

@@ -16,6 +16,9 @@ import com.sedsoftware.core.presentation.extension.show
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.presentation.params.DownloadState
 import com.sedsoftware.core.utils.common.Failure
+import com.sedsoftware.core.utils.common.Failure.LocalPersistenceError
+import com.sedsoftware.core.utils.common.Failure.NetworkConnectionMissing
+import com.sedsoftware.core.utils.common.Failure.ServerError
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.viewmodel.IntroScreenViewModel
@@ -122,7 +125,11 @@ class IntroScreenFragment : BaseFragment() {
     }
 
     private fun displayFailure(failure: Failure?) {
-
+        when(failure) {
+            is NetworkConnectionMissing -> notify(R.string.msg_no_internet_connection)
+            is LocalPersistenceError -> notify(R.string.msg_local_error, failure.throwable.message)
+            is ServerError -> notify(R.string.msg_server_error, failure.throwable.message)
+        }
     }
 
     private fun enableButton() {

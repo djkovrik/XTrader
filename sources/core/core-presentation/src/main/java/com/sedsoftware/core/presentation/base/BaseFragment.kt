@@ -41,4 +41,8 @@ abstract class BaseFragment : Fragment() {
     protected fun notify(@StringRes textResId: Int) {
         snackbarDelegate.notify(textResId)
     }
+
+    protected fun notify(@StringRes textResId: Int, message: String?) {
+        snackbarDelegate.notify(textResId, message)
+    }
 }

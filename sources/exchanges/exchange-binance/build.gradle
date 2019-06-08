@@ -38,6 +38,7 @@ dependencies {
     implementation CoreDependencies.retrofitMoshiConverter
 
     implementation JetPackDependencies.lifecycle
+    implementation JetPackDependencies.lifecycleLiveDataKtx
     kapt JetPackDependencies.lifecycleCompiler
 
     implementation JetPackDependencies.room

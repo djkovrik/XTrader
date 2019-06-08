@@ -17,9 +17,12 @@ import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener.DismissCallbacks
+import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate {
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
     }
 
     private var controller: NavController? = null
+    private var notificationJob: Job? = null
     private var topNotificationTranslation = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +74,7 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
                 object : DismissCallbacks {
                     override fun onDismiss(view: View) {
                         notification_top_text.translationY = topNotificationTranslation
+                        notificationJob?.cancel()
                     }
                 }
             ))
@@ -104,7 +109,24 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
 
     override fun notify(textResId: Int) {
         notification_top_text.setText(textResId)
-        translateViewAnimated(notification_top_text, 0f)
+        notificationJob = launch {
+            translateViewAnimated(notification_top_text, 0f)
+            delay(DELAY_BEFORE_HIDE)
+            hideNotification()
+        }
+    }
+
+    override fun notify(prefixTextResId: Int, message: String?) {
+        notification_top_text.text = getString(prefixTextResId, message)
+        notificationJob = launch {
+            translateViewAnimated(notification_top_text, 0f)
+            delay(DELAY_BEFORE_HIDE)
+            hideNotification()
+        }
+    }
+
+    private fun hideNotification() {
+        translateViewAnimated(notification_top_text, topNotificationTranslation)
     }
 
     private fun translateViewAnimated(view: View, translation: Float) {
@@ -119,5 +141,6 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
     private companion object {
         const val ANIMATION_DELAY = 100L
         const val ANIMATION_DURATION = 200L
+        const val DELAY_BEFORE_HIDE = 3000L
     }
 }

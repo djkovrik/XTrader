@@ -5,9 +5,9 @@ import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
 import com.sedsoftware.core.presentation.R
-import com.sedsoftware.core.presentation.animation.ViewStateTransitionAnimator
-import com.sedsoftware.core.presentation.animation.transition.DownloadButtonTransition
+import com.sedsoftware.core.presentation.extension.hide
 import com.sedsoftware.core.presentation.extension.show
 import com.sedsoftware.core.presentation.params.DownloadState
 import com.sedsoftware.core.presentation.params.DownloadState.AVAILABLE
@@ -17,7 +17,7 @@ import com.sedsoftware.core.presentation.params.DownloadState.IN_PROGRESS
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_download_button.*
 
-class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
+class DownloadButton : FrameLayout, LayoutContainer {
 
     constructor(context: Context) : super(context) {
         LayoutInflater.from(context).inflate(R.layout.view_download_button, this, true)
@@ -87,28 +87,8 @@ class DownloadButton : ViewStateTransitionAnimator, LayoutContainer {
     }
 
     fun setState(newState: DownloadState) {
-        when {
-            currentState == null -> {
-                currentState = newState
-                views[newState]?.show()
-            }
-            currentState == AVAILABLE && newState == IN_PROGRESS -> {
-                perform(DownloadButtonTransition(views[AVAILABLE], views[IN_PROGRESS], VIEW_SHIFT))
-            }
-            currentState == IN_PROGRESS && newState == COMPLETED -> {
-                perform(DownloadButtonTransition(views[IN_PROGRESS], views[COMPLETED], VIEW_SHIFT))
-            }
-            currentState == IN_PROGRESS && newState == ERROR -> {
-                perform(DownloadButtonTransition(views[IN_PROGRESS], views[ERROR], -VIEW_SHIFT))
-            }
-            currentState == ERROR && newState == IN_PROGRESS -> {
-                perform(DownloadButtonTransition(views[ERROR], views[IN_PROGRESS], VIEW_SHIFT))
-            }
-        }
+        currentState?.let { views[it]?.hide() }
+        views[newState]?.show()
         currentState = newState
-    }
-
-    private companion object {
-        const val VIEW_SHIFT = 100f
     }
 }
