@@ -6,32 +6,30 @@ import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.presentation.base.BaseViewModel
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.params.DownloadState
-import com.sedsoftware.core.tools.api.Logger
 import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.core.utils.extension.either
+import com.sedsoftware.screens.intro.model.ExchangeListItem
 import javax.inject.Inject
 
 class IntroScreenViewModel @Inject constructor(
-    private val loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>,
-    private val logger: Logger
+    private val loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
 ) : BaseViewModel() {
 
-    var loadersList: MutableLiveData<Map<Exchange, DownloadState>> = MutableLiveData()
+    internal val exchangeList = MutableLiveData<List<ExchangeListItem>>()
+    private val loadingStates = mutableMapOf<Exchange, DownloadState>()
 
-    private var currentLoadersList: MutableMap<Exchange, DownloadState> = mutableMapOf()
-
-    fun showExchanges() {
-        val initialMap = mutableMapOf<Exchange, DownloadState>()
+    init {
         loaders.keys.forEach { exchange ->
-            initialMap[exchange] = DownloadState.AVAILABLE
+            loadingStates[exchange] = DownloadState.AVAILABLE
         }
-        currentLoadersList = initialMap
-        loadersList.value = currentLoadersList
+    }
+
+    fun showInitialList() {
+        emitCurrentList()
     }
 
     fun onExchangeClicked(exchange: Exchange) {
-        logger.d("Downloading started for ${exchange.name} pairs")
-        setDownloadState(exchange, DownloadState.IN_PROGRESS)
+        setExchangeState(exchange, DownloadState.IN_PROGRESS)
 
         launch {
             loaders[exchange]
@@ -41,19 +39,21 @@ class IntroScreenViewModel @Inject constructor(
     }
 
     private fun handleLoadingError(failure: Failure, exchange: Exchange) {
-        logger.d("Downloading error for ${exchange.name}")
-        setDownloadState(exchange, DownloadState.ERROR)
+        setExchangeState(exchange, DownloadState.ERROR)
         handleFailure(failure)
     }
 
     private fun handleLoadingCompletion(exchange: Exchange) {
-        logger.d("Downloading completed for ${exchange.name}")
-        setDownloadState(exchange, DownloadState.COMPLETED)
+        setExchangeState(exchange, DownloadState.COMPLETED)
 
     }
 
-    private fun setDownloadState(exchange: Exchange, state: DownloadState) {
-        currentLoadersList[exchange] = state
-        loadersList.value = currentLoadersList
+    private fun setExchangeState(exchange: Exchange, state: DownloadState) {
+        loadingStates[exchange] = state
+        emitCurrentList()
+    }
+
+    private fun emitCurrentList() {
+        exchangeList.value = loadingStates.map { ExchangeListItem(it.key, it.value) }
     }
 }

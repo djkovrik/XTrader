@@ -21,6 +21,7 @@ import com.sedsoftware.core.utils.common.Failure.NetworkConnectionMissing
 import com.sedsoftware.core.utils.common.Failure.ServerError
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
+import com.sedsoftware.screens.intro.model.ExchangeListItem
 import com.sedsoftware.screens.intro.viewmodel.IntroScreenViewModel
 import kotlinx.android.synthetic.main.fragment_intro_screen.*
 import javax.inject.Inject
@@ -47,7 +48,7 @@ class IntroScreenFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
 
         introViewModel = viewModel(viewModelFactory) {
-            observe(loadersList, ::displayLoadersList)
+            observe(exchangeList, ::displayLoadersList)
             failure(viewModelFailure, ::displayFailure)
         }
     }
@@ -63,8 +64,8 @@ class IntroScreenFragment : BaseFragment() {
             setHasFixedSize(true)
         }
 
-        exchangesAdapter.clickListener = { exchange ->
-            introViewModel.onExchangeClicked(exchange)
+        exchangesAdapter.clickListener = { item ->
+            introViewModel.onExchangeClicked(item.exchange)
         }
 
         setupViewPositions()
@@ -97,7 +98,7 @@ class IntroScreenFragment : BaseFragment() {
             .alpha(ALPHA_NORMAL)
             .setDuration(ANIMATION_DURATION)
             .setStartDelay(currentDelay)
-            .addEndAction { introViewModel.showExchanges() }
+            .addEndAction { introViewModel.showInitialList() }
 
         intro_button_continue.animate()
             .alpha(ALPHA_GRAYED)
@@ -116,12 +117,12 @@ class IntroScreenFragment : BaseFragment() {
             .start()
     }
 
-    private fun displayLoadersList(exchanges: Map<Exchange, DownloadState>?) {
+    private fun displayLoadersList(exchanges: List<ExchangeListItem>?) {
         exchanges?.let { exchangesAdapter.items = it }
-        val states = exchanges?.values?.toSet() ?: emptySet()
-        if (states.contains(DownloadState.COMPLETED)) {
-            enableButton()
-        }
+//        val states = exchanges?.values?.toSet() ?: emptySet()
+//        if (states.contains(DownloadState.COMPLETED)) {
+//            enableButton()
+//        }
     }
 
     private fun displayFailure(failure: Failure?) {
