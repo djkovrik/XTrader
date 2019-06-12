@@ -17,12 +17,16 @@ import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener.DismissCallbacks
+import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
+import java.util.LinkedList
+import java.util.Queue
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate {
@@ -50,6 +54,8 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
     private var controller: NavController? = null
     private var notificationJob: Job? = null
     private var topNotificationTranslation = 0f
+    private var isNotificationVisible = false
+    private val notificationQueue: Queue<String> = LinkedList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainActivityComponent.inject(this)
@@ -74,7 +80,8 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
                 object : DismissCallbacks {
                     override fun onDismiss(view: View) {
                         notification_top_text.translationY = topNotificationTranslation
-                        notificationJob?.cancel()
+                        notificationJob?.cancelChildren()
+                        notificationQueue.clear()
                     }
                 }
             ))
@@ -104,37 +111,45 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
         super.onPause()
     }
 
+    override fun onDetachedFromWindow() {
+        notificationJob?.cancel()
+        super.onDetachedFromWindow()
+    }
+
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
         mainActivityComponent
 
-    override fun notify(textResId: Int) {
-        notification_top_text.setText(textResId)
-        notificationJob = launch {
-            translateViewAnimated(notification_top_text, 0f)
-            delay(DELAY_BEFORE_HIDE)
-            hideNotification()
-        }
-    }
-
-    override fun notify(prefixTextResId: Int, message: String?) {
-        notification_top_text.text = getString(prefixTextResId, message)
-        notificationJob = launch {
-            translateViewAnimated(notification_top_text, 0f)
-            delay(DELAY_BEFORE_HIDE)
-            hideNotification()
+    override fun notifyOnTop(message: String) {
+        if (!isNotificationVisible) {
+            notification_top_text.text = message
+            translateViewAnimated(notification_top_text, 0f) {
+                isNotificationVisible = true
+                hideNotification()
+            }
+        } else {
+            notificationQueue.add(message)
         }
     }
 
     private fun hideNotification() {
-        translateViewAnimated(notification_top_text, topNotificationTranslation)
+        notificationJob = launch {
+            delay(DELAY_BEFORE_HIDE)
+            translateViewAnimated(notification_top_text, topNotificationTranslation) {
+                isNotificationVisible = false
+                if (notificationQueue.isNotEmpty()) {
+                    notifyOnTop(notificationQueue.poll())
+                }
+            }
+        }
     }
 
-    private fun translateViewAnimated(view: View, translation: Float) {
+    private fun translateViewAnimated(view: View, translation: Float, finishedCallback: () -> Unit = {}) {
         view.animate()
             .translationY(translation)
             .setStartDelay(ANIMATION_DELAY)
             .setDuration(ANIMATION_DURATION)
             .setInterpolator(LinearInterpolator())
+            .addEndAction { finishedCallback.invoke() }
             .start()
     }
 

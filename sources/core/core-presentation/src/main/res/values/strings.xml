@@ -7,7 +7,7 @@
     <string name="btn_cancel">Cancel</string>
 
     <!-- Messages -->
-    <string name="msg_no_internet_connection">Network connection missing</string>
+    <string name="msg_no_internet_connection">No internet connection available</string>
     <string name="msg_local_error">Local error: %1$s</string>
     <string name="msg_server_error">Server error: %1$s</string>
 </resources>

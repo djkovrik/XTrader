@@ -16,8 +16,6 @@
         <item name="android:alpha">0.5</item>
     </style>
 
-    <style name="XTextButton" parent="XTextPrimary" />
-
     <style name="XTextCaption" parent="XTextPrimary">
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textSize">@dimen/caption_text_size</item>

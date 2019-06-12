@@ -23,10 +23,6 @@
         <item name="android:textColor">@color/colorOutlinedButtonText</item>
     </style>
 
-    <style name="XTNotificationTextBottom">
-        <item name="android:textColor">@color/colorTextPrimary</item>
-    </style>
-
     <style name="XTNotificationText">
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:ellipsize">end</item>

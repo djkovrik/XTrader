@@ -15,8 +15,8 @@ inline fun <reified T : ViewModel> Fragment.viewModel(factory: Factory, body: T.
     return viewModel
 }
 
-fun Fragment.string(@StringRes resId: Int): String =
-    context?.string(resId).orEmpty()
+fun Fragment.string(@StringRes resId: Int, vararg formatArgs: Any? = arrayOfNulls(0)): String =
+    context?.getString(resId, formatArgs).orEmpty()
 
 fun Fragment.color(@ColorRes colorId: Int) =
     context?.let { ContextCompat.getColor(it, colorId) }.orZero()

@@ -5,7 +5,6 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sedsoftware.core.di.coordinator.IntroCoordinator
-import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartAction
@@ -13,8 +12,8 @@ import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.gone
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.show
+import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.presentation.extension.viewModel
-import com.sedsoftware.core.presentation.params.DownloadState
 import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.core.utils.common.Failure.LocalPersistenceError
 import com.sedsoftware.core.utils.common.Failure.NetworkConnectionMissing
@@ -126,9 +125,9 @@ class IntroScreenFragment : BaseFragment() {
 
     private fun displayFailure(failure: Failure?) {
         when(failure) {
-            is NetworkConnectionMissing -> notify(R.string.msg_no_internet_connection)
-            is LocalPersistenceError -> notify(R.string.msg_local_error, failure.throwable.message)
-            is ServerError -> notify(R.string.msg_server_error, failure.throwable.message)
+            is NetworkConnectionMissing -> notifyTop(string(R.string.msg_no_internet_connection))
+            is LocalPersistenceError -> notifyTop(string(R.string.msg_local_error, failure.throwable.message))
+            is ServerError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
         }
     }
 
