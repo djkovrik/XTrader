@@ -68,8 +68,10 @@ class IntroScreenFragment : BaseFragment() {
             introViewModel.onExchangeClicked(item.exchange)
         }
 
-        setupViewPositions()
-        animateViews()
+        introViewModel.animateAtStart {
+            setupViewPositions()
+            animateViews()
+        }
     }
 
     private fun setupViewPositions() {

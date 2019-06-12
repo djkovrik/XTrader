@@ -17,10 +17,18 @@ class IntroScreenViewModel @Inject constructor(
 
     internal val exchangeList = MutableLiveData<List<ExchangeListItem>>()
     private val loadingStates = mutableMapOf<Exchange, DownloadState>()
+    private var animatedAlready = false
 
     init {
         loaders.keys.forEach { exchange ->
             loadingStates[exchange] = DownloadState.AVAILABLE
+        }
+    }
+
+    fun animateAtStart(callback: () -> Unit) {
+        if (!animatedAlready) {
+            callback.invoke()
+            animatedAlready = true
         }
     }
 
