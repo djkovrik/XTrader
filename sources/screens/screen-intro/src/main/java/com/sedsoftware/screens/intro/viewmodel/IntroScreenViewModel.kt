@@ -16,6 +16,8 @@ class IntroScreenViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     internal val exchangeList = MutableLiveData<List<ExchangeListItem>>()
+    internal val anyDownloadCompleted = MutableLiveData<Boolean>()
+
     private val loadingStates = mutableMapOf<Exchange, DownloadState>()
     private var animatedAlready = false
 
@@ -46,16 +48,6 @@ class IntroScreenViewModel @Inject constructor(
         }
     }
 
-    private fun handleLoadingError(failure: Failure, exchange: Exchange) {
-        setExchangeState(exchange, DownloadState.ERROR)
-        handleFailure(failure)
-    }
-
-    private fun handleLoadingCompletion(exchange: Exchange) {
-        setExchangeState(exchange, DownloadState.COMPLETED)
-
-    }
-
     private fun setExchangeState(exchange: Exchange, state: DownloadState) {
         loadingStates[exchange] = state
         emitCurrentList()
@@ -63,5 +55,17 @@ class IntroScreenViewModel @Inject constructor(
 
     private fun emitCurrentList() {
         exchangeList.value = loadingStates.map { ExchangeListItem(it.key, it.value) }
+    }
+
+    private fun handleLoadingError(failure: Failure, exchange: Exchange) {
+        setExchangeState(exchange, DownloadState.ERROR)
+        handleFailure(failure)
+    }
+
+    private fun handleLoadingCompletion(exchange: Exchange) {
+        setExchangeState(exchange, DownloadState.COMPLETED)
+        if (anyDownloadCompleted.value != true) {
+            anyDownloadCompleted.value = true
+        }
     }
 }

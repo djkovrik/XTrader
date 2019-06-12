@@ -49,6 +49,7 @@ class IntroScreenFragment : BaseFragment() {
 
         introViewModel = viewModel(viewModelFactory) {
             observe(exchangeList, ::displayLoadersList)
+            observe(anyDownloadCompleted, ::enableButton)
             failure(viewModelFailure, ::displayFailure)
         }
     }
@@ -121,10 +122,6 @@ class IntroScreenFragment : BaseFragment() {
 
     private fun displayLoadersList(exchanges: List<ExchangeListItem>?) {
         exchanges?.let { exchangesAdapter.items = it }
-//        val states = exchanges?.values?.toSet() ?: emptySet()
-//        if (states.contains(DownloadState.COMPLETED)) {
-//            enableButton()
-//        }
     }
 
     private fun displayFailure(failure: Failure?) {
@@ -135,9 +132,14 @@ class IntroScreenFragment : BaseFragment() {
         }
     }
 
-    private fun enableButton() {
-        intro_button_continue.alpha = ALPHA_NORMAL
-        intro_button_continue.isEnabled = true
+    private fun enableButton(shouldEnable: Boolean?) {
+        if (shouldEnable == true) {
+            intro_button_continue.alpha = ALPHA_NORMAL
+            intro_button_continue.isEnabled = true
+        } else {
+            intro_button_continue.alpha = ALPHA_GRAYED
+            intro_button_continue.isEnabled = false
+        }
     }
 
     private companion object {
