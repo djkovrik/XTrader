@@ -56,6 +56,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     ETH("Ethereum"),
     EVX("Everex"),
     FET("Fetch.AI"),
+    FTM("Fantom"),
     FUEL("Etherparty"),
     FUN("FunFair"),
     GAS("NeoGas"),
