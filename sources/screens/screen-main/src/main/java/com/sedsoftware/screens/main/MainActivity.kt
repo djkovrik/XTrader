@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.NavController.OnDestinationChangedListener
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
@@ -21,6 +19,7 @@ import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.screens.main.di.MainActivityComponent
+import com.sedsoftware.screens.startup.StartupFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelChildren
@@ -28,6 +27,7 @@ import kotlinx.coroutines.delay
 import java.util.LinkedList
 import java.util.Queue
 import javax.inject.Inject
+import kotlin.reflect.KClass
 
 class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate {
 
@@ -39,33 +39,36 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
         MainActivityComponent.Initializer.init(appComponent, this)
     }
 
-    private val visibleNavigationScreens = setOf(
-        R.id.walletScreenFragment,
-        R.id.ordersScreenFragment,
-        R.id.marketScreenFragment,
-        R.id.trackerScreenFragment,
-        R.id.toolsScreenFragment
-    )
-
-    private val destinationChangeListener = OnDestinationChangedListener { _, destination, _ ->
-        showBottomNavigation(visibleNavigationScreens.contains(destination.id))
-    }
-
-    private var controller: NavController? = null
-    private var notificationJob: Job? = null
-    private var topNotificationTranslation = 0f
-    private var isNotificationVisible = false
     private val notificationQueue: Queue<String> = LinkedList()
+
+    private var currentNavController: MutableLiveData<NavController>? = null
+    private var notificationJob: Job? = null
+
+    private var topNotificationTranslation = 0f
+    private var bottomNavigationViewTranslation = 0f
+
+    private var isNotificationVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainActivityComponent.inject(this)
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         setBackgroundColor(R.color.colorBackground)
-        controller = findNavController(R.id.nav_controller_main)
 
         setupTopNotification()
-        setupBottomNavigation()
+        setupBottomNavigationInitial()
+
+        val introNavHostFragment = obtainNavHostFragment(
+            tag = getFragmentTag(StartupFragment::class),
+            graphId = R.navigation.navigation_intro,
+            containerId = R.id.nav_host_container
+        )
+
+        currentNavController?.value = introNavHostFragment.navController
+        navControllerHolder.setNavController(introNavHostFragment.navController)
+
+        attachNavHostFragment(introNavHostFragment, true)
     }
 
     private fun setupTopNotification() {
@@ -87,33 +90,22 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
             ))
     }
 
-    private fun setupBottomNavigation() {
-        controller?.let { bottom_navigation.setupWithNavController(it) }
-    }
-
-    private fun showBottomNavigation(show: Boolean) {
-        if (show) {
-            bottom_navigation.isVisible = true
-        } else {
-            bottom_navigation.isGone = true
+    private fun setupBottomNavigationInitial() {
+        bottom_navigation.post {
+            bottomNavigationViewTranslation = bottom_navigation.measuredHeight.toFloat()
+            bottom_navigation.translationY = bottomNavigationViewTranslation
         }
     }
 
     override fun onResumeFragments() {
         super.onResumeFragments()
-        controller?.let { navControllerHolder.setNavController(it) }
-        controller?.addOnDestinationChangedListener(destinationChangeListener)
+        currentNavController?.value?.let { navControllerHolder.setNavController(it) }
     }
 
     override fun onPause() {
-        controller?.removeOnDestinationChangedListener(destinationChangeListener)
+        notificationJob?.cancel()
         navControllerHolder.removeNavController()
         super.onPause()
-    }
-
-    override fun onDetachedFromWindow() {
-        notificationJob?.cancel()
-        super.onDetachedFromWindow()
     }
 
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
@@ -152,6 +144,38 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
             .addEndAction { finishedCallback.invoke() }
             .start()
     }
+
+    private fun obtainNavHostFragment(tag: String, graphId: Int, containerId: Int): NavHostFragment {
+
+        val existingFragment = supportFragmentManager.findFragmentByTag(tag) as NavHostFragment?
+        existingFragment?.let { return it }
+
+        val navHostFragment = NavHostFragment.create(graphId)
+        supportFragmentManager.beginTransaction()
+            .add(containerId, navHostFragment, tag)
+            .commitNow()
+        return navHostFragment
+    }
+
+    private fun attachNavHostFragment(fragment: NavHostFragment, isPrimary: Boolean) {
+        supportFragmentManager.beginTransaction()
+            .attach(fragment)
+            .apply {
+                if (isPrimary) {
+                    setPrimaryNavigationFragment(fragment)
+                }
+            }
+            .commitNow()
+    }
+
+    private fun detachNavHostFragment(fragment: NavHostFragment) {
+        supportFragmentManager.beginTransaction()
+            .detach(fragment)
+            .commitNow()
+    }
+
+    private fun getFragmentTag(kClass: KClass<StartupFragment>): String =
+        kClass.simpleName ?: "emptyTag"
 
     private companion object {
         const val ANIMATION_DELAY = 100L

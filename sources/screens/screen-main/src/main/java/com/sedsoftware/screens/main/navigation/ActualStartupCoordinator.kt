@@ -27,17 +27,23 @@ class ActualStartupCoordinator @Inject constructor(
             .build()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
     override fun navigateToNextScreen() {
-        val nextRoute = if (settings.isExchangesDownloaded) {
-            R.id.navigate_from_startup_to_market
+        if (settings.isExchangesDownloaded) {
+            navigateToHome()
         } else {
-            R.id.navigate_from_startup_to_intro
+            navigateToIntro()
         }
+    }
 
+    private fun navigateToHome() {
+
+    }
+
+    private fun navigateToIntro() {
         router.navigateTo(
             Destination(
-                routeId = nextRoute,
+                routeId = R.id.navigate_from_startup_to_intro,
                 routeOptions = options
             )
         )
