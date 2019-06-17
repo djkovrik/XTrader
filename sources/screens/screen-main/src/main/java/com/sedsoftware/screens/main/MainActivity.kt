@@ -27,6 +27,7 @@ import com.sedsoftware.core.presentation.SwipeToDismissTouchListener.DismissCall
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
+import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Job
@@ -40,6 +41,9 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
 
     @Inject
     lateinit var navControllerHolder: NavControllerHolder
+
+    @Inject
+    lateinit var settings: Settings
 
     private val mainActivityComponent: MainActivityComponent by lazy {
         val appComponent = (applicationContext as App).getAppComponent()
@@ -72,22 +76,38 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
         setContentView(R.layout.activity_main)
         setBackgroundColor(R.color.colorBackground)
 
-        setupTopNotification()
-        setupBottomNavigationInitial()
+        setupViews()
+        setupBottomNavigationBar()
 
-        introNavHostFragment = obtainNavHostFragment(
-            tag = getFragmentTag(-1),
-            graphId = R.navigation.navigation_intro,
-            containerId = R.id.nav_host_container
-        )
+        if (!settings.isExchangesDownloaded) {
+            introNavHostFragment = obtainNavHostFragment(
+                tag = getFragmentTag(-1),
+                graphId = R.navigation.navigation_intro,
+                containerId = R.id.nav_host_container
+            )
 
-        introNavHostFragment?.let { fragment ->
-            navControllerHolder.setNavController(fragment.navController)
-            attachNavHostFragment(fragment, true)
+            introNavHostFragment?.let { fragment ->
+                navControllerHolder.setNavController(fragment.navController)
+                attachNavHostFragment(fragment, true)
+            }
+        }
+
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar()
         }
     }
 
-    private fun setupTopNotification() {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        setupBottomNavigationBar()
+    }
+
+    private fun setupViews() {
+        bottom_navigation.post {
+            bottomNavigationViewTranslation = bottom_navigation.measuredHeight.toFloat()
+            bottom_navigation.translationY = bottomNavigationViewTranslation
+        }
+
         notification_top_text.post {
             topNotificationTranslation = -notification_top_text.measuredHeight.toFloat()
             notification_top_text.translationY = topNotificationTranslation
@@ -104,13 +124,6 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
                     }
                 }
             ))
-    }
-
-    private fun setupBottomNavigationInitial() {
-        bottom_navigation.post {
-            bottomNavigationViewTranslation = bottom_navigation.measuredHeight.toFloat()
-            bottom_navigation.translationY = bottomNavigationViewTranslation
-        }
     }
 
     override fun onResumeFragments() {
@@ -132,17 +145,26 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
         mainActivityComponent
 
     override fun switchToMainFlow() {
+        setupBottomNavigationBar()
+    }
+
+    private fun showBottomNavigationBar() {
         bottom_navigation.isVisible = true
         translateViewAnimated(bottom_navigation, 0f)
         introNavHostFragment?.let { detachNavHostFragment(it) }
+    }
 
-        val controller = bottom_navigation.setupWithNavController(R.id.nav_host_container)
+    private fun setupBottomNavigationBar() {
+        if (settings.isExchangesDownloaded) {
+            val controller = bottom_navigation.setupWithNavController(R.id.nav_host_container)
 
-        // Whenever the selected controller changes, setup the action bar.
 //        controller.observe(this, Observer { navController ->
-//            setupActionBarWithNavController(navController)
+//            navController?.let { setupActionBarWithNavController(it) }
 //        })
-        currentNavController = controller
+            currentNavController = controller
+
+            showBottomNavigationBar()
+        }
     }
 
     override fun notifyOnTop(message: String) {
