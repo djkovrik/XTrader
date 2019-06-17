@@ -2,31 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/walletScreenFragment"
+        android:id="@+id/navigation_wallet"
         android:contentDescription="@string/bottom_wallet"
         android:icon="@drawable/ic_wallet"
         android:title="@string/bottom_wallet" />
 
     <item
-        android:id="@+id/ordersScreenFragment"
+        android:id="@+id/navigation_orders"
         android:contentDescription="@string/bottom_orders"
         android:icon="@drawable/ic_orders"
         android:title="@string/bottom_orders" />
 
     <item
-        android:id="@+id/marketScreenFragment"
+        android:id="@+id/navigation_market"
         android:contentDescription="@string/bottom_market"
         android:icon="@drawable/ic_market"
         android:title="@string/bottom_market" />
 
     <item
-        android:id="@+id/trackerScreenFragment"
+        android:id="@+id/navigation_tracker"
         android:contentDescription="@string/bottom_tracker"
         android:icon="@drawable/ic_tracker"
         android:title="@string/bottom_tracker" />
 
     <item
-        android:id="@+id/toolsScreenFragment"
+        android:id="@+id/navigation_tools"
         android:contentDescription="@string/bottom_tools"
         android:icon="@drawable/ic_tools"
         android:title="@string/bottom_tools" />
