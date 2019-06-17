@@ -5,16 +5,17 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.sedsoftware.core.di.App
+import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener.DismissCallbacks
+import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
@@ -29,14 +30,14 @@ import java.util.Queue
 import javax.inject.Inject
 import kotlin.reflect.KClass
 
-class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate {
+class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDelegate, SnackbarDelegate {
 
     @Inject
     lateinit var navControllerHolder: NavControllerHolder
 
     private val mainActivityComponent: MainActivityComponent by lazy {
         val appComponent = (applicationContext as App).getAppComponent()
-        MainActivityComponent.Initializer.init(appComponent, this)
+        MainActivityComponent.Initializer.init(appComponent, this, this)
     }
 
     private val notificationQueue: Queue<String> = LinkedList()
@@ -111,6 +112,10 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
         mainActivityComponent
 
+    override fun switchToMainFlow() {
+
+    }
+
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {
             notification_top_text.text = message
@@ -174,7 +179,7 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, SnackbarDelegate 
             .commitNow()
     }
 
-    private fun getFragmentTag(kClass: KClass<StartupFragment>): String =
+    private fun getFragmentTag(kClass: KClass<out BaseFragment>): String =
         kClass.simpleName ?: "emptyTag"
 
     private companion object {

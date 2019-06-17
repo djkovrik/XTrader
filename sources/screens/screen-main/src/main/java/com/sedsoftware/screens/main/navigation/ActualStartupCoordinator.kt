@@ -4,6 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.navigation.NavOptions
 import com.sedsoftware.core.di.coordinator.StartupCoordinator
+import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.scope.ActivityScope
 import com.sedsoftware.core.navigation.Router
 import com.sedsoftware.core.navigation.destination.Destination
@@ -14,7 +15,8 @@ import javax.inject.Inject
 @ActivityScope
 class ActualStartupCoordinator @Inject constructor(
     private val router: Router,
-    private val settings: Settings
+    private val settings: Settings,
+    private val navigationFlowDelegate: NavigationFlowDelegate
 ) : StartupCoordinator {
 
     private val options: NavOptions by lazy {
@@ -37,7 +39,7 @@ class ActualStartupCoordinator @Inject constructor(
     }
 
     private fun navigateToHome() {
-
+        navigationFlowDelegate.switchToMainFlow()
     }
 
     private fun navigateToIntro() {

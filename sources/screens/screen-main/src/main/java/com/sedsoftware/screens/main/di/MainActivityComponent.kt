@@ -1,5 +1,6 @@
 package com.sedsoftware.screens.main.di
 
+import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
@@ -21,7 +22,11 @@ interface MainActivityComponent : MainActivityToolsProvider {
 
     @Component.Factory
     interface Factory {
-        fun create(appProvider: AppProvider, @BindsInstance snackbarDelegate: SnackbarDelegate): MainActivityComponent
+        fun create(
+            appProvider: AppProvider,
+            @BindsInstance snackbarDelegate: SnackbarDelegate,
+            @BindsInstance navigationFlowDelegate: NavigationFlowDelegate
+        ): MainActivityComponent
     }
 
     fun inject(activity: MainActivity)
@@ -29,11 +34,15 @@ interface MainActivityComponent : MainActivityToolsProvider {
     class Initializer private constructor() {
         companion object {
 
-            fun init(appProvider: AppProvider, snackbarDelegate: SnackbarDelegate): MainActivityComponent {
+            fun init(
+                appProvider: AppProvider,
+                snackbarDelegate: SnackbarDelegate,
+                navigationFlowDelegate: NavigationFlowDelegate
+            ): MainActivityComponent {
 
                 return DaggerMainActivityComponent
                     .factory()
-                    .create(appProvider, snackbarDelegate)
+                    .create(appProvider, snackbarDelegate, navigationFlowDelegate)
             }
         }
     }
