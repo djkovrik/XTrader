@@ -29,6 +29,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     BQX("Ethos"),
     BRD("Bread"),
     BTC("Bitcoin"),
+    BTCB("Bitcoin BEP2"),
     BTG("Bitcoin Gold"),
     BTS("BitShares"),
     BTT("BitTorent"),
