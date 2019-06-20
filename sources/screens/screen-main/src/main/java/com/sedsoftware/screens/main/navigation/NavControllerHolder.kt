@@ -1,4 +1,4 @@
-package com.sedsoftware.core.navigation
+package com.sedsoftware.screens.main.navigation
 
 import androidx.navigation.NavController
 

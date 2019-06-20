@@ -1,4 +1,4 @@
-package com.sedsoftware.core.navigation.destination
+package com.sedsoftware.screens.main.navigation.destination
 
 import android.os.Bundle
 import androidx.navigation.NavOptions

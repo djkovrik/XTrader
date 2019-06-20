@@ -1,6 +1,5 @@
 package com.sedsoftware.screens.main.di
 
-import com.sedsoftware.core.di.provider.NavigationProvider
 import dagger.Component
 import javax.inject.Singleton
 

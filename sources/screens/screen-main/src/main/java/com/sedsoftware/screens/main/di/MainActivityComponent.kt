@@ -1,6 +1,5 @@
 package com.sedsoftware.screens.main.di
 
-import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
@@ -11,7 +10,8 @@ import dagger.Component
 
 @Component(
     dependencies = [
-        AppProvider::class
+        AppProvider::class,
+        NavigationProvider::class
     ],
     modules = [
         MainActivityModule::class
@@ -20,13 +20,17 @@ import dagger.Component
 @ActivityScope
 interface MainActivityComponent : MainActivityToolsProvider {
 
-    @Component.Factory
-    interface Factory {
-        fun create(
-            appProvider: AppProvider,
-            @BindsInstance snackbarDelegate: SnackbarDelegate,
-            @BindsInstance navigationFlowDelegate: NavigationFlowDelegate
-        ): MainActivityComponent
+    @Component.Builder
+    interface Builder {
+
+        fun appProvider(appProvider: AppProvider): Builder
+
+        fun navigationProvider(appProvider: NavigationProvider): Builder
+
+        @BindsInstance
+        fun snackbarDelegate(snackbarDelegate: SnackbarDelegate): Builder
+
+        fun build(): MainActivityComponent
     }
 
     fun inject(activity: MainActivity)
@@ -34,15 +38,16 @@ interface MainActivityComponent : MainActivityToolsProvider {
     class Initializer private constructor() {
         companion object {
 
-            fun init(
-                appProvider: AppProvider,
-                snackbarDelegate: SnackbarDelegate,
-                navigationFlowDelegate: NavigationFlowDelegate
-            ): MainActivityComponent {
+            fun init(appProvider: AppProvider, snackbarDelegate: SnackbarDelegate): MainActivityComponent {
 
-                return DaggerMainActivityComponent
-                    .factory()
-                    .create(appProvider, snackbarDelegate, navigationFlowDelegate)
+                val navigationProvider =
+                    NavigationComponent.Initializer.init()
+
+                return DaggerMainActivityComponent.builder()
+                    .appProvider(appProvider)
+                    .navigationProvider(navigationProvider)
+                    .snackbarDelegate(snackbarDelegate)
+                    .build()
             }
         }
     }

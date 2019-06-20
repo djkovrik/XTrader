@@ -9,7 +9,6 @@ apply from: '../../kapt-config.gradle'
 dependencies {
     implementation project(':core-di')
     implementation project(':core-presentation')
-    implementation project(':core-navigation')
     implementation project(':core-tools-api')
 
     implementation CoreDependencies.dagger

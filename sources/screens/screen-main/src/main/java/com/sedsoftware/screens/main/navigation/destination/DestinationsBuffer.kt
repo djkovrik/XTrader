@@ -1,7 +1,7 @@
-package com.sedsoftware.core.navigation.destination
+package com.sedsoftware.screens.main.navigation.destination
 
 import androidx.navigation.NavController
-import com.sedsoftware.core.navigation.NavControllerHolder
+import com.sedsoftware.screens.main.navigation.NavControllerHolder
 import java.util.LinkedList
 import java.util.Queue
 import javax.inject.Inject

@@ -4,50 +4,40 @@ import android.os.Bundle
 import android.util.SparseArray
 import android.view.View
 import android.view.animation.LinearInterpolator
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.forEach
 import androidx.core.util.set
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.core.navigation.NavControllerHolder
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener.DismissCallbacks
+import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
-import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.screens.main.di.MainActivityComponent
+import com.sedsoftware.screens.main.navigation.NavControllerHolder
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
-import java.util.LinkedList
-import java.util.Queue
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDelegate, SnackbarDelegate {
+class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
 
     @Inject
     lateinit var navControllerHolder: NavControllerHolder
 
-    @Inject
-    lateinit var settings: Settings
-
     private val mainActivityComponent: MainActivityComponent by lazy {
         val appComponent = (applicationContext as App).getAppComponent()
-        MainActivityComponent.Initializer.init(appComponent, this, this)
+        MainActivityComponent.Initializer.init(appComponent, this)
     }
 
     private val navGraphIds: List<Int> = listOf(
@@ -58,16 +48,11 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
         R.navigation.navigation_tools
     )
 
-    private val notificationQueue: Queue<String> = LinkedList()
-
     private var introNavHostFragment: NavHostFragment? = null
-    private var currentNavController: LiveData<NavController>? = null
-    private var notificationJob: Job? = null
+//    private var currentNavController: LiveData<NavController>? = null
 
     private var topNotificationTranslation = 0f
     private var bottomNavigationViewTranslation = 0f
-
-    private var isNotificationVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainActivityComponent.inject(this)
@@ -79,18 +64,18 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
         setupViews()
         setupBottomNavigationBar()
 
-        if (!settings.isExchangesDownloaded) {
-            introNavHostFragment = obtainNavHostFragment(
-                tag = getFragmentTag(-1),
-                graphId = R.navigation.navigation_intro,
-                containerId = R.id.nav_host_container
-            )
-
-            introNavHostFragment?.let { fragment ->
-                navControllerHolder.setNavController(fragment.navController)
-                attachNavHostFragment(fragment, true)
-            }
-        }
+//        if (!settings.isExchangesDownloaded) {
+//            introNavHostFragment = obtainNavHostFragment(
+//                tag = getFragmentTag(-1),
+//                graphId = R.navigation.navigation_intro,
+//                containerId = R.id.nav_host_container
+//            )
+//
+//            introNavHostFragment?.let { fragment ->
+//                navControllerHolder.setNavController(fragment.navController)
+//                attachNavHostFragment(fragment, true)
+//            }
+//        }
 
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
@@ -126,10 +111,10 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
             ))
     }
 
-    override fun onResumeFragments() {
-        super.onResumeFragments()
-        currentNavController?.value?.let { navControllerHolder.setNavController(it) }
-    }
+//    override fun onResumeFragments() {
+//        super.onResumeFragments()
+//        currentNavController?.value?.let { navControllerHolder.setNavController(it) }
+//    }
 
     override fun onPause() {
         notificationJob?.cancel()
@@ -137,16 +122,12 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
         super.onPause()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.value?.navigateUp() ?: false
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        return currentNavController?.value?.navigateUp() ?: false
+//    }
 
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
         mainActivityComponent
-
-    override fun switchToMainFlow() {
-        setupBottomNavigationBar()
-    }
 
     private fun showBottomNavigationBar() {
         bottom_navigation.isVisible = true
@@ -155,16 +136,16 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder, NavigationFlowDel
     }
 
     private fun setupBottomNavigationBar() {
-        if (settings.isExchangesDownloaded) {
-            val controller = bottom_navigation.setupWithNavController(R.id.nav_host_container)
-
+//        if (settings.isExchangesDownloaded) {
+//            val controller = bottom_navigation.setupWithNavController(R.id.nav_host_container)
+//
 //        controller.observe(this, Observer { navController ->
 //            navController?.let { setupActionBarWithNavController(it) }
 //        })
-            currentNavController = controller
-
-            showBottomNavigationBar()
-        }
+//            currentNavController = controller
+//
+//            showBottomNavigationBar()
+//        }
     }
 
     override fun notifyOnTop(message: String) {

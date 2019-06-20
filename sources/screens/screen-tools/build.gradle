@@ -8,7 +8,6 @@ apply from: '../../kapt-config.gradle'
 
 dependencies {
     implementation project(':core-presentation')
-    implementation project(':core-navigation')
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler

@@ -8,7 +8,6 @@ apply from: '../../kapt-config.gradle'
 dependencies {
     implementation project(':core-tools-api')
     implementation project(':core-domain')
-    implementation project(':core-navigation')
 
     implementation CoreDependencies.dagger
 

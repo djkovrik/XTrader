@@ -1,7 +1,7 @@
-package com.sedsoftware.core.navigation
+package com.sedsoftware.screens.main.navigation
 
-import com.sedsoftware.core.navigation.destination.Destination
-import com.sedsoftware.core.navigation.destination.DestinationsBuffer
+import com.sedsoftware.screens.main.navigation.destination.Destination
+import com.sedsoftware.screens.main.navigation.destination.DestinationsBuffer
 
 class Router {
 
