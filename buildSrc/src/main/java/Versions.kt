@@ -9,14 +9,14 @@ object Versions {
 
     // Core
     const val ADAPTER_DELEGATES_VERSION = "4.0.0"
-    const val DAGGER_VERSION = "2.23.1"
+    const val DAGGER_VERSION = "2.23.2"
     const val RETROFIT_VERSION = "2.6.0"
     const val MOSHI_VERSION = "1.8.0"
     const val OKHTTP_VERSION = "3.14.1"
     const val THREE_TEN_ABP_VERSION = "1.2.1"
 
     // Kotlin
-    const val KOTLIN_VERSION = "1.3.31"
+    const val KOTLIN_VERSION = "1.3.40"
     const val KOTLIN_COROUTINES_VERSION = "1.3.0-M1"
 
     // Plugins
@@ -24,14 +24,14 @@ object Versions {
     const val DETEKT_VERSION = "1.0.0-RC15"
     const val GRADLE_VERSIONS_VERSION = "0.21.0"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
-    const val ANDROID_JUNIT5_VERSION = "1.4.2.0"
+    const val ANDROID_JUNIT5_VERSION = "1.4.2.1"
     const val DEV_METRICS_VERSION = "0.7"
     const val ANDROID_JAR_VERSION = "0.1"
 
     // JetPack - AppCompat
     const val APPCOMPAT_VERSION = "1.1.0-beta01"
     const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha07"
-    const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-beta1"
+    const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-beta2"
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
 
     // JetPack - Architecture
