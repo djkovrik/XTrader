@@ -1,17 +1,10 @@
 package com.sedsoftware.screens.main
 
 import android.os.Bundle
-import android.util.SparseArray
 import android.view.View
 import android.view.animation.LinearInterpolator
-import androidx.core.util.forEach
-import androidx.core.util.set
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
@@ -19,7 +12,12 @@ import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.core.presentation.base.BaseActivity
-import com.sedsoftware.core.presentation.extension.*
+import com.sedsoftware.core.presentation.extension.addEndAction
+import com.sedsoftware.core.presentation.extension.failure
+import com.sedsoftware.core.presentation.extension.launch
+import com.sedsoftware.core.presentation.extension.observe
+import com.sedsoftware.core.presentation.extension.setBackgroundColor
+import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.navigation.NavControllerHolder
@@ -83,16 +81,16 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
         }
 
         notification_top_text.setOnTouchListener(
-            SwipeToDismissTouchListener(
-                notification_top_text,
-                object : DismissCallbacks {
-                    override fun onDismiss(view: View) {
-                        notification_top_text.translationY = topNotificationTranslation
-                        notificationJob?.cancelChildren()
-                        notificationQueue.clear()
-                    }
-                }
-            ))
+                SwipeToDismissTouchListener(
+                        notification_top_text,
+                        object : DismissCallbacks {
+                            override fun onDismiss(view: View) {
+                                notification_top_text.translationY = topNotificationTranslation
+                                notificationJob?.cancelChildren()
+                                notificationQueue.clear()
+                            }
+                        }
+                ))
     }
 
     private fun setupBottomNavigationBar() {
@@ -115,7 +113,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
     }
 
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
-        mainActivityComponent
+            mainActivityComponent
 
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {
@@ -143,12 +141,12 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
 
     private fun translateViewAnimated(view: View, translation: Float, finishedCallback: () -> Unit = {}) {
         view.animate()
-            .translationY(translation)
-            .setStartDelay(ANIMATION_DELAY)
-            .setDuration(ANIMATION_DURATION)
-            .setInterpolator(LinearInterpolator())
-            .addEndAction { finishedCallback.invoke() }
-            .start()
+                .translationY(translation)
+                .setStartDelay(ANIMATION_DELAY)
+                .setDuration(ANIMATION_DURATION)
+                .setInterpolator(LinearInterpolator())
+                .addEndAction { finishedCallback.invoke() }
+                .start()
     }
 
     private fun handleNavController(navController: NavController?) {

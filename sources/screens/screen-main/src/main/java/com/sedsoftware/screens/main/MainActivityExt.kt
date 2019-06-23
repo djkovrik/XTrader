@@ -53,6 +53,7 @@ fun FragmentManager.isOnBackStack(backStackName: String): Boolean {
     return false
 }
 
+@Suppress("ComplexMethod", "LongMethod")
 fun MainActivity.setupWithNavController(
         bottomNavigationView: BottomNavigationView,
         navGraphIds: List<Int>,
