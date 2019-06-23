@@ -9,6 +9,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     AE("Aeternity"),
     AGI("SingularityNET"),
     AION("Aion"),
+    ALGO("Algorand"),
     AMB("Ambrosus"),
     APPC("AppCoins"),
     ARDR("Ardor"),
