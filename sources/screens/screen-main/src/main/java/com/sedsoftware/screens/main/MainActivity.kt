@@ -40,16 +40,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
         MainActivityComponent.Initializer.init(appComponent, this)
     }
 
-    private val navGraphIds: List<Int> = listOf(
-        R.navigation.navigation_wallet,
-        R.navigation.navigation_orders,
-        R.navigation.navigation_market,
-        R.navigation.navigation_tracker,
-        R.navigation.navigation_tools
-    )
-
     private var introNavHostFragment: NavHostFragment? = null
-//    private var currentNavController: LiveData<NavController>? = null
 
     private var topNotificationTranslation = 0f
     private var bottomNavigationViewTranslation = 0f
@@ -182,36 +173,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
             .start()
     }
 
-    private fun obtainNavHostFragment(tag: String, graphId: Int, containerId: Int): NavHostFragment {
-
-        val existingFragment = supportFragmentManager.findFragmentByTag(tag) as NavHostFragment?
-        existingFragment?.let { return it }
-
-        val navHostFragment = NavHostFragment.create(graphId)
-        supportFragmentManager.beginTransaction()
-            .add(containerId, navHostFragment, tag)
-            .commitNow()
-        return navHostFragment
-    }
-
-    private fun attachNavHostFragment(fragment: NavHostFragment, isPrimary: Boolean) {
-        supportFragmentManager.beginTransaction()
-            .attach(fragment)
-            .apply {
-                if (isPrimary) {
-                    setPrimaryNavigationFragment(fragment)
-                }
-            }
-            .commitNow()
-    }
-
-    private fun detachNavHostFragment(fragment: NavHostFragment) {
-        supportFragmentManager.beginTransaction()
-            .detach(fragment)
-            .commitNow()
-    }
-
-    fun BottomNavigationView.setupWithNavController(containerId: Int): LiveData<NavController> {
+    private fun BottomNavigationView.setupWithNavController(navGraphIds: List<Int>, containerId: Int): LiveData<NavController> {
 
         // Map of tags
         val graphIdToTagMap = SparseArray<String>()
@@ -319,19 +281,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
         }
         return selectedNavController
     }
-
-    private fun FragmentManager.isOnBackStack(backStackName: String): Boolean {
-        val backStackCount = backStackEntryCount
-        for (index in 0 until backStackCount) {
-            if (getBackStackEntryAt(index).name == backStackName) {
-                return true
-            }
-        }
-        return false
-    }
-
-    private fun getFragmentTag(index: Int) =
-        if (index == -1) "introFragment" else "bottomNavigation#$index"
 
     private companion object {
         const val ANIMATION_DELAY = 100L
