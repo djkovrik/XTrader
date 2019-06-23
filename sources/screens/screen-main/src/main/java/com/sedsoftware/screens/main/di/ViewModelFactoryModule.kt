@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.key.ViewModelKey
 import com.sedsoftware.screens.intro.viewmodel.IntroScreenViewModel
+import com.sedsoftware.screens.main.MainActivityViewModel
 import com.sedsoftware.screens.main.factory.ViewModelOwnerFactory
 import dagger.Binds
 import dagger.Module
@@ -14,6 +15,11 @@ abstract class ViewModelFactoryModule {
 
     @Binds
     abstract fun bindViewModelOwnerFactory(factory: ViewModelOwnerFactory): ViewModelProvider.Factory
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainActivityViewModel::class)
+    abstract fun bindMainActivityViewModel(mainActivityViewModel: MainActivityViewModel): ViewModel
 
     @Binds
     @IntoMap
