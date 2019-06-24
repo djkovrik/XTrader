@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.math.absoluteValue
 
 // From Google's NavigationAdvancedSample
 
@@ -168,4 +167,4 @@ fun MainActivity.setupWithNavController(
 }
 
 fun MainActivity.getFragmentTag(index: Int, navigation: Boolean = true) =
-        if (navigation) "bottomNavigation#$index" else "fragment${index.absoluteValue}"
+        if (navigation) "bottomNavigation#$index" else "fragment$index"

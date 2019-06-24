@@ -7,28 +7,43 @@ import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.screens.main.navigation.NavigationFlow
 import javax.inject.Inject
 
-class MainActivityViewModel @Inject constructor(
-        private val settings: Settings
-) : BaseViewModel() {
+class MainActivityViewModel @Inject constructor(settings: Settings) : BaseViewModel() {
+
+    companion object {
+
+        internal val introNavGraph = R.navigation.navigation_intro
+
+        internal val pinNavGraph = R.navigation.navigation_pin
+
+        internal val mainNavGraphs: List<Int> = listOf(
+                R.navigation.navigation_wallet,
+                R.navigation.navigation_orders,
+                R.navigation.navigation_market,
+                R.navigation.navigation_tracker,
+                R.navigation.navigation_tools
+        )
+    }
 
     internal var currentNavController = MutableLiveData<NavController>()
     internal var currentNavFlow = MutableLiveData<NavigationFlow>()
 
-    internal val controller: NavController?
+    internal var controller: NavController?
         get() = currentNavController.value
+        set(value) {
+            currentNavController.value = value
+        }
 
-    internal val flow: NavigationFlow?
+    internal var flow: NavigationFlow?
         get() = currentNavFlow.value
+        set(value) {
+            currentNavFlow.value = value
+        }
 
-    internal val introNavGraph = R.navigation.navigation_intro
-
-    internal val pinNavGraph = R.navigation.navigation_pin
-
-    internal val tabNavGraphs: List<Int> = listOf(
-            R.navigation.navigation_wallet,
-            R.navigation.navigation_orders,
-            R.navigation.navigation_market,
-            R.navigation.navigation_tracker,
-            R.navigation.navigation_tools
-    )
+    init {
+        currentNavFlow.value = when {
+            settings.isPinEnabled -> NavigationFlow.PIN
+            settings.isExchangesDownloaded -> NavigationFlow.MAIN
+            else -> NavigationFlow.INTRO
+        }
+    }
 }

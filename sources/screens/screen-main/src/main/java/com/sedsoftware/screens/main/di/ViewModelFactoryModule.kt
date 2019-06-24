@@ -3,7 +3,7 @@ package com.sedsoftware.screens.main.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.key.ViewModelKey
-import com.sedsoftware.screens.intro.viewmodel.IntroScreenViewModel
+import com.sedsoftware.screens.intro.IntroScreenViewModel
 import com.sedsoftware.screens.main.MainActivityViewModel
 import com.sedsoftware.screens.main.factory.ViewModelOwnerFactory
 import dagger.Binds

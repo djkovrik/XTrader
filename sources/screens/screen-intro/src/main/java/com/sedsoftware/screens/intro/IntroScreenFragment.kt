@@ -21,7 +21,6 @@ import com.sedsoftware.core.utils.common.Failure.ServerError
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.model.ExchangeListItem
-import com.sedsoftware.screens.intro.viewmodel.IntroScreenViewModel
 import kotlinx.android.synthetic.main.fragment_intro_screen.*
 import javax.inject.Inject
 

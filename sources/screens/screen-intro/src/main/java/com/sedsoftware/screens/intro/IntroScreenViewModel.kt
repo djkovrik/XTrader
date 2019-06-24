@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.intro.viewmodel
+package com.sedsoftware.screens.intro
 
 import androidx.lifecycle.MutableLiveData
 import com.sedsoftware.core.domain.entity.Exchange
