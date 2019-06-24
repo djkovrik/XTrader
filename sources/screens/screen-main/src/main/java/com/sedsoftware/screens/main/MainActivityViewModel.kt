@@ -22,6 +22,8 @@ class MainActivityViewModel @Inject constructor(
 
     internal val introNavGraph = R.navigation.navigation_intro
 
+    internal val pinNavGraph = R.navigation.navigation_pin
+
     internal val tabNavGraphs: List<Int> = listOf(
             R.navigation.navigation_wallet,
             R.navigation.navigation_orders,
@@ -29,12 +31,4 @@ class MainActivityViewModel @Inject constructor(
             R.navigation.navigation_tracker,
             R.navigation.navigation_tools
     )
-
-    init {
-        if (settings.isExchangesDownloaded) {
-            currentNavFlow.value = NavigationFlow.MAIN
-        } else {
-            currentNavFlow.value = NavigationFlow.INTRO
-        }
-    }
 }

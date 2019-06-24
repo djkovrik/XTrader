@@ -23,8 +23,6 @@ project(':exchange-binance').projectDir = new File(rootDir, 'sources/exchanges/e
 
 include ':screen-main'
 project(':screen-main').projectDir = new File(rootDir, 'sources/screens/screen-main')
-include ':screen-startup'
-project(':screen-startup').projectDir = new File(rootDir, 'sources/screens/screen-startup')
 include ':screen-intro'
 project(':screen-intro').projectDir = new File(rootDir, 'sources/screens/screen-intro')
 include ':screen-pin'

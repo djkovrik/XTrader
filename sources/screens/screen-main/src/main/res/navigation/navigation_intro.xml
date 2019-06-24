@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_main"
-    app:startDestination="@id/startupFragment">
-
-    <fragment
-        android:id="@+id/startupFragment"
-        android:name="com.sedsoftware.screens.startup.StartupFragment"
-        android:label="StartupFragment"
-        tools:layout="@layout/fragment_startup_screen">
-        <action
-            android:id="@+id/navigate_from_startup_to_pin"
-            app:destination="@id/pinScreenFragment" />
-        <action
-            android:id="@+id/navigate_from_startup_to_intro"
-            app:destination="@id/introScreenFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/pinScreenFragment"
-        android:name="com.sedsoftware.screens.pin.PinScreenFragment"
-        android:label="PinScreenFragment"
-        tools:layout="@layout/fragment_pin_screen"/>
+    android:id="@+id/navigation_main">
 
     <fragment
         android:id="@+id/introScreenFragment"
         android:name="com.sedsoftware.screens.intro.IntroScreenFragment"
         android:label="IntroScreenFragment"
-        tools:layout="@layout/fragment_intro_screen"/>
+        tools:layout="@layout/fragment_intro_screen" />
 
 </navigation>

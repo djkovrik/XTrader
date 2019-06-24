@@ -13,7 +13,6 @@ dependencies {
     implementation project(':core-presentation')
     implementation project(':core-utils')
 
-    implementation project(':screen-startup')
     implementation project(':screen-intro')
     implementation project(':screen-pin')
     implementation project(':screen-wallet')

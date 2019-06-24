@@ -40,6 +40,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
     private lateinit var mainActivityViewModel: MainActivityViewModel
 
     private var introNavHostFragment: NavHostFragment? = null
+    private var pinNavHostFragment: NavHostFragment? = null
 
     private var topNotificationTranslation = 0f
     private var bottomNavigationViewTranslation = 0f
@@ -93,10 +94,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
                 ))
     }
 
-    private fun setupBottomNavigationBar() {
-
-    }
-
     override fun onResumeFragments() {
         super.onResumeFragments()
         mainActivityViewModel.controller?.let { navControllerHolder.setNavController(it) }
@@ -147,6 +144,10 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
                 .setInterpolator(LinearInterpolator())
                 .addEndAction { finishedCallback.invoke() }
                 .start()
+    }
+
+    private fun setupBottomNavigationBar() {
+
     }
 
     private fun handleNavController(navController: NavController?) {
