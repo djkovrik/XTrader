@@ -1,4 +1,4 @@
-package com.sedsoftware.core.presentation
+package com.sedsoftware.core.presentation.listener
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter

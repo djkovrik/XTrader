@@ -9,8 +9,8 @@ import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.core.presentation.SwipeToDismissTouchListener
-import com.sedsoftware.core.presentation.SwipeToDismissTouchListener.DismissCallbacks
+import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
+import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.failure
