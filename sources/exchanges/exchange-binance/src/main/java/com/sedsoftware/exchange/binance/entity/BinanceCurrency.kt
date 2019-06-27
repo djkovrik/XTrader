@@ -153,6 +153,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     TUSD("TrueUSD"),
     USDC("USD Coin"),
     USDS("Stable USD"),
+    USDSB("Stable USD BEP 2"),
     USDT("Tether"),
     VEN("Vechain"),
     VET("VeChainThor"),
