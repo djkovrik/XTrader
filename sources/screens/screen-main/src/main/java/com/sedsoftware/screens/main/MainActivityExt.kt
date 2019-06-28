@@ -57,7 +57,7 @@ fun MainActivity.setupWithNavController(
         bottomNavigationView: BottomNavigationView,
         navGraphIds: List<Int>,
         containerId: Int
-): LiveData<NavController> {
+): MutableLiveData<NavController> {
 
     // Map of tags
     val graphIdToTagMap = SparseArray<String>()
@@ -166,5 +166,5 @@ fun MainActivity.setupWithNavController(
     return selectedNavController
 }
 
-fun MainActivity.getFragmentTag(index: Int, navigation: Boolean = true) =
-        if (navigation) "bottomNavigation#$index" else "fragment$index"
+fun MainActivity.getFragmentTag(index: Int, bottomNavigation: Boolean = true) =
+        if (bottomNavigation) "bottomNavigation#$index" else "fragment$index"

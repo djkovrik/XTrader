@@ -3,14 +3,15 @@ package com.sedsoftware.screens.main
 import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
-import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.failure
@@ -18,6 +19,8 @@ import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.extension.viewModel
+import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
+import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.core.utils.common.Failure
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.navigation.NavControllerHolder
@@ -59,15 +62,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
         }
 
         setupViews()
-
-        if (savedInstanceState == null) {
-            setupBottomNavigationBar()
-        }
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-        setupBottomNavigationBar()
+        initStartupFragments()
     }
 
     private fun setupViews() {
@@ -94,9 +89,25 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
                 ))
     }
 
+    private fun initStartupFragments() {
+        introNavHostFragment = obtainNavHostFragment(
+                tag = getFragmentTag(1, false),
+                graphId = MainActivityViewModel.introNavGraph,
+                containerId = R.id.nav_host_container
+        )
+
+        pinNavHostFragment = obtainNavHostFragment(
+                tag = getFragmentTag(2, false),
+                graphId = MainActivityViewModel.pinNavGraph,
+                containerId = R.id.nav_host_container
+        )
+    }
+
     override fun onResumeFragments() {
         super.onResumeFragments()
-        mainActivityViewModel.controller?.let { navControllerHolder.setNavController(it) }
+        mainActivityViewModel.currentNavController.value?.let {
+            navControllerHolder.setNavController(it)
+        }
     }
 
     override fun onPause() {
@@ -106,7 +117,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return mainActivityViewModel.controller?.navigateUp() ?: false
+        return mainActivityViewModel.currentNavController.value?.navigateUp() ?: false
     }
 
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
@@ -146,20 +157,57 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
                 .start()
     }
 
-    private fun setupBottomNavigationBar() {
-
-    }
-
     private fun handleNavController(navController: NavController?) {
-
+        // TODO Add Toolbar
+        // navController?.let { setupActionBarWithNavController(it) }
     }
 
     private fun handleNavFlow(navigationFlow: NavigationFlow?) {
-
+        showBottomNavigationBar(false)
+        when (navigationFlow) {
+            NavigationFlow.PIN -> {
+                introNavHostFragment?.let { detachNavHostFragment(it) }
+                pinNavHostFragment?.let { fragment ->
+                    attachNavHostFragment(fragment, true)
+                    mainActivityViewModel.currentNavController.value = fragment.navController
+                }
+            }
+            NavigationFlow.INTRO -> {
+                pinNavHostFragment?.let { detachNavHostFragment(it) }
+                introNavHostFragment?.let { fragment ->
+                    attachNavHostFragment(fragment, true)
+                    mainActivityViewModel.currentNavController.value = fragment.navController
+                }
+            }
+            else -> {
+                introNavHostFragment?.let { detachNavHostFragment(it) }
+                pinNavHostFragment?.let { detachNavHostFragment(it) }
+                mainActivityViewModel.currentNavController = setupWithNavController(
+                        bottomNavigationView = bottom_navigation,
+                        navGraphIds = MainActivityViewModel.mainNavGraphs,
+                        containerId = R.id.nav_host_container
+                )
+                showBottomNavigationBar(true)
+            }
+        }
     }
 
     private fun displayFailure(failure: Failure?) {
 
+    }
+
+    private fun showBottomNavigationBar(show: Boolean) {
+        if (show && bottom_navigation.isVisible || !show && bottom_navigation.isGone) {
+            return
+        }
+
+        if (show) {
+            bottom_navigation.isVisible = true
+            translateViewAnimated(bottom_navigation, 0f)
+        } else {
+            bottom_navigation.isGone = true
+            translateViewAnimated(bottom_navigation, bottomNavigationViewTranslation)
+        }
     }
 
     private companion object {

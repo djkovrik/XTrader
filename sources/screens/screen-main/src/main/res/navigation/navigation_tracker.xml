@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_tracker"
     app:startDestination="@id/trackerScreenFragment">
 
     <fragment
         android:id="@+id/trackerScreenFragment"
         android:name="com.sedsoftware.screens.tracker.TrackerScreenFragment"
-        android:label="TrackerScreenFragment" />
+        android:label="TrackerScreenFragment"
+        tools:layout="@layout/fragment_tools_screen" />
 </navigation>

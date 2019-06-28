@@ -27,18 +27,6 @@ class MainActivityViewModel @Inject constructor(settings: Settings) : BaseViewMo
     internal var currentNavController = MutableLiveData<NavController>()
     internal var currentNavFlow = MutableLiveData<NavigationFlow>()
 
-    internal var controller: NavController?
-        get() = currentNavController.value
-        set(value) {
-            currentNavController.value = value
-        }
-
-    internal var flow: NavigationFlow?
-        get() = currentNavFlow.value
-        set(value) {
-            currentNavFlow.value = value
-        }
-
     init {
         currentNavFlow.value = when {
             settings.isPinEnabled -> NavigationFlow.PIN
