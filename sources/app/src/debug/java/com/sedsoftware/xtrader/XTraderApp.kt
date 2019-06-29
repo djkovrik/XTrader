@@ -30,7 +30,7 @@ class XTraderApp : Application(), App {
         Timber.uprootAll()
 
         if (BuildConfig.DEBUG) {
-            AndroidDevMetrics.initWith(this)
+//            AndroidDevMetrics.initWith(this)
             Stetho.initializeWithDefaults(this)
             Timber.plant(Timber.DebugTree())
         }
