@@ -7,8 +7,8 @@ import com.sedsoftware.screens.intro.model.ExchangeListItem
 import javax.inject.Inject
 
 class ExchangesAdapter @Inject constructor(
-        clickListener: Listener,
-        assetsProvider: AssetsProvider
+    clickListener: Listener,
+    assetsProvider: AssetsProvider
 ) : AsyncListDifferDelegationAdapter<DiffItem>(DiffItem.DIFF_CALLBACK) {
 
     interface Listener {

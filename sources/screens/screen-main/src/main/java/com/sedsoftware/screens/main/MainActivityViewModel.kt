@@ -16,11 +16,11 @@ class MainActivityViewModel @Inject constructor(settings: Settings) : BaseViewMo
         internal val pinNavGraph = R.navigation.navigation_pin
 
         internal val mainNavGraphs: List<Int> = listOf(
-                R.navigation.navigation_wallet,
-                R.navigation.navigation_orders,
-                R.navigation.navigation_market,
-                R.navigation.navigation_tracker,
-                R.navigation.navigation_tools
+            R.navigation.navigation_wallet,
+            R.navigation.navigation_orders,
+            R.navigation.navigation_market,
+            R.navigation.navigation_tracker,
+            R.navigation.navigation_tools
         )
     }
 

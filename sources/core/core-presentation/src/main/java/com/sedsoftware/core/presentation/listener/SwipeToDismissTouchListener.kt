@@ -138,7 +138,7 @@ class SwipeToDismissTouchListener(
 
                     val cancelEvent = MotionEvent.obtain(motionEvent)
                     cancelEvent.action = MotionEvent.ACTION_CANCEL or
-                            (motionEvent.actionIndex shl MotionEvent.ACTION_POINTER_INDEX_SHIFT)
+                        (motionEvent.actionIndex shl MotionEvent.ACTION_POINTER_INDEX_SHIFT)
                     targetView.onTouchEvent(cancelEvent)
                     cancelEvent.recycle()
                 }

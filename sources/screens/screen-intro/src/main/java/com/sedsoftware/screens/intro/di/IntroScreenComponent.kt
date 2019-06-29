@@ -32,8 +32,8 @@ interface IntroScreenComponent {
             ): IntroScreenComponent {
 
                 return DaggerIntroScreenComponent
-                        .factory()
-                        .create(clickListener, mainActivityToolsProvider)
+                    .factory()
+                    .create(clickListener, mainActivityToolsProvider)
             }
         }
     }

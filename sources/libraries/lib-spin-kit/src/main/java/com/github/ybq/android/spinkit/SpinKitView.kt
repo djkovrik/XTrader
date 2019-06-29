@@ -23,7 +23,7 @@ class SpinKitView(context: Context, attrs: AttributeSet?, defStyleAttr: Int, def
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.SpinKitViewStyle)
-            : this(context, attrs, defStyleAttr, R.style.SpinKitView)
+        : this(context, attrs, defStyleAttr, R.style.SpinKitView)
 
     init {
         val a = context.obtainStyledAttributes(

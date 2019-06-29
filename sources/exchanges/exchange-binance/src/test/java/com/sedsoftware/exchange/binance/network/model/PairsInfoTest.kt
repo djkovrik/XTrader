@@ -57,8 +57,12 @@ class PairsInfoTest : Spek({
             }
         }
 
-        val baseSymbols by blockingMemoized { response?.symbols?.map { it.baseAsset }?.toSet() ?: emptySet() }
-        val quoteSymbols by blockingMemoized { response?.symbols?.map { it.quoteAsset }?.toSet() ?: emptySet() }
+        val baseSymbols by blockingMemoized {
+            response?.symbols?.map { it.baseAsset }?.toSet() ?: emptySet()
+        }
+        val quoteSymbols by blockingMemoized {
+            response?.symbols?.map { it.quoteAsset }?.toSet() ?: emptySet()
+        }
 
         context("Check that all symbols defined") {
 

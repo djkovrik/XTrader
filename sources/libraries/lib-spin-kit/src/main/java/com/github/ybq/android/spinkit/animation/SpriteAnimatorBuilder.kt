@@ -1,5 +1,6 @@
 package com.github.ybq.android.spinkit.animation
 
+
 import android.animation.Keyframe
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
@@ -7,13 +8,9 @@ import android.util.Log
 import android.util.Property
 import android.view.animation.Animation
 import android.view.animation.Interpolator
-
-
 import com.github.ybq.android.spinkit.animation.interpolator.KeyFrameInterpolator
 import com.github.ybq.android.spinkit.sprite.Sprite
-
-import java.util.HashMap
-import java.util.Locale
+import java.util.*
 
 /**
  * Created by ybq.

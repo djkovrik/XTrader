@@ -7,7 +7,6 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
@@ -77,29 +76,29 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
         }
 
         notification_top_text.setOnTouchListener(
-                SwipeToDismissTouchListener(
-                        notification_top_text,
-                        object : DismissCallbacks {
-                            override fun onDismiss(view: View) {
-                                notification_top_text.translationY = topNotificationTranslation
-                                notificationJob?.cancelChildren()
-                                notificationQueue.clear()
-                            }
-                        }
-                ))
+            SwipeToDismissTouchListener(
+                notification_top_text,
+                object : DismissCallbacks {
+                    override fun onDismiss(view: View) {
+                        notification_top_text.translationY = topNotificationTranslation
+                        notificationJob?.cancelChildren()
+                        notificationQueue.clear()
+                    }
+                }
+            ))
     }
 
     private fun initStartupFragments() {
         introNavHostFragment = obtainNavHostFragment(
-                tag = getFragmentTag(1, false),
-                graphId = MainActivityViewModel.introNavGraph,
-                containerId = R.id.nav_host_container
+            tag = getFragmentTag(1, false),
+            graphId = MainActivityViewModel.introNavGraph,
+            containerId = R.id.nav_host_container
         )
 
         pinNavHostFragment = obtainNavHostFragment(
-                tag = getFragmentTag(2, false),
-                graphId = MainActivityViewModel.pinNavGraph,
-                containerId = R.id.nav_host_container
+            tag = getFragmentTag(2, false),
+            graphId = MainActivityViewModel.pinNavGraph,
+            containerId = R.id.nav_host_container
         )
     }
 
@@ -121,7 +120,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
     }
 
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
-            mainActivityComponent
+        mainActivityComponent
 
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {
@@ -149,12 +148,12 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
 
     private fun translateViewAnimated(view: View, translation: Float, finishedCallback: () -> Unit = {}) {
         view.animate()
-                .translationY(translation)
-                .setStartDelay(ANIMATION_DELAY)
-                .setDuration(ANIMATION_DURATION)
-                .setInterpolator(LinearInterpolator())
-                .addEndAction { finishedCallback.invoke() }
-                .start()
+            .translationY(translation)
+            .setStartDelay(ANIMATION_DELAY)
+            .setDuration(ANIMATION_DURATION)
+            .setInterpolator(LinearInterpolator())
+            .addEndAction { finishedCallback.invoke() }
+            .start()
     }
 
     private fun handleNavController(navController: NavController?) {
@@ -183,9 +182,9 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
                 introNavHostFragment?.let { detachNavHostFragment(it) }
                 pinNavHostFragment?.let { detachNavHostFragment(it) }
                 mainActivityViewModel.currentNavController = setupWithNavController(
-                        bottomNavigationView = bottom_navigation,
-                        navGraphIds = MainActivityViewModel.mainNavGraphs,
-                        containerId = R.id.nav_host_container
+                    bottomNavigationView = bottom_navigation,
+                    navGraphIds = MainActivityViewModel.mainNavGraphs,
+                    containerId = R.id.nav_host_container
                 )
                 showBottomNavigationBar(true)
             }

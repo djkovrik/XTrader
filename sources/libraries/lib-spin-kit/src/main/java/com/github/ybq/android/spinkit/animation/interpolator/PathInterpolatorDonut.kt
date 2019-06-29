@@ -50,7 +50,7 @@ internal class PathInterpolatorDonut(path: Path) : Interpolator {
     constructor(controlX: Float, controlY: Float) : this(createQuad(controlX, controlY))
 
     constructor(controlX1: Float, controlY1: Float, controlX2: Float, controlY2: Float)
-            : this(createCubic(controlX1, controlY1, controlX2, controlY2))
+        : this(createCubic(controlX1, controlY1, controlX2, controlY2))
 
     private val mX: FloatArray
     private val mY: FloatArray

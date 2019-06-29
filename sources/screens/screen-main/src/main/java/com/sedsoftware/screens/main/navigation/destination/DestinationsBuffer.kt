@@ -2,8 +2,7 @@ package com.sedsoftware.screens.main.navigation.destination
 
 import androidx.navigation.NavController
 import com.sedsoftware.screens.main.navigation.NavControllerHolder
-import java.util.LinkedList
-import java.util.Queue
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 

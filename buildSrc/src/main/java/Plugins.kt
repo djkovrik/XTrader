@@ -1,4 +1,3 @@
-
 import Versions.ANDROID_JAR_VERSION
 import Versions.ANDROID_JUNIT5_VERSION
 import Versions.DETEKT_VERSION

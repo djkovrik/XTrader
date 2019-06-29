@@ -4,7 +4,6 @@ import android.util.SparseArray
 import androidx.core.util.forEach
 import androidx.core.util.set
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -19,26 +18,26 @@ fun MainActivity.obtainNavHostFragment(tag: String, graphId: Int, containerId: I
 
     val navHostFragment = NavHostFragment.create(graphId)
     supportFragmentManager.beginTransaction()
-            .add(containerId, navHostFragment, tag)
-            .commitNow()
+        .add(containerId, navHostFragment, tag)
+        .commitNow()
     return navHostFragment
 }
 
 fun MainActivity.attachNavHostFragment(fragment: NavHostFragment, isPrimary: Boolean) {
     supportFragmentManager.beginTransaction()
-            .attach(fragment)
-            .apply {
-                if (isPrimary) {
-                    setPrimaryNavigationFragment(fragment)
-                }
+        .attach(fragment)
+        .apply {
+            if (isPrimary) {
+                setPrimaryNavigationFragment(fragment)
             }
-            .commitNow()
+        }
+        .commitNow()
 }
 
 fun MainActivity.detachNavHostFragment(fragment: NavHostFragment) {
     supportFragmentManager.beginTransaction()
-            .detach(fragment)
-            .commitNow()
+        .detach(fragment)
+        .commitNow()
 }
 
 
@@ -54,9 +53,9 @@ fun FragmentManager.isOnBackStack(backStackName: String): Boolean {
 
 @Suppress("ComplexMethod", "LongMethod")
 fun MainActivity.setupWithNavController(
-        bottomNavigationView: BottomNavigationView,
-        navGraphIds: List<Int>,
-        containerId: Int
+    bottomNavigationView: BottomNavigationView,
+    navGraphIds: List<Int>,
+    containerId: Int
 ): MutableLiveData<NavController> {
 
     // Map of tags
@@ -108,36 +107,36 @@ fun MainActivity.setupWithNavController(
             if (selectedItemTag != newlySelectedItemTag) {
                 // Pop everything above the first fragment (the "fixed start destination")
                 supportFragmentManager.popBackStack(
-                        firstFragmentTag,
-                        FragmentManager.POP_BACK_STACK_INCLUSIVE
+                    firstFragmentTag,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE
                 )
                 val selectedFragment = supportFragmentManager.findFragmentByTag(newlySelectedItemTag)
-                        as NavHostFragment
+                    as NavHostFragment
 
                 // Exclude the first fragment tag because it's always in the back stack.
                 if (firstFragmentTag != newlySelectedItemTag) {
                     // Commit a transaction that cleans the back stack and adds the first fragment
                     // to it, creating the fixed started destination.
                     supportFragmentManager.beginTransaction()
-                            .attach(selectedFragment)
-                            .setPrimaryNavigationFragment(selectedFragment)
-                            .apply {
-                                // Detach all other Fragments
-                                graphIdToTagMap.forEach { _, fragmentTagIter ->
-                                    if (fragmentTagIter != newlySelectedItemTag) {
-                                        detach(supportFragmentManager.findFragmentByTag(firstFragmentTag)!!)
-                                    }
+                        .attach(selectedFragment)
+                        .setPrimaryNavigationFragment(selectedFragment)
+                        .apply {
+                            // Detach all other Fragments
+                            graphIdToTagMap.forEach { _, fragmentTagIter ->
+                                if (fragmentTagIter != newlySelectedItemTag) {
+                                    detach(supportFragmentManager.findFragmentByTag(firstFragmentTag)!!)
                                 }
                             }
-                            .addToBackStack(firstFragmentTag)
-                            .setCustomAnimations(
-                                    R.anim.nav_default_enter_anim,
-                                    R.anim.nav_default_exit_anim,
-                                    R.anim.nav_default_pop_enter_anim,
-                                    R.anim.nav_default_pop_exit_anim
-                            )
-                            .setReorderingAllowed(true)
-                            .commit()
+                        }
+                        .addToBackStack(firstFragmentTag)
+                        .setCustomAnimations(
+                            R.anim.nav_default_enter_anim,
+                            R.anim.nav_default_exit_anim,
+                            R.anim.nav_default_pop_enter_anim,
+                            R.anim.nav_default_pop_exit_anim
+                        )
+                        .setReorderingAllowed(true)
+                        .commit()
                 }
                 selectedItemTag = newlySelectedItemTag
                 isOnFirstFragment = selectedItemTag == firstFragmentTag
@@ -167,4 +166,4 @@ fun MainActivity.setupWithNavController(
 }
 
 fun MainActivity.getFragmentTag(index: Int, bottomNavigation: Boolean = true) =
-        if (bottomNavigation) "bottomNavigation#$index" else "fragment$index"
+    if (bottomNavigation) "bottomNavigation#$index" else "fragment$index"

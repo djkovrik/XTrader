@@ -16,7 +16,7 @@ abstract class BaseFragment : Fragment() {
 
     protected val parentActivityComponent: MainActivityToolsProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity as? ActivityToolsHolder)?.getActivityToolsProvider()
-                ?: throw UnsupportedOperationException("Parent activity must implement ActivityToolsHolder interface")
+            ?: throw UnsupportedOperationException("Parent activity must implement ActivityToolsHolder interface")
     }
 
     @Inject

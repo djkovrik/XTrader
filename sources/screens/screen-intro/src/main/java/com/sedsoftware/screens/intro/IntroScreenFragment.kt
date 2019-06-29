@@ -123,7 +123,7 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
     }
 
     private fun displayFailure(failure: Failure?) {
-        when(failure) {
+        when (failure) {
             is NetworkConnectionMissing -> notifyTop(string(R.string.msg_no_internet_connection))
             is LocalPersistenceError -> notifyTop(string(R.string.msg_local_error, failure.throwable.message))
             is ServerError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
