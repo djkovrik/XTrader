@@ -1,5 +1,6 @@
 package com.sedsoftware.screens.main.di
 
+import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
@@ -20,17 +21,14 @@ import dagger.Component
 @ActivityScope
 interface MainActivityComponent : MainActivityToolsProvider {
 
-    @Component.Builder
-    interface Builder {
+    @Component.Factory
+    interface Factory {
 
-        fun appProvider(appProvider: AppProvider): Builder
-
-        fun navigationProvider(appProvider: NavigationProvider): Builder
-
-        @BindsInstance
-        fun snackbarDelegate(snackbarDelegate: SnackbarDelegate): Builder
-
-        fun build(): MainActivityComponent
+        fun create(appProvider: AppProvider,
+                   navigationProvider: NavigationProvider,
+                   @BindsInstance snackbarDelegate: SnackbarDelegate,
+                   @BindsInstance navigationFlowDelegate: NavigationFlowDelegate
+        ): MainActivityComponent
     }
 
     fun inject(activity: MainActivity)
@@ -38,16 +36,17 @@ interface MainActivityComponent : MainActivityToolsProvider {
     class Initializer private constructor() {
         companion object {
 
-            fun init(appProvider: AppProvider, snackbarDelegate: SnackbarDelegate): MainActivityComponent {
+            fun init(appProvider: AppProvider,
+                     snackbarDelegate: SnackbarDelegate,
+                     navFlowDelegate: NavigationFlowDelegate
+            ): MainActivityComponent {
 
                 val navigationProvider =
                     NavigationComponent.Initializer.init()
 
-                return DaggerMainActivityComponent.builder()
-                    .appProvider(appProvider)
-                    .navigationProvider(navigationProvider)
-                    .snackbarDelegate(snackbarDelegate)
-                    .build()
+                return DaggerMainActivityComponent
+                    .factory()
+                    .create(appProvider, navigationProvider, snackbarDelegate, navFlowDelegate)
             }
         }
     }

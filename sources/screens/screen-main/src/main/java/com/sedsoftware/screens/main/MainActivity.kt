@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.sedsoftware.core.di.App
+import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
@@ -29,11 +30,11 @@ import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
+class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, NavigationFlowDelegate {
 
     private val mainActivityComponent: MainActivityComponent by lazy {
         val appComponent = (applicationContext as App).getAppComponent()
-        MainActivityComponent.Initializer.init(appComponent, this)
+        MainActivityComponent.Initializer.init(appComponent, this, this)
     }
 
     @Inject
@@ -132,6 +133,10 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
         } else {
             notificationQueue.add(message)
         }
+    }
+
+    override fun switchToMainFlow() {
+        mainActivityViewModel.currentNavFlow.value = NavigationFlow.MAIN
     }
 
     private fun hideNotificationDelayed() {
