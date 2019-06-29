@@ -3,5 +3,6 @@
 .idea
 /local.properties
 /build
-/reports/detekt.xml/
+/captures
 /reports/detekt.html
+/ajcore.*.txt
