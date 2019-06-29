@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_intro_screen_item.*
 
 class ItemsAdapterDelegate(
         private val assetsProvider: AssetsProvider,
-        private val clickListener: (ExchangeListItem) -> Unit
+        private val clickListener: ExchangesAdapter.Listener
 ) : AbsListItemAdapterDelegate<ExchangeListItem, DiffItem, ItemsAdapterDelegate.ItemViewHolder>() {
 
     private var lastPosition = -1
@@ -46,14 +46,14 @@ class ItemsAdapterDelegate(
 
         override val containerView: View? = itemView
 
-        fun bind(item: ExchangeListItem, provider: AssetsProvider, listener: (ExchangeListItem) -> Unit) {
+        fun bind(item: ExchangeListItem, provider: AssetsProvider, listener: ExchangesAdapter.Listener) {
             with(item) {
                 intro_exchange_name.text = exchange.label
                 intro_exchange_logo.setImageResource(provider.getLogoResource(exchange))
                 intro_exchange_logo.dim(state != DownloadState.COMPLETED)
                 intro_button_download.setState(state)
 
-                intro_button_download.clickListener = { listener(item) }
+                intro_button_download.clickListener = { listener.onItemClick(item) }
             }
         }
     }

@@ -24,7 +24,7 @@ import com.sedsoftware.screens.intro.model.ExchangeListItem
 import kotlinx.android.synthetic.main.fragment_intro_screen.*
 import javax.inject.Inject
 
-class IntroScreenFragment : BaseFragment() {
+class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
 
     @Inject
     lateinit var coordinator: IntroCoordinator
@@ -38,8 +38,8 @@ class IntroScreenFragment : BaseFragment() {
         R.layout.fragment_intro_screen
 
     override fun inject() {
-        IntroScreenComponent.Initializer.init(parentActivityComponent)
-            .inject(this@IntroScreenFragment)
+        IntroScreenComponent.Initializer.init(this, parentActivityComponent)
+            .inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,14 +63,14 @@ class IntroScreenFragment : BaseFragment() {
             setHasFixedSize(true)
         }
 
-        exchangesAdapter.clickListener = { item ->
-            introViewModel.onExchangeClicked(item.exchange)
-        }
-
         introViewModel.animateAtStart {
             setupViewPositions()
             animateViews()
         }
+    }
+
+    override fun onItemClick(item: ExchangeListItem) {
+        introViewModel.onExchangeClicked(item.exchange)
     }
 
     private fun setupViewPositions() {
