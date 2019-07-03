@@ -38,7 +38,12 @@ class DownloadButton : FrameLayout, LayoutContainer {
         }
 
 
-    private lateinit var views: Map<DownloadState, View>
+    private val views: Map<DownloadState, View> = mapOf(
+        AVAILABLE to button,
+        IN_PROGRESS to progress,
+        COMPLETED to completed,
+        ERROR to error
+    )
 
     private var currentState: DownloadState? = null
     private var textAvailable: String? = null
@@ -77,13 +82,6 @@ class DownloadButton : FrameLayout, LayoutContainer {
         colorCompleted?.let { completed.setTextColor(it) }
         colorError?.let { error_text.setTextColor(it) }
         colorError?.let { error_image.setColorFilter(it, PorterDuff.Mode.SRC_IN) }
-
-        views = mapOf(
-            AVAILABLE to button,
-            IN_PROGRESS to progress,
-            COMPLETED to completed,
-            ERROR to error
-        )
     }
 
     fun setState(newState: DownloadState) {

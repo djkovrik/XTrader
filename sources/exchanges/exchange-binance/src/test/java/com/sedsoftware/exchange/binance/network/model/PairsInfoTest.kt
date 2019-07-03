@@ -1,6 +1,6 @@
 package com.sedsoftware.exchange.binance.network.model
 
-import com.sedsoftware.core.adapters.OffsetDateTimeAdapter
+import com.sedsoftware.core.utils.adapters.OffsetDateTimeAdapter
 import com.sedsoftware.core.tests.blockingMemoized
 import com.sedsoftware.core.tests.get
 import com.sedsoftware.exchange.binance.Urls

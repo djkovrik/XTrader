@@ -1,4 +1,4 @@
-package com.sedsoftware.core.adapters
+package com.sedsoftware.core.utils.adapters
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
@@ -6,7 +6,6 @@ import org.threeten.bp.Instant
 import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.ZoneOffset
 import org.threeten.bp.format.DateTimeFormatter
-
 
 class OffsetDateTimeAdapter {
 
