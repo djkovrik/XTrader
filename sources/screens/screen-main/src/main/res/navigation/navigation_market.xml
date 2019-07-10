@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/marketScreenFragment"
         android:name="com.sedsoftware.screens.market.MarketScreenFragment"
-        android:label="MarketScreenFragment"
         tools:layout="@layout/fragment_market_screen" />
+
 </navigation>

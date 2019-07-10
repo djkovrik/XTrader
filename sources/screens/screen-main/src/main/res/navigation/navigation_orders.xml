@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/ordersScreenFragment"
         android:name="com.sedsoftware.screens.orders.OrdersScreenFragment"
-        android:label="OrdersScreenFragment"
         tools:layout="@layout/fragment_orders_screen" />
+
 </navigation>

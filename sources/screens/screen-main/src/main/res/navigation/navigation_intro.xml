@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/introScreenFragment"
         android:name="com.sedsoftware.screens.intro.IntroScreenFragment"
-        android:label="IntroScreenFragment"
         tools:layout="@layout/fragment_intro_screen" />
 
 </navigation>

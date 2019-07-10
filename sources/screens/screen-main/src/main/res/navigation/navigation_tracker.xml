@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/trackerScreenFragment"
         android:name="com.sedsoftware.screens.tracker.TrackerScreenFragment"
-        android:label="TrackerScreenFragment"
         tools:layout="@layout/fragment_tools_screen" />
+
 </navigation>

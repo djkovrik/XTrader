@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/pinScreenFragment"
         android:name="com.sedsoftware.screens.pin.PinScreenFragment"
-        android:label="PinScreenFragment"
         tools:layout="@layout/fragment_pin_screen" />
 
 </navigation>

@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/walletScreenFragment"
         android:name="com.sedsoftware.screens.wallet.WalletScreenFragment"
-        android:label="WalletScreenFragment"
         tools:layout="@layout/fragment_wallet_screen" />
+
 </navigation>
