@@ -1,13 +1,13 @@
 package com.sedsoftware.exchange.binance.repository
 
 import com.sedsoftware.core.tools.api.Settings
-import com.sedsoftware.core.utils.common.Either
-import com.sedsoftware.core.utils.common.Either.Left
-import com.sedsoftware.core.utils.common.Either.Right
-import com.sedsoftware.core.utils.common.Failure
-import com.sedsoftware.core.utils.common.Failure.LocalPersistenceError
-import com.sedsoftware.core.utils.common.Success
-import com.sedsoftware.core.utils.common.Success.PairsLoadingCompleted
+import com.sedsoftware.core.utils.type.Either
+import com.sedsoftware.core.utils.type.Either.Left
+import com.sedsoftware.core.utils.type.Either.Right
+import com.sedsoftware.core.utils.type.Failure
+import com.sedsoftware.core.utils.type.Failure.LocalPersistenceError
+import com.sedsoftware.core.utils.type.Success
+import com.sedsoftware.core.utils.type.Success.PairsLoadingCompleted
 import com.sedsoftware.core.utils.network.safeApiCall
 import com.sedsoftware.exchange.binance.database.BinanceDatabase
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao

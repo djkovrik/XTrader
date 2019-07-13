@@ -1,8 +1,8 @@
 package com.sedsoftware.core.domain.interactor
 
-import com.sedsoftware.core.utils.common.Either
-import com.sedsoftware.core.utils.common.Failure
-import com.sedsoftware.core.utils.common.Success
+import com.sedsoftware.core.utils.type.Either
+import com.sedsoftware.core.utils.type.Failure
+import com.sedsoftware.core.utils.type.Success
 
 interface CurrencyPairLoader {
     suspend fun fetchCurrencyPairs(): Either<Failure, Success>

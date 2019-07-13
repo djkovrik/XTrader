@@ -5,8 +5,8 @@ import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.presentation.base.BaseViewModel
 import com.sedsoftware.core.presentation.extension.launch
-import com.sedsoftware.core.presentation.params.DownloadState
-import com.sedsoftware.core.utils.common.Failure
+import com.sedsoftware.core.presentation.type.DownloadState
+import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.extension.either
 import com.sedsoftware.screens.intro.model.ExchangeListItem
 import javax.inject.Inject

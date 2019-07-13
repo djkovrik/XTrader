@@ -9,11 +9,11 @@ import android.widget.FrameLayout
 import com.sedsoftware.core.presentation.R
 import com.sedsoftware.core.presentation.extension.hide
 import com.sedsoftware.core.presentation.extension.show
-import com.sedsoftware.core.presentation.params.DownloadState
-import com.sedsoftware.core.presentation.params.DownloadState.AVAILABLE
-import com.sedsoftware.core.presentation.params.DownloadState.COMPLETED
-import com.sedsoftware.core.presentation.params.DownloadState.ERROR
-import com.sedsoftware.core.presentation.params.DownloadState.IN_PROGRESS
+import com.sedsoftware.core.presentation.type.DownloadState
+import com.sedsoftware.core.presentation.type.DownloadState.AVAILABLE
+import com.sedsoftware.core.presentation.type.DownloadState.COMPLETED
+import com.sedsoftware.core.presentation.type.DownloadState.ERROR
+import com.sedsoftware.core.presentation.type.DownloadState.IN_PROGRESS
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_download_button.*
 

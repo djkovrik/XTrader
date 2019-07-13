@@ -28,11 +28,8 @@ class XTraderApp : Application(), App {
 
     private fun initDebugTools() {
         Timber.uprootAll()
-
-        if (BuildConfig.DEBUG) {
-//            AndroidDevMetrics.initWith(this)
-            Stetho.initializeWithDefaults(this)
-            Timber.plant(Timber.DebugTree())
-        }
+//        AndroidDevMetrics.initWith(this)
+        Stetho.initializeWithDefaults(this)
+        Timber.plant(Timber.DebugTree())
     }
 }

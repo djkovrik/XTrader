@@ -1,4 +1,4 @@
-package com.sedsoftware.core.utils.common
+package com.sedsoftware.core.utils.type
 
 sealed class Either<out L, out R> {
     data class Left<out L>(val a: L) : Either<L, Nothing>()

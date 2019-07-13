@@ -14,10 +14,10 @@ import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.show
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.presentation.extension.viewModel
-import com.sedsoftware.core.utils.common.Failure
-import com.sedsoftware.core.utils.common.Failure.LocalPersistenceError
-import com.sedsoftware.core.utils.common.Failure.NetworkConnectionMissing
-import com.sedsoftware.core.utils.common.Failure.ServerError
+import com.sedsoftware.core.utils.type.Failure
+import com.sedsoftware.core.utils.type.Failure.LocalPersistenceError
+import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
+import com.sedsoftware.core.utils.type.Failure.ServerError
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.model.ExchangeListItem

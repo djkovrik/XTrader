@@ -1,4 +1,4 @@
-package com.sedsoftware.core.tests
+package com.sedsoftware.core.test
 
 import kotlinx.coroutines.runBlocking
 import org.spekframework.spek2.dsl.LifecycleAware

@@ -22,7 +22,7 @@ import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
-import com.sedsoftware.core.utils.common.Failure
+import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.navigation.NavControllerHolder
 import com.sedsoftware.screens.main.navigation.NavigationFlow

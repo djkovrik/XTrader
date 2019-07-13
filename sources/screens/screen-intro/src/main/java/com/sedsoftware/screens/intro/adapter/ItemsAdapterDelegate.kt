@@ -9,7 +9,7 @@ import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.presentation.extension.dim
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.core.presentation.misc.DiffItem
-import com.sedsoftware.core.presentation.params.DownloadState
+import com.sedsoftware.core.presentation.type.DownloadState
 import com.sedsoftware.screens.intro.R
 import com.sedsoftware.screens.intro.model.ExchangeListItem
 import kotlinx.android.extensions.LayoutContainer

@@ -1,8 +1,8 @@
 package com.sedsoftware.core.utils.extension
 
-import com.sedsoftware.core.utils.common.Either
-import com.sedsoftware.core.utils.common.Either.Left
-import com.sedsoftware.core.utils.common.Either.Right
+import com.sedsoftware.core.utils.type.Either
+import com.sedsoftware.core.utils.type.Either.Left
+import com.sedsoftware.core.utils.type.Either.Right
 
 fun <T, L, R> Either<L, R>.flatMap(fn: (R) -> Either<L, T>): Either<L, T> =
     when (this) {

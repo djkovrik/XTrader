@@ -1,6 +1,6 @@
 package com.sedsoftware.exchange.binance.di.module
 
-import com.sedsoftware.core.utils.adapters.OffsetDateTimeAdapter
+import com.sedsoftware.core.utils.adapter.OffsetDateTimeAdapter
 import com.sedsoftware.exchange.binance.network.BinanceApi
 import com.squareup.moshi.Moshi
 import dagger.Module

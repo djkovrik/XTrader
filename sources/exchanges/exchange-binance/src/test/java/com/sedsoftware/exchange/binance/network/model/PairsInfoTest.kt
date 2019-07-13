@@ -1,8 +1,8 @@
 package com.sedsoftware.exchange.binance.network.model
 
-import com.sedsoftware.core.utils.adapters.OffsetDateTimeAdapter
-import com.sedsoftware.core.tests.blockingMemoized
-import com.sedsoftware.core.tests.get
+import com.sedsoftware.core.utils.adapter.OffsetDateTimeAdapter
+import com.sedsoftware.core.test.blockingMemoized
+import com.sedsoftware.core.test.get
 import com.sedsoftware.exchange.binance.Urls
 import com.sedsoftware.exchange.binance.entity.BinanceCurrency
 import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsInfoMapper

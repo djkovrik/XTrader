@@ -1,4 +1,4 @@
-package com.sedsoftware.core.tests
+package com.sedsoftware.core.test
 
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.coroutines.awaitObjectResponseResult

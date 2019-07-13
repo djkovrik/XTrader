@@ -1,4 +1,4 @@
-package com.sedsoftware.core.tests
+package com.sedsoftware.core.test
 
 import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.squareup.moshi.Moshi

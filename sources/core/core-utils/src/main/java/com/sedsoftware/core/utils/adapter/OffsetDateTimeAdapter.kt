@@ -1,4 +1,4 @@
-package com.sedsoftware.core.utils.adapters
+package com.sedsoftware.core.utils.adapter
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson

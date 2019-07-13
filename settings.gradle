@@ -13,8 +13,8 @@ include ':core-presentation'
 project(':core-presentation').projectDir = new File(rootDir, 'sources/core/core-presentation')
 include ':core-utils'
 project(':core-utils').projectDir = new File(rootDir, 'sources/core/core-utils')
-include ':core-tests'
-project(':core-tests').projectDir = new File(rootDir, 'sources/core/core-tests')
+include ':core-test'
+project(':core-test').projectDir = new File(rootDir, 'sources/core/core-test')
 
 include ':exchange-manager'
 project(':exchange-manager').projectDir = new File(rootDir, 'sources/exchanges/exchange-manager')
