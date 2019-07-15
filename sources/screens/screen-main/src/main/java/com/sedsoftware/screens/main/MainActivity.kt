@@ -66,6 +66,15 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
 
         setupViews()
         initStartupFragments()
+
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar()
+        }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        setupBottomNavigationBar()
     }
 
     private fun setupViews() {
@@ -106,6 +115,21 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
         )
     }
 
+    private fun setupBottomNavigationBar() {
+        if (mainActivityViewModel.currentNavFlow.value != NavigationFlow.MAIN) {
+            return
+        }
+
+        introNavHostFragment?.let { detachNavHostFragment(it) }
+        pinNavHostFragment?.let { detachNavHostFragment(it) }
+
+        mainActivityViewModel.currentNavController = setupWithNavController(
+            bottomNavigationView = bottom_navigation,
+            navGraphIds = MainActivityViewModel.mainNavGraphs,
+            containerId = R.id.nav_host_container
+        )
+    }
+
     override fun onResumeFragments() {
         super.onResumeFragments()
         mainActivityViewModel.currentNavController.value?.let {
@@ -140,6 +164,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
 
     override fun switchToMainFlow() {
         mainActivityViewModel.currentNavFlow.value = NavigationFlow.MAIN
+        setupBottomNavigationBar()
     }
 
     private fun hideNotificationDelayed() {
@@ -169,7 +194,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     }
 
     private fun handleNavFlow(navigationFlow: NavigationFlow?) {
-        showBottomNavigationBar(false)
         when (navigationFlow) {
             NavigationFlow.PIN -> {
                 introNavHostFragment?.let { detachNavHostFragment(it) }
@@ -186,13 +210,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
                 }
             }
             else -> {
-                introNavHostFragment?.let { detachNavHostFragment(it) }
-                pinNavHostFragment?.let { detachNavHostFragment(it) }
-                mainActivityViewModel.currentNavController = setupWithNavController(
-                    bottomNavigationView = bottom_navigation,
-                    navGraphIds = MainActivityViewModel.mainNavGraphs,
-                    containerId = R.id.nav_host_container
-                )
                 showBottomNavigationBar(true)
             }
         }
