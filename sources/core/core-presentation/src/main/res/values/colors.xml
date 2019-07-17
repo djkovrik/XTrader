@@ -13,7 +13,7 @@
     <color name="colorTextSecondary">@color/material_color_white</color>
 
     <!-- BACKGROUNDS -->
-    <color name="colorBackground">#FAFAFA</color>
+    <color name="colorBackground">#000000</color>
     <color name="colorLauncherIconBackground">@color/material_color_blue_grey_600</color>
     <color name="colorBottomNavigationBackground">#F1F1F1</color>
 
