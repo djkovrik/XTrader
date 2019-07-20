@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- MAIN -->
-    <color name="colorPrimary">@color/material_color_black_38_percent</color>
-    <color name="colorPrimaryLight">@color/material_color_black_26_percent</color>
-    <color name="colorPrimaryDark">@color/material_color_black_54_percent</color>
-    <color name="colorAccent">@color/material_color_grey_700</color>
-    <color name="colorAccentLight">@color/material_color_grey_600</color>
-    <color name="colorAccentDark">@color/material_color_grey_800</color>
+    <color name="colorPrimary">@color/material_color_blue_grey_900</color>
+    <color name="colorPrimaryLight">@color/material_color_blue_grey_800</color>
+    <color name="colorPrimaryDark">#111111</color>
+    <color name="colorAccent">@color/material_color_grey_600</color>
+    <color name="colorAccentLight">@color/material_color_grey_400</color>
+    <color name="colorAccentDark">@color/material_color_grey_700</color>
 
     <!-- TEXT -->
     <color name="colorTextPrimary">@color/material_color_black</color>
     <color name="colorTextSecondary">@color/material_color_white</color>
 
     <!-- BACKGROUNDS -->
-    <color name="colorBackground">#000000</color>
+    <color name="colorBackground">@color/colorPrimary</color>
     <color name="colorLauncherIconBackground">@color/material_color_blue_grey_600</color>
-    <color name="colorBottomNavigationBackground">#F1F1F1</color>
+    <color name="colorBottomNavigationBackground">@color/colorPrimaryDark</color>
 
     <!-- UI -->
     <color name="colorAvailable">@color/colorAccent</color>
