@@ -74,8 +74,6 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
     }
 
     private fun setupViewPositions() {
-        logo.gone()
-        logo.alpha = ALPHA_ZERO
         greetings_text.alpha = ALPHA_ZERO
         greetings_note.alpha = ALPHA_ZERO
         intro_button_continue.gone()
@@ -85,15 +83,6 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
 
     private fun animateViews() {
         var currentDelay = START_ANIMATION_DELAY
-
-        logo.animate()
-            .alpha(ALPHA_NORMAL)
-            .setInterpolator(LinearInterpolator())
-            .setDuration(ANIMATION_DURATION)
-            .setStartDelay(currentDelay)
-            .addStartAction { logo.show() }
-
-        currentDelay += ANIMATION_DURATION
 
         greetings_text.animate()
             .alpha(ALPHA_NORMAL)
@@ -141,7 +130,7 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
     }
 
     private companion object {
-        const val START_ANIMATION_DELAY = 50L
+        const val START_ANIMATION_DELAY = 100L
         const val ANIMATION_DURATION = 250L
         const val TRANSLATION_DEFAULT = 0f
         const val BASE_VIEW_TRANSLATION = 100f
