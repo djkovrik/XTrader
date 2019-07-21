@@ -1,63 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/intro_card"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/card_negative_bottom_margin"
-    app:cardCornerRadius="@dimen/card_corner_radius_normal">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/greetings_text"
+        style="@style/XTextPrimary"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/card_content_bottom_padding"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/greetings_text"
-            style="@style/XTextPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/material_baseline_grid_4x"
-            android:layout_marginStart="@dimen/material_baseline_grid_4x"
-            android:layout_marginTop="@dimen/material_baseline_grid_2x"
-            android:gravity="center_horizontal"
-            android:text="@string/label_greetings" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/material_baseline_grid_4x"
+        android:layout_marginStart="@dimen/material_baseline_grid_4x"
+        android:layout_marginTop="@dimen/material_baseline_grid_2x"
+        android:gravity="center_horizontal"
+        android:text="@string/label_greetings" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/intro_exchange_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginBottom="@dimen/material_baseline_grid_1x"
-            android:clipToPadding="true" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/intro_exchange_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
+        android:layout_weight="1"
+        android:clipToPadding="true" />
 
-        <TextView
-            android:id="@+id/greetings_note"
-            style="@style/XTTextSecondary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/material_baseline_grid_2x"
-            android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-            android:layout_marginBottom="@dimen/material_baseline_grid_1x"
-            android:gravity="center_horizontal"
-            android:text="@string/label_note" />
+    <TextView
+        android:id="@+id/greetings_note"
+        style="@style/XTTextSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
+        android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+        android:layout_marginStart="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
+        android:gravity="center_horizontal"
+        android:text="@string/label_note" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/intro_button_continue"
-            style="@style/XTButtonWide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/material_baseline_grid_2x"
-            android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
-            android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
-            android:enabled="false"
-            android:text="@string/btn_greetings_continue" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/intro_button_continue"
+        style="@style/XTButtonWide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/material_baseline_grid_2x"
+        android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
+        android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
+        android:enabled="false"
+        android:text="@string/btn_greetings_continue" />
 
-    </LinearLayout>
-
-</com.google.android.material.card.MaterialCardView>
+</LinearLayout>

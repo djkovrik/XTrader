@@ -7,7 +7,6 @@
     <dimen name="button_intro_width">85dp</dimen>
     <dimen name="button_intro_height">30dp</dimen>
     <dimen name="button_retry_icon_size">20dp</dimen>
-    <dimen name="card_corner_radius_normal">12dp</dimen>
-    <dimen name="card_negative_bottom_margin">-12dp</dimen>
-    <dimen name="card_content_bottom_padding">12dp</dimen>
+    <dimen name="card_corner_radius_normal">16dp</dimen>
+    <dimen name="card_elevation_main">2dp</dimen>
 </resources>

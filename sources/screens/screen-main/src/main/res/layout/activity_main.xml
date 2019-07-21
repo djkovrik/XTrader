@@ -56,11 +56,25 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-            android:id="@+id/nav_host_container"
+        <com.github.florent37.shapeofview.shapes.RoundRectView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:elevation="@dimen/card_elevation_main"
+            app:shape_roundRect_borderColor="@android:color/transparent"
+            app:shape_roundRect_borderWidth="0dp"
+            app:shape_roundRect_bottomLeftRadius="0dp"
+            app:shape_roundRect_bottomRightRadius="0dp"
+            app:shape_roundRect_topLeftRadius="@dimen/card_corner_radius_normal"
+            app:shape_roundRect_topRightRadius="@dimen/card_corner_radius_normal">
+
+            <FrameLayout
+                android:id="@+id/nav_host_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorCardBackground" />
+
+        </com.github.florent37.shapeofview.shapes.RoundRectView>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"

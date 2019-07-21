@@ -14,6 +14,7 @@
 
     <!-- BACKGROUNDS -->
     <color name="colorBackground">@color/colorPrimary</color>
+    <color name="colorCardBackground">@color/material_color_white</color>
     <color name="colorLauncherIconBackground">@color/material_color_blue_grey_600</color>
     <color name="colorBottomNavigationBackground">@color/colorPrimaryDark</color>
 
