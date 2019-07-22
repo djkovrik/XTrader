@@ -27,6 +27,7 @@
     <color name="colorNormalButtonBackground">@color/colorAccent</color>
     <color name="colorOutlinedButtonText">@color/colorAccent</color>
     <color name="colorOutlinedButtonStroke">@color/colorAccent</color>
-    <color name="colorImageDim">@color/colorPrimaryDark</color>
+    <color name="colorImageDim">@color/material_color_grey_500</color>
     <color name="colorNotificationBackground">#99000000</color>
+    <color name="colorTransparent">#00FFFFFF</color>
 </resources>

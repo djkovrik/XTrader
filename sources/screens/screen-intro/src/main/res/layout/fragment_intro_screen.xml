@@ -10,9 +10,9 @@
         style="@style/XTextPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_baseline_grid_2x"
         android:layout_marginEnd="@dimen/material_baseline_grid_4x"
         android:layout_marginStart="@dimen/material_baseline_grid_4x"
-        android:layout_marginTop="@dimen/material_baseline_grid_2x"
         android:gravity="center_horizontal"
         android:text="@string/label_greetings" />
 
@@ -21,6 +21,7 @@
         android:id="@+id/intro_exchange_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
         android:layout_marginBottom="@dimen/material_baseline_grid_1x"
         android:layout_weight="1"
         android:clipToPadding="true" />
