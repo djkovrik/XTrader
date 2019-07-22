@@ -69,6 +69,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
 
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
+            bottom_navigation.selectedItemId = R.id.navigation_market
         }
     }
 
