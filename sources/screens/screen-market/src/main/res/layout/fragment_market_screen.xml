@@ -33,13 +33,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:elevation="@dimen/card_elevation_main"
+        android:elevation="@dimen/elevation_card"
         app:shape_roundRect_borderColor="@android:color/transparent"
         app:shape_roundRect_borderWidth="0dp"
         app:shape_roundRect_bottomLeftRadius="0dp"
         app:shape_roundRect_bottomRightRadius="0dp"
-        app:shape_roundRect_topLeftRadius="@dimen/card_corner_radius_normal"
-        app:shape_roundRect_topRightRadius="@dimen/card_corner_radius_normal">
+        app:shape_roundRect_topLeftRadius="@dimen/corner_radius_card_normal"
+        app:shape_roundRect_topRightRadius="@dimen/corner_radius_card_normal">
 
         <LinearLayout
             android:id="@+id/empty_view"
@@ -50,8 +50,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="@dimen/image_empty_page_size"
-                android:layout_height="@dimen/image_empty_page_size"
+                android:layout_width="@dimen/size_image_empty_page"
+                android:layout_height="@dimen/size_image_empty_page"
                 android:alpha="0.8"
                 android:src="@drawable/ic_empty_market"
                 tools:ignore="ContentDescription" />

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="button_corner_radius_normal">8dp</dimen>
-    <dimen name="button_corner_radius_small">2dp</dimen>
-    <dimen name="button_padding_normal">24dp</dimen>
-    <dimen name="button_padding_wide">32dp</dimen>
-    <dimen name="button_intro_width">85dp</dimen>
-    <dimen name="button_intro_height">30dp</dimen>
-    <dimen name="button_retry_icon_size">20dp</dimen>
-    <dimen name="card_corner_radius_normal">12dp</dimen>
-    <dimen name="card_elevation_main">2dp</dimen>
-    <dimen name="image_empty_page_size">160dp</dimen>
+    <dimen name="corner_radius_button_normal">8dp</dimen>
+    <dimen name="corner_radius_button_small">2dp</dimen>
+    <dimen name="corner_radius_card_normal">12dp</dimen>
+    <dimen name="elevation_card">2dp</dimen>
+    <dimen name="padding_button_normal">24dp</dimen>
+    <dimen name="padding_button_wide">32dp</dimen>
+    <dimen name="size_icon_retry">20dp</dimen>
+    <dimen name="size_image_empty_page">160dp</dimen>
+    <dimen name="width_button_intro">85dp</dimen>
+    <dimen name="height_button_intro">30dp</dimen>
 </resources>

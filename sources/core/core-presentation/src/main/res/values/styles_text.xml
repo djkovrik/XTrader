@@ -3,18 +3,18 @@
 
     <style name="XTextLogo">
         <item name="android:fontFamily">@font/nunito_sans</item>
-        <item name="android:textSize">@dimen/logo_text_size</item>
+        <item name="android:textSize">@dimen/text_size_logo</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
 
     <style name="XTextPrimary">
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
     </style>
 
     <style name="XTextCaption" parent="XTextPrimary">
-        <item name="android:textSize">@dimen/caption_text_size</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
         <item name="android:ellipsize">end</item>
         <item name="android:singleLine">true</item>
     </style>
@@ -24,7 +24,7 @@
     </style>
 
     <style name="XTextSecondaryCaption" parent="XTTextSecondary">
-        <item name="android:textSize">@dimen/caption_text_size</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
         <item name="android:ellipsize">end</item>
         <item name="android:singleLine">true</item>
     </style>
