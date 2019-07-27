@@ -14,6 +14,7 @@
     </style>
 
     <style name="XTButtonWide" parent="XTButton">
+        <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:paddingStart">@dimen/padding_button_wide</item>
         <item name="android:paddingEnd">@dimen/padding_button_wide</item>
     </style>
