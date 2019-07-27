@@ -31,5 +31,4 @@ dependencies {
     implementation JetPackDependencies.KTX
 
     implementation UiDependencies.materialValues
-    implementation UiDependencies.shapeOfView
 }

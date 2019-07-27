@@ -25,56 +25,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorBackground">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                app:contentInsetStart="0dp"
-                android:layout_height="?attr/actionBarSize"
-                app:title=" ">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/toolbar_text"
-                        style="@style/XTextToolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/app_name" />
-
-                </FrameLayout>
-
-            </androidx.appcompat.widget.Toolbar>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <com.github.florent37.shapeofview.shapes.RoundRectView
+        <FrameLayout
+            android:id="@+id/nav_host_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:elevation="@dimen/card_elevation_main"
-            app:shape_roundRect_borderColor="@android:color/transparent"
-            app:shape_roundRect_borderWidth="0dp"
-            app:shape_roundRect_bottomLeftRadius="0dp"
-            app:shape_roundRect_bottomRightRadius="0dp"
-            app:shape_roundRect_topLeftRadius="@dimen/card_corner_radius_normal"
-            app:shape_roundRect_topRightRadius="@dimen/card_corner_radius_normal">
-
-            <FrameLayout
-                android:id="@+id/nav_host_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorCardBackground" />
-
-        </com.github.florent37.shapeofview.shapes.RoundRectView>
+            android:layout_weight="1" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"

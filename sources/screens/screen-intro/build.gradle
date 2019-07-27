@@ -28,4 +28,5 @@ dependencies {
     implementation JetPackDependencies.navigationRuntime
 
     implementation UiDependencies.materialValues
+    implementation UiDependencies.shapeOfView
 }

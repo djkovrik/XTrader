@@ -1,6 +1,7 @@
 package com.sedsoftware.screens.intro
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,6 +56,9 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        appbar.outlineProvider = null
+        toolbar_text.text = string(R.string.app_name)
+        toolbar_text.gravity = Gravity.CENTER
         intro_button_continue.setOnClickListener { coordinator.navigateToHome() }
 
         with(intro_exchange_list) {

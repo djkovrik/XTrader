@@ -5,9 +5,7 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
@@ -54,12 +52,9 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-        appbar.outlineProvider = null
         setBackgroundColor(R.color.colorBackground)
 
         mainActivityViewModel = viewModel(viewModelFactory) {
-            observe(currentNavController, ::handleNavController)
             observe(currentNavFlow, ::handleNavFlow)
             failure(viewModelFailure, ::displayFailure)
         }
@@ -188,10 +183,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
             .setInterpolator(LinearInterpolator())
             .addEndAction { finishedCallback.invoke() }
             .start()
-    }
-
-    private fun handleNavController(navController: NavController?) {
-        navController?.let { setupActionBarWithNavController(it) }
     }
 
     private fun handleNavFlow(navigationFlow: NavigationFlow?) {
