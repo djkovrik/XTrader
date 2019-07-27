@@ -10,13 +10,20 @@
     <style name="XTextPrimary">
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+    <style name="XTextCaption" parent="XTextPrimary">
+        <item name="android:textSize">@dimen/caption_text_size</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="XTTextSecondary" parent="XTextPrimary">
         <item name="android:alpha">0.5</item>
     </style>
 
-    <style name="XTextCaption" parent="XTextPrimary">
+    <style name="XTextSecondaryCaption" parent="XTTextSecondary">
         <item name="android:textSize">@dimen/caption_text_size</item>
         <item name="android:ellipsize">end</item>
         <item name="android:singleLine">true</item>

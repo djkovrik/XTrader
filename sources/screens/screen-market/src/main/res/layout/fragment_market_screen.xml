@@ -1,15 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_color_red_400">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="MARKET SCREEN"
-        tools:ignore="HardcodedText" />
+    <!--<com.google.android.material.appbar.AppBarLayout-->
+        <!--android:id="@+id/appbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@color/colorBackground">-->
 
-</FrameLayout>
+        <!--<androidx.appcompat.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--app:contentInsetStart="0dp"-->
+            <!--app:title=" ">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/toolbar_text"-->
+                <!--style="@style/XTextToolbar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+        <!--</androidx.appcompat.widget.Toolbar>-->
+
+    <!--</com.google.android.material.appbar.AppBarLayout>-->
+
+    <com.github.florent37.shapeofview.shapes.RoundRectView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:elevation="@dimen/card_elevation_main"
+        app:shape_roundRect_borderColor="@android:color/transparent"
+        app:shape_roundRect_borderWidth="0dp"
+        app:shape_roundRect_bottomLeftRadius="0dp"
+        app:shape_roundRect_bottomRightRadius="0dp"
+        app:shape_roundRect_topLeftRadius="@dimen/card_corner_radius_normal"
+        app:shape_roundRect_topRightRadius="@dimen/card_corner_radius_normal">
+
+        <LinearLayout
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorCardBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/image_empty_page_size"
+                android:layout_height="@dimen/image_empty_page_size"
+                android:alpha="0.8"
+                android:src="@drawable/ic_empty_market"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                style="@style/XTextSecondaryCaption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+                android:layout_marginStart="@dimen/material_baseline_grid_2x"
+                android:text="@string/label_no_items" />
+
+            <TextView
+                style="@style/XTTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/material_baseline_grid_1x"
+                android:gravity="center"
+                android:text="@string/label_no_items_suggestion" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/market_items_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorCardBackground"
+            android:clipToPadding="true"
+            android:visibility="gone" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/market_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/material_baseline_grid_2x"
+            android:backgroundTint="@color/colorAccent"
+            android:contentDescription="@string/btn_market_add"
+            android:text="@string/btn_market_add"
+            android:textColor="@color/colorTextPrimary"
+            app:icon="@drawable/ic_plus"
+            app:rippleColor="@color/colorAccentLight" />
+
+    </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+</LinearLayout>

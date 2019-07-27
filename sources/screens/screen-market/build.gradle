@@ -6,8 +6,16 @@ apply plugin: 'kotlin-kapt'
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
+    implementation project(':core-di')
+    implementation project(':core-domain')
     implementation project(':core-presentation')
+    implementation project(':core-tools-api')
+    implementation project(':core-utils')
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
@@ -17,4 +25,5 @@ dependencies {
     implementation JetPackDependencies.materialComponents
 
     implementation UiDependencies.materialValues
+    implementation UiDependencies.shapeOfView
 }

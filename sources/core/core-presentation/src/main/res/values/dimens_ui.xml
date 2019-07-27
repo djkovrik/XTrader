@@ -9,4 +9,5 @@
     <dimen name="button_retry_icon_size">20dp</dimen>
     <dimen name="card_corner_radius_normal">12dp</dimen>
     <dimen name="card_elevation_main">2dp</dimen>
+    <dimen name="image_empty_page_size">160dp</dimen>
 </resources>
