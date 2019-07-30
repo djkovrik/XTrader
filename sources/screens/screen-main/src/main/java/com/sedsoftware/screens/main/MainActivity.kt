@@ -31,6 +31,16 @@ import javax.inject.Inject
 
 class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, NavigationFlowDelegate {
 
+    companion object {
+        // Tabs
+        const val DEFAULT_TAB_INDEX = 2
+        private val DEFAULT_TAB = R.id.navigation_market
+        // Animation
+        private const val ANIMATION_DELAY = 100L
+        private const val ANIMATION_DURATION = 200L
+        private const val DELAY_BEFORE_HIDE = 3000L
+    }
+
     private val mainActivityComponent: MainActivityComponent by lazy {
         val appComponent = (applicationContext as App).getAppComponent()
         MainActivityComponent.Initializer.init(appComponent, this, this)
@@ -63,6 +73,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
         initStartupFragments()
 
         if (savedInstanceState == null) {
+            bottom_navigation.selectedItemId = DEFAULT_TAB
             setupBottomNavigationBar()
         }
     }
@@ -222,11 +233,5 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
             bottom_navigation.isGone = true
             translateViewAnimated(bottom_navigation, bottomNavigationViewTranslation)
         }
-    }
-
-    private companion object {
-        const val ANIMATION_DELAY = 100L
-        const val ANIMATION_DURATION = 200L
-        const val DELAY_BEFORE_HIDE = 3000L
     }
 }
