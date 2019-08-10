@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/material_baseline_grid_2x">
+
+    <TextView
+        android:id="@+id/label_add_new"
+        style="@style/XTextCaption2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_add_new_pair"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.sedsoftware.simplespinner.SimpleSpinnerView
+        android:id="@+id/exchange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_baseline_grid_2x"
+        app:cardCornerRadius="@dimen/corner_radius_button_small"
+        app:cardElevation="@dimen/elevation_card"
+        app:default_font="@font/montserrat"
+        app:default_text="@string/label_select"
+        app:display_search="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_add_new"
+        app:padding_horizontal="@dimen/material_baseline_grid_1x"
+        app:padding_vertical="@dimen/material_baseline_grid_0.5x"
+        app:text_color="@color/colorTextPrimary"
+        app:text_size="@dimen/text_size_normal" />
+
+    <TextView
+        android:id="@+id/label_base"
+        style="@style/XTextPrimary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_2x"
+        android:text="@string/label_base_currency"
+        app:layout_constraintEnd_toStartOf="@+id/label_market"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exchange" />
+
+    <com.sedsoftware.simplespinner.SimpleSpinnerView
+        android:id="@+id/base_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
+        app:cardCornerRadius="@dimen/corner_radius_button_small"
+        app:cardElevation="@dimen/elevation_card"
+        app:default_font="@font/montserrat"
+        app:default_text="@string/label_select"
+        app:display_search="true"
+        app:layout_constraintEnd_toStartOf="@+id/market_currency"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_base"
+        app:padding_horizontal="@dimen/material_baseline_grid_1x"
+        app:padding_vertical="@dimen/material_baseline_grid_0.5x"
+        app:text_color="@color/colorTextPrimary"
+        app:text_size="@dimen/text_size_normal" />
+
+    <TextView
+        android:id="@+id/label_market"
+        style="@style/XTextPrimary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_2x"
+        android:gravity="end"
+        android:text="@string/label_market_currency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/label_base"
+        app:layout_constraintTop_toBottomOf="@+id/exchange" />
+
+    <com.sedsoftware.simplespinner.SimpleSpinnerView
+        android:id="@+id/market_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
+        app:cardCornerRadius="@dimen/corner_radius_button_small"
+        app:cardElevation="@dimen/elevation_card"
+        app:default_font="@font/montserrat"
+        app:default_text="@string/label_select"
+        app:display_search="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/base_currency"
+        app:layout_constraintTop_toBottomOf="@+id/label_market"
+        app:padding_horizontal="@dimen/material_baseline_grid_1x"
+        app:padding_vertical="@dimen/material_baseline_grid_0.5x"
+        app:text_color="@color/colorTextPrimary"
+        app:text_size="@dimen/text_size_normal" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/market_button_add"
+        style="@style/XTButtonWide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/material_baseline_grid_1x"
+        android:layout_marginStart="@dimen/material_baseline_grid_1x"
+        android:layout_marginTop="@dimen/material_baseline_grid_2x"
+        android:enabled="false"
+        android:text="@string/btn_market_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/base_currency" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

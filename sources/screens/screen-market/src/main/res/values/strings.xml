@@ -8,4 +8,10 @@
     <string name="label_no_items">Nothing to display.</string>
     <string name="label_no_items_suggestion">You haven\'t chosen any items yet,\nuse a button below to build your own \ncurrency pairs list.</string>
 
+    <!-- Add new pair -->
+    <string name="label_add_new_pair">Add new currency pair</string>
+
+    <!-- Labels -->
+    <string name="label_select">Select an item…</string>
+
 </resources>

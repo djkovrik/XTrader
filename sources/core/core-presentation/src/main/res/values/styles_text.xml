@@ -19,6 +19,10 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <style name="XTextCaption2" parent="XTextCaption">
+        <item name="android:textSize">@dimen/text_size_caption2</item>
+    </style>
+
     <style name="XTTextSecondary" parent="XTextPrimary">
         <item name="android:alpha">0.5</item>
     </style>

@@ -26,4 +26,5 @@ dependencies {
 
     implementation UiDependencies.materialValues
     implementation UiDependencies.shapeOfView
+    implementation UiDependencies.spinner
 }

@@ -26,7 +26,6 @@ object Versions {
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
     const val ANDROID_JUNIT5_VERSION = "1.4.2.1"
     const val DEV_METRICS_VERSION = "0.7"
-    const val ANDROID_JAR_VERSION = "0.1"
 
     // JetPack - AppCompat
     const val APPCOMPAT_VERSION = "1.1.0-rc01"
@@ -47,6 +46,7 @@ object Versions {
     const val MATERIAL_DIALOGS_VERSION = "0.9.6.0"
     const val MP_ANDROID_CHART_VERSION = "v3.0.3"
     const val SHAPE_OF_VIEW_VERSION = "1.4.7"
+    const val SIMPLE_SPINNER_VERSION = "0.1.2"
 
     // Testing
     const val JUNIT5_VERSION = "5.2.0"
