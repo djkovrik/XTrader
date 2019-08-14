@@ -57,7 +57,10 @@ class MarketScreenFragment : BaseFragment() {
 
         market_fab.setOnClickListener {
             val set = AnimatorSet()
-            set.play(getFabAnimator())
+            set.playTogether(
+                getFabArcPathAnimator(market_fab),
+                getFabAlphaAnimator(market_fab)
+            )
             set.start()
         }
     }
@@ -66,9 +69,9 @@ class MarketScreenFragment : BaseFragment() {
 
     private fun centerY(view: View) = view.y + view.height / 2
 
-    private fun getFabAnimator(): Animator =
+    private fun getFabArcPathAnimator(target: View): Animator =
         ObjectAnimator.ofFloat(
-            market_fab,
+            target,
             View.TRANSLATION_X,
             View.TRANSLATION_Y,
             ArcMotion().getPath(0f, 0f, -dialogTranslationX, -dialogTranslationY)
@@ -76,6 +79,9 @@ class MarketScreenFragment : BaseFragment() {
             interpolator = fastOutLinearInInterpolator
             duration = REVEAL_ANIMATION_DURATION
         }
+
+    private fun getFabAlphaAnimator(target: View): Animator =
+        ObjectAnimator.ofFloat(target, View.ALPHA, 1f, 0f)
 
     private companion object {
         const val REVEAL_ANIMATION_DURATION = 1000L
