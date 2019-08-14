@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/add_pair_view"
-    android:background="@color/colorImageDim"
+    android:background="@color/colorCardBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/material_baseline_grid_2x">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/label_add_new"
         style="@style/XTextCaption2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+        android:layout_marginStart="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_2x"
         android:text="@string/label_add_new_pair"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+        android:layout_marginStart="@dimen/material_baseline_grid_2x"
         android:layout_marginTop="@dimen/material_baseline_grid_2x"
         android:text="@string/label_base_currency"
         app:layout_constraintEnd_toStartOf="@+id/label_market"
@@ -72,6 +76,7 @@
         style="@style/XTextPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/material_baseline_grid_2x"
         android:layout_marginStart="@dimen/material_baseline_grid_2x"
         android:layout_marginTop="@dimen/material_baseline_grid_2x"
         android:gravity="end"
@@ -105,6 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/material_baseline_grid_2x"
         android:layout_marginEnd="@dimen/material_baseline_grid_1x"
         android:layout_marginStart="@dimen/material_baseline_grid_1x"
         android:layout_marginTop="@dimen/material_baseline_grid_2x"
@@ -114,5 +120,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/base_currency" />
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@color/colorAccent"
+        android:elevation="@dimen/elevation_fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/overlay_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:elevation="@dimen/elevation_fab"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

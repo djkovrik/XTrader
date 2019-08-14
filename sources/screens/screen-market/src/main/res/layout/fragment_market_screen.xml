@@ -91,6 +91,7 @@
             android:backgroundTint="@color/colorAccent"
             android:textColor="@color/colorTextPrimary"
             android:src="@drawable/ic_plus"
+            app:elevation="@dimen/elevation_fab"
             app:rippleColor="@color/colorAccentLight" />
 
         <include

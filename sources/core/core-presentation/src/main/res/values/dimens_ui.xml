@@ -3,6 +3,7 @@
     <dimen name="corner_radius_button_normal">8dp</dimen>
     <dimen name="corner_radius_button_small">2dp</dimen>
     <dimen name="corner_radius_card_normal">12dp</dimen>
+    <dimen name="elevation_fab">8dp</dimen>
     <dimen name="elevation_card">4dp</dimen>
     <dimen name="padding_button_normal">24dp</dimen>
     <dimen name="padding_button_wide">32dp</dimen>

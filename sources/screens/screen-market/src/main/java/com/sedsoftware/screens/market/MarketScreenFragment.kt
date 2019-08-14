@@ -52,10 +52,8 @@ class MarketScreenFragment : BaseFragment() {
         dialogTranslationX = defaultFabCenterX - defaultDialogCenterX
         dialogTranslationY = defaultFabCenterY - defaultDialogCenterY
 
-//        add_pair_view.translationX = dialogTranslationX
-//        add_pair_view.translationY = dialogTranslationX
-//
-//        add_pair_view.gone()
+        add_pair_view.translationX = dialogTranslationX
+        add_pair_view.translationY = dialogTranslationY
 
         market_fab.setOnClickListener {
             val set = AnimatorSet()
