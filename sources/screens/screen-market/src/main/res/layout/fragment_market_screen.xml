@@ -82,18 +82,22 @@
             android:clipToPadding="true"
             android:visibility="gone" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/market_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/material_baseline_grid_2x"
             android:backgroundTint="@color/colorAccent"
-            android:contentDescription="@string/btn_market_add"
-            android:text="@string/btn_market_add"
             android:textColor="@color/colorTextPrimary"
-            app:icon="@drawable/ic_plus"
+            android:src="@drawable/ic_plus"
             app:rippleColor="@color/colorAccentLight" />
+
+        <include
+            layout="@layout/view_add_pair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
 
     </com.github.florent37.shapeofview.shapes.RoundRectView>
 
