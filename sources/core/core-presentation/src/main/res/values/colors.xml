@@ -16,6 +16,7 @@
     <color name="colorCardBackground">@color/material_color_white</color>
     <color name="colorLauncherIconBackground">@color/material_color_blue_grey_600</color>
     <color name="colorBottomNavigationBackground">@color/colorPrimaryDark</color>
+    <color name="colorMenuBackgroundOverlay">#BF000000</color>
 
     <!-- UI -->
     <color name="colorAvailable">@color/colorAccentDark</color>

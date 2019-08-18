@@ -94,6 +94,13 @@
             app:elevation="@dimen/elevation_fab"
             app:rippleColor="@color/colorAccentLight" />
 
+        <View
+            android:id="@+id/overlay_global"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorMenuBackgroundOverlay"
+            android:visibility="gone" />
+
         <include
             layout="@layout/view_add_pair"
             android:layout_width="match_parent"
