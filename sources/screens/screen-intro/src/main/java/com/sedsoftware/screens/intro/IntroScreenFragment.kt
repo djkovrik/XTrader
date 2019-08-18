@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.animation.LinearInterpolator
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sedsoftware.core.di.coordinator.IntroCoordinator
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartAction
 import com.sedsoftware.core.presentation.extension.failure
-import com.sedsoftware.core.presentation.extension.gone
 import com.sedsoftware.core.presentation.extension.observe
-import com.sedsoftware.core.presentation.extension.show
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.type.Failure
@@ -80,7 +80,7 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
     private fun setupViewPositions() {
         greetings_text.alpha = ALPHA_ZERO
         greetings_note.alpha = ALPHA_ZERO
-        intro_button_continue.gone()
+        intro_button_continue.isGone = true
         intro_button_continue.alpha = ALPHA_ZERO
         intro_button_continue.translationY = BASE_VIEW_TRANSLATION
     }
@@ -99,7 +99,7 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
             .translationY(TRANSLATION_DEFAULT)
             .setDuration(ANIMATION_DURATION)
             .setStartDelay(currentDelay)
-            .addStartAction { intro_button_continue.show() }
+            .addStartAction { intro_button_continue.isVisible = true }
 
         currentDelay += ANIMATION_DURATION
 

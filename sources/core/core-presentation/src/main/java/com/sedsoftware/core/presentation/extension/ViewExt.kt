@@ -2,14 +2,6 @@ package com.sedsoftware.core.presentation.extension
 
 import android.view.View
 
-fun View.show() {
-    visibility = View.VISIBLE
-}
+fun View.centerX() = this.x + this.width / 2
 
-fun View.hide() {
-    visibility = View.INVISIBLE
-}
-
-fun View.gone() {
-    visibility = View.GONE
-}
+fun View.centerY() = this.y + this.height / 2

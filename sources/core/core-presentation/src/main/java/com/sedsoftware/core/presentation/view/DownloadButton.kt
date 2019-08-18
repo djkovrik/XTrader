@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.sedsoftware.core.presentation.R
-import com.sedsoftware.core.presentation.extension.hide
-import com.sedsoftware.core.presentation.extension.show
 import com.sedsoftware.core.presentation.type.DownloadState
 import com.sedsoftware.core.presentation.type.DownloadState.AVAILABLE
 import com.sedsoftware.core.presentation.type.DownloadState.COMPLETED
@@ -87,8 +85,8 @@ class DownloadButton : FrameLayout, LayoutContainer {
     }
 
     fun setState(newState: DownloadState) {
-        currentState?.let { views[it]?.hide() }
-        views[newState]?.show()
+        currentState?.let { views[it]?.visibility = View.INVISIBLE }
+        views[newState]?.visibility = View.VISIBLE
         currentState = newState
     }
 }
