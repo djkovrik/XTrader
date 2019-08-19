@@ -103,7 +103,15 @@ class MarketScreenFragment : BaseFragment() {
             getOverlayAlphaAnimator(),
             getOverlayIconAlphaAnimator()
         )
-        set.addEndAction { dialogExpanded = !dialogExpanded }.start()
+        set.addStartEndActions(
+            startWith = {
+                overlay_global.isEnabled = false
+            },
+            endWith = {
+                overlay_global.isEnabled = true
+                dialogExpanded = !dialogExpanded
+            }
+        ).start()
     }
 
     private fun getFabArcPathAnimator(): Animator {
@@ -220,7 +228,7 @@ class MarketScreenFragment : BaseFragment() {
 
     private companion object {
         const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
-        const val DIALOG_ANIMATION_DURATION = 2500L
-        const val DIALOG_OVERLAY_ANIMATION_DELAY = 1500L
+        const val DIALOG_ANIMATION_DURATION = 250L
+        const val DIALOG_OVERLAY_ANIMATION_DELAY = 150L
     }
 }
