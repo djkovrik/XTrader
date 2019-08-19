@@ -61,6 +61,7 @@ class MarketScreenFragment : BaseFragment() {
 
         market_fab.setOnClickListener { changeDialogExpandState() }
         overlay_global.setOnClickListener { changeDialogExpandState() }
+        enableButton(false)
     }
 
     private fun setupViewParams() {
@@ -226,9 +227,22 @@ class MarketScreenFragment : BaseFragment() {
             this.startDelay = startDelay
         }
 
+    private fun enableButton(shouldEnable: Boolean?) {
+        if (shouldEnable == true) {
+            market_button_add.alpha = ALPHA_NORMAL
+            market_button_add.isEnabled = true
+        } else {
+            market_button_add.alpha = ALPHA_GRAYED
+            market_button_add.isEnabled = false
+        }
+    }
+
     private companion object {
         const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
         const val DIALOG_ANIMATION_DURATION = 250L
         const val DIALOG_OVERLAY_ANIMATION_DELAY = 150L
+        const val ALPHA_GRAYED = 0.7f
+        const val ALPHA_NORMAL = 1f
     }
+
 }
