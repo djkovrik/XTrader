@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
@@ -61,6 +62,13 @@ class MarketScreenFragment : BaseFragment() {
 
         market_fab.setOnClickListener { changeDialogExpandState() }
         overlay_global.setOnClickListener { changeDialogExpandState() }
+        overlay_global.setOnTouchListener { _, event ->
+            var flag = false
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                flag = overlay_global.measuredHeight - event.y < add_pair_view.measuredHeight
+            }
+            flag
+        }
         enableButton(false)
     }
 
