@@ -64,6 +64,15 @@ class MarketScreenFragment : BaseFragment() {
         enableButton(false)
     }
 
+    override fun onBackPressed(): Boolean {
+        if (dialogExpanded) {
+            changeDialogExpandState()
+            return true
+        }
+
+        return false
+    }
+
     private fun setupViewParams() {
         defaultDialogCenterX = add_pair_view.centerX()
         defaultDialogCenterY = add_pair_view.centerY()
