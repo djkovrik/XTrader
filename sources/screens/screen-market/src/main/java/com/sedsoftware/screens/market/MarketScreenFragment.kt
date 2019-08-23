@@ -10,15 +10,18 @@ import android.view.ViewAnimationUtils
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
+import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.transition.ArcMotion
+import com.sedsoftware.core.domain.ExchangeType
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartEndActions
 import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
 import com.sedsoftware.screens.market.di.MarketScreenComponent
+import com.sedsoftware.simplespinner.listener.OnItemChoiceListener
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.view_add_pair.*
 
@@ -28,12 +31,30 @@ class MarketScreenFragment : BaseFragment() {
         AnimationUtils.loadInterpolator(context, android.R.interpolator.fast_out_linear_in)
     }
 
+    private val exchanges = ExchangeType.values()
+
     private var defaultDialogCenterX = 0f
     private var defaultDialogCenterY = 0f
     private var dialogTranslationX = 0f
     private var dialogTranslationY = 0f
     private var defaultFabCenterX = 0f
     private var defaultFabCenterY = 0f
+
+    private var selectedExchangeIndex: Int = 0
+        get() =
+            arguments?.getInt(SELECTED_EXCHANGE_KEY) ?: 0
+        set(value) {
+            arguments = bundleOf(SELECTED_EXCHANGE_KEY to value)
+            field = value
+        }
+
+    private var dialogExpanded: Boolean = false
+        get() =
+            arguments?.getBoolean(DIALOG_STATE_KEY) ?: false
+        set(value) {
+            arguments = bundleOf(DIALOG_STATE_KEY to value)
+            field = value
+        }
 
     override fun getLayoutResId(): Int =
         R.layout.fragment_market_screen
@@ -44,15 +65,6 @@ class MarketScreenFragment : BaseFragment() {
             .inject(this)
     }
 
-    private var dialogExpanded: Boolean = false
-        get() {
-            return arguments?.getBoolean(DIALOG_STATE_KEY) ?: false
-        }
-        set(value) {
-            arguments = Bundle().apply { putBoolean(DIALOG_STATE_KEY, value) }
-            field = value
-        }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -61,6 +73,16 @@ class MarketScreenFragment : BaseFragment() {
                 setupViewParams()
                 setupFabDialogState()
                 add_pair_view.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
+
+        val exchangeLabels = exchanges.map { it.label }
+        exchange.items = exchangeLabels
+        exchange.setText(exchangeLabels[selectedExchangeIndex])
+
+        exchange.setOnItemChoiceListener(object : OnItemChoiceListener {
+            override fun onClicked(index: Int) {
+                selectedExchangeIndex = index
             }
         })
 
@@ -259,11 +281,13 @@ class MarketScreenFragment : BaseFragment() {
     }
 
     private companion object {
-        const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
         const val DIALOG_ANIMATION_DURATION = 250L
         const val DIALOG_OVERLAY_ANIMATION_DELAY = 150L
         const val ALPHA_GRAYED = 0.7f
         const val ALPHA_NORMAL = 1f
+
+        const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
+        const val SELECTED_EXCHANGE_KEY = "DIALOG_STATE_KEY"
     }
 
 }
