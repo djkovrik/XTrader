@@ -39,7 +39,8 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
         R.layout.fragment_intro_screen
 
     override fun inject() {
-        IntroScreenComponent.Initializer.init(this, parentActivityComponent)
+        IntroScreenComponent.Initializer
+            .init(this, parentActivityComponent)
             .inject(this)
     }
 

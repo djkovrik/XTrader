@@ -18,6 +18,7 @@ import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartEndActions
 import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
+import com.sedsoftware.screens.market.di.MarketScreenComponent
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.view_add_pair.*
 
@@ -38,6 +39,9 @@ class MarketScreenFragment : BaseFragment() {
         R.layout.fragment_market_screen
 
     override fun inject() {
+        MarketScreenComponent.Initializer
+            .init(parentActivityComponent)
+            .inject(this)
     }
 
     private var dialogExpanded: Boolean = false
