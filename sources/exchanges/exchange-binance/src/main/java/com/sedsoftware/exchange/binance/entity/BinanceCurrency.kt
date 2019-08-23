@@ -42,6 +42,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     CLOAK("CloakCoin"),
     CMT("CyberMiles"),
     CND("Cindicator"),
+    COCOS("COCOS-BCX"),
     COS("Contentos"),
     CVC("Civic"),
     DASH("Dash"),
