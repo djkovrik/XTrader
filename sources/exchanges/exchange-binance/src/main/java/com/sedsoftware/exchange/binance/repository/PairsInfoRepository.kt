@@ -4,7 +4,7 @@ import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.exchange.binance.database.BinanceDatabase
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
 import com.sedsoftware.exchange.binance.database.dao.BinanceSyncInfoDao
-import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsInfoMapper
+import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsMapper
 import com.sedsoftware.exchange.binance.network.BinanceApi
 import com.sedsoftware.exchange.binance.network.model.PairsInfo
 import javax.inject.Inject
@@ -13,7 +13,7 @@ class PairsInfoRepository @Inject constructor(
     private val api: BinanceApi,
     private val settings: Settings,
     private val db: BinanceDatabase,
-    private val mapper: BinanceSymbolsInfoMapper
+    private val mapper: BinanceSymbolsMapper
 ) {
 
     private val symbolsDao: BinanceSymbolsDao by lazy {

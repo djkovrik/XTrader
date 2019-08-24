@@ -16,7 +16,7 @@ interface BinanceSymbolsDao {
     suspend fun getAllCurrencies(): List<BinanceSymbolDbModel>
 
     @Query("SELECT * FROM symbols WHERE base_asset LIKE :baseName")
-    suspend fun getPairsForBase(baseName: String): List<BinanceSymbolDbModel>
+    suspend fun getCurrenciesForBase(baseName: String): List<BinanceSymbolDbModel>
 
     @Query("DELETE FROM symbols")
     suspend fun clearAll()

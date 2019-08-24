@@ -5,7 +5,7 @@ import com.sedsoftware.core.test.blockingMemoized
 import com.sedsoftware.core.test.get
 import com.sedsoftware.exchange.binance.Urls
 import com.sedsoftware.exchange.binance.entity.BinanceCurrency
-import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsInfoMapper
+import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsMapper
 import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
@@ -88,7 +88,7 @@ class PairsInfoTest : Spek({
         }
 
         context("Check mapper") {
-            val mapper = BinanceSymbolsInfoMapper()
+            val mapper = BinanceSymbolsMapper()
 
             it("Maps server time correctly") {
                 response?.let { mapper.mapSyncInfoToDb(it).lastSyncDate.should.not.be.`null` }

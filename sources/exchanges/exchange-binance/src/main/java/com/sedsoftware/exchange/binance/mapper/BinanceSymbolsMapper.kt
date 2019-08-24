@@ -1,13 +1,15 @@
 package com.sedsoftware.exchange.binance.mapper
 
 import com.sedsoftware.core.domain.ExchangeType
+import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.exchange.binance.database.model.BinanceSymbolDbModel
 import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
+import com.sedsoftware.exchange.binance.entity.BinanceCurrency
 import com.sedsoftware.exchange.binance.network.model.PairsInfo
 import com.sedsoftware.exchange.binance.network.model.SymbolInfoModel
 import javax.inject.Inject
 
-class BinanceSymbolsInfoMapper @Inject constructor() {
+class BinanceSymbolsMapper @Inject constructor() {
 
     fun mapSymbolsToDb(from: PairsInfo): List<BinanceSymbolDbModel> =
         from.symbols.map { mapSymbolToDb(it) }
@@ -17,6 +19,9 @@ class BinanceSymbolsInfoMapper @Inject constructor() {
             name = ExchangeType.BINANCE.name,
             lastSyncDate = from.serverTime
         )
+
+    fun mapDbToEntity(from: BinanceSymbolDbModel): Currency =
+        BinanceCurrency.valueOf(from.baseAsset)
 
     private fun mapSymbolToDb(from: SymbolInfoModel): BinanceSymbolDbModel =
         BinanceSymbolDbModel(

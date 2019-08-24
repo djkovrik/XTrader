@@ -2,12 +2,13 @@ package com.sedsoftware.exchange.binance
 
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.tools.api.NetworkHandler
+import com.sedsoftware.core.utils.extension.left
+import com.sedsoftware.core.utils.extension.right
 import com.sedsoftware.core.utils.type.Either
 import com.sedsoftware.core.utils.type.Either.Left
-import com.sedsoftware.core.utils.type.Either.Right
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
-import com.sedsoftware.core.utils.type.Failure.PairLoadingError
+import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
 import com.sedsoftware.core.utils.type.Success
 import com.sedsoftware.core.utils.type.Success.PairsLoadingCompleted
 import com.sedsoftware.exchange.binance.repository.PairsInfoRepository
@@ -31,13 +32,13 @@ class BinancePairLoader @Inject constructor(
                         repository.storePairsInfo(remotePairs)
                         repository.storeSyncInfo(remotePairs)
                         repository.markAsDownloaded()
-                        Right(PairsLoadingCompleted)
+                        right(PairsLoadingCompleted)
                     } catch (exception: Exception) {
-                        Left(PairLoadingError(exception))
+                        Left(PairsLoadingError(exception))
                     }
                 }
                 false -> {
-                    Left(NetworkConnectionMissing)
+                    left(NetworkConnectionMissing)
                 }
             }
         }
