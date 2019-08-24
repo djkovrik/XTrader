@@ -16,9 +16,8 @@ import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.Failure.LocalPersistenceError
 import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
-import com.sedsoftware.core.utils.type.Failure.ServerError
+import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
 import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.model.ExchangeListItem
@@ -119,8 +118,7 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
     private fun displayFailure(failure: Failure?) {
         when (failure) {
             is NetworkConnectionMissing -> notifyTop(string(R.string.msg_no_internet_connection))
-            is LocalPersistenceError -> notifyTop(string(R.string.msg_local_error, failure.throwable.message))
-            is ServerError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
+            is PairsLoadingError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
         }
     }
 
