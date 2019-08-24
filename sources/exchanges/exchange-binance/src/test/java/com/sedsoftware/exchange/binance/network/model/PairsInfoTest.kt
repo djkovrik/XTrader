@@ -1,8 +1,8 @@
 package com.sedsoftware.exchange.binance.network.model
 
-import com.sedsoftware.core.utils.adapter.OffsetDateTimeAdapter
 import com.sedsoftware.core.test.blockingMemoized
 import com.sedsoftware.core.test.get
+import com.sedsoftware.core.utils.adapter.OffsetDateTimeAdapter
 import com.sedsoftware.exchange.binance.Urls
 import com.sedsoftware.exchange.binance.entity.BinanceCurrency
 import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsMapper
@@ -97,6 +97,21 @@ class PairsInfoTest : Spek({
             it("Maps symbols correctly") {
                 response?.let { pairsInfo ->
                     mapper.mapSymbolsToDb(pairsInfo).should.not.be.empty
+                }
+            }
+
+
+            response?.let { pairsInfo ->
+                val dbSymbols = mapper.mapSymbolsToDb(pairsInfo)
+
+                dbSymbols.forEach { dbSymbol ->
+                    it("Base db symbol ${dbSymbol.baseAsset} mapped to entity") {
+                        BinanceCurrency.values().indexOf(mapper.mapDbToEntity(dbSymbol)).should.be.above(-1)
+                    }
+
+                    it("Quote db symbol ${dbSymbol.quoteAsset} mapped to entity") {
+                        BinanceCurrency.values().indexOf(mapper.mapDbToEntity(dbSymbol)).should.be.above(-1)
+                    }
                 }
             }
         }
