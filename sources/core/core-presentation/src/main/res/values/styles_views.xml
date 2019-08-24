@@ -5,7 +5,7 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/colorNormalButtonText</item>
         <item name="android:backgroundTint">@color/colorNormalButtonBackground</item>
-        <item name="cornerRadius">@dimen/corner_radius_button_normal</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
     </style>
 
     <style name="XTButtonNormal" parent="XTButton">
@@ -32,6 +32,16 @@
 
     <style name="XTNotificationButton">
         <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+    <style name="XTButtonOutlined" parent="XTextPrimary">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/text_size_button_outlined</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:paddingStart">@dimen/padding_button_small</item>
+        <item name="android:paddingEnd">@dimen/padding_button_small</item>
+        <item name="android:paddingTop">@dimen/padding_button_vertical</item>
+        <item name="android:paddingBottom">@dimen/padding_button_vertical</item>
     </style>
 
 </resources>

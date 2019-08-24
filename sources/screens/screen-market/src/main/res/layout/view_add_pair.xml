@@ -32,23 +32,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.sedsoftware.simplespinner.SimpleSpinnerView
+        <TextView
             android:id="@+id/exchange"
+            style="@style/XTButtonOutlined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            app:cardCornerRadius="@dimen/corner_radius_spinner"
-            app:cardElevation="@dimen/elevation_spinner"
-            app:default_font="@font/montserrat"
-            app:default_text="@string/label_select"
-            app:display_search="false"
+            android:background="@drawable/bg_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_add_new"
-            app:padding_horizontal="@dimen/material_baseline_grid_1x"
-            app:padding_vertical="@dimen/material_baseline_grid_0.5x"
-            app:text_color="@color/colorTextPrimary"
-            app:text_size="@dimen/text_size_normal" />
+            tools:text="Binance" />
 
         <TextView
             android:id="@+id/label_base"
@@ -63,26 +57,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exchange" />
 
-        <com.sedsoftware.simplespinner.SimpleSpinnerView
+        <TextView
             android:id="@+id/base_currency"
+            style="@style/XTButtonOutlined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/material_baseline_grid_2x"
             android:layout_marginStart="@dimen/material_baseline_grid_2x"
             android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            app:cardCornerRadius="@dimen/corner_radius_spinner"
-            app:cardElevation="@dimen/elevation_spinner"
-            app:default_font="@font/montserrat"
-            app:default_text="@string/label_select"
-            app:display_search="true"
+            android:background="@drawable/bg_button"
+            app:layout_constraintTop_toBottomOf="@+id/label_base"
             app:layout_constraintEnd_toStartOf="@+id/market_currency"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_base"
-            app:padding_horizontal="@dimen/material_baseline_grid_1x"
-            app:padding_vertical="@dimen/material_baseline_grid_0.5x"
-            app:text_color="@color/colorTextPrimary"
-            app:text_size="@dimen/text_size_normal" />
+            tools:text="BTC" />
 
         <TextView
             android:id="@+id/label_market"
@@ -98,26 +86,20 @@
             app:layout_constraintStart_toEndOf="@+id/label_base"
             app:layout_constraintTop_toBottomOf="@+id/exchange" />
 
-        <com.sedsoftware.simplespinner.SimpleSpinnerView
+        <TextView
             android:id="@+id/market_currency"
+            style="@style/XTButtonOutlined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/material_baseline_grid_2x"
             android:layout_marginStart="@dimen/material_baseline_grid_2x"
             android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            app:cardCornerRadius="@dimen/corner_radius_spinner"
-            app:cardElevation="@dimen/elevation_spinner"
-            app:default_font="@font/montserrat"
-            app:default_text="@string/label_select"
-            app:display_search="true"
+            android:background="@drawable/bg_button"
+            app:layout_constraintTop_toBottomOf="@+id/label_market"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toEndOf="@+id/base_currency"
-            app:layout_constraintTop_toBottomOf="@+id/label_market"
-            app:padding_horizontal="@dimen/material_baseline_grid_1x"
-            app:padding_vertical="@dimen/material_baseline_grid_0.5x"
-            app:text_color="@color/colorTextPrimary"
-            app:text_size="@dimen/text_size_normal" />
+            tools:text="USD" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/market_button_add"

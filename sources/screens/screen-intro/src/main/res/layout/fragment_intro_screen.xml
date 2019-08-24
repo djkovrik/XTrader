@@ -90,7 +90,8 @@
                 android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
                 android:layout_marginTop="@dimen/material_baseline_grid_1x"
                 android:enabled="false"
-                android:text="@string/btn_greetings_continue" />
+                android:text="@string/btn_greetings_continue"
+                app:cornerRadius="@dimen/corner_radius_button" />
 
         </LinearLayout>
 

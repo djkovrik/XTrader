@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="corner_radius_button_normal">8dp</dimen>
-    <dimen name="corner_radius_button_small">2dp</dimen>
+    <dimen name="corner_radius_button">6dp</dimen>
     <dimen name="corner_radius_card_normal">12dp</dimen>
-    <dimen name="corner_radius_spinner">8dp</dimen>
     <dimen name="elevation_fab">8dp</dimen>
     <dimen name="elevation_card">4dp</dimen>
-    <dimen name="elevation_spinner">1dp</dimen>
+    <dimen name="padding_button_vertical">4dp</dimen>
+    <dimen name="padding_button_small">16dp</dimen>
     <dimen name="padding_button_normal">24dp</dimen>
     <dimen name="padding_button_wide">32dp</dimen>
     <dimen name="size_icon_retry">20dp</dimen>

@@ -10,7 +10,6 @@ import android.view.ViewAnimationUtils
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
-import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.transition.ArcMotion
@@ -21,7 +20,6 @@ import com.sedsoftware.core.presentation.extension.addStartEndActions
 import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
 import com.sedsoftware.screens.market.di.MarketScreenComponent
-import com.sedsoftware.simplespinner.listener.OnItemChoiceListener
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.view_add_pair.*
 
@@ -44,7 +42,23 @@ class MarketScreenFragment : BaseFragment() {
         get() =
             arguments?.getInt(SELECTED_EXCHANGE_KEY) ?: 0
         set(value) {
-            arguments = bundleOf(SELECTED_EXCHANGE_KEY to value)
+            arguments?.putInt(SELECTED_EXCHANGE_KEY, value)
+            field = value
+        }
+
+    private var selectedBaseCurrencyIndex: Int = 0
+        get() =
+            arguments?.getInt(BASE_CURRENCY_KEY) ?: 0
+        set(value) {
+            arguments?.putInt(BASE_CURRENCY_KEY, value)
+            field = value
+        }
+
+    private var selectedMarketCurrencyIndex: Int = 0
+        get() =
+            arguments?.getInt(MARKET_CURRENCY_KEY) ?: 0
+        set(value) {
+            arguments?.putInt(MARKET_CURRENCY_KEY, value)
             field = value
         }
 
@@ -52,7 +66,7 @@ class MarketScreenFragment : BaseFragment() {
         get() =
             arguments?.getBoolean(DIALOG_STATE_KEY) ?: false
         set(value) {
-            arguments = bundleOf(DIALOG_STATE_KEY to value)
+            arguments?.putBoolean(DIALOG_STATE_KEY, value)
             field = value
         }
 
@@ -73,16 +87,6 @@ class MarketScreenFragment : BaseFragment() {
                 setupViewParams()
                 setupFabDialogState()
                 add_pair_view.viewTreeObserver.removeOnGlobalLayoutListener(this)
-            }
-        })
-
-        val exchangeLabels = exchanges.map { it.label }
-        exchange.items = exchangeLabels
-        exchange.setText(exchangeLabels[selectedExchangeIndex])
-
-        exchange.setOnItemChoiceListener(object : OnItemChoiceListener {
-            override fun onClicked(index: Int) {
-                selectedExchangeIndex = index
             }
         })
 
@@ -288,6 +292,8 @@ class MarketScreenFragment : BaseFragment() {
 
         const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
         const val SELECTED_EXCHANGE_KEY = "DIALOG_STATE_KEY"
+        const val BASE_CURRENCY_KEY = "BASE_CURRENCY_KEY"
+        const val MARKET_CURRENCY_KEY = "MARKET_CURRENCY_KEY"
     }
 
 }
