@@ -1,14 +1,6 @@
 package com.sedsoftware.exchange.binance.repository
 
 import com.sedsoftware.core.tools.api.Settings
-import com.sedsoftware.core.utils.type.Either
-import com.sedsoftware.core.utils.type.Either.Left
-import com.sedsoftware.core.utils.type.Either.Right
-import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.Failure.LocalPersistenceError
-import com.sedsoftware.core.utils.type.Success
-import com.sedsoftware.core.utils.type.Success.PairsLoadingCompleted
-import com.sedsoftware.core.utils.network.safeApiCall
 import com.sedsoftware.exchange.binance.database.BinanceDatabase
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
 import com.sedsoftware.exchange.binance.database.dao.BinanceSyncInfoDao
@@ -32,31 +24,19 @@ class PairsInfoRepository @Inject constructor(
         db.getBinanceSyncInfoDao()
     }
 
-    suspend fun getRemotePairsInfo(): Either<Failure, Success> =
-        when (val result = safeApiCall { api.getCurrencyPairs() }) {
-            is Left -> Left(result.a)
-            is Right -> {
-                try {
-                    storePairsInfo(result.b)
-                    storeSyncInfo(result.b)
-                    markAsDownloaded()
-                } catch (exception: Exception) {
-                    Left(LocalPersistenceError(exception))
-                }
-                Right(PairsLoadingCompleted)
-            }
-        }
+    suspend fun getRemotePairsInfo(): PairsInfo =
+        api.getCurrencyPairs()
 
-    private suspend fun storePairsInfo(info: PairsInfo) {
+    suspend fun storePairsInfo(info: PairsInfo) {
         symbolsDao.clearAll()
         symbolsDao.insert(mapper.mapSymbolsToDb(info))
     }
 
-    private suspend fun storeSyncInfo(info: PairsInfo) {
+    suspend fun storeSyncInfo(info: PairsInfo) {
         syncInfoDao.insert(mapper.mapSyncInfoToDb(info))
     }
 
-    private fun markAsDownloaded() {
+    fun markAsDownloaded() {
         if (!settings.isExchangesDownloaded) {
             settings.isExchangesDownloaded = true
         }
