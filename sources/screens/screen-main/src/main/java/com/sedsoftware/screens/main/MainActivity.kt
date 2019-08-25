@@ -222,9 +222,8 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     }
 
     private fun showBottomNavigationBar(show: Boolean) {
-        if (show && bottom_navigation.isVisible || !show && bottom_navigation.isGone) {
-            return
-        }
+        if (show && bottom_navigation.isVisible) return
+        if (!show && bottom_navigation.isGone) return
 
         if (show) {
             bottom_navigation.isVisible = true

@@ -7,6 +7,4 @@ import javax.inject.Inject
 
 class MarketScreenViewModel @Inject constructor(
     private val managers: Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
-) : BaseViewModel() {
-
-}
+) : BaseViewModel()
