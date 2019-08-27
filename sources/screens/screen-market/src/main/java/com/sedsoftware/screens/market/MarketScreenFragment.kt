@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -12,13 +13,19 @@ import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.lifecycle.MutableLiveData
 import androidx.transition.ArcMotion
-import com.sedsoftware.core.domain.ExchangeType
+import com.sedsoftware.core.domain.entity.Currency
+import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartEndActions
 import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
+import com.sedsoftware.core.presentation.extension.failure
+import com.sedsoftware.core.presentation.extension.observe
+import com.sedsoftware.core.presentation.extension.viewModel
+import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.screens.market.di.MarketScreenComponent
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.view_add_pair.*
@@ -29,39 +36,6 @@ class MarketScreenFragment : BaseFragment() {
         AnimationUtils.loadInterpolator(context, android.R.interpolator.fast_out_linear_in)
     }
 
-    private val exchanges = ExchangeType.values()
-
-    private var defaultDialogCenterX = 0f
-    private var defaultDialogCenterY = 0f
-    private var dialogTranslationX = 0f
-    private var dialogTranslationY = 0f
-    private var defaultFabCenterX = 0f
-    private var defaultFabCenterY = 0f
-
-    private var selectedExchangeIndex: Int = 0
-        get() =
-            arguments?.getInt(SELECTED_EXCHANGE_KEY) ?: 0
-        set(value) {
-            arguments?.putInt(SELECTED_EXCHANGE_KEY, value)
-            field = value
-        }
-
-    private var selectedBaseCurrencyIndex: Int = 0
-        get() =
-            arguments?.getInt(BASE_CURRENCY_KEY) ?: 0
-        set(value) {
-            arguments?.putInt(BASE_CURRENCY_KEY, value)
-            field = value
-        }
-
-    private var selectedMarketCurrencyIndex: Int = 0
-        get() =
-            arguments?.getInt(MARKET_CURRENCY_KEY) ?: 0
-        set(value) {
-            arguments?.putInt(MARKET_CURRENCY_KEY, value)
-            field = value
-        }
-
     private var dialogExpanded: Boolean = false
         get() =
             arguments?.getBoolean(DIALOG_STATE_KEY) ?: false
@@ -70,6 +44,15 @@ class MarketScreenFragment : BaseFragment() {
             field = value
         }
 
+    private var defaultDialogCenterX = 0f
+    private var defaultDialogCenterY = 0f
+    private var dialogTranslationX = 0f
+    private var dialogTranslationY = 0f
+    private var defaultFabCenterX = 0f
+    private var defaultFabCenterY = 0f
+
+    lateinit var marketViewModel: MarketScreenViewModel
+
     override fun getLayoutResId(): Int =
         R.layout.fragment_market_screen
 
@@ -77,6 +60,48 @@ class MarketScreenFragment : BaseFragment() {
         MarketScreenComponent.Initializer
             .init(parentActivityComponent)
             .inject(this)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        marketViewModel = viewModel(viewModelFactory) {
+            observe(exchangeList, ::showExchangeList)
+            observe(baseCurrencies, ::showBaseCurrencies)
+            observe(marketCurrencies, ::showMarketCurrencies)
+            observe(chosenExchange, ::showChosenExchange)
+            observe(chosenBaseCurrency, ::showChosenBaseCurrency)
+            observe(chosenMarketCurrency, ::showChosenMarketCurrency)
+            failure(viewModelFailure, ::displayFailure)
+        }
+    }
+
+    private fun showExchangeList(list: List<Exchange>?) {
+        Log.d("market", "showExchangeList $list")
+    }
+
+    private fun showBaseCurrencies(list: List<Currency>?) {
+        Log.d("market", "showBase $list")
+    }
+
+    private fun showMarketCurrencies(list: List<Currency>?) {
+        Log.d("market", "showMarketCurrencies $list")
+    }
+
+    private fun showChosenExchange(exchange: Exchange?) {
+        Log.d("market", "showChosenExchange $exchange")
+    }
+
+    private fun showChosenBaseCurrency(currency: Currency?) {
+        Log.d("market", "showChosenBaseCurrency $currency")
+    }
+
+    private fun showChosenMarketCurrency(currency: Currency?) {
+        Log.d("market", "showChosenMarketCurrency $currency")
+    }
+
+    private fun displayFailure(failure: Failure?) {
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -291,9 +316,6 @@ class MarketScreenFragment : BaseFragment() {
         const val ALPHA_NORMAL = 1f
 
         const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
-        const val SELECTED_EXCHANGE_KEY = "DIALOG_STATE_KEY"
-        const val BASE_CURRENCY_KEY = "BASE_CURRENCY_KEY"
-        const val MARKET_CURRENCY_KEY = "MARKET_CURRENCY_KEY"
     }
 
 }
