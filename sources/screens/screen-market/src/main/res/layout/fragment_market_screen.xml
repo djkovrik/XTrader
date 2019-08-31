@@ -6,29 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<com.google.android.material.appbar.AppBarLayout-->
-        <!--android:id="@+id/appbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--android:background="@color/colorBackground">-->
-
-        <!--<androidx.appcompat.widget.Toolbar-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?attr/actionBarSize"-->
-            <!--app:contentInsetStart="0dp"-->
-            <!--app:title=" ">-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/toolbar_text"-->
-                <!--style="@style/XTextToolbar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content" />-->
-
-        <!--</androidx.appcompat.widget.Toolbar>-->
-
-    <!--</com.google.android.material.appbar.AppBarLayout>-->
-
     <com.github.florent37.shapeofview.shapes.RoundRectView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -42,12 +19,13 @@
         app:shape_roundRect_topRightRadius="@dimen/corner_radius_card_normal">
 
         <LinearLayout
-            android:id="@+id/empty_view"
+            android:id="@+id/emptyViewContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorCardBackground"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:visibility="visible">
 
             <ImageView
                 android:layout_width="@dimen/size_image_empty_page"
@@ -59,6 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/XTextCaption"
                 android:layout_marginEnd="@dimen/material_baseline_grid_2x"
                 android:layout_marginStart="@dimen/material_baseline_grid_2x"
                 android:text="@string/label_no_items" />
@@ -74,7 +53,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/market_items_list"
+            android:id="@+id/marketRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorCardBackground"
@@ -82,7 +61,7 @@
             android:visibility="gone" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/market_fab"
+            android:id="@+id/marketFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
@@ -94,7 +73,7 @@
             app:rippleColor="@color/colorAccentLight" />
 
         <View
-            android:id="@+id/overlay_global"
+            android:id="@+id/globalOverlayView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorMenuBackgroundOverlay"

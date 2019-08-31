@@ -8,17 +8,17 @@
     android:layout_marginStart="@dimen/material_baseline_grid_2x">
 
     <ImageView
-        android:id="@+id/intro_exchange_logo"
+        android:id="@+id/exchangeLogoImageView"
         android:layout_width="@dimen/material_list_avatar_size"
         android:layout_height="@dimen/material_list_avatar_size"
         android:contentDescription="@string/a11y_app_logo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/intro_exchange_name"
+        app:layout_constraintEnd_toStartOf="@+id/exchangeNameTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/intro_exchange_name"
+        android:id="@+id/exchangeNameTextView"
         style="@style/XTextCaption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,13 +26,13 @@
         android:layout_marginEnd="@dimen/material_baseline_grid_1x"
         android:layout_marginStart="@dimen/material_baseline_grid_1x"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/intro_button_download"
-        app:layout_constraintStart_toEndOf="@+id/intro_exchange_logo"
+        app:layout_constraintEnd_toStartOf="@+id/exchangeDownloadButton"
+        app:layout_constraintStart_toEndOf="@+id/exchangeLogoImageView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Binance" />
 
     <com.sedsoftware.core.presentation.view.DownloadButton
-        android:id="@+id/intro_button_download"
+        android:id="@+id/exchangeDownloadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|end"
@@ -42,7 +42,7 @@
         app:color_error="@color/colorError"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/intro_exchange_name"
+        app:layout_constraintStart_toEndOf="@+id/exchangeNameTextView"
         app:layout_constraintTop_toTopOf="parent"
         app:text_available="@string/btn_greetings_download_available"
         app:text_in_progress="@string/btn_greetings_download_in_progress"

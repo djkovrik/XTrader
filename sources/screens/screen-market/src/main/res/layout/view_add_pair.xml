@@ -2,7 +2,7 @@
 <com.github.florent37.shapeofview.shapes.RoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/add_pair_view"
+    android:id="@+id/addPairPanel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="@dimen/elevation_card"
@@ -15,14 +15,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="500dp"
         android:background="@color/colorCardBackground"
         android:orientation="vertical">
 
 
-
         <View
-            android:id="@+id/overlay"
+            android:id="@+id/overlayView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:background="@color/colorAccent"
@@ -31,10 +30,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
         <ImageView
-            android:id="@+id/overlay_icon"
+            android:id="@+id/overlayImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
@@ -45,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

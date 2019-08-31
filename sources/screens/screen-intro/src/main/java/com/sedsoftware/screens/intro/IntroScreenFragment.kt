@@ -59,9 +59,9 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
         appbar.outlineProvider = null
         toolbar_text.text = string(R.string.app_name)
         toolbar_text.gravity = Gravity.CENTER
-        intro_button_continue.setOnClickListener { coordinator.navigateToHome() }
+        introButton.setOnClickListener { coordinator.navigateToHome() }
 
-        with(intro_exchange_list) {
+        with(exchangesRecyclerView) {
             adapter = exchangesAdapter
             layoutManager = LinearLayoutManager(this@IntroScreenFragment.context)
             setHasFixedSize(true)
@@ -78,32 +78,32 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
     }
 
     private fun setupViewPositions() {
-        greetings_text.alpha = ALPHA_ZERO
-        greetings_note.alpha = ALPHA_ZERO
-        intro_button_continue.isGone = true
-        intro_button_continue.alpha = ALPHA_ZERO
-        intro_button_continue.translationY = BASE_VIEW_TRANSLATION
+        greetingsTextView.alpha = ALPHA_ZERO
+        greetingsNoteTextView.alpha = ALPHA_ZERO
+        introButton.isGone = true
+        introButton.alpha = ALPHA_ZERO
+        introButton.translationY = BASE_VIEW_TRANSLATION
     }
 
     private fun animateViews() {
         var currentDelay = START_ANIMATION_DELAY
 
-        greetings_text.animate()
+        greetingsTextView.animate()
             .alpha(ALPHA_NORMAL)
             .setDuration(ANIMATION_DURATION)
             .setStartDelay(currentDelay)
             .addEndAction { introViewModel.showInitialList() }
 
-        intro_button_continue.animate()
+        introButton.animate()
             .alpha(ALPHA_GRAYED)
             .translationY(TRANSLATION_DEFAULT)
             .setDuration(ANIMATION_DURATION)
             .setStartDelay(currentDelay)
-            .addStartAction { intro_button_continue.isVisible = true }
+            .addStartAction { introButton.isVisible = true }
 
         currentDelay += ANIMATION_DURATION
 
-        greetings_note.animate()
+        greetingsNoteTextView.animate()
             .alpha(ALPHA_NORMAL)
             .setInterpolator(LinearInterpolator())
             .setDuration(ANIMATION_DURATION)
@@ -124,11 +124,11 @@ class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
 
     private fun enableButton(shouldEnable: Boolean?) {
         if (shouldEnable == true) {
-            intro_button_continue.alpha = ALPHA_NORMAL
-            intro_button_continue.isEnabled = true
+            introButton.alpha = ALPHA_NORMAL
+            introButton.isEnabled = true
         } else {
-            intro_button_continue.alpha = ALPHA_GRAYED
-            intro_button_continue.isEnabled = false
+            introButton.alpha = ALPHA_GRAYED
+            introButton.isEnabled = false
         }
     }
 

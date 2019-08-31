@@ -48,12 +48,12 @@ class ItemsAdapterDelegate(
 
         fun bind(item: ExchangeListItem, provider: AssetsProvider, listener: ExchangesAdapter.Listener) {
             with(item) {
-                intro_exchange_name.text = exchange.label
-                intro_exchange_logo.setImageResource(provider.getLogoResource(exchange))
-                intro_exchange_logo.dim(state != DownloadState.COMPLETED)
-                intro_button_download.setState(state)
+                exchangeNameTextView.text = exchange.label
+                exchangeLogoImageView.setImageResource(provider.getLogoResource(exchange))
+                exchangeLogoImageView.dim(state != DownloadState.COMPLETED)
+                exchangeDownloadButton.setState(state)
 
-                intro_button_download.clickListener = { listener.onItemClick(item) }
+                exchangeDownloadButton.clickListener = { listener.onItemClick(item) }
             }
         }
     }

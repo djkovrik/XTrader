@@ -63,6 +63,8 @@
         <item name="android:textSize">@dimen/text_size_normal</item>
     </style>
 
+    <style name="XTTextNormal" parent="XTText" />
+
     <style name="XTTextSecondary" parent="XTText">
         <item name="android:alpha">0.5</item>
     </style>

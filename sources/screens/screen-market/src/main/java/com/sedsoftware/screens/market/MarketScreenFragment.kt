@@ -106,20 +106,20 @@ class MarketScreenFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        add_pair_view.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
+        addPairPanel.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 setupViewParams()
                 setupFabDialogState()
-                add_pair_view.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                addPairPanel.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
 
-        market_fab.setOnClickListener { changeDialogExpandState() }
-        overlay_global.setOnClickListener { changeDialogExpandState() }
-        overlay_global.setOnTouchListener { _, event ->
+        marketFab.setOnClickListener { changeDialogExpandState() }
+        globalOverlayView.setOnClickListener { changeDialogExpandState() }
+        globalOverlayView.setOnTouchListener { _, event ->
             var flag = false
             if (event.action == MotionEvent.ACTION_DOWN) {
-                flag = overlay_global.measuredHeight - event.y < add_pair_view.measuredHeight
+                flag = globalOverlayView.measuredHeight - event.y < addPairPanel.measuredHeight
             }
             flag
         }
@@ -136,10 +136,10 @@ class MarketScreenFragment : BaseFragment() {
     }
 
     private fun setupViewParams() {
-        defaultDialogCenterX = add_pair_view.centerX()
-        defaultDialogCenterY = add_pair_view.centerY()
-        defaultFabCenterX = market_fab.centerX()
-        defaultFabCenterY = market_fab.centerY()
+        defaultDialogCenterX = addPairPanel.centerX()
+        defaultDialogCenterY = addPairPanel.centerY()
+        defaultFabCenterX = marketFab.centerX()
+        defaultFabCenterY = marketFab.centerY()
 
         dialogTranslationX = defaultFabCenterX - defaultDialogCenterX
         dialogTranslationY = defaultFabCenterY - defaultDialogCenterY
@@ -147,21 +147,21 @@ class MarketScreenFragment : BaseFragment() {
 
     private fun setupFabDialogState() {
         if (dialogExpanded) {
-            add_pair_view.translationX = 0f
-            add_pair_view.translationY = 0f
+            addPairPanel.translationX = 0f
+            addPairPanel.translationY = 0f
 
-            add_pair_view.isVisible = true
-            overlay_global.isVisible = true
+            addPairPanel.isVisible = true
+            globalOverlayView.isVisible = true
 
-            market_fab.isGone = true
-            overlay.isGone = true
-            overlay_icon.isGone = true
+            marketFab.isGone = true
+            overlayView.isGone = true
+            overlayImageView.isGone = true
         } else {
-            add_pair_view.translationX = dialogTranslationX
-            add_pair_view.translationY = dialogTranslationY
+            addPairPanel.translationX = dialogTranslationX
+            addPairPanel.translationY = dialogTranslationY
 
-            add_pair_view.isGone = true
-            overlay_global.isGone = true
+            addPairPanel.isGone = true
+            globalOverlayView.isGone = true
         }
     }
 
@@ -177,10 +177,10 @@ class MarketScreenFragment : BaseFragment() {
         )
         set.addStartEndActions(
             startWith = {
-                overlay_global.isEnabled = false
+                globalOverlayView.isEnabled = false
             },
             endWith = {
-                overlay_global.isEnabled = true
+                globalOverlayView.isEnabled = true
                 dialogExpanded = !dialogExpanded
             }
         ).start()
@@ -193,7 +193,7 @@ class MarketScreenFragment : BaseFragment() {
         val endY = if (dialogExpanded) 0f else -dialogTranslationY
 
         return ObjectAnimator.ofFloat(
-            market_fab,
+            marketFab,
             View.TRANSLATION_X,
             View.TRANSLATION_Y,
             ArcMotion().getPath(startX, startY, endX, endY)
@@ -202,18 +202,18 @@ class MarketScreenFragment : BaseFragment() {
             .addStartEndActions(
                 startWith = {
                     if (!dialogExpanded) {
-                        market_fab.isGone = true
-                        add_pair_view.isVisible = true
-                        overlay.isVisible = true
-                        overlay_icon.isVisible = true
+                        marketFab.isGone = true
+                        addPairPanel.isVisible = true
+                        overlayView.isVisible = true
+                        overlayImageView.isVisible = true
                     }
                 },
                 endWith = {
                     if (dialogExpanded) {
-                        market_fab.isVisible = true
-                        add_pair_view.isGone = true
-                        overlay.isGone = true
-                        overlay_icon.isGone = true
+                        marketFab.isVisible = true
+                        addPairPanel.isGone = true
+                        overlayView.isGone = true
+                        overlayImageView.isGone = true
                     }
                 })
     }
@@ -226,7 +226,7 @@ class MarketScreenFragment : BaseFragment() {
 
 
         return ObjectAnimator.ofFloat(
-            add_pair_view,
+            addPairPanel,
             View.TRANSLATION_X,
             View.TRANSLATION_Y,
             ArcMotion().getPath(startX, startY, endX, endY)
@@ -237,11 +237,11 @@ class MarketScreenFragment : BaseFragment() {
         val startValue = if (dialogExpanded) 0f else 1f
         val endValue = if (dialogExpanded) 1f else 0f
 
-        return ObjectAnimator.ofFloat(overlay, View.ALPHA, startValue, endValue)
+        return ObjectAnimator.ofFloat(overlayView, View.ALPHA, startValue, endValue)
             .applyDefaultParams()
             .addEndAction {
-                overlay.alpha = endValue
-                overlay.isGone = dialogExpanded
+                overlayView.alpha = endValue
+                overlayView.isGone = dialogExpanded
             }
             .apply {
                 startDelay = if (!dialogExpanded) DIALOG_OVERLAY_ANIMATION_DELAY else 0L
@@ -252,11 +252,11 @@ class MarketScreenFragment : BaseFragment() {
         val startValue = if (dialogExpanded) 0f else 1f
         val endValue = if (dialogExpanded) 1f else 0f
 
-        return ObjectAnimator.ofFloat(overlay_icon, View.ALPHA, startValue, endValue)
+        return ObjectAnimator.ofFloat(overlayImageView, View.ALPHA, startValue, endValue)
             .applyDefaultParams()
             .addEndAction {
-                overlay_icon.alpha = endValue
-                overlay_icon.isGone = dialogExpanded
+                overlayImageView.alpha = endValue
+                overlayImageView.isGone = dialogExpanded
             }
     }
 
@@ -264,28 +264,28 @@ class MarketScreenFragment : BaseFragment() {
         val startValue = if (dialogExpanded) 1f else 0f
         val endValue = if (dialogExpanded) 0f else 1f
 
-        return ObjectAnimator.ofFloat(overlay_global, View.ALPHA, startValue, endValue)
+        return ObjectAnimator.ofFloat(globalOverlayView, View.ALPHA, startValue, endValue)
             .applyDefaultParams()
             .addStartEndActions(
                 startWith = {
-                    overlay_global.alpha = startValue
-                    if (!dialogExpanded) overlay_global.isVisible = true
+                    globalOverlayView.alpha = startValue
+                    if (!dialogExpanded) globalOverlayView.isVisible = true
                 },
                 endWith = {
-                    overlay_global.alpha = endValue
-                    if (dialogExpanded) overlay_global.isGone = true
+                    globalOverlayView.alpha = endValue
+                    if (dialogExpanded) globalOverlayView.isGone = true
                 }
             )
     }
 
     private fun getCircularRevealAnimator(): Animator {
-        val startRadius = if (dialogExpanded) add_pair_view.height.toFloat() else market_fab.width / 2f
-        val endRadius = if (dialogExpanded) market_fab.width / 2f else add_pair_view.height.toFloat()
+        val startRadius = if (dialogExpanded) addPairPanel.height.toFloat() else marketFab.width / 2f
+        val endRadius = if (dialogExpanded) marketFab.width / 2f else addPairPanel.height.toFloat()
 
         return ViewAnimationUtils.createCircularReveal(
-            add_pair_view,
-            add_pair_view.width / 2,
-            add_pair_view.height / 2,
+            addPairPanel,
+            addPairPanel.width / 2,
+            addPairPanel.height / 2,
             startRadius,
             endRadius
         ).applyDefaultParams()
@@ -299,13 +299,7 @@ class MarketScreenFragment : BaseFragment() {
         }
 
     private fun enableButton(shouldEnable: Boolean?) {
-//        if (shouldEnable == true) {
-//            market_button_add.alpha = ALPHA_NORMAL
-//            market_button_add.isEnabled = true
-//        } else {
-//            market_button_add.alpha = ALPHA_GRAYED
-//            market_button_add.isEnabled = false
-//        }
+
     }
 
     private companion object {

@@ -73,7 +73,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
         initStartupFragments()
 
         if (savedInstanceState == null) {
-            bottom_navigation.selectedItemId = DEFAULT_TAB
+            bottomNavigation.selectedItemId = DEFAULT_TAB
             setupBottomNavigationBar()
         }
     }
@@ -84,22 +84,22 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     }
 
     private fun setupViews() {
-        bottom_navigation.post {
-            bottomNavigationViewTranslation = bottom_navigation.measuredHeight.toFloat()
-            bottom_navigation.translationY = bottomNavigationViewTranslation
+        bottomNavigation.post {
+            bottomNavigationViewTranslation = bottomNavigation.measuredHeight.toFloat()
+            bottomNavigation.translationY = bottomNavigationViewTranslation
         }
 
-        notification_top_text.post {
-            topNotificationTranslation = -notification_top_text.measuredHeight.toFloat()
-            notification_top_text.translationY = topNotificationTranslation
+        topNotificationTextView.post {
+            topNotificationTranslation = -topNotificationTextView.measuredHeight.toFloat()
+            topNotificationTextView.translationY = topNotificationTranslation
         }
 
-        notification_top_text.setOnTouchListener(
+        topNotificationTextView.setOnTouchListener(
             SwipeToDismissTouchListener(
-                notification_top_text,
+                topNotificationTextView,
                 object : DismissCallbacks {
                     override fun onDismiss(view: View) {
-                        notification_top_text.translationY = topNotificationTranslation
+                        topNotificationTextView.translationY = topNotificationTranslation
                         notificationJob?.cancelChildren()
                         notificationQueue.clear()
                     }
@@ -111,13 +111,13 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
         introNavHostFragment = obtainNavHostFragment(
             tag = getFragmentTag(1, false),
             graphId = MainActivityViewModel.introNavGraph,
-            containerId = R.id.nav_host_container
+            containerId = R.id.navHostFrameLayout
         )
 
         pinNavHostFragment = obtainNavHostFragment(
             tag = getFragmentTag(2, false),
             graphId = MainActivityViewModel.pinNavGraph,
-            containerId = R.id.nav_host_container
+            containerId = R.id.navHostFrameLayout
         )
     }
 
@@ -130,9 +130,9 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
         pinNavHostFragment?.let { detachNavHostFragment(it) }
 
         mainActivityViewModel.currentNavController = setupWithNavController(
-            bottomNavigationView = bottom_navigation,
+            bottomNavigationView = bottomNavigation,
             navGraphIds = MainActivityViewModel.mainNavGraphs,
-            containerId = R.id.nav_host_container
+            containerId = R.id.navHostFrameLayout
         )
     }
 
@@ -158,8 +158,8 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
 
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {
-            notification_top_text.text = message
-            translateViewAnimated(notification_top_text, 0f) {
+            topNotificationTextView.text = message
+            translateViewAnimated(topNotificationTextView, 0f) {
                 isNotificationVisible = true
                 hideNotificationDelayed()
             }
@@ -176,7 +176,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     private fun hideNotificationDelayed() {
         notificationJob = launch {
             delay(DELAY_BEFORE_HIDE)
-            translateViewAnimated(notification_top_text, topNotificationTranslation) {
+            translateViewAnimated(topNotificationTextView, topNotificationTranslation) {
                 isNotificationVisible = false
                 if (notificationQueue.isNotEmpty()) {
                     notifyOnTop(notificationQueue.poll())
@@ -222,15 +222,15 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     }
 
     private fun showBottomNavigationBar(show: Boolean) {
-        if (show && bottom_navigation.isVisible) return
-        if (!show && bottom_navigation.isGone) return
+        if (show && bottomNavigation.isVisible) return
+        if (!show && bottomNavigation.isGone) return
 
         if (show) {
-            bottom_navigation.isVisible = true
-            translateViewAnimated(bottom_navigation, 0f)
+            bottomNavigation.isVisible = true
+            translateViewAnimated(bottomNavigation, 0f)
         } else {
-            bottom_navigation.isGone = true
-            translateViewAnimated(bottom_navigation, bottomNavigationViewTranslation)
+            bottomNavigation.isGone = true
+            translateViewAnimated(bottomNavigation, bottomNavigationViewTranslation)
         }
     }
 }

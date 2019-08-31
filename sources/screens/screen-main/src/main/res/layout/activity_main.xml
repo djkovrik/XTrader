@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/notification_top_text"
+        android:id="@+id/topNotificationTextView"
         style="@style/XTNotificationText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,13 +26,13 @@
         android:orientation="vertical">
 
         <FrameLayout
-            android:id="@+id/nav_host_container"
+            android:id="@+id/navHostFrameLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
+            android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorBottomNavigationBackground"
