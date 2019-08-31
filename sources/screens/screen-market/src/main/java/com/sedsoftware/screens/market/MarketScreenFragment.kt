@@ -24,6 +24,7 @@ import com.sedsoftware.core.presentation.extension.centerY
 import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
+import com.sedsoftware.core.utils.extension.orFalse
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.screens.market.di.MarketScreenComponent
 import kotlinx.android.synthetic.main.fragment_market_screen.*
@@ -35,13 +36,7 @@ class MarketScreenFragment : BaseFragment() {
         AnimationUtils.loadInterpolator(context, android.R.interpolator.fast_out_linear_in)
     }
 
-    private var dialogExpanded: Boolean = false
-        get() =
-            arguments?.getBoolean(DIALOG_STATE_KEY) ?: false
-        set(value) {
-            arguments?.putBoolean(DIALOG_STATE_KEY, value)
-            field = value
-        }
+    private var isDialogExpanded: Boolean = false
 
     private var defaultDialogCenterX = 0f
     private var defaultDialogCenterY = 0f
@@ -73,6 +68,13 @@ class MarketScreenFragment : BaseFragment() {
             observe(chosenMarketCurrency, ::showChosenMarketCurrency)
             failure(viewModelFailure, ::displayFailure)
         }
+
+        isDialogExpanded = savedInstanceState?.getBoolean(DIALOG_STATE_KEY).orFalse()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean(DIALOG_STATE_KEY, isDialogExpanded)
+        super.onSaveInstanceState(outState)
     }
 
     private fun showExchangeList(list: List<Exchange>?) {
@@ -127,7 +129,7 @@ class MarketScreenFragment : BaseFragment() {
     }
 
     override fun onBackPressed(): Boolean {
-        if (dialogExpanded) {
+        if (isDialogExpanded) {
             changeDialogExpandState()
             return true
         }
@@ -146,7 +148,7 @@ class MarketScreenFragment : BaseFragment() {
     }
 
     private fun setupFabDialogState() {
-        if (dialogExpanded) {
+        if (isDialogExpanded) {
             addPairPanel.translationX = 0f
             addPairPanel.translationY = 0f
 
@@ -181,16 +183,16 @@ class MarketScreenFragment : BaseFragment() {
             },
             endWith = {
                 globalOverlayView.isEnabled = true
-                dialogExpanded = !dialogExpanded
+                isDialogExpanded = !isDialogExpanded
             }
         ).start()
     }
 
     private fun getFabArcPathAnimator(): Animator {
-        val startX = if (dialogExpanded) -dialogTranslationX else 0f
-        val startY = if (dialogExpanded) -dialogTranslationY else 0f
-        val endX = if (dialogExpanded) 0f else -dialogTranslationX
-        val endY = if (dialogExpanded) 0f else -dialogTranslationY
+        val startX = if (isDialogExpanded) -dialogTranslationX else 0f
+        val startY = if (isDialogExpanded) -dialogTranslationY else 0f
+        val endX = if (isDialogExpanded) 0f else -dialogTranslationX
+        val endY = if (isDialogExpanded) 0f else -dialogTranslationY
 
         return ObjectAnimator.ofFloat(
             marketFab,
@@ -201,7 +203,7 @@ class MarketScreenFragment : BaseFragment() {
             .applyDefaultParams()
             .addStartEndActions(
                 startWith = {
-                    if (!dialogExpanded) {
+                    if (!isDialogExpanded) {
                         marketFab.isGone = true
                         addPairPanel.isVisible = true
                         overlayView.isVisible = true
@@ -209,7 +211,7 @@ class MarketScreenFragment : BaseFragment() {
                     }
                 },
                 endWith = {
-                    if (dialogExpanded) {
+                    if (isDialogExpanded) {
                         marketFab.isVisible = true
                         addPairPanel.isGone = true
                         overlayView.isGone = true
@@ -219,10 +221,10 @@ class MarketScreenFragment : BaseFragment() {
     }
 
     private fun getDialogArcPathAnimator(): Animator {
-        val startX = if (dialogExpanded) 0f else dialogTranslationX
-        val startY = if (dialogExpanded) 0f else dialogTranslationY
-        val endX = if (dialogExpanded) dialogTranslationX else 0f
-        val endY = if (dialogExpanded) dialogTranslationY else 0f
+        val startX = if (isDialogExpanded) 0f else dialogTranslationX
+        val startY = if (isDialogExpanded) 0f else dialogTranslationY
+        val endX = if (isDialogExpanded) dialogTranslationX else 0f
+        val endY = if (isDialogExpanded) dialogTranslationY else 0f
 
 
         return ObjectAnimator.ofFloat(
@@ -234,53 +236,53 @@ class MarketScreenFragment : BaseFragment() {
     }
 
     private fun getOverlayAlphaAnimator(): Animator {
-        val startValue = if (dialogExpanded) 0f else 1f
-        val endValue = if (dialogExpanded) 1f else 0f
+        val startValue = if (isDialogExpanded) 0f else 1f
+        val endValue = if (isDialogExpanded) 1f else 0f
 
         return ObjectAnimator.ofFloat(overlayView, View.ALPHA, startValue, endValue)
             .applyDefaultParams()
             .addEndAction {
                 overlayView.alpha = endValue
-                overlayView.isGone = dialogExpanded
+                overlayView.isGone = isDialogExpanded
             }
             .apply {
-                startDelay = if (!dialogExpanded) DIALOG_OVERLAY_ANIMATION_DELAY else 0L
+                startDelay = if (!isDialogExpanded) DIALOG_OVERLAY_ANIMATION_DELAY else 0L
             }
     }
 
     private fun getOverlayIconAlphaAnimator(): Animator {
-        val startValue = if (dialogExpanded) 0f else 1f
-        val endValue = if (dialogExpanded) 1f else 0f
+        val startValue = if (isDialogExpanded) 0f else 1f
+        val endValue = if (isDialogExpanded) 1f else 0f
 
         return ObjectAnimator.ofFloat(overlayImageView, View.ALPHA, startValue, endValue)
             .applyDefaultParams()
             .addEndAction {
                 overlayImageView.alpha = endValue
-                overlayImageView.isGone = dialogExpanded
+                overlayImageView.isGone = isDialogExpanded
             }
     }
 
     private fun getGlobalOverlayAnimator(): Animator {
-        val startValue = if (dialogExpanded) 1f else 0f
-        val endValue = if (dialogExpanded) 0f else 1f
+        val startValue = if (isDialogExpanded) 1f else 0f
+        val endValue = if (isDialogExpanded) 0f else 1f
 
         return ObjectAnimator.ofFloat(globalOverlayView, View.ALPHA, startValue, endValue)
             .applyDefaultParams()
             .addStartEndActions(
                 startWith = {
                     globalOverlayView.alpha = startValue
-                    if (!dialogExpanded) globalOverlayView.isVisible = true
+                    if (!isDialogExpanded) globalOverlayView.isVisible = true
                 },
                 endWith = {
                     globalOverlayView.alpha = endValue
-                    if (dialogExpanded) globalOverlayView.isGone = true
+                    if (isDialogExpanded) globalOverlayView.isGone = true
                 }
             )
     }
 
     private fun getCircularRevealAnimator(): Animator {
-        val startRadius = if (dialogExpanded) addPairPanel.height.toFloat() else marketFab.width / 2f
-        val endRadius = if (dialogExpanded) marketFab.width / 2f else addPairPanel.height.toFloat()
+        val startRadius = if (isDialogExpanded) addPairPanel.height.toFloat() else marketFab.width / 2f
+        val endRadius = if (isDialogExpanded) marketFab.width / 2f else addPairPanel.height.toFloat()
 
         return ViewAnimationUtils.createCircularReveal(
             addPairPanel,
