@@ -25,7 +25,8 @@ class BinancePairManager @Inject constructor(
                     repository
                         .getBaseCurrencies()
                         .sortedBy { it.name }
-                        .distinct()
+                        .distinctBy { it.name }
+
                 right(currencies)
             } catch (exception: Exception) {
                 left(PairsManagerFailure(exception))
@@ -39,7 +40,7 @@ class BinancePairManager @Inject constructor(
                     repository
                         .getMarketCurrencies(base)
                         .sortedBy { it.name }
-                        .distinct()
+
                 right(currencies)
             } catch (exception: Exception) {
                 left(PairsManagerFailure(exception))

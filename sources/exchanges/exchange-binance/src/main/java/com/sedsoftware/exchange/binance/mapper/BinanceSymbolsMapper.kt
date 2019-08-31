@@ -20,8 +20,11 @@ class BinanceSymbolsMapper @Inject constructor() {
             lastSyncDate = from.serverTime
         )
 
-    fun mapDbToEntity(from: BinanceSymbolDbModel): Currency =
+    fun mapDbToBaseCurrency(from: BinanceSymbolDbModel): Currency =
         BinanceCurrency.valueOf(from.baseAsset)
+
+    fun mapDbToMarketCurrency(from: BinanceSymbolDbModel): Currency =
+        BinanceCurrency.valueOf(from.quoteAsset)
 
     private fun mapSymbolToDb(from: SymbolInfoModel): BinanceSymbolDbModel =
         BinanceSymbolDbModel(

@@ -13,7 +13,7 @@ interface BinanceSymbolsDao {
     suspend fun insert(list: List<BinanceSymbolDbModel>): List<Long>
 
     @Query("SELECT * FROM symbols")
-    suspend fun getAllCurrencies(): List<BinanceSymbolDbModel>
+    suspend fun getBaseCurrencies(): List<BinanceSymbolDbModel>
 
     @Query("SELECT * FROM symbols WHERE base_asset LIKE :baseName")
     suspend fun getCurrenciesForBase(baseName: String): List<BinanceSymbolDbModel>

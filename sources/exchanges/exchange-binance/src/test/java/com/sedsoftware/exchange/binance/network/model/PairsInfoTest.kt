@@ -106,11 +106,11 @@ class PairsInfoTest : Spek({
 
                 dbSymbols.forEach { dbSymbol ->
                     it("Base db symbol ${dbSymbol.baseAsset} mapped to entity") {
-                        BinanceCurrency.values().indexOf(mapper.mapDbToEntity(dbSymbol)).should.be.above(-1)
+                        BinanceCurrency.values().indexOf(mapper.mapDbToBaseCurrency(dbSymbol)).should.be.above(-1)
                     }
 
                     it("Quote db symbol ${dbSymbol.quoteAsset} mapped to entity") {
-                        BinanceCurrency.values().indexOf(mapper.mapDbToEntity(dbSymbol)).should.be.above(-1)
+                        BinanceCurrency.values().indexOf(mapper.mapDbToMarketCurrency(dbSymbol)).should.be.above(-1)
                     }
                 }
             }
