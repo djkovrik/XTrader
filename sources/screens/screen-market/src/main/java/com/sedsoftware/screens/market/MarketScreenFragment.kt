@@ -30,7 +30,7 @@ import com.sedsoftware.core.utils.extension.orFalse
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.screens.market.di.MarketScreenComponent
 import kotlinx.android.synthetic.main.fragment_market_screen.*
-import kotlinx.android.synthetic.main.view_add_pair.*
+import kotlinx.android.synthetic.main.include_add_pair.*
 import javax.inject.Inject
 
 
@@ -67,10 +67,9 @@ class MarketScreenFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
 
         marketViewModel = viewModel(viewModelFactory) {
-            observe(exchangeList, ::showExchangeList)
+            observe(chosenExchange, ::showChosenExchange)
             observe(baseCurrencies, ::showBaseCurrencies)
             observe(marketCurrencies, ::showMarketCurrencies)
-            observe(chosenExchange, ::showChosenExchange)
             observe(chosenBaseCurrency, ::showChosenBaseCurrency)
             observe(chosenMarketCurrency, ::showChosenMarketCurrency)
             failure(viewModelFailure, ::displayFailure)
@@ -84,10 +83,6 @@ class MarketScreenFragment : BaseFragment() {
         super.onSaveInstanceState(outState)
     }
 
-    private fun showExchangeList(list: List<Exchange>?) {
-        Log.d("market", "showExchangeList $list")
-    }
-
     private fun showBaseCurrencies(list: List<Currency>?) {
         Log.d("market", "showBase $list")
     }
@@ -97,15 +92,15 @@ class MarketScreenFragment : BaseFragment() {
     }
 
     private fun showChosenExchange(exchange: Exchange?) {
-        Log.d("market", "showChosenExchange $exchange")
+        exchangeTextView.text = exchange?.label
     }
 
     private fun showChosenBaseCurrency(currency: Currency?) {
-        Log.d("market", "showChosenBaseCurrency $currency")
+        baseCurrencyTextView.text = currency?.name
     }
 
     private fun showChosenMarketCurrency(currency: Currency?) {
-        Log.d("market", "showChosenMarketCurrency $currency")
+        marketCurrencyTextView.text = currency?.name
     }
 
     private fun displayFailure(failure: Failure?) {
@@ -149,7 +144,7 @@ class MarketScreenFragment : BaseFragment() {
     private fun calculatePanelHeight(): Int {
         val size = Point()
         defaultDisplay.getSize(size)
-        return size.y / 4 * 3
+        return size.y / 5 * 4
     }
 
     private fun setupViewParams() {

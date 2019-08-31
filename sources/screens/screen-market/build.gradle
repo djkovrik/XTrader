@@ -26,5 +26,6 @@ dependencies {
     implementation JetPackDependencies.KTX
 
     implementation UiDependencies.materialValues
+    implementation UiDependencies.materialDialogs
     implementation UiDependencies.shapeOfView
 }

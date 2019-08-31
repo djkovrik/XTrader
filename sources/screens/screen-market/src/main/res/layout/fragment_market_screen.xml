@@ -37,7 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/XTextCaption"
+                style="@style/XTTextHeader"
                 android:layout_marginEnd="@dimen/material_baseline_grid_2x"
                 android:layout_marginStart="@dimen/material_baseline_grid_2x"
                 android:text="@string/label_no_items" />
@@ -80,7 +80,7 @@
             android:visibility="gone" />
 
         <include
-            layout="@layout/view_add_pair"
+            layout="@layout/include_add_pair"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom" />

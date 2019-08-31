@@ -12,9 +12,4 @@
     <string name="msg_local_error">Local error: %1$s</string>
     <string name="msg_server_error">Server error: %1$s</string>
 
-    <!-- Labels -->
-    <string name="label_exchange">Exchange</string>
-    <string name="label_base_currency">Base</string>
-    <string name="label_market_currency">Market</string>
-
 </resources>

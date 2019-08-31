@@ -69,13 +69,19 @@
         <item name="android:alpha">0.5</item>
     </style>
 
-    <style name="XTextCaption" parent="XTText">
+    <style name="XTTextChooser" parent="XTText">
+        <item name="android:textSize">@dimen/text_size_chooser</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="XTTextHeader" parent="XTText">
         <item name="android:textSize">@dimen/text_size_caption</item>
         <item name="android:ellipsize">end</item>
         <item name="android:singleLine">true</item>
     </style>
 
-    <style name="XTextToolbar" parent="XTLogo">
+    <style name="XTTextToolbar" parent="XTLogo">
         <item name="android:textColor">@color/colorTextSecondary</item>
     </style>
 

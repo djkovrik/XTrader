@@ -10,6 +10,8 @@
     <dimen name="padding_button_wide">32dp</dimen>
     <dimen name="size_icon_retry">20dp</dimen>
     <dimen name="size_image_empty_page">160dp</dimen>
-    <dimen name="width_button_intro">85dp</dimen>
-    <dimen name="height_button_intro">30dp</dimen>
+    <dimen name="width_arrow">10dp</dimen>
+    <dimen name="height_arrow">100dp</dimen>
+    <dimen name="width_button">85dp</dimen>
+    <dimen name="height_button">30dp</dimen>
 </resources>
