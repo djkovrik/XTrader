@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.preference.PreferenceManager
+import android.view.Display
+import android.view.WindowManager
 import com.sedsoftware.core.di.App
 import dagger.Module
 import dagger.Provides
@@ -26,4 +28,9 @@ class PlatformToolsModule {
     @Singleton
     fun provideSharedPreferences(context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
+
+    @Provides
+    @Singleton
+    fun provideDisplay(context: Context): Display =
+        (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
 }

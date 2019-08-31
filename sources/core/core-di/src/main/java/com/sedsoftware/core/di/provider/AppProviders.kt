@@ -1,5 +1,6 @@
 package com.sedsoftware.core.di.provider
 
+import android.view.Display
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.qualifier.ExchangeName
@@ -25,6 +26,7 @@ interface DeviceToolsProvider {
     fun provideSettings(): Settings
     fun provideSigner(): Signer
     fun provideOkHttpClient(): OkHttpClient
+    fun provideDefaultDisplay(): Display
 }
 
 interface ViewModelFactoryProvider : ExchangeManagerProvider {

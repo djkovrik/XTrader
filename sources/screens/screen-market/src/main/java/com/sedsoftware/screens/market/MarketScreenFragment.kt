@@ -3,8 +3,10 @@ package com.sedsoftware.screens.market
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
+import android.view.Display
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -29,12 +31,17 @@ import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.screens.market.di.MarketScreenComponent
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.view_add_pair.*
+import javax.inject.Inject
+
 
 class MarketScreenFragment : BaseFragment() {
 
     private val fastOutLinearInInterpolator: Interpolator by lazy {
         AnimationUtils.loadInterpolator(context, android.R.interpolator.fast_out_linear_in)
     }
+
+    @Inject
+    lateinit var defaultDisplay: Display
 
     private var isDialogExpanded: Boolean = false
 
@@ -126,6 +133,7 @@ class MarketScreenFragment : BaseFragment() {
             flag
         }
         enableButton(false)
+        addPairPanel.layoutParams.height = calculatePanelHeight()
     }
 
     override fun onBackPressed(): Boolean {
@@ -135,6 +143,13 @@ class MarketScreenFragment : BaseFragment() {
         }
 
         return false
+    }
+
+    // 3/4 of the screen height
+    private fun calculatePanelHeight(): Int {
+        val size = Point()
+        defaultDisplay.getSize(size)
+        return size.y / 4 * 3
     }
 
     private fun setupViewParams() {
@@ -312,5 +327,4 @@ class MarketScreenFragment : BaseFragment() {
 
         const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
     }
-
 }
