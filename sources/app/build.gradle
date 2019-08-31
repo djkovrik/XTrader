@@ -35,7 +35,7 @@ dependencies {
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 
-    debugImplementation DevToolsDependencies.leakCanary
-    debugImplementation DevToolsDependencies.stetho
     implementation DevToolsDependencies.timber
+    debugImplementation DevToolsDependencies.leakCanary
+    debugImplementation DevToolsDependencies.androidDebugDatabase
 }

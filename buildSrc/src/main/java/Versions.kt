@@ -61,5 +61,5 @@ object Versions {
     // Development tools
     const val TIMBER_VERSION = "4.7.1"
     const val LEAK_CANARY_VERSION = "2.0-beta-3"
-    const val STETHO_VERSION = "1.5.1"
+    const val ANDROID_DEBUG_DATABASE_VERSION = "1.0.6"
 }
