@@ -2,7 +2,6 @@
 <resources>
     <dimen name="text_size_logo">32sp</dimen>
     <dimen name="text_size_caption">18sp</dimen>
-    <dimen name="text_size_caption2">16sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
     <dimen name="text_size_normal">14sp</dimen>
-    <dimen name="text_size_button_outlined">@dimen/text_size_caption2</dimen>
 </resources>

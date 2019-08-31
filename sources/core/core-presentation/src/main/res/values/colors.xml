@@ -24,9 +24,6 @@
     <color name="colorError">@color/material_color_red_accent_400</color>
     <color name="colorCompleted">@color/material_color_green_600</color>
     <color name="colorNormalButtonText">@color/colorTextSecondary</color>
-    <color name="colorNormalButtonBackground">@color/colorAccent</color>
-    <color name="colorOutlinedButtonText">@color/colorAccent</color>
-    <color name="colorOutlinedButtonStroke">@color/colorAccent</color>
     <color name="colorImageDim">@color/material_color_grey_500</color>
     <color name="colorNotificationBackground">#99000000</color>
     <color name="colorTransparent">#00FFFFFF</color>

@@ -7,16 +7,16 @@
 
     <TextView
         android:id="@+id/button"
-        style="@style/XTButtonTextView"
+        style="@style/XTButtonOutlinedNormal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_button"
         android:gravity="center"
         android:visibility="gone"
         tools:text="Download" />
 
     <TextView
         android:id="@+id/progress"
+        style="@style/XTButtonStateText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -34,6 +34,7 @@
 
         <TextView
             android:id="@+id/error_text"
+            style="@style/XTButtonStateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/material_baseline_grid_0.5x"
@@ -50,6 +51,7 @@
 
     <TextView
         android:id="@+id/completed"
+        style="@style/XTButtonStateText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"

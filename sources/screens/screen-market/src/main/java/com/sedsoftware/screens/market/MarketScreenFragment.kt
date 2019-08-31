@@ -13,7 +13,6 @@ import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.lifecycle.MutableLiveData
 import androidx.transition.ArcMotion
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
@@ -300,13 +299,13 @@ class MarketScreenFragment : BaseFragment() {
         }
 
     private fun enableButton(shouldEnable: Boolean?) {
-        if (shouldEnable == true) {
-            market_button_add.alpha = ALPHA_NORMAL
-            market_button_add.isEnabled = true
-        } else {
-            market_button_add.alpha = ALPHA_GRAYED
-            market_button_add.isEnabled = false
-        }
+//        if (shouldEnable == true) {
+//            market_button_add.alpha = ALPHA_NORMAL
+//            market_button_add.isEnabled = true
+//        } else {
+//            market_button_add.alpha = ALPHA_GRAYED
+//            market_button_add.isEnabled = false
+//        }
     }
 
     private companion object {

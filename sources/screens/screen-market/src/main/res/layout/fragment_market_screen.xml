@@ -57,7 +57,6 @@
                 tools:ignore="ContentDescription" />
 
             <TextView
-                style="@style/XTextSecondaryCaption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/material_baseline_grid_2x"

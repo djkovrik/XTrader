@@ -15,108 +15,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:background="@color/colorCardBackground"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/label_add_new"
-            style="@style/XTextCaption2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-            android:layout_marginStart="@dimen/material_baseline_grid_2x"
-            android:layout_marginTop="@dimen/material_baseline_grid_2x"
-            android:text="@string/label_add_new_pair"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/exchange"
-            style="@style/XTButtonOutlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            android:background="@drawable/bg_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_add_new"
-            tools:text="Binance" />
-
-        <TextView
-            android:id="@+id/label_base"
-            style="@style/XTextPrimary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-            android:layout_marginStart="@dimen/material_baseline_grid_2x"
-            android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            android:text="@string/label_base_currency"
-            app:layout_constraintEnd_toStartOf="@+id/label_market"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/exchange" />
-
-        <TextView
-            android:id="@+id/base_currency"
-            style="@style/XTButtonOutlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-            android:layout_marginStart="@dimen/material_baseline_grid_2x"
-            android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            android:background="@drawable/bg_button"
-            app:layout_constraintTop_toBottomOf="@+id/label_base"
-            app:layout_constraintEnd_toStartOf="@+id/market_currency"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="BTC" />
-
-        <TextView
-            android:id="@+id/label_market"
-            style="@style/XTextPrimary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-            android:layout_marginStart="@dimen/material_baseline_grid_2x"
-            android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            android:gravity="end"
-            android:text="@string/label_market_currency"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/label_base"
-            app:layout_constraintTop_toBottomOf="@+id/exchange" />
-
-        <TextView
-            android:id="@+id/market_currency"
-            style="@style/XTButtonOutlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-            android:layout_marginStart="@dimen/material_baseline_grid_2x"
-            android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            android:background="@drawable/bg_button"
-            app:layout_constraintTop_toBottomOf="@+id/label_market"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toEndOf="@+id/base_currency"
-            tools:text="USD" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/market_button_add"
-            style="@style/XTButtonWide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/material_baseline_grid_2x"
-            android:layout_marginEnd="@dimen/material_baseline_grid_1x"
-            android:layout_marginStart="@dimen/material_baseline_grid_1x"
-            android:layout_marginTop="@dimen/material_baseline_grid_1x"
-            android:enabled="false"
-            android:text="@string/btn_market_add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/base_currency" />
 
         <View
             android:id="@+id/overlay"
@@ -128,7 +31,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone" />
+            tools:visibility="visible" />
 
         <ImageView
             android:id="@+id/overlay_icon"
@@ -142,7 +45,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:visibility="gone" />
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

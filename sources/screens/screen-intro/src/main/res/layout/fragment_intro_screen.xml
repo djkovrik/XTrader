@@ -48,7 +48,7 @@
 
             <TextView
                 android:id="@+id/greetings_text"
-                style="@style/XTextPrimary"
+                style="@style/XTText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/material_baseline_grid_4x"
