@@ -17,6 +17,8 @@ dependencies {
     implementation project(':core-tools-api')
     implementation project(':core-utils')
 
+    implementation CoreDependencies.adapterDelegates
+
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 

@@ -18,19 +18,19 @@ import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
 import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
-import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
+import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.model.ExchangeListItem
 import kotlinx.android.synthetic.main.fragment_intro_screen.*
 import javax.inject.Inject
 
-class IntroScreenFragment : BaseFragment(), ExchangesAdapter.Listener {
+class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
 
     @Inject
     lateinit var coordinator: IntroCoordinator
 
     @Inject
-    lateinit var exchangesAdapter: ExchangesAdapter
+    lateinit var exchangesAdapter: ExchangeListAdapter
 
     private lateinit var introViewModel: IntroScreenViewModel
 

@@ -2,7 +2,7 @@ package com.sedsoftware.screens.intro.di
 
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.screens.intro.IntroScreenFragment
-import com.sedsoftware.screens.intro.adapter.ExchangesAdapter
+import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -19,7 +19,7 @@ interface IntroScreenComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance clickListener: ExchangesAdapter.Listener,
+        fun create(@BindsInstance clickListener: ExchangeListAdapter.Listener,
                    mainActivityToolsProvider: MainActivityToolsProvider
         ): IntroScreenComponent
     }
@@ -27,7 +27,7 @@ interface IntroScreenComponent {
     class Initializer private constructor() {
         companion object {
 
-            fun init(clickListener: ExchangesAdapter.Listener,
+            fun init(clickListener: ExchangeListAdapter.Listener,
                      mainActivityToolsProvider: MainActivityToolsProvider
             ): IntroScreenComponent {
 

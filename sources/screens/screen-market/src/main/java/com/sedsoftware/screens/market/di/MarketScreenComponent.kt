@@ -2,6 +2,8 @@ package com.sedsoftware.screens.market.di
 
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.screens.market.MarketScreenFragment
+import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
+import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,17 +19,21 @@ interface MarketScreenComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(mainActivityToolsProvider: MainActivityToolsProvider): MarketScreenComponent
+        fun create(@BindsInstance clickListener: CurrencyListAdapter.Listener,
+                   mainActivityToolsProvider: MainActivityToolsProvider
+        ): MarketScreenComponent
     }
 
     class Initializer private constructor() {
         companion object {
 
-            fun init(mainActivityToolsProvider: MainActivityToolsProvider): MarketScreenComponent {
+            fun init(clickListener: CurrencyListAdapter.Listener,
+                     mainActivityToolsProvider: MainActivityToolsProvider
+            ): MarketScreenComponent {
 
                 return DaggerMarketScreenComponent
                     .factory()
-                    .create(mainActivityToolsProvider)
+                    .create(clickListener, mainActivityToolsProvider)
             }
         }
     }

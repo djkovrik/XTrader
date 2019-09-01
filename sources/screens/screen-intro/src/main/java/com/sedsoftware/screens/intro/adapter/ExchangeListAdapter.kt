@@ -3,10 +3,11 @@ package com.sedsoftware.screens.intro.adapter
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.presentation.misc.DiffItem
+import com.sedsoftware.screens.intro.adapter.delegate.ExchangeItemDelegate
 import com.sedsoftware.screens.intro.model.ExchangeListItem
 import javax.inject.Inject
 
-class ExchangesAdapter @Inject constructor(
+class ExchangeListAdapter @Inject constructor(
     clickListener: Listener,
     assetsProvider: AssetsProvider
 ) : AsyncListDifferDelegationAdapter<DiffItem>(DiffItem.DIFF_CALLBACK) {
@@ -16,6 +17,11 @@ class ExchangesAdapter @Inject constructor(
     }
 
     init {
-        delegatesManager.addDelegate(ItemsAdapterDelegate(assetsProvider, clickListener))
+        delegatesManager.addDelegate(
+            ExchangeItemDelegate(
+                assetsProvider,
+                clickListener
+            )
+        )
     }
 }

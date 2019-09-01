@@ -28,13 +28,15 @@ import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.extension.orFalse
 import com.sedsoftware.core.utils.type.Failure
+import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
 import com.sedsoftware.screens.market.di.MarketScreenComponent
+import com.sedsoftware.screens.market.model.CurrencyListItem
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.include_add_pair.*
 import javax.inject.Inject
 
 
-class MarketScreenFragment : BaseFragment() {
+class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
 
     private val fastOutLinearInInterpolator: Interpolator by lazy {
         AnimationUtils.loadInterpolator(context, android.R.interpolator.fast_out_linear_in)
@@ -42,6 +44,9 @@ class MarketScreenFragment : BaseFragment() {
 
     @Inject
     lateinit var defaultDisplay: Display
+
+    @Inject
+    lateinit var currenciesAdapter: CurrencyListAdapter
 
     private var isDialogExpanded: Boolean = false
 
@@ -59,7 +64,7 @@ class MarketScreenFragment : BaseFragment() {
 
     override fun inject() {
         MarketScreenComponent.Initializer
-            .init(parentActivityComponent)
+            .init(this, parentActivityComponent)
             .inject(this)
     }
 
@@ -138,6 +143,10 @@ class MarketScreenFragment : BaseFragment() {
         }
 
         return false
+    }
+
+    override fun onItemClick(item: CurrencyListItem) {
+
     }
 
     // 3/4 of the screen height
