@@ -51,7 +51,7 @@
         app:layout_constraintStart_toEndOf="@+id/outerCheckboxImageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:text="LTC [Litecoin]" />
+        tools:text="LTC" />
 
     <View
         android:id="@+id/selector"

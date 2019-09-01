@@ -35,11 +35,11 @@
             style="@style/XTTextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginEnd="@dimen/material_baseline_grid_0.5x"
+            android:layout_marginStart="@dimen/material_baseline_grid_0.5x"
             android:gravity="center_horizontal"
             android:text="@string/label_to"
-            app:layout_constraintBottom_toTopOf="@+id/baseRecyclerView"
+            app:layout_constraintBottom_toBottomOf="@+id/baseFullCurrencyTextView"
             app:layout_constraintEnd_toStartOf="@+id/marketCurrencyTextView"
             app:layout_constraintStart_toEndOf="@+id/baseCurrencyTextView"
             app:layout_constraintTop_toBottomOf="@+id/exchangeTextView" />
@@ -60,11 +60,9 @@
             style="@style/XTTextChooser"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="@dimen/material_baseline_grid_2x"
+            android:layout_marginTop="@dimen/material_baseline_grid_0.5x"
             android:gravity="center_horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/baseRecyclerView"
             app:layout_constraintEnd_toStartOf="@+id/toTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exchangeTextView"
@@ -75,15 +73,37 @@
             style="@style/XTTextChooser"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+            android:layout_marginTop="@dimen/material_baseline_grid_0.5x"
             android:gravity="center_horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/marketRecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/toTextView"
             app:layout_constraintTop_toBottomOf="@+id/exchangeTextView"
             tools:text="USDT" />
+
+        <TextView
+            android:id="@+id/baseFullCurrencyTextView"
+            style="@style/XTTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/baseRecyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/baseCurrencyTextView"
+            app:layout_constraintStart_toStartOf="@+id/baseCurrencyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/baseCurrencyTextView"
+            tools:text="Bitcoin" />
+
+        <TextView
+            android:id="@+id/marketFullCurrencyTextView"
+            style="@style/XTTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/marketRecyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/marketCurrencyTextView"
+            app:layout_constraintStart_toStartOf="@+id/marketCurrencyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/marketCurrencyTextView"
+            tools:text="US Dollar" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -100,9 +120,9 @@
             app:layout_constraintBottom_toTopOf="@+id/addPairButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/marketCurrencyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/marketFullCurrencyTextView"
             tools:itemCount="20"
-            tools:listitem="@layout/item_add_pair_base" />
+            tools:listitem="@layout/item_add_pair_market" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -113,7 +133,7 @@
             app:layout_constraintBottom_toTopOf="@+id/addPairButton"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/baseCurrencyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/baseFullCurrencyTextView"
             tools:itemCount="20"
             tools:listitem="@layout/item_add_pair_base" />
 

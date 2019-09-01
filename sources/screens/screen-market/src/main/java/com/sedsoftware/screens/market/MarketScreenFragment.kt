@@ -146,10 +146,12 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
 
     private fun showChosenBaseCurrency(currency: Currency?) {
         baseCurrencyTextView.text = currency?.name
+        baseFullCurrencyTextView.text = currency?.label
     }
 
     private fun showChosenMarketCurrency(currency: Currency?) {
         marketCurrencyTextView.text = currency?.name
+        marketFullCurrencyTextView.text = currency?.label
     }
 
     private fun displayFailure(failure: Failure?) {
