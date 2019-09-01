@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="size_checkbox_outer">20dp</dimen>
-    <dimen name="size_checkbox_inner">12dp</dimen>
+    <dimen name="size_checkbox_outer">18dp</dimen>
+    <dimen name="size_checkbox_inner">10dp</dimen>
     <dimen name="margin_selector">2dp</dimen>
-    <dimen name="width_selector">2dp</dimen>
+    <dimen name="width_selector">4dp</dimen>
 </resources>

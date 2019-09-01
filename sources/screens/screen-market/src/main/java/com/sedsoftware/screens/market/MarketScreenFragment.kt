@@ -147,11 +147,13 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
     private fun showChosenBaseCurrency(currency: Currency?) {
         baseCurrencyTextView.text = currency?.name
         baseFullCurrencyTextView.text = currency?.label
+        highlightItem(baseAdapter, currency)
     }
 
     private fun showChosenMarketCurrency(currency: Currency?) {
         marketCurrencyTextView.text = currency?.name
         marketFullCurrencyTextView.text = currency?.label
+        highlightItem(marketAdapter, currency)
     }
 
     private fun displayFailure(failure: Failure?) {
@@ -330,6 +332,23 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
 
     private fun enableButton(shouldEnable: Boolean?) {
 
+    }
+
+    private fun highlightItem(adapter: CurrencyListAdapter, currency: Currency?) {
+        val currentItems = adapter.items.toMutableList()
+        // Deselect old
+        currentItems.find { it is CurrencyListItem && it.isSelected }?.let { item ->
+            val index = currentItems.indexOf(item)
+            item as CurrencyListItem
+            currentItems[index] = item.copy(isSelected = false)
+        }
+        // Select new
+        currentItems.find { it is CurrencyListItem && it.currency == currency }?.let { item ->
+            val index = currentItems.indexOf(item)
+            item as CurrencyListItem
+            currentItems[index] = item.copy(isSelected = true)
+        }
+        adapter.items = currentItems
     }
 
     private companion object {
