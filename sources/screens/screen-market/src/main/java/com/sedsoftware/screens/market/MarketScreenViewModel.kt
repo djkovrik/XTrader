@@ -7,6 +7,7 @@ import com.sedsoftware.core.domain.interactor.CurrencyPairManager
 import com.sedsoftware.core.presentation.base.BaseViewModel
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.utils.extension.either
+import com.sedsoftware.screens.market.model.CurrencyListItem
 import javax.inject.Inject
 
 class MarketScreenViewModel @Inject constructor(
@@ -14,8 +15,8 @@ class MarketScreenViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     internal val exchangeList = MutableLiveData<List<Exchange>>()
-    internal val baseCurrencies = MutableLiveData<List<Currency>>()
-    internal val marketCurrencies = MutableLiveData<List<Currency>>()
+    internal val baseCurrencies = MutableLiveData<List<CurrencyListItem>>()
+    internal val marketCurrencies = MutableLiveData<List<CurrencyListItem>>()
 
     internal val chosenExchange = MutableLiveData<Exchange>()
     internal val chosenBaseCurrency = MutableLiveData<Currency>()
@@ -47,7 +48,7 @@ class MarketScreenViewModel @Inject constructor(
     }
 
     private fun handleBaseLoadingCompletion(list: List<Currency>) {
-        baseCurrencies.value = list
+        baseCurrencies.value = list.map { CurrencyListItem(it, isBase = true, isSelected = false) }
 
         list.firstOrNull()?.let { first ->
             chosenBaseCurrency.value = first
@@ -56,7 +57,7 @@ class MarketScreenViewModel @Inject constructor(
     }
 
     private fun handleMarketLoadingCompletion(list: List<Currency>) {
-        marketCurrencies.value = list
+        marketCurrencies.value = list.map { CurrencyListItem(it, isBase = false, isSelected = false) }
         chosenMarketCurrency.value = list.firstOrNull()
     }
 }

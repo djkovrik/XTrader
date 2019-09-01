@@ -33,7 +33,7 @@ class BaseCurrencyItemDelegate(
         override val containerView: View? = itemView
 
         fun bind(item: CurrencyListItem, listener: Listener) {
-            currencyTextView.text = String.format("%s [%s]", item.currency.name, item.currency.label)
+            currencyTextView.text = String.format("%s", item.currency.name)
             itemContainer.setOnClickListener { listener.onItemClick(item) }
             checker.isVisible = item.isSelected
         }

@@ -5,7 +5,6 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.graphics.Point
 import android.os.Bundle
-import android.util.Log
 import android.view.Display
 import android.view.MotionEvent
 import android.view.View
@@ -34,7 +33,7 @@ import com.sedsoftware.screens.market.model.CurrencyListItem
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.include_add_pair.*
 import javax.inject.Inject
-
+import javax.inject.Named
 
 class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
 
@@ -46,7 +45,12 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
     lateinit var defaultDisplay: Display
 
     @Inject
-    lateinit var currenciesAdapter: CurrencyListAdapter
+    @Named("base")
+    lateinit var baseAdapter: CurrencyListAdapter
+
+    @Inject
+    @Named("market")
+    lateinit var marketAdapter: CurrencyListAdapter
 
     private var isDialogExpanded: Boolean = false
 
@@ -88,30 +92,6 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
         super.onSaveInstanceState(outState)
     }
 
-    private fun showBaseCurrencies(list: List<Currency>?) {
-        Log.d("market", "showBase $list")
-    }
-
-    private fun showMarketCurrencies(list: List<Currency>?) {
-        Log.d("market", "showMarketCurrencies $list")
-    }
-
-    private fun showChosenExchange(exchange: Exchange?) {
-        exchangeTextView.text = exchange?.label
-    }
-
-    private fun showChosenBaseCurrency(currency: Currency?) {
-        baseCurrencyTextView.text = currency?.name
-    }
-
-    private fun showChosenMarketCurrency(currency: Currency?) {
-        marketCurrencyTextView.text = currency?.name
-    }
-
-    private fun displayFailure(failure: Failure?) {
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -134,6 +114,9 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
         }
         enableButton(false)
         addPairPanel.layoutParams.height = calculatePanelHeight()
+
+        baseRecyclerView.adapter = baseAdapter
+        marketRecyclerView.adapter = marketAdapter
     }
 
     override fun onBackPressed(): Boolean {
@@ -146,6 +129,30 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
     }
 
     override fun onItemClick(item: CurrencyListItem) {
+
+    }
+
+    private fun showBaseCurrencies(list: List<CurrencyListItem>?) {
+        baseAdapter.items = list
+    }
+
+    private fun showMarketCurrencies(list: List<CurrencyListItem>?) {
+        marketAdapter.items = list
+    }
+
+    private fun showChosenExchange(exchange: Exchange?) {
+        exchangeTextView.text = exchange?.label
+    }
+
+    private fun showChosenBaseCurrency(currency: Currency?) {
+        baseCurrencyTextView.text = currency?.name
+    }
+
+    private fun showChosenMarketCurrency(currency: Currency?) {
+        marketCurrencyTextView.text = currency?.name
+    }
+
+    private fun displayFailure(failure: Failure?) {
 
     }
 
