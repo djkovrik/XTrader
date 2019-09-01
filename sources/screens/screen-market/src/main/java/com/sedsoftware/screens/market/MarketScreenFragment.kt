@@ -12,8 +12,11 @@ import android.view.ViewAnimationUtils
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.transition.ArcMotion
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
@@ -117,6 +120,14 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
 
         baseRecyclerView.adapter = baseAdapter
         marketRecyclerView.adapter = marketAdapter
+
+        baseRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL).apply {
+            ContextCompat.getDrawable(requireContext(), R.drawable.divider)?.let { setDrawable(it) }
+        })
+
+        marketRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL).apply {
+            ContextCompat.getDrawable(requireContext(), R.drawable.divider)?.let { setDrawable(it) }
+        })
     }
 
     override fun onBackPressed(): Boolean {
