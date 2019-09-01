@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:id="@+id/outerCheckboxImageView"
+        android:layout_width="@dimen/size_checkbox_outer"
+        android:layout_height="@dimen/size_checkbox_outer"
+        android:layout_marginBottom="@dimen/material_baseline_grid_0.5x"
+        android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+        android:layout_marginStart="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_0.5x"
+        android:scaleType="centerInside"
+        android:src="@drawable/checkbox_outer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/currencyTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/innerCheckboxImageView"
+        android:layout_width="@dimen/size_checkbox_inner"
+        android:layout_height="@dimen/size_checkbox_inner"
+        android:scaleType="centerInside"
+        android:src="@drawable/checkbox_inner"
+        app:layout_constraintBottom_toBottomOf="@+id/outerCheckboxImageView"
+        app:layout_constraintEnd_toEndOf="@+id/outerCheckboxImageView"
+        app:layout_constraintStart_toStartOf="@+id/outerCheckboxImageView"
+        app:layout_constraintTop_toTopOf="@+id/outerCheckboxImageView"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/currencyTextView"
+        style="@style/XTTextHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_baseline_grid_0.5x"
+        android:layout_marginEnd="@dimen/material_baseline_grid_2x"
+        android:layout_marginTop="@dimen/material_baseline_grid_0.5x"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/outerCheckboxImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="LTC [Litecoin]" />
+
+    <View
+        android:id="@+id/selector"
+        android:layout_width="@dimen/width_selector"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_selector"
+        android:layout_marginTop="@dimen/margin_selector"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
