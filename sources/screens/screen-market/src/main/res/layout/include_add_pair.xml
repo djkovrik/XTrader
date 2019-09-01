@@ -19,6 +19,17 @@
         android:background="@color/colorCardBackground"
         android:orientation="vertical">
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:alpha="0.25"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/addPairButton"
+            app:layout_constraintEnd_toEndOf="@+id/overlayImageView"
+            app:layout_constraintStart_toStartOf="@+id/overlayImageView"
+            app:layout_constraintTop_toBottomOf="@+id/baseFullCurrencyTextView" />
+
         <TextView
             android:id="@+id/headerTextView"
             style="@style/XTTextNormal"
@@ -63,6 +74,7 @@
             android:layout_marginStart="@dimen/material_baseline_grid_2x"
             android:layout_marginTop="@dimen/material_baseline_grid_0.5x"
             android:gravity="center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/baseFullCurrencyTextView"
             app:layout_constraintEnd_toStartOf="@+id/toTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exchangeTextView"
@@ -76,6 +88,7 @@
             android:layout_marginEnd="@dimen/material_baseline_grid_2x"
             android:layout_marginTop="@dimen/material_baseline_grid_0.5x"
             android:gravity="center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/marketFullCurrencyTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/toTextView"
             app:layout_constraintTop_toBottomOf="@+id/exchangeTextView"
