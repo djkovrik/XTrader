@@ -20,7 +20,8 @@ class BaseCurrencyItemDelegate(private val clickListener: Listener) : AdapterDel
 
     override fun onBindViewHolder(items: List<CurrencyListItem>, position: Int, holder: ViewHolder, payloads: MutableList<Any>) {
         holder as ItemViewHolder
-        holder.bind(items[position], clickListener)
+        val item = items[position]
+        holder.bind(item, clickListener)
     }
 
     override fun isForViewType(items: List<CurrencyListItem>, position: Int): Boolean =

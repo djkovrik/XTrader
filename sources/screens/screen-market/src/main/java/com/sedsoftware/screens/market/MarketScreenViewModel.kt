@@ -47,6 +47,10 @@ class MarketScreenViewModel @Inject constructor(
         }
     }
 
+    fun marketCurrencyChosen(currency: Currency) {
+        chosenMarketCurrency.value = currency
+    }
+
     private fun handleBaseLoadingCompletion(list: List<Currency>) {
         baseCurrencies.value = list.map { CurrencyListItem(it, isBase = true, isSelected = false) }
 

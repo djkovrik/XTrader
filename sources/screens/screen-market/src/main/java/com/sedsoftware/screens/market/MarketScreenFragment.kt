@@ -119,7 +119,9 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
         addPairPanel.layoutParams.height = calculatePanelHeight()
 
         baseRecyclerView.adapter = baseAdapter
+        baseRecyclerView.itemAnimator = null
         marketRecyclerView.adapter = marketAdapter
+        marketRecyclerView.itemAnimator = null
 
         baseRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL).apply {
             ContextCompat.getDrawable(requireContext(), R.drawable.divider)?.let { setDrawable(it) }
@@ -140,15 +142,21 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
     }
 
     override fun onItemClick(item: CurrencyListItem) {
-
+        if (item.isBase) {
+            marketViewModel.getMarketForChosenBase(item.currency)
+        } else {
+            marketViewModel.marketCurrencyChosen(item.currency)
+        }
     }
 
     private fun showBaseCurrencies(list: List<CurrencyListItem>?) {
         baseAdapter.items = list
+        baseAdapter.notifyDataSetChanged()
     }
 
     private fun showMarketCurrencies(list: List<CurrencyListItem>?) {
         marketAdapter.items = list
+        marketAdapter.notifyDataSetChanged()
     }
 
     private fun showChosenExchange(exchange: Exchange?) {
@@ -348,18 +356,17 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
     private fun highlightItem(adapter: CurrencyListAdapter, currency: Currency?) {
         val currentItems = adapter.items.toMutableList()
         // Deselect old
-        currentItems.find { it is CurrencyListItem && it.isSelected }?.let { item ->
+        currentItems.find { it.isSelected }?.let { item ->
             val index = currentItems.indexOf(item)
-            item as CurrencyListItem
-            currentItems[index] = item.copy(isSelected = false)
+            currentItems[index].isSelected = false
+            adapter.notifyItemChanged(index)
         }
         // Select new
-        currentItems.find { it is CurrencyListItem && it.currency == currency }?.let { item ->
+        currentItems.find { it.currency == currency }?.let { item ->
             val index = currentItems.indexOf(item)
-            item as CurrencyListItem
-            currentItems[index] = item.copy(isSelected = true)
+            currentItems[index].isSelected = true
+            adapter.notifyItemChanged(index)
         }
-        adapter.items = currentItems
     }
 
     private companion object {
