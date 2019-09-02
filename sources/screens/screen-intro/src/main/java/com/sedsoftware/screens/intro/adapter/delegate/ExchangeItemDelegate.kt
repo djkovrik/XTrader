@@ -4,11 +4,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
-import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.presentation.extension.dim
 import com.sedsoftware.core.presentation.extension.inflate
-import com.sedsoftware.core.presentation.misc.DiffItem
 import com.sedsoftware.core.presentation.type.DownloadState
 import com.sedsoftware.screens.intro.R
 import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter.Listener
@@ -19,20 +19,20 @@ import kotlinx.android.synthetic.main.fragment_intro_screen_item.*
 class ExchangeItemDelegate(
     private val assetsProvider: AssetsProvider,
     private val clickListener: Listener
-) : AbsListItemAdapterDelegate<ExchangeListItem, DiffItem, ExchangeItemDelegate.ItemViewHolder>() {
+) : AdapterDelegate<List<ExchangeListItem>>() {
 
     private var lastPosition = -1
 
-    override fun onCreateViewHolder(parent: ViewGroup): ItemViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup): ViewHolder =
         ItemViewHolder(parent)
 
-    override fun onBindViewHolder(item: ExchangeListItem, holder: ItemViewHolder, payloads: MutableList<Any>) {
-        holder.bind(item, assetsProvider, clickListener)
+    override fun onBindViewHolder(items: List<ExchangeListItem>, position: Int, holder: ViewHolder, payloads: MutableList<Any>) {
+        holder as ItemViewHolder
+        holder.bind(items[position], assetsProvider, clickListener)
         setAnimation(holder.itemView, holder.adapterPosition)
     }
 
-    override fun isForViewType(item: DiffItem, items: MutableList<DiffItem>, position: Int): Boolean =
-        item is ExchangeListItem
+    override fun isForViewType(items: List<ExchangeListItem>, position: Int): Boolean = true
 
     private fun setAnimation(itemView: View, position: Int) {
         if (position > lastPosition) {

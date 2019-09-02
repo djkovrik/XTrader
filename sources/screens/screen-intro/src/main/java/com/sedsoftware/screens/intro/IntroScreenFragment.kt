@@ -112,7 +112,10 @@ class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
     }
 
     private fun displayLoadersList(exchanges: List<ExchangeListItem>?) {
-        exchanges?.let { exchangesAdapter.items = it }
+        exchanges?.let { list ->
+            exchangesAdapter.items = list
+            exchangesAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun displayFailure(failure: Failure?) {

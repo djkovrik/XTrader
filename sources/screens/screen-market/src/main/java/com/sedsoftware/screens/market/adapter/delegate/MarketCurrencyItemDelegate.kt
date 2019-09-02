@@ -4,28 +4,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.sedsoftware.core.presentation.extension.inflate
-import com.sedsoftware.core.presentation.misc.DiffItem
 import com.sedsoftware.screens.market.R
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter.Listener
 import com.sedsoftware.screens.market.model.CurrencyListItem
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_add_pair_market.*
 
-class MarketCurrencyItemDelegate(
-    private val clickListener: Listener
-) : AbsListItemAdapterDelegate<CurrencyListItem, DiffItem, MarketCurrencyItemDelegate.ItemViewHolder>() {
+class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterDelegate<List<CurrencyListItem>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup): ItemViewHolder =
         ItemViewHolder(parent)
 
-    override fun onBindViewHolder(item: CurrencyListItem, holder: ItemViewHolder, payloads: MutableList<Any>) {
-        holder.bind(item, clickListener)
+    override fun onBindViewHolder(items: List<CurrencyListItem>, position: Int, holder: ViewHolder, payloads: MutableList<Any>) {
+        holder as ItemViewHolder
+        holder.bind(items[position], clickListener)
     }
 
-    override fun isForViewType(item: DiffItem, items: MutableList<DiffItem>, position: Int): Boolean =
-        item is CurrencyListItem && !item.isBase
+    override fun isForViewType(items: List<CurrencyListItem>, position: Int): Boolean =
+        !items[position].isBase
 
     class ItemViewHolder(parent: ViewGroup) :
         RecyclerView.ViewHolder(parent.inflate(R.layout.item_add_pair_market)), LayoutContainer {
