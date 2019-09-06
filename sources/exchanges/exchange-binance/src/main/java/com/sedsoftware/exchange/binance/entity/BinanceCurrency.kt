@@ -40,6 +40,7 @@ enum class BinanceCurrency(override val label: String) : Currency {
     CELR("Celer Network"),
     CHAT("ChatCoin"),
     CLOAK("CloakCoin"),
+    CHZ("Chiliz"),
     CMT("CyberMiles"),
     CND("Cindicator"),
     COCOS("COCOS-BCX"),
