@@ -1,12 +1,18 @@
 import Versions.ANDROID_JUNIT5_VERSION
 import Versions.DETEKT_VERSION
 import Versions.DEV_METRICS_VERSION
+import Versions.FABRIC_VERSION
 import Versions.GRADLE_ANDROID_VERSION
 import Versions.GRADLE_VERSIONS_VERSION
 import Versions.KOTLIN_VERSION
+import Versions.PLAY_SERVICES_VERSION
 import Versions.SAFE_ARGS_VERSION
 
 object Plugins {
+    const val GOOGLE_PLAY_SERVICES =
+        "com.google.gms:google-services:$PLAY_SERVICES_VERSION"
+    const val FABRIC =
+        "io.fabric.tools:gradle:$FABRIC_VERSION"
     const val ANDROID_GRADLE =
         "com.android.tools.build:gradle:$GRADLE_ANDROID_VERSION"
     const val KOTLIN_GRADLE_PLUGIN =

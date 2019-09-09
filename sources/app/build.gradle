@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.frogermcs.androiddevmetrics'
@@ -16,15 +17,6 @@ android {
         applicationId "com.sedsoftware.xtrader"
         flavorDimensions "variant"
         resConfigs "en", "ru"
-    }
-    productFlavors {
-        dev {
-            dimension "variant"
-            multiDexEnabled true
-        }
-        prod {
-            dimension "variant"
-        }
     }
     signingConfigs {
         release {
@@ -75,6 +67,11 @@ dependencies {
     implementation project(':exchange-manager')
     implementation project(':exchange-binance')
 
+    implementation FirebaseDependencies.core
+    implementation FirebaseDependencies.analytics
+    implementation FirebaseDependencies.crashlytics
+    implementation FirebaseDependencies.performance
+
     implementation JetPackDependencies.legacyUtils
 
     implementation CoreDependencies.threetenabp
@@ -87,3 +84,5 @@ dependencies {
     debugImplementation DevToolsDependencies.leakCanary
     debugImplementation DevToolsDependencies.androidDebugDatabase
 }
+
+apply plugin: 'com.google.gms.google-services'

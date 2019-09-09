@@ -7,6 +7,15 @@ object Versions {
     const val VERSION_CODE = 1
     const val VERSION_NAME = "0.0.1"
 
+    // Firebase
+    const val PLAY_SERVICES_VERSION = "4.3.2"
+    const val FIREBASE_CORE_VERSION = "17.2.0"
+    const val FIREBASE_ANALYTICS_VERSION = "17.2.0"
+    const val FIREBASE_FIRESTORE_VERSION = "21.0.0"
+    const val FIREBASE_CLOUD_MESSAGING_VERSION = "20.0.0"
+    const val FIREBASE_CRASHLYTICS_VERSION = "2.10.1"
+    const val FIREBASE_PERFOMANCE_MONITOR_VERSION = "19.0.0"
+
     // Core
     const val ADAPTER_DELEGATES_VERSION = "4.2.0"
     const val DAGGER_VERSION = "2.24"
@@ -21,6 +30,7 @@ object Versions {
 
     // Plugins
     const val GRADLE_ANDROID_VERSION = "3.4.0"
+    const val FABRIC_VERSION = "1.31.0"
     const val DETEKT_VERSION = "1.0.1"
     const val GRADLE_VERSIONS_VERSION = "0.24.0"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"

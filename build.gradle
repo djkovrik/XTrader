@@ -5,8 +5,11 @@ buildscript {
         google()
         jcenter()
         maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
+        classpath Plugins.GOOGLE_PLAY_SERVICES
+        classpath Plugins.FABRIC
         classpath Plugins.ANDROID_GRADLE
         classpath Plugins.KOTLIN_GRADLE_PLUGIN
         classpath Plugins.DETEKT
