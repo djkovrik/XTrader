@@ -6,3 +6,4 @@
 /captures
 /reports/detekt.html
 /ajcore.*.txt
+/gradle.properties
