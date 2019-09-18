@@ -8,7 +8,7 @@ import com.sedsoftware.core.tools.api.NetworkHandler
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
+@Suppress("DEPRECATION")
 @Singleton
 class AppNetworkHandler @Inject constructor(private val context: Context) : NetworkHandler {
     override val isConnected: Boolean

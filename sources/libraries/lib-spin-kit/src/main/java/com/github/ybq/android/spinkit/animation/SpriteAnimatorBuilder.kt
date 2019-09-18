@@ -10,7 +10,8 @@ import android.view.animation.Animation
 import android.view.animation.Interpolator
 import com.github.ybq.android.spinkit.animation.interpolator.KeyFrameInterpolator
 import com.github.ybq.android.spinkit.sprite.Sprite
-import java.util.*
+import java.util.HashMap
+import java.util.Locale
 
 /**
  * Created by ybq.
@@ -110,20 +111,18 @@ class SpriteAnimatorBuilder(private val sprite: Sprite) {
     }
 
     private fun ensurePair(fractionsLength: Int, valuesLength: Int) {
-        if (fractionsLength != valuesLength) {
-            throw IllegalStateException(
-                String.format(
-                    Locale.getDefault(),
-                    "The fractions.length must equal values.length, " + "fraction.length[%d], values.length[%d]",
-                    fractionsLength,
-                    valuesLength
-                )
+        check(fractionsLength == valuesLength) {
+            String.format(
+                Locale.getDefault(),
+                "The fractions.length must equal values.length, " + "fraction.length[%d], values.length[%d]",
+                fractionsLength,
+                valuesLength
             )
         }
     }
 
 
-    fun interpolator(interpolator: Interpolator): SpriteAnimatorBuilder {
+    private fun interpolator(interpolator: Interpolator): SpriteAnimatorBuilder {
         this.interpolator = interpolator
         return this
     }
@@ -171,14 +170,12 @@ class SpriteAnimatorBuilder(private val sprite: Sprite) {
                 val vk = j % data.values.size
                 var fraction = fractions[vk] - startF
                 if (fraction < 0) {
-                    fraction = fractions[fractions.size - 1] + fraction
+                    fraction += fractions[fractions.size - 1]
                 }
-                if (data is IntFrameData) {
-                    keyframes[key] = Keyframe.ofInt(fraction, data.values[vk])
-                } else if (data is FloatFrameData) {
-                    keyframes[key] = Keyframe.ofFloat(fraction, data.values[vk])
-                } else {
-                    keyframes[key] = Keyframe.ofObject(fraction, data.values[vk])
+                when (data) {
+                    is IntFrameData -> keyframes[key] = Keyframe.ofInt(fraction, data.values[vk])
+                    is FloatFrameData -> keyframes[key] = Keyframe.ofFloat(fraction, data.values[vk])
+                    else -> keyframes[key] = Keyframe.ofObject(fraction, data.values[vk])
                 }
             }
             holders[i] = PropertyValuesHolder.ofKeyframe(data.property, *keyframes)

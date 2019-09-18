@@ -67,7 +67,7 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
     private var defaultFabCenterX = 0f
     private var defaultFabCenterY = 0f
 
-    lateinit var marketViewModel: MarketScreenViewModel
+    private lateinit var marketViewModel: MarketScreenViewModel
 
     override fun getLayoutResId(): Int =
         R.layout.fragment_market_screen

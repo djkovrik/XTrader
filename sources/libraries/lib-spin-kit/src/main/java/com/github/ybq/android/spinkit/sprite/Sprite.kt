@@ -15,6 +15,7 @@ import android.util.Property
 import com.github.ybq.android.spinkit.animation.AnimationUtils
 import com.github.ybq.android.spinkit.animation.FloatProperty
 import com.github.ybq.android.spinkit.animation.IntProperty
+import kotlin.math.min
 
 /**
  * Created by ybq.
@@ -146,7 +147,7 @@ abstract class Sprite : Drawable(), ValueAnimator.AnimatorUpdateListener, Animat
     fun clipSquare(rect: Rect): Rect {
         val w = rect.width()
         val h = rect.height()
-        val min = Math.min(w, h)
+        val min = min(w, h)
         val cx = rect.centerX()
         val cy = rect.centerY()
         val r = min / 2

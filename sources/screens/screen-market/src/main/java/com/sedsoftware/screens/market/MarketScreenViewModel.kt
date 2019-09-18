@@ -14,7 +14,7 @@ class MarketScreenViewModel @Inject constructor(
     private val managers: Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
 ) : BaseViewModel() {
 
-    internal val exchangeList = MutableLiveData<List<Exchange>>()
+    private val exchangeList = MutableLiveData<List<Exchange>>()
     internal val baseCurrencies = MutableLiveData<List<CurrencyListItem>>()
     internal val marketCurrencies = MutableLiveData<List<CurrencyListItem>>()
 

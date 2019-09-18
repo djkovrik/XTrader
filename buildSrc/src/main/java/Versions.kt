@@ -21,7 +21,7 @@ object Versions {
     const val DAGGER_VERSION = "2.24"
     const val RETROFIT_VERSION = "2.6.1"
     const val MOSHI_VERSION = "1.8.0"
-    const val OKHTTP_VERSION = "4.1.1"
+    const val OKHTTP_VERSION = "4.2.0"
     const val THREE_TEN_ABP_VERSION = "1.2.1"
 
     // Kotlin
@@ -32,7 +32,7 @@ object Versions {
     const val GRADLE_ANDROID_VERSION = "3.4.0"
     const val FABRIC_VERSION = "1.31.0"
     const val DETEKT_VERSION = "1.0.1"
-    const val GRADLE_VERSIONS_VERSION = "0.24.0"
+    const val GRADLE_VERSIONS_VERSION = "0.25.0"
     const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
     const val ANDROID_JUNIT5_VERSION = "1.5.1.0"
     const val DEV_METRICS_VERSION = "0.7"
@@ -44,9 +44,9 @@ object Versions {
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
 
     // JetPack - Architecture
-    const val LIFECYCLE_VERSION = "2.2.0-alpha04"
+    const val LIFECYCLE_VERSION = "2.2.0-alpha05"
     const val ROOM_VERSION = "2.2.0-rc01"
-    const val NAVIGATION_VERSION = "2.2.0-alpha02"
+    const val NAVIGATION_VERSION = "2.2.0-alpha03"
 
     // JetPack - KTX
     const val KTX_VERSION = "1.2.0-alpha04"

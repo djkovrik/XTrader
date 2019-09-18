@@ -43,9 +43,7 @@ class SpinKitView(context: Context, attrs: AttributeSet?, defStyleAttr: Int, def
     }
 
     override fun setIndeterminateDrawable(drawable: Drawable?) {
-        if (drawable !is Sprite) {
-            throw IllegalArgumentException("this drawable must be instanceof Sprite")
-        }
+        require(drawable is Sprite) { "this drawable must be instanceof Sprite" }
         setIndeterminateDrawable(drawable)
     }
 

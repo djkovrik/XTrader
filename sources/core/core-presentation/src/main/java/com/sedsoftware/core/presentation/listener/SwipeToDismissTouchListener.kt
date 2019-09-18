@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewConfiguration
 import android.view.animation.AccelerateInterpolator
 import com.sedsoftware.core.presentation.extension.addEndAction
+import kotlin.math.abs
 
 // Based on https://raw.githubusercontent.com/romannurik/Android-SwipeToDismiss
 class SwipeToDismissTouchListener(
@@ -70,11 +71,11 @@ class SwipeToDismissTouchListener(
                 velocityTracker?.addMovement(motionEvent)
                 velocityTracker?.computeCurrentVelocity(1000)
                 val velocityX = velocityTracker!!.xVelocity
-                val absVelocityX = Math.abs(velocityX)
-                val absVelocityY = Math.abs(velocityTracker!!.yVelocity)
+                val absVelocityX = abs(velocityX)
+                val absVelocityY = abs(velocityTracker!!.yVelocity)
                 var dismiss = false
                 var dismissRight = false
-                if (Math.abs(deltaX) > viewWidth / 2 && swiping) {
+                if (abs(deltaX) > viewWidth / 2 && swiping) {
                     dismiss = true
                     dismissRight = deltaX > 0
                 } else if (minFlingVelocity <= absVelocityX && absVelocityX <= maxFlingVelocity
@@ -131,7 +132,7 @@ class SwipeToDismissTouchListener(
                 velocityTracker!!.addMovement(motionEvent)
                 val deltaX = motionEvent.rawX - downX
                 val deltaY = motionEvent.rawY - downY
-                if (Math.abs(deltaX) > slop && Math.abs(deltaY) < Math.abs(deltaX) / 2) {
+                if (abs(deltaX) > slop && abs(deltaY) < abs(deltaX) / 2) {
                     swiping = true
                     swipingSlop = if (deltaX > 0) slop else -slop
                     targetView.parent.requestDisallowInterceptTouchEvent(true)
