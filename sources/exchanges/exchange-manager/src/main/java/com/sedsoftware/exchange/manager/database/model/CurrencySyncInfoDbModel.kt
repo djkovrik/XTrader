@@ -5,13 +5,18 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.threeten.bp.OffsetDateTime
 
-@Entity(tableName = "sync_info")
+@Entity(tableName = "currency_sync_info")
 data class CurrencySyncInfoDbModel(
     @PrimaryKey
     @ColumnInfo(name = "id")
-    val id: String,
+    val id: String = DEFAULT_ID,
     @ColumnInfo(name = "currency_count")
     val count: Int,
     @ColumnInfo(name = "last_sync_timestamp")
     val timestamp: OffsetDateTime
-)
+) {
+
+    companion object {
+        const val DEFAULT_ID = "coinmarketcap"
+    }
+}
