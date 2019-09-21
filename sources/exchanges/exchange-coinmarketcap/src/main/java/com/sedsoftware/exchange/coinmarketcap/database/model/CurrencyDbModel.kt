@@ -10,7 +10,5 @@ data class CurrencyDbModel(
     @ColumnInfo(name = "symbol_id")
     val symbol: String,
     @ColumnInfo(name = "name")
-    val name: String,
-    @ColumnInfo(name = "is_active")
-    val isActive: Int
+    val name: String
 )

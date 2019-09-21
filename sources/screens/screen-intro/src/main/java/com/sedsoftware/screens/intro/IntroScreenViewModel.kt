@@ -2,17 +2,23 @@ package com.sedsoftware.screens.intro
 
 import androidx.lifecycle.MutableLiveData
 import com.sedsoftware.core.domain.entity.Exchange
+import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.presentation.base.BaseViewModel
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.type.DownloadState
+import com.sedsoftware.core.tools.api.Logger
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.extension.either
+import com.sedsoftware.core.utils.type.Success
+import com.sedsoftware.core.utils.type.Success.CurrencyMapLoadingCompleted
 import com.sedsoftware.screens.intro.model.ExchangeListItem
 import javax.inject.Inject
 
 class IntroScreenViewModel @Inject constructor(
-    private val loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
+    private val loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>,
+    private val logger: Logger,
+    private val currenciesInfoLoader: CurrenciesInfoLoader
 ) : BaseViewModel() {
 
     internal val exchangeList = MutableLiveData<List<ExchangeListItem>>()
@@ -24,6 +30,12 @@ class IntroScreenViewModel @Inject constructor(
     init {
         loaders.keys.forEach { exchange ->
             loadingStates[exchange] = DownloadState.AVAILABLE
+        }
+
+        launch {
+            currenciesInfoLoader
+                .loadInfoIfNeeded()
+                .either(::handleFailure, ::handleInfoLoadingSuccess)
         }
     }
 
@@ -66,6 +78,12 @@ class IntroScreenViewModel @Inject constructor(
         setExchangeState(exchange, DownloadState.COMPLETED)
         if (anyDownloadCompleted.value != true) {
             anyDownloadCompleted.value = true
+        }
+    }
+
+    private fun handleInfoLoadingSuccess(success: Success) {
+        if (success is CurrencyMapLoadingCompleted) {
+            logger.d("Currencies info loaded.")
         }
     }
 }

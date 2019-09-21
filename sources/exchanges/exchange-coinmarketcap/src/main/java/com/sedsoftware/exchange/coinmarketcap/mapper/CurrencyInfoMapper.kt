@@ -5,6 +5,7 @@ import com.sedsoftware.exchange.coinmarketcap.database.model.CurrencyDbModel
 import com.sedsoftware.exchange.coinmarketcap.database.model.CurrencySyncInfoDbModel
 import com.sedsoftware.exchange.coinmarketcap.network.model.CurrencyItem
 import com.sedsoftware.exchange.coinmarketcap.network.model.CurrencyMap
+import org.threeten.bp.OffsetDateTime
 import javax.inject.Inject
 
 class CurrencyInfoMapper @Inject constructor() {
@@ -12,7 +13,7 @@ class CurrencyInfoMapper @Inject constructor() {
     fun mapSyncInfoToDb(from: CurrencyMap): CurrencySyncInfoDbModel =
         CurrencySyncInfoDbModel(
             count = from.data.size,
-            timestamp = from.status.timestamp
+            timestamp = OffsetDateTime.parse(from.status.timestamp)
         )
 
     fun mapToDb(from: CurrencyMap): List<CurrencyDbModel> =
@@ -27,7 +28,6 @@ class CurrencyInfoMapper @Inject constructor() {
     private fun mapItem(item: CurrencyItem): CurrencyDbModel =
         CurrencyDbModel(
             symbol = item.symbol,
-            name = item.name,
-            isActive = item.isActive
+            name = item.name
         )
 }
