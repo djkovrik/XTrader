@@ -1,11 +1,10 @@
-package com.sedsoftware.exchange.manager.database.dao
+package com.sedsoftware.exchange.coinmarketcap.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.sedsoftware.exchange.manager.database.model.CurrencyDbModel
-import com.sedsoftware.exchange.manager.database.model.CurrencySyncInfoDbModel
+import com.sedsoftware.exchange.coinmarketcap.database.model.CurrencyDbModel
 
 @Dao
 interface CurrencyDao {

@@ -1,10 +1,10 @@
-package com.sedsoftware.exchange.manager.mapper
+package com.sedsoftware.exchange.coinmarketcap.mapper
 
 import com.sedsoftware.core.domain.entity.Currency
-import com.sedsoftware.exchange.manager.database.model.CurrencyDbModel
-import com.sedsoftware.exchange.manager.database.model.CurrencySyncInfoDbModel
-import com.sedsoftware.exchange.manager.network.model.CurrencyItem
-import com.sedsoftware.exchange.manager.network.model.CurrencyMap
+import com.sedsoftware.exchange.coinmarketcap.database.model.CurrencyDbModel
+import com.sedsoftware.exchange.coinmarketcap.database.model.CurrencySyncInfoDbModel
+import com.sedsoftware.exchange.coinmarketcap.network.model.CurrencyItem
+import com.sedsoftware.exchange.coinmarketcap.network.model.CurrencyMap
 import javax.inject.Inject
 
 class CurrencyInfoMapper @Inject constructor() {

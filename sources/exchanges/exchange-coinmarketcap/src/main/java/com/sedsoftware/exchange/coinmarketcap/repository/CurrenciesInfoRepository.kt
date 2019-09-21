@@ -1,11 +1,11 @@
-package com.sedsoftware.exchange.manager.repository
+package com.sedsoftware.exchange.coinmarketcap.repository
 
-import com.sedsoftware.exchange.manager.database.CurrencyDatabase
-import com.sedsoftware.exchange.manager.database.dao.CurrencyDao
-import com.sedsoftware.exchange.manager.database.dao.CurrencySyncInfoDao
-import com.sedsoftware.exchange.manager.mapper.CurrencyInfoMapper
-import com.sedsoftware.exchange.manager.network.CoinMarketCapApi
-import com.sedsoftware.exchange.manager.network.model.CurrencyMap
+import com.sedsoftware.exchange.coinmarketcap.database.CurrencyDatabase
+import com.sedsoftware.exchange.coinmarketcap.database.dao.CurrencyDao
+import com.sedsoftware.exchange.coinmarketcap.database.dao.CurrencySyncInfoDao
+import com.sedsoftware.exchange.coinmarketcap.mapper.CurrencyInfoMapper
+import com.sedsoftware.exchange.coinmarketcap.network.CoinMarketCapApi
+import com.sedsoftware.exchange.coinmarketcap.network.model.CurrencyMap
 import javax.inject.Inject
 
 class CurrenciesInfoRepository @Inject constructor(

@@ -1,4 +1,4 @@
-package com.sedsoftware.exchange.manager.database.model
+package com.sedsoftware.exchange.coinmarketcap.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

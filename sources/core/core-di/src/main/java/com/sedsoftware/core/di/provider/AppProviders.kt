@@ -36,11 +36,10 @@ interface ViewModelFactoryProvider : ExchangeManagerProvider {
     fun provideViewModelFactory(): ViewModelProvider.Factory
 }
 
-interface ExchangeManagerProvider : BinanceProvider {
+interface ExchangeManagerProvider : BinanceProvider, CoinMarketCapProvider {
     fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
     fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
     fun provideIconsProvider(): AssetsProvider
-    fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
 }
 
 interface BinanceProvider {
@@ -50,4 +49,8 @@ interface BinanceProvider {
 
     @ExchangeName(BINANCE)
     fun provideBinancePairManager(): CurrencyPairManager
+}
+
+interface CoinMarketCapProvider {
+    fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
 }

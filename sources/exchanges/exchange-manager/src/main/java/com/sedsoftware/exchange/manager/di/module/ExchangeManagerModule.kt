@@ -3,11 +3,9 @@ package com.sedsoftware.exchange.manager.di.module
 import com.sedsoftware.core.di.qualifier.ExchangeName
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairManager
 import com.sedsoftware.core.domain.provider.AssetsProvider
-import com.sedsoftware.exchange.manager.CoinMarketCapInfoLoader
 import com.sedsoftware.exchange.manager.provider.ExchangeAssetsProvider
 import dagger.Binds
 import dagger.Module
@@ -36,7 +34,4 @@ abstract class ExchangeManagerModule {
 
     @Binds
     abstract fun bindAssetsProvider(implementation: ExchangeAssetsProvider): AssetsProvider
-
-    @Binds
-    abstract fun bindCurrenciesInfoLoader(implementation: CoinMarketCapInfoLoader): CurrenciesInfoLoader
 }

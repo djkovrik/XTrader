@@ -1,6 +1,6 @@
-package com.sedsoftware.exchange.manager.di.module
+package com.sedsoftware.exchange.coinmarketcap.di.module
 
-import com.sedsoftware.exchange.manager.network.CoinMarketCapApi
+import com.sedsoftware.exchange.coinmarketcap.network.CoinMarketCapApi
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides

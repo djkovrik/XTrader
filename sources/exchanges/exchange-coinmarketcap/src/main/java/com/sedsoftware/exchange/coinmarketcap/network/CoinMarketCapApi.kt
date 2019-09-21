@@ -1,7 +1,7 @@
-package com.sedsoftware.exchange.manager.network
+package com.sedsoftware.exchange.coinmarketcap.network
 
-import com.sedsoftware.exchange.manager.BuildConfig
-import com.sedsoftware.exchange.manager.network.model.CurrencyMap
+import com.sedsoftware.exchange.coinmarketcap.BuildConfig
+import com.sedsoftware.exchange.coinmarketcap.network.model.CurrencyMap
 import retrofit2.http.GET
 import retrofit2.http.Headers
 

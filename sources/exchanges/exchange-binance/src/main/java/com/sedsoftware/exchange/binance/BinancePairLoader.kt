@@ -5,7 +5,6 @@ import com.sedsoftware.core.tools.api.NetworkHandler
 import com.sedsoftware.core.utils.extension.left
 import com.sedsoftware.core.utils.extension.right
 import com.sedsoftware.core.utils.type.Either
-import com.sedsoftware.core.utils.type.Either.Left
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
 import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
@@ -34,7 +33,7 @@ class BinancePairLoader @Inject constructor(
                         repository.markAsDownloaded()
                         right(PairsLoadingCompleted)
                     } catch (exception: Exception) {
-                        Left(PairsLoadingError(exception))
+                        left(PairsLoadingError(exception))
                     }
                 }
                 false -> {

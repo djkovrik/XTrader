@@ -1,17 +1,16 @@
-package com.sedsoftware.exchange.manager
+package com.sedsoftware.exchange.coinmarketcap
 
 import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
 import com.sedsoftware.core.tools.api.NetworkHandler
 import com.sedsoftware.core.utils.extension.left
 import com.sedsoftware.core.utils.extension.right
 import com.sedsoftware.core.utils.type.Either
-import com.sedsoftware.core.utils.type.Either.Left
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.type.Failure.CurrencyMapLoadingError
 import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
 import com.sedsoftware.core.utils.type.Success
 import com.sedsoftware.core.utils.type.Success.CurrencyMapLoadingCompleted
-import com.sedsoftware.exchange.manager.repository.CurrenciesInfoRepository
+import com.sedsoftware.exchange.coinmarketcap.repository.CurrenciesInfoRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -36,7 +35,7 @@ class CoinMarketCapInfoLoader @Inject constructor(
                         }
                         right(CurrencyMapLoadingCompleted)
                     } catch (exception: Exception) {
-                        Left(CurrencyMapLoadingError(exception))
+                        left(CurrencyMapLoadingError(exception))
                     }
                 }
                 false -> {

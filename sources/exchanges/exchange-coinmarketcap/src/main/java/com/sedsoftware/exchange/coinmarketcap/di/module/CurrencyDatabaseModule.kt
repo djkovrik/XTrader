@@ -1,8 +1,8 @@
-package com.sedsoftware.exchange.manager.di.module
+package com.sedsoftware.exchange.coinmarketcap.di.module
 
 import androidx.room.Room
 import com.sedsoftware.core.di.App
-import com.sedsoftware.exchange.manager.database.CurrencyDatabase
+import com.sedsoftware.exchange.coinmarketcap.database.CurrencyDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

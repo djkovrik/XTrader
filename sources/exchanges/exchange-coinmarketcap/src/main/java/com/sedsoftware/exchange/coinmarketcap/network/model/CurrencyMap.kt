@@ -1,4 +1,4 @@
-package com.sedsoftware.exchange.manager.network.model
+package com.sedsoftware.exchange.coinmarketcap.network.model
 
 data class CurrencyMap(
     val status: CurrencyMapStatus,
