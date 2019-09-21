@@ -21,6 +21,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        buildTypes.each {
+            it.buildConfigField "String", "COIN_MARKET_CAP_API_KEY", COIN_MARKET_CAP
+        }
     }
 
     compileOptions {
