@@ -1,6 +1,5 @@
 package com.sedsoftware.exchange.binance.di.module
 
-import com.sedsoftware.core.utils.adapter.OffsetDateTimeAdapter
 import com.sedsoftware.exchange.binance.network.BinanceApi
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -16,13 +15,6 @@ class BinanceNetworkModule {
     companion object {
         private const val BASE_URL = "https://api.binance.com/"
     }
-
-    @Provides
-    @Singleton
-    fun provideMoshi(): Moshi =
-        Moshi.Builder()
-            .add(OffsetDateTimeAdapter())
-            .build()
 
     @Provides
     @Singleton

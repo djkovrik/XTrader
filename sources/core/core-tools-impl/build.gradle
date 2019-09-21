@@ -17,6 +17,9 @@ dependencies {
 
     implementation CoreDependencies.okhttp
     implementation CoreDependencies.okhttpLoggingInterceptor
+    implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
+    implementation CoreDependencies.retrofitMoshiConverter
 
     implementation JetPackDependencies.appCompat
 

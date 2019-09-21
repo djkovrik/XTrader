@@ -13,6 +13,7 @@ import com.sedsoftware.core.tools.api.Logger
 import com.sedsoftware.core.tools.api.NetworkHandler
 import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.tools.api.Signer
+import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 
 interface AppProvider :
@@ -25,6 +26,7 @@ interface DeviceToolsProvider {
     fun provideNetworkHandler(): NetworkHandler
     fun provideSettings(): Settings
     fun provideSigner(): Signer
+    fun provideMoshi(): Moshi
     fun provideOkHttpClient(): OkHttpClient
     fun provideDefaultDisplay(): Display
 }

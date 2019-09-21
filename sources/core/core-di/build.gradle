@@ -12,6 +12,8 @@ dependencies {
     implementation CoreDependencies.dagger
 
     implementation CoreDependencies.okhttp
+    implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
 
     implementation JetPackDependencies.lifecycle
     kapt JetPackDependencies.lifecycleCompiler

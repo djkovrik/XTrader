@@ -79,6 +79,9 @@ dependencies {
 
     implementation CoreDependencies.threetenabp
     implementation CoreDependencies.okhttp
+    implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
+
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler

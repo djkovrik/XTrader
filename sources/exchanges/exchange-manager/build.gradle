@@ -19,7 +19,6 @@ dependencies {
     implementation CoreDependencies.okhttp
     implementation CoreDependencies.moshi
     implementation CoreDependencies.moshiKotlin
-    implementation CoreDependencies.moshiAdapters
     implementation CoreDependencies.retrofitMoshiConverter
 
     implementation JetPackDependencies.lifecycle
