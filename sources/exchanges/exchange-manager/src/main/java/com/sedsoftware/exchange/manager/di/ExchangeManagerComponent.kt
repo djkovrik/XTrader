@@ -4,6 +4,8 @@ import com.sedsoftware.core.di.provider.BinanceProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.core.di.provider.ExchangeManagerProvider
 import com.sedsoftware.exchange.binance.di.BinanceComponent
+import com.sedsoftware.exchange.manager.di.module.CurrencyDatabaseModule
+import com.sedsoftware.exchange.manager.di.module.ExchangeManagerModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,7 +14,8 @@ import javax.inject.Singleton
         BinanceProvider::class
     ],
     modules = [
-        ExchangeManagerModule::class
+        ExchangeManagerModule::class,
+        CurrencyDatabaseModule::class
     ]
 )
 @Singleton

@@ -10,6 +10,7 @@ apply from: '../../spek-android-config.gradle'
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
+    implementation project(':core-utils')
     implementation project(':exchange-binance')
 
     implementation CoreDependencies.dagger
@@ -20,6 +21,7 @@ dependencies {
     implementation CoreDependencies.moshi
     implementation CoreDependencies.moshiKotlin
     implementation CoreDependencies.retrofitMoshiConverter
+    implementation CoreDependencies.threetenabp
 
     implementation JetPackDependencies.lifecycle
     implementation JetPackDependencies.lifecycleLiveDataKtx

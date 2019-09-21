@@ -1,4 +1,4 @@
-package com.sedsoftware.exchange.manager.di
+package com.sedsoftware.exchange.manager.di.module
 
 import com.sedsoftware.core.di.qualifier.ExchangeName
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
