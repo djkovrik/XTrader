@@ -7,7 +7,7 @@ import com.sedsoftware.exchange.binance.common.params.OrderType
 import com.sedsoftware.exchange.binance.common.params.SymbolStatus
 import com.sedsoftware.exchange.binance.network.model.params.Filter
 
-@Entity(tableName = "symbols")
+@Entity(tableName = "binance_symbols")
 data class BinanceSymbolDbModel(
     @PrimaryKey
     @ColumnInfo(name = "symbol_id")

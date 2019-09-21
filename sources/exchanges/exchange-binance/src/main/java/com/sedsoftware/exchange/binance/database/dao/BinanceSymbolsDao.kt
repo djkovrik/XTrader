@@ -12,12 +12,12 @@ interface BinanceSymbolsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(list: List<BinanceSymbolDbModel>): List<Long>
 
-    @Query("SELECT * FROM symbols")
+    @Query("SELECT * FROM binance_symbols")
     suspend fun getBaseCurrencies(): List<BinanceSymbolDbModel>
 
-    @Query("SELECT * FROM symbols WHERE base_asset LIKE :baseName")
+    @Query("SELECT * FROM binance_symbols WHERE base_asset LIKE :baseName")
     suspend fun getCurrenciesForBase(baseName: String): List<BinanceSymbolDbModel>
 
-    @Query("DELETE FROM symbols")
+    @Query("DELETE FROM binance_symbols")
     suspend fun clearAll()
 }

@@ -12,9 +12,9 @@ interface CurrencySyncInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: CurrencySyncInfoDbModel): Long
 
-    @Query("SELECT currency_count FROM currency_sync_info WHERE id LIKE ${CurrencySyncInfoDbModel.DEFAULT_ID}")
+    @Query("SELECT currency_count FROM coinmarketcap_sync_info WHERE id LIKE ${CurrencySyncInfoDbModel.DEFAULT_ID}")
     suspend fun getSavedCurrencyCount(): Int?
 
-    @Query("DELETE FROM sync_info")
+    @Query("DELETE FROM coinmarketcap_sync_info")
     suspend fun clearAll()
 }

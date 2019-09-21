@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.threeten.bp.OffsetDateTime
 
-@Entity(tableName = "currency_sync_info")
+@Entity(tableName = "coinmarketcap_sync_info")
 data class CurrencySyncInfoDbModel(
     @PrimaryKey
     @ColumnInfo(name = "id")

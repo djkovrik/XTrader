@@ -16,9 +16,9 @@ interface CurrencyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: CurrencyDbModel): Long
 
-    @Query("SELECT * FROM currencies WHERE symbol_id LIKE :symbol")
+    @Query("SELECT * FROM coinmarketcap_currencies WHERE symbol_id LIKE :symbol")
     suspend fun getBySymbol(symbol: String): CurrencyDbModel
 
-    @Query("DELETE FROM currencies")
+    @Query("DELETE FROM coinmarketcap_currencies")
     suspend fun clearAll()
 }

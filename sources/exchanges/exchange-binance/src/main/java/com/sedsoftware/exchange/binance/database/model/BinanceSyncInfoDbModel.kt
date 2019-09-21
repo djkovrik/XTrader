@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.threeten.bp.OffsetDateTime
 
-@Entity(tableName = "sync_info")
+@Entity(tableName = "binance_sync_info")
 data class BinanceSyncInfoDbModel(
     @PrimaryKey
     @ColumnInfo(name = "name")
