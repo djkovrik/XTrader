@@ -10,6 +10,7 @@ apply from: '../../spek-android-config.gradle'
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
+    implementation project(':core-tools-api')
     implementation project(':core-utils')
     implementation project(':exchange-binance')
 

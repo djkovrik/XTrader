@@ -31,8 +31,8 @@ class CurrenciesInfoRepository @Inject constructor(
     suspend fun saveSyncInfo(currencyMap: CurrencyMap) =
         currencySyncInfoDao.insert(mapper.mapSyncInfoToDb(currencyMap))
 
-    suspend fun checkIfCurrenciesSaved(): Boolean {
+    suspend fun isLoadingNeeded(): Boolean {
         val count = currencySyncInfoDao.getSavedCurrencyCount()
-        return count != null && count > 0
+        return count == null || count == 0
     }
 }

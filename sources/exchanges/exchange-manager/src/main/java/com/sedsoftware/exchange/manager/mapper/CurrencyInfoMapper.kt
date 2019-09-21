@@ -1,5 +1,6 @@
 package com.sedsoftware.exchange.manager.mapper
 
+import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.exchange.manager.database.model.CurrencyDbModel
 import com.sedsoftware.exchange.manager.database.model.CurrencySyncInfoDbModel
 import com.sedsoftware.exchange.manager.network.model.CurrencyItem
@@ -16,6 +17,12 @@ class CurrencyInfoMapper @Inject constructor() {
 
     fun mapToDb(from: CurrencyMap): List<CurrencyDbModel> =
         from.data.map { mapItem(it) }
+
+    fun mapDbToCurrency(from: CurrencyDbModel): Currency =
+        object : Currency {
+            override val name: String = from.symbol
+            override val label: String = from.name
+        }
 
     private fun mapItem(item: CurrencyItem): CurrencyDbModel =
         CurrencyDbModel(
