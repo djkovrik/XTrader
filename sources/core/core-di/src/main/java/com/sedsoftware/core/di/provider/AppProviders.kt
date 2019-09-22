@@ -10,6 +10,7 @@ import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairManager
 import com.sedsoftware.core.domain.provider.AssetsProvider
+import com.sedsoftware.core.domain.provider.CurrencyProvider
 import com.sedsoftware.core.tools.api.Logger
 import com.sedsoftware.core.tools.api.NetworkHandler
 import com.sedsoftware.core.tools.api.Settings
@@ -52,5 +53,6 @@ interface BinanceProvider {
 }
 
 interface CoinMarketCapProvider {
+    fun provideCurrencyProvider(): CurrencyProvider
     fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
 }

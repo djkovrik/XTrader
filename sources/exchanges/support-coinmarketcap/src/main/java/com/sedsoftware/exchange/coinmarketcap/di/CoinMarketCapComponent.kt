@@ -3,7 +3,7 @@ package com.sedsoftware.exchange.coinmarketcap.di
 import com.sedsoftware.core.di.provider.CoinMarketCapProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.exchange.coinmarketcap.di.module.CurrencyDatabaseModule
-import com.sedsoftware.exchange.coinmarketcap.di.module.CurrencyLoaderModule
+import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapModule
 import com.sedsoftware.exchange.coinmarketcap.di.module.CurrencyNetworkModule
 import dagger.Component
 import javax.inject.Singleton
@@ -15,7 +15,7 @@ import javax.inject.Singleton
     modules = [
         CurrencyDatabaseModule::class,
         CurrencyNetworkModule::class,
-        CurrencyLoaderModule::class
+        CoinMarketCapModule::class
     ]
 )
 @Singleton
