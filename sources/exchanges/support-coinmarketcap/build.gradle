@@ -12,8 +12,7 @@ dependencies {
     implementation project(':core-domain')
     implementation project(':core-tools-api')
     implementation project(':core-utils')
-    implementation project(':exchange-binance')
-    implementation project(':exchange-coinmarketcap')
+
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler

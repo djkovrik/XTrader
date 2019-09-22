@@ -32,11 +32,11 @@ interface DeviceToolsProvider {
     fun provideDefaultDisplay(): Display
 }
 
-interface ViewModelFactoryProvider : ExchangeManagerProvider {
+interface ViewModelFactoryProvider : ExchangeManagerProvider, CoinMarketCapProvider {
     fun provideViewModelFactory(): ViewModelProvider.Factory
 }
 
-interface ExchangeManagerProvider : BinanceProvider, CoinMarketCapProvider {
+interface ExchangeManagerProvider : BinanceProvider {
     fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
     fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
     fun provideIconsProvider(): AssetsProvider

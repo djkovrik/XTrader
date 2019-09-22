@@ -67,8 +67,9 @@ dependencies {
     implementation project(':screen-tracker')
     implementation project(':screen-tools')
 
-    implementation project(':exchange-manager')
     implementation project(':exchange-binance')
+    implementation project(':support-coinmarketcap')
+    implementation project(':support-manager')
 
     implementation FirebaseDependencies.core
     implementation FirebaseDependencies.analytics

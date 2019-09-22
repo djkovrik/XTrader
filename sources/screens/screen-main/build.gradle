@@ -21,6 +21,8 @@ dependencies {
     implementation project(':screen-tracker')
     implementation project(':screen-tools')
 
+    implementation project(':support-coinmarketcap')
+
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 
