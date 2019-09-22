@@ -1,6 +1,7 @@
 package com.sedsoftware.exchange.binance.di
 
 import com.sedsoftware.core.di.provider.BinanceProvider
+import com.sedsoftware.core.di.provider.CoinMarketCapProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.exchange.binance.di.module.BinanceDatabaseModule
 import com.sedsoftware.exchange.binance.di.module.BinanceExportModule
@@ -10,7 +11,8 @@ import javax.inject.Singleton
 
 @Component(
     dependencies = [
-        DeviceToolsProvider::class
+        DeviceToolsProvider::class,
+        CoinMarketCapProvider::class
     ],
     modules = [
         BinanceExportModule::class,
@@ -23,9 +25,13 @@ interface BinanceComponent : BinanceProvider {
     class Initializer private constructor() {
         companion object {
 
-            fun init(deviceToolsProvider: DeviceToolsProvider): BinanceProvider {
+            fun init(
+                deviceToolsProvider: DeviceToolsProvider,
+                coinMarketCapProvider: CoinMarketCapProvider
+            ): BinanceProvider {
                 return DaggerBinanceComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)
+                    .coinMarketCapProvider(coinMarketCapProvider)
                     .build()
             }
         }

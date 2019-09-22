@@ -17,6 +17,6 @@ class CurrencyNameRepository @Inject constructor(
 
     suspend fun getCurrency(symbol: String): Currency {
         val dbCurrency = currencyDao.getBySymbol(symbol)
-        return mapper.mapDbToCurrency(dbCurrency)
+        return mapper.mapDbToCurrency(dbCurrency, symbol)
     }
 }

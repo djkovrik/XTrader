@@ -1,6 +1,7 @@
 package com.sedsoftware.exchange.manager.di
 
 import com.sedsoftware.core.di.provider.BinanceProvider
+import com.sedsoftware.core.di.provider.CoinMarketCapProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.core.di.provider.ExchangeManagerProvider
 import com.sedsoftware.exchange.binance.di.BinanceComponent
@@ -21,9 +22,12 @@ interface ExchangeManagerComponent : ExchangeManagerProvider {
     class Initializer private constructor() {
         companion object {
 
-            fun init(toolsProvider: DeviceToolsProvider): ExchangeManagerProvider {
+            fun init(
+                toolsProvider: DeviceToolsProvider,
+                coinMarketCapProvider: CoinMarketCapProvider
+            ): ExchangeManagerProvider {
 
-                val binanceProvider = BinanceComponent.Initializer.init(toolsProvider)
+                val binanceProvider = BinanceComponent.Initializer.init(toolsProvider, coinMarketCapProvider)
 
                 return DaggerExchangeManagerComponent.builder()
                     .binanceProvider(binanceProvider)

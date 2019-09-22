@@ -4,6 +4,7 @@ import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.core.di.provider.ViewModelFactoryProvider
 import com.sedsoftware.core.tools.impl.di.DeviceToolsComponent
+import com.sedsoftware.exchange.coinmarketcap.di.CoinMarketCapComponent
 import com.sedsoftware.exchange.manager.di.ExchangeManagerComponent
 import com.sedsoftware.screens.main.di.ViewModelFactoryComponent
 import com.sedsoftware.xtrader.XTraderApp
@@ -29,11 +30,15 @@ interface AppComponent : AppProvider {
                 val deviceToolsProvider =
                     DeviceToolsComponent.Initializer.init(app)
 
+                val coinMarketCapProvider =
+                    CoinMarketCapComponent.Initializer.init(deviceToolsProvider)
+
                 val exchangeManagerProvider =
-                    ExchangeManagerComponent.Initializer.init(deviceToolsProvider)
+                    ExchangeManagerComponent.Initializer.init(deviceToolsProvider, coinMarketCapProvider)
 
                 val viewModelFactoryProvider =
-                    ViewModelFactoryComponent.Initializer.init(deviceToolsProvider, exchangeManagerProvider)
+                    ViewModelFactoryComponent.Initializer
+                        .init(deviceToolsProvider, coinMarketCapProvider, exchangeManagerProvider)
 
                 return DaggerAppComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)

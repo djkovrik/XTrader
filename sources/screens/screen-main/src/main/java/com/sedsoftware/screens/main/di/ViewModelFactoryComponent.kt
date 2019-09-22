@@ -4,15 +4,14 @@ import com.sedsoftware.core.di.provider.CoinMarketCapProvider
 import com.sedsoftware.core.di.provider.DeviceToolsProvider
 import com.sedsoftware.core.di.provider.ExchangeManagerProvider
 import com.sedsoftware.core.di.provider.ViewModelFactoryProvider
-import com.sedsoftware.exchange.coinmarketcap.di.CoinMarketCapComponent
 import dagger.Component
 import javax.inject.Singleton
 
 @Component(
     dependencies = [
         DeviceToolsProvider::class,
-        ExchangeManagerProvider::class,
-        CoinMarketCapProvider::class
+        CoinMarketCapProvider::class,
+        ExchangeManagerProvider::class
     ],
     modules = [
         ViewModelFactoryModule::class
@@ -26,15 +25,14 @@ interface ViewModelFactoryComponent : ViewModelFactoryProvider {
 
             fun init(
                 deviceToolsProvider: DeviceToolsProvider,
+                coinMarketCapProvider: CoinMarketCapProvider,
                 exchangeManagerProvider: ExchangeManagerProvider
             ): ViewModelFactoryProvider {
 
-                val coinMarketCapProvider = CoinMarketCapComponent.Initializer.init(deviceToolsProvider)
-
                 return DaggerViewModelFactoryComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)
-                    .exchangeManagerProvider(exchangeManagerProvider)
                     .coinMarketCapProvider(coinMarketCapProvider)
+                    .exchangeManagerProvider(exchangeManagerProvider)
                     .build()
             }
         }

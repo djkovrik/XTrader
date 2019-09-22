@@ -16,7 +16,7 @@ interface CurrencyDao {
     suspend fun insert(item: CurrencyDbModel): Long
 
     @Query("SELECT * FROM coinmarketcap_currencies WHERE symbol_id LIKE :symbol")
-    suspend fun getBySymbol(symbol: String): CurrencyDbModel
+    suspend fun getBySymbol(symbol: String): CurrencyDbModel?
 
     @Query("DELETE FROM coinmarketcap_currencies")
     suspend fun clearAll()
