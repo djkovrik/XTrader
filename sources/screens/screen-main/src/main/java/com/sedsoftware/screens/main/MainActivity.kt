@@ -21,6 +21,7 @@ import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.core.utils.type.Failure
+import com.sedsoftware.core.utils.type.SingleEvent
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.navigation.NavControllerHolder
 import com.sedsoftware.screens.main.navigation.NavigationFlow
@@ -65,8 +66,8 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
         setBackgroundColor(R.color.colorBackground)
 
         mainActivityViewModel = viewModel(viewModelFactory) {
-            observe(currentNavFlow, ::handleNavFlow)
-            failure(viewModelFailure, ::displayFailure)
+            observe(currentNavFlow, ::observeNavFlow)
+            failure(viewModelFailure, ::observeFailure)
         }
 
         setupViews()
@@ -76,6 +77,10 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
             bottomNavigation.selectedItemId = DEFAULT_TAB
             setupBottomNavigationBar()
         }
+    }
+
+    private fun observeFailure(failureEvent: SingleEvent<Failure>?) {
+        // TODO
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
@@ -195,7 +200,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
             .start()
     }
 
-    private fun handleNavFlow(navigationFlow: NavigationFlow?) {
+    private fun observeNavFlow(navigationFlow: NavigationFlow?) {
         when (navigationFlow) {
             NavigationFlow.PIN -> {
                 introNavHostFragment?.let { detachNavHostFragment(it) }
@@ -215,10 +220,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
                 showBottomNavigationBar(true)
             }
         }
-    }
-
-    private fun displayFailure(failure: Failure?) {
-
     }
 
     private fun showBottomNavigationBar(show: Boolean) {

@@ -31,7 +31,6 @@ import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.extension.orFalse
-import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
 import com.sedsoftware.screens.market.di.MarketScreenComponent
 import com.sedsoftware.screens.market.model.CurrencyListItem
@@ -82,12 +81,12 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
         super.onCreate(savedInstanceState)
 
         marketViewModel = viewModel(viewModelFactory) {
-            observe(chosenExchange, ::showChosenExchange)
-            observe(baseCurrencies, ::showBaseCurrencies)
-            observe(marketCurrencies, ::showMarketCurrencies)
-            observe(chosenBaseCurrency, ::showChosenBaseCurrency)
-            observe(chosenMarketCurrency, ::showChosenMarketCurrency)
-            failure(viewModelFailure, ::displayFailure)
+            observe(chosenExchange, ::observeChosenExchange)
+            observe(baseCurrencies, ::observeBaseCurrencies)
+            observe(marketCurrencies, ::observeMarketCurrencies)
+            observe(chosenBaseCurrency, ::observeChosenBaseCurrency)
+            observe(chosenMarketCurrency, ::observeChosenMarketCurrency)
+            failure(viewModelFailure, ::observeFailures)
         }
 
         isDialogExpanded = savedInstanceState?.getBoolean(DIALOG_STATE_KEY).orFalse()
@@ -176,34 +175,30 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
         }
     }
 
-    private fun showBaseCurrencies(list: List<CurrencyListItem>?) {
+    private fun observeBaseCurrencies(list: List<CurrencyListItem>?) {
         baseAdapter.items = list
         baseAdapter.notifyDataSetChanged()
     }
 
-    private fun showMarketCurrencies(list: List<CurrencyListItem>?) {
+    private fun observeMarketCurrencies(list: List<CurrencyListItem>?) {
         marketAdapter.items = list
         marketAdapter.notifyDataSetChanged()
     }
 
-    private fun showChosenExchange(exchange: Exchange?) {
+    private fun observeChosenExchange(exchange: Exchange?) {
         exchangeTextView.text = exchange?.label
     }
 
-    private fun showChosenBaseCurrency(currency: Currency?) {
+    private fun observeChosenBaseCurrency(currency: Currency?) {
         baseCurrencyTextView.text = currency?.name
         baseFullCurrencyTextView.text = currency?.label
         highlightItem(baseAdapter, currency)
     }
 
-    private fun showChosenMarketCurrency(currency: Currency?) {
+    private fun observeChosenMarketCurrency(currency: Currency?) {
         marketCurrencyTextView.text = currency?.name
         marketFullCurrencyTextView.text = currency?.label
         highlightItem(marketAdapter, currency)
-    }
-
-    private fun displayFailure(failure: Failure?) {
-
     }
 
     // 3/4 of the screen height

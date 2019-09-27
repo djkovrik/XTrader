@@ -18,6 +18,7 @@ import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
 import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
+import com.sedsoftware.core.utils.type.SingleEvent
 import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.model.ExchangeListItem
@@ -47,9 +48,9 @@ class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
         super.onCreate(savedInstanceState)
 
         introViewModel = viewModel(viewModelFactory) {
-            observe(exchangeList, ::displayLoadersList)
-            observe(anyDownloadCompleted, ::enableButton)
-            failure(viewModelFailure, ::displayFailure)
+            observe(exchangeList, ::observeLoaderList)
+            observe(anyDownloadCompleted, ::observeDownloadCompletion)
+            failure(viewModelFailure, ::observeFailures)
         }
     }
 
@@ -111,21 +112,14 @@ class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
             .start()
     }
 
-    private fun displayLoadersList(exchanges: List<ExchangeListItem>?) {
+    private fun observeLoaderList(exchanges: List<ExchangeListItem>?) {
         exchanges?.let { list ->
             exchangesAdapter.items = list
             exchangesAdapter.notifyDataSetChanged()
         }
     }
 
-    private fun displayFailure(failure: Failure?) {
-        when (failure) {
-            is NetworkConnectionMissing -> notifyTop(string(R.string.msg_no_internet_connection))
-            is PairsLoadingError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
-        }
-    }
-
-    private fun enableButton(shouldEnable: Boolean?) {
+    private fun observeDownloadCompletion(shouldEnable: Boolean?) {
         if (shouldEnable == true) {
             introButton.alpha = ALPHA_NORMAL
             introButton.isEnabled = true
