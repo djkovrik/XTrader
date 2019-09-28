@@ -33,7 +33,6 @@ object Versions {
     const val FABRIC_VERSION = "1.31.0"
     const val DETEKT_VERSION = "1.0.1"
     const val GRADLE_VERSIONS_VERSION = "0.25.0"
-    const val SAFE_ARGS_VERSION = "1.0.0-alpha06"
     const val ANDROID_JUNIT5_VERSION = "1.5.1.0"
     const val DEV_METRICS_VERSION = "0.7"
 
@@ -46,7 +45,6 @@ object Versions {
     // JetPack - Architecture
     const val LIFECYCLE_VERSION = "2.2.0-alpha05"
     const val ROOM_VERSION = "2.2.0-rc01"
-    const val NAVIGATION_VERSION = "2.2.0-alpha03"
 
     // JetPack - KTX
     const val KTX_VERSION = "1.2.0-alpha04"

@@ -1,18 +1,17 @@
 package com.sedsoftware.screens.main.di
 
-import com.sedsoftware.core.di.delegate.NavigationFlowDelegate
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.provider.AppProvider
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.di.scope.ActivityScope
 import com.sedsoftware.screens.main.MainActivity
+import com.sedsoftware.screens.main.di.module.MainActivityModule
 import dagger.BindsInstance
 import dagger.Component
 
 @Component(
     dependencies = [
-        AppProvider::class,
-        NavigationProvider::class
+        AppProvider::class
     ],
     modules = [
         MainActivityModule::class
@@ -25,9 +24,7 @@ interface MainActivityComponent : MainActivityToolsProvider {
     interface Factory {
 
         fun create(appProvider: AppProvider,
-                   navigationProvider: NavigationProvider,
-                   @BindsInstance snackbarDelegate: SnackbarDelegate,
-                   @BindsInstance navigationFlowDelegate: NavigationFlowDelegate
+                   @BindsInstance snackbarDelegate: SnackbarDelegate
         ): MainActivityComponent
     }
 
@@ -36,17 +33,11 @@ interface MainActivityComponent : MainActivityToolsProvider {
     class Initializer private constructor() {
         companion object {
 
-            fun init(appProvider: AppProvider,
-                     snackbarDelegate: SnackbarDelegate,
-                     navFlowDelegate: NavigationFlowDelegate
-            ): MainActivityComponent {
-
-                val navigationProvider =
-                    NavigationComponent.Initializer.init()
+            fun init(appProvider: AppProvider, snackbarDelegate: SnackbarDelegate): MainActivityComponent {
 
                 return DaggerMainActivityComponent
                     .factory()
-                    .create(appProvider, navigationProvider, snackbarDelegate, navFlowDelegate)
+                    .create(appProvider, snackbarDelegate)
             }
         }
     }

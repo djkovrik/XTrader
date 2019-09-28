@@ -6,7 +6,6 @@ import Versions.GRADLE_ANDROID_VERSION
 import Versions.GRADLE_VERSIONS_VERSION
 import Versions.KOTLIN_VERSION
 import Versions.PLAY_SERVICES_VERSION
-import Versions.SAFE_ARGS_VERSION
 
 object Plugins {
     const val GOOGLE_PLAY_SERVICES =
@@ -23,8 +22,6 @@ object Plugins {
         "com.github.ben-manes:gradle-versions-plugin:$GRADLE_VERSIONS_VERSION"
     const val DEVICE_METRICS =
         "com.frogermcs.androiddevmetrics:androiddevmetrics-plugin:$DEV_METRICS_VERSION"
-    const val SAFE_ARGS =
-        "android.arch.navigation:navigation-safe-args-gradle-plugin:$SAFE_ARGS_VERSION"
     const val JUNIT5 =
         "de.mannodermaus.gradle.plugins:android-junit5:$ANDROID_JUNIT5_VERSION"
 }

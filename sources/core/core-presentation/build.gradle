@@ -19,7 +19,6 @@ dependencies {
     implementation CoreDependencies.dagger
 
     implementation JetPackDependencies.appCompat
-    implementation JetPackDependencies.navigationFragment
     implementation JetPackDependencies.lifecycle
     implementation JetPackDependencies.lifecycleRuntimeKtx
     implementation JetPackDependencies.lifecycleViewModelKtx

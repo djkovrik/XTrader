@@ -25,7 +25,6 @@ dependencies {
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.constraintLayout
     implementation JetPackDependencies.materialComponents
-    implementation JetPackDependencies.navigationRuntime
     implementation JetPackDependencies.KTX
 
     implementation UiDependencies.materialValues

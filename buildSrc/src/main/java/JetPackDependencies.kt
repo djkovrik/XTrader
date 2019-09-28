@@ -4,7 +4,6 @@ import Versions.KTX_VERSION
 import Versions.LEGACY_SUPPORT_UTILS_VERSION
 import Versions.LIFECYCLE_VERSION
 import Versions.MATERIAL_COMPONENTS_VERSION
-import Versions.NAVIGATION_VERSION
 import Versions.ROOM_VERSION
 
 object JetPackDependencies {
@@ -21,10 +20,6 @@ object JetPackDependencies {
     const val room = "androidx.room:room-runtime:$ROOM_VERSION"
     const val roomKtx = "androidx.room:room-ktx:$ROOM_VERSION"
     const val roomCompiler = "androidx.room:room-compiler:$ROOM_VERSION"
-
-    const val navigationUi = "androidx.navigation:navigation-ui-ktx:$NAVIGATION_VERSION"
-    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$NAVIGATION_VERSION"
-    const val navigationRuntime = "androidx.navigation:navigation-runtime-ktx:$NAVIGATION_VERSION"
 
     const val KTX = "androidx.core:core-ktx:$KTX_VERSION"
 

@@ -7,7 +7,6 @@ import android.view.animation.LinearInterpolator
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sedsoftware.core.di.coordinator.IntroCoordinator
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartAction
@@ -15,10 +14,6 @@ import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.presentation.extension.viewModel
-import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
-import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
-import com.sedsoftware.core.utils.type.SingleEvent
 import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.model.ExchangeListItem
@@ -26,9 +21,6 @@ import kotlinx.android.synthetic.main.fragment_intro_screen.*
 import javax.inject.Inject
 
 class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
-
-    @Inject
-    lateinit var coordinator: IntroCoordinator
 
     @Inject
     lateinit var exchangesAdapter: ExchangeListAdapter
@@ -60,7 +52,9 @@ class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
         appbar.outlineProvider = null
         toolbar_text.text = string(R.string.app_name)
         toolbar_text.gravity = Gravity.CENTER
-        introButton.setOnClickListener { coordinator.navigateToHome() }
+        introButton.setOnClickListener {
+            // FIXME Navigate home
+        }
 
         with(exchangesRecyclerView) {
             adapter = exchangesAdapter

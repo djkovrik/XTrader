@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.main.di
+package com.sedsoftware.screens.main.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
