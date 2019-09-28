@@ -13,8 +13,6 @@ class MainActivityViewModel @Inject constructor(settings: Settings) : BaseViewMo
 
         internal val introNavGraph = R.navigation.navigation_intro
 
-        internal val pinNavGraph = R.navigation.navigation_pin
-
         internal val mainNavGraphs: List<Int> = listOf(
             R.navigation.navigation_wallet,
             R.navigation.navigation_orders,
@@ -24,12 +22,11 @@ class MainActivityViewModel @Inject constructor(settings: Settings) : BaseViewMo
         )
     }
 
-    internal var currentNavController = MutableLiveData<NavController>()
-    internal var currentNavFlow = MutableLiveData<NavigationFlow>()
+    internal var navControllerLiveData = MutableLiveData<NavController>()
+    internal var navFlowLiveData = MutableLiveData<NavigationFlow>()
 
     init {
-        currentNavFlow.value = when {
-            settings.isPinEnabled -> NavigationFlow.PIN
+        navFlowLiveData.value = when {
             settings.isExchangesDownloaded -> NavigationFlow.MAIN
             else -> NavigationFlow.INTRO
         }

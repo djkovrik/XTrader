@@ -28,8 +28,6 @@ include ':screen-main'
 project(':screen-main').projectDir = new File(rootDir, 'sources/screens/screen-main')
 include ':screen-intro'
 project(':screen-intro').projectDir = new File(rootDir, 'sources/screens/screen-intro')
-include ':screen-pin'
-project(':screen-pin').projectDir = new File(rootDir, 'sources/screens/screen-pin')
 
 include ':screen-wallet'
 project(':screen-wallet').projectDir = new File(rootDir, 'sources/screens/screen-wallet')

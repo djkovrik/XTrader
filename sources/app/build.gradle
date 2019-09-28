@@ -60,7 +60,6 @@ dependencies {
 
     implementation project(':screen-main')
     implementation project(':screen-intro')
-    implementation project(':screen-pin')
     implementation project(':screen-wallet')
     implementation project(':screen-orders')
     implementation project(':screen-market')

@@ -28,14 +28,6 @@ class AppSettings @Inject constructor(
         set(value) {
             preferences.setValue(key(R.string.pref_key_exchanges_downloaded), value)
         }
-
-    override var isPinEnabled: Boolean
-        get() =
-            preferences.getValue(key(R.string.pref_key_pin_enabled), false)
-        set(value) {
-            preferences.setValue(key(R.string.pref_key_pin_enabled), value)
-        }
-
     private fun SharedPreferences.setValue(key: String, value: Any) {
         when (value) {
             is String -> edit { it.putString(key, value) }

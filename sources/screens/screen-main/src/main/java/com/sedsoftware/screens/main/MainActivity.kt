@@ -3,7 +3,6 @@ package com.sedsoftware.screens.main
 import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import com.sedsoftware.core.di.App
@@ -13,15 +12,12 @@ import com.sedsoftware.core.di.holder.ActivityToolsHolder
 import com.sedsoftware.core.di.provider.MainActivityToolsProvider
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
-import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
-import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.SingleEvent
 import com.sedsoftware.screens.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.navigation.NavControllerHolder
 import com.sedsoftware.screens.main.navigation.NavigationFlow
@@ -53,7 +49,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     private lateinit var mainActivityViewModel: MainActivityViewModel
 
     private var introNavHostFragment: NavHostFragment? = null
-    private var pinNavHostFragment: NavHostFragment? = null
 
     private var topNotificationTranslation = 0f
     private var bottomNavigationViewTranslation = 0f
@@ -63,24 +58,17 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        setBackgroundColor(R.color.colorBackground)
-
-        mainActivityViewModel = viewModel(viewModelFactory) {
-            observe(currentNavFlow, ::observeNavFlow)
-            failure(viewModelFailure, ::observeFailure)
-        }
-
         setupViews()
         initStartupFragments()
+
+        mainActivityViewModel = viewModel(viewModelFactory) {
+            observe(navFlowLiveData, ::observeNavigationFlow)
+        }
 
         if (savedInstanceState == null) {
             bottomNavigation.selectedItemId = DEFAULT_TAB
             setupBottomNavigationBar()
         }
-    }
-
-    private fun observeFailure(failureEvent: SingleEvent<Failure>?) {
-        // TODO
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
@@ -89,6 +77,8 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     }
 
     private fun setupViews() {
+        setBackgroundColor(R.color.colorBackground)
+
         bottomNavigation.post {
             bottomNavigationViewTranslation = bottomNavigation.measuredHeight.toFloat()
             bottomNavigation.translationY = bottomNavigationViewTranslation
@@ -118,23 +108,16 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
             graphId = MainActivityViewModel.introNavGraph,
             containerId = R.id.navHostFrameLayout
         )
-
-        pinNavHostFragment = obtainNavHostFragment(
-            tag = getFragmentTag(2, false),
-            graphId = MainActivityViewModel.pinNavGraph,
-            containerId = R.id.navHostFrameLayout
-        )
     }
 
     private fun setupBottomNavigationBar() {
-        if (mainActivityViewModel.currentNavFlow.value != NavigationFlow.MAIN) {
+        if (mainActivityViewModel.navFlowLiveData.value != NavigationFlow.MAIN) {
             return
         }
 
         introNavHostFragment?.let { detachNavHostFragment(it) }
-        pinNavHostFragment?.let { detachNavHostFragment(it) }
 
-        mainActivityViewModel.currentNavController = setupWithNavController(
+        mainActivityViewModel.navControllerLiveData = setupWithNavController(
             bottomNavigationView = bottomNavigation,
             navGraphIds = MainActivityViewModel.mainNavGraphs,
             containerId = R.id.navHostFrameLayout
@@ -143,7 +126,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
 
     override fun onResumeFragments() {
         super.onResumeFragments()
-        mainActivityViewModel.currentNavController.value?.let {
+        mainActivityViewModel.navControllerLiveData.value?.let {
             navControllerHolder.setNavController(it)
         }
     }
@@ -155,7 +138,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return mainActivityViewModel.currentNavController.value?.navigateUp() ?: false
+        return mainActivityViewModel.navControllerLiveData.value?.navigateUp() ?: false
     }
 
     override fun getActivityToolsProvider(): MainActivityToolsProvider =
@@ -174,7 +157,7 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     }
 
     override fun switchToMainFlow() {
-        mainActivityViewModel.currentNavFlow.value = NavigationFlow.MAIN
+        mainActivityViewModel.navFlowLiveData.value = NavigationFlow.MAIN
         setupBottomNavigationBar()
     }
 
@@ -200,38 +183,22 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
             .start()
     }
 
-    private fun observeNavFlow(navigationFlow: NavigationFlow?) {
+    private fun observeNavigationFlow(navigationFlow: NavigationFlow?) {
         when (navigationFlow) {
-            NavigationFlow.PIN -> {
-                introNavHostFragment?.let { detachNavHostFragment(it) }
-                pinNavHostFragment?.let { fragment ->
-                    attachNavHostFragment(fragment, true)
-                    mainActivityViewModel.currentNavController.value = fragment.navController
-                }
-            }
             NavigationFlow.INTRO -> {
-                pinNavHostFragment?.let { detachNavHostFragment(it) }
                 introNavHostFragment?.let { fragment ->
                     attachNavHostFragment(fragment, true)
-                    mainActivityViewModel.currentNavController.value = fragment.navController
+                    mainActivityViewModel.navControllerLiveData.value = fragment.navController
                 }
             }
             else -> {
-                showBottomNavigationBar(true)
+                showBottomNavigationBar()
             }
         }
     }
 
-    private fun showBottomNavigationBar(show: Boolean) {
-        if (show && bottomNavigation.isVisible) return
-        if (!show && bottomNavigation.isGone) return
-
-        if (show) {
-            bottomNavigation.isVisible = true
-            translateViewAnimated(bottomNavigation, 0f)
-        } else {
-            bottomNavigation.isGone = true
-            translateViewAnimated(bottomNavigation, bottomNavigationViewTranslation)
-        }
+    private fun showBottomNavigationBar() {
+        if (bottomNavigation.isVisible) return
+        bottomNavigation.isVisible = true
     }
 }
