@@ -25,7 +25,7 @@
     <color name="colorCompleted">@color/material_color_green_600</color>
     <color name="colorNormalButtonText">@color/colorTextSecondary</color>
     <color name="colorImageDim">@color/material_color_grey_500</color>
-    <color name="colorNotificationBackground">#99000000</color>
+    <color name="colorNotificationBackground">#E6000000</color>
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorDivider">#0D000000</color>
 </resources>
