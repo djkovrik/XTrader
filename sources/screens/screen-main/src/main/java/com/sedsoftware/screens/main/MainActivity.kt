@@ -51,7 +51,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
     private var introNavHostFragment: NavHostFragment? = null
 
     private var topNotificationTranslation = 0f
-    private var bottomNavigationViewTranslation = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainActivityComponent.inject(this)
@@ -78,11 +77,6 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate, Navi
 
     private fun setupViews() {
         setBackgroundColor(R.color.colorBackground)
-
-        bottomNavigation.post {
-            bottomNavigationViewTranslation = bottomNavigation.measuredHeight.toFloat()
-            bottomNavigation.translationY = bottomNavigationViewTranslation
-        }
 
         topNotificationTextView.post {
             topNotificationTranslation = -topNotificationTextView.measuredHeight.toFloat()
