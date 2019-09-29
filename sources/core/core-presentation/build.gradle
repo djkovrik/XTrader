@@ -17,6 +17,7 @@ dependencies {
     implementation project(':lib-spin-kit')
 
     implementation CoreDependencies.dagger
+    implementation CoreDependencies.cicerone
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.lifecycle

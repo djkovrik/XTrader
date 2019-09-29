@@ -22,8 +22,11 @@ dependencies {
 
     implementation project(':support-coinmarketcap')
 
+
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
+
+    implementation CoreDependencies.cicerone
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.materialComponents

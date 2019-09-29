@@ -134,15 +134,6 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
         })
     }
 
-    override fun onBackPressed(): Boolean {
-        if (isDialogExpanded) {
-            changeDialogExpandState()
-            return true
-        }
-
-        return false
-    }
-
     override fun onItemClick(item: CurrencyListItem) {
         if (item.isBase) {
             marketViewModel.getMarketForChosenBase(item.currency)

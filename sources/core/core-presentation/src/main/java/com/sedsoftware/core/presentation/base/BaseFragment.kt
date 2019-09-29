@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.sedsoftware.core.di.MainActivityToolsProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
-import com.sedsoftware.core.di.MainActivityToolsProvider
-import com.sedsoftware.core.presentation.CanHandleBackPressed
 import com.sedsoftware.core.presentation.R
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.utils.type.Failure
@@ -32,28 +31,13 @@ abstract class BaseFragment : Fragment() {
     @Inject
     lateinit var snackbarDelegate: SnackbarDelegate
 
-    private lateinit var backPressedHandler: CanHandleBackPressed
-
     abstract fun getLayoutResId(): Int
 
     abstract fun inject()
 
-    open fun onBackPressed(): Boolean = false
-
     override fun onAttach(context: Context) {
         inject()
         super.onAttach(context)
-
-        if (activity is CanHandleBackPressed) {
-            backPressedHandler = activity as CanHandleBackPressed
-        } else {
-            throw ClassCastException("BaseActivity must implement BackPressHandler interface.")
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        backPressedHandler.setSelectedFragment(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
