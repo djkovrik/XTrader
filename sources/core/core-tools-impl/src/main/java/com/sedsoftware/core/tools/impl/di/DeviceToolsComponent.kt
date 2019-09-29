@@ -1,7 +1,7 @@
 package com.sedsoftware.core.tools.impl.di
 
 import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.provider.DeviceToolsProvider
+import com.sedsoftware.core.di.DeviceToolsProvider
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

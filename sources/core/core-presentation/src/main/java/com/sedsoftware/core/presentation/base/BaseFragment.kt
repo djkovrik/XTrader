@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
-import com.sedsoftware.core.di.provider.MainActivityToolsProvider
+import com.sedsoftware.core.di.MainActivityToolsProvider
 import com.sedsoftware.core.presentation.CanHandleBackPressed
 import com.sedsoftware.core.presentation.R
 import com.sedsoftware.core.presentation.extension.string

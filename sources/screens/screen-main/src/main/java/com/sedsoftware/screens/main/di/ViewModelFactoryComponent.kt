@@ -1,9 +1,9 @@
 package com.sedsoftware.screens.main.di
 
-import com.sedsoftware.core.di.provider.CoinMarketCapProvider
-import com.sedsoftware.core.di.provider.DeviceToolsProvider
-import com.sedsoftware.core.di.provider.ExchangeManagerProvider
-import com.sedsoftware.core.di.provider.ViewModelFactoryProvider
+import com.sedsoftware.core.di.CoinMarketCapProvider
+import com.sedsoftware.core.di.DeviceToolsProvider
+import com.sedsoftware.core.di.ExchangeManagerProvider
+import com.sedsoftware.core.di.ViewModelFactoryProvider
 import com.sedsoftware.screens.main.di.module.ViewModelFactoryModule
 import dagger.Component
 import javax.inject.Singleton

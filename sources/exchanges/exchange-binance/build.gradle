@@ -15,7 +15,6 @@ dependencies {
 
     testImplementation project(':core-test')
 
-
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 
@@ -26,10 +25,6 @@ dependencies {
     implementation CoreDependencies.moshiAdapters
     implementation CoreDependencies.retrofitMoshiConverter
     implementation CoreDependencies.threetenabp
-
-    implementation JetPackDependencies.lifecycle
-    implementation JetPackDependencies.lifecycleLiveDataKtx
-    kapt JetPackDependencies.lifecycleCompiler
 
     implementation JetPackDependencies.room
     implementation JetPackDependencies.roomKtx

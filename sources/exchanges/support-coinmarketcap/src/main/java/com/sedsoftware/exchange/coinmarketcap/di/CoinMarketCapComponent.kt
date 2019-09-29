@@ -1,7 +1,7 @@
 package com.sedsoftware.exchange.coinmarketcap.di
 
-import com.sedsoftware.core.di.provider.CoinMarketCapProvider
-import com.sedsoftware.core.di.provider.DeviceToolsProvider
+import com.sedsoftware.core.di.CoinMarketCapProvider
+import com.sedsoftware.core.di.DeviceToolsProvider
 import com.sedsoftware.exchange.coinmarketcap.di.module.CurrencyDatabaseModule
 import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapModule
 import com.sedsoftware.exchange.coinmarketcap.di.module.CurrencyNetworkModule

@@ -3,7 +3,7 @@ package com.sedsoftware.xtrader
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.provider.AppProvider
+import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.xtrader.di.AppComponent
 import timber.log.Timber
 

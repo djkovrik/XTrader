@@ -1,8 +1,8 @@
-package com.sedsoftware.core.di.provider
+package com.sedsoftware.core.di
 
 import android.view.Display
 import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.core.di.App
+import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.ExchangeName
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.entity.Exchange
@@ -33,7 +33,8 @@ interface DeviceToolsProvider {
     fun provideDefaultDisplay(): Display
 }
 
-interface ViewModelFactoryProvider : ExchangeManagerProvider, CoinMarketCapProvider {
+interface ViewModelFactoryProvider : ExchangeManagerProvider,
+    CoinMarketCapProvider {
     fun provideViewModelFactory(): ViewModelProvider.Factory
 }
 
@@ -55,4 +56,11 @@ interface BinanceProvider {
 interface CoinMarketCapProvider {
     fun provideCurrencyProvider(): CurrencyProvider
     fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
+}
+
+interface MainActivityToolsProvider {
+    fun provideViewModelFactory(): ViewModelProvider.Factory
+    fun provideSnackbarDelegate(): SnackbarDelegate
+    fun provideAssetsProvider(): AssetsProvider
+    fun provideDisplay(): Display
 }

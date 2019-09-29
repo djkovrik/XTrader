@@ -1,8 +1,8 @@
 package com.sedsoftware.exchange.binance.di
 
-import com.sedsoftware.core.di.provider.BinanceProvider
-import com.sedsoftware.core.di.provider.CoinMarketCapProvider
-import com.sedsoftware.core.di.provider.DeviceToolsProvider
+import com.sedsoftware.core.di.BinanceProvider
+import com.sedsoftware.core.di.CoinMarketCapProvider
+import com.sedsoftware.core.di.DeviceToolsProvider
 import com.sedsoftware.exchange.binance.di.module.BinanceDatabaseModule
 import com.sedsoftware.exchange.binance.di.module.BinanceExportModule
 import com.sedsoftware.exchange.binance.di.module.BinanceNetworkModule

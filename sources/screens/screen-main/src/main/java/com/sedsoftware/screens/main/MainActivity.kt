@@ -6,7 +6,7 @@ import android.view.animation.LinearInterpolator
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
-import com.sedsoftware.core.di.provider.MainActivityToolsProvider
+import com.sedsoftware.core.di.MainActivityToolsProvider
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch

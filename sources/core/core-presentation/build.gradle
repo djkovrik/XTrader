@@ -22,8 +22,6 @@ dependencies {
     implementation JetPackDependencies.lifecycle
     implementation JetPackDependencies.lifecycleRuntimeKtx
     implementation JetPackDependencies.lifecycleViewModelKtx
-    kapt JetPackDependencies.lifecycleCompiler
-
     implementation JetPackDependencies.materialComponents
 
     implementation UiDependencies.materialValues

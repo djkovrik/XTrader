@@ -1,11 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: "de.mannodermaus.android-junit5"
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
-apply from: '../../spek-android-config.gradle'
 
 dependencies {
     implementation project(':core-di')
@@ -16,26 +14,4 @@ dependencies {
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
-
-    implementation CoreDependencies.retrofit
-    implementation CoreDependencies.okhttp
-    implementation CoreDependencies.moshi
-    implementation CoreDependencies.moshiKotlin
-    implementation CoreDependencies.retrofitMoshiConverter
-    implementation CoreDependencies.threetenabp
-
-    implementation JetPackDependencies.lifecycle
-    implementation JetPackDependencies.lifecycleLiveDataKtx
-    kapt JetPackDependencies.lifecycleCompiler
-
-    implementation JetPackDependencies.room
-    implementation JetPackDependencies.roomKtx
-    kapt JetPackDependencies.roomCompiler
-
-    testImplementation TestingDependencies.spekDsl
-    testImplementation TestingDependencies.spekRunner
-    testImplementation TestingDependencies.expekt
-
-    androidTestImplementation TestingDependencies.androidTestRunner
-    androidTestRuntimeOnly TestingDependencies.junit5Instrumentation
 }

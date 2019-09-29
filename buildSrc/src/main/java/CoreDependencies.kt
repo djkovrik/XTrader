@@ -1,4 +1,5 @@
 import Versions.ADAPTER_DELEGATES_VERSION
+import Versions.CICERONE_VERSION
 import Versions.DAGGER_VERSION
 import Versions.MOSHI_VERSION
 import Versions.OKHTTP_VERSION
@@ -6,6 +7,7 @@ import Versions.RETROFIT_VERSION
 import Versions.THREE_TEN_ABP_VERSION
 
 object CoreDependencies {
+    const val cicerone = "ru.terrakok.cicerone:cicerone:$CICERONE_VERSION"
     const val threetenabp = "com.jakewharton.threetenabp:threetenabp:$THREE_TEN_ABP_VERSION"
     const val adapterDelegates = "com.hannesdorfmann:adapterdelegates4:$ADAPTER_DELEGATES_VERSION"
     const val dagger = "com.google.dagger:dagger:$DAGGER_VERSION"

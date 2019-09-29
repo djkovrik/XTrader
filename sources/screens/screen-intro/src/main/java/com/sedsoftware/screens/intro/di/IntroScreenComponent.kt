@@ -1,6 +1,6 @@
 package com.sedsoftware.screens.intro.di
 
-import com.sedsoftware.core.di.provider.MainActivityToolsProvider
+import com.sedsoftware.core.di.MainActivityToolsProvider
 import com.sedsoftware.screens.intro.IntroScreenFragment
 import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter
 import dagger.BindsInstance

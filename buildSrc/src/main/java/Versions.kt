@@ -23,6 +23,7 @@ object Versions {
     const val MOSHI_VERSION = "1.8.0"
     const val OKHTTP_VERSION = "4.2.0"
     const val THREE_TEN_ABP_VERSION = "1.2.1"
+    const val CICERONE_VERSION = "5.0.0"
 
     // Kotlin
     const val KOTLIN_VERSION = "1.3.50"

@@ -1,9 +1,9 @@
 package com.sedsoftware.exchange.manager.di
 
-import com.sedsoftware.core.di.provider.BinanceProvider
-import com.sedsoftware.core.di.provider.CoinMarketCapProvider
-import com.sedsoftware.core.di.provider.DeviceToolsProvider
-import com.sedsoftware.core.di.provider.ExchangeManagerProvider
+import com.sedsoftware.core.di.BinanceProvider
+import com.sedsoftware.core.di.CoinMarketCapProvider
+import com.sedsoftware.core.di.DeviceToolsProvider
+import com.sedsoftware.core.di.ExchangeManagerProvider
 import com.sedsoftware.exchange.binance.di.BinanceComponent
 import com.sedsoftware.exchange.manager.di.module.ExchangeManagerModule
 import dagger.Component

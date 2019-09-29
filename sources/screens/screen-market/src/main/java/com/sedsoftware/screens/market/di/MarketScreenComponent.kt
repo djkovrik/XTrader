@@ -1,6 +1,6 @@
 package com.sedsoftware.screens.market.di
 
-import com.sedsoftware.core.di.provider.MainActivityToolsProvider
+import com.sedsoftware.core.di.MainActivityToolsProvider
 import com.sedsoftware.screens.market.MarketScreenFragment
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
 import dagger.BindsInstance

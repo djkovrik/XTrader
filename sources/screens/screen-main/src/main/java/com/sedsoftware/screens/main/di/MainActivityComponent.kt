@@ -1,9 +1,9 @@
 package com.sedsoftware.screens.main.di
 
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
-import com.sedsoftware.core.di.provider.AppProvider
-import com.sedsoftware.core.di.provider.MainActivityToolsProvider
-import com.sedsoftware.core.di.scope.ActivityScope
+import com.sedsoftware.core.di.AppProvider
+import com.sedsoftware.core.di.MainActivityToolsProvider
+import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.screens.main.MainActivity
 import com.sedsoftware.screens.main.di.module.MainActivityModule
 import dagger.BindsInstance
@@ -17,7 +17,7 @@ import dagger.Component
         MainActivityModule::class
     ]
 )
-@ActivityScope
+@ScreenScope
 interface MainActivityComponent : MainActivityToolsProvider {
 
     @Component.Factory
