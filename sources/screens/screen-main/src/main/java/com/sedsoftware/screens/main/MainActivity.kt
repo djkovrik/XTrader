@@ -3,6 +3,8 @@ package com.sedsoftware.screens.main
 import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.holder.ActivityToolsHolder
@@ -18,6 +20,11 @@ import com.sedsoftware.screens.main.di.MainActivityComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
+import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import ru.terrakok.cicerone.commands.Command
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
 
@@ -32,6 +39,22 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
         val appComponent = (applicationContext as App).getAppComponent()
         MainActivityComponent.Initializer.init(appComponent, this)
     }
+
+    private val navigator: Navigator =
+        object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
+            override fun setupFragmentTransaction(
+                command: Command?,
+                currentFragment: Fragment?,
+                nextFragment: Fragment?,
+                fragmentTransaction: FragmentTransaction
+            ) {
+                // Fix incorrect order lifecycle callback of MainFragment
+                fragmentTransaction.setReorderingAllowed(true)
+            }
+        }
+
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
 
     private lateinit var mainActivityViewModel: MainActivityViewModel
 
@@ -70,8 +93,13 @@ class MainActivity : BaseActivity(), ActivityToolsHolder, SnackbarDelegate {
             ))
     }
 
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        navigatorHolder.setNavigator(navigator)
+    }
 
     override fun onPause() {
+        navigatorHolder.removeNavigator()
         notificationJob?.cancel()
         super.onPause()
     }

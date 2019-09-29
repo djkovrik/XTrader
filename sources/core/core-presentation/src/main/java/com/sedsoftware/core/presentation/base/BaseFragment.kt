@@ -52,7 +52,7 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
-    protected fun notifyTop(message: String) {
+    private fun notifyTop(message: String) {
         snackbarDelegate.notifyOnTop(message)
     }
 }
