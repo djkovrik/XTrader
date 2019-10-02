@@ -12,6 +12,7 @@ dependencies {
     implementation CoreDependencies.dagger
     implementation CoreDependencies.okhttp
     implementation CoreDependencies.moshi
+    implementation CoreDependencies.cicerone
 
     implementation JetPackDependencies.lifecycle
 }

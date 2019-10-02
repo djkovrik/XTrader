@@ -17,10 +17,14 @@ import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.tools.api.Signer
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
+import ru.terrakok.cicerone.Cicerone
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.Router
 
 interface AppProvider :
     DeviceToolsProvider,
-    ViewModelFactoryProvider
+    ViewModelFactoryProvider,
+    NavigationProvider
 
 interface DeviceToolsProvider {
     fun provideApp(): App
@@ -31,6 +35,12 @@ interface DeviceToolsProvider {
     fun provideMoshi(): Moshi
     fun provideOkHttpClient(): OkHttpClient
     fun provideDefaultDisplay(): Display
+}
+
+interface NavigationProvider {
+    fun provideCicerone(): Cicerone<Router>
+    fun provideRouter(): Router
+    fun provideNavigatorHolder(): NavigatorHolder
 }
 
 interface ViewModelFactoryProvider : ExchangeManagerProvider,
