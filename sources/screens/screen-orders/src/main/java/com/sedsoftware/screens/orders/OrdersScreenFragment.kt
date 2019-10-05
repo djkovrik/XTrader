@@ -11,7 +11,4 @@ class OrdersScreenFragment : BaseFragment() {
 
     override fun getLayoutResId(): Int =
         R.layout.fragment_orders_screen
-
-    override fun inject() {
-    }
 }

@@ -32,7 +32,6 @@ import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.extension.orFalse
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
-import com.sedsoftware.screens.market.di.MarketScreenComponent
 import com.sedsoftware.screens.market.model.CurrencyListItem
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.include_add_pair.*
@@ -82,12 +81,6 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
 
     override fun getLayoutResId(): Int =
         R.layout.fragment_market_screen
-
-    override fun inject() {
-        MarketScreenComponent.Initializer
-            .init(this, parentActivityComponent)
-            .inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

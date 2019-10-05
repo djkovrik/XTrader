@@ -11,7 +11,4 @@ class TrackerScreenFragment : BaseFragment() {
 
     override fun getLayoutResId(): Int =
         R.layout.fragment_tracker_screen
-
-    override fun inject() {
-    }
 }

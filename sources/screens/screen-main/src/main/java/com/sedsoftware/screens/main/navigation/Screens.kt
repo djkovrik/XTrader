@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.main
+package com.sedsoftware.screens.main.navigation
 
 import androidx.fragment.app.Fragment
 import com.sedsoftware.screens.intro.IntroScreenFragment

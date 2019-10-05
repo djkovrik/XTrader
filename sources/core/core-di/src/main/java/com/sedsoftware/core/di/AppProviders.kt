@@ -3,7 +3,7 @@ package com.sedsoftware.core.di
 import android.view.Display
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
-import com.sedsoftware.core.di.qualifier.ExchangeName
+import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
@@ -21,10 +21,10 @@ import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 
+// Global providers
 interface AppProvider :
     DeviceToolsProvider,
-    ViewModelFactoryProvider,
-    NavigationProvider
+    ExchangeManagerProvider
 
 interface DeviceToolsProvider {
     fun provideApp(): App
@@ -36,30 +36,18 @@ interface DeviceToolsProvider {
     fun provideOkHttpClient(): OkHttpClient
     fun provideDefaultDisplay(): Display
 }
-
-interface NavigationProvider {
-    fun provideCicerone(): Cicerone<Router>
-    fun provideRouter(): Router
-    fun provideNavigatorHolder(): NavigatorHolder
-}
-
-interface ViewModelFactoryProvider : ExchangeManagerProvider,
-    CoinMarketCapProvider {
-    fun provideViewModelFactory(): ViewModelProvider.Factory
-}
-
 interface ExchangeManagerProvider : BinanceProvider {
     fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
     fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
     fun provideIconsProvider(): AssetsProvider
 }
 
-interface BinanceProvider {
+interface BinanceProvider : DeviceToolsProvider, CoinMarketCapProvider {
 
-    @ExchangeName(BINANCE)
+    @ForExchange(BINANCE)
     fun provideBinancePairLoader(): CurrencyPairLoader
 
-    @ExchangeName(BINANCE)
+    @ForExchange(BINANCE)
     fun provideBinancePairManager(): CurrencyPairManager
 }
 
@@ -68,9 +56,17 @@ interface CoinMarketCapProvider {
     fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
 }
 
-interface MainActivityToolsProvider {
-    fun provideViewModelFactory(): ViewModelProvider.Factory
+// Local providers
+interface ActivityToolsProvider : AppProvider {
+    fun provideCicerone(): Cicerone<Router>
+    fun provideRouter(): Router
+    fun provideNavigatorHolder(): NavigatorHolder
     fun provideSnackbarDelegate(): SnackbarDelegate
-    fun provideAssetsProvider(): AssetsProvider
-    fun provideDisplay(): Display
+}
+
+interface FlowToolsProvider : AppProvider {
+    fun provideViewModelFactory(): ViewModelProvider.Factory
+    fun provideCicerone(): Cicerone<Router>
+    fun provideRouter(): Router
+    fun provideNavigatorHolder(): NavigatorHolder
 }

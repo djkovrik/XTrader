@@ -11,8 +11,4 @@ class WalletScreenFragment : BaseFragment() {
 
     override fun getLayoutResId(): Int =
         R.layout.fragment_wallet_screen
-
-    override fun inject() {
-    }
 }
-

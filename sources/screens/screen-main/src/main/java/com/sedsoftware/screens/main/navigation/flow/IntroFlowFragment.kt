@@ -1,7 +1,7 @@
 package com.sedsoftware.screens.main.navigation.flow
 
 import com.sedsoftware.core.presentation.base.FlowFragment
-import com.sedsoftware.screens.main.Screens
+import com.sedsoftware.screens.main.navigation.Screens
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 class IntroFlowFragment : FlowFragment() {
@@ -11,8 +11,4 @@ class IntroFlowFragment : FlowFragment() {
     }
 
     override fun getLaunchScreen(): SupportAppScreen = Screens.Intro
-
-    override fun inject() {
-
-    }
 }

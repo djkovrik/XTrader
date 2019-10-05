@@ -6,4 +6,4 @@ import kotlin.annotation.AnnotationRetention.RUNTIME
 
 @Qualifier
 @Retention(RUNTIME)
-annotation class ExchangeName(val value: ExchangeType)
+annotation class ForExchange(val value: ExchangeType)

@@ -15,7 +15,6 @@ import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter
-import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.model.ExchangeListItem
 import kotlinx.android.synthetic.main.fragment_intro_screen.*
 import javax.inject.Inject
@@ -44,9 +43,9 @@ class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
         R.layout.fragment_intro_screen
 
     override fun inject() {
-        IntroScreenComponent.Initializer
-            .init(this, parentActivityComponent)
-            .inject(this)
+//        IntroScreenComponent.Initializer
+//            .init(this, parentActivityComponent)
+//            .inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
