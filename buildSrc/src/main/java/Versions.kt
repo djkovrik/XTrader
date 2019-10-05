@@ -19,6 +19,7 @@ object Versions {
     // Core
     const val ADAPTER_DELEGATES_VERSION = "4.2.0"
     const val DAGGER_VERSION = "2.24"
+    const val INJECTION_HOLDER_VERSION = "1.0.5"
     const val RETROFIT_VERSION = "2.6.1"
     const val MOSHI_VERSION = "1.8.0"
     const val OKHTTP_VERSION = "4.2.0"

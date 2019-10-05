@@ -84,6 +84,7 @@ dependencies {
     implementation CoreDependencies.moshiKotlin
 
 
+    implementation CoreDependencies.injectionHolder
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 

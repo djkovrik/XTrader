@@ -1,6 +1,7 @@
 package com.sedsoftware.xtrader
 
 import android.app.Application
+import com.github.chernovdmitriy.injectionholderx.InjectionHolderX
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.AppProvider
@@ -16,6 +17,7 @@ class XTraderApp : Application(), App {
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
+        InjectionHolderX.init(this)
         appComponent.inject(this)
 
         initDebugTools()
@@ -25,8 +27,10 @@ class XTraderApp : Application(), App {
         appComponent
 
     private fun initDebugTools() {
-        Timber.uprootAll()
+        if (BuildConfig.DEBUG) {
 //        AndroidDevMetrics.initWith(this)
-        Timber.plant(Timber.DebugTree())
+            Timber.uprootAll()
+            Timber.plant(Timber.DebugTree())
+        }
     }
 }
