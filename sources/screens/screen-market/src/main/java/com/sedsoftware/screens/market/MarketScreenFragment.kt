@@ -42,6 +42,18 @@ import javax.inject.Named
 
 class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
 
+    companion object {
+
+        fun newInstance(): MarketScreenFragment = MarketScreenFragment()
+
+        private const val DIALOG_ANIMATION_DURATION = 250L
+        private const val DIALOG_OVERLAY_ANIMATION_DELAY = 150L
+        private const val ITEM_CLICK_SCROLL_DELAY = 750L
+        private const val ALPHA_GRAYED = 0.7f
+        private const val ALPHA_NORMAL = 1f
+        private const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
+    }
+
     private val fastOutLinearInInterpolator: Interpolator by lazy {
         AnimationUtils.loadInterpolator(context, android.R.interpolator.fast_out_linear_in)
     }
@@ -380,15 +392,5 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
             currentItems[index].isSelected = true
             adapter.notifyItemChanged(index)
         }
-    }
-
-    private companion object {
-        const val DIALOG_ANIMATION_DURATION = 250L
-        const val DIALOG_OVERLAY_ANIMATION_DELAY = 150L
-        const val ITEM_CLICK_SCROLL_DELAY = 750L
-        const val ALPHA_GRAYED = 0.7f
-        const val ALPHA_NORMAL = 1f
-
-        const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
     }
 }

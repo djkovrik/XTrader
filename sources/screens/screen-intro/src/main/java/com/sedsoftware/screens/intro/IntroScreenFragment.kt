@@ -22,6 +22,19 @@ import javax.inject.Inject
 
 class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
 
+    companion object {
+
+        fun newInstance(): IntroScreenFragment = IntroScreenFragment()
+
+        private const val START_ANIMATION_DELAY = 100L
+        private const val ANIMATION_DURATION = 250L
+        private const val TRANSLATION_DEFAULT = 0f
+        private const val BASE_VIEW_TRANSLATION = 100f
+        private const val ALPHA_ZERO = 0f
+        private const val ALPHA_GRAYED = 0.7f
+        private const val ALPHA_NORMAL = 1f
+    }
+
     @Inject
     lateinit var exchangesAdapter: ExchangeListAdapter
 
@@ -121,15 +134,5 @@ class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
             introButton.alpha = ALPHA_GRAYED
             introButton.isEnabled = false
         }
-    }
-
-    private companion object {
-        const val START_ANIMATION_DELAY = 100L
-        const val ANIMATION_DURATION = 250L
-        const val TRANSLATION_DEFAULT = 0f
-        const val BASE_VIEW_TRANSLATION = 100f
-        const val ALPHA_ZERO = 0f
-        const val ALPHA_GRAYED = 0.7f
-        const val ALPHA_NORMAL = 1f
     }
 }

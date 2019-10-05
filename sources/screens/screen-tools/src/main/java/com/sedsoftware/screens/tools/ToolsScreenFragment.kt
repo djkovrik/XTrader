@@ -4,6 +4,11 @@ import com.sedsoftware.core.presentation.base.BaseFragment
 
 class ToolsScreenFragment : BaseFragment() {
 
+    companion object {
+
+        fun newInstance(): ToolsScreenFragment = ToolsScreenFragment()
+    }
+
     override fun getLayoutResId(): Int =
         R.layout.fragment_tools_screen
 
