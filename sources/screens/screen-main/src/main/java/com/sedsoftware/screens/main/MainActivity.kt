@@ -14,6 +14,7 @@ import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.screens.main.di.ActivityComponent
+import com.sedsoftware.screens.main.navigation.AppLauncher
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
@@ -40,13 +41,15 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
                 nextFragment: Fragment?,
                 fragmentTransaction: FragmentTransaction
             ) {
-                // Fix incorrect order lifecycle callback of MainFragment
                 fragmentTransaction.setReorderingAllowed(true)
             }
         }
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
+
+    @Inject
+    lateinit var launcher: AppLauncher
 
     private var topNotificationTranslation = 0f
 
@@ -55,6 +58,10 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
 
         setContentView(R.layout.activity_main)
         setupViews()
+
+        if (savedInstanceState == null) {
+            launcher.coldStart()
+        }
     }
 
     private fun setupViews() {
