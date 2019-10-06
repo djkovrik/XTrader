@@ -6,22 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.core.di.delegate.SnackbarDelegate
-import com.sedsoftware.core.presentation.R
-import com.sedsoftware.core.presentation.extension.string
+import androidx.lifecycle.ViewModelStoreOwner
+import com.sedsoftware.core.di.App
+import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
-import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
 import com.sedsoftware.core.utils.type.SingleEvent
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    protected val appComponent: AppProvider
+        get() = (requireActivity().applicationContext as App).getAppComponent()
 
     @Inject
-    lateinit var snackbarDelegate: SnackbarDelegate
+    lateinit var storeOwner: ViewModelStoreOwner
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     abstract fun getLayoutResId(): Int
 
@@ -29,15 +30,11 @@ abstract class BaseFragment : Fragment() {
         inflater.inflate(getLayoutResId(), container, false)
 
     protected fun observeFailures(failureEvent: SingleEvent<Failure>?) {
-        failureEvent?.getIfNotHandled()?.let { failure ->
-            when (failure) {
-                is NetworkConnectionMissing -> notifyTop(string(R.string.msg_no_internet_connection))
-                is PairsLoadingError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
-            }
-        }
-    }
-
-    private fun notifyTop(message: String) {
-        snackbarDelegate.notifyOnTop(message)
+//        failureEvent?.getIfNotHandled()?.let { failure ->
+//            when (failure) {
+//                is NetworkConnectionMissing -> notifyTop(string(R.string.msg_no_internet_connection))
+//                is PairsLoadingError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
+//            }
+//        }
     }
 }

@@ -3,7 +3,6 @@ package com.sedsoftware.core.di
 import android.view.Display
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
-import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.entity.Exchange
@@ -25,7 +24,8 @@ import ru.terrakok.cicerone.Router
 // Global providers
 interface AppProvider :
     DeviceToolsProvider,
-    ExchangeManagerProvider
+    ExchangeManagerProvider,
+    CoinMarketCapProvider
 
 interface DeviceToolsProvider {
     fun provideApp(): App
@@ -37,13 +37,19 @@ interface DeviceToolsProvider {
     fun provideOkHttpClient(): OkHttpClient
     fun provideDefaultDisplay(): Display
 }
+
+interface CoinMarketCapProvider {
+    fun provideCurrencyProvider(): CurrencyProvider
+    fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
+}
+
 interface ExchangeManagerProvider : BinanceProvider {
     fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
     fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
     fun provideIconsProvider(): AssetsProvider
 }
 
-interface BinanceProvider : DeviceToolsProvider, CoinMarketCapProvider {
+interface BinanceProvider {
 
     @ForExchange(BINANCE)
     fun provideBinancePairLoader(): CurrencyPairLoader
@@ -52,17 +58,11 @@ interface BinanceProvider : DeviceToolsProvider, CoinMarketCapProvider {
     fun provideBinancePairManager(): CurrencyPairManager
 }
 
-interface CoinMarketCapProvider {
-    fun provideCurrencyProvider(): CurrencyProvider
-    fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
-}
-
 // Local providers
 interface ActivityToolsProvider : AppProvider {
     fun provideCicerone(): Cicerone<Router>
     fun provideRouter(): Router
     fun provideNavigatorHolder(): NavigatorHolder
-    fun provideSnackbarDelegate(): SnackbarDelegate
 }
 
 interface FlowToolsProvider : AppProvider {

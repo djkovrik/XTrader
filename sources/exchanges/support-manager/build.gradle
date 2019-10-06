@@ -12,6 +12,10 @@ dependencies {
     implementation project(':core-utils')
     implementation project(':exchange-binance')
 
+    implementation CoreDependencies.okhttp
+    implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
+
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 }

@@ -23,11 +23,12 @@ interface ExchangeManagerComponent : ExchangeManagerProvider {
         companion object {
 
             fun init(
-                toolsProvider: DeviceToolsProvider,
+                deviceToolsProvider: DeviceToolsProvider,
                 coinMarketCapProvider: CoinMarketCapProvider
             ): ExchangeManagerProvider {
 
-                val binanceProvider = BinanceComponent.Initializer.init(toolsProvider, coinMarketCapProvider)
+                // All exchange providers here
+                val binanceProvider = BinanceComponent.Initializer.init(deviceToolsProvider, coinMarketCapProvider)
 
                 return DaggerExchangeManagerComponent.builder()
                     .binanceProvider(binanceProvider)

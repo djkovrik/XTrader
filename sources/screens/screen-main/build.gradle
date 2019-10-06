@@ -28,6 +28,9 @@ dependencies {
     kapt CoreDependencies.daggerCompiler
 
     implementation CoreDependencies.cicerone
+    implementation CoreDependencies.okhttp
+    implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.materialComponents

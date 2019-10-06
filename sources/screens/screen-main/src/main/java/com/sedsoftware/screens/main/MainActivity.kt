@@ -5,6 +5,7 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.github.chernovdmitriy.injectionholdercore.ComponentOwner
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
@@ -12,6 +13,7 @@ import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
+import com.sedsoftware.screens.main.di.ActivityComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
@@ -21,7 +23,7 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), SnackbarDelegate {
+class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, SnackbarDelegate {
 
     companion object {
         // Animation
@@ -87,6 +89,12 @@ class MainActivity : BaseActivity(), SnackbarDelegate {
         super.onPause()
     }
 
+    override fun inject(component: ActivityComponent) =
+        component.inject(this)
+
+    override fun provideComponent(): ActivityComponent =
+        ActivityComponent.Initializer.init(appComponent)
+
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {
             topNotificationTextView.text = message
@@ -98,6 +106,7 @@ class MainActivity : BaseActivity(), SnackbarDelegate {
             notificationQueue.add(message)
         }
     }
+
     private fun hideNotificationDelayed() {
         notificationJob = launch {
             delay(DELAY_BEFORE_HIDE)

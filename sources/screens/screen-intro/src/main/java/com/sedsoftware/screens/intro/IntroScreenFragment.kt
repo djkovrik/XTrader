@@ -42,16 +42,10 @@ class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
     override fun getLayoutResId(): Int =
         R.layout.fragment_intro_screen
 
-    override fun inject() {
-//        IntroScreenComponent.Initializer
-//            .init(this, parentActivityComponent)
-//            .inject(this)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        introViewModel = viewModel(viewModelFactory) {
+        introViewModel = viewModel(storeOwner, viewModelFactory) {
             observe(exchangeList, ::observeLoaderList)
             observe(anyDownloadCompleted, ::observeDownloadCompletion)
             failure(viewModelFailure, ::observeFailures)
