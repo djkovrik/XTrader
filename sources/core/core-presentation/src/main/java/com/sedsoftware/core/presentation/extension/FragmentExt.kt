@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider.Factory
 import androidx.lifecycle.ViewModelStoreOwner
 import com.sedsoftware.core.utils.extension.orZero
 
-inline fun <reified T : ViewModel> Fragment.viewModel(owner: ViewModelStoreOwner, factory: Factory, body: T.() -> Unit): T {
-    val viewModel = ViewModelProvider(owner, factory).get(T::class.java)
+inline fun <reified T : ViewModel> Fragment.viewModel(factory: Factory, body: T.() -> Unit): T {
+    val viewModel = ViewModelProvider(this, factory).get(T::class.java)
     viewModel.body()
     return viewModel
 }

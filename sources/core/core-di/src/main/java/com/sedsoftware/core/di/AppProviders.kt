@@ -2,7 +2,6 @@ package com.sedsoftware.core.di
 
 import android.view.Display
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.entity.Exchange
@@ -67,7 +66,6 @@ interface ActivityToolsProvider : AppProvider {
 
 interface FlowToolsProvider : AppProvider {
     fun provideViewModelFactory(): ViewModelProvider.Factory
-    fun provideViewModelStoreOwner(): ViewModelStoreOwner
     fun provideCicerone(): Cicerone<Router>
     fun provideRouter(): Router
     fun provideNavigatorHolder(): NavigatorHolder

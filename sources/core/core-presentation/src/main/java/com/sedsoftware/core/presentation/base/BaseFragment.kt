@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.core.utils.type.Failure
@@ -17,9 +16,6 @@ abstract class BaseFragment : Fragment() {
 
     protected val appComponent: AppProvider
         get() = (requireActivity().applicationContext as App).getAppComponent()
-
-    @Inject
-    lateinit var storeOwner: ViewModelStoreOwner
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

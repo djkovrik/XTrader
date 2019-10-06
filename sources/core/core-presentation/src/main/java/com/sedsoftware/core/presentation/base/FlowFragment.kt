@@ -3,6 +3,7 @@ package com.sedsoftware.core.presentation.base
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.sedsoftware.core.di.FlowToolsProvider
 import com.sedsoftware.core.presentation.R
 import com.sedsoftware.core.presentation.extension.setLaunchScreen
 import ru.terrakok.cicerone.Navigator
@@ -39,6 +40,8 @@ abstract class FlowFragment : BaseFragment() {
     }
 
     abstract fun getLaunchScreen(): SupportAppScreen
+
+    abstract fun getFlowComponent(): FlowToolsProvider
 
     override fun getLayoutResId(): Int = R.layout.layout_container
 

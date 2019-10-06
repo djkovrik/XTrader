@@ -2,9 +2,7 @@ package com.sedsoftware.screens.main.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import com.sedsoftware.core.di.key.ViewModelKey
-import com.sedsoftware.core.presentation.lifecycle.FlowViewModelStore
 import com.sedsoftware.screens.intro.IntroScreenViewModel
 import com.sedsoftware.screens.main.factory.ViewModelOwnerFactory
 import com.sedsoftware.screens.market.MarketScreenViewModel
@@ -17,9 +15,6 @@ abstract class FlowViewModelsModule {
 
     @Binds
     abstract fun bindViewModelOwnerFactory(factory: ViewModelOwnerFactory): ViewModelProvider.Factory
-
-    @Binds
-    abstract fun bindViewModelStoreOwner(store: FlowViewModelStore): ViewModelStoreOwner
 
     @Binds
     @IntoMap

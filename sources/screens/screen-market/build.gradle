@@ -18,7 +18,8 @@ dependencies {
     implementation project(':core-utils')
 
     implementation CoreDependencies.adapterDelegates
-
+    implementation CoreDependencies.cicerone
+    implementation CoreDependencies.injectionHolder
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 

@@ -85,7 +85,7 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        marketViewModel = viewModel(storeOwner, viewModelFactory) {
+        marketViewModel = viewModel(viewModelFactory) {
             observe(chosenExchange, ::observeChosenExchange)
             observe(baseCurrencies, ::observeBaseCurrencies)
             observe(marketCurrencies, ::observeMarketCurrencies)

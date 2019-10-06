@@ -22,15 +22,13 @@ dependencies {
 
     implementation project(':support-coinmarketcap')
 
-
-    implementation CoreDependencies.injectionHolder
-    implementation CoreDependencies.dagger
-    kapt CoreDependencies.daggerCompiler
-
     implementation CoreDependencies.cicerone
     implementation CoreDependencies.okhttp
     implementation CoreDependencies.moshi
     implementation CoreDependencies.moshiKotlin
+    implementation CoreDependencies.injectionHolder
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
     implementation JetPackDependencies.materialComponents
