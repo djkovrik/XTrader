@@ -2,6 +2,7 @@ package com.sedsoftware.core.di
 
 import android.view.Display
 import androidx.lifecycle.ViewModelProvider
+import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.entity.Exchange
@@ -16,9 +17,6 @@ import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.tools.api.Signer
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
 
 // Global providers
 interface AppProvider :
@@ -59,14 +57,9 @@ interface BinanceProvider {
 
 // Local providers
 interface ActivityToolsProvider : AppProvider {
-    fun provideCicerone(): Cicerone<Router>
-    fun provideRouter(): Router
-    fun provideNavigatorHolder(): NavigatorHolder
+    fun provideSnackBarDelegate(): SnackbarDelegate
 }
 
-interface FlowToolsProvider : AppProvider {
+interface FlowToolsProvider : ActivityToolsProvider {
     fun provideViewModelFactory(): ViewModelProvider.Factory
-    fun provideCicerone(): Cicerone<Router>
-    fun provideRouter(): Router
-    fun provideNavigatorHolder(): NavigatorHolder
 }

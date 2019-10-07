@@ -6,6 +6,10 @@ import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.github.chernovdmitriy.injectionholdercore.ComponentOwner
+import com.github.chernovdmitriy.injectionholderx.InjectionHolderX
+import com.sedsoftware.core.di.ActivityToolsProvider
+import com.sedsoftware.core.di.App
+import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
@@ -32,6 +36,12 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
         private const val ANIMATION_DURATION = 200L
         private const val DELAY_BEFORE_HIDE = 2000L
     }
+
+    override val appProvider: AppProvider
+        get() = (applicationContext as App).getAppComponent()
+
+    override val activityToolsProvider: ActivityToolsProvider
+        get() = InjectionHolderX.instance.getComponent(this)
 
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
@@ -100,7 +110,7 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
         component.inject(this)
 
     override fun provideComponent(): ActivityComponent =
-        ActivityComponent.Initializer.init(appComponent)
+        ActivityComponent.Initializer.init(appProvider, this)
 
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {

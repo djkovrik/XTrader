@@ -19,7 +19,7 @@ class IntroFlowFragment : FlowFragment(), ComponentOwner<FlowComponent> {
     override fun inject(component: FlowComponent) = component.inject(this)
 
     override fun provideComponent(): FlowComponent =
-        FlowComponent.Initializer.init(appComponent)
+        FlowComponent.Initializer.init(activityToolsProvider)
 
     override fun getComponentKey(): String = javaClass.name
 

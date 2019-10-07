@@ -6,19 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.AppProvider
+import com.sedsoftware.core.di.ActivityToolsProvider
+import com.sedsoftware.core.di.delegate.SnackbarDelegate
+import com.sedsoftware.core.presentation.R
+import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.utils.type.Failure
+import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
+import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
 import com.sedsoftware.core.utils.type.SingleEvent
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
 
-    protected val appComponent: AppProvider
-        get() = (requireActivity().applicationContext as App).getAppComponent()
+    protected val activityToolsProvider: ActivityToolsProvider
+        get() = (activity as BaseActivity).activityToolsProvider
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var snackbarDelegate: SnackbarDelegate
 
     abstract fun getLayoutResId(): Int
 
@@ -26,11 +33,15 @@ abstract class BaseFragment : Fragment() {
         inflater.inflate(getLayoutResId(), container, false)
 
     protected fun observeFailures(failureEvent: SingleEvent<Failure>?) {
-//        failureEvent?.getIfNotHandled()?.let { failure ->
-//            when (failure) {
-//                is NetworkConnectionMissing -> notifyTop(string(R.string.msg_no_internet_connection))
-//                is PairsLoadingError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
-//            }
-//        }
+        failureEvent?.getIfNotHandled()?.let { failure ->
+            when (failure) {
+                is NetworkConnectionMissing -> notifyTop(string(R.string.msg_no_internet_connection))
+                is PairsLoadingError -> notifyTop(string(R.string.msg_server_error, failure.throwable.message))
+            }
+        }
+    }
+
+    private fun notifyTop(message: String) {
+        snackbarDelegate.notifyOnTop(message)
     }
 }

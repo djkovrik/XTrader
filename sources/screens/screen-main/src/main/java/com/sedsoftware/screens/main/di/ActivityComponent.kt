@@ -2,9 +2,11 @@ package com.sedsoftware.screens.main.di
 
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.AppProvider
+import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.scope.ActivityScope
 import com.sedsoftware.screens.main.MainActivity
 import com.sedsoftware.screens.main.di.module.ActivityModule
+import dagger.BindsInstance
 import dagger.Component
 
 @Component(
@@ -20,7 +22,10 @@ interface ActivityComponent : ActivityToolsProvider {
 
     @Component.Factory
     interface Factory {
-        fun create(appProvider: AppProvider): ActivityComponent
+        fun create(
+            appProvider: AppProvider,
+            @BindsInstance snackbarDelegate: SnackbarDelegate
+        ): ActivityComponent
     }
 
     fun inject(activity: MainActivity)
@@ -28,11 +33,11 @@ interface ActivityComponent : ActivityToolsProvider {
     class Initializer private constructor() {
         companion object {
 
-            fun init(appProvider: AppProvider): ActivityComponent {
+            fun init(appProvider: AppProvider, snackbarDelegate: SnackbarDelegate): ActivityComponent {
 
                 return DaggerActivityComponent
                     .factory()
-                    .create(appProvider)
+                    .create(appProvider, snackbarDelegate)
             }
         }
     }
