@@ -53,9 +53,22 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
         private const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
     }
 
+    override val layoutResId: Int = R.layout.fragment_market_screen
+
     private val fastOutLinearInInterpolator: Interpolator by lazy {
         AnimationUtils.loadInterpolator(context, android.R.interpolator.fast_out_linear_in)
     }
+
+    private lateinit var marketViewModel: MarketScreenViewModel
+
+    private var isDialogExpanded: Boolean = false
+    private var defaultDialogCenterX = 0f
+    private var defaultDialogCenterY = 0f
+    private var dialogTranslationX = 0f
+    private var dialogTranslationY = 0f
+    private var defaultFabCenterX = 0f
+    private var defaultFabCenterY = 0f
+
 
     @Inject
     lateinit var defaultDisplay: Display
@@ -68,19 +81,6 @@ class MarketScreenFragment : BaseFragment(), CurrencyListAdapter.Listener {
     @Named("market")
     lateinit var marketAdapter: CurrencyListAdapter
 
-    private var isDialogExpanded: Boolean = false
-
-    private var defaultDialogCenterX = 0f
-    private var defaultDialogCenterY = 0f
-    private var dialogTranslationX = 0f
-    private var dialogTranslationY = 0f
-    private var defaultFabCenterX = 0f
-    private var defaultFabCenterY = 0f
-
-    private lateinit var marketViewModel: MarketScreenViewModel
-
-    override fun getLayoutResId(): Int =
-        R.layout.fragment_market_screen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

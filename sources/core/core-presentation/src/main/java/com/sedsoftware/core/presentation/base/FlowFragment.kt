@@ -16,11 +16,11 @@ import javax.inject.Inject
 
 abstract class FlowFragment : BaseFragment() {
 
-    @Inject
-    lateinit var router: Router
+    abstract val flowToolsProvider: FlowToolsProvider
 
-    @Inject
-    lateinit var navigatorHolder: NavigatorHolder
+    abstract val launchScreen: SupportAppScreen
+
+    override val layoutResId: Int = R.layout.layout_container
 
     private val navigator: Navigator by lazy {
         object : SupportAppNavigator(this.activity, childFragmentManager, R.id.container) {
@@ -39,16 +39,18 @@ abstract class FlowFragment : BaseFragment() {
         }
     }
 
-    abstract fun getLaunchScreen(): SupportAppScreen
 
-    abstract fun getFlowComponent(): FlowToolsProvider
+    @Inject
+    lateinit var router: Router
 
-    override fun getLayoutResId(): Int = R.layout.layout_container
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (childFragmentManager.fragments.isEmpty()) {
-            navigator.setLaunchScreen(getLaunchScreen())
+            navigator.setLaunchScreen(launchScreen)
         }
     }
 

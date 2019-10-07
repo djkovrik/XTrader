@@ -55,13 +55,15 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
             }
         }
 
+    private var topNotificationTranslation = 0f
+
+
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
     @Inject
     lateinit var launcher: AppLauncher
 
-    private var topNotificationTranslation = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -9,6 +9,5 @@ class TrackerScreenFragment : BaseFragment() {
         fun newInstance(): TrackerScreenFragment = TrackerScreenFragment()
     }
 
-    override fun getLayoutResId(): Int =
-        R.layout.fragment_tracker_screen
+    override val layoutResId: Int = R.layout.fragment_tracker_screen
 }

@@ -18,19 +18,21 @@ import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
 
+    protected abstract val layoutResId: Int
+
     protected val activityToolsProvider: ActivityToolsProvider
         get() = (activity as BaseActivity).activityToolsProvider
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     @Inject
     lateinit var snackbarDelegate: SnackbarDelegate
 
-    abstract fun getLayoutResId(): Int
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(getLayoutResId(), container, false)
+        inflater.inflate(layoutResId, container, false)
 
     protected fun observeFailures(failureEvent: SingleEvent<Failure>?) {
         failureEvent?.getIfNotHandled()?.let { failure ->

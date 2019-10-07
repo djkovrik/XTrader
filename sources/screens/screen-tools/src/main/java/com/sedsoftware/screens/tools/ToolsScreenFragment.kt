@@ -9,6 +9,5 @@ class ToolsScreenFragment : BaseFragment() {
         fun newInstance(): ToolsScreenFragment = ToolsScreenFragment()
     }
 
-    override fun getLayoutResId(): Int =
-        R.layout.fragment_tools_screen
+    override val layoutResId: Int = R.layout.fragment_tools_screen
 }

@@ -14,15 +14,18 @@ class IntroFlowFragment : FlowFragment(), ComponentOwner<FlowComponent> {
         fun newInstance(): IntroFlowFragment = IntroFlowFragment()
     }
 
-    override fun getLaunchScreen(): SupportAppScreen = Screens.Intro
+    override val flowToolsProvider: FlowToolsProvider =
+        InjectionHolderX.instance.getComponent(this)
 
-    override fun inject(component: FlowComponent) = component.inject(this)
+    override val launchScreen: SupportAppScreen =
+        Screens.Intro
+
+
+    override fun inject(component: FlowComponent) =
+        component.inject(this)
 
     override fun provideComponent(): FlowComponent =
         FlowComponent.Initializer.init(activityToolsProvider)
 
     override fun getComponentKey(): String = javaClass.name
-
-    override fun getFlowComponent(): FlowToolsProvider =
-        InjectionHolderX.instance.getComponent(this)
 }

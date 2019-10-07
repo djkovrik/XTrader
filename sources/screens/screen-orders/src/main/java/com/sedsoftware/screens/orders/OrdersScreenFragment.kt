@@ -9,6 +9,5 @@ class OrdersScreenFragment : BaseFragment() {
         fun newInstance(): OrdersScreenFragment = OrdersScreenFragment()
     }
 
-    override fun getLayoutResId(): Int =
-        R.layout.fragment_orders_screen
+    override val layoutResId: Int = R.layout.fragment_orders_screen
 }

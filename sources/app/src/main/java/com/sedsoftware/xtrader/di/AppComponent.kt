@@ -37,7 +37,6 @@ interface AppComponent : AppProvider {
                 val exchangeManagerProvider =
                     ExchangeManagerComponent.Initializer.init(deviceToolsProvider, coinMarketCapProvider)
 
-
                 return DaggerAppComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)
                     .coinMarketCapProvider(coinMarketCapProvider)

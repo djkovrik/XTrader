@@ -37,13 +37,14 @@ class IntroScreenFragment : BaseFragment(), ComponentOwner<IntroScreenComponent>
         private const val ALPHA_NORMAL = 1f
     }
 
-    @Inject
-    lateinit var exchangesAdapter: ExchangeListAdapter
+    override val layoutResId: Int = R.layout.fragment_intro_screen
 
     private lateinit var introViewModel: IntroScreenViewModel
 
-    override fun getLayoutResId(): Int =
-        R.layout.fragment_intro_screen
+
+    @Inject
+    lateinit var exchangesAdapter: ExchangeListAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,10 +78,11 @@ class IntroScreenFragment : BaseFragment(), ComponentOwner<IntroScreenComponent>
         }
     }
 
-    override fun inject(component: IntroScreenComponent) = component.inject(this)
+    override fun inject(component: IntroScreenComponent) =
+        component.inject(this)
 
     override fun provideComponent(): IntroScreenComponent =
-        IntroScreenComponent.Initializer.init(this, (parentFragment as FlowFragment).getFlowComponent())
+        IntroScreenComponent.Initializer.init(this, (parentFragment as FlowFragment).flowToolsProvider)
 
     override fun onItemClick(item: ExchangeListItem) {
         introViewModel.onExchangeClicked(item.exchange)
