@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.main.navigation.flow
+package com.sedsoftware.screens.main.navigation.flow.fragment
 
 import com.github.chernovdmitriy.injectionholdercore.ComponentOwner
 import com.github.chernovdmitriy.injectionholderx.InjectionHolderX
@@ -8,17 +8,18 @@ import com.sedsoftware.screens.main.di.FlowComponent
 import com.sedsoftware.screens.main.navigation.Screens
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
-class MainFlowFragment : FlowFragment(), ComponentOwner<FlowComponent> {
+class IntroFlowFragment : FlowFragment(), ComponentOwner<FlowComponent> {
 
     companion object {
-        fun newInstance(): MainFlowFragment = MainFlowFragment()
+        fun newInstance(): IntroFlowFragment =
+            IntroFlowFragment()
     }
 
     override val flowToolsProvider: FlowToolsProvider =
         InjectionHolderX.instance.getComponent(this)
 
     override val launchScreen: SupportAppScreen =
-        Screens.Market
+        Screens.Intro
 
 
     override fun inject(component: FlowComponent) =

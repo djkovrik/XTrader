@@ -2,8 +2,8 @@ package com.sedsoftware.screens.main.navigation
 
 import androidx.fragment.app.Fragment
 import com.sedsoftware.screens.intro.IntroScreenFragment
-import com.sedsoftware.screens.main.navigation.flow.IntroFlowFragment
-import com.sedsoftware.screens.main.navigation.flow.MainFlowFragment
+import com.sedsoftware.screens.main.navigation.flow.fragment.IntroFlowFragment
+import com.sedsoftware.screens.main.navigation.flow.fragment.MainFlowFragment
 import com.sedsoftware.screens.market.MarketScreenFragment
 import com.sedsoftware.screens.orders.OrdersScreenFragment
 import com.sedsoftware.screens.tools.ToolsScreenFragment
@@ -21,6 +21,9 @@ object Screens {
     object MainFlow : SupportAppScreen() {
         override fun getFragment(): Fragment = MainFlowFragment.newInstance()
     }
+
+
+    // Containers
 
     // Screens
     object Intro : SupportAppScreen() {
