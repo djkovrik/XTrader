@@ -1,11 +1,10 @@
-package com.sedsoftware.screens.main.di
+package com.sedsoftware.main.di
 
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.scope.ActivityScope
-import com.sedsoftware.screens.main.MainActivity
-import com.sedsoftware.screens.main.di.module.ActivityModule
+import com.sedsoftware.main.MainActivity
 import dagger.BindsInstance
 import dagger.Component
 

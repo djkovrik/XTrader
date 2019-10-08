@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.main.navigation.flow
+package com.sedsoftware.main.flows
 
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppScreen

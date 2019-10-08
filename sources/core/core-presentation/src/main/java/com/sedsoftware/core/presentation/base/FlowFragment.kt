@@ -3,7 +3,6 @@ package com.sedsoftware.core.presentation.base
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.di.FlowToolsProvider
 import com.sedsoftware.core.presentation.R
 import com.sedsoftware.core.presentation.extension.setLaunchScreen
 import ru.terrakok.cicerone.Navigator
@@ -15,8 +14,6 @@ import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
 abstract class FlowFragment : BaseFragment() {
-
-    abstract val flowToolsProvider: FlowToolsProvider
 
     abstract val launchScreen: SupportAppScreen
 

@@ -60,6 +60,12 @@ interface ActivityToolsProvider : AppProvider {
     fun provideSnackBarDelegate(): SnackbarDelegate
 }
 
-interface FlowToolsProvider : ActivityToolsProvider {
+interface StartingFlowToolsProvider : ActivityToolsProvider {
     fun provideViewModelFactory(): ViewModelProvider.Factory
 }
+
+interface RegularFlowToolsProvider : ActivityToolsProvider {
+    fun provideViewModelFactory(): ViewModelProvider.Factory
+}
+
+interface TabToolsProvider : RegularFlowToolsProvider

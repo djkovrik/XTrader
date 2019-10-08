@@ -24,17 +24,21 @@ project(':support-coinmarketcap').projectDir = new File(rootDir, 'sources/exchan
 include ':support-manager'
 project(':support-manager').projectDir = new File(rootDir, 'sources/exchanges/support-manager')
 
-include ':screen-main'
-project(':screen-main').projectDir = new File(rootDir, 'sources/screens/screen-main')
+include ':main-activity'
+project(':main-activity').projectDir = new File(rootDir, 'sources/screens/main-activity')
+
 include ':screen-intro'
 project(':screen-intro').projectDir = new File(rootDir, 'sources/screens/screen-intro')
-
-include ':screen-wallet'
-project(':screen-wallet').projectDir = new File(rootDir, 'sources/screens/screen-wallet')
-include ':screen-orders'
-project(':screen-orders').projectDir = new File(rootDir, 'sources/screens/screen-orders')
+include ':screen-pin'
+project(':screen-pin').projectDir = new File(rootDir, 'sources/screens/screen-pin')
+include ':screen-home'
+project(':screen-home').projectDir = new File(rootDir, 'sources/screens/screen-home')
 include ':screen-market'
 project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
+include ':screen-orders'
+project(':screen-orders').projectDir = new File(rootDir, 'sources/screens/screen-orders')
+include ':screen-wallet'
+project(':screen-wallet').projectDir = new File(rootDir, 'sources/screens/screen-wallet')
 include ':screen-tracker'
 project(':screen-tracker').projectDir = new File(rootDir, 'sources/screens/screen-tracker')
 include ':screen-tools'

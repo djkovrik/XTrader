@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.main.di.module
+package com.sedsoftware.main.di
 
 import com.sedsoftware.core.di.scope.ActivityScope
 import dagger.Module

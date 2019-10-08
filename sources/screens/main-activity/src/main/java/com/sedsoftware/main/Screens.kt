@@ -1,9 +1,9 @@
 package com.sedsoftware.screens.main.navigation
 
 import androidx.fragment.app.Fragment
+import com.sedsoftware.main.flows.regular.RegularFlowFragment
+import com.sedsoftware.main.flows.starting.StartingFlowFragment
 import com.sedsoftware.screens.intro.IntroScreenFragment
-import com.sedsoftware.screens.main.navigation.flow.fragment.IntroFlowFragment
-import com.sedsoftware.screens.main.navigation.flow.fragment.MainFlowFragment
 import com.sedsoftware.screens.market.MarketScreenFragment
 import com.sedsoftware.screens.orders.OrdersScreenFragment
 import com.sedsoftware.screens.tools.ToolsScreenFragment
@@ -14,12 +14,12 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 object Screens {
 
     // Flows
-    object IntroFlow : SupportAppScreen() {
-        override fun getFragment(): Fragment = IntroFlowFragment.newInstance()
+    object StartingFlow : SupportAppScreen() {
+        override fun getFragment(): Fragment = StartingFlowFragment.newInstance()
     }
 
-    object MainFlow : SupportAppScreen() {
-        override fun getFragment(): Fragment = MainFlowFragment.newInstance()
+    object RegularFlow : SupportAppScreen() {
+        override fun getFragment(): Fragment = RegularFlowFragment.newInstance()
     }
 
 
