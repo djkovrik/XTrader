@@ -1,7 +1,7 @@
 package com.sedsoftware.main
 
 import com.sedsoftware.core.tools.api.Settings
-import com.sedsoftware.screens.main.navigation.Screens.StartingFlow
+import com.sedsoftware.screens.main.navigation.Screens
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
@@ -11,7 +11,10 @@ class MainAppLauncher @Inject constructor(
 ) {
 
     fun coldStart() {
-        val rootScreen = StartingFlow
+        val rootScreen =
+            if (settings.isExchangesDownloaded) Screens.RegularFlow
+            else Screens.StartingFlow
+
         router.newRootScreen(rootScreen)
     }
 }

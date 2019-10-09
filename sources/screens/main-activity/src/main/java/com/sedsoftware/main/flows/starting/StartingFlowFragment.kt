@@ -2,11 +2,9 @@ package com.sedsoftware.main.flows.starting
 
 import com.github.chernovdmitriy.injectionholdercore.ComponentOwner
 import com.github.chernovdmitriy.injectionholderx.InjectionHolderX
-import com.sedsoftware.core.di.FlowToolsProvider
 import com.sedsoftware.core.di.StartingFlowToolsProvider
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.flows.starting.di.StartingFlowComponent
-import com.sedsoftware.screens.main.di.FlowComponent
 import com.sedsoftware.screens.main.navigation.Screens
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 

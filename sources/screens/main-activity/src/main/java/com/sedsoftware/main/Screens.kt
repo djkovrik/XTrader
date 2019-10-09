@@ -5,11 +5,16 @@ import com.sedsoftware.main.flows.regular.RegularFlowFragment
 import com.sedsoftware.main.flows.starting.StartingFlowFragment
 import com.sedsoftware.screens.intro.IntroScreenFragment
 import com.sedsoftware.screens.market.MarketScreenFragment
+import com.sedsoftware.screens.market.MarketTabContainerFragment
 import com.sedsoftware.screens.orders.OrdersScreenFragment
+import com.sedsoftware.screens.orders.OrdersTabContainerFragment
 import com.sedsoftware.screens.pin.PinScreenFragment
 import com.sedsoftware.screens.tools.ToolsScreenFragment
+import com.sedsoftware.screens.tools.ToolsTabContainerFragment
 import com.sedsoftware.screens.tracker.TrackerScreenFragment
+import com.sedsoftware.screens.tracker.TrackerTabContainerFragment
 import com.sedsoftware.screens.wallet.WalletScreenFragment
+import com.sedsoftware.screens.wallet.WalletTabContainerFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {
@@ -25,6 +30,26 @@ object Screens {
 
 
     // Containers
+    object MarketTabContainer : SupportAppScreen() {
+        override fun getFragment(): Fragment = MarketTabContainerFragment.newInstance()
+    }
+
+    object WalletTabContainer : SupportAppScreen() {
+        override fun getFragment(): Fragment = WalletTabContainerFragment.newInstance()
+    }
+
+    object OrdersTabContainer : SupportAppScreen() {
+        override fun getFragment(): Fragment = OrdersTabContainerFragment.newInstance()
+    }
+
+    object TrackerTabContainer : SupportAppScreen() {
+        override fun getFragment(): Fragment = TrackerTabContainerFragment.newInstance()
+    }
+
+    object ToolsTabContainer : SupportAppScreen() {
+        override fun getFragment(): Fragment = ToolsTabContainerFragment.newInstance()
+    }
+
 
     // Screens
     object Intro : SupportAppScreen() {

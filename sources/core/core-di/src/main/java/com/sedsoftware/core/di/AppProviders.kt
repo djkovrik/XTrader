@@ -17,6 +17,9 @@ import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.tools.api.Signer
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
+import ru.terrakok.cicerone.Cicerone
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.Router
 
 // Global providers
 interface AppProvider :
@@ -58,6 +61,9 @@ interface BinanceProvider {
 // Local providers
 interface ActivityToolsProvider : AppProvider {
     fun provideSnackBarDelegate(): SnackbarDelegate
+    fun provideCicerone(): Cicerone<Router>
+    fun provideRouter(): Router
+    fun provideNavigatorHolder(): NavigatorHolder
 }
 
 interface StartingFlowToolsProvider : ActivityToolsProvider {
