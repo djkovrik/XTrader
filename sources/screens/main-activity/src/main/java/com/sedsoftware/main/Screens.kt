@@ -6,6 +6,7 @@ import com.sedsoftware.main.flows.starting.StartingFlowFragment
 import com.sedsoftware.screens.intro.IntroScreenFragment
 import com.sedsoftware.screens.market.MarketScreenFragment
 import com.sedsoftware.screens.orders.OrdersScreenFragment
+import com.sedsoftware.screens.pin.PinScreenFragment
 import com.sedsoftware.screens.tools.ToolsScreenFragment
 import com.sedsoftware.screens.tracker.TrackerScreenFragment
 import com.sedsoftware.screens.wallet.WalletScreenFragment
@@ -28,6 +29,10 @@ object Screens {
     // Screens
     object Intro : SupportAppScreen() {
         override fun getFragment(): Fragment = IntroScreenFragment.newInstance()
+    }
+
+    object Pin : SupportAppScreen() {
+        override fun getFragment(): Fragment = PinScreenFragment.newInstance()
     }
 
     object Market : SupportAppScreen() {

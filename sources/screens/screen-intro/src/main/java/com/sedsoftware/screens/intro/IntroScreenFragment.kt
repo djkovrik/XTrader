@@ -7,9 +7,7 @@ import android.view.animation.LinearInterpolator
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.chernovdmitriy.injectionholdercore.ComponentOwner
 import com.sedsoftware.core.presentation.base.BaseFragment
-import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartAction
 import com.sedsoftware.core.presentation.extension.failure
@@ -17,12 +15,11 @@ import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter
-import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import com.sedsoftware.screens.intro.model.ExchangeListItem
 import kotlinx.android.synthetic.main.fragment_intro_screen.*
 import javax.inject.Inject
 
-class IntroScreenFragment : BaseFragment(), ComponentOwner<IntroScreenComponent>, ExchangeListAdapter.Listener {
+class IntroScreenFragment : BaseFragment(), ExchangeListAdapter.Listener {
 
     companion object {
 
@@ -78,11 +75,11 @@ class IntroScreenFragment : BaseFragment(), ComponentOwner<IntroScreenComponent>
         }
     }
 
-    override fun inject(component: IntroScreenComponent) =
-        component.inject(this)
-
-    override fun provideComponent(): IntroScreenComponent =
-        IntroScreenComponent.Initializer.init(this, (parentFragment as FlowFragment).flowToolsProvider)
+//    override fun inject(component: IntroScreenComponent) =
+//        component.inject(this)
+//
+//    override fun provideComponent(): IntroScreenComponent =
+//        IntroScreenComponent.Initializer.init(this, (parentFragment as FlowFragment).flowToolsProvider)
 
     override fun onItemClick(item: ExchangeListItem) {
         introViewModel.onExchangeClicked(item.exchange)

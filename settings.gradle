@@ -31,8 +31,6 @@ include ':screen-intro'
 project(':screen-intro').projectDir = new File(rootDir, 'sources/screens/screen-intro')
 include ':screen-pin'
 project(':screen-pin').projectDir = new File(rootDir, 'sources/screens/screen-pin')
-include ':screen-home'
-project(':screen-home').projectDir = new File(rootDir, 'sources/screens/screen-home')
 include ':screen-market'
 project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
 include ':screen-orders'

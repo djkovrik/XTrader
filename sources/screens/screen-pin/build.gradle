@@ -6,34 +6,28 @@ apply plugin: 'kotlin-kapt'
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
-    implementation project(':core-tools-api')
     implementation project(':core-presentation')
+    implementation project(':core-tools-api')
     implementation project(':core-utils')
 
-    implementation project(':screen-intro')
-    implementation project(':screen-wallet')
-    implementation project(':screen-orders')
-    implementation project(':screen-market')
-    implementation project(':screen-tracker')
-    implementation project(':screen-tools')
-
-    implementation project(':support-coinmarketcap')
-
+    implementation CoreDependencies.adapterDelegates
     implementation CoreDependencies.cicerone
-    implementation CoreDependencies.okhttp
-    implementation CoreDependencies.moshi
-    implementation CoreDependencies.moshiKotlin
     implementation CoreDependencies.injectionHolder
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 
     implementation JetPackDependencies.appCompat
+    implementation JetPackDependencies.constraintLayout
     implementation JetPackDependencies.materialComponents
     implementation JetPackDependencies.KTX
 
     implementation UiDependencies.materialValues
-    implementation UiDependencies.shapeOfView
+    implementation UiDependencies.materialDialogs
 }
