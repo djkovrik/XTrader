@@ -1,4 +1,4 @@
-package com.sedsoftware.main.flows.starting.di
+package com.sedsoftware.main.flows.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +15,7 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 
 @Module
-abstract class StartingFlowModule {
+abstract class FlowModule {
 
     @Module
     companion object {
@@ -42,5 +42,5 @@ abstract class StartingFlowModule {
     @Binds
     @IntoMap
     @ViewModelKey(IntroScreenViewModel::class)
-    abstract fun bindIntroViewModel(introScreenViewModel: IntroScreenViewModel): ViewModel
+    abstract fun bindIntroScreenViewModel(marketScreenViewModel: IntroScreenViewModel): ViewModel
 }

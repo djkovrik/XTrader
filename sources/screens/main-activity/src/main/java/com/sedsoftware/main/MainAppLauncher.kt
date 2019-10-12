@@ -1,7 +1,6 @@
 package com.sedsoftware.main
 
 import com.sedsoftware.core.tools.api.Settings
-import com.sedsoftware.screens.main.navigation.Screens
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 

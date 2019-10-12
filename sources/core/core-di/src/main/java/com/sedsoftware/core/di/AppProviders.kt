@@ -1,7 +1,6 @@
 package com.sedsoftware.core.di
 
 import android.view.Display
-import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
@@ -66,12 +65,7 @@ interface ActivityToolsProvider : AppProvider {
     fun provideNavigatorHolder(): NavigatorHolder
 }
 
-interface StartingFlowToolsProvider : ActivityToolsProvider {
-    fun provideViewModelFactory(): ViewModelProvider.Factory
-}
+interface FlowToolsProvider : ActivityToolsProvider
 
-interface RegularFlowToolsProvider : ActivityToolsProvider {
-    fun provideViewModelFactory(): ViewModelProvider.Factory
-}
 
-interface TabToolsProvider : RegularFlowToolsProvider
+interface TabToolsProvider : FlowToolsProvider

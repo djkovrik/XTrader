@@ -13,11 +13,11 @@ dependencies {
     implementation project(':core-presentation')
     implementation project(':core-utils')
 
-    implementation project(':screen-intro')
     implementation project(':screen-pin')
+    implementation project(':screen-intro')
     implementation project(':screen-market')
-    implementation project(':screen-orders')
     implementation project(':screen-wallet')
+    implementation project(':screen-orders')
     implementation project(':screen-tracker')
     implementation project(':screen-tools')
 

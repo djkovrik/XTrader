@@ -1,83 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:id="@+id/emptyViewContainer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorCardBackground"
-            android:gravity="center"
-            android:orientation="vertical"
-            tools:visibility="visible">
-
-            <ImageView
-                android:layout_width="@dimen/size_image_empty_page"
-                android:layout_height="@dimen/size_image_empty_page"
-                android:alpha="0.8"
-                android:src="@drawable/ic_empty_market"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/XTTextHeader"
-                android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-                android:layout_marginStart="@dimen/material_baseline_grid_2x"
-                android:text="@string/label_no_items" />
-
-            <TextView
-                style="@style/XTTextSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/material_baseline_grid_1x"
-                android:gravity="center"
-                android:text="@string/label_no_items_suggestion" />
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/addedItemsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorCardBackground"
-            android:clipToPadding="true"
-            android:visibility="gone" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/marketFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/material_baseline_grid_2x"
-            android:backgroundTint="@color/colorAccent"
-            android:textColor="@color/colorTextPrimary"
-            android:src="@drawable/ic_plus"
-            app:elevation="@dimen/elevation_fab"
-            app:rippleColor="@color/colorAccentLight" />
-
-        <View
-            android:id="@+id/globalOverlayView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorMenuBackgroundOverlay"
-            android:visibility="gone" />
-
-        <include
-            layout="@layout/include_add_pair"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom" />
-
-    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Market screen" />
 
 </LinearLayout>

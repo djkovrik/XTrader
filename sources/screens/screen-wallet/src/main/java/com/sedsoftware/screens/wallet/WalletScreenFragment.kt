@@ -5,7 +5,6 @@ import com.sedsoftware.core.presentation.base.BaseFragment
 class WalletScreenFragment : BaseFragment() {
 
     companion object {
-
         fun newInstance(): WalletScreenFragment = WalletScreenFragment()
     }
 

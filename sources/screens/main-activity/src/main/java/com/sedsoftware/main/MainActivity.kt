@@ -18,9 +18,7 @@ import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.main.di.ActivityComponent
-import com.sedsoftware.screens.main.R.color
-import com.sedsoftware.screens.main.R.id
-import com.sedsoftware.screens.main.R.layout
+import com.sedsoftware.screens.main.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
@@ -46,7 +44,7 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
         get() = InjectionHolderX.instance.getComponent(this)
 
     private val navigator: Navigator =
-        object : SupportAppNavigator(this, supportFragmentManager, id.mainContainer) {
+        object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
             override fun setupFragmentTransaction(
                 command: Command?,
                 currentFragment: Fragment?,
@@ -70,7 +68,7 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(layout.activity_main)
+        setContentView(R.layout.activity_main)
         setupViews()
 
         if (savedInstanceState == null) {
@@ -79,7 +77,7 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
     }
 
     private fun setupViews() {
-        setBackgroundColor(color.colorBackground)
+        setBackgroundColor(R.color.colorBackground)
 
         topNotificationTextView.post {
             topNotificationTranslation = -topNotificationTextView.measuredHeight.toFloat()

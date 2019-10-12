@@ -58,6 +58,9 @@ dependencies {
     implementation project(':core-tools-impl')
     implementation project(':core-utils')
 
+    implementation project(':main-activity')
+    implementation project(':screen-pin')
+    implementation project(':screen-intro')
     implementation project(':screen-market')
     implementation project(':screen-wallet')
     implementation project(':screen-orders')
