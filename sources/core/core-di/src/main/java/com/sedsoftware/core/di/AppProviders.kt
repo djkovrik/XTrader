@@ -65,7 +65,6 @@ interface ActivityToolsProvider : AppProvider {
     fun provideNavigatorHolder(): NavigatorHolder
 }
 
-interface FlowToolsProvider : ActivityToolsProvider
+interface StartingFlowToolsProvider : ActivityToolsProvider
 
-
-interface TabToolsProvider : FlowToolsProvider
+interface RegularFlowToolsProvider : ActivityToolsProvider

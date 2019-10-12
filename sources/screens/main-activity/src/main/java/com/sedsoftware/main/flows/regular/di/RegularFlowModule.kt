@@ -1,4 +1,4 @@
-package com.sedsoftware.main.flows.di
+package com.sedsoftware.main.flows.regular.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +15,7 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 
 @Module
-abstract class FlowModule {
+abstract class RegularFlowModule {
 
     @Module
     companion object {

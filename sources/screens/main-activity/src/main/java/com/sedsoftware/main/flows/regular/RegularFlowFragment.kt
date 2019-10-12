@@ -1,27 +1,27 @@
-package com.sedsoftware.main.flows
+package com.sedsoftware.main.flows.regular
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.github.chernovdmitriy.injectionholdercore.ComponentOwner
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.Screens
-import com.sedsoftware.main.flows.di.FlowComponent
+import com.sedsoftware.main.flows.regular.di.RegularFlowComponent
 import com.sedsoftware.screens.main.R
+import me.vponomarenko.injectionmanager.IHasComponent
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 
-class StartingFlowFragment : FlowFragment(), ComponentOwner<FlowComponent> {
+class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> {
 
     companion object {
-        fun newInstance(): StartingFlowFragment =
-            StartingFlowFragment()
+        fun newInstance(): RegularFlowFragment =
+            RegularFlowFragment()
     }
 
     override val layoutResId: Int = R.layout.layout_container
 
-    override val launchScreen: SupportAppScreen = Screens.Intro
+    override val launchScreen: SupportAppScreen = Screens.Market
 
     override val navigator: Navigator by lazy {
         object : SupportAppNavigator(this.activity, childFragmentManager, R.id.container) {
@@ -40,11 +40,6 @@ class StartingFlowFragment : FlowFragment(), ComponentOwner<FlowComponent> {
         }
     }
 
-    override fun inject(component: FlowComponent) =
-        component.inject(this)
-
-    override fun provideComponent(): FlowComponent =
-        FlowComponent.Initializer.init(activityToolsProvider)
-
-    override fun getComponentKey(): String = javaClass.name
+    override fun getComponent(): RegularFlowComponent =
+        RegularFlowComponent.Initializer.init(activityToolsProvider)
 }

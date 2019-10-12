@@ -1,10 +1,9 @@
-package com.sedsoftware.main.flows.di
+package com.sedsoftware.main.flows.regular.di
 
 import com.sedsoftware.core.di.ActivityToolsProvider
-import com.sedsoftware.core.di.FlowToolsProvider
+import com.sedsoftware.core.di.RegularFlowToolsProvider
 import com.sedsoftware.core.di.scope.FlowScope
-import com.sedsoftware.main.flows.RegularFlowFragment
-import com.sedsoftware.main.flows.StartingFlowFragment
+import com.sedsoftware.main.flows.regular.RegularFlowFragment
 import dagger.Component
 
 @Component(
@@ -12,27 +11,25 @@ import dagger.Component
         ActivityToolsProvider::class
     ],
     modules = [
-        FlowModule::class
+        RegularFlowModule::class
     ]
 )
 @FlowScope
-interface FlowComponent : FlowToolsProvider {
-
-    fun inject(fragment: StartingFlowFragment)
+interface RegularFlowComponent : RegularFlowToolsProvider {
 
     fun inject(fragment: RegularFlowFragment)
 
     @Component.Factory
     interface Factory {
-        fun create(activityToolsProvider: ActivityToolsProvider): FlowComponent
+        fun create(activityToolsProvider: ActivityToolsProvider): RegularFlowComponent
     }
 
     class Initializer private constructor() {
         companion object {
 
-            fun init(activityToolsProvider: ActivityToolsProvider): FlowComponent {
+            fun init(activityToolsProvider: ActivityToolsProvider): RegularFlowComponent {
 
-                return DaggerFlowComponent
+                return DaggerRegularFlowComponent
                     .factory()
                     .create(activityToolsProvider)
             }

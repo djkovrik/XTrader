@@ -1,8 +1,8 @@
 package com.sedsoftware.main
 
 import androidx.fragment.app.Fragment
-import com.sedsoftware.main.flows.RegularFlowFragment
-import com.sedsoftware.main.flows.StartingFlowFragment
+import com.sedsoftware.main.flows.regular.RegularFlowFragment
+import com.sedsoftware.main.flows.starting.StartingFlowFragment
 import com.sedsoftware.screens.intro.IntroScreenFragment
 import com.sedsoftware.screens.market.MarketScreenFragment
 import com.sedsoftware.screens.market.MarketTabContainerFragment

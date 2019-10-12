@@ -19,7 +19,7 @@ dependencies {
 
     implementation CoreDependencies.adapterDelegates
     implementation CoreDependencies.cicerone
-    implementation CoreDependencies.injectionHolder
+    implementation CoreDependencies.diComponentManager
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
 

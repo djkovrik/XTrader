@@ -1,7 +1,7 @@
 import Versions.ADAPTER_DELEGATES_VERSION
 import Versions.CICERONE_VERSION
 import Versions.DAGGER_VERSION
-import Versions.INJECTION_HOLDER_VERSION
+import Versions.COMPONENT_MANAGER_VERSION
 import Versions.MOSHI_VERSION
 import Versions.OKHTTP_VERSION
 import Versions.RETROFIT_VERSION
@@ -13,7 +13,7 @@ object CoreDependencies {
     const val adapterDelegates = "com.hannesdorfmann:adapterdelegates4:$ADAPTER_DELEGATES_VERSION"
     const val dagger = "com.google.dagger:dagger:$DAGGER_VERSION"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
-    const val injectionHolder = "com.github.chernovdmitriy.injectionholder:androidx:$INJECTION_HOLDER_VERSION"
+    const val diComponentManager = "com.github.valeryponomarenko.componentsmanager:androidx:$COMPONENT_MANAGER_VERSION"
     const val retrofit = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     const val moshi = "com.squareup.moshi:moshi:$MOSHI_VERSION"
     const val moshiAdapters = "com.squareup.moshi:moshi-adapters:$MOSHI_VERSION"

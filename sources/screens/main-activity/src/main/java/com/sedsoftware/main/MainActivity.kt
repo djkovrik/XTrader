@@ -5,8 +5,6 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.github.chernovdmitriy.injectionholdercore.ComponentOwner
-import com.github.chernovdmitriy.injectionholderx.InjectionHolderX
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.AppProvider
@@ -22,13 +20,15 @@ import com.sedsoftware.screens.main.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
+import me.vponomarenko.injectionmanager.IHasComponent
+import me.vponomarenko.injectionmanager.x.XInjectionManager
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, SnackbarDelegate {
+class MainActivity : BaseActivity(), IHasComponent<ActivityComponent>, SnackbarDelegate {
 
     companion object {
         // Animation
@@ -41,7 +41,7 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
         get() = (applicationContext as App).getAppComponent()
 
     override val activityToolsProvider: ActivityToolsProvider
-        get() = InjectionHolderX.instance.getComponent(this)
+        get() = XInjectionManager.findComponent()
 
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
@@ -57,15 +57,18 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
 
     private var topNotificationTranslation = 0f
 
-
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
     @Inject
     lateinit var launcher: MainAppLauncher
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        XInjectionManager
+            .bindComponent(this)
+            .inject(this)
+
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
@@ -75,6 +78,9 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
             launcher.coldStart()
         }
     }
+
+    override fun getComponent(): ActivityComponent =
+        ActivityComponent.Initializer.init(appProvider, this)
 
     private fun setupViews() {
         setBackgroundColor(R.color.colorBackground)
@@ -107,12 +113,6 @@ class MainActivity : BaseActivity(), ComponentOwner<ActivityComponent>, Snackbar
         notificationJob?.cancel()
         super.onPause()
     }
-
-    override fun inject(component: ActivityComponent) =
-        component.inject(this)
-
-    override fun provideComponent(): ActivityComponent =
-        ActivityComponent.Initializer.init(appProvider, this)
 
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {

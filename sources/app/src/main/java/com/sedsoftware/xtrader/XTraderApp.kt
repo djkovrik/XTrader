@@ -1,11 +1,11 @@
 package com.sedsoftware.xtrader
 
 import android.app.Application
-import com.github.chernovdmitriy.injectionholderx.InjectionHolderX
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.xtrader.di.AppComponent
+import me.vponomarenko.injectionmanager.x.XInjectionManager
 import timber.log.Timber
 
 class XTraderApp : Application(), App {
@@ -17,7 +17,7 @@ class XTraderApp : Application(), App {
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
-        InjectionHolderX.init(this)
+        XInjectionManager.init(this)
         appComponent.inject(this)
 
         initDebugTools()
