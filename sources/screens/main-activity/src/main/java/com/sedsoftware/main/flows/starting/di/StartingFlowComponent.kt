@@ -12,7 +12,8 @@ import dagger.Component
         ActivityToolsProvider::class
     ],
     modules = [
-        StartingFlowModule::class
+        StartingFlowModule::class,
+        StartingFlowViewModelsModule::class
     ]
 )
 @FlowScope

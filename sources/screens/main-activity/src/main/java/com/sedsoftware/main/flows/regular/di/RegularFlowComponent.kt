@@ -11,7 +11,8 @@ import dagger.Component
         ActivityToolsProvider::class
     ],
     modules = [
-        RegularFlowModule::class
+        RegularFlowModule::class,
+        RegularFlowViewModelsModule::class
     ]
 )
 @FlowScope

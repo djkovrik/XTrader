@@ -1,46 +1,32 @@
 package com.sedsoftware.main.flows.di
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.core.di.key.ViewModelKey
 import com.sedsoftware.core.di.scope.FlowScope
-import com.sedsoftware.main.factory.ViewModelOwnerFactory
-import com.sedsoftware.screens.intro.IntroScreenViewModel
-import dagger.Binds
+import com.sedsoftware.main.flows.Flows
 import dagger.Module
 import dagger.Provides
-import dagger.multibindings.IntoMap
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
+import javax.inject.Named
 
 @Module
-abstract class StartingFlowModule {
+class StartingFlowModule {
 
-    @Module
-    companion object {
+    @Provides
+    @FlowScope
+    @Named(Flows.STARTING)
+    fun provideCicerone(): Cicerone<Router> =
+        Cicerone.create()
 
-        @Provides
-        @FlowScope
-        fun provideCicerone(): Cicerone<Router> =
-            Cicerone.create()
+    @Provides
+    @FlowScope
+    @Named(Flows.STARTING)
+    fun provideRouter(cicerone: Cicerone<Router>): Router =
+        cicerone.router
 
-        @Provides
-        @FlowScope
-        fun provideRouter(cicerone: Cicerone<Router>): Router =
-            cicerone.router
-
-        @Provides
-        @FlowScope
-        fun provideNavigatorHolder(cicerone: Cicerone<Router>): NavigatorHolder =
-            cicerone.navigatorHolder
-    }
-
-    @Binds
-    abstract fun bindViewModelOwnerFactory(factory: ViewModelOwnerFactory): ViewModelProvider.Factory
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(IntroScreenViewModel::class)
-    abstract fun bindIntroScreenViewModel(marketScreenViewModel: IntroScreenViewModel): ViewModel
+    @Provides
+    @FlowScope
+    @Named(Flows.STARTING)
+    fun provideNavigatorHolder(cicerone: Cicerone<Router>): NavigatorHolder =
+        cicerone.navigatorHolder
 }
