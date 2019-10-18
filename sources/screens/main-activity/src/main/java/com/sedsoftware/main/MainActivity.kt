@@ -9,18 +9,17 @@ import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
+import com.sedsoftware.core.di.qualifier.Global
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
-import com.sedsoftware.main.di.ActivityComponent
 import com.sedsoftware.screens.main.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
-import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -28,7 +27,7 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), IHasComponent<ActivityComponent>, SnackbarDelegate {
+class MainActivity : BaseActivity(), SnackbarDelegate {
 
     companion object {
         // Animation
@@ -37,11 +36,8 @@ class MainActivity : BaseActivity(), IHasComponent<ActivityComponent>, SnackbarD
         private const val DELAY_BEFORE_HIDE = 2000L
     }
 
-    override val appProvider: AppProvider
-        get() = (applicationContext as App).getAppComponent()
-
-    override val activityToolsProvider: ActivityToolsProvider
-        get() = XInjectionManager.findComponent()
+    override val appProvider: AppProvider = (applicationContext as App).getAppComponent()
+    override val activityToolsProvider: ActivityToolsProvider = XInjectionManager.findComponent()
 
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
@@ -58,17 +54,13 @@ class MainActivity : BaseActivity(), IHasComponent<ActivityComponent>, SnackbarD
     private var topNotificationTranslation = 0f
 
     @Inject
+    @Global
     lateinit var navigatorHolder: NavigatorHolder
 
     @Inject
     lateinit var launcher: MainAppLauncher
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        XInjectionManager
-            .bindComponent(this)
-            .inject(this)
-
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
@@ -78,9 +70,6 @@ class MainActivity : BaseActivity(), IHasComponent<ActivityComponent>, SnackbarD
             launcher.coldStart()
         }
     }
-
-    override fun getComponent(): ActivityComponent =
-        ActivityComponent.Initializer.init(appProvider, this)
 
     private fun setupViews() {
         setBackgroundColor(R.color.colorBackground)

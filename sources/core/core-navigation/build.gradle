@@ -7,16 +7,9 @@ apply from: '../../kapt-config.gradle'
 
 dependencies {
     implementation project(':core-di')
-    implementation project(':core-domain')
-    implementation project(':core-tools-api')
-    implementation project(':core-utils')
-
-    implementation project(':exchange-binance')
-
-    implementation CoreDependencies.okhttp
-    implementation CoreDependencies.moshi
-    implementation CoreDependencies.moshiKotlin
 
     implementation CoreDependencies.dagger
     kapt CoreDependencies.daggerCompiler
+
+    implementation CoreDependencies.cicerone
 }

@@ -3,6 +3,9 @@ package com.sedsoftware.core.di
 import android.view.Display
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.ForExchange
+import com.sedsoftware.core.di.qualifier.Global
+import com.sedsoftware.core.di.qualifier.RegularFlow
+import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
@@ -20,12 +23,13 @@ import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 
-// Global providers
+// App
 interface AppProvider :
     DeviceToolsProvider,
     ExchangeManagerProvider,
-    CoinMarketCapProvider
+    NavigationToolsProvider
 
+// Global providers
 interface DeviceToolsProvider {
     fun provideApp(): App
     fun provideLogger(): Logger
@@ -37,19 +41,24 @@ interface DeviceToolsProvider {
     fun provideDefaultDisplay(): Display
 }
 
-interface CoinMarketCapProvider {
-    fun provideCurrencyProvider(): CurrencyProvider
-    fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
+interface NavigationToolsProvider {
+    @Global
+    fun provideCicerone(): Cicerone<Router>
+
+    @Global
+    fun provideRouter(): Router
+
+    @Global
+    fun provideNavigatorHolder(): NavigatorHolder
 }
 
-interface ExchangeManagerProvider : BinanceProvider {
+interface ExchangeManagerProvider {
     fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
     fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
     fun provideIconsProvider(): AssetsProvider
 }
 
 interface BinanceProvider {
-
     @ForExchange(BINANCE)
     fun provideBinancePairLoader(): CurrencyPairLoader
 
@@ -57,14 +66,34 @@ interface BinanceProvider {
     fun provideBinancePairManager(): CurrencyPairManager
 }
 
+interface CoinMarketCapProvider {
+    fun provideCurrencyProvider(): CurrencyProvider
+    fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
+}
+
 // Local providers
-interface ActivityToolsProvider : AppProvider {
+interface ActivityToolsProvider {
     fun provideSnackBarDelegate(): SnackbarDelegate
+}
+
+interface StartingFlowToolsProvider {
+    @StartingFlow
     fun provideCicerone(): Cicerone<Router>
+
+    @StartingFlow
     fun provideRouter(): Router
+
+    @StartingFlow
     fun provideNavigatorHolder(): NavigatorHolder
 }
 
-interface StartingFlowToolsProvider : ActivityToolsProvider
+interface RegularFlowToolsProvider {
+    @RegularFlow
+    fun provideCicerone(): Cicerone<Router>
 
-interface RegularFlowToolsProvider : ActivityToolsProvider
+    @RegularFlow
+    fun provideRouter(): Router
+
+    @RegularFlow
+    fun provideNavigatorHolder(): NavigatorHolder
+}

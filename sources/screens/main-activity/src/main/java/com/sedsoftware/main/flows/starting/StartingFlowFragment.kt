@@ -1,15 +1,11 @@
 package com.sedsoftware.main.flows.starting
 
-import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.Screens
-import com.sedsoftware.main.flows.Flows
-import com.sedsoftware.main.flows.starting.di.StartingFlowComponent
 import com.sedsoftware.screens.main.R
-import me.vponomarenko.injectionmanager.IHasComponent
-import me.vponomarenko.injectionmanager.x.XInjectionManager
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -17,25 +13,23 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
-import javax.inject.Named
 
-class StartingFlowFragment : FlowFragment(), IHasComponent<StartingFlowComponent> {
+class StartingFlowFragment : FlowFragment() {
 
     companion object {
         fun newInstance(): StartingFlowFragment = StartingFlowFragment()
     }
 
     override val layoutResId: Int = R.layout.layout_container
-
     override val launchScreen: SupportAppScreen = Screens.Intro
 
     @Inject
-    @Named(Flows.STARTING)
-    override lateinit var navigatorHolder: NavigatorHolder
+    @StartingFlow
+    lateinit var router: Router
 
     @Inject
-    @Named(Flows.STARTING)
-    lateinit var router: Router
+    @StartingFlow
+    override lateinit var navigatorHolder: NavigatorHolder
 
     override val navigator: Navigator by lazy {
         object : SupportAppNavigator(this.activity, childFragmentManager, R.id.container) {
@@ -53,14 +47,4 @@ class StartingFlowFragment : FlowFragment(), IHasComponent<StartingFlowComponent
             }
         }
     }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        XInjectionManager
-            .bindComponent(this)
-            .inject(this)
-    }
-
-    override fun getComponent(): StartingFlowComponent =
-        StartingFlowComponent.Initializer.init(activityToolsProvider)
 }

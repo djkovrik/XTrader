@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.R
@@ -26,10 +25,6 @@ abstract class BaseFragment : Fragment() {
 
     @Inject
     lateinit var snackbarDelegate: SnackbarDelegate
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(layoutResId, container, false)

@@ -9,6 +9,8 @@ include ':core-di'
 project(':core-di').projectDir = new File(rootDir, 'sources/core/core-di')
 include ':core-domain'
 project(':core-domain').projectDir = new File(rootDir, 'sources/core/core-domain')
+include ':core-navigation'
+project(':core-navigation').projectDir = new File(rootDir, 'sources/core/core-navigation')
 include ':core-presentation'
 project(':core-presentation').projectDir = new File(rootDir, 'sources/core/core-presentation')
 include ':core-utils'

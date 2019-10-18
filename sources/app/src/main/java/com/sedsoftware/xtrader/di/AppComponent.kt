@@ -1,9 +1,10 @@
 package com.sedsoftware.xtrader.di
 
 import com.sedsoftware.core.di.AppProvider
-import com.sedsoftware.core.di.CoinMarketCapProvider
 import com.sedsoftware.core.di.DeviceToolsProvider
 import com.sedsoftware.core.di.ExchangeManagerProvider
+import com.sedsoftware.core.di.NavigationToolsProvider
+import com.sedsoftware.core.navigation.di.NavigationToolsComponent
 import com.sedsoftware.core.tools.impl.di.DeviceToolsComponent
 import com.sedsoftware.exchange.coinmarketcap.di.CoinMarketCapComponent
 import com.sedsoftware.exchange.manager.di.ExchangeManagerComponent
@@ -15,7 +16,7 @@ import javax.inject.Singleton
     dependencies = [
         DeviceToolsProvider::class,
         ExchangeManagerProvider::class,
-        CoinMarketCapProvider::class
+        NavigationToolsProvider::class
     ]
 )
 @Singleton
@@ -37,10 +38,14 @@ interface AppComponent : AppProvider {
                 val exchangeManagerProvider =
                     ExchangeManagerComponent.Initializer.init(deviceToolsProvider, coinMarketCapProvider)
 
+                val navigationToolsProvider =
+                    NavigationToolsComponent.Initializer.init()
+
+
                 return DaggerAppComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)
-                    .coinMarketCapProvider(coinMarketCapProvider)
                     .exchangeManagerProvider(exchangeManagerProvider)
+                    .navigationToolsProvider(navigationToolsProvider)
                     .build()
             }
         }
