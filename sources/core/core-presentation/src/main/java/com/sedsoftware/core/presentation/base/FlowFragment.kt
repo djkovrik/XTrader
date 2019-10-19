@@ -1,6 +1,7 @@
 package com.sedsoftware.core.presentation.base
 
 import android.os.Bundle
+import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.presentation.extension.setLaunchScreen
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -11,6 +12,9 @@ abstract class FlowFragment : BaseFragment() {
     abstract val launchScreen: SupportAppScreen
     abstract val navigator: Navigator
     abstract val navigatorHolder: NavigatorHolder
+
+    protected val activityToolsProvider: ActivityToolsProvider
+        get() = (activity as BaseActivity).activityToolsProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

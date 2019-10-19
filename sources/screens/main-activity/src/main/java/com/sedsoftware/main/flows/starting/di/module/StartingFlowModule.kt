@@ -1,7 +1,6 @@
 package com.sedsoftware.main.flows.starting.di.module
 
 import com.sedsoftware.core.di.qualifier.StartingFlow
-import com.sedsoftware.core.di.scope.FlowScope
 import dagger.Module
 import dagger.Provides
 import ru.terrakok.cicerone.Cicerone

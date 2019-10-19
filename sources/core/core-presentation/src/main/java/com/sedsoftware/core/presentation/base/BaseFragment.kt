@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.R
 import com.sedsoftware.core.presentation.extension.string
@@ -18,10 +17,6 @@ import javax.inject.Inject
 abstract class BaseFragment : Fragment() {
 
     abstract val layoutResId: Int
-
-    protected val activityToolsProvider: ActivityToolsProvider
-        get() = (activity as BaseActivity).activityToolsProvider
-
 
     @Inject
     lateinit var snackbarDelegate: SnackbarDelegate

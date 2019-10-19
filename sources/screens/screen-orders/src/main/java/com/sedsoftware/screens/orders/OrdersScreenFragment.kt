@@ -1,8 +1,8 @@
 package com.sedsoftware.screens.orders
 
-import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.core.presentation.base.BaseRegularFragment
 
-class OrdersScreenFragment : BaseFragment() {
+class OrdersScreenFragment : BaseRegularFragment() {
 
     companion object {
         fun newInstance(): OrdersScreenFragment = OrdersScreenFragment()

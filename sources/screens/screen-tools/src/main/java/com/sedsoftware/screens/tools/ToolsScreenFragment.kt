@@ -1,8 +1,8 @@
 package com.sedsoftware.screens.tools
 
-import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.core.presentation.base.BaseRegularFragment
 
-class ToolsScreenFragment : BaseFragment() {
+class ToolsScreenFragment : BaseRegularFragment() {
 
     companion object {
         fun newInstance(): ToolsScreenFragment = ToolsScreenFragment()

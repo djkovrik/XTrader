@@ -3,10 +3,8 @@ package com.sedsoftware.screens.intro
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.StartingFlowToolsProvider
-import com.sedsoftware.core.di.qualifier.StartingFlow
-import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.core.presentation.base.BaseStartingFragment
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.screens.intro.di.IntroScreenComponent
 import kotlinx.android.synthetic.main.fragment_intro_screen.*
@@ -14,17 +12,13 @@ import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
 
-class IntroScreenFragment : BaseFragment(), IHasComponent<IntroScreenComponent> {
+class IntroScreenFragment : BaseStartingFragment(), IHasComponent<IntroScreenComponent> {
 
     companion object {
         fun newInstance(): IntroScreenFragment = IntroScreenFragment()
     }
 
     override val layoutResId: Int = R.layout.fragment_intro_screen
-
-    @Inject
-    @StartingFlow
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     @Inject
     lateinit var introScreenViewModel: IntroScreenViewModel

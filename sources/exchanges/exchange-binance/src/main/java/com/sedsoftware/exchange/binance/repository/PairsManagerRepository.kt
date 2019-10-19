@@ -5,7 +5,6 @@ import com.sedsoftware.core.domain.provider.CurrencyProvider
 import com.sedsoftware.exchange.binance.common.params.SymbolStatus
 import com.sedsoftware.exchange.binance.database.BinanceDatabase
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
-import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsMapper
 import javax.inject.Inject
 
 class PairsManagerRepository @Inject constructor(

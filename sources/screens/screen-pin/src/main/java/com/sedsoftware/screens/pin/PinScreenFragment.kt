@@ -1,8 +1,8 @@
 package com.sedsoftware.screens.pin
 
-import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.core.presentation.base.BaseStartingFragment
 
-class PinScreenFragment : BaseFragment() {
+class PinScreenFragment : BaseStartingFragment() {
 
     companion object {
         fun newInstance(): PinScreenFragment = PinScreenFragment()

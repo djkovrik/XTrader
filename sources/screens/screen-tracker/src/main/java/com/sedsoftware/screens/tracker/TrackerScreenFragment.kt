@@ -1,8 +1,8 @@
 package com.sedsoftware.screens.tracker
 
-import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.core.presentation.base.BaseRegularFragment
 
-class TrackerScreenFragment : BaseFragment() {
+class TrackerScreenFragment : BaseRegularFragment() {
 
     companion object {
         fun newInstance(): TrackerScreenFragment = TrackerScreenFragment()
