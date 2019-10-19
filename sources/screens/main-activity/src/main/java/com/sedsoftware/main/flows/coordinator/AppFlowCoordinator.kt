@@ -10,10 +10,10 @@ class AppFlowCoordinator @Inject constructor(
 ) : FlowCoordinator {
 
     override fun switchToStartingFlow() {
-        flowRouter.newRootScreen(Screens.StartingFlow)
+        flowRouter.newRootFlow(Screens.StartingFlow)
     }
 
     override fun switchToRegularFlow() {
-        flowRouter.newRootScreen(Screens.RegularFlow)
+        flowRouter.newRootFlow(Screens.RegularFlow)
     }
 }
