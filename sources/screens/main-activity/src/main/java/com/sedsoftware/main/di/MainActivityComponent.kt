@@ -5,6 +5,7 @@ import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.scope.ActivityScope
 import com.sedsoftware.main.MainActivity
+import com.sedsoftware.main.di.module.MainActivityModule
 import com.sedsoftware.main.di.module.NavigationModule
 import dagger.BindsInstance
 import dagger.Component
@@ -14,6 +15,7 @@ import dagger.Component
         AppProvider::class
     ],
     modules = [
+        MainActivityModule::class,
         NavigationModule::class
     ]
 )

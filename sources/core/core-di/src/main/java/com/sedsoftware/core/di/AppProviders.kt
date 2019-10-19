@@ -4,10 +4,9 @@ import android.view.Display
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.ForExchange
-import com.sedsoftware.core.di.qualifier.Global
-import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
+import com.sedsoftware.core.domain.coordinator.FlowCoordinator
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
@@ -20,9 +19,6 @@ import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.tools.api.Signer
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
 
 // App
 interface AppProvider :
@@ -59,11 +55,12 @@ interface CoinMarketCapProvider {
 
 // Local providers
 interface ActivityToolsProvider {
+    fun provideFlowCoordinator(): FlowCoordinator
     fun provideSnackbarDelegate(): SnackbarDelegate
 }
 
 interface StartingFlowToolsProvider : ActivityToolsProvider {
-
+    @StartingFlow fun provideViewModelFactory(): ViewModelProvider.Factory
 }
 
 interface RegularFlowToolsProvider : ActivityToolsProvider {

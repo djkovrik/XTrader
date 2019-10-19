@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.key.ViewModelKey
 import com.sedsoftware.core.di.qualifier.StartingFlow
-import com.sedsoftware.main.factory.ViewModelOwnerFactory
+import com.sedsoftware.main.flows.starting.factory.StartingViewModelOwnerFactory
 import com.sedsoftware.screens.intro.IntroScreenViewModel
 import dagger.Binds
 import dagger.Module
@@ -15,11 +15,11 @@ abstract class StartingFlowViewModelsModule {
 
     @Binds
     @StartingFlow
-    abstract fun bindViewModelOwnerFactory(factory: ViewModelOwnerFactory): ViewModelProvider.Factory
+    abstract fun bindViewModelOwnerFactory(factory: StartingViewModelOwnerFactory): ViewModelProvider.Factory
 
     @Binds
     @IntoMap
     @StartingFlow
     @ViewModelKey(IntroScreenViewModel::class)
-    abstract fun bindIntroScreenViewModel(marketScreenViewModel: IntroScreenViewModel): ViewModel
+    abstract fun bindIntroScreenViewModel(introScreenViewModel: IntroScreenViewModel): ViewModel
 }
