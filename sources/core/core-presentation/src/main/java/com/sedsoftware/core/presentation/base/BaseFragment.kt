@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
 
-    protected abstract val layoutResId: Int
+    abstract val layoutResId: Int
 
     protected val activityToolsProvider: ActivityToolsProvider
         get() = (activity as BaseActivity).activityToolsProvider

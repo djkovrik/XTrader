@@ -16,10 +16,12 @@ import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
+import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
+import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -27,7 +29,7 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), SnackbarDelegate {
+class MainActivity : BaseActivity(), SnackbarDelegate, IHasComponent<MainActivityComponent> {
 
     companion object {
         // Animation
@@ -36,8 +38,11 @@ class MainActivity : BaseActivity(), SnackbarDelegate {
         private const val DELAY_BEFORE_HIDE = 2000L
     }
 
-    override val appProvider: AppProvider = (applicationContext as App).getAppComponent()
-    override val activityToolsProvider: ActivityToolsProvider = XInjectionManager.findComponent()
+    override val appProvider: AppProvider
+        get() = (applicationContext as App).getAppComponent()
+
+    override val activityToolsProvider: ActivityToolsProvider
+        get() = XInjectionManager.findComponent()
 
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
@@ -61,6 +66,10 @@ class MainActivity : BaseActivity(), SnackbarDelegate {
     lateinit var launcher: MainAppLauncher
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        XInjectionManager
+            .bindComponent(this)
+            .inject(this)
+
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
@@ -70,6 +79,9 @@ class MainActivity : BaseActivity(), SnackbarDelegate {
             launcher.coldStart()
         }
     }
+
+    override fun getComponent(): MainActivityComponent =
+        MainActivityComponent.Initializer.init(appProvider, this)
 
     private fun setupViews() {
         setBackgroundColor(R.color.colorBackground)

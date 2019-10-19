@@ -1,11 +1,15 @@
 package com.sedsoftware.main.flows.starting
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.Screens
+import com.sedsoftware.main.flows.starting.di.StartingFlowComponent
 import com.sedsoftware.screens.main.R
+import me.vponomarenko.injectionmanager.IHasComponent
+import me.vponomarenko.injectionmanager.x.XInjectionManager
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -14,7 +18,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class StartingFlowFragment : FlowFragment() {
+class StartingFlowFragment : FlowFragment(), IHasComponent<StartingFlowComponent> {
 
     companion object {
         fun newInstance(): StartingFlowFragment = StartingFlowFragment()
@@ -47,4 +51,14 @@ class StartingFlowFragment : FlowFragment() {
             }
         }
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        XInjectionManager
+            .bindComponent(this)
+            .inject(this)
+    }
+
+    override fun getComponent(): StartingFlowComponent =
+        StartingFlowComponent.Initializer.init(activityToolsProvider)
 }

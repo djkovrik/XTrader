@@ -2,6 +2,7 @@ package com.sedsoftware.main.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.sedsoftware.core.di.scope.ActivityScope
 import com.sedsoftware.core.di.scope.FlowScope
 import javax.inject.Inject
 import javax.inject.Provider

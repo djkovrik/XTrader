@@ -1,11 +1,15 @@
 package com.sedsoftware.main.flows.regular
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.Screens
+import com.sedsoftware.main.flows.regular.di.RegularFlowComponent
 import com.sedsoftware.screens.main.R
+import me.vponomarenko.injectionmanager.IHasComponent
+import me.vponomarenko.injectionmanager.x.XInjectionManager
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -14,7 +18,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class RegularFlowFragment : FlowFragment() {
+class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> {
 
     companion object {
         fun newInstance(): RegularFlowFragment = RegularFlowFragment()
@@ -47,4 +51,14 @@ class RegularFlowFragment : FlowFragment() {
             }
         }
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        XInjectionManager
+            .bindComponent(this)
+            .inject(this)
+    }
+
+    override fun getComponent(): RegularFlowComponent =
+        RegularFlowComponent.Initializer.init(activityToolsProvider)
 }

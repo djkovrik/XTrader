@@ -1,12 +1,13 @@
 package com.sedsoftware.main
 
+import com.sedsoftware.core.di.qualifier.Global
 import com.sedsoftware.core.tools.api.Settings
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 class MainAppLauncher @Inject constructor(
-    private val settings: Settings,
-    private val router: Router
+    @Global private val router: Router,
+    private val settings: Settings
 ) {
 
     fun coldStart() {

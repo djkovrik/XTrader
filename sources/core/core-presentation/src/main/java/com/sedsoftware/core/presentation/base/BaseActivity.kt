@@ -2,7 +2,6 @@ package com.sedsoftware.core.presentation.base
 
 import androidx.appcompat.app.AppCompatActivity
 import com.sedsoftware.core.di.ActivityToolsProvider
-import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.AppProvider
 import kotlinx.coroutines.Job
 import java.util.LinkedList

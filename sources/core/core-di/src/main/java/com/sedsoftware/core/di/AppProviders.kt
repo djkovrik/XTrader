@@ -1,6 +1,7 @@
 package com.sedsoftware.core.di
 
 import android.view.Display
+import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.di.qualifier.Global
@@ -26,8 +27,7 @@ import ru.terrakok.cicerone.Router
 // App
 interface AppProvider :
     DeviceToolsProvider,
-    ExchangeManagerProvider,
-    NavigationToolsProvider
+    ExchangeManagerProvider
 
 // Global providers
 interface DeviceToolsProvider {
@@ -41,17 +41,6 @@ interface DeviceToolsProvider {
     fun provideDefaultDisplay(): Display
 }
 
-interface NavigationToolsProvider {
-    @Global
-    fun provideCicerone(): Cicerone<Router>
-
-    @Global
-    fun provideRouter(): Router
-
-    @Global
-    fun provideNavigatorHolder(): NavigatorHolder
-}
-
 interface ExchangeManagerProvider {
     fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
     fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
@@ -59,11 +48,8 @@ interface ExchangeManagerProvider {
 }
 
 interface BinanceProvider {
-    @ForExchange(BINANCE)
-    fun provideBinancePairLoader(): CurrencyPairLoader
-
-    @ForExchange(BINANCE)
-    fun provideBinancePairManager(): CurrencyPairManager
+    @ForExchange(BINANCE) fun provideBinancePairLoader(): CurrencyPairLoader
+    @ForExchange(BINANCE) fun provideBinancePairManager(): CurrencyPairManager
 }
 
 interface CoinMarketCapProvider {
@@ -73,27 +59,13 @@ interface CoinMarketCapProvider {
 
 // Local providers
 interface ActivityToolsProvider {
-    fun provideSnackBarDelegate(): SnackbarDelegate
+    fun provideSnackbarDelegate(): SnackbarDelegate
 }
 
-interface StartingFlowToolsProvider {
-    @StartingFlow
-    fun provideCicerone(): Cicerone<Router>
+interface StartingFlowToolsProvider : ActivityToolsProvider {
 
-    @StartingFlow
-    fun provideRouter(): Router
-
-    @StartingFlow
-    fun provideNavigatorHolder(): NavigatorHolder
 }
 
-interface RegularFlowToolsProvider {
-    @RegularFlow
-    fun provideCicerone(): Cicerone<Router>
+interface RegularFlowToolsProvider : ActivityToolsProvider {
 
-    @RegularFlow
-    fun provideRouter(): Router
-
-    @RegularFlow
-    fun provideNavigatorHolder(): NavigatorHolder
 }
