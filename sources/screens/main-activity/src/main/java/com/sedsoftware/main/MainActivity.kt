@@ -2,17 +2,13 @@ package com.sedsoftware.main
 
 import android.os.Bundle
 import android.view.View
-import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.AppProvider
-import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.Global
 import com.sedsoftware.core.presentation.base.BaseActivity
-import com.sedsoftware.core.presentation.extension.addEndAction
-import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
@@ -20,7 +16,6 @@ import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
-import kotlinx.coroutines.delay
 import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import ru.terrakok.cicerone.Navigator
@@ -29,14 +24,7 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), SnackbarDelegate, IHasComponent<MainActivityComponent> {
-
-    companion object {
-        // Animation
-        private const val ANIMATION_DELAY = 100L
-        private const val ANIMATION_DURATION = 200L
-        private const val DELAY_BEFORE_HIDE = 2000L
-    }
+class MainActivity : BaseActivity(), IHasComponent<MainActivityComponent> {
 
     override val appProvider: AppProvider
         get() = (applicationContext as App).getAppComponent()
@@ -81,7 +69,7 @@ class MainActivity : BaseActivity(), SnackbarDelegate, IHasComponent<MainActivit
     }
 
     override fun getComponent(): MainActivityComponent =
-        MainActivityComponent.Initializer.init(appProvider, this)
+        MainActivityComponent.Initializer.init(appProvider)
 
     private fun setupViews() {
         setBackgroundColor(R.color.colorBackground)
@@ -113,39 +101,5 @@ class MainActivity : BaseActivity(), SnackbarDelegate, IHasComponent<MainActivit
         navigatorHolder.removeNavigator()
         notificationJob?.cancel()
         super.onPause()
-    }
-
-    override fun notifyOnTop(message: String) {
-        if (!isNotificationVisible) {
-            topNotificationTextView.text = message
-            translateViewAnimated(topNotificationTextView, 0f) {
-                isNotificationVisible = true
-                hideNotificationDelayed()
-            }
-        } else {
-            notificationQueue.add(message)
-        }
-    }
-
-    private fun hideNotificationDelayed() {
-        notificationJob = launch {
-            delay(DELAY_BEFORE_HIDE)
-            translateViewAnimated(topNotificationTextView, topNotificationTranslation) {
-                isNotificationVisible = false
-                if (notificationQueue.isNotEmpty()) {
-                    notifyOnTop(notificationQueue.poll())
-                }
-            }
-        }
-    }
-
-    private fun translateViewAnimated(view: View, translation: Float, finishedCallback: () -> Unit = {}) {
-        view.animate()
-            .translationY(translation)
-            .setStartDelay(ANIMATION_DELAY)
-            .setDuration(ANIMATION_DURATION)
-            .setInterpolator(LinearInterpolator())
-            .addEndAction { finishedCallback.invoke() }
-            .start()
     }
 }

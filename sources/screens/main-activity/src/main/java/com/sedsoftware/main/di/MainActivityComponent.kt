@@ -2,12 +2,10 @@ package com.sedsoftware.main.di
 
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.AppProvider
-import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.scope.ActivityScope
 import com.sedsoftware.main.MainActivity
 import com.sedsoftware.main.di.module.MainActivityModule
 import com.sedsoftware.main.di.module.NavigationModule
-import dagger.BindsInstance
 import dagger.Component
 
 @Component(
@@ -24,10 +22,7 @@ interface MainActivityComponent : ActivityToolsProvider {
 
     @Component.Factory
     interface Factory {
-        fun create(
-            appProvider: AppProvider,
-            @BindsInstance snackbarDelegate: SnackbarDelegate
-        ): MainActivityComponent
+        fun create(appProvider: AppProvider): MainActivityComponent
     }
 
     fun inject(activity: MainActivity)
@@ -35,11 +30,11 @@ interface MainActivityComponent : ActivityToolsProvider {
     class Initializer private constructor() {
         companion object {
 
-            fun init(appProvider: AppProvider, snackbarDelegate: SnackbarDelegate): MainActivityComponent {
+            fun init(appProvider: AppProvider): MainActivityComponent {
 
                 return DaggerMainActivityComponent
                     .factory()
-                    .create(appProvider, snackbarDelegate)
+                    .create(appProvider)
             }
         }
     }

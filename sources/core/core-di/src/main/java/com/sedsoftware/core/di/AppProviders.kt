@@ -2,7 +2,6 @@ package com.sedsoftware.core.di
 
 import android.view.Display
 import androidx.lifecycle.ViewModelProvider
-import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
@@ -56,7 +55,6 @@ interface CoinMarketCapProvider {
 // Local providers
 interface ActivityToolsProvider {
     fun provideFlowCoordinator(): FlowCoordinator
-    fun provideSnackbarDelegate(): SnackbarDelegate
 }
 
 interface StartingFlowToolsProvider : ActivityToolsProvider {
