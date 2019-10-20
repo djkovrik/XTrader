@@ -53,7 +53,7 @@ interface CoinMarketCapProvider {
 }
 
 // Local providers
-interface ActivityToolsProvider {
+interface ActivityToolsProvider : AppProvider {
     fun provideFlowCoordinator(): FlowCoordinator
 }
 

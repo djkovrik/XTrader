@@ -3,6 +3,8 @@ package com.sedsoftware.screens.intro.di
 import com.sedsoftware.core.di.StartingFlowToolsProvider
 import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.screens.intro.IntroScreenFragment
+import com.sedsoftware.screens.intro.adapter.ExchangeListAdapter
+import dagger.BindsInstance
 import dagger.Component
 
 @Component(
@@ -17,17 +19,23 @@ interface IntroScreenComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(startingFlowToolsProvider: StartingFlowToolsProvider): IntroScreenComponent
+        fun create(
+            @BindsInstance clickListener: ExchangeListAdapter.Listener,
+            startingFlowToolsProvider: StartingFlowToolsProvider
+        ): IntroScreenComponent
     }
 
     class Initializer private constructor() {
         companion object {
 
-            fun init(startingFlowToolsProvider: StartingFlowToolsProvider): IntroScreenComponent {
+            fun init(
+                clickListener: ExchangeListAdapter.Listener,
+                startingFlowToolsProvider: StartingFlowToolsProvider
+            ): IntroScreenComponent {
 
                 return DaggerIntroScreenComponent
                     .factory()
-                    .create(startingFlowToolsProvider)
+                    .create(clickListener, startingFlowToolsProvider)
             }
         }
     }
