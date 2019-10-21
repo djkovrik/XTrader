@@ -10,7 +10,7 @@
     <com.github.florent37.shapeofview.shapes.RoundRectView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="@dimen/elevation_card"
+        android:elevation="0dp"
         app:shape_roundRect_borderColor="@android:color/transparent"
         app:shape_roundRect_borderWidth="0dp"
         app:shape_roundRect_bottomLeftRadius="0dp"
