@@ -27,10 +27,12 @@ project(':support-manager').projectDir = new File(rootDir, 'sources/exchanges/su
 include ':main-activity'
 project(':main-activity').projectDir = new File(rootDir, 'sources/screens/main-activity')
 
-include ':screen-intro'
-project(':screen-intro').projectDir = new File(rootDir, 'sources/screens/screen-intro')
-include ':screen-pin'
-project(':screen-pin').projectDir = new File(rootDir, 'sources/screens/screen-pin')
+include ':screen-intro-base'
+project(':screen-intro-base').projectDir = new File(rootDir, 'sources/screens/screen-intro-base')
+include ':screen-intro-exchanges'
+project(':screen-intro-exchanges').projectDir = new File(rootDir, 'sources/screens/screen-intro-exchanges')
+include ':screen-intro-pin'
+project(':screen-intro-pin').projectDir = new File(rootDir, 'sources/screens/screen-intro-pin')
 include ':screen-market'
 project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
 include ':screen-orders'

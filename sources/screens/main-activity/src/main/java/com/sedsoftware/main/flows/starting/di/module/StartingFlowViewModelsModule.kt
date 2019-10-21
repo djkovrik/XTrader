@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.key.ViewModelKey
 import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.main.flows.starting.factory.StartingViewModelOwnerFactory
-import com.sedsoftware.screens.intro.IntroScreenViewModel
+import com.sedsoftware.screens.intro.exchanges.IntroExchangesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -20,6 +20,6 @@ abstract class StartingFlowViewModelsModule {
     @Binds
     @IntoMap
     @StartingFlow
-    @ViewModelKey(IntroScreenViewModel::class)
-    abstract fun bindIntroScreenViewModel(introScreenViewModel: IntroScreenViewModel): ViewModel
+    @ViewModelKey(IntroExchangesViewModel::class)
+    abstract fun bindIntroScreenViewModel(introScreenViewModel: IntroExchangesViewModel): ViewModel
 }

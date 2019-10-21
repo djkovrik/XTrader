@@ -3,12 +3,12 @@ package com.sedsoftware.main
 import androidx.fragment.app.Fragment
 import com.sedsoftware.main.flows.regular.RegularFlowFragment
 import com.sedsoftware.main.flows.starting.StartingFlowFragment
-import com.sedsoftware.screens.intro.IntroScreenFragment
+import com.sedsoftware.screens.intro.exchanges.IntroExchangesFragment
 import com.sedsoftware.screens.market.MarketScreenFragment
 import com.sedsoftware.screens.market.MarketTabContainerFragment
 import com.sedsoftware.screens.orders.OrdersScreenFragment
 import com.sedsoftware.screens.orders.OrdersTabContainerFragment
-import com.sedsoftware.screens.pin.PinScreenFragment
+import com.sedsoftware.screens.intro.pin.PinScreenFragment
 import com.sedsoftware.screens.tools.ToolsScreenFragment
 import com.sedsoftware.screens.tools.ToolsTabContainerFragment
 import com.sedsoftware.screens.tracker.TrackerScreenFragment
@@ -53,7 +53,7 @@ object Screens {
 
     // Screens
     object Intro : SupportAppScreen() {
-        override fun getFragment(): Fragment = IntroScreenFragment.newInstance()
+        override fun getFragment(): Fragment = IntroExchangesFragment.newInstance()
     }
 
     object Pin : SupportAppScreen() {
