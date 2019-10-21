@@ -30,11 +30,6 @@ class IntroScreenFragment : BaseStartingFragment(), IHasComponent<IntroScreenCom
     companion object {
         fun newInstance(): IntroScreenFragment = IntroScreenFragment()
 
-        private const val START_ANIMATION_DELAY = 100L
-        private const val ANIMATION_DURATION = 250L
-        private const val TRANSLATION_DEFAULT = 0f
-        private const val BASE_VIEW_TRANSLATION = 100f
-        private const val ALPHA_ZERO = 0f
         private const val ALPHA_GRAYED = 0.7f
         private const val ALPHA_NORMAL = 1f
     }
@@ -87,49 +82,10 @@ class IntroScreenFragment : BaseStartingFragment(), IHasComponent<IntroScreenCom
             layoutManager = LinearLayoutManager(this@IntroScreenFragment.context)
             setHasFixedSize(true)
         }
-
-        introViewModel.animateAtStart {
-            setupViewPositions()
-            animateViews()
-        }
     }
 
     override fun onItemClick(item: ExchangeListItem) {
         introViewModel.onExchangeClicked(item.exchange)
-    }
-
-    private fun setupViewPositions() {
-        greetingsTextView.alpha = ALPHA_ZERO
-        greetingsNoteTextView.alpha = ALPHA_ZERO
-        introButton.isGone = true
-        introButton.alpha = ALPHA_ZERO
-        introButton.translationY = BASE_VIEW_TRANSLATION
-    }
-
-    private fun animateViews() {
-        var currentDelay = START_ANIMATION_DELAY
-
-        greetingsTextView.animate()
-            .alpha(ALPHA_NORMAL)
-            .setDuration(ANIMATION_DURATION)
-            .setStartDelay(currentDelay)
-            .addEndAction { introViewModel.showInitialList() }
-
-        introButton.animate()
-            .alpha(ALPHA_GRAYED)
-            .translationY(TRANSLATION_DEFAULT)
-            .setDuration(ANIMATION_DURATION)
-            .setStartDelay(currentDelay)
-            .addStartAction { introButton.isVisible = true }
-
-        currentDelay += ANIMATION_DURATION
-
-        greetingsNoteTextView.animate()
-            .alpha(ALPHA_NORMAL)
-            .setInterpolator(LinearInterpolator())
-            .setDuration(ANIMATION_DURATION)
-            .setStartDelay(currentDelay)
-            .start()
     }
 
     private fun observeLoaderList(exchanges: List<ExchangeListItem>?) {

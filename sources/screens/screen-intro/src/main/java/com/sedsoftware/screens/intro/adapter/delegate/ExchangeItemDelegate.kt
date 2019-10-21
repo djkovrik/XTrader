@@ -29,7 +29,7 @@ class ExchangeItemDelegate(
     override fun onBindViewHolder(items: List<ExchangeListItem>, position: Int, holder: ViewHolder, payloads: MutableList<Any>) {
         holder as ItemViewHolder
         holder.bind(items[position], assetsProvider, clickListener)
-        setAnimation(holder.itemView, holder.adapterPosition)
+//        setAnimation(holder.itemView, holder.adapterPosition)
     }
 
     override fun isForViewType(items: List<ExchangeListItem>, position: Int): Boolean = true

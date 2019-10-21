@@ -21,27 +21,16 @@ class IntroScreenViewModel @Inject constructor(
     internal val anyDownloadCompleted = MutableLiveData<Boolean>()
 
     private val loadingStates = mutableMapOf<Exchange, DownloadState>()
-    private var animatedAlready = false
 
     init {
         loaders.keys.forEach { exchange ->
             loadingStates[exchange] = DownloadState.AVAILABLE
         }
+        emitCurrentList()
     }
 
     fun switchToRegularFlow() {
         coordinator.switchToRegularFlow()
-    }
-
-    fun animateAtStart(callback: () -> Unit) {
-        if (!animatedAlready) {
-            callback.invoke()
-            animatedAlready = true
-        }
-    }
-
-    fun showInitialList() {
-        emitCurrentList()
     }
 
     fun onExchangeClicked(exchange: Exchange) {
