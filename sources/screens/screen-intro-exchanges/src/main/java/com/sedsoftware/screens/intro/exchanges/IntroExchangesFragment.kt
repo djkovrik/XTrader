@@ -14,7 +14,7 @@ import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.screens.intro.exchanges.adapter.ExchangeListAdapter
 import com.sedsoftware.screens.intro.exchanges.di.IntroExchangesComponent
 import com.sedsoftware.screens.intro.exchanges.model.ExchangeListItem
-import kotlinx.android.synthetic.main.fragment_intro_screen.*
+import kotlinx.android.synthetic.main.fragment_intro_exchanges.*
 import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
@@ -30,7 +30,7 @@ class IntroExchangesFragment : BaseStartingFragment(), IHasComponent<IntroExchan
         private const val ALPHA_NORMAL = 1f
     }
 
-    override val layoutResId: Int = R.layout.fragment_intro_screen
+    override val layoutResId: Int = R.layout.fragment_intro_exchanges
 
     @Inject
     lateinit var introViewModel: IntroExchangesViewModel

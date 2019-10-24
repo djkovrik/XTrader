@@ -8,5 +8,4 @@ object UiDependencies {
     const val materialDialogs = "com.afollestad.material-dialogs:core:$MATERIAL_DIALOGS_VERSION"
     const val materialDialogsCommons = "com.afollestad.material-dialogs:commons:$MATERIAL_DIALOGS_VERSION"
     const val mpAndroidChart = "com.github.philjay:mpandroidchart:$MP_ANDROID_CHART_VERSION"
-    const val shapeOfView = "com.github.florent37:shapeofview:$SHAPE_OF_VIEW_VERSION"
 }

@@ -30,5 +30,4 @@ dependencies {
 
     implementation UiDependencies.materialValues
     implementation UiDependencies.materialDialogs
-    implementation UiDependencies.shapeOfView
 }

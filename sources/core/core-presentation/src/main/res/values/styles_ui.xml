@@ -21,10 +21,9 @@
     <!-- BUTTONS -->
 
     <style name="XTButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:textAllCaps">true</item>
+        <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:backgroundTint">@color/colorAccent</item>
-        <item name="cornerRadius">@dimen/corner_radius_button</item>
     </style>
 
     <style name="XTButtonNormal" parent="XTButton">
@@ -35,6 +34,11 @@
     <style name="XTButtonWide" parent="XTButton">
         <item name="android:paddingStart">@dimen/padding_button_wide</item>
         <item name="android:paddingEnd">@dimen/padding_button_wide</item>
+    </style>
+
+    <style name="XTButtonRounded" parent="XTButton">
+        <item name="android:paddingStart">@dimen/padding_button_small</item>
+        <item name="android:paddingEnd">@dimen/padding_button_small</item>
     </style>
 
     <style name="XTButtonOutlinedNormal" parent="XTPrimary">

@@ -6,6 +6,8 @@
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
+    <string name="done">Done</string>
+    <string name="download">Download</string>
 
     <!-- Messages -->
     <string name="msg_no_internet_connection">No internet connection available</string>

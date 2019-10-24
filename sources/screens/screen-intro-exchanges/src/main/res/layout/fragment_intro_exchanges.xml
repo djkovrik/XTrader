@@ -28,17 +28,10 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.github.florent37.shapeofview.shapes.RoundRectView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:elevation="@dimen/elevation_card"
-        app:shape_roundRect_borderColor="@android:color/transparent"
-        app:shape_roundRect_borderWidth="0dp"
-        app:shape_roundRect_bottomLeftRadius="0dp"
-        app:shape_roundRect_bottomRightRadius="0dp"
-        app:shape_roundRect_topLeftRadius="@dimen/corner_radius_card_normal"
-        app:shape_roundRect_topRightRadius="@dimen/corner_radius_card_normal">
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,39 +55,26 @@
                 android:id="@+id/exchangesRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="@dimen/material_baseline_grid_1x"
-                android:layout_marginTop="@dimen/material_baseline_grid_1x"
+                android:layout_margin="@dimen/material_baseline_grid_1x"
                 android:layout_weight="1"
                 android:clipToPadding="true" />
 
-            <TextView
-                android:id="@+id/greetingsNoteTextView"
-                style="@style/XTTextSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/material_baseline_grid_1x"
-                android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-                android:layout_marginStart="@dimen/material_baseline_grid_2x"
-                android:layout_marginTop="@dimen/material_baseline_grid_1x"
-                android:gravity="center_horizontal"
-                android:text="@string/label_note" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/introButton"
-                style="@style/XTButtonWide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/material_baseline_grid_2x"
-                android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
-                android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
-                android:layout_marginTop="@dimen/material_baseline_grid_1x"
-                android:enabled="false"
-                android:text="@string/btn_greetings_continue"
-                app:cornerRadius="@dimen/corner_radius_button" />
-
         </LinearLayout>
 
-    </com.github.florent37.shapeofview.shapes.RoundRectView>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/introButton"
+            style="@style/XTButtonRounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
+            android:layout_marginTop="@dimen/material_baseline_grid_1x"
+            android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
+            android:layout_marginBottom="@dimen/material_baseline_grid_2x"
+            android:enabled="false"
+            android:text="@string/done"
+            app:cornerRadius="@dimen/corner_radius_button_big" />
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -14,7 +14,7 @@ import com.sedsoftware.screens.intro.exchanges.R
 import com.sedsoftware.screens.intro.exchanges.adapter.ExchangeListAdapter.Listener
 import com.sedsoftware.screens.intro.exchanges.model.ExchangeListItem
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.fragment_intro_screen_item.*
+import kotlinx.android.synthetic.main.fragment_intro_exchanges_item.*
 
 class ExchangeItemDelegate(
     private val assetsProvider: AssetsProvider,
@@ -43,7 +43,7 @@ class ExchangeItemDelegate(
     }
 
     class ItemViewHolder(parent: ViewGroup) :
-        RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_intro_screen_item)), LayoutContainer {
+        RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_intro_exchanges_item)), LayoutContainer {
 
         override val containerView: View? = itemView
 
