@@ -7,8 +7,7 @@
     <string name="btn_greetings_download_completed">Completed!</string>
 
     <!-- Intro screen -->
-    <string name="label_greetings">Before starting please download currency pairs for any of the supported exchanges:</string>
-    <string name="label_note">Note: you can manage it later from settings menu.</string>
+    <string name="label_download_exchanges">Here you can download currency pairs for any of the supported exchanges:</string>
 
     <!-- A11y -->
     <string name="a11y_app_logo">App logo</string>

@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/welcomeTextView"
+        style="@style/XTTextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_baseline_grid_1x"
+        android:text="@string/label_welcome"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        style="@style/XTTextNormal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/material_baseline_grid_4x"
+        android:layout_marginEnd="@dimen/material_baseline_grid_4x"
+        android:layout_marginBottom="@dimen/material_baseline_grid_4x"
+        android:gravity="center"
+        android:text="@string/label_download_coinmarketcap"
+        app:layout_constraintBottom_toTopOf="@+id/logoImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="@dimen/size_logo_cmc"
+        android:layout_height="@dimen/size_logo_cmc"
+        android:contentDescription="@string/a11y_logo"
+        android:src="@drawable/ic_coinmarketcap"
+        android:alpha="0.75"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/downloadButton"
+        style="@style/XTButtonRounded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_baseline_grid_2x"
+        app:cornerRadius="@dimen/corner_radius_button_big"
+        app:icon="@drawable/ic_arrow_down"
+        app:layout_constraintEnd_toEndOf="@+id/logoImageView"
+        app:layout_constraintStart_toStartOf="@+id/logoImageView"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextButton"
+        style="@style/XTButtonRounded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="@dimen/material_content_edge_margin_horizontal"
+        android:layout_marginTop="@dimen/material_baseline_grid_1x"
+        android:layout_marginEnd="@dimen/material_content_edge_margin_horizontal"
+        android:layout_marginBottom="@dimen/material_baseline_grid_2x"
+        android:enabled="false"
+        android:text="@string/next"
+        app:cornerRadius="@dimen/corner_radius_button_big"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
