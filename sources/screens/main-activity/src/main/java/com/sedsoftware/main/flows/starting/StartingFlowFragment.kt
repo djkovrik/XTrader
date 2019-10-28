@@ -25,7 +25,7 @@ class StartingFlowFragment : FlowFragment(), IHasComponent<StartingFlowComponent
     }
 
     override val layoutResId: Int = R.layout.layout_container
-    override val launchScreen: SupportAppScreen = Screens.Intro
+    override val launchScreen: SupportAppScreen = Screens.IntroBase
 
     @Inject
     @StartingFlow

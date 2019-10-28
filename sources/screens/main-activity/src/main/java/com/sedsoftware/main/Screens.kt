@@ -3,6 +3,7 @@ package com.sedsoftware.main
 import androidx.fragment.app.Fragment
 import com.sedsoftware.main.flows.regular.RegularFlowFragment
 import com.sedsoftware.main.flows.starting.StartingFlowFragment
+import com.sedsoftware.screens.intro.base.IntroBaseFragment
 import com.sedsoftware.screens.intro.exchanges.IntroExchangesFragment
 import com.sedsoftware.screens.market.MarketScreenFragment
 import com.sedsoftware.screens.market.MarketTabContainerFragment
@@ -52,7 +53,11 @@ object Screens {
 
 
     // Screens
-    object Intro : SupportAppScreen() {
+    object IntroBase : SupportAppScreen() {
+        override fun getFragment(): Fragment = IntroBaseFragment.newInstance()
+    }
+
+    object IntroExchanges : SupportAppScreen() {
         override fun getFragment(): Fragment = IntroExchangesFragment.newInstance()
     }
 
