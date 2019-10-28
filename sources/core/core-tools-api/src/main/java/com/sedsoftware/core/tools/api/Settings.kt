@@ -2,5 +2,6 @@ package com.sedsoftware.core.tools.api
 
 // TODO Make it more secure
 interface Settings {
-    var isExchangesDownloaded: Boolean
+    var isCmcDataDownloaded: Boolean
+    var isAnyExchangeDownloaded: Boolean
 }

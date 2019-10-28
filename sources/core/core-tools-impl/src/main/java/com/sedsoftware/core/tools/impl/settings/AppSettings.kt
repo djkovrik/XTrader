@@ -22,7 +22,14 @@ class AppSettings @Inject constructor(
         }
     }
 
-    override var isExchangesDownloaded: Boolean
+    override var isCmcDataDownloaded: Boolean
+        get() =
+            preferences.getValue(key(R.string.pref_key_coinmarketcap_downloaded), false)
+        set(value) {
+            preferences.setValue(key(R.string.pref_key_coinmarketcap_downloaded), value)
+        }
+
+    override var isAnyExchangeDownloaded: Boolean
         get() =
             preferences.getValue(key(R.string.pref_key_exchanges_downloaded), false)
         set(value) {

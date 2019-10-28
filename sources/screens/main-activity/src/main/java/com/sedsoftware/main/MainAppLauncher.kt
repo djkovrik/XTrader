@@ -12,7 +12,7 @@ class MainAppLauncher @Inject constructor(
 
     fun coldStart() {
         val rootScreen =
-            if (settings.isExchangesDownloaded) Screens.RegularFlow
+            if (settings.isAnyExchangeDownloaded) Screens.RegularFlow
             else Screens.StartingFlow
 
         router.newRootScreen(rootScreen)

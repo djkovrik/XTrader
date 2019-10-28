@@ -37,8 +37,8 @@ class PairsInfoRepository @Inject constructor(
     }
 
     fun markAsDownloaded() {
-        if (!settings.isExchangesDownloaded) {
-            settings.isExchangesDownloaded = true
+        if (!settings.isAnyExchangeDownloaded) {
+            settings.isAnyExchangeDownloaded = true
         }
     }
 }

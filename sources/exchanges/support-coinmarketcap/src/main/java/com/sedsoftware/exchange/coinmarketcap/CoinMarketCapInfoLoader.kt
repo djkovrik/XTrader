@@ -2,6 +2,7 @@ package com.sedsoftware.exchange.coinmarketcap
 
 import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
 import com.sedsoftware.core.tools.api.NetworkHandler
+import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.utils.extension.left
 import com.sedsoftware.core.utils.extension.right
 import com.sedsoftware.core.utils.type.Either
@@ -19,7 +20,8 @@ import javax.inject.Singleton
 @Singleton
 class CoinMarketCapInfoLoader @Inject constructor(
     private val repository: CurrenciesInfoRepository,
-    private val networkHandler: NetworkHandler
+    private val networkHandler: NetworkHandler,
+    private val settings: Settings
 ) : CurrenciesInfoLoader {
 
     override suspend fun loadInfoIfNeeded(): Either<Failure, Success> =
@@ -31,7 +33,7 @@ class CoinMarketCapInfoLoader @Inject constructor(
                             val currencyMap = repository.getCurrencyMap()
                             repository.saveCurrencyMap(currencyMap)
                             repository.saveSyncInfo(currencyMap)
-
+                            settings.isCmcDataDownloaded = true
                         }
                         right(CurrencyMapLoadingCompleted)
                     } catch (exception: Exception) {
