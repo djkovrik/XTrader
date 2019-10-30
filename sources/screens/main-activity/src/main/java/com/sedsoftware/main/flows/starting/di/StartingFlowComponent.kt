@@ -5,7 +5,6 @@ import com.sedsoftware.core.di.StartingFlowToolsProvider
 import com.sedsoftware.core.di.scope.FlowScope
 import com.sedsoftware.main.flows.starting.StartingFlowFragment
 import com.sedsoftware.main.flows.starting.di.module.StartingFlowModule
-import com.sedsoftware.main.flows.starting.di.module.StartingFlowViewModelsModule
 import dagger.Component
 
 @Component(
@@ -13,8 +12,7 @@ import dagger.Component
         ActivityToolsProvider::class
     ],
     modules = [
-        StartingFlowModule::class,
-        StartingFlowViewModelsModule::class
+        StartingFlowModule::class
     ]
 )
 @FlowScope

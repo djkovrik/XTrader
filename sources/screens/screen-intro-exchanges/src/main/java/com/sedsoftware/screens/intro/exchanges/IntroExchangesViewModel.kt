@@ -1,7 +1,7 @@
 package com.sedsoftware.screens.intro.exchanges
 
 import androidx.lifecycle.MutableLiveData
-import com.sedsoftware.core.domain.coordinator.FlowCoordinator
+import com.sedsoftware.core.domain.coordinator.FlowSwitcher
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.presentation.base.BaseViewModel
@@ -13,7 +13,7 @@ import com.sedsoftware.screens.intro.exchanges.model.ExchangeListItem
 import javax.inject.Inject
 
 class IntroExchangesViewModel @Inject constructor(
-    private val coordinator: FlowCoordinator,
+    private val coordinator: FlowSwitcher,
     private val loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
 ) : BaseViewModel() {
 

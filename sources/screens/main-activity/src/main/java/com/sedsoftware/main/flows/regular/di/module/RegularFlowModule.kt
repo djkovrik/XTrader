@@ -1,27 +1,25 @@
 package com.sedsoftware.main.flows.regular.di.module
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.sedsoftware.core.di.key.ViewModelKey
 import com.sedsoftware.core.di.qualifier.RegularFlow
+import com.sedsoftware.main.flows.regular.factory.RegularViewModelOwnerFactory
+import com.sedsoftware.screens.intro.exchanges.IntroExchangesViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
+import dagger.multibindings.IntoMap
 
 @Module
-class RegularFlowModule {
+abstract class RegularFlowModule {
 
-    @Provides
+    @Binds
     @RegularFlow
-    fun provideCicerone(): Cicerone<Router> =
-        Cicerone.create()
+    abstract fun bindViewModelOwnerFactory(factory: RegularViewModelOwnerFactory): ViewModelProvider.Factory
 
-    @Provides
+    @Binds
+    @IntoMap
     @RegularFlow
-    fun provideRouter(@RegularFlow cicerone: Cicerone<Router>): Router =
-        cicerone.router
-
-    @Provides
-    @RegularFlow
-    fun provideNavigatorHolder(@RegularFlow cicerone: Cicerone<Router>): NavigatorHolder =
-        cicerone.navigatorHolder
+    @ViewModelKey(IntroExchangesViewModel::class)
+    abstract fun bindIntroScreenViewModel(introScreenViewModel: IntroExchangesViewModel): ViewModel
 }

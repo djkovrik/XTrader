@@ -3,9 +3,12 @@ package com.sedsoftware.core.di
 import android.view.Display
 import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.qualifier.ForExchange
+import com.sedsoftware.core.di.qualifier.Global
+import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
-import com.sedsoftware.core.domain.coordinator.FlowCoordinator
+import com.sedsoftware.core.domain.coordinator.FlowSwitcher
+import com.sedsoftware.core.domain.coordinator.StartingFlowCoordinator
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
@@ -18,6 +21,8 @@ import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.tools.api.Signer
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.Router
 
 // App
 interface AppProvider :
@@ -54,13 +59,21 @@ interface CoinMarketCapProvider {
 
 // Local providers
 interface ActivityToolsProvider : AppProvider {
-    fun provideFlowCoordinator(): FlowCoordinator
+    fun provideFlowSwitcher(): FlowSwitcher
+    fun provideStartingFlowCoordinator(): StartingFlowCoordinator
+
+    @Global fun provideGlobalRouter(): Router
+    @Global fun provideGlobalNavigatorHolder(): NavigatorHolder
+
+    @StartingFlow fun provideStartingRouter(): Router
+    @StartingFlow fun provideStartingNavigatorHolder(): NavigatorHolder
+
+    @RegularFlow fun provideRegularRouter(): Router
+    @RegularFlow fun provideRegularNavigatorHolder(): NavigatorHolder
 }
 
 interface StartingFlowToolsProvider : ActivityToolsProvider {
     @StartingFlow fun provideViewModelFactory(): ViewModelProvider.Factory
 }
 
-interface RegularFlowToolsProvider : ActivityToolsProvider {
-
-}
+interface RegularFlowToolsProvider : ActivityToolsProvider

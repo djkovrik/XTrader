@@ -1,13 +1,13 @@
-package com.sedsoftware.main.flows.coordinator
+package com.sedsoftware.main.flows.navigation
 
-import com.sedsoftware.core.domain.coordinator.FlowCoordinator
+import com.sedsoftware.core.domain.coordinator.FlowSwitcher
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.flows.FlowRouter
 import javax.inject.Inject
 
-class AppFlowCoordinator @Inject constructor(
+class AppFlowSwitcher @Inject constructor(
     private val flowRouter: FlowRouter
-) : FlowCoordinator {
+) : FlowSwitcher {
 
     override fun switchToStartingFlow() {
         flowRouter.newRootFlow(Screens.StartingFlow)

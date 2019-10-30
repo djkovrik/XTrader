@@ -33,10 +33,9 @@ class IntroExchangesFragment : BaseStartingFragment(), IHasComponent<IntroExchan
     override val layoutResId: Int = R.layout.fragment_intro_exchanges
 
     @Inject
-    lateinit var introViewModel: IntroExchangesViewModel
-
-    @Inject
     lateinit var exchangesAdapter: ExchangeListAdapter
+
+    private lateinit var introViewModel: IntroExchangesViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

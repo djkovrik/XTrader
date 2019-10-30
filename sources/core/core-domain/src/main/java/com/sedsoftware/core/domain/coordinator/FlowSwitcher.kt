@@ -1,6 +1,6 @@
 package com.sedsoftware.core.domain.coordinator
 
-interface FlowCoordinator {
+interface FlowSwitcher {
     fun switchToStartingFlow()
     fun switchToRegularFlow()
 }
