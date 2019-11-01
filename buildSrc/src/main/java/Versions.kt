@@ -9,20 +9,20 @@ object Versions {
 
     // Firebase
     const val PLAY_SERVICES_VERSION = "4.3.2"
-    const val FIREBASE_CORE_VERSION = "17.2.0"
-    const val FIREBASE_ANALYTICS_VERSION = "17.2.0"
+    const val FIREBASE_CORE_VERSION = "17.2.1"
+    const val FIREBASE_ANALYTICS_VERSION = "17.2.1"
     const val FIREBASE_FIRESTORE_VERSION = "21.0.0"
     const val FIREBASE_CLOUD_MESSAGING_VERSION = "20.0.0"
     const val FIREBASE_CRASHLYTICS_VERSION = "2.10.1"
-    const val FIREBASE_PERFOMANCE_MONITOR_VERSION = "19.0.0"
+    const val FIREBASE_PERFOMANCE_MONITOR_VERSION = "19.0.1"
 
     // Core
     const val ADAPTER_DELEGATES_VERSION = "4.2.0"
-    const val DAGGER_VERSION = "2.24"
+    const val DAGGER_VERSION = "2.25.2"
     const val COMPONENT_MANAGER_VERSION = "2.1.0"
-    const val RETROFIT_VERSION = "2.6.1"
-    const val MOSHI_VERSION = "1.8.0"
-    const val OKHTTP_VERSION = "4.2.0"
+    const val RETROFIT_VERSION = "2.6.2"
+    const val MOSHI_VERSION = "1.9.1"
+    const val OKHTTP_VERSION = "4.2.2"
     const val THREE_TEN_ABP_VERSION = "1.2.1"
     const val CICERONE_VERSION = "5.0.0"
 
@@ -33,23 +33,23 @@ object Versions {
     // Plugins
     const val GRADLE_ANDROID_VERSION = "3.4.0"
     const val FABRIC_VERSION = "1.31.0"
-    const val DETEKT_VERSION = "1.0.1"
-    const val GRADLE_VERSIONS_VERSION = "0.25.0"
-    const val ANDROID_JUNIT5_VERSION = "1.5.1.0"
+    const val DETEKT_VERSION = "1.1.1"
+    const val GRADLE_VERSIONS_VERSION = "0.27.0"
+    const val ANDROID_JUNIT5_VERSION = "1.5.2.0"
     const val DEV_METRICS_VERSION = "0.7"
 
     // JetPack - AppCompat
     const val APPCOMPAT_VERSION = "1.1.0"
-    const val MATERIAL_COMPONENTS_VERSION = "1.1.0-alpha10"
-    const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-beta2"
+    const val MATERIAL_COMPONENTS_VERSION = "1.2.0-alpha01"
+    const val CONSTRAINT_LAYOUT_VERSION = "2.0.0-beta3"
     const val LEGACY_SUPPORT_UTILS_VERSION = "1.0.0"
 
     // JetPack - Architecture
-    const val LIFECYCLE_VERSION = "2.2.0-alpha05"
-    const val ROOM_VERSION = "2.2.0-rc01"
+    const val LIFECYCLE_VERSION = "2.2.0-rc01"
+    const val ROOM_VERSION = "2.2.1"
 
     // JetPack - KTX
-    const val KTX_VERSION = "1.2.0-alpha04"
+    const val KTX_VERSION = "1.2.0-beta01"
 
     // UI
     const val MATERIAL_VALUES_VERSION = "1.1.1"
@@ -63,7 +63,7 @@ object Versions {
     const val TEST_RUNNER_VERSION = "1.3.0-alpha02"
     const val TEST_RULES_VERSION = "1.1.0-alpha1"
     const val ESPRESSO_VERSION = "3.1.0-alpha1"
-    const val SPEK_VERSION = "2.0.7"
+    const val SPEK_VERSION = "2.0.8"
     const val EXPEKT_VERSION = "0.5.0"
     const val KAKAO_VERSION = "1.3.0"
     const val FUEL_VERSION = "2.2.1"
