@@ -1,8 +1,7 @@
 package com.sedsoftware.exchange.coinmarketcap
 
-import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
+import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.tools.api.NetworkHandler
-import com.sedsoftware.core.tools.api.Settings
 import com.sedsoftware.core.utils.extension.left
 import com.sedsoftware.core.utils.extension.right
 import com.sedsoftware.core.utils.type.Either
@@ -18,23 +17,29 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CoinMarketCapInfoLoader @Inject constructor(
+class CoinMarketCapMapLoader @Inject constructor(
     private val repository: CurrenciesInfoRepository,
-    private val networkHandler: NetworkHandler,
-    private val settings: Settings
-) : CurrenciesInfoLoader {
+    private val networkHandler: NetworkHandler
+) : CurrencyMapLoader {
 
-    override suspend fun loadInfoIfNeeded(): Either<Failure, Success> =
+    override suspend fun isLoadingNeeded(): Either<Failure, Boolean> =
+        withContext(Dispatchers.IO) {
+            try {
+                val loadingNeeded = repository.isLoadingNeeded()
+                right(loadingNeeded)
+            } catch (exception: Exception) {
+                left(CurrencyMapLoadingError(exception))
+            }
+        }
+
+    override suspend fun loadCurrencyMap(): Either<Failure, Success> =
         withContext(Dispatchers.IO) {
             when (networkHandler.isConnected) {
                 true -> {
                     try {
-                        if (repository.isLoadingNeeded()) {
-                            val currencyMap = repository.getCurrencyMap()
-                            repository.saveCurrencyMap(currencyMap)
-                            repository.saveSyncInfo(currencyMap)
-                            settings.isCmcDataDownloaded = true
-                        }
+                        val currencyMap = repository.getCurrencyMap()
+                        repository.saveCurrencyMap(currencyMap)
+                        repository.saveSyncInfo(currencyMap)
                         right(CurrencyMapLoadingCompleted)
                     } catch (exception: Exception) {
                         left(CurrencyMapLoadingError(exception))

@@ -1,7 +1,7 @@
 package com.sedsoftware.screens.intro.exchanges
 
 import androidx.lifecycle.MutableLiveData
-import com.sedsoftware.core.domain.coordinator.FlowSwitcher
+import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.presentation.base.BaseViewModel

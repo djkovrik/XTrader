@@ -6,6 +6,7 @@ import android.view.View
 import com.sedsoftware.core.di.StartingFlowToolsProvider
 import com.sedsoftware.core.presentation.base.BaseStartingFragment
 import com.sedsoftware.core.presentation.extension.failure
+import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.screens.intro.base.di.IntroBaseComponent
 import kotlinx.android.synthetic.main.fragment_intro_base.*
@@ -40,6 +41,7 @@ class IntroBaseFragment : BaseStartingFragment(), IHasComponent<IntroBaseCompone
         super.onActivityCreated(savedInstanceState)
 
         introBaseViewModel = viewModel(viewModelFactory) {
+            observe(downloadingCompleted, ::observeDownloadLiveData)
             failure(viewModelFailure, ::observeFailures)
         }
     }
@@ -47,6 +49,11 @@ class IntroBaseFragment : BaseStartingFragment(), IHasComponent<IntroBaseCompone
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        downloadButton.setOnClickListener { introBaseViewModel.downloadCurrencyMap() }
         nextButton.setOnClickListener { introBaseViewModel.navigateToExchanges() }
+    }
+
+    private fun observeDownloadLiveData(isCompleted: Boolean?) {
+        isCompleted?.let { nextButton.isEnabled = it }
     }
 }

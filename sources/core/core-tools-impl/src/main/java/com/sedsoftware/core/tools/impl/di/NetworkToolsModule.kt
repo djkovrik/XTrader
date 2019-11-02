@@ -3,6 +3,7 @@ package com.sedsoftware.core.tools.impl.di
 import com.sedsoftware.core.tools.impl.BuildConfig
 import com.sedsoftware.core.utils.adapter.OffsetDateTimeAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -32,5 +33,6 @@ class NetworkToolsModule {
     fun provideMoshi(): Moshi =
         Moshi.Builder()
             .add(OffsetDateTimeAdapter())
+            .add(KotlinJsonAdapterFactory())
             .build()
 }

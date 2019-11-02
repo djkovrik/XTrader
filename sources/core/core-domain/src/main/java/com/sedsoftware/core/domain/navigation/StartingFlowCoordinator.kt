@@ -1,4 +1,4 @@
-package com.sedsoftware.core.domain.coordinator
+package com.sedsoftware.core.domain.navigation
 
 interface StartingFlowCoordinator {
     fun navigateToPinScreen()

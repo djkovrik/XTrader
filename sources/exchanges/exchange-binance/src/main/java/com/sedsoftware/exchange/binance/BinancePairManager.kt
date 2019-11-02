@@ -6,7 +6,7 @@ import com.sedsoftware.core.utils.extension.left
 import com.sedsoftware.core.utils.extension.right
 import com.sedsoftware.core.utils.type.Either
 import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.Failure.PairsManagerFailure
+import com.sedsoftware.core.utils.type.Failure.PairsManagerError
 import com.sedsoftware.exchange.binance.repository.PairsManagerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -29,7 +29,7 @@ class BinancePairManager @Inject constructor(
 
                 right(currencies)
             } catch (exception: Exception) {
-                left(PairsManagerFailure(exception))
+                left(PairsManagerError(exception))
             }
         }
 
@@ -43,7 +43,7 @@ class BinancePairManager @Inject constructor(
 
                 right(currencies)
             } catch (exception: Exception) {
-                left(PairsManagerFailure(exception))
+                left(PairsManagerError(exception))
             }
         }
 }

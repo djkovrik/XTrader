@@ -1,7 +1,7 @@
 package com.sedsoftware.main.flows.navigation
 
 import com.sedsoftware.core.di.qualifier.StartingFlow
-import com.sedsoftware.core.domain.coordinator.StartingFlowCoordinator
+import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.main.Screens
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject

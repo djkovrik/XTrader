@@ -7,10 +7,10 @@ import com.sedsoftware.core.di.qualifier.Global
 import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
-import com.sedsoftware.core.domain.coordinator.FlowSwitcher
-import com.sedsoftware.core.domain.coordinator.StartingFlowCoordinator
+import com.sedsoftware.core.domain.navigation.FlowSwitcher
+import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.interactor.CurrenciesInfoLoader
+import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairManager
 import com.sedsoftware.core.domain.provider.AssetsProvider
@@ -27,7 +27,8 @@ import ru.terrakok.cicerone.Router
 // App
 interface AppProvider :
     DeviceToolsProvider,
-    ExchangeManagerProvider
+    ExchangeManagerProvider,
+    CoinMarketCapProvider
 
 // Global providers
 interface DeviceToolsProvider {
@@ -54,7 +55,7 @@ interface BinanceProvider {
 
 interface CoinMarketCapProvider {
     fun provideCurrencyProvider(): CurrencyProvider
-    fun provideCurrenciesInfoLoader(): CurrenciesInfoLoader
+    fun provideCurrencyMapLoader(): CurrencyMapLoader
 }
 
 // Local providers

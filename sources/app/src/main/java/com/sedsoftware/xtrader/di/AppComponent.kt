@@ -1,6 +1,7 @@
 package com.sedsoftware.xtrader.di
 
 import com.sedsoftware.core.di.AppProvider
+import com.sedsoftware.core.di.CoinMarketCapProvider
 import com.sedsoftware.core.di.DeviceToolsProvider
 import com.sedsoftware.core.di.ExchangeManagerProvider
 import com.sedsoftware.core.tools.impl.di.DeviceToolsComponent
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 @Component(
     dependencies = [
         DeviceToolsProvider::class,
+        CoinMarketCapProvider::class,
         ExchangeManagerProvider::class
     ]
 )
@@ -37,6 +39,7 @@ interface AppComponent : AppProvider {
 
                 return DaggerAppComponent.builder()
                     .deviceToolsProvider(deviceToolsProvider)
+                    .coinMarketCapProvider(coinMarketCapProvider)
                     .exchangeManagerProvider(exchangeManagerProvider)
                     .build()
             }

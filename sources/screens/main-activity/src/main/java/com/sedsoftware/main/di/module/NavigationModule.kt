@@ -1,7 +1,7 @@
 package com.sedsoftware.main.di.module
 
-import com.sedsoftware.core.domain.coordinator.FlowSwitcher
-import com.sedsoftware.core.domain.coordinator.StartingFlowCoordinator
+import com.sedsoftware.core.domain.navigation.FlowSwitcher
+import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.main.flows.navigation.AppFlowSwitcher
 import com.sedsoftware.main.flows.navigation.AppStartingFlowCoordinator
 import dagger.Binds
