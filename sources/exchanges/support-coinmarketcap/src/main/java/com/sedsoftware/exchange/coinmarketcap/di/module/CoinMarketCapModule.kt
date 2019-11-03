@@ -11,8 +11,8 @@ import dagger.Module
 interface CoinMarketCapModule {
 
     @Binds
-    abstract fun bindCurrencyProvider(implementation: CoinMarketCapCurrencyProvider): CurrencyProvider
+    fun bindCurrencyProvider(implementation: CoinMarketCapCurrencyProvider): CurrencyProvider
 
     @Binds
-    abstract fun bindCurrenciesInfoLoader(implementation: CoinMarketCapMapLoader): CurrencyMapLoader
+    fun bindCurrenciesInfoLoader(implementation: CoinMarketCapMapLoader): CurrencyMapLoader
 }

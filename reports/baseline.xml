@@ -8,12 +8,16 @@
     <ID>MagicNumber:StringSigner.kt$StringSigner$4</ID>
     <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$1000</ID>
     <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$16</ID>
+    <ID>MaxLineLength:ExchangeItemDelegate.kt$ExchangeItemDelegate$override</ID>
     <ID>ReturnCount:PathInterpolatorDonut.kt$PathInterpolatorDonut$override fun getInterpolation(t: Float): Float</ID>
     <ID>ReturnCount:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
     <ID>TooGenericExceptionCaught:BinancePairLoader.kt$BinancePairLoader$exception: Exception</ID>
     <ID>TooGenericExceptionCaught:BinancePairManager.kt$BinancePairManager$exception: Exception</ID>
-    <ID>TooGenericExceptionCaught:ViewModelOwnerFactory.kt$ViewModelOwnerFactory$e: Exception</ID>
-    <ID>TooGenericExceptionThrown:ViewModelOwnerFactory.kt$ViewModelOwnerFactory$throw RuntimeException(e)</ID>
+    <ID>TooGenericExceptionCaught:CoinMarketCapMapLoader.kt$CoinMarketCapMapLoader$exception: Exception</ID>
+    <ID>TooGenericExceptionCaught:RegularViewModelOwnerFactory.kt$RegularViewModelOwnerFactory$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:StartingViewModelOwnerFactory.kt$StartingViewModelOwnerFactory$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:RegularViewModelOwnerFactory.kt$RegularViewModelOwnerFactory$throw RuntimeException(e)</ID>
+    <ID>TooGenericExceptionThrown:StartingViewModelOwnerFactory.kt$StartingViewModelOwnerFactory$throw RuntimeException(e)</ID>
     <ID>TooManyFunctions:Sprite.kt$Sprite : DrawableAnimatorUpdateListenerAnimatableCallback</ID>
     <ID>TooManyFunctions:SpriteAnimatorBuilder.kt$SpriteAnimatorBuilder</ID>
   </Whitelist>

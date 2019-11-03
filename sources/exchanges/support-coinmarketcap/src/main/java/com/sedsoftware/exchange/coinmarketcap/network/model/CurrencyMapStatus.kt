@@ -1,6 +1,9 @@
 package com.sedsoftware.exchange.coinmarketcap.network.model
 
+import com.squareup.moshi.Json
+
 data class CurrencyMapStatus(
     val timestamp: String,
-    val error_code: Int
+    @Json(name = "error_code")
+    val errorCode: Int
 )
