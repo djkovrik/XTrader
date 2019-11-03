@@ -16,10 +16,14 @@ data class BinanceSymbolDbModel(
     val status: SymbolStatus,
     @ColumnInfo(name = "base_asset")
     val baseAsset: String,
+    @ColumnInfo(name = "base_asset_name")
+    val baseAssetName: String,
     @ColumnInfo(name = "base_asset_precision")
     val baseAssetPrecision: Int,
     @ColumnInfo(name = "quote_asset")
     val quoteAsset: String,
+    @ColumnInfo(name = "quote_asset_name")
+    val quoteAssetName: String,
     @ColumnInfo(name = "quote_precision")
     val quotePrecision: Int,
     @ColumnInfo(name = "order_types")
