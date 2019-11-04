@@ -3,6 +3,7 @@ package com.sedsoftware.screens.market
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.graphics.Point
 import android.os.Bundle
 import android.view.Display
@@ -19,6 +20,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.ArcMotion
+import com.sedsoftware.core.di.RegularFlowToolsProvider
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.base.BaseRegularFragment
@@ -32,15 +34,18 @@ import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.extension.orFalse
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
+import com.sedsoftware.screens.market.di.MarketScreenComponent
 import com.sedsoftware.screens.market.model.CurrencyListItem
 import com.sedsoftware.screens.market.viewmodel.MarketScreenViewModel
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.include_add_pair.*
 import kotlinx.coroutines.delay
+import me.vponomarenko.injectionmanager.IHasComponent
+import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
-import javax.inject.Named
 
-class MarketScreenFragment : BaseRegularFragment(), CurrencyListAdapter.Listener {
+class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenComponent>,
+    CurrencyListAdapter.Listener {
 
     companion object {
 
@@ -49,8 +54,6 @@ class MarketScreenFragment : BaseRegularFragment(), CurrencyListAdapter.Listener
         private const val DIALOG_ANIMATION_DURATION = 250L
         private const val DIALOG_OVERLAY_ANIMATION_DELAY = 150L
         private const val ITEM_CLICK_SCROLL_DELAY = 750L
-        private const val ALPHA_GRAYED = 0.7f
-        private const val ALPHA_NORMAL = 1f
         private const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
     }
 
@@ -73,14 +76,15 @@ class MarketScreenFragment : BaseRegularFragment(), CurrencyListAdapter.Listener
     @Inject
     lateinit var defaultDisplay: Display
 
-    @Inject
-    @Named("base")
-    lateinit var baseAdapter: CurrencyListAdapter
+    private val baseAdapter: CurrencyListAdapter = CurrencyListAdapter(this)
+    private val marketAdapter: CurrencyListAdapter = CurrencyListAdapter(this)
 
-    @Inject
-    @Named("market")
-    lateinit var marketAdapter: CurrencyListAdapter
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        XInjectionManager
+            .bindComponent(this)
+            .inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -137,6 +141,13 @@ class MarketScreenFragment : BaseRegularFragment(), CurrencyListAdapter.Listener
         marketRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL).apply {
             ContextCompat.getDrawable(requireContext(), R.drawable.divider)?.let { setDrawable(it) }
         })
+    }
+
+    override fun getComponent(): MarketScreenComponent {
+        val regularFlowToolsProvider =
+            XInjectionManager.findComponent { it is RegularFlowToolsProvider } as RegularFlowToolsProvider
+
+        return MarketScreenComponent.Initializer.init(regularFlowToolsProvider)
     }
 
     override fun onItemClick(item: CurrencyListItem) {

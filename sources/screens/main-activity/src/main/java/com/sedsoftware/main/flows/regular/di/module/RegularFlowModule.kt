@@ -6,6 +6,7 @@ import com.sedsoftware.core.di.key.ViewModelKey
 import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.main.flows.regular.factory.RegularViewModelOwnerFactory
 import com.sedsoftware.screens.intro.exchanges.IntroExchangesViewModel
+import com.sedsoftware.screens.market.viewmodel.MarketScreenViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -20,6 +21,6 @@ abstract class RegularFlowModule {
     @Binds
     @IntoMap
     @RegularFlow
-    @ViewModelKey(IntroExchangesViewModel::class)
-    abstract fun bindIntroScreenViewModel(introScreenViewModel: IntroExchangesViewModel): ViewModel
+    @ViewModelKey(MarketScreenViewModel::class)
+    abstract fun bindMarketScreenViewModel(marketScreenViewModel: MarketScreenViewModel): ViewModel
 }

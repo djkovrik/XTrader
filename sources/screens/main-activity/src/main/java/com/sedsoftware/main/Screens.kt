@@ -6,16 +6,16 @@ import com.sedsoftware.main.flows.starting.StartingFlowFragment
 import com.sedsoftware.screens.intro.base.IntroBaseFragment
 import com.sedsoftware.screens.intro.exchanges.IntroExchangesFragment
 import com.sedsoftware.screens.market.MarketScreenFragment
-import com.sedsoftware.screens.market.MarketTabContainerFragment
+import com.sedsoftware.main.tabs.MarketTabContainerFragment
 import com.sedsoftware.screens.orders.OrdersScreenFragment
-import com.sedsoftware.screens.orders.OrdersTabContainerFragment
+import com.sedsoftware.main.tabs.OrdersTabContainerFragment
 import com.sedsoftware.screens.intro.pin.PinScreenFragment
 import com.sedsoftware.screens.tools.ToolsScreenFragment
-import com.sedsoftware.screens.tools.ToolsTabContainerFragment
+import com.sedsoftware.main.tabs.ToolsTabContainerFragment
 import com.sedsoftware.screens.tracker.TrackerScreenFragment
-import com.sedsoftware.screens.tracker.TrackerTabContainerFragment
+import com.sedsoftware.main.tabs.TrackerTabContainerFragment
 import com.sedsoftware.screens.wallet.WalletScreenFragment
-import com.sedsoftware.screens.wallet.WalletTabContainerFragment
+import com.sedsoftware.main.tabs.WalletTabContainerFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.core.presentation.base.BaseTabFragment
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.flows.regular.di.RegularFlowComponent
@@ -64,8 +65,8 @@ class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> 
         }
     }
 
-    private val currentTabFragment: BaseFragment?
-        get() = childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseFragment
+    private val currentTabFragment: BaseTabFragment?
+        get() = childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseTabFragment
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

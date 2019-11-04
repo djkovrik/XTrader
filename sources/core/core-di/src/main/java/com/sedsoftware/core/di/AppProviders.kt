@@ -7,12 +7,12 @@ import com.sedsoftware.core.di.qualifier.Global
 import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
-import com.sedsoftware.core.domain.navigation.FlowSwitcher
-import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairManager
+import com.sedsoftware.core.domain.navigation.FlowSwitcher
+import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.domain.provider.CurrencyProvider
 import com.sedsoftware.core.tools.api.Logger
@@ -77,4 +77,6 @@ interface StartingFlowToolsProvider : ActivityToolsProvider {
     @StartingFlow fun provideViewModelFactory(): ViewModelProvider.Factory
 }
 
-interface RegularFlowToolsProvider : ActivityToolsProvider
+interface RegularFlowToolsProvider : ActivityToolsProvider {
+    @RegularFlow fun provideViewModelFactory(): ViewModelProvider.Factory
+}

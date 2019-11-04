@@ -4,9 +4,8 @@ import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.sedsoftware.screens.market.adapter.delegate.BaseCurrencyItemDelegate
 import com.sedsoftware.screens.market.adapter.delegate.MarketCurrencyItemDelegate
 import com.sedsoftware.screens.market.model.CurrencyListItem
-import javax.inject.Inject
 
-class CurrencyListAdapter @Inject constructor(
+class CurrencyListAdapter(
     clickListener: Listener
 ) : ListDelegationAdapter<List<CurrencyListItem>>() {
 
