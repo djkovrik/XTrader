@@ -107,9 +107,11 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
 
         addPairPanel.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
-                setupViewParams()
-                setupFabDialogState()
-                addPairPanel.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                if (addPairPanel != null) {
+                    setupViewParams()
+                    setupFabDialogState()
+                    addPairPanel.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                }
             }
         })
 
