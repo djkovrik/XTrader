@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/material_baseline_grid_2x"
         app:cornerRadius="@dimen/corner_radius_button_big"
-        app:icon="@drawable/ic_arrow_down"
+        android:text="@string/download"
         app:layout_constraintEnd_toEndOf="@+id/logoImageView"
         app:layout_constraintStart_toStartOf="@+id/logoImageView"
         app:layout_constraintTop_toBottomOf="@+id/logoImageView" />

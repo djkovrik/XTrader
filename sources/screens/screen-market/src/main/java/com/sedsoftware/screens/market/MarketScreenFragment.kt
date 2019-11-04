@@ -18,7 +18,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.ArcMotion
 import com.sedsoftware.core.di.RegularFlowToolsProvider
 import com.sedsoftware.core.domain.entity.Currency
@@ -29,7 +28,6 @@ import com.sedsoftware.core.presentation.extension.addStartEndActions
 import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
 import com.sedsoftware.core.presentation.extension.failure
-import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.extension.orFalse
@@ -39,7 +37,6 @@ import com.sedsoftware.screens.market.model.CurrencyListItem
 import com.sedsoftware.screens.market.viewmodel.MarketScreenViewModel
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.include_add_pair.*
-import kotlinx.coroutines.delay
 import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
@@ -53,7 +50,6 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
 
         private const val DIALOG_ANIMATION_DURATION = 250L
         private const val DIALOG_OVERLAY_ANIMATION_DELAY = 150L
-        private const val ITEM_CLICK_SCROLL_DELAY = 750L
         private const val DIALOG_STATE_KEY = "DIALOG_STATE_KEY"
     }
 
@@ -131,8 +127,6 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
 
         baseRecyclerView.adapter = baseAdapter
         marketRecyclerView.adapter = marketAdapter
-        baseRecyclerView.itemAnimator = null
-        marketRecyclerView.itemAnimator = null
 
         baseRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL).apply {
             ContextCompat.getDrawable(requireContext(), R.drawable.divider)?.let { setDrawable(it) }
@@ -153,32 +147,8 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
     override fun onItemClick(item: CurrencyListItem) {
         if (item.isBase) {
             marketViewModel.getMarketForChosenBase(item.currency)
-            moveChosenItemUp(item)
         } else {
             marketViewModel.marketCurrencyChosen(item.currency)
-        }
-    }
-
-    private fun moveChosenItemUp(item: CurrencyListItem) {
-        (baseRecyclerView.layoutManager as? LinearLayoutManager)?.let { manager ->
-            val first = manager.findFirstVisibleItemPosition()
-            val completelyFirst = manager.findFirstCompletelyVisibleItemPosition()
-            val last = manager.findLastVisibleItemPosition()
-            val completelyLast = manager.findLastCompletelyVisibleItemPosition()
-            val current = baseAdapter.items.indexOf(item)
-
-            val scrollTo =
-                if (last != completelyLast)
-                    completelyLast + current - first
-                else
-                    completelyLast + current - completelyFirst
-
-            if (scrollTo < baseAdapter.itemCount) {
-                launch {
-                    delay(ITEM_CLICK_SCROLL_DELAY)
-                    baseRecyclerView.smoothScrollToPosition(scrollTo)
-                }
-            }
         }
     }
 
@@ -212,7 +182,7 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
     private fun calculatePanelHeight(): Int {
         val size = Point()
         defaultDisplay.getSize(size)
-        return size.y / 5 * 4
+        return size.y / 4 * 3
     }
 
     private fun setupViewParams() {

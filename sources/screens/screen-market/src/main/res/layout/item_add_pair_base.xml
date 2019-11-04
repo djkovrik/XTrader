@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/outerCheckboxImageView"
+        android:id="@+id/checkedImageView"
         android:layout_width="@dimen/size_checkbox_outer"
         android:layout_height="@dimen/size_checkbox_outer"
         android:layout_marginBottom="@dimen/material_baseline_grid_0.5x"
@@ -15,23 +15,11 @@
         android:layout_marginStart="@dimen/material_baseline_grid_2x"
         android:layout_marginTop="@dimen/material_baseline_grid_0.5x"
         android:scaleType="centerInside"
-        android:src="@drawable/checkbox_outer"
+        android:src="@drawable/ic_tick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/currencyTextView"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/innerCheckboxImageView"
-        android:layout_width="@dimen/size_checkbox_inner"
-        android:layout_height="@dimen/size_checkbox_inner"
-        android:scaleType="centerInside"
-        android:src="@drawable/checkbox_inner"
-        app:layout_constraintBottom_toBottomOf="@+id/outerCheckboxImageView"
-        app:layout_constraintEnd_toEndOf="@+id/outerCheckboxImageView"
-        app:layout_constraintStart_toStartOf="@+id/outerCheckboxImageView"
-        app:layout_constraintTop_toTopOf="@+id/outerCheckboxImageView"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -46,7 +34,7 @@
         android:gravity="start"
         android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/outerCheckboxImageView"
+        app:layout_constraintEnd_toStartOf="@+id/checkedImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="BTC" />
@@ -61,13 +49,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/checker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:constraint_referenced_ids="selector,innerCheckboxImageView,outerCheckboxImageView"
-        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

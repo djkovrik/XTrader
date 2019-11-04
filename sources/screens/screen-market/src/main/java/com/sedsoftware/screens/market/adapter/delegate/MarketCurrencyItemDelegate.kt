@@ -35,7 +35,8 @@ class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterD
         fun bind(item: CurrencyListItem, listener: Listener) {
             currencyTextView.text = String.format("%s", item.currency.name)
             itemContainer.setOnClickListener { listener.onItemClick(item) }
-            checker.isVisible = item.isSelected
+            checkedImageView.isVisible = item.isSelected
+            selector.isVisible = item.isSelected
         }
     }
 }
