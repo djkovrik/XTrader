@@ -13,7 +13,7 @@ dependencies {
     implementation project(':core-tools-api')
     implementation project(':core-utils')
 
-    testImplementation project(':support-coinmarketcap')
+    implementation project(':support-coinmarketcap')
 
     testImplementation project(':core-test')
 

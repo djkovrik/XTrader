@@ -1,6 +1,7 @@
 package com.sedsoftware.core.tools.impl.di
 
 import com.sedsoftware.core.tools.impl.BuildConfig
+import com.sedsoftware.core.tools.impl.checkIfMainThread
 import com.sedsoftware.core.utils.adapter.OffsetDateTimeAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -23,10 +24,12 @@ class NetworkToolsModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
-        OkHttpClient.Builder()
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        checkIfMainThread("OkHttpClient builder")
+        return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
+    }
 
     @Provides
     @Singleton
