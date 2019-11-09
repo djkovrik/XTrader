@@ -139,6 +139,15 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
         })
     }
 
+    override fun onBackPressed(): Boolean {
+        if (isDialogExpanded) {
+            changeDialogExpandState()
+            return true
+        }
+
+        return false
+    }
+
     override fun getComponent(): MarketScreenComponent {
         val regularFlowToolsProvider =
             XInjectionManager.findComponent { it is RegularFlowToolsProvider } as RegularFlowToolsProvider
