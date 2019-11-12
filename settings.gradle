@@ -19,6 +19,9 @@ project(':core-test').projectDir = new File(rootDir, 'sources/core/core-test')
 include ':exchange-binance'
 project(':exchange-binance').projectDir = new File(rootDir, 'sources/exchanges/exchange-binance')
 
+include ':exchange-bitfinex'
+project(':exchange-bitfinex').projectDir = new File(rootDir, 'sources/exchanges/exchange-bitfinex')
+
 include ':support-coinmarketcap'
 project(':support-coinmarketcap').projectDir = new File(rootDir, 'sources/exchanges/support-coinmarketcap')
 include ':support-manager'

@@ -12,6 +12,7 @@ dependencies {
     implementation project(':core-utils')
 
     implementation project(':exchange-binance')
+    implementation project(':exchange-bitfinex')
 
     implementation CoreDependencies.okhttp
     implementation CoreDependencies.moshi

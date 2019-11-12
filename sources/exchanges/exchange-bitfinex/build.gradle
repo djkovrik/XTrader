@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: "de.mannodermaus.android-junit5"
+
+apply from: '../../android-config.gradle'
+apply from: '../../kapt-config.gradle'
+apply from: '../../spek-android-config.gradle'
+
+dependencies {
+    implementation project(':core-di')
+    implementation project(':core-domain')
+    implementation project(':core-tools-api')
+    implementation project(':core-utils')
+
+    implementation project(':support-coinmarketcap')
+
+    testImplementation project(':core-test')
+
+    implementation CoreDependencies.dagger
+    kapt CoreDependencies.daggerCompiler
+
+    implementation CoreDependencies.retrofit
+    implementation CoreDependencies.okhttp
+    implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
+    implementation CoreDependencies.moshiAdapters
+    implementation CoreDependencies.retrofitMoshiConverter
+    implementation CoreDependencies.threetenabp
+
+    implementation JetPackDependencies.room
+    implementation JetPackDependencies.roomKtx
+    kapt JetPackDependencies.roomCompiler
+
+    testImplementation TestingDependencies.spekDsl
+    testImplementation TestingDependencies.spekRunner
+    testImplementation TestingDependencies.expekt
+
+    androidTestImplementation TestingDependencies.androidTestRunner
+    androidTestRuntimeOnly TestingDependencies.junit5Instrumentation
+}
