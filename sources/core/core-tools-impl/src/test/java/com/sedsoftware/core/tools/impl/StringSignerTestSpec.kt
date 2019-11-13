@@ -5,7 +5,7 @@ import com.winterbe.expekt.should
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
-class StringSignerTestSpek : Spek({
+class StringSignerTestSpec : Spek({
 
     describe("String signer") {
 
