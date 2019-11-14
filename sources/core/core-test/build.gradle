@@ -4,6 +4,7 @@ apply from: '../../kotlin-config.gradle'
 
 dependencies {
     implementation CoreDependencies.moshi
+    implementation CoreDependencies.moshiKotlin
 
     implementation TestingDependencies.spekDsl
 
