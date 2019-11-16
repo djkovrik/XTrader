@@ -41,6 +41,7 @@ import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
 
+@Suppress("TooManyFunctions")
 class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenComponent>,
     CurrencyListAdapter.Listener {
 
@@ -190,6 +191,7 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
     }
 
     // 3/4 of the screen height
+    @Suppress("MagicNumber ")
     private fun calculatePanelHeight(): Int {
         val size = Point()
         defaultDisplay.getSize(size)
