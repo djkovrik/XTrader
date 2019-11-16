@@ -16,7 +16,7 @@ import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
         BinanceSymbolDbModel::class,
         BinanceSyncInfoDbModel::class
     ],
-    version = BinanceDatabase.DATABASE_VERSION,
+    version = BinanceDatabase.VERSION,
     exportSchema = false
 )
 @TypeConverters(
@@ -27,8 +27,8 @@ import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
 abstract class BinanceDatabase : RoomDatabase() {
 
     companion object {
-        const val DATABASE_NAME = "binance_db"
-        const val DATABASE_VERSION = 1
+        const val NAME = "binance_db"
+        const val VERSION = 1
     }
 
     abstract fun getBinanceSymbolsDao(): BinanceSymbolsDao

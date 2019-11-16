@@ -13,7 +13,7 @@ class BinanceDatabaseModule {
     @Provides
     @Singleton
     fun provideBinanceDatabase(app: App): BinanceDatabase =
-        Room.databaseBuilder(app.getApplicationContext(), BinanceDatabase::class.java, BinanceDatabase.DATABASE_NAME)
+        Room.databaseBuilder(app.getApplicationContext(), BinanceDatabase::class.java, BinanceDatabase.NAME)
             .fallbackToDestructiveMigration()
             .build()
 }

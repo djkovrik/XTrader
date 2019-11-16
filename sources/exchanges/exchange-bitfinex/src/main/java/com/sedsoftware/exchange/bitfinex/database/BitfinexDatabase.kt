@@ -14,7 +14,7 @@ import com.sedsoftware.exchange.bitfinex.database.model.BitfinexSyncInfoDbModel
         BitfinexSymbolDbModel::class,
         BitfinexSyncInfoDbModel::class
     ],
-    version = BitfinexDatabase.DATABASE_VERSION,
+    version = BitfinexDatabase.VERSION,
     exportSchema = false
 )
 @TypeConverters(
@@ -23,8 +23,8 @@ import com.sedsoftware.exchange.bitfinex.database.model.BitfinexSyncInfoDbModel
 abstract class BitfinexDatabase : RoomDatabase() {
 
     companion object {
-        const val DATABASE_NAME = "bitfinex_db"
-        const val DATABASE_VERSION = 1
+        const val NAME = "bitfinex_db"
+        const val VERSION = 1
     }
 
     abstract fun getBitfinexSymbolsDao(): BitfinexSymbolsDao

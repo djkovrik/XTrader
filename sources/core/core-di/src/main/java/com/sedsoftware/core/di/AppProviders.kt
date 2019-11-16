@@ -53,6 +53,11 @@ interface BinanceProvider {
     @ForExchange(BINANCE) fun provideBinancePairManager(): CurrencyPairManager
 }
 
+interface BitfinexProvider {
+//    @ForExchange(BITFINEX) fun provideBitfinexPairLoader(): CurrencyPairLoader
+//    @ForExchange(BITFINEX) fun provideBitfinexPairManager(): CurrencyPairManager
+}
+
 interface CoinMarketCapProvider {
     fun provideCurrencyProvider(): CurrencyProvider
     fun provideCurrencyMapLoader(): CurrencyMapLoader
