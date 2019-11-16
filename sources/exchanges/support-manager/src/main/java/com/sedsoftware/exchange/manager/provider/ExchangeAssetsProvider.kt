@@ -13,6 +13,7 @@ class ExchangeAssetsProvider @Inject constructor() : AssetsProvider {
     override fun getLogoResource(exchange: Exchange): Int =
         when (exchange) {
             ExchangeType.BINANCE -> R.drawable.logo_binance
+            ExchangeType.BITFINEX -> R.drawable.logo_bitfinex
             else -> 0
         }
 }
