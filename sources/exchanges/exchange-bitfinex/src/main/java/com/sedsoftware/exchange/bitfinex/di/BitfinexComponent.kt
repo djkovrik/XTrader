@@ -4,6 +4,7 @@ import com.sedsoftware.core.di.BitfinexProvider
 import com.sedsoftware.core.di.CoinMarketCapProvider
 import com.sedsoftware.core.di.DeviceToolsProvider
 import com.sedsoftware.exchange.bitfinex.di.module.BitfinexDatabaseModule
+import com.sedsoftware.exchange.bitfinex.di.module.BitfinexExportModule
 import com.sedsoftware.exchange.bitfinex.di.module.BitfinexNetworkModule
 import dagger.Component
 import javax.inject.Singleton
@@ -14,6 +15,7 @@ import javax.inject.Singleton
         CoinMarketCapProvider::class
     ],
     modules = [
+        BitfinexExportModule::class,
         BitfinexDatabaseModule::class,
         BitfinexNetworkModule::class
     ]

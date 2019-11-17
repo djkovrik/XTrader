@@ -2,6 +2,7 @@ package com.sedsoftware.exchange.manager.di.module
 
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
+import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairManager
@@ -20,16 +21,24 @@ abstract class ExchangeManagerModule {
         @JvmStatic
         @Provides
         fun provideCurrencyPairLoaders(
-            @ForExchange(BINANCE) binancePairLoader: CurrencyPairLoader
+            @ForExchange(BINANCE) binancePairLoader: CurrencyPairLoader,
+            @ForExchange(BITFINEX) bitfinexPairLoader: CurrencyPairLoader
         ): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader> =
-            mapOf(BINANCE to binancePairLoader)
+            mapOf(
+                BINANCE to binancePairLoader,
+                BITFINEX to bitfinexPairLoader
+            )
 
         @JvmStatic
         @Provides
         fun provideCurrencyPairManager(
-            @ForExchange(BINANCE) binancePairManager: CurrencyPairManager
+            @ForExchange(BINANCE) binancePairManager: CurrencyPairManager,
+            @ForExchange(BITFINEX) bitfinexPairManager: CurrencyPairManager
         ): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager> =
-            mapOf(BINANCE to binancePairManager)
+            mapOf(
+                BINANCE to binancePairManager,
+                BITFINEX to bitfinexPairManager
+            )
     }
 
     @Binds

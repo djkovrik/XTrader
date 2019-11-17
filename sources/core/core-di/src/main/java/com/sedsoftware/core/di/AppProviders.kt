@@ -7,6 +7,7 @@ import com.sedsoftware.core.di.qualifier.Global
 import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
+import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
@@ -54,8 +55,8 @@ interface BinanceProvider {
 }
 
 interface BitfinexProvider {
-//    @ForExchange(BITFINEX) fun provideBitfinexPairLoader(): CurrencyPairLoader
-//    @ForExchange(BITFINEX) fun provideBitfinexPairManager(): CurrencyPairManager
+    @ForExchange(BITFINEX) fun provideBitfinexPairLoader(): CurrencyPairLoader
+    @ForExchange(BITFINEX) fun provideBitfinexPairManager(): CurrencyPairManager
 }
 
 interface CoinMarketCapProvider {
