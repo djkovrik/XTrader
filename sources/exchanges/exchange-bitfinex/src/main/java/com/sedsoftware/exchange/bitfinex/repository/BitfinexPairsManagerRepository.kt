@@ -1,23 +1,21 @@
-package com.sedsoftware.exchange.binance.repository
+package com.sedsoftware.exchange.bitfinex.repository
 
 import com.sedsoftware.core.domain.entity.Currency
-import com.sedsoftware.exchange.binance.common.params.SymbolStatus
-import com.sedsoftware.exchange.binance.database.BinanceDatabase
-import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
+import com.sedsoftware.exchange.bitfinex.database.BitfinexDatabase
+import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSymbolsDao
 import javax.inject.Inject
 
-class PairsManagerRepository @Inject constructor(
-    private val db: BinanceDatabase
+class BitfinexPairsManagerRepository @Inject constructor(
+    private val db: BitfinexDatabase
 ) {
 
-    private val symbolsDao: BinanceSymbolsDao by lazy {
-        db.getBinanceSymbolsDao()
+    private val symbolsDao: BitfinexSymbolsDao by lazy {
+        db.getBitfinexSymbolsDao()
     }
 
     suspend fun getBaseCurrencies(): List<Currency> =
         symbolsDao
             .getBaseCurrencies()
-            .filter { it.status == SymbolStatus.TRADING }
             .map {
                 object : Currency {
                     override val name: String = it.baseAsset
@@ -28,7 +26,6 @@ class PairsManagerRepository @Inject constructor(
     suspend fun getMarketCurrencies(base: Currency): List<Currency> =
         symbolsDao
             .getCurrenciesForBase(base.name)
-            .filter { it.status == SymbolStatus.TRADING }
             .map {
                 object : Currency {
                     override val name: String = it.quoteAsset

@@ -14,7 +14,7 @@ class BitfinexSymbolsMapper @Inject constructor(
     suspend fun mapSymbolsToDb(from: List<String>): List<BitfinexSymbolDbModel> =
         from.map { mapSymbolToDb(it) }
 
-    fun mapSyncInfoToDb(): BitfinexSyncInfoDbModel =
+    fun makeSyncInfoDbModel(): BitfinexSyncInfoDbModel =
         BitfinexSyncInfoDbModel(
             name = ExchangeType.BITFINEX.name,
             lastSyncDate = OffsetDateTime.now()

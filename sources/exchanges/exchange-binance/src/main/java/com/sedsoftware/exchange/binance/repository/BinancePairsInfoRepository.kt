@@ -9,7 +9,7 @@ import com.sedsoftware.exchange.binance.network.BinanceApi
 import com.sedsoftware.exchange.binance.network.model.PairsInfo
 import javax.inject.Inject
 
-class PairsInfoRepository @Inject constructor(
+class BinancePairsInfoRepository @Inject constructor(
     private val api: BinanceApi,
     private val settings: Settings,
     private val db: BinanceDatabase,

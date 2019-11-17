@@ -10,7 +10,7 @@ import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
 import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
 import com.sedsoftware.core.utils.type.Success
 import com.sedsoftware.core.utils.type.Success.PairsLoadingCompleted
-import com.sedsoftware.exchange.binance.repository.PairsInfoRepository
+import com.sedsoftware.exchange.binance.repository.BinancePairsInfoRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -19,7 +19,7 @@ import javax.inject.Singleton
 @Singleton
 class BinancePairLoader @Inject constructor(
     private val networkHandler: NetworkHandler,
-    private val repository: PairsInfoRepository
+    private val repository: BinancePairsInfoRepository
 ) : CurrencyPairLoader {
 
     override suspend fun fetchCurrencyPairs(): Either<Failure, Success> =

@@ -7,7 +7,7 @@ import com.sedsoftware.core.utils.extension.right
 import com.sedsoftware.core.utils.type.Either
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.type.Failure.PairsManagerError
-import com.sedsoftware.exchange.binance.repository.PairsManagerRepository
+import com.sedsoftware.exchange.binance.repository.BinancePairsManagerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Singleton
 class BinancePairManager @Inject constructor(
-    private val repository: PairsManagerRepository
+    private val repository: BinancePairsManagerRepository
 ) : CurrencyPairManager {
 
     override suspend fun getBaseCurrencies(): Either<Failure, List<Currency>> =
