@@ -21,13 +21,13 @@ object Versions {
     const val DAGGER_VERSION = "2.25.2"
     const val COMPONENT_MANAGER_VERSION = "2.1.0"
     const val RETROFIT_VERSION = "2.6.2"
-    const val MOSHI_VERSION = "1.9.1"
+    const val MOSHI_VERSION = "1.9.2"
     const val OKHTTP_VERSION = "4.2.2"
     const val THREE_TEN_ABP_VERSION = "1.2.1"
     const val CICERONE_VERSION = "5.0.0"
 
     // Kotlin
-    const val KOTLIN_VERSION = "1.3.50"
+    const val KOTLIN_VERSION = "1.3.60"
     const val KOTLIN_COROUTINES_VERSION = "1.3.1"
 
     // Plugins
@@ -70,6 +70,6 @@ object Versions {
 
     // Development tools
     const val TIMBER_VERSION = "4.7.1"
-    const val LEAK_CANARY_VERSION = "2.0-beta-3"
+    const val LEAK_CANARY_VERSION = "2.0-beta-4"
     const val ANDROID_DEBUG_DATABASE_VERSION = "1.0.6"
 }
