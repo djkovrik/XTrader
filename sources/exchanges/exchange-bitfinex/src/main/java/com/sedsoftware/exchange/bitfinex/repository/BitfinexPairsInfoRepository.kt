@@ -23,7 +23,7 @@ class BitfinexPairsInfoRepository @Inject constructor(
         db.getBitfinexSyncInfoDao()
     }
 
-    suspend fun getRemotePairsInfo(): List<List<String>> =
+    suspend fun getRemotePairsInfo(): List<String> =
         api.getCurrencyPairs()
 
     suspend fun storePairsInfo(info: List<String>) {

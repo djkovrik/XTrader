@@ -4,6 +4,6 @@ import retrofit2.http.GET
 
 interface BitfinexApi {
 
-    @GET("/v2/conf/pub:list:pair:exchange")
-    suspend fun getCurrencyPairs(): List<List<String>>
+    @GET("/v1/symbols")
+    suspend fun getCurrencyPairs(): List<String>
 }

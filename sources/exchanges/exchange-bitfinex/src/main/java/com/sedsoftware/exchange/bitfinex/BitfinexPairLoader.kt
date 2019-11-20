@@ -29,7 +29,7 @@ class BitfinexPairLoader @Inject constructor(
                     try {
                         val remotePairs = repository.getRemotePairsInfo()
                         if (remotePairs.isNotEmpty()) {
-                            repository.storePairsInfo(remotePairs.first())
+                            repository.storePairsInfo(remotePairs)
                             repository.storeSyncInfo()
                             repository.markAsDownloaded()
                         }
