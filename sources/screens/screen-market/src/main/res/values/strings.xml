@@ -10,6 +10,7 @@
 
     <!-- Add new pair -->
     <string name="label_exchange">Exchange:</string>
+    <string name="label_exchange_dialog">Available exchanges:</string>
     <string name="label_to">to</string>
 
 </resources>

@@ -32,20 +32,19 @@ class MarketScreenViewModel @Inject constructor(
     init {
         val availableExchanges = mutableListOf<Exchange>()
 
-        managers.keys.forEachIndexed { index, exchange ->
-            launch {
+        launch {
+            managers.keys.forEachIndexed { index, exchange ->
                 managers[exchange]
                     ?.checkIfDataAvailable()
                     ?.either(::handleFailure) { available ->
                         if (available) {
                             availableExchanges.add(exchange)
                         }
-                        // Run when each exchange checked
+                        // Run when all exchanges checked
                         if (index == ExchangeType.values().size - 1) {
                             refreshExchangeList(availableExchanges)
                         }
                     }
-
             }
         }
     }
@@ -67,16 +66,16 @@ class MarketScreenViewModel @Inject constructor(
     }
 
     private fun refreshExchangeList(exchanges: MutableList<Exchange>) {
-        exchangeListLiveData.value = exchanges
+        exchangeListLiveData.value = exchanges.sortedBy { it.name }
         if (exchanges.isNotEmpty()) {
-            showFirstExchange(exchanges.first())
+            showChosenExchange(exchanges.first())
         }
     }
 
-    private fun showFirstExchange(firstOne: Exchange) {
-        chosenExchangeLiveData.value = firstOne
+    fun showChosenExchange(exchange: Exchange) {
+        chosenExchangeLiveData.value = exchange
         launch {
-            managers[firstOne]
+            managers[exchange]
                 ?.getBaseCurrencies()
                 ?.either(::handleFailure, ::handleBaseLoadingCompletion)
         }

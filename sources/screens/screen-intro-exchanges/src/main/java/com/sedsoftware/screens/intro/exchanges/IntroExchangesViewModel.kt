@@ -71,6 +71,7 @@ class IntroExchangesViewModel @Inject constructor(
     private fun handleNextButtonState() {
         // At least one completed and no in progress
         nextButtonAvailableLiveData.value =
-            loadingStates.values.contains(DownloadState.COMPLETED) && !loadingStates.values.contains(DownloadState.IN_PROGRESS)
+            loadingStates.values.contains(DownloadState.COMPLETED)
+                    && !loadingStates.values.contains(DownloadState.IN_PROGRESS)
     }
 }

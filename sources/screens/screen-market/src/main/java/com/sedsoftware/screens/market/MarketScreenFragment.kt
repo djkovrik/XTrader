@@ -19,6 +19,8 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.transition.ArcMotion
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.sedsoftware.core.di.RegularFlowToolsProvider
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
@@ -118,12 +120,28 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
 
         marketFab.setOnClickListener { changeDialogExpandState() }
         globalOverlayView.setOnClickListener { changeDialogExpandState() }
+
         globalOverlayView.setOnTouchListener { _, event ->
             var flag = false
             if (event.action == MotionEvent.ACTION_DOWN) {
                 flag = globalOverlayView.measuredHeight - event.y < addPairPanel.measuredHeight
             }
             flag
+        }
+
+        exchangeTextView.setOnClickListener {
+            MaterialDialog(requireContext()).show {
+                listItemsSingleChoice(
+                    items = marketViewModel.exchanges.map { it.label },
+                    initialSelection = marketViewModel.exchanges.indexOf(marketViewModel.chosenExchange),
+                    waitForPositiveButton = true,
+                    selection = { _, index, _ ->
+                        marketViewModel.showChosenExchange(marketViewModel.exchanges[index])
+                    }
+                ).show {
+                    title(R.string.label_exchange_dialog)
+                }
+            }
         }
 
         addPairPanel.layoutParams.height = calculatePanelHeight()
@@ -195,7 +213,7 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
     }
 
     // 3/4 of the screen height
-    @Suppress("MagicNumber ")
+    @Suppress("MagicNumber")
     private fun calculatePanelHeight(): Int {
         val size = Point()
         defaultDisplay.getSize(size)
