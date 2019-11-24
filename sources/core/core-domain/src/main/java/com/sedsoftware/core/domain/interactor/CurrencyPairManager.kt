@@ -5,6 +5,7 @@ import com.sedsoftware.core.utils.type.Either
 import com.sedsoftware.core.utils.type.Failure
 
 interface CurrencyPairManager {
+    suspend fun checkIfDataAvailable(): Either<Failure, Boolean>
     suspend fun getBaseCurrencies(): Either<Failure, List<Currency>>
     suspend fun getMarketCurrencies(base: Currency): Either<Failure, List<Currency>>
 }

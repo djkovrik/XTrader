@@ -13,6 +13,6 @@ interface BitfinexSyncInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: BitfinexSyncInfoDbModel): Long
 
-    @Query("SELECT last_sync_date FROM bitfinex_sync_info WHERE name LIKE :name")
-    suspend fun getLastSyncDate(name: String): OffsetDateTime
+    @Query("SELECT last_sync_date FROM bitfinex_sync_info")
+    suspend fun getLastSyncDate(): OffsetDateTime?
 }

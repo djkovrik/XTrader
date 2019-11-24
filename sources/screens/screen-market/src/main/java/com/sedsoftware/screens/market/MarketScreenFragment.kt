@@ -86,11 +86,12 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
         super.onCreate(savedInstanceState)
 
         marketViewModel = viewModel(viewModelFactory) {
-            observe(chosenExchange, ::observeChosenExchange)
-            observe(baseCurrencies, ::observeBaseCurrencies)
-            observe(marketCurrencies, ::observeMarketCurrencies)
-            observe(chosenBaseCurrency, ::observeChosenBaseCurrency)
-            observe(chosenMarketCurrency, ::observeChosenMarketCurrency)
+            observe(exchangeListLiveData, ::observeExchangeList)
+            observe(baseCurrenciesLiveData, ::observeBaseCurrencies)
+            observe(marketCurrenciesLiveData, ::observeMarketCurrencies)
+            observe(chosenExchangeLiveData, ::observeChosenExchange)
+            observe(chosenBaseCurrencyLiveData, ::observeChosenBaseCurrency)
+            observe(chosenMarketCurrencyLiveData, ::observeChosenMarketCurrency)
             failure(viewModelFailure, ::observeFailures)
         }
 
@@ -161,6 +162,10 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
         } else {
             marketViewModel.marketCurrencyChosen(item.currency)
         }
+    }
+
+    private fun observeExchangeList(list: List<Exchange>?) {
+        marketFab.isEnabled = !list.isNullOrEmpty()
     }
 
     private fun observeBaseCurrencies(list: List<CurrencyListItem>?) {

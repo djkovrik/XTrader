@@ -4,6 +4,7 @@ import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.exchange.binance.common.params.SymbolStatus
 import com.sedsoftware.exchange.binance.database.BinanceDatabase
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
+import com.sedsoftware.exchange.binance.database.dao.BinanceSyncInfoDao
 import javax.inject.Inject
 
 class BinancePairsManagerRepository @Inject constructor(
@@ -13,6 +14,13 @@ class BinancePairsManagerRepository @Inject constructor(
     private val symbolsDao: BinanceSymbolsDao by lazy {
         db.getBinanceSymbolsDao()
     }
+
+    private val syncInfoDao: BinanceSyncInfoDao by lazy {
+        db.getBinanceSyncInfoDao()
+    }
+
+    suspend fun isSynchronized(): Boolean =
+        syncInfoDao.getLastSyncDate() != null
 
     suspend fun getBaseCurrencies(): List<Currency> =
         symbolsDao

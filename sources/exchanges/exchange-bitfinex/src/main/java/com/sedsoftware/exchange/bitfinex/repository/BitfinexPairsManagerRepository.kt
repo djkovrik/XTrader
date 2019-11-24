@@ -3,6 +3,7 @@ package com.sedsoftware.exchange.bitfinex.repository
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.exchange.bitfinex.database.BitfinexDatabase
 import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSymbolsDao
+import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSyncInfoDao
 import javax.inject.Inject
 
 class BitfinexPairsManagerRepository @Inject constructor(
@@ -12,6 +13,13 @@ class BitfinexPairsManagerRepository @Inject constructor(
     private val symbolsDao: BitfinexSymbolsDao by lazy {
         db.getBitfinexSymbolsDao()
     }
+
+    private val syncInfoDao: BitfinexSyncInfoDao by lazy {
+        db.getBitfinexSyncInfoDao()
+    }
+
+    suspend fun isSynchronized(): Boolean =
+        syncInfoDao.getLastSyncDate() != null
 
     suspend fun getBaseCurrencies(): List<Currency> =
         symbolsDao

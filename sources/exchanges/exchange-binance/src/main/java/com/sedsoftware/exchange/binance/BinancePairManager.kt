@@ -18,6 +18,17 @@ class BinancePairManager @Inject constructor(
     private val repository: BinancePairsManagerRepository
 ) : CurrencyPairManager {
 
+    override suspend fun checkIfDataAvailable(): Either<Failure, Boolean> =
+        withContext(Dispatchers.IO) {
+            try {
+                val synced = repository.isSynchronized()
+
+                right(synced)
+            } catch (exception: Exception) {
+                left(PairsManagerError(exception))
+            }
+        }
+
     override suspend fun getBaseCurrencies(): Either<Failure, List<Currency>> =
         withContext(Dispatchers.IO) {
             try {

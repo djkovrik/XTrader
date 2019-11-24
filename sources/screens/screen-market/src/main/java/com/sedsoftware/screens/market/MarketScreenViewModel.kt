@@ -1,6 +1,7 @@
 package com.sedsoftware.screens.market
 
 import androidx.lifecycle.MutableLiveData
+import com.sedsoftware.core.domain.ExchangeType
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairManager
@@ -14,32 +15,46 @@ class MarketScreenViewModel @Inject constructor(
     private val managers: Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
 ) : BaseViewModel() {
 
-    private val exchangeList = MutableLiveData<List<Exchange>>()
-    internal val baseCurrencies = MutableLiveData<List<CurrencyListItem>>()
-    internal val marketCurrencies = MutableLiveData<List<CurrencyListItem>>()
+    internal val exchangeListLiveData = MutableLiveData<List<Exchange>>(emptyList())
+    internal val baseCurrenciesLiveData = MutableLiveData<List<CurrencyListItem>>()
+    internal val marketCurrenciesLiveData = MutableLiveData<List<CurrencyListItem>>()
 
-    internal val chosenExchange = MutableLiveData<Exchange>()
-    internal val chosenBaseCurrency = MutableLiveData<Currency>()
-    internal val chosenMarketCurrency = MutableLiveData<Currency>()
+    internal val chosenExchangeLiveData = MutableLiveData<Exchange>()
+    internal val chosenBaseCurrencyLiveData = MutableLiveData<Currency>()
+    internal val chosenMarketCurrencyLiveData = MutableLiveData<Currency>()
+
+    val exchanges: List<Exchange>
+        get() = exchangeListLiveData.value ?: emptyList()
+
+    val chosenExchange: Exchange?
+        get() = chosenExchangeLiveData.value
 
     init {
-        exchangeList.value = managers.keys.toList()
-        chosenExchange.value = managers.keys.toList().first()
+        val availableExchanges = mutableListOf<Exchange>()
 
-        launch {
-            chosenExchange.value?.let { exchange ->
+        managers.keys.forEachIndexed { index, exchange ->
+            launch {
                 managers[exchange]
-                    ?.getBaseCurrencies()
-                    ?.either(::handleFailure, ::handleBaseLoadingCompletion)
+                    ?.checkIfDataAvailable()
+                    ?.either(::handleFailure) { available ->
+                        if (available) {
+                            availableExchanges.add(exchange)
+                        }
+                        // Run when each exchange checked
+                        if (index == ExchangeType.values().size - 1) {
+                            refreshExchangeList(availableExchanges)
+                        }
+                    }
+
             }
         }
     }
 
     fun getMarketForChosenBase(currency: Currency) {
-        chosenBaseCurrency.value = currency
+        chosenBaseCurrencyLiveData.value = currency
 
         launch {
-            chosenExchange.value?.let { exchange ->
+            chosenExchangeLiveData.value?.let { exchange ->
                 managers[exchange]
                     ?.getMarketCurrencies(currency)
                     ?.either(::handleFailure, ::handleMarketLoadingCompletion)
@@ -48,20 +63,36 @@ class MarketScreenViewModel @Inject constructor(
     }
 
     fun marketCurrencyChosen(currency: Currency) {
-        chosenMarketCurrency.value = currency
+        chosenMarketCurrencyLiveData.value = currency
+    }
+
+    private fun refreshExchangeList(exchanges: MutableList<Exchange>) {
+        exchangeListLiveData.value = exchanges
+        if (exchanges.isNotEmpty()) {
+            showFirstExchange(exchanges.first())
+        }
+    }
+
+    private fun showFirstExchange(firstOne: Exchange) {
+        chosenExchangeLiveData.value = firstOne
+        launch {
+            managers[firstOne]
+                ?.getBaseCurrencies()
+                ?.either(::handleFailure, ::handleBaseLoadingCompletion)
+        }
     }
 
     private fun handleBaseLoadingCompletion(list: List<Currency>) {
-        baseCurrencies.value = list.map { CurrencyListItem(it, isBase = true, isSelected = false) }
+        baseCurrenciesLiveData.value = list.map { CurrencyListItem(it, isBase = true, isSelected = false) }
 
         list.firstOrNull()?.let { first ->
-            chosenBaseCurrency.value = first
+            chosenBaseCurrencyLiveData.value = first
             getMarketForChosenBase(first)
         }
     }
 
     private fun handleMarketLoadingCompletion(list: List<Currency>) {
-        marketCurrencies.value = list.map { CurrencyListItem(it, isBase = false, isSelected = false) }
-        chosenMarketCurrency.value = list.firstOrNull()
+        marketCurrenciesLiveData.value = list.map { CurrencyListItem(it, isBase = false, isSelected = false) }
+        chosenMarketCurrencyLiveData.value = list.firstOrNull()
     }
 }
