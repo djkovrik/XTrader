@@ -17,7 +17,7 @@ import javax.inject.Singleton
 class BitfinexNetworkModule {
 
     companion object {
-        private const val BASE_URL = "https://api-pub.bitfinex.com/"
+        private const val BASE_URL = "https://api.bitfinex.com/"
     }
 
     @Provides
