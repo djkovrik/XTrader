@@ -41,7 +41,7 @@ class IntroBaseFragment : BaseStartingFragment(), IHasComponent<IntroBaseCompone
         super.onActivityCreated(savedInstanceState)
 
         introBaseViewModel = viewModel(viewModelFactory) {
-            observe(downloadingCompleted, ::observeDownloadLiveData)
+            observe(downloadCompletedLiveData, ::observeDownloadLiveData)
             failure(viewModelFailure, ::observeFailures)
         }
     }

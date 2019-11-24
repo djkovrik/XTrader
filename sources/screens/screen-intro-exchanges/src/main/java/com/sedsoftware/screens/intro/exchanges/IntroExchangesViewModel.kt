@@ -1,9 +1,9 @@
 package com.sedsoftware.screens.intro.exchanges
 
 import androidx.lifecycle.MutableLiveData
-import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
+import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.core.presentation.base.BaseViewModel
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.type.DownloadState
@@ -17,8 +17,8 @@ class IntroExchangesViewModel @Inject constructor(
     private val loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
 ) : BaseViewModel() {
 
-    internal val exchangeList = MutableLiveData<List<ExchangeListItem>>()
-    internal val anyDownloadCompleted = MutableLiveData<Boolean>()
+    internal val exchangeListLiveData = MutableLiveData<List<ExchangeListItem>>()
+    internal val nextButtonAvailableLiveData = MutableLiveData<Boolean>()
 
     private val loadingStates = mutableMapOf<Exchange, DownloadState>()
 
@@ -35,6 +35,7 @@ class IntroExchangesViewModel @Inject constructor(
 
     fun onExchangeClicked(exchange: Exchange) {
         setExchangeState(exchange, DownloadState.IN_PROGRESS)
+        handleNextButtonState()
 
         launch {
             loaders[exchange]
@@ -49,7 +50,7 @@ class IntroExchangesViewModel @Inject constructor(
     }
 
     private fun emitCurrentList() {
-        exchangeList.value = loadingStates.map {
+        exchangeListLiveData.value = loadingStates.map {
             ExchangeListItem(
                 it.key,
                 it.value
@@ -64,8 +65,12 @@ class IntroExchangesViewModel @Inject constructor(
 
     private fun handleLoadingCompletion(exchange: Exchange) {
         setExchangeState(exchange, DownloadState.COMPLETED)
-        if (anyDownloadCompleted.value != true) {
-            anyDownloadCompleted.value = true
-        }
+        handleNextButtonState()
+    }
+
+    private fun handleNextButtonState() {
+        // At least one completed and no in progress
+        nextButtonAvailableLiveData.value =
+            loadingStates.values.contains(DownloadState.COMPLETED) && !loadingStates.values.contains(DownloadState.IN_PROGRESS)
     }
 }

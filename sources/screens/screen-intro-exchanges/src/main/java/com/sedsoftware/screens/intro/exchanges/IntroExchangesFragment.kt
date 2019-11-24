@@ -55,8 +55,8 @@ class IntroExchangesFragment : BaseStartingFragment(), IHasComponent<IntroExchan
         super.onActivityCreated(savedInstanceState)
 
         introViewModel = viewModel(viewModelFactory) {
-            observe(exchangeList, ::observeLoaderList)
-            observe(anyDownloadCompleted, ::observeDownloadCompletion)
+            observe(exchangeListLiveData, ::observeLoaderList)
+            observe(nextButtonAvailableLiveData, ::observeNextButtonAvailability)
             failure(viewModelFailure, ::observeFailures)
         }
     }
@@ -90,7 +90,7 @@ class IntroExchangesFragment : BaseStartingFragment(), IHasComponent<IntroExchan
         }
     }
 
-    private fun observeDownloadCompletion(shouldEnable: Boolean?) {
+    private fun observeNextButtonAvailability(shouldEnable: Boolean?) {
         if (shouldEnable == true) {
             introButton.alpha = ALPHA_NORMAL
             introButton.isEnabled = true

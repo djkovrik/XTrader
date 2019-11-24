@@ -15,7 +15,7 @@ class IntroBaseViewModel @Inject constructor(
     private val currencyMapLoader: CurrencyMapLoader
 ) : BaseViewModel() {
 
-    internal val downloadingCompleted = MutableLiveData<Boolean>(false)
+    internal val downloadCompletedLiveData = MutableLiveData<Boolean>(false)
 
     init {
         launch {
@@ -39,7 +39,7 @@ class IntroBaseViewModel @Inject constructor(
 
     private fun handleSuccess(downloadSuccess: Success) {
         if (downloadSuccess is CurrencyMapLoadingCompleted) {
-            downloadingCompleted.value = true
+            downloadCompletedLiveData.value = true
         }
     }
 
