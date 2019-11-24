@@ -13,6 +13,10 @@ class CurrencyListAdapter(
         fun onItemClick(item: CurrencyListItem)
     }
 
+    companion object {
+        const val STATUS_PAYLOAD = 1
+    }
+
     init {
         delegatesManager
             .addDelegate(BaseCurrencyItemDelegate(clickListener))

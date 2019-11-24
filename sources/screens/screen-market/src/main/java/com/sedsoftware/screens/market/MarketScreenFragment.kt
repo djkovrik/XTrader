@@ -34,7 +34,6 @@ import com.sedsoftware.core.utils.extension.orFalse
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
 import com.sedsoftware.screens.market.di.MarketScreenComponent
 import com.sedsoftware.screens.market.model.CurrencyListItem
-import com.sedsoftware.screens.market.viewmodel.MarketScreenViewModel
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.include_add_pair.*
 import me.vponomarenko.injectionmanager.IHasComponent
@@ -367,13 +366,13 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
         currentItems.find { it.isSelected }?.let { item ->
             val index = currentItems.indexOf(item)
             currentItems[index].isSelected = false
-            adapter.notifyItemChanged(index)
+            adapter.notifyItemChanged(index, CurrencyListAdapter.STATUS_PAYLOAD)
         }
         // Select new
         currentItems.find { it.currency == currency }?.let { item ->
             val index = currentItems.indexOf(item)
             currentItems[index].isSelected = true
-            adapter.notifyItemChanged(index)
+            adapter.notifyItemChanged(index, CurrencyListAdapter.STATUS_PAYLOAD)
         }
     }
 }

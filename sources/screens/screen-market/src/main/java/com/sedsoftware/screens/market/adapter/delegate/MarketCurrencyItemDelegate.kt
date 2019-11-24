@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.screens.market.R
+import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter.Listener
 import com.sedsoftware.screens.market.model.CurrencyListItem
 import kotlinx.android.extensions.LayoutContainer
@@ -21,7 +22,12 @@ class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterD
     override fun onBindViewHolder(items: List<CurrencyListItem>, position: Int, holder: ViewHolder, payloads: MutableList<Any>) {
         holder as ItemViewHolder
         val item = items[position]
-        holder.bind(item, clickListener)
+
+        if (payloads.isNotEmpty() && payloads[0] == CurrencyListAdapter.STATUS_PAYLOAD) {
+            holder.bindStatus(item)
+        } else {
+            holder.bindAll(item, clickListener)
+        }
     }
 
     override fun isForViewType(items: List<CurrencyListItem>, position: Int): Boolean =
@@ -32,9 +38,14 @@ class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterD
 
         override val containerView: View? = itemView
 
-        fun bind(item: CurrencyListItem, listener: Listener) {
+        fun bindAll(item: CurrencyListItem, listener: Listener) {
             currencyTextView.text = String.format("%s", item.currency.name)
             itemContainer.setOnClickListener { listener.onItemClick(item) }
+            checkedImageView.isVisible = item.isSelected
+            selector.isVisible = item.isSelected
+        }
+
+        fun bindStatus(item: CurrencyListItem) {
             checkedImageView.isVisible = item.isSelected
             selector.isVisible = item.isSelected
         }

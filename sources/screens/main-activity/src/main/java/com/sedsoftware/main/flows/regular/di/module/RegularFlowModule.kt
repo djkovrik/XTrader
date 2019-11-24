@@ -5,8 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.sedsoftware.core.di.key.ViewModelKey
 import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.main.flows.regular.factory.RegularViewModelOwnerFactory
-import com.sedsoftware.screens.intro.exchanges.IntroExchangesViewModel
-import com.sedsoftware.screens.market.viewmodel.MarketScreenViewModel
+import com.sedsoftware.screens.market.MarketScreenViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

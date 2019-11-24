@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.market.viewmodel
+package com.sedsoftware.screens.market
 
 import androidx.lifecycle.MutableLiveData
 import com.sedsoftware.core.domain.entity.Currency
