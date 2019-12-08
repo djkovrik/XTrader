@@ -13,17 +13,17 @@ dependencies {
     implementation project(':core-tools-api')
     implementation project(':core-utils')
 
-    implementation CoreDependencies.adapterDelegates
-    implementation CoreDependencies.cicerone
-    implementation CoreDependencies.diComponentManager
-    implementation CoreDependencies.dagger
-    kapt CoreDependencies.daggerCompiler
+    implementation "com.hannesdorfmann:adapterdelegates4:$adapterDelegates"
+    implementation "ru.terrakok.cicerone:cicerone:$cicerone"
+    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$daggerComponentManager"
+    implementation "com.google.dagger:dagger:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
 
-    implementation JetPackDependencies.appCompat
-    implementation JetPackDependencies.constraintLayout
-    implementation JetPackDependencies.materialComponents
-    implementation JetPackDependencies.KTX
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+    implementation "com.google.android.material:material:$materialComponents"
+    implementation "androidx.core:core-ktx:$ktx"
 
-    implementation UiDependencies.materialValues
-    implementation UiDependencies.materialDialogs
+    implementation "blue.aodev:material-values:$materialValues"
+    implementation "com.afollestad.material-dialogs:core:$materialDialogs"
 }

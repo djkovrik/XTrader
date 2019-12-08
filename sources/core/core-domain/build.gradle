@@ -1,8 +1,9 @@
 apply plugin: 'kotlin'
 
-apply from: '../../kotlin-config.gradle'
-
 dependencies {
     implementation project(':core-tools-api')
     implementation project(':core-utils')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
 }

@@ -12,23 +12,23 @@ dependencies {
     implementation project(':core-di')
     implementation project(':core-utils')
 
-    implementation CoreDependencies.dagger
-    kapt CoreDependencies.daggerCompiler
+    implementation "com.google.dagger:dagger:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
 
-    implementation CoreDependencies.okhttp
-    implementation CoreDependencies.okhttpLoggingInterceptor
-    implementation CoreDependencies.moshi
-    implementation CoreDependencies.moshiKotlin
-    implementation CoreDependencies.retrofitMoshiConverter
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    implementation "com.squareup.moshi:moshi:$moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
 
-    implementation JetPackDependencies.appCompat
+    implementation "androidx.appcompat:appcompat:$appcompat"
 
-    implementation DevToolsDependencies.timber
+    implementation "com.jakewharton.timber:timber:$timber"
 
-    testImplementation TestingDependencies.spekDsl
-    testImplementation TestingDependencies.spekRunner
-    testImplementation TestingDependencies.expekt
+    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek"
+    testImplementation "org.spekframework.spek2:spek-runner-junit5:$spek"
+    testImplementation "com.winterbe:expekt:$expekt"
 
-    androidTestImplementation TestingDependencies.androidTestRunner
-    androidTestRuntimeOnly TestingDependencies.junit5Instrumentation
+    androidTestImplementation "androidx.test:runner:$testRunner"
+    androidTestRuntimeOnly "de.mannodermaus.junit5:android-instrumentation-test-runner:$junit5Runner"
 }

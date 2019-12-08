@@ -1,14 +1,15 @@
 apply plugin: 'kotlin'
 
-apply from: '../../kotlin-config.gradle'
-
 dependencies {
-    implementation CoreDependencies.moshi
-    implementation CoreDependencies.moshiKotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
 
-    implementation TestingDependencies.spekDsl
+    implementation "com.squareup.moshi:moshi:$moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
 
-    implementation TestingDependencies.fuel
-    implementation TestingDependencies.fuelCoroutines
-    implementation TestingDependencies.fuelCoroutinesMoshi
+    implementation "org.spekframework.spek2:spek-dsl-jvm:$spek"
+
+    implementation "com.github.kittinunf.fuel:fuel:$fuel"
+    implementation "com.github.kittinunf.fuel:fuel-coroutines:$fuel"
+    implementation "com.github.kittinunf.fuel:fuel-moshi:$fuel"
 }

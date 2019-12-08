@@ -22,17 +22,17 @@ dependencies {
     implementation project(':screen-tracker')
     implementation project(':screen-tools')
 
-    implementation CoreDependencies.cicerone
-    implementation CoreDependencies.okhttp
-    implementation CoreDependencies.moshi
-    implementation CoreDependencies.moshiKotlin
-    implementation CoreDependencies.diComponentManager
-    implementation CoreDependencies.dagger
-    kapt CoreDependencies.daggerCompiler
+    implementation "ru.terrakok.cicerone:cicerone:$cicerone"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.moshi:moshi:$moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
+    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$daggerComponentManager"
+    implementation "com.google.dagger:dagger:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
 
-    implementation JetPackDependencies.appCompat
-    implementation JetPackDependencies.materialComponents
-    implementation JetPackDependencies.KTX
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "com.google.android.material:material:$materialComponents"
+    implementation "androidx.core:core-ktx:$ktx"
 
-    implementation UiDependencies.materialValues
+    implementation "blue.aodev:material-values:$materialValues"
 }

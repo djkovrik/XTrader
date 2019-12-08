@@ -1,11 +1,13 @@
 android {
-    compileSdkVersion Versions.COMPILE_SDK_VERSION
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["compileSdk"]
 
     defaultConfig {
-        minSdkVersion Versions.MIN_SDK_VERSION
-        targetSdkVersion Versions.TARGET_SDK_VERSION
-        versionCode Versions.VERSION_CODE
-        versionName Versions.VERSION_NAME
+        minSdkVersion globalConfiguration["minSdk"]
+        targetSdkVersion globalConfiguration["targetSdk"]
+        versionCode globalConfiguration["versionCode"]
+        versionName globalConfiguration["versionName"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -48,7 +50,7 @@ android {
 }
 
 dependencies {
-    implementation KotlinDependencies.kotlin
-    implementation KotlinDependencies.kotlinCoroutines
-    implementation KotlinDependencies.kotlinCoroutinesAndroid
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 }

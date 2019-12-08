@@ -17,25 +17,25 @@ dependencies {
 
     testImplementation project(':core-test')
 
-    implementation CoreDependencies.dagger
-    kapt CoreDependencies.daggerCompiler
+    implementation "com.google.dagger:dagger:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
 
-    implementation CoreDependencies.retrofit
-    implementation CoreDependencies.okhttp
-    implementation CoreDependencies.moshi
-    implementation CoreDependencies.moshiKotlin
-    implementation CoreDependencies.moshiAdapters
-    implementation CoreDependencies.retrofitMoshiConverter
-    implementation CoreDependencies.threetenabp
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.moshi:moshi:$moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
+    implementation "com.squareup.moshi:moshi-adapters:$moshi"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
+    implementation "com.jakewharton.threetenabp:threetenabp:$threeTenAbp"
 
-    implementation JetPackDependencies.room
-    implementation JetPackDependencies.roomKtx
-    kapt JetPackDependencies.roomCompiler
+    implementation "androidx.room:room-runtime:$room"
+    implementation "androidx.room:room-ktx:$room"
+    kapt "androidx.room:room-compiler:$room"
 
-    testImplementation TestingDependencies.spekDsl
-    testImplementation TestingDependencies.spekRunner
-    testImplementation TestingDependencies.expekt
+    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek"
+    testImplementation "org.spekframework.spek2:spek-runner-junit5:$spek"
+    testImplementation "com.winterbe:expekt:$expekt"
 
-    androidTestImplementation TestingDependencies.androidTestRunner
-    androidTestRuntimeOnly TestingDependencies.junit5Instrumentation
+    androidTestImplementation "androidx.test:runner:$testRunner"
+    androidTestRuntimeOnly "de.mannodermaus.junit5:android-instrumentation-test-runner:$junit5Runner"
 }

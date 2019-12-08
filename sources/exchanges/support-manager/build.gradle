@@ -14,10 +14,10 @@ dependencies {
     implementation project(':exchange-binance')
     implementation project(':exchange-bitfinex')
 
-    implementation CoreDependencies.okhttp
-    implementation CoreDependencies.moshi
-    implementation CoreDependencies.moshiKotlin
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.moshi:moshi:$moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
 
-    implementation CoreDependencies.dagger
-    kapt CoreDependencies.daggerCompiler
+    implementation "com.google.dagger:dagger:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
 }

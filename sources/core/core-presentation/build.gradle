@@ -16,14 +16,14 @@ dependencies {
 
     implementation project(':lib-spin-kit')
 
-    implementation CoreDependencies.dagger
-    implementation CoreDependencies.cicerone
+    implementation "com.google.dagger:dagger:$dagger"
+    implementation "ru.terrakok.cicerone:cicerone:$cicerone"
 
-    implementation JetPackDependencies.appCompat
-    implementation JetPackDependencies.lifecycle
-    implementation JetPackDependencies.lifecycleRuntimeKtx
-    implementation JetPackDependencies.lifecycleViewModelKtx
-    implementation JetPackDependencies.materialComponents
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+    implementation "com.google.android.material:material:$materialComponents"
 
-    implementation UiDependencies.materialValues
+    implementation "blue.aodev:material-values:$materialValues"
 }
