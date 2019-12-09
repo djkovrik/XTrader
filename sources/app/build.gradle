@@ -6,20 +6,19 @@ apply plugin: 'com.frogermcs.androiddevmetrics'
 
 android {
 
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration["compileSdk"]
+    compileSdkVersion compileSdk
 
     defaultConfig {
-        minSdkVersion globalConfiguration["minSdk"]
-        targetSdkVersion globalConfiguration["targetSdk"]
-        versionCode globalConfiguration["versionCode"]
-        versionName globalConfiguration["versionName"]
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode versionCode
+        versionName versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         applicationId "com.sedsoftware.xtrader"
         flavorDimensions "variant"
         resConfigs "en", "ru"
     }
+
     signingConfigs {
         release {
             storeFile file(RELEASE_STORE_FILE)
@@ -28,6 +27,7 @@ android {
             keyPassword RELEASE_KEY_PASSWORD
         }
     }
+
     buildTypes {
         release {
             signingConfig signingConfigs.release
@@ -40,10 +40,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     lintOptions {
         abortOnError false
     }
@@ -76,27 +82,27 @@ dependencies {
     implementation project(':support-coinmarketcap')
     implementation project(':support-manager')
 
-    implementation "com.google.firebase:firebase-core:$firebaseCore"
-    implementation "com.google.firebase:firebase-analytics:$firebaseAnalytics"
-    implementation "com.crashlytics.sdk.android:crashlytics:$firebaseCrashlytics"
-    implementation "com.google.firebase:firebase-perf:$firebasePerformance"
+    implementation "com.google.firebase:firebase-core:$versions.firebaseCore"
+    implementation "com.google.firebase:firebase-analytics:$versions.firebaseAnalytics"
+    implementation "com.crashlytics.sdk.android:crashlytics:$versions.firebaseCrashlytics"
+    implementation "com.google.firebase:firebase-perf:$versions.firebasePerformance"
 
-    implementation "androidx.legacy:legacy-support-core-utils:$legacyUtils"
+    implementation "androidx.legacy:legacy-support-core-utils:$versions.legacyUtils"
 
-    implementation "ru.terrakok.cicerone:cicerone:$cicerone"
-    implementation "com.jakewharton.threetenabp:threetenabp:$threeTenAbp"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp"
-    implementation "com.squareup.moshi:moshi:$moshi"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
+    implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
+    implementation "com.jakewharton.threetenabp:threetenabp:$versions.threeTenAbp"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    implementation "com.squareup.moshi:moshi:$versions.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
 
 
-    implementation "com.google.dagger:dagger:$dagger"
-    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$daggerComponentManager"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$versions.daggerComponentManager"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 
-    implementation "com.jakewharton.timber:timber:$timber"
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanary"
-    debugImplementation "com.amitshekhar.android:debug-db:$androidDebugDatabase"
+    implementation "com.jakewharton.timber:timber:$versions.timber"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
+    debugImplementation "com.amitshekhar.android:debug-db:$versions.androidDebugDatabase"
 }
 
 apply plugin: 'com.google.gms.google-services'

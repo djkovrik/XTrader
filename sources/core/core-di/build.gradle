@@ -9,10 +9,10 @@ dependencies {
     implementation project(':core-tools-api')
     implementation project(':core-domain')
 
-    implementation "com.google.dagger:dagger:$dagger"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp"
-    implementation "com.squareup.moshi:moshi:$moshi"
-    implementation "ru.terrakok.cicerone:cicerone:$cicerone"
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    implementation "com.squareup.moshi:moshi:$versions.moshi"
+    implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
 
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
 }

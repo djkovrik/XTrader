@@ -9,12 +9,12 @@ apply from: '../../kapt-config.gradle'
 dependencies {
     implementation project(':core-presentation')
 
-    implementation "com.google.dagger:dagger:$dagger"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 
-    implementation "androidx.appcompat:appcompat:$appcompat"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
-    implementation "com.google.android.material:material:$materialComponents"
+    implementation "androidx.appcompat:appcompat:$versions.appcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
+    implementation "com.google.android.material:material:$versions.materialComponents"
 
-    implementation "blue.aodev:material-values:$materialValues"
+    implementation "blue.aodev:material-values:$versions.materialValues"
 }

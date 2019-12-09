@@ -1,13 +1,12 @@
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
 
-    compileSdkVersion globalConfiguration["compileSdk"]
+    compileSdkVersion compileSdk
 
     defaultConfig {
-        minSdkVersion globalConfiguration["minSdk"]
-        targetSdkVersion globalConfiguration["targetSdk"]
-        versionCode globalConfiguration["versionCode"]
-        versionName globalConfiguration["versionName"]
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode versionCode
+        versionName versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

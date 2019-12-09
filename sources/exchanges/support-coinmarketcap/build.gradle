@@ -15,24 +15,24 @@ dependencies {
 
     testImplementation project(':core-test')
 
-    implementation "com.google.dagger:dagger:$dagger"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp"
-    implementation "com.squareup.moshi:moshi:$moshi"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
-    implementation "com.jakewharton.threetenabp:threetenabp:$threeTenAbp"
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    implementation "com.squareup.moshi:moshi:$versions.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
+    implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+    implementation "com.jakewharton.threetenabp:threetenabp:$versions.threeTenAbp"
 
-    implementation "androidx.room:room-runtime:$room"
-    implementation "androidx.room:room-ktx:$room"
-    kapt "androidx.room:room-compiler:$room"
+    implementation "androidx.room:room-runtime:$versions.room"
+    implementation "androidx.room:room-ktx:$versions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
 
-    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek"
-    testImplementation "org.spekframework.spek2:spek-runner-junit5:$spek"
-    testImplementation "com.winterbe:expekt:$expekt"
+    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$versions.spek"
+    testImplementation "org.spekframework.spek2:spek-runner-junit5:$versions.spek"
+    testImplementation "com.winterbe:expekt:$versions.expekt"
 
-    androidTestImplementation "androidx.test:runner:$testRunner"
-    androidTestRuntimeOnly "de.mannodermaus.junit5:android-instrumentation-test-runner:$junit5Runner"
+    androidTestImplementation "androidx.test:runner:$versions.testRunner"
+    androidTestRuntimeOnly "de.mannodermaus.junit5:android-instrumentation-test-runner:$versions.junit5Runner"
 }

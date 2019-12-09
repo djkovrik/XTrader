@@ -13,17 +13,17 @@ dependencies {
     implementation project(':core-tools-api')
     implementation project(':core-utils')
 
-    implementation "com.hannesdorfmann:adapterdelegates4:$adapterDelegates"
-    implementation "ru.terrakok.cicerone:cicerone:$cicerone"
-    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$daggerComponentManager"
-    implementation "com.google.dagger:dagger:$dagger"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
+    implementation "com.hannesdorfmann:adapterdelegates4:$versions.adapterDelegates"
+    implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
+    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$versions.daggerComponentManager"
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 
-    implementation "androidx.appcompat:appcompat:$appcompat"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
-    implementation "com.google.android.material:material:$materialComponents"
-    implementation "androidx.core:core-ktx:$ktx"
+    implementation "androidx.appcompat:appcompat:$versions.appcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
+    implementation "com.google.android.material:material:$versions.materialComponents"
+    implementation "androidx.core:core-ktx:$versions.ktx"
 
-    implementation "blue.aodev:material-values:$materialValues"
-    implementation "com.afollestad.material-dialogs:core:$materialDialogs"
+    implementation "blue.aodev:material-values:$versions.materialValues"
+    implementation "com.afollestad.material-dialogs:core:$versions.materialDialogs"
 }
