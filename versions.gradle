@@ -12,16 +12,16 @@ ext.versions = [
 
     // JetPack - AppCompat
     appcompat: "1.1.0",
-    materialComponents: "1.2.0-alpha01",
+    materialComponents: "1.2.0-alpha02",
     constraintLayout: "2.0.0-beta3",
     legacyUtils: "1.0.0",
 
     // JetPack - Architecture
-    lifecycle: "2.2.0-rc02",
-    room: "2.2.1",
+    lifecycle: "2.2.0-rc03",
+    room: "2.2.2",
 
     // JetPack - KTX
-    ktx: "1.2.0-beta02",
+    ktx: "1.2.0-rc01",
 
     // UI
     materialValues: "1.1.1",

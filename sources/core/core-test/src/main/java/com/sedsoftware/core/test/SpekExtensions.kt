@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.sedsoftware.core.test
 
 import com.github.kittinunf.fuel.Fuel

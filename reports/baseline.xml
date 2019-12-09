@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
-  <Blacklist></Blacklist>
+  <Blacklist/>
   <Whitelist>
     <ID>ComplexCondition:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$minFlingVelocity &lt;= absVelocityX &amp;&amp; absVelocityX &lt;= maxFlingVelocity &amp;&amp; absVelocityY &lt; absVelocityX &amp;&amp; absVelocityY &lt; absVelocityX &amp;&amp; swiping</ID>
     <ID>ComplexMethod:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>

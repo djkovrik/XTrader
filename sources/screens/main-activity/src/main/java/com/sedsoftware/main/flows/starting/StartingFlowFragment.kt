@@ -35,7 +35,7 @@ class StartingFlowFragment : FlowFragment(), IHasComponent<StartingFlowComponent
     @StartingFlow
     override lateinit var navigatorHolder: NavigatorHolder
 
-    override val navigator: Navigator by lazy {
+    override val navigator: Navigator =
         object : SupportAppNavigator(this.activity, childFragmentManager, R.id.container) {
             override fun activityBack() {
                 router.exit()
@@ -50,7 +50,6 @@ class StartingFlowFragment : FlowFragment(), IHasComponent<StartingFlowComponent
                 fragmentTransaction.setReorderingAllowed(true)
             }
         }
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

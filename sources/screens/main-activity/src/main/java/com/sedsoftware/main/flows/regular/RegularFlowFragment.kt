@@ -6,7 +6,6 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.qualifier.RegularFlow
-import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.base.BaseTabFragment
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.Screens
@@ -48,7 +47,7 @@ class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> 
     @RegularFlow
     override lateinit var navigatorHolder: NavigatorHolder
 
-    override val navigator: Navigator by lazy {
+    override val navigator: Navigator =
         object : SupportAppNavigator(this.activity, childFragmentManager, R.id.regularFlowContainer) {
             override fun activityBack() {
                 router.exit()
@@ -63,7 +62,6 @@ class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> 
                 fragmentTransaction.setReorderingAllowed(true)
             }
         }
-    }
 
     private val currentTabFragment: BaseTabFragment?
         get() = childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseTabFragment
