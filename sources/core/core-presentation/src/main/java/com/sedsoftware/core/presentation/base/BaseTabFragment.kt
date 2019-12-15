@@ -21,7 +21,7 @@ abstract class BaseTabFragment : Fragment() {
 
     abstract val launchScreen: SupportAppScreen
 
-    private val navigator: Navigator =
+    private val navigator: Navigator by lazy {
         object : SupportAppNavigator(this.activity, childFragmentManager, R.id.container) {
             override fun setupFragmentTransaction(
                 command: Command?,
@@ -32,6 +32,7 @@ abstract class BaseTabFragment : Fragment() {
                 fragmentTransaction.setReorderingAllowed(true)
             }
         }
+    }
 
     @Inject
     lateinit var tabCiceroneHolder: TabCiceroneHolder

@@ -47,7 +47,7 @@ class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> 
     @RegularFlow
     override lateinit var navigatorHolder: NavigatorHolder
 
-    override val navigator: Navigator =
+    override val navigator: Navigator by lazy {
         object : SupportAppNavigator(this.activity, childFragmentManager, R.id.regularFlowContainer) {
             override fun activityBack() {
                 router.exit()
@@ -62,6 +62,7 @@ class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> 
                 fragmentTransaction.setReorderingAllowed(true)
             }
         }
+    }
 
     private val currentTabFragment: BaseTabFragment?
         get() = childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseTabFragment
