@@ -1,8 +1,8 @@
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"
 
     implementation "com.jakewharton.threetenabp:threetenabp:$versions.threeTenAbp"
     implementation "com.squareup.moshi:moshi:$versions.moshi"

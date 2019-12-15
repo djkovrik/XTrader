@@ -3,6 +3,6 @@ apply plugin: 'kotlin'
 dependencies {
     implementation project(':core-utils')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"
 }

@@ -1,17 +1,20 @@
 ext.versions = [
 
+    kotlin: "1.3.61",
+    coroutines: "1.3.3",
+
     // Core
     adapterDelegates: "4.2.0",
     dagger: "2.25.2",
     daggerComponentManager: "2.1.0",
-    retrofit: "2.6.2",
+    retrofit: "2.7.0",
     moshi: "1.9.2",
     okhttp: "4.2.2",
     threeTenAbp: "1.2.1",
     cicerone: "5.0.0",
 
     // JetPack - AppCompat
-    appcompat: "1.1.0",
+    appcompat: "1.2.0-alpha01",
     materialComponents: "1.2.0-alpha02",
     constraintLayout: "2.0.0-beta3",
     legacyUtils: "1.0.0",
@@ -34,15 +37,14 @@ ext.versions = [
     firebaseFirestore: "21.0.0",
     firebaseCloudMessaging: "20.0.0",
     firebaseCrashlytics: "2.10.1",
-    firebasePerformance: "19.0.2",
 
     // Testing
     junit5: "5.2.0",
     junit5Runner: "0.2.2",
-    testRunner: "1.3.0-alpha02",
+    testRunner: "1.3.0-alpha03",
     testRules: "1.1.0-alpha1",
     espresso: "3.1.0-alpha1",
-    spek: "2.0.7",
+    spek: "2.0.9",
     expekt: "0.5.0",
     fuel: "2.2.1",
 
