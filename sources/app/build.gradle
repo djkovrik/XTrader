@@ -68,7 +68,7 @@ dependencies {
     implementation project(':core-tools-impl')
     implementation project(':core-utils')
 
-    implementation project(':main-activity')
+    implementation project(':screen-main')
     implementation project(':screen-intro-base')
     implementation project(':screen-intro-exchanges')
     implementation project(':screen-intro-pin')

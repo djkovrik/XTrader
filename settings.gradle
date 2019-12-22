@@ -27,8 +27,8 @@ project(':support-coinmarketcap').projectDir = new File(rootDir, 'sources/exchan
 include ':support-manager'
 project(':support-manager').projectDir = new File(rootDir, 'sources/exchanges/support-manager')
 
-include ':main-activity'
-project(':main-activity').projectDir = new File(rootDir, 'sources/screens/main-activity')
+include ':screen-main'
+project(':screen-main').projectDir = new File(rootDir, 'sources/screens/screen-main')
 
 include ':screen-intro-base'
 project(':screen-intro-base').projectDir = new File(rootDir, 'sources/screens/screen-intro-base')
