@@ -15,10 +15,8 @@ import dagger.Provides
 @Module
 abstract class ExchangeManagerModule {
 
-    @Module
     companion object {
 
-        @JvmStatic
         @Provides
         fun provideCurrencyPairLoaders(
             @ForExchange(BINANCE) binancePairLoader: CurrencyPairLoader,
@@ -29,7 +27,6 @@ abstract class ExchangeManagerModule {
                 BITFINEX to bitfinexPairLoader
             )
 
-        @JvmStatic
         @Provides
         fun provideCurrencyPairManager(
             @ForExchange(BINANCE) binancePairManager: CurrencyPairManager,
