@@ -13,6 +13,7 @@ androidExtensions {
 dependencies {
     implementation project(':core-di')
     implementation project(':core-utils')
+    implementation project(':core-domain')
 
     implementation project(':lib-spin-kit')
 
