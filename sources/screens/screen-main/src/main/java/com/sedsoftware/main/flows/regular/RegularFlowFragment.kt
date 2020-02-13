@@ -48,13 +48,13 @@ class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> 
     override lateinit var navigatorHolder: NavigatorHolder
 
     override val navigator: Navigator by lazy {
-        object : SupportAppNavigator(this.activity, childFragmentManager, R.id.regularFlowContainer) {
+        object : SupportAppNavigator(requireActivity(), childFragmentManager, R.id.regularFlowContainer) {
             override fun activityBack() {
                 router.exit()
             }
 
             override fun setupFragmentTransaction(
-                command: Command?,
+                command: Command,
                 currentFragment: Fragment?,
                 nextFragment: Fragment?,
                 fragmentTransaction: FragmentTransaction
@@ -104,21 +104,17 @@ class RegularFlowFragment : FlowFragment(), IHasComponent<RegularFlowComponent> 
         childFragmentManager.beginTransaction()
             .apply {
                 if (newFragment == null) {
-                    add(R.id.regularFlowContainer, createTabFragment(tab), tab.screenKey)
+                    tab.fragment?.let { add(R.id.regularFlowContainer, it, tab.screenKey) }
                 }
 
                 currentFragment?.let {
                     hide(it)
-                    it.userVisibleHint = false
                 }
                 newFragment?.let {
                     show(it)
-                    it.userVisibleHint = true
                 }
             }.commitNow()
 
         return true
     }
-
-    private fun createTabFragment(tab: SupportAppScreen) = tab.fragment
 }

@@ -22,9 +22,9 @@ abstract class BaseTabFragment : Fragment() {
     abstract val launchScreen: SupportAppScreen
 
     private val navigator: Navigator by lazy {
-        object : SupportAppNavigator(this.activity, childFragmentManager, R.id.container) {
+        object : SupportAppNavigator(requireActivity(), childFragmentManager, R.id.container) {
             override fun setupFragmentTransaction(
-                command: Command?,
+                command: Command,
                 currentFragment: Fragment?,
                 nextFragment: Fragment?,
                 fragmentTransaction: FragmentTransaction

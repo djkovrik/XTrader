@@ -40,7 +40,7 @@ class MainActivity : BaseActivity(), IHasComponent<MainActivityComponent>, Snack
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
             override fun setupFragmentTransaction(
-                command: Command?,
+                command: Command,
                 currentFragment: Fragment?,
                 nextFragment: Fragment?,
                 fragmentTransaction: FragmentTransaction

@@ -36,13 +36,13 @@ class StartingFlowFragment : FlowFragment(), IHasComponent<StartingFlowComponent
     override lateinit var navigatorHolder: NavigatorHolder
 
     override val navigator: Navigator by lazy {
-        object : SupportAppNavigator(this.activity, childFragmentManager, R.id.container) {
+        object : SupportAppNavigator(requireActivity(), childFragmentManager, R.id.container) {
             override fun activityBack() {
                 router.exit()
             }
 
             override fun setupFragmentTransaction(
-                command: Command?,
+                command: Command,
                 currentFragment: Fragment?,
                 nextFragment: Fragment?,
                 fragmentTransaction: FragmentTransaction
