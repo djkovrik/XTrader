@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.sedsoftware.core.di.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.CanHandleBackPressed
 import com.sedsoftware.core.presentation.R
+import com.sedsoftware.core.presentation.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.utils.type.Failure
 import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing

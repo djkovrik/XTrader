@@ -50,11 +50,11 @@ abstract class BaseTabFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        getCicerone().navigatorHolder?.setNavigator(navigator)
+        getCicerone().navigatorHolder.setNavigator(navigator)
     }
 
     override fun onPause() {
-        getCicerone().navigatorHolder?.removeNavigator()
+        getCicerone().navigatorHolder.removeNavigator()
         super.onPause()
     }
 

@@ -1,4 +1,4 @@
-package com.sedsoftware.core.di.delegate
+package com.sedsoftware.core.presentation.delegate
 
 interface SnackbarDelegate {
     fun notifyOnTop(message: String)

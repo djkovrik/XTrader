@@ -5,7 +5,6 @@ import com.sedsoftware.core.di.AppProvider
 import com.sedsoftware.core.di.scope.ActivityScope
 import com.sedsoftware.main.MainActivity
 import com.sedsoftware.main.di.module.NavigationModule
-import com.sedsoftware.main.di.module.CiceroneModule
 import dagger.Component
 
 @Component(
@@ -13,7 +12,6 @@ import dagger.Component
         AppProvider::class
     ],
     modules = [
-        CiceroneModule::class,
         NavigationModule::class
     ]
 )

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.di.qualifier.RegularFlow
 import com.sedsoftware.core.presentation.base.BaseTabFragment
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.Screens
@@ -36,11 +35,11 @@ class RegularFlowFragment : FlowFragment() {
     override val launchScreen: SupportAppScreen = Screens.MarketTabContainer
 
     @Inject
-    @RegularFlow
+//    @RegularFlow
     lateinit var router: Router
 
     @Inject
-    @RegularFlow
+//    @RegularFlow
     override lateinit var navigatorHolder: NavigatorHolder
 
     override val navigator: Navigator by lazy {

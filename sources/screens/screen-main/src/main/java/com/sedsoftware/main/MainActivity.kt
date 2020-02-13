@@ -5,8 +5,7 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.di.delegate.SnackbarDelegate
-import com.sedsoftware.core.di.qualifier.Global
+import com.sedsoftware.core.presentation.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
@@ -40,7 +39,7 @@ class MainActivity : BaseActivity(), SnackbarDelegate {
     private var topNotificationTranslation = 0f
 
     @Inject
-    @Global
+//    @Global
     lateinit var navigatorHolder: NavigatorHolder
 
     @Inject
