@@ -6,7 +6,6 @@ ext.versions = [
     // Core
     adapterDelegates: "4.2.0",
     dagger: "2.26",
-    daggerComponentManager: "2.1.0",
     retrofit: "2.7.1",
     moshi: "1.9.2",
     okhttp: "4.3.1",

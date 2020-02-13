@@ -19,7 +19,6 @@ dependencies {
 
     implementation "com.hannesdorfmann:adapterdelegates4:$versions.adapterDelegates"
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
-    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$versions.daggerComponentManager"
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 
