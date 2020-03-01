@@ -22,12 +22,7 @@ interface HasDaggerComponent<T> {
     fun getComponentKey(): String
 
     /**
-     * Inject dependencies
-     */
-    fun inject()
-
-    /**
-     * Called when before dagger component being destroyed
+     * Called before dagger component being destroyed
      */
     fun onComponentDestroyed() = Unit
 }

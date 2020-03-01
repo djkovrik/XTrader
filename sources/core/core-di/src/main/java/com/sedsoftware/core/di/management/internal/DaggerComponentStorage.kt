@@ -1,4 +1,4 @@
-package com.sedsoftware.core.di.management
+package com.sedsoftware.core.di.management.internal
 
 internal class DaggerComponentStorage {
 
