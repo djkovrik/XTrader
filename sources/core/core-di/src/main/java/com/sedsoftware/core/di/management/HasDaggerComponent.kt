@@ -8,6 +8,13 @@ package com.sedsoftware.core.di.management
 interface HasDaggerComponent<T> {
 
     /**
+     * Returns actual component which will be stored
+     *
+     * @return Initialised component
+     */
+    fun getComponent(): T
+
+    /**
      * Returns key string which will be used to store the component
      *
      * @return Key value
@@ -15,9 +22,12 @@ interface HasDaggerComponent<T> {
     fun getComponentKey(): String
 
     /**
-     * Returns actual component which will be stored
-     *
-     * @return Initialised component
+     * Inject dependencies
      */
-    fun getComponent(): T
+    fun inject()
+
+    /**
+     * Called when before dagger component being destroyed
+     */
+    fun onComponentDestroyed() = Unit
 }
