@@ -10,34 +10,23 @@ import androidx.fragment.app.FragmentManager
 
 object DaggerComponentManager {
 
-    private val components = mutableMapOf<String, Any?>()
-    private val callbacksManager = LifecycleCallbacksManager()
+    private val callbackManager = LifecycleCallbackManager()
+    private val storage = DaggerComponentStorage()
 
     fun init(application: Application) {
-        application.registerActivityLifecycleCallbacks(callbacksManager)
+        application.registerActivityLifecycleCallbacks(callbackManager)
     }
 
     fun find(predicate: (Any?) -> Boolean): Any? =
-        components.values.find { predicate(it) }
+        storage.values.find { predicate(it) }
 
-    fun get(key: String): Any =
-        components[key] ?: error("Component with $key not found")
-
-    private fun add(key: String, component: Any?) {
-        components[key] = component
-    }
-
-    private fun remove(key: String) {
-        components.remove(key)
-    }
-
-    class LifecycleCallbacksManager : ActivityLifecycleCallbacks, FragmentManager.FragmentLifecycleCallbacks() {
+    class LifecycleCallbackManager : ActivityLifecycleCallbacks, FragmentManager.FragmentLifecycleCallbacks() {
 
         override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
             if (activity is HasDaggerComponent<*>) {
                 val key = activity.getComponentKey()
-                if (components[key] == null) {
-                    add(key, activity.getComponent())
+                if (storage.get(key) == null) {
+                    storage.add(key, activity.getComponent())
                 }
 
                 (activity as? FragmentActivity)?.supportFragmentManager
@@ -50,15 +39,15 @@ object DaggerComponentManager {
         override fun onActivityDestroyed(activity: Activity?) {
             if (activity is HasDaggerComponent<*> && activity.isFinishing) {
                 activity.onComponentDestroyed()
-                remove(activity.getComponentKey())
+                storage.remove(activity.getComponentKey())
             }
         }
 
         override fun onFragmentPreCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
             if (f is HasDaggerComponent<*>) {
                 val key = f.getComponentKey()
-                if (components[key] == null) {
-                    add(key, f.getComponent())
+                if (storage.get(key) == null) {
+                    storage.add(key, f.getComponent())
                 }
             }
 
@@ -70,7 +59,7 @@ object DaggerComponentManager {
         override fun onFragmentDestroyed(fm: FragmentManager, f: Fragment) {
             if (f is HasDaggerComponent<*>) {
                 f.onComponentDestroyed()
-                remove(f.getComponentKey())
+                storage.remove(f.getComponentKey())
             }
 
             super.onFragmentDestroyed(fm, f)
