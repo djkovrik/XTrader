@@ -13,9 +13,16 @@ object DaggerComponentManager {
         application.registerActivityLifecycleCallbacks(callbacksManager)
     }
 
-    fun find(predicate: (Any?) -> Boolean): Any? =
-        storage.values.find { predicate(it) }
+    inline fun <reified T> get(): T {
+        val predicate = object : (Any?) -> Boolean {
+            override fun invoke(component: Any?): Boolean = component is T
 
-    fun get(key: String): Any? =
-        storage.get(key) ?: error("Component for $key not found")
+            override fun toString(): String = T::class.java.simpleName
+        }
+
+        return find(predicate) as T
+    }
+
+    fun find(predicate: (Any?) -> Boolean): Any =
+        storage.find(predicate) ?: error("Component not found")
 }

@@ -19,6 +19,8 @@ internal class LifecycleCallbacksManager(
                 storage.add(key, activity.getComponent())
             }
 
+            activity.inject()
+
             (activity as? FragmentActivity)?.supportFragmentManager
                 ?.registerFragmentLifecycleCallbacks(this, true)
         }
@@ -26,7 +28,6 @@ internal class LifecycleCallbacksManager(
 
     override fun onActivityDestroyed(activity: Activity?) {
         if (activity is HasDaggerComponent<*> && activity.isFinishing) {
-            activity.onComponentDestroyed()
             storage.remove(activity.getComponentKey())
         }
     }
@@ -37,6 +38,8 @@ internal class LifecycleCallbacksManager(
             if (storage.get(key) == null) {
                 storage.add(key, f.getComponent())
             }
+
+            f.inject()
         }
 
         super.onFragmentPreCreated(fm, f, savedInstanceState)
@@ -44,7 +47,6 @@ internal class LifecycleCallbacksManager(
 
     override fun onFragmentDestroyed(fm: FragmentManager, f: Fragment) {
         if (f is HasDaggerComponent<*>) {
-            f.onComponentDestroyed()
             storage.remove(f.getComponentKey())
         }
 
