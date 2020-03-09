@@ -63,20 +63,3 @@ interface ActivityToolsProvider : AppProvider {
     fun provideFlowSwitcher(): FlowSwitcher
     fun provideStartingFlowCoordinator(): StartingFlowCoordinator
 }
-//    @Global fun provideGlobalRouter(): Router
-//    @Global fun provideGlobalNavigatorHolder(): NavigatorHolder
-//
-//    @StartingFlow fun provideStartingRouter(): Router
-//    @StartingFlow fun provideStartingNavigatorHolder(): NavigatorHolder
-//
-//    @RegularFlow fun provideRegularRouter(): Router
-//    @RegularFlow fun provideRegularNavigatorHolder(): NavigatorHolder
-//}
-//
-//interface StartingFlowToolsProvider : ActivityToolsProvider {
-//    @StartingFlow fun provideViewModelFactory(): ViewModelProvider.Factory
-//}
-//
-//interface RegularFlowToolsProvider : ActivityToolsProvider {
-//    @RegularFlow fun provideViewModelFactory(): ViewModelProvider.Factory
-//}

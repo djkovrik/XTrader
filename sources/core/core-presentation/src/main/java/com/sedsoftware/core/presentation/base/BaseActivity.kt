@@ -8,9 +8,6 @@ import java.util.Queue
 
 abstract class BaseActivity : AppCompatActivity(), CanHandleBackPressed {
 
-//    abstract val appProvider: AppProvider
-//    abstract val activityToolsProvider: ActivityToolsProvider
-
     protected val notificationQueue: Queue<String> = LinkedList()
     protected var notificationJob: Job? = null
     protected var isNotificationVisible = false
