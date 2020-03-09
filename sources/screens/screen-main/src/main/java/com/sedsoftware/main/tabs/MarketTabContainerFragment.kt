@@ -11,5 +11,5 @@ class MarketTabContainerFragment : BaseTabFragment() {
             MarketTabContainerFragment()
     }
 
-    override val launchScreen: SupportAppScreen = Screens.Market
+    override val launchScreen: SupportAppScreen = Screens.Empty
 }

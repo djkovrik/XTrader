@@ -11,5 +11,5 @@ class OrdersTabContainerFragment : BaseTabFragment() {
             OrdersTabContainerFragment()
     }
 
-    override val launchScreen: SupportAppScreen = Screens.Orders
+    override val launchScreen: SupportAppScreen = Screens.Empty
 }

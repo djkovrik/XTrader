@@ -11,5 +11,5 @@ class ToolsTabContainerFragment : BaseTabFragment() {
             ToolsTabContainerFragment()
     }
 
-    override val launchScreen: SupportAppScreen = Screens.Tools
+    override val launchScreen: SupportAppScreen = Screens.Empty
 }

@@ -11,5 +11,5 @@ class TrackerTabContainerFragment : BaseTabFragment() {
             TrackerTabContainerFragment()
     }
 
-    override val launchScreen: SupportAppScreen = Screens.Tracker
+    override val launchScreen: SupportAppScreen = Screens.Empty
 }

@@ -5,13 +5,19 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.presentation.delegate.SnackbarDelegate
+import com.sedsoftware.core.di.App
+import com.sedsoftware.core.di.management.DaggerComponentManager
+import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.presentation.base.BaseActivity
+import com.sedsoftware.core.presentation.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
+import com.sedsoftware.core.presentation.navigation.AppFlow
+import com.sedsoftware.core.presentation.navigation.MainCiceroneHolder
+import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
@@ -22,7 +28,7 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), SnackbarDelegate {
+class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainActivityComponent> {
 
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
@@ -39,11 +45,14 @@ class MainActivity : BaseActivity(), SnackbarDelegate {
     private var topNotificationTranslation = 0f
 
     @Inject
-//    @Global
-    lateinit var navigatorHolder: NavigatorHolder
+    lateinit var ciceroneHolder: MainCiceroneHolder
 
     @Inject
     lateinit var launcher: MainAppLauncher
+
+    private val navigatorHolder: NavigatorHolder by lazy {
+        ciceroneHolder.getNavigatorHolder(AppFlow.GLOBAL)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,6 +119,20 @@ class MainActivity : BaseActivity(), SnackbarDelegate {
                 }
             }
         }
+    }
+
+    override fun getComponent(): MainActivityComponent {
+        val appComponent = (applicationContext as App).getAppComponent()
+        return MainActivityComponent.Initializer.init(appComponent)
+    }
+
+    override fun getComponentKey(): String =
+        this::class.java.simpleName
+
+    override fun inject() {
+        DaggerComponentManager
+            .get<MainActivityComponent>()
+            .inject(this)
     }
 
     private fun translateViewAnimated(view: View, translation: Float, finishedCallback: () -> Unit = {}) {

@@ -1,6 +1,7 @@
 package com.sedsoftware.main
 
 import androidx.fragment.app.Fragment
+import com.sedsoftware.main.flows.EmptyFragment
 import com.sedsoftware.main.flows.regular.RegularFlowFragment
 import com.sedsoftware.main.flows.starting.StartingFlowFragment
 import com.sedsoftware.main.tabs.MarketTabContainerFragment
@@ -41,6 +42,10 @@ object Screens {
 
     object ToolsTabContainer : SupportAppScreen() {
         override fun getFragment(): Fragment = ToolsTabContainerFragment.newInstance()
+    }
+
+    object Empty: SupportAppScreen() {
+        override fun getFragment(): Fragment = EmptyFragment()
     }
 
 

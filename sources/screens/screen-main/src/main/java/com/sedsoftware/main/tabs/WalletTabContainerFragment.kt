@@ -11,5 +11,5 @@ class WalletTabContainerFragment : BaseTabFragment() {
             WalletTabContainerFragment()
     }
 
-    override val launchScreen: SupportAppScreen = Screens.Wallet
+    override val launchScreen: SupportAppScreen = Screens.Empty
 }
