@@ -20,9 +20,4 @@ interface HasDaggerComponent<T> {
      * @return Key value
      */
     fun getComponentKey(): String
-
-    /**
-     * Injects dependencies
-     */
-    fun inject()
 }

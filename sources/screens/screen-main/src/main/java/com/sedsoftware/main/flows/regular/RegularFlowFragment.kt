@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
+import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.BaseTabFragment
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.core.presentation.navigation.AppFlow
@@ -23,7 +24,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowComponent> {
+class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowComponent>, HasInject {
 
     companion object {
         fun newInstance(): RegularFlowFragment = RegularFlowFragment()

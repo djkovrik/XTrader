@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
+import com.sedsoftware.core.di.management.HasInject
 
 internal class LifecycleCallbacksManager(
     private val storage: DaggerComponentStorage
@@ -19,10 +20,12 @@ internal class LifecycleCallbacksManager(
                 storage.add(key, activity.getComponent())
             }
 
-            activity.inject()
-
             (activity as? FragmentActivity)?.supportFragmentManager
                 ?.registerFragmentLifecycleCallbacks(this, true)
+        }
+
+        if (activity is HasInject) {
+            activity.inject()
         }
     }
 
@@ -38,7 +41,9 @@ internal class LifecycleCallbacksManager(
             if (storage.get(key) == null) {
                 storage.add(key, f.getComponent())
             }
+        }
 
+        if (f is HasInject) {
             f.inject()
         }
 

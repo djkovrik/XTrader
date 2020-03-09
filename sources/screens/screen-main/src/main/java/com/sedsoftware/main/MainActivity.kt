@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
+import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.extension.addEndAction
@@ -28,7 +29,7 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainActivityComponent> {
+class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainActivityComponent>, HasInject {
 
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
