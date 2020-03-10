@@ -1,18 +1,18 @@
 package com.sedsoftware.main.flows.navigation
 
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
-import com.sedsoftware.core.presentation.navigation.AppFlow
-import com.sedsoftware.core.presentation.navigation.MainCiceroneHolder
+import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.main.Screens
+import com.sedsoftware.main.flows.AppFlow
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 class AppStartingFlowCoordinator @Inject constructor(
-    private val ciceroneHolder: MainCiceroneHolder
+    private val ciceroneManager: CiceroneManager
 ) : StartingFlowCoordinator {
 
     private val startingRouter: Router by lazy {
-        ciceroneHolder.getRouter(AppFlow.STARTING)
+        ciceroneManager.getRouter(AppFlow.STARTING)
     }
 
     // TODO

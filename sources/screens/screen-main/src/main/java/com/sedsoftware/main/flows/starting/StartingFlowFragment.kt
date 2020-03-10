@@ -7,8 +7,8 @@ import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.FlowFragment
-import com.sedsoftware.core.presentation.navigation.AppFlow
-import com.sedsoftware.core.presentation.navigation.MainCiceroneHolder
+import com.sedsoftware.main.flows.AppFlow
+import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.flows.starting.di.StartingFlowComponent
 import com.sedsoftware.screens.main.R
@@ -48,14 +48,14 @@ class StartingFlowFragment : FlowFragment(), HasDaggerComponent<StartingFlowComp
     }
 
     @Inject
-    lateinit var ciceroneHolder: MainCiceroneHolder
+    lateinit var ciceroneManager: CiceroneManager
 
     private val router: Router by lazy {
-        ciceroneHolder.getRouter(AppFlow.STARTING)
+        ciceroneManager.getRouter(AppFlow.STARTING)
     }
 
     private val navigatorHolder: NavigatorHolder by lazy {
-        ciceroneHolder.getNavigatorHolder(AppFlow.STARTING)
+        ciceroneManager.getNavigatorHolder(AppFlow.STARTING)
     }
 
     override fun onResume() {

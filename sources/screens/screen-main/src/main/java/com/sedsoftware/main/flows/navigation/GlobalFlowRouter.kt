@@ -1,17 +1,17 @@
 package com.sedsoftware.main.flows.navigation
 
-import com.sedsoftware.core.presentation.navigation.AppFlow
-import com.sedsoftware.core.presentation.navigation.MainCiceroneHolder
+import com.sedsoftware.main.flows.AppFlow
+import com.sedsoftware.core.tools.api.CiceroneManager
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import javax.inject.Inject
 
 class GlobalFlowRouter @Inject constructor(
-    private val ciceroneHolder: MainCiceroneHolder
+    private val ciceroneManager: CiceroneManager
 ) {
 
     private val globalRouter: Router by lazy {
-        ciceroneHolder.getRouter(AppFlow.GLOBAL)
+        ciceroneManager.getRouter(AppFlow.GLOBAL)
     }
 
     fun startFlow(screen: SupportAppScreen) {

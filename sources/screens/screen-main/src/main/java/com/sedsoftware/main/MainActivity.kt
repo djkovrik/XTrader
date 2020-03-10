@@ -16,9 +16,9 @@ import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
-import com.sedsoftware.core.presentation.navigation.AppFlow
-import com.sedsoftware.core.presentation.navigation.MainCiceroneHolder
+import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.main.di.MainActivityComponent
+import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.screens.main.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.cancelChildren
@@ -46,13 +46,13 @@ class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainAc
     private var topNotificationTranslation = 0f
 
     @Inject
-    lateinit var ciceroneHolder: MainCiceroneHolder
+    lateinit var ciceroneManager: CiceroneManager
 
     @Inject
     lateinit var launcher: MainAppLauncher
 
     private val navigatorHolder: NavigatorHolder by lazy {
-        ciceroneHolder.getNavigatorHolder(AppFlow.GLOBAL)
+        ciceroneManager.getNavigatorHolder(AppFlow.GLOBAL)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

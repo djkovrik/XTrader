@@ -1,18 +1,18 @@
 package com.sedsoftware.main
 
-import com.sedsoftware.core.presentation.navigation.AppFlow
-import com.sedsoftware.core.presentation.navigation.MainCiceroneHolder
+import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.core.tools.api.Settings
+import com.sedsoftware.main.flows.AppFlow
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 class MainAppLauncher @Inject constructor(
-    private val ciceroneHolder: MainCiceroneHolder,
+    private val ciceroneManager: CiceroneManager,
     private val settings: Settings
 ) {
 
     private val globalRouter: Router by lazy {
-        ciceroneHolder.getRouter(AppFlow.GLOBAL)
+        ciceroneManager.getRouter(AppFlow.GLOBAL)
     }
 
     fun coldStart() {

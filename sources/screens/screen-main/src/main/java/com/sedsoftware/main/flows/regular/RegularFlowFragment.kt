@@ -10,9 +10,9 @@ import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.BaseTabFragment
 import com.sedsoftware.core.presentation.base.FlowFragment
-import com.sedsoftware.core.presentation.navigation.AppFlow
-import com.sedsoftware.core.presentation.navigation.MainCiceroneHolder
+import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.main.Screens
+import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.main.flows.regular.di.RegularFlowComponent
 import com.sedsoftware.screens.main.R
 import kotlinx.android.synthetic.main.fragment_flow_regular.*
@@ -60,14 +60,14 @@ class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowCompon
     }
 
     @Inject
-    lateinit var ciceroneHolder: MainCiceroneHolder
+    lateinit var ciceroneManager: CiceroneManager
 
     private val router: Router by lazy {
-        ciceroneHolder.getRouter(AppFlow.REGULAR)
+        ciceroneManager.getRouter(AppFlow.REGULAR)
     }
 
     private val navigatorHolder: NavigatorHolder by lazy {
-        ciceroneHolder.getNavigatorHolder(AppFlow.REGULAR)
+        ciceroneManager.getNavigatorHolder(AppFlow.REGULAR)
     }
 
     private val currentTabFragment: BaseTabFragment? =

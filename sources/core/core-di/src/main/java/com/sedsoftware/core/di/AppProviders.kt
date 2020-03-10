@@ -12,6 +12,7 @@ import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.domain.provider.CurrencyProvider
+import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.core.tools.api.Logger
 import com.sedsoftware.core.tools.api.NetworkHandler
 import com.sedsoftware.core.tools.api.Settings
@@ -32,6 +33,7 @@ interface DeviceToolsProvider {
     fun provideNetworkHandler(): NetworkHandler
     fun provideSettings(): Settings
     fun provideSigner(): Signer
+    fun provideCiceroneManager(): CiceroneManager
     fun provideMoshi(): Moshi
     fun provideOkHttpClient(): OkHttpClient
     fun provideDefaultDisplay(): Display
