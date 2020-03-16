@@ -1,10 +1,8 @@
 package com.sedsoftware.core.domain.interactor
 
-import com.sedsoftware.core.utils.type.Either
-import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.Success
+import kotlinx.coroutines.flow.Flow
 
 interface CurrencyMapLoader {
-    suspend fun isLoadingNeeded(): Either<Failure, Boolean>
-    suspend fun loadCurrencyMap(): Either<Failure, Success>
+    suspend fun isLoadingNeeded(): Flow<Boolean>
+    suspend fun loadCurrencyMap(): Flow<Unit>
 }
