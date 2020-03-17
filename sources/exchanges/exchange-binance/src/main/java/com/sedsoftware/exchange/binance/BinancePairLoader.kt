@@ -2,17 +2,10 @@ package com.sedsoftware.exchange.binance
 
 import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
 import com.sedsoftware.core.tools.api.NetworkHandler
-import com.sedsoftware.core.utils.extension.left
-import com.sedsoftware.core.utils.extension.right
-import com.sedsoftware.core.utils.type.Either
-import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.Failure.NetworkConnectionMissing
-import com.sedsoftware.core.utils.type.Failure.PairsLoadingError
-import com.sedsoftware.core.utils.type.Success
-import com.sedsoftware.core.utils.type.Success.PairsLoadingCompleted
+import com.sedsoftware.core.utils.exception.NetworkConnectionMissing
 import com.sedsoftware.exchange.binance.repository.BinancePairsInfoRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,23 +15,17 @@ class BinancePairLoader @Inject constructor(
     private val repository: BinancePairsInfoRepository
 ) : CurrencyPairLoader {
 
-    override suspend fun fetchCurrencyPairs(): Either<Failure, Success> =
-        withContext(Dispatchers.IO) {
-            when (networkHandler.isConnected) {
-                true -> {
-                    try {
-                        val remotePairs = repository.getRemotePairsInfo()
-                        repository.storePairsInfo(remotePairs)
-                        repository.storeSyncInfo(remotePairs)
-                        repository.markAsDownloaded()
-                        right(PairsLoadingCompleted)
-                    } catch (exception: Exception) {
-                        left(PairsLoadingError(exception))
-                    }
-                }
-                false -> {
-                    left(NetworkConnectionMissing)
-                }
+    override suspend fun fetchCurrencyPairs(): Flow<Unit> = flow {
+        when (networkHandler.isConnected) {
+            true -> {
+                val remotePairs = repository.getRemotePairsInfo()
+                repository.storePairsInfo(remotePairs)
+                repository.storeSyncInfo(remotePairs)
+                repository.markAsDownloaded()
+            }
+            false -> {
+                throw NetworkConnectionMissing()
             }
         }
+    }
 }
