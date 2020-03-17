@@ -2,14 +2,9 @@ package com.sedsoftware.exchange.binance
 
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.interactor.CurrencyPairManager
-import com.sedsoftware.core.utils.extension.left
-import com.sedsoftware.core.utils.extension.right
-import com.sedsoftware.core.utils.type.Either
-import com.sedsoftware.core.utils.type.Failure
-import com.sedsoftware.core.utils.type.Failure.PairsManagerError
 import com.sedsoftware.exchange.binance.repository.BinancePairsManagerRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,43 +13,26 @@ class BinancePairManager @Inject constructor(
     private val repository: BinancePairsManagerRepository
 ) : CurrencyPairManager {
 
-    override suspend fun checkIfDataAvailable(): Either<Failure, Boolean> =
-        withContext(Dispatchers.IO) {
-            try {
-                val synced = repository.isSynchronized()
+    override suspend fun checkIfDataAvailable(): Flow<Boolean> = flow {
+        emit(repository.isSynchronized())
+    }
 
-                right(synced)
-            } catch (exception: Exception) {
-                left(PairsManagerError(exception))
-            }
-        }
+    override suspend fun getBaseCurrencies(): Flow<List<Currency>> = flow {
+        val currencies =
+            repository
+                .getBaseCurrencies()
+                .sortedBy { it.name }
+                .distinctBy { it.name }
 
-    override suspend fun getBaseCurrencies(): Either<Failure, List<Currency>> =
-        withContext(Dispatchers.IO) {
-            try {
-                val currencies =
-                    repository
-                        .getBaseCurrencies()
-                        .sortedBy { it.name }
-                        .distinctBy { it.name }
+        emit(currencies)
+    }
 
-                right(currencies)
-            } catch (exception: Exception) {
-                left(PairsManagerError(exception))
-            }
-        }
+    override suspend fun getMarketCurrencies(base: Currency): Flow<List<Currency>> = flow {
+        val currencies =
+            repository
+                .getMarketCurrencies(base)
+                .sortedBy { it.name }
 
-    override suspend fun getMarketCurrencies(base: Currency): Either<Failure, List<Currency>> =
-        withContext(Dispatchers.IO) {
-            try {
-                val currencies =
-                    repository
-                        .getMarketCurrencies(base)
-                        .sortedBy { it.name }
-
-                right(currencies)
-            } catch (exception: Exception) {
-                left(PairsManagerError(exception))
-            }
-        }
+        emit(currencies)
+    }
 }

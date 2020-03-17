@@ -1,11 +1,10 @@
 package com.sedsoftware.core.domain.interactor
 
 import com.sedsoftware.core.domain.entity.Currency
-import com.sedsoftware.core.utils.type.Either
-import com.sedsoftware.core.utils.type.Failure
+import kotlinx.coroutines.flow.Flow
 
 interface CurrencyPairManager {
-    suspend fun checkIfDataAvailable(): Either<Failure, Boolean>
-    suspend fun getBaseCurrencies(): Either<Failure, List<Currency>>
-    suspend fun getMarketCurrencies(base: Currency): Either<Failure, List<Currency>>
+    suspend fun checkIfDataAvailable(): Flow<Boolean>
+    suspend fun getBaseCurrencies(): Flow<List<Currency>>
+    suspend fun getMarketCurrencies(base: Currency): Flow<List<Currency>>
 }
