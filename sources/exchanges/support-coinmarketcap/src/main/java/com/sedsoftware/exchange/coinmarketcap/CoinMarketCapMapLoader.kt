@@ -13,8 +13,8 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@ExperimentalCoroutinesApi
 @Singleton
+@ExperimentalCoroutinesApi
 class CoinMarketCapMapLoader @Inject constructor(
     private val repository: CurrenciesInfoRepository,
     private val networkHandler: NetworkHandler
