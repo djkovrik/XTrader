@@ -6,7 +6,6 @@ import com.sedsoftware.core.utils.exception.CurrencyMapLoadingError
 import com.sedsoftware.core.utils.exception.NetworkConnectionMissing
 import com.sedsoftware.exchange.coinmarketcap.repository.CurrenciesInfoRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -14,7 +13,6 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-@ExperimentalCoroutinesApi
 class CoinMarketCapMapLoader @Inject constructor(
     private val repository: CurrenciesInfoRepository,
     private val networkHandler: NetworkHandler
