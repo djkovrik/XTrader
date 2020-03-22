@@ -4,8 +4,8 @@ import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
-import com.sedsoftware.core.domain.interactor.CurrencyPairManager
+import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
+import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.exchange.manager.provider.ExchangeAssetsProvider
 import dagger.Binds
@@ -19,22 +19,22 @@ abstract class ExchangeManagerModule {
 
         @Provides
         fun provideCurrencyPairLoaders(
-            @ForExchange(BINANCE) binancePairLoader: CurrencyPairLoader,
-            @ForExchange(BITFINEX) bitfinexPairLoader: CurrencyPairLoader
-        ): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader> =
+            @ForExchange(BINANCE) binancePairsLoader: CurrencyPairsLoader,
+            @ForExchange(BITFINEX) bitfinexPairsLoader: CurrencyPairsLoader
+        ): Map<Exchange, @JvmSuppressWildcards CurrencyPairsLoader> =
             mapOf(
-                BINANCE to binancePairLoader,
-                BITFINEX to bitfinexPairLoader
+                BINANCE to binancePairsLoader,
+                BITFINEX to bitfinexPairsLoader
             )
 
         @Provides
         fun provideCurrencyPairManager(
-            @ForExchange(BINANCE) binancePairManager: CurrencyPairManager,
-            @ForExchange(BITFINEX) bitfinexPairManager: CurrencyPairManager
-        ): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager> =
+            @ForExchange(BINANCE) binancePairsManager: CurrencyPairsManager,
+            @ForExchange(BITFINEX) bitfinexPairsManager: CurrencyPairsManager
+        ): Map<Exchange, @JvmSuppressWildcards CurrencyPairsManager> =
             mapOf(
-                BINANCE to binancePairManager,
-                BITFINEX to bitfinexPairManager
+                BINANCE to binancePairsManager,
+                BITFINEX to bitfinexPairsManager
             )
     }
 

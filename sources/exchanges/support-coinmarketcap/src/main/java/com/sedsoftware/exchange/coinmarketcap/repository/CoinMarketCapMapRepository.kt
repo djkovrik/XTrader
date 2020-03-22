@@ -8,7 +8,7 @@ import com.sedsoftware.exchange.coinmarketcap.mapper.CurrencyInfoMapper
 import com.sedsoftware.exchange.coinmarketcap.network.CoinMarketCapApi
 import javax.inject.Inject
 
-class CoinMarketCapCurrencyMapRepository @Inject constructor(
+class CoinMarketCapMapRepository @Inject constructor(
     private val api: CoinMarketCapApi,
     private val db: CurrencyDatabase,
     private val mapper: CurrencyInfoMapper

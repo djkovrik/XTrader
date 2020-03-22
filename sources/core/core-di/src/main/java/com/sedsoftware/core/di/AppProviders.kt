@@ -6,8 +6,8 @@ import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
-import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
-import com.sedsoftware.core.domain.interactor.CurrencyPairManager
+import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
+import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.core.domain.provider.AssetsProvider
@@ -40,19 +40,19 @@ interface DeviceToolsProvider {
 }
 
 interface ExchangeManagerProvider {
-    fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
-    fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
+    fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairsLoader>
+    fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairsManager>
     fun provideIconsProvider(): AssetsProvider
 }
 
 interface BinanceProvider {
-    @ForExchange(BINANCE) fun provideBinancePairLoader(): CurrencyPairLoader
-    @ForExchange(BINANCE) fun provideBinancePairManager(): CurrencyPairManager
+    @ForExchange(BINANCE) fun provideBinancePairLoader(): CurrencyPairsLoader
+    @ForExchange(BINANCE) fun provideBinancePairManager(): CurrencyPairsManager
 }
 
 interface BitfinexProvider {
-    @ForExchange(BITFINEX) fun provideBitfinexPairLoader(): CurrencyPairLoader
-    @ForExchange(BITFINEX) fun provideBitfinexPairManager(): CurrencyPairManager
+    @ForExchange(BITFINEX) fun provideBitfinexPairLoader(): CurrencyPairsLoader
+    @ForExchange(BITFINEX) fun provideBitfinexPairManager(): CurrencyPairsManager
 }
 
 interface CoinMarketCapProvider {
