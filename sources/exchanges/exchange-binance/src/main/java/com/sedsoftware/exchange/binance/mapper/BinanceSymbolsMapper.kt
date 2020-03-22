@@ -1,7 +1,7 @@
 package com.sedsoftware.exchange.binance.mapper
 
 import com.sedsoftware.core.domain.ExchangeType
-import com.sedsoftware.core.domain.provider.CurrencyProvider
+import com.sedsoftware.core.domain.interactor.CurrencyManager
 import com.sedsoftware.exchange.binance.database.model.BinanceSymbolDbModel
 import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
 import com.sedsoftware.exchange.binance.network.model.PairsInfo
@@ -9,7 +9,7 @@ import com.sedsoftware.exchange.binance.network.model.SymbolInfoModel
 import javax.inject.Inject
 
 class BinanceSymbolsMapper @Inject constructor(
-    private val currencyProvider: CurrencyProvider
+    private val currencyManager: CurrencyManager
 ) {
 
     suspend fun mapSymbolsToDb(from: PairsInfo): List<BinanceSymbolDbModel> =
@@ -23,8 +23,8 @@ class BinanceSymbolsMapper @Inject constructor(
 
     private suspend fun mapSymbolToDb(from: SymbolInfoModel): BinanceSymbolDbModel {
 
-        val baseSymbolName = currencyProvider.getCurrency(from.baseAsset).label
-        val quoteSymbolName = currencyProvider.getCurrency(from.quoteAsset).label
+        val baseSymbolName = currencyManager.getCurrency(from.baseAsset).label
+        val quoteSymbolName = currencyManager.getCurrency(from.quoteAsset).label
 
         return BinanceSymbolDbModel(
             symbol = from.symbol,

@@ -1,14 +1,14 @@
 package com.sedsoftware.exchange.bitfinex.mapper
 
 import com.sedsoftware.core.domain.ExchangeType
-import com.sedsoftware.core.domain.provider.CurrencyProvider
+import com.sedsoftware.core.domain.interactor.CurrencyManager
 import com.sedsoftware.exchange.bitfinex.database.model.BitfinexSymbolDbModel
 import com.sedsoftware.exchange.bitfinex.database.model.BitfinexSyncInfoDbModel
 import org.threeten.bp.OffsetDateTime
 import javax.inject.Inject
 
 class BitfinexSymbolsMapper @Inject constructor(
-    private val currencyProvider: CurrencyProvider
+    private val currencyManager: CurrencyManager
 ) {
 
     suspend fun mapSymbolsToDb(from: List<String>): List<BitfinexSymbolDbModel> =
@@ -25,8 +25,8 @@ class BitfinexSymbolsMapper @Inject constructor(
         val splitted = splitSymbol(symbol)
         val baseSymbol = splitted.first.toUpperCase()
         val quoteSymbol = splitted.second.toUpperCase()
-        val baseSymbolName = currencyProvider.getCurrency(baseSymbol).label
-        val quoteSymbolName = currencyProvider.getCurrency(quoteSymbol).label
+        val baseSymbolName = currencyManager.getCurrency(baseSymbol).label
+        val quoteSymbolName = currencyManager.getCurrency(quoteSymbol).label
 
         return BitfinexSymbolDbModel(
             symbol = symbol.toUpperCase(),

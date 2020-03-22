@@ -11,7 +11,7 @@ import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.core.domain.provider.AssetsProvider
-import com.sedsoftware.core.domain.provider.CurrencyProvider
+import com.sedsoftware.core.domain.interactor.CurrencyManager
 import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.core.tools.api.Logger
 import com.sedsoftware.core.tools.api.NetworkHandler
@@ -56,7 +56,7 @@ interface BitfinexProvider {
 }
 
 interface CoinMarketCapProvider {
-    fun provideCurrencyProvider(): CurrencyProvider
+    fun provideCurrencyProvider(): CurrencyManager
     fun provideCurrencyMapLoader(): CurrencyMapLoader
 }
 

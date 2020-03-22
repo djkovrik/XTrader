@@ -1,7 +1,7 @@
-package com.sedsoftware.core.domain.provider
+package com.sedsoftware.core.domain.repository
 
 import com.sedsoftware.core.domain.entity.Currency
 
-interface CurrencyProvider {
+interface CurrencyRepository {
     suspend fun getCurrency(symbol: String): Currency
 }

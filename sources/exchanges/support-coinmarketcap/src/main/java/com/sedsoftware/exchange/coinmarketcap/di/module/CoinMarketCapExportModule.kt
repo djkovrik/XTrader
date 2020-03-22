@@ -1,8 +1,8 @@
 package com.sedsoftware.exchange.coinmarketcap.di.module
 
+import com.sedsoftware.core.domain.interactor.CurrencyManager
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
-import com.sedsoftware.core.domain.provider.CurrencyProvider
-import com.sedsoftware.exchange.coinmarketcap.CoinMarketCapCurrencyProvider
+import com.sedsoftware.exchange.coinmarketcap.CoinMarketCapCurrencyManager
 import com.sedsoftware.exchange.coinmarketcap.CoinMarketCapMapLoader
 import dagger.Binds
 import dagger.Module
@@ -11,7 +11,7 @@ import dagger.Module
 interface CoinMarketCapExportModule {
 
     @Binds
-    fun bindCurrencyProvider(implementation: CoinMarketCapCurrencyProvider): CurrencyProvider
+    fun bindCurrencyProvider(implementation: CoinMarketCapCurrencyManager): CurrencyManager
 
     @Binds
     fun bindCurrenciesInfoLoader(implementation: CoinMarketCapMapLoader): CurrencyMapLoader
