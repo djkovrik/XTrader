@@ -37,16 +37,6 @@ ext.versions = [
     firebaseCloudMessaging: "20.0.0",
     firebaseCrashlytics: "2.10.1",
 
-    // Testing
-    junit5: "5.2.0",
-    junit5Runner: "0.2.2",
-    testRunner: "1.3.0-alpha03",
-    testRules: "1.1.0-alpha1",
-    espresso: "3.1.0-alpha1",
-    spek: "2.0.10",
-    expekt: "0.5.0",
-    fuel: "2.2.1",
-
     // Development tools
     timber: "4.7.1",
     leakCanary: "2.2",

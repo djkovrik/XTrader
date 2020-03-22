@@ -1,11 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: "de.mannodermaus.android-junit5"
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
-apply from: '../../spek-android-config.gradle'
 
 dependencies {
     implementation project(':core-tools-api')
@@ -25,11 +23,4 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
 
     implementation "com.jakewharton.timber:timber:$versions.timber"
-
-    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$versions.spek"
-    testImplementation "org.spekframework.spek2:spek-runner-junit5:$versions.spek"
-    testImplementation "com.winterbe:expekt:$versions.expekt"
-
-    androidTestImplementation "androidx.test:runner:$versions.testRunner"
-    androidTestRuntimeOnly "de.mannodermaus.junit5:android-instrumentation-test-runner:$versions.junit5Runner"
 }

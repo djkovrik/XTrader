@@ -8,7 +8,6 @@ buildscript {
     ext.fabric = "1.31.2"
     ext.detekt = "1.2.2"
     ext.gradleVersions = "0.27.0"
-    ext.androidJUnit5 = "1.6.0.0"
     ext.devMetrics = "0.7"
 
     ext.minSdk = 21
@@ -31,7 +30,6 @@ buildscript {
         classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detekt"
         classpath "com.github.ben-manes:gradle-versions-plugin:$gradleVersions"
         classpath "com.frogermcs.androiddevmetrics:androiddevmetrics-plugin:$devMetrics"
-        classpath "de.mannodermaus.gradle.plugins:android-junit5:$androidJUnit5"
     }
 }
 
