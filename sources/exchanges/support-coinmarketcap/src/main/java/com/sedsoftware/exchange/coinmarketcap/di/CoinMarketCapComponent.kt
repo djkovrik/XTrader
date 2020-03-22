@@ -2,9 +2,10 @@ package com.sedsoftware.exchange.coinmarketcap.di
 
 import com.sedsoftware.core.di.CoinMarketCapProvider
 import com.sedsoftware.core.di.DeviceToolsProvider
-import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapModule
-import com.sedsoftware.exchange.coinmarketcap.di.module.CurrencyDatabaseModule
-import com.sedsoftware.exchange.coinmarketcap.di.module.CurrencyNetworkModule
+import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapExportModule
+import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapRepositoryModule
+import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapDatabaseModule
+import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapNetworkModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,9 +14,10 @@ import javax.inject.Singleton
         DeviceToolsProvider::class
     ],
     modules = [
-        CurrencyDatabaseModule::class,
-        CurrencyNetworkModule::class,
-        CoinMarketCapModule::class
+        CoinMarketCapDatabaseModule::class,
+        CoinMarketCapNetworkModule::class,
+        CoinMarketCapRepositoryModule::class,
+        CoinMarketCapExportModule::class
     ]
 )
 @Singleton

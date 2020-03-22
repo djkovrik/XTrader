@@ -8,7 +8,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-interface CoinMarketCapModule {
+interface CoinMarketCapExportModule {
 
     @Binds
     fun bindCurrencyProvider(implementation: CoinMarketCapCurrencyProvider): CurrencyProvider

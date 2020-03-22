@@ -5,10 +5,10 @@ ext.versions = [
 
     // Core
     adapterDelegates: "4.2.0",
-    dagger: "2.26",
-    retrofit: "2.7.1",
+    dagger: "2.27",
+    retrofit: "2.7.2",
     moshi: "1.9.2",
-    okhttp: "4.4.0",
+    okhttp: "4.4.1",
     threeTenAbp: "1.2.2",
     cicerone: "5.1.0",
 
@@ -20,7 +20,7 @@ ext.versions = [
 
     // JetPack - Architecture
     lifecycle: "2.2.0",
-    room: "2.2.4",
+    room: "2.2.5",
 
     // JetPack - KTX
     ktx: "1.3.0-alpha02",

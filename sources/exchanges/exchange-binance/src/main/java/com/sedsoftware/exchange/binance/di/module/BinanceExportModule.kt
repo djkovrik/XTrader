@@ -10,13 +10,13 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class BinanceExportModule {
+interface BinanceExportModule {
 
     @Binds
     @ForExchange(BINANCE)
-    abstract fun bindBinancePairLoader(implementation: BinancePairLoader): CurrencyPairLoader
+    fun bindBinancePairLoader(implementation: BinancePairLoader): CurrencyPairLoader
 
     @Binds
     @ForExchange(BINANCE)
-    abstract fun bindBinancePairManager(implementation: BinancePairManager): CurrencyPairManager
+    fun bindBinancePairManager(implementation: BinancePairManager): CurrencyPairManager
 }
