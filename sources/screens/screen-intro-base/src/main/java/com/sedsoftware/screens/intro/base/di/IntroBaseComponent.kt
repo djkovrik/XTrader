@@ -1,13 +1,13 @@
 package com.sedsoftware.screens.intro.base.di
 
-import com.sedsoftware.core.di.StartingFlowToolsProvider
+import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.screens.intro.base.IntroBaseFragment
 import dagger.Component
 
 @Component(
     dependencies = [
-        StartingFlowToolsProvider::class
+        ActivityToolsProvider::class
     ]
 )
 @ScreenScope
@@ -17,21 +17,17 @@ interface IntroBaseComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(
-            startingFlowToolsProvider: StartingFlowToolsProvider
-        ): IntroBaseComponent
+        fun create(provider: ActivityToolsProvider): IntroBaseComponent
     }
 
     class Initializer private constructor() {
         companion object {
 
-            fun init(
-                startingFlowToolsProvider: StartingFlowToolsProvider
-            ): IntroBaseComponent {
+            fun init(provider: ActivityToolsProvider): IntroBaseComponent {
 
                 return DaggerIntroBaseComponent
                     .factory()
-                    .create(startingFlowToolsProvider)
+                    .create(provider)
             }
         }
     }

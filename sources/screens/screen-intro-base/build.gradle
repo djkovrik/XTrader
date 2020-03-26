@@ -19,14 +19,13 @@ dependencies {
 
     implementation "com.hannesdorfmann:adapterdelegates4:$versions.adapterDelegates"
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
+
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
     implementation "com.google.android.material:material:$versions.materialComponents"
-    implementation "androidx.core:core-ktx:$versions.ktx"
 
     implementation "blue.aodev:material-values:$versions.materialValues"
-    implementation "com.afollestad.material-dialogs:core:$versions.materialDialogs"
 }
