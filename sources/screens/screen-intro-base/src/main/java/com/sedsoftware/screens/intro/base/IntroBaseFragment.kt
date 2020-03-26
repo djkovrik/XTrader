@@ -1,6 +1,11 @@
 package com.sedsoftware.screens.intro.base
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.screens.intro.base.databinding.FragmentIntroBaseBinding
 
 class IntroBaseFragment : BaseFragment() {
 
@@ -8,7 +13,17 @@ class IntroBaseFragment : BaseFragment() {
         fun newInstance(): IntroBaseFragment = IntroBaseFragment()
     }
 
-    override val layoutResId: Int = R.layout.fragment_intro_base
+    var binding: FragmentIntroBaseBinding? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentIntroBaseBinding.inflate(inflater, container, false)
+        return binding!!.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)

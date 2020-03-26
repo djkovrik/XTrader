@@ -1,5 +1,9 @@
 package com.sedsoftware.main.flows.starting
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.ActivityToolsProvider
@@ -7,9 +11,10 @@ import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.FlowFragment
-import com.sedsoftware.main.flows.AppFlow
+import com.sedsoftware.core.presentation.databinding.LayoutContainerBinding
 import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.main.Screens
+import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.main.flows.starting.di.StartingFlowComponent
 import com.sedsoftware.screens.main.R
 import ru.terrakok.cicerone.Navigator
@@ -26,7 +31,8 @@ class StartingFlowFragment : FlowFragment(), HasDaggerComponent<StartingFlowComp
         fun newInstance(): StartingFlowFragment = StartingFlowFragment()
     }
 
-    override val layoutResId: Int = R.layout.layout_container
+    private val binding: LayoutContainerBinding get() = _binding!!
+    private var _binding: LayoutContainerBinding? = null
 
     override val launchScreen: SupportAppScreen = Screens.Empty
 
@@ -58,6 +64,11 @@ class StartingFlowFragment : FlowFragment(), HasDaggerComponent<StartingFlowComp
         ciceroneManager.getNavigatorHolder(AppFlow.STARTING)
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding = LayoutContainerBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onResume() {
         super.onResume()
         navigatorHolder.setNavigator(navigator)
@@ -66,6 +77,11 @@ class StartingFlowFragment : FlowFragment(), HasDaggerComponent<StartingFlowComp
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun getComponent(): StartingFlowComponent {

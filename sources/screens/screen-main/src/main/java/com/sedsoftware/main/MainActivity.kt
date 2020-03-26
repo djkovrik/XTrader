@@ -1,5 +1,6 @@
 package com.sedsoftware.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
@@ -20,7 +21,7 @@ import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.screens.main.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.sedsoftware.screens.main.databinding.ActivityMainBinding
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
 import ru.terrakok.cicerone.Navigator
@@ -51,6 +52,8 @@ class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainAc
     @Inject
     lateinit var launcher: MainAppLauncher
 
+    private lateinit var binding: ActivityMainBinding
+
     private val navigatorHolder: NavigatorHolder by lazy {
         ciceroneManager.getNavigatorHolder(AppFlow.GLOBAL)
     }
@@ -58,7 +61,8 @@ class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainAc
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setupViews()
 
         if (savedInstanceState == null) {
@@ -66,20 +70,21 @@ class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainAc
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupViews() {
         setBackgroundColor(R.color.colorBackground)
 
-        topNotificationTextView.post {
-            topNotificationTranslation = -topNotificationTextView.measuredHeight.toFloat()
-            topNotificationTextView.translationY = topNotificationTranslation
+        binding.topNotificationTextView.post {
+            topNotificationTranslation = -binding.topNotificationTextView.measuredHeight.toFloat()
+            binding.topNotificationTextView.translationY = topNotificationTranslation
         }
 
-        topNotificationTextView.setOnTouchListener(
+        binding.topNotificationTextView.setOnTouchListener(
             SwipeToDismissTouchListener(
-                topNotificationTextView,
+                binding.topNotificationTextView,
                 object : DismissCallbacks {
                     override fun onDismiss(view: View) {
-                        topNotificationTextView.translationY = topNotificationTranslation
+                        binding.topNotificationTextView.translationY = topNotificationTranslation
                         notificationJob?.cancelChildren()
                         notificationQueue.clear()
                     }
@@ -100,8 +105,8 @@ class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainAc
 
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {
-            topNotificationTextView.text = message
-            translateViewAnimated(topNotificationTextView, 0f) {
+            binding.topNotificationTextView.text = message
+            translateViewAnimated(binding.topNotificationTextView, 0f) {
                 isNotificationVisible = true
                 hideNotificationDelayed()
             }
@@ -113,7 +118,7 @@ class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainAc
     private fun hideNotificationDelayed() {
         notificationJob = launch {
             delay(DELAY_BEFORE_HIDE)
-            translateViewAnimated(topNotificationTextView, topNotificationTranslation) {
+            translateViewAnimated(binding.topNotificationTextView, topNotificationTranslation) {
                 isNotificationVisible = false
                 if (notificationQueue.isNotEmpty()) {
                     notifyOnTop(notificationQueue.poll())

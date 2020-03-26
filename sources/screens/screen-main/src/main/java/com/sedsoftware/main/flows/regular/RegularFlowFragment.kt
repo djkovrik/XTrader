@@ -1,7 +1,10 @@
 package com.sedsoftware.main.flows.regular
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.ActivityToolsProvider
@@ -15,7 +18,7 @@ import com.sedsoftware.main.Screens
 import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.main.flows.regular.di.RegularFlowComponent
 import com.sedsoftware.screens.main.R
-import kotlinx.android.synthetic.main.fragment_flow_regular.*
+import com.sedsoftware.screens.main.databinding.FragmentFlowRegularBinding
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -38,7 +41,8 @@ class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowCompon
         private val DEFAULT_TAB = R.id.navigation_market
     }
 
-    override val layoutResId: Int = R.layout.fragment_flow_regular
+    private val binding: FragmentFlowRegularBinding get() = _binding!!
+    private var _binding: FragmentFlowRegularBinding? = null
 
     override val launchScreen: SupportAppScreen = Screens.MarketTabContainer
 
@@ -73,10 +77,15 @@ class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowCompon
     private val currentTabFragment: BaseTabFragment? =
         childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseTabFragment
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding = FragmentFlowRegularBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        bottomNavigation.setOnNavigationItemSelectedListener { item: MenuItem ->
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.navigation_wallet -> selectTab(walletTab)
                 R.id.navigation_orders -> selectTab(ordersTab)
@@ -87,7 +96,7 @@ class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowCompon
         }
 
         if (savedInstanceState == null) {
-            bottomNavigation.selectedItemId = DEFAULT_TAB
+            binding.bottomNavigation.selectedItemId = DEFAULT_TAB
         }
     }
 
@@ -99,6 +108,11 @@ class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowCompon
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun getComponent(): RegularFlowComponent {
