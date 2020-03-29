@@ -18,6 +18,10 @@ dependencies {
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 
+    implementation "com.arkivanov.mvikotlin:mvikotlin:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:mvikotlin-main:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:$versions.mviKotlin"
+
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
     implementation "com.google.android.material:material:$versions.materialComponents"

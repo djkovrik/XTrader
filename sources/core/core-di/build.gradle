@@ -14,5 +14,8 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$versions.moshi"
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
 
+    implementation "com.arkivanov.mvikotlin:mvikotlin:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:mvikotlin-main:$versions.mviKotlin"
+
     implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
 }
