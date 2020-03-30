@@ -1,7 +1,7 @@
 package com.sedsoftware.main.flows.navigation
 
+import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.main.flows.AppFlow
-import com.sedsoftware.core.tools.api.CiceroneManager
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import javax.inject.Inject

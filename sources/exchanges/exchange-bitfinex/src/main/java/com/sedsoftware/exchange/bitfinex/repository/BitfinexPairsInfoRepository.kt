@@ -1,7 +1,7 @@
 package com.sedsoftware.exchange.bitfinex.repository
 
 import com.sedsoftware.core.domain.repository.PairsInfoRepository
-import com.sedsoftware.core.tools.api.Settings
+import com.sedsoftware.core.domain.tools.Settings
 import com.sedsoftware.exchange.bitfinex.database.BitfinexDatabase
 import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSymbolsDao
 import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSyncInfoDao

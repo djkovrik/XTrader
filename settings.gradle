@@ -1,10 +1,8 @@
 include ':app'
 project(':app').projectDir = new File(rootDir, 'sources/app')
 
-include ':core-tools-api'
-project(':core-tools-api').projectDir = new File(rootDir, 'sources/core/core-tools-api')
-include ':core-tools-impl'
-project(':core-tools-impl').projectDir = new File(rootDir, 'sources/core/core-tools-impl')
+include ':core-tools'
+project(':core-tools').projectDir = new File(rootDir, 'sources/core/core-tools')
 include ':core-di'
 project(':core-di').projectDir = new File(rootDir, 'sources/core/core-di')
 include ':core-domain'
@@ -13,8 +11,6 @@ include ':core-presentation'
 project(':core-presentation').projectDir = new File(rootDir, 'sources/core/core-presentation')
 include ':core-utils'
 project(':core-utils').projectDir = new File(rootDir, 'sources/core/core-utils')
-//include ':core-test'
-//project(':core-test').projectDir = new File(rootDir, 'sources/core/core-test')
 
 include ':exchange-binance'
 project(':exchange-binance').projectDir = new File(rootDir, 'sources/exchanges/exchange-binance')

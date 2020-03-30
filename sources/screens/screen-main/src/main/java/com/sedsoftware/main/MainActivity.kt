@@ -10,6 +10,7 @@ import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.di.management.HasInject
+import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.extension.addEndAction
@@ -17,7 +18,6 @@ import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
-import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.screens.main.R

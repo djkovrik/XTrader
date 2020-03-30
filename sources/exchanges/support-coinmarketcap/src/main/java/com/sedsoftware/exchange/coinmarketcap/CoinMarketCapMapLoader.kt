@@ -2,7 +2,7 @@ package com.sedsoftware.exchange.coinmarketcap
 
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.repository.CurrencyMapRepository
-import com.sedsoftware.core.tools.api.NetworkHandler
+import com.sedsoftware.core.domain.tools.NetworkHandler
 import javax.inject.Inject
 import javax.inject.Singleton
 

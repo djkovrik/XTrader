@@ -5,18 +5,18 @@ import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.entity.Exchange
+import com.sedsoftware.core.domain.interactor.CurrencyManager
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.core.domain.provider.AssetsProvider
-import com.sedsoftware.core.domain.interactor.CurrencyManager
-import com.sedsoftware.core.tools.api.CiceroneManager
-import com.sedsoftware.core.tools.api.Logger
-import com.sedsoftware.core.tools.api.NetworkHandler
-import com.sedsoftware.core.tools.api.Settings
-import com.sedsoftware.core.tools.api.Signer
+import com.sedsoftware.core.domain.tools.CiceroneManager
+import com.sedsoftware.core.domain.tools.Logger
+import com.sedsoftware.core.domain.tools.NetworkHandler
+import com.sedsoftware.core.domain.tools.Settings
+import com.sedsoftware.core.domain.tools.Signer
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 

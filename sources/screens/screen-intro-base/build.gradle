@@ -9,7 +9,6 @@ dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
     implementation project(':core-presentation')
-    implementation project(':core-tools-api')
     implementation project(':core-utils')
 
     implementation "com.hannesdorfmann:adapterdelegates4:$versions.adapterDelegates"
@@ -17,10 +16,6 @@ dependencies {
 
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
-
-    implementation "com.arkivanov.mvikotlin:mvikotlin:$versions.mviKotlin"
-    implementation "com.arkivanov.mvikotlin:mvikotlin-main:$versions.mviKotlin"
-    implementation "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:$versions.mviKotlin"
 
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"

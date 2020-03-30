@@ -2,10 +2,10 @@ package com.sedsoftware.exchange.coinmarketcap.di
 
 import com.sedsoftware.core.di.CoinMarketCapProvider
 import com.sedsoftware.core.di.DeviceToolsProvider
-import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapExportModule
-import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapRepositoryModule
 import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapDatabaseModule
+import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapExportModule
 import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapNetworkModule
+import com.sedsoftware.exchange.coinmarketcap.di.module.CoinMarketCapRepositoryModule
 import dagger.Component
 import javax.inject.Singleton
 

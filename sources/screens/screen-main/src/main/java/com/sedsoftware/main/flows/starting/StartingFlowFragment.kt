@@ -10,9 +10,9 @@ import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.di.management.HasInject
+import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.core.presentation.databinding.LayoutContainerBinding
-import com.sedsoftware.core.tools.api.CiceroneManager
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.main.flows.starting.di.StartingFlowComponent

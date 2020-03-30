@@ -1,7 +1,7 @@
 package com.sedsoftware.main.flows.navigation
 
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
-import com.sedsoftware.core.tools.api.CiceroneManager
+import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.flows.AppFlow
 import ru.terrakok.cicerone.Router

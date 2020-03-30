@@ -1,8 +1,9 @@
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation project(':core-tools-api')
     implementation project(':core-utils')
+
+    implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"

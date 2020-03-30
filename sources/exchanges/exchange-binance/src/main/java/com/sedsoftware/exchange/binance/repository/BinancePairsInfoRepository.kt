@@ -1,7 +1,7 @@
 package com.sedsoftware.exchange.binance.repository
 
 import com.sedsoftware.core.domain.repository.PairsInfoRepository
-import com.sedsoftware.core.tools.api.Settings
+import com.sedsoftware.core.domain.tools.Settings
 import com.sedsoftware.exchange.binance.database.BinanceDatabase
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
 import com.sedsoftware.exchange.binance.database.dao.BinanceSyncInfoDao
