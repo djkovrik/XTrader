@@ -2,8 +2,8 @@ package com.sedsoftware.core.domain.interactor
 
 import com.sedsoftware.core.domain.repository.CurrencyMapRepository
 import com.sedsoftware.core.domain.tools.NetworkHandler
-import com.sedsoftware.core.utils.exception.CurrencyMapLoadingError
-import com.sedsoftware.core.utils.exception.NetworkConnectionMissing
+import com.sedsoftware.core.domain.exception.CurrencyMapLoadingError
+import com.sedsoftware.core.domain.exception.NetworkConnectionMissing
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

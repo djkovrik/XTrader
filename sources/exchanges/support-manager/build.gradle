@@ -8,7 +8,6 @@ apply from: '../../kapt-config.gradle'
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
-    implementation project(':core-utils')
 
     implementation project(':exchange-binance')
     implementation project(':exchange-bitfinex')

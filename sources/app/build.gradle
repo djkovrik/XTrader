@@ -67,7 +67,6 @@ dependencies {
     implementation project(':core-domain')
     implementation project(':core-presentation')
     implementation project(':core-tools')
-    implementation project(':core-utils')
 
     implementation project(':screen-main')
     implementation project(':screen-intro-base')

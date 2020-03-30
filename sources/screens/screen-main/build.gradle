@@ -9,7 +9,6 @@ dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
     implementation project(':core-presentation')
-    implementation project(':core-utils')
 
     implementation project(':screen-intro-base')
 //    implementation project(':screen-intro-exchanges')
