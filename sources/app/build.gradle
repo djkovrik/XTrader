@@ -68,6 +68,12 @@ dependencies {
     implementation project(':core-presentation')
     implementation project(':core-tools')
 
+    implementation project(':provider-coinmarketcap')
+
+    implementation project(':exchange-manager')
+    implementation project(':exchange-binance')
+    implementation project(':exchange-bitfinex')
+
     implementation project(':screen-main')
     implementation project(':screen-intro-base')
 //    implementation project(':screen-intro-exchanges')
@@ -77,12 +83,6 @@ dependencies {
 //    implementation project(':screen-orders')
 //    implementation project(':screen-tracker')
 //    implementation project(':screen-tools')
-
-    implementation project(':exchange-binance')
-    implementation project(':exchange-bitfinex')
-
-    implementation project(':support-coinmarketcap')
-    implementation project(':support-manager')
 
     implementation "com.google.firebase:firebase-core:$versions.firebaseCore"
     implementation "com.google.firebase:firebase-analytics:$versions.firebaseAnalytics"
