@@ -9,5 +9,5 @@ import com.sedsoftware.core.utils.extension.orZero
 fun Fragment.string(@StringRes resId: Int, vararg formatArgs: Any? = arrayOfNulls(0)): String =
     context?.getString(resId, formatArgs).orEmpty()
 
-fun Fragment.color(@ColorRes colorId: Int) =
+fun Fragment.color(@ColorRes colorId: Int): Int =
     context?.let { ContextCompat.getColor(it, colorId) }.orZero()

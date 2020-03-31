@@ -1,20 +1,19 @@
 include ':app'
 project(':app').projectDir = new File(rootDir, 'sources/app')
 
-include ':core-tools'
-project(':core-tools').projectDir = new File(rootDir, 'sources/core/core-tools')
-include ':core-di'
-project(':core-di').projectDir = new File(rootDir, 'sources/core/core-di')
+
 include ':core-domain'
 project(':core-domain').projectDir = new File(rootDir, 'sources/core/core-domain')
+include ':core-di'
+project(':core-di').projectDir = new File(rootDir, 'sources/core/core-di')
+
+include ':core-tools'
+project(':core-tools').projectDir = new File(rootDir, 'sources/core/core-tools')
 include ':core-presentation'
 project(':core-presentation').projectDir = new File(rootDir, 'sources/core/core-presentation')
-include ':core-utils'
-project(':core-utils').projectDir = new File(rootDir, 'sources/core/core-utils')
 
 include ':exchange-binance'
 project(':exchange-binance').projectDir = new File(rootDir, 'sources/exchanges/exchange-binance')
-
 include ':exchange-bitfinex'
 project(':exchange-bitfinex').projectDir = new File(rootDir, 'sources/exchanges/exchange-bitfinex')
 
@@ -25,7 +24,6 @@ project(':support-manager').projectDir = new File(rootDir, 'sources/exchanges/su
 
 include ':screen-main'
 project(':screen-main').projectDir = new File(rootDir, 'sources/screens/screen-main')
-
 include ':screen-intro-base'
 project(':screen-intro-base').projectDir = new File(rootDir, 'sources/screens/screen-intro-base')
 //include ':screen-intro-exchanges'
