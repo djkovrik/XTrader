@@ -11,7 +11,7 @@ ext.versions = [
     okhttp: "4.5.0",
     threeTenAbp: "1.2.3",
     cicerone: "5.1.0",
-    mviKotlin: "2.0.0-preview4",
+    mviKotlin: "2.0.0-beta2",
 
     // JetPack - AppCompat
     appcompat: "1.2.0-beta01",
