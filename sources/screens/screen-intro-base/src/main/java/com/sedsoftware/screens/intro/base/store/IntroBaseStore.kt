@@ -8,7 +8,6 @@ internal interface IntroBaseStore : Store<Intent, State, Nothing> {
 
     sealed class Intent {
         object LoadCurrencyMap : Intent()
-        object EnableNavigation : Intent()
     }
 
     data class State(
@@ -16,8 +15,9 @@ internal interface IntroBaseStore : Store<Intent, State, Nothing> {
     )
 
     sealed class Result {
+        object InProgress : Result()
         object Success : Result()
-        object Error : Result()
+        data class Error(val throwable: Throwable) : Result()
     }
 
     enum class LoadingState { IDLE, LOADING, ERROR, DONE }
