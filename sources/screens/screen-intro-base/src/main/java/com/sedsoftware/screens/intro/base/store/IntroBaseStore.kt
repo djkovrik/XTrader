@@ -2,9 +2,10 @@ package com.sedsoftware.screens.intro.base.store
 
 import com.arkivanov.mvikotlin.core.store.Store
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Intent
+import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Label
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.State
 
-internal interface IntroBaseStore : Store<Intent, State, Nothing> {
+internal interface IntroBaseStore : Store<Intent, State, Label> {
 
     sealed class Intent {
         object LoadCurrencyMap : Intent()
@@ -13,6 +14,10 @@ internal interface IntroBaseStore : Store<Intent, State, Nothing> {
     data class State(
         val state: LoadingState = LoadingState.IDLE
     )
+
+    sealed class Label {
+        object NavigationAvailable : Label()
+    }
 
     sealed class Result {
         object InProgress : Result()
