@@ -34,7 +34,7 @@ class StartingFlowFragment : FlowFragment(), HasDaggerComponent<StartingFlowComp
     private val binding: LayoutContainerBinding get() = _binding!!
     private var _binding: LayoutContainerBinding? = null
 
-    override val launchScreen: SupportAppScreen = Screens.Empty
+    override val launchScreen: SupportAppScreen = Screens.IntroBase
 
     override val navigator: Navigator by lazy {
         object : SupportAppNavigator(requireActivity(), childFragmentManager, R.id.container) {
