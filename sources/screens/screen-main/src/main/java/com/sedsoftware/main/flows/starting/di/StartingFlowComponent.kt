@@ -1,22 +1,17 @@
 package com.sedsoftware.main.flows.starting.di
 
 import com.sedsoftware.core.di.ActivityToolsProvider
-import com.sedsoftware.core.di.StartingFlowToolsProvider
 import com.sedsoftware.core.di.scope.FlowScope
 import com.sedsoftware.main.flows.starting.StartingFlowFragment
-import com.sedsoftware.main.flows.starting.di.module.StartingFlowModule
 import dagger.Component
 
 @Component(
     dependencies = [
         ActivityToolsProvider::class
-    ],
-    modules = [
-        StartingFlowModule::class
     ]
 )
 @FlowScope
-interface StartingFlowComponent : StartingFlowToolsProvider {
+interface StartingFlowComponent {
 
     fun inject(fragment: StartingFlowFragment)
 

@@ -48,6 +48,10 @@ android {
         checkDependencies true
         ignoreTestSources true
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {

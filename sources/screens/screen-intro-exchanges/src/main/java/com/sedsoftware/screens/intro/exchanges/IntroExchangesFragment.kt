@@ -1,26 +1,20 @@
 package com.sedsoftware.screens.intro.exchanges
 
-import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sedsoftware.core.di.StartingFlowToolsProvider
 import com.sedsoftware.core.presentation.base.BaseStartingFragment
 import com.sedsoftware.core.presentation.extension.failure
 import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.string
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.screens.intro.exchanges.adapter.ExchangeListAdapter
-import com.sedsoftware.screens.intro.exchanges.di.IntroExchangesComponent
 import com.sedsoftware.screens.intro.exchanges.model.ExchangeListItem
 import kotlinx.android.synthetic.main.fragment_intro_exchanges.*
-import me.vponomarenko.injectionmanager.IHasComponent
-import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
 
-class IntroExchangesFragment : BaseStartingFragment(), IHasComponent<IntroExchangesComponent>,
-    ExchangeListAdapter.Listener {
+class IntroExchangesFragment : BaseStartingFragment(), ExchangeListAdapter.Listener {
 
     companion object {
         fun newInstance(): IntroExchangesFragment =
@@ -36,20 +30,6 @@ class IntroExchangesFragment : BaseStartingFragment(), IHasComponent<IntroExchan
     lateinit var exchangesAdapter: ExchangeListAdapter
 
     private lateinit var introViewModel: IntroExchangesViewModel
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        XInjectionManager
-            .bindComponent(this)
-            .inject(this)
-    }
-
-    override fun getComponent(): IntroExchangesComponent {
-        val startingFlowToolsProvider =
-            XInjectionManager.findComponent { it is StartingFlowToolsProvider } as StartingFlowToolsProvider
-
-        return IntroExchangesComponent.Initializer.init(this, startingFlowToolsProvider)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

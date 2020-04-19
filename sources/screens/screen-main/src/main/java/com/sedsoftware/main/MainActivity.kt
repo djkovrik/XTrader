@@ -1,41 +1,36 @@
 package com.sedsoftware.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.AppProvider
-import com.sedsoftware.core.di.delegate.SnackbarDelegate
-import com.sedsoftware.core.di.qualifier.Global
+import com.sedsoftware.core.di.management.DaggerComponentManager
+import com.sedsoftware.core.di.management.HasDaggerComponent
+import com.sedsoftware.core.di.management.HasInject
+import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.BaseActivity
+import com.sedsoftware.core.presentation.delegate.SnackbarDelegate
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
 import com.sedsoftware.main.di.MainActivityComponent
+import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.screens.main.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.sedsoftware.screens.main.databinding.ActivityMainBinding
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
-import me.vponomarenko.injectionmanager.IHasComponent
-import me.vponomarenko.injectionmanager.x.XInjectionManager
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), IHasComponent<MainActivityComponent>, SnackbarDelegate {
-
-    override val appProvider: AppProvider
-        get() = (applicationContext as App).getAppComponent()
-
-    override val activityToolsProvider: ActivityToolsProvider
-        get() = XInjectionManager.findComponent()
+class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainActivityComponent>, HasInject {
 
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
@@ -52,20 +47,22 @@ class MainActivity : BaseActivity(), IHasComponent<MainActivityComponent>, Snack
     private var topNotificationTranslation = 0f
 
     @Inject
-    @Global
-    lateinit var navigatorHolder: NavigatorHolder
+    lateinit var ciceroneManager: CiceroneManager
 
     @Inject
     lateinit var launcher: MainAppLauncher
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        XInjectionManager
-            .bindComponent(this)
-            .inject(this)
+    private lateinit var binding: ActivityMainBinding
 
+    private val navigatorHolder: NavigatorHolder by lazy {
+        ciceroneManager.getNavigatorHolder(AppFlow.GLOBAL)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setupViews()
 
         if (savedInstanceState == null) {
@@ -73,23 +70,21 @@ class MainActivity : BaseActivity(), IHasComponent<MainActivityComponent>, Snack
         }
     }
 
-    override fun getComponent(): MainActivityComponent =
-        MainActivityComponent.Initializer.init(appProvider)
-
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupViews() {
         setBackgroundColor(R.color.colorBackground)
 
-        topNotificationTextView.post {
-            topNotificationTranslation = -topNotificationTextView.measuredHeight.toFloat()
-            topNotificationTextView.translationY = topNotificationTranslation
+        binding.topNotificationTextView.post {
+            topNotificationTranslation = -binding.topNotificationTextView.measuredHeight.toFloat()
+            binding.topNotificationTextView.translationY = topNotificationTranslation
         }
 
-        topNotificationTextView.setOnTouchListener(
+        binding.topNotificationTextView.setOnTouchListener(
             SwipeToDismissTouchListener(
-                topNotificationTextView,
+                binding.topNotificationTextView,
                 object : DismissCallbacks {
                     override fun onDismiss(view: View) {
-                        topNotificationTextView.translationY = topNotificationTranslation
+                        binding.topNotificationTextView.translationY = topNotificationTranslation
                         notificationJob?.cancelChildren()
                         notificationQueue.clear()
                     }
@@ -110,8 +105,8 @@ class MainActivity : BaseActivity(), IHasComponent<MainActivityComponent>, Snack
 
     override fun notifyOnTop(message: String) {
         if (!isNotificationVisible) {
-            topNotificationTextView.text = message
-            translateViewAnimated(topNotificationTextView, 0f) {
+            binding.topNotificationTextView.text = message
+            translateViewAnimated(binding.topNotificationTextView, 0f) {
                 isNotificationVisible = true
                 hideNotificationDelayed()
             }
@@ -123,13 +118,27 @@ class MainActivity : BaseActivity(), IHasComponent<MainActivityComponent>, Snack
     private fun hideNotificationDelayed() {
         notificationJob = launch {
             delay(DELAY_BEFORE_HIDE)
-            translateViewAnimated(topNotificationTextView, topNotificationTranslation) {
+            translateViewAnimated(binding.topNotificationTextView, topNotificationTranslation) {
                 isNotificationVisible = false
                 if (notificationQueue.isNotEmpty()) {
                     notifyOnTop(notificationQueue.poll())
                 }
             }
         }
+    }
+
+    override fun getComponent(): MainActivityComponent {
+        val appComponent = (applicationContext as App).getAppComponent()
+        return MainActivityComponent.Initializer.init(appComponent)
+    }
+
+    override fun getComponentKey(): String =
+        this::class.java.simpleName
+
+    override fun inject() {
+        DaggerComponentManager
+            .get<MainActivityComponent>()
+            .inject(this)
     }
 
     private fun translateViewAnimated(view: View, translation: Float, finishedCallback: () -> Unit = {}) {

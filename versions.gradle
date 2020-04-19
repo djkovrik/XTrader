@@ -1,30 +1,30 @@
 ext.versions = [
 
-    kotlin: "1.3.61",
+    kotlin: "1.3.71",
     coroutines: "1.3.3",
 
     // Core
-    adapterDelegates: "4.2.0",
-    dagger: "2.26",
-    daggerComponentManager: "2.1.0",
-    retrofit: "2.7.1",
+    adapterDelegates: "4.3.0",
+    dagger: "2.27",
+    retrofit: "2.8.1",
     moshi: "1.9.2",
-    okhttp: "4.3.1",
-    threeTenAbp: "1.2.2",
+    okhttp: "4.5.0",
+    threeTenAbp: "1.2.3",
     cicerone: "5.1.0",
+    mviKotlin: "2.0.0-beta2",
 
     // JetPack - AppCompat
-    appcompat: "1.2.0-alpha02",
-    materialComponents: "1.2.0-alpha04",
+    appcompat: "1.2.0-beta01",
+    materialComponents: "1.2.0-alpha05",
     constraintLayout: "2.0.0-beta4",
     legacyUtils: "1.0.0",
 
     // JetPack - Architecture
     lifecycle: "2.2.0",
-    room: "2.2.3",
+    room: "2.2.5",
 
     // JetPack - KTX
-    ktx: "1.3.0-alpha01",
+    ktx: "1.3.0-rc01",
 
     // UI
     materialValues: "1.1.1",
@@ -32,21 +32,11 @@ ext.versions = [
     mpAndroidChart: "v3.0.3",
 
     // Firebase
-    firebaseCore: "17.2.2",
-    firebaseAnalytics: "17.2.2",
+    firebaseCore: "17.3.0",
+    firebaseAnalytics: "17.3.0",
     firebaseFirestore: "21.0.0",
     firebaseCloudMessaging: "20.0.0",
     firebaseCrashlytics: "2.10.1",
-
-    // Testing
-    junit5: "5.2.0",
-    junit5Runner: "0.2.2",
-    testRunner: "1.3.0-alpha03",
-    testRules: "1.1.0-alpha1",
-    espresso: "3.1.0-alpha1",
-    spek: "2.0.9",
-    expekt: "0.5.0",
-    fuel: "2.2.1",
 
     // Development tools
     timber: "4.7.1",

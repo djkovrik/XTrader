@@ -8,14 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.presentation.R
 import com.sedsoftware.core.presentation.extension.setLaunchScreen
-import com.sedsoftware.core.presentation.navigation.TabCiceroneHolder
-import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
-import javax.inject.Inject
 
 abstract class BaseTabFragment : Fragment() {
 
@@ -34,8 +30,8 @@ abstract class BaseTabFragment : Fragment() {
         }
     }
 
-    @Inject
-    lateinit var tabCiceroneHolder: TabCiceroneHolder
+//    @Inject
+//    lateinit var tabCiceroneHolder: TabCiceroneHolder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,20 +44,20 @@ abstract class BaseTabFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.layout_container, container, false)
 
-    override fun onResume() {
-        super.onResume()
-        getCicerone().navigatorHolder?.setNavigator(navigator)
-    }
-
-    override fun onPause() {
-        getCicerone().navigatorHolder?.removeNavigator()
-        super.onPause()
-    }
-
-    private fun getContainerTag(): String =
-        this.javaClass.simpleName
-
-    private fun getCicerone(): Cicerone<Router> =
-        tabCiceroneHolder.getCicerone(getContainerTag())
+//    override fun onResume() {
+//        super.onResume()
+//        getCicerone().navigatorHolder.setNavigator(navigator)
+//    }
+//
+//    override fun onPause() {
+//        getCicerone().navigatorHolder.removeNavigator()
+//        super.onPause()
+//    }
+//
+//    private fun getContainerTag(): String =
+//        this.javaClass.simpleName
+//
+//    private fun getCicerone(): Cicerone<Router> =
+//        tabCiceroneHolder.getCicerone(getContainerTag())
 
 }

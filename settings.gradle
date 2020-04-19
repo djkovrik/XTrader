@@ -1,51 +1,45 @@
 include ':app'
 project(':app').projectDir = new File(rootDir, 'sources/app')
 
-include ':core-tools-api'
-project(':core-tools-api').projectDir = new File(rootDir, 'sources/core/core-tools-api')
-include ':core-tools-impl'
-project(':core-tools-impl').projectDir = new File(rootDir, 'sources/core/core-tools-impl')
-include ':core-di'
-project(':core-di').projectDir = new File(rootDir, 'sources/core/core-di')
+
 include ':core-domain'
 project(':core-domain').projectDir = new File(rootDir, 'sources/core/core-domain')
+include ':core-di'
+project(':core-di').projectDir = new File(rootDir, 'sources/core/core-di')
+
+include ':core-tools'
+project(':core-tools').projectDir = new File(rootDir, 'sources/core/core-tools')
 include ':core-presentation'
 project(':core-presentation').projectDir = new File(rootDir, 'sources/core/core-presentation')
-include ':core-utils'
-project(':core-utils').projectDir = new File(rootDir, 'sources/core/core-utils')
-include ':core-test'
-project(':core-test').projectDir = new File(rootDir, 'sources/core/core-test')
 
+include ':provider-coinmarketcap'
+project(':provider-coinmarketcap').projectDir = new File(rootDir, 'sources/exchanges/provider-coinmarketcap')
+
+include ':exchange-manager'
+project(':exchange-manager').projectDir = new File(rootDir, 'sources/exchanges/exchange-manager')
 include ':exchange-binance'
 project(':exchange-binance').projectDir = new File(rootDir, 'sources/exchanges/exchange-binance')
-
 include ':exchange-bitfinex'
 project(':exchange-bitfinex').projectDir = new File(rootDir, 'sources/exchanges/exchange-bitfinex')
 
-include ':support-coinmarketcap'
-project(':support-coinmarketcap').projectDir = new File(rootDir, 'sources/exchanges/support-coinmarketcap')
-include ':support-manager'
-project(':support-manager').projectDir = new File(rootDir, 'sources/exchanges/support-manager')
-
 include ':screen-main'
 project(':screen-main').projectDir = new File(rootDir, 'sources/screens/screen-main')
-
 include ':screen-intro-base'
 project(':screen-intro-base').projectDir = new File(rootDir, 'sources/screens/screen-intro-base')
-include ':screen-intro-exchanges'
-project(':screen-intro-exchanges').projectDir = new File(rootDir, 'sources/screens/screen-intro-exchanges')
-include ':screen-intro-pin'
-project(':screen-intro-pin').projectDir = new File(rootDir, 'sources/screens/screen-intro-pin')
-include ':screen-market'
-project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
-include ':screen-orders'
-project(':screen-orders').projectDir = new File(rootDir, 'sources/screens/screen-orders')
-include ':screen-wallet'
-project(':screen-wallet').projectDir = new File(rootDir, 'sources/screens/screen-wallet')
-include ':screen-tracker'
-project(':screen-tracker').projectDir = new File(rootDir, 'sources/screens/screen-tracker')
-include ':screen-tools'
-project(':screen-tools').projectDir = new File(rootDir, 'sources/screens/screen-tools')
+//include ':screen-intro-exchanges'
+//project(':screen-intro-exchanges').projectDir = new File(rootDir, 'sources/screens/screen-intro-exchanges')
+//include ':screen-intro-pin'
+//project(':screen-intro-pin').projectDir = new File(rootDir, 'sources/screens/screen-intro-pin')
+//include ':screen-market'
+//project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
+//include ':screen-orders'
+//project(':screen-orders').projectDir = new File(rootDir, 'sources/screens/screen-orders')
+//include ':screen-wallet'
+//project(':screen-wallet').projectDir = new File(rootDir, 'sources/screens/screen-wallet')
+//include ':screen-tracker'
+//project(':screen-tracker').projectDir = new File(rootDir, 'sources/screens/screen-tracker')
+//include ':screen-tools'
+//project(':screen-tools').projectDir = new File(rootDir, 'sources/screens/screen-tools')
 
 include ':lib-spin-kit'
 project(':lib-spin-kit').projectDir = new File(rootDir, 'sources/libraries/lib-spin-kit')

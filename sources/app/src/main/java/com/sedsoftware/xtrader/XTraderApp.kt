@@ -4,8 +4,8 @@ import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.sedsoftware.core.di.App
 import com.sedsoftware.core.di.AppProvider
+import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.xtrader.di.AppComponent
-import me.vponomarenko.injectionmanager.x.XInjectionManager
 import timber.log.Timber
 
 class XTraderApp : Application(), App {
@@ -16,21 +16,27 @@ class XTraderApp : Application(), App {
 
     override fun onCreate() {
         super.onCreate()
-        AndroidThreeTen.init(this)
-        XInjectionManager.init(this)
+
+        DaggerComponentManager.init(this)
+
         appComponent.inject(this)
 
-        initDebugTools()
+        initTools()
+
+        if (BuildConfig.DEBUG) {
+            initDebugTools()
+        }
     }
 
-    override fun getAppComponent(): AppProvider =
-        appComponent
+    override fun getAppComponent(): AppProvider = appComponent
+
+    private fun initTools() {
+        AndroidThreeTen.init(this)
+    }
 
     private fun initDebugTools() {
-        if (BuildConfig.DEBUG) {
 //        AndroidDevMetrics.initWith(this)
-            Timber.uprootAll()
-            Timber.plant(Timber.DebugTree())
-        }
+        Timber.uprootAll()
+        Timber.plant(Timber.DebugTree())
     }
 }

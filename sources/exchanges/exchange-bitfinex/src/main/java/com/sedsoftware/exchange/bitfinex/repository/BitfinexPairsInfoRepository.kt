@@ -1,6 +1,7 @@
 package com.sedsoftware.exchange.bitfinex.repository
 
-import com.sedsoftware.core.tools.api.Settings
+import com.sedsoftware.core.domain.repository.PairsInfoRepository
+import com.sedsoftware.core.domain.tools.Settings
 import com.sedsoftware.exchange.bitfinex.database.BitfinexDatabase
 import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSymbolsDao
 import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSyncInfoDao
@@ -13,7 +14,7 @@ class BitfinexPairsInfoRepository @Inject constructor(
     private val settings: Settings,
     private val db: BitfinexDatabase,
     private val mapper: BitfinexSymbolsMapper
-) {
+) : PairsInfoRepository {
 
     private val symbolsDao: BitfinexSymbolsDao by lazy {
         db.getBitfinexSymbolsDao()
@@ -23,19 +24,14 @@ class BitfinexPairsInfoRepository @Inject constructor(
         db.getBitfinexSyncInfoDao()
     }
 
-    suspend fun getRemotePairsInfo(): List<String> =
-        api.getCurrencyPairs()
-
-    suspend fun storePairsInfo(info: List<String>) {
+    override suspend fun downloadRemotePairsInfo() {
+        val currencyPairs = api.getCurrencyPairs()
         symbolsDao.clearAll()
-        symbolsDao.insert(mapper.mapSymbolsToDb(info))
-    }
-
-    suspend fun storeSyncInfo() {
+        symbolsDao.insert(mapper.mapSymbolsToDb(currencyPairs))
         syncInfoDao.insert(mapper.makeSyncInfoDbModel())
     }
 
-    fun markAsDownloaded() {
+    override suspend fun markAsDownloaded() {
         if (!settings.isAnyExchangeDownloaded) {
             settings.isAnyExchangeDownloaded = true
         }

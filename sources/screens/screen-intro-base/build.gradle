@@ -1,25 +1,18 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
 
-androidExtensions {
-    experimental = true
-}
-
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
     implementation project(':core-presentation')
-    implementation project(':core-tools-api')
-    implementation project(':core-utils')
 
     implementation "com.hannesdorfmann:adapterdelegates4:$versions.adapterDelegates"
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
-    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$versions.daggerComponentManager"
+
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 
@@ -29,5 +22,9 @@ dependencies {
     implementation "androidx.core:core-ktx:$versions.ktx"
 
     implementation "blue.aodev:material-values:$versions.materialValues"
-    implementation "com.afollestad.material-dialogs:core:$versions.materialDialogs"
+
+    implementation "com.arkivanov.mvikotlin:mvikotlin:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:mvikotlin-main:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:androidx-lifecycle-interop:$versions.mviKotlin"
 }

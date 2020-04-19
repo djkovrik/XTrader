@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 apply from: '../../android-config.gradle'
@@ -9,24 +8,21 @@ apply from: '../../kapt-config.gradle'
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
-    implementation project(':core-tools-api')
     implementation project(':core-presentation')
-    implementation project(':core-utils')
 
     implementation project(':screen-intro-base')
-    implementation project(':screen-intro-exchanges')
-    implementation project(':screen-intro-pin')
-    implementation project(':screen-market')
-    implementation project(':screen-wallet')
-    implementation project(':screen-orders')
-    implementation project(':screen-tracker')
-    implementation project(':screen-tools')
+//    implementation project(':screen-intro-exchanges')
+//    implementation project(':screen-intro-pin')
+//    implementation project(':screen-market')
+//    implementation project(':screen-wallet')
+//    implementation project(':screen-orders')
+//    implementation project(':screen-tracker')
+//    implementation project(':screen-tools')
 
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
     implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
     implementation "com.squareup.moshi:moshi:$versions.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
-    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$versions.daggerComponentManager"
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 

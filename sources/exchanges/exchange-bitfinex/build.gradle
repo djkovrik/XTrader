@@ -1,21 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: "de.mannodermaus.android-junit5"
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
-apply from: '../../spek-android-config.gradle'
 
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
-    implementation project(':core-tools-api')
-    implementation project(':core-utils')
 
-    implementation project(':support-coinmarketcap')
-
-    testImplementation project(':core-test')
+    implementation project(':provider-coinmarketcap')
 
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
@@ -31,11 +25,4 @@ dependencies {
     implementation "androidx.room:room-runtime:$versions.room"
     implementation "androidx.room:room-ktx:$versions.room"
     kapt "androidx.room:room-compiler:$versions.room"
-
-    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$versions.spek"
-    testImplementation "org.spekframework.spek2:spek-runner-junit5:$versions.spek"
-    testImplementation "com.winterbe:expekt:$versions.expekt"
-
-    androidTestImplementation "androidx.test:runner:$versions.testRunner"
-    androidTestRuntimeOnly "de.mannodermaus.junit5:android-instrumentation-test-runner:$versions.junit5Runner"
 }

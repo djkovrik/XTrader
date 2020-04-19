@@ -3,7 +3,6 @@ package com.sedsoftware.screens.market
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.content.Context
 import android.graphics.Point
 import android.os.Bundle
 import android.view.Display
@@ -21,7 +20,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.transition.ArcMotion
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
-import com.sedsoftware.core.di.RegularFlowToolsProvider
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.base.BaseRegularFragment
@@ -34,17 +32,13 @@ import com.sedsoftware.core.presentation.extension.observe
 import com.sedsoftware.core.presentation.extension.viewModel
 import com.sedsoftware.core.utils.extension.orFalse
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
-import com.sedsoftware.screens.market.di.MarketScreenComponent
 import com.sedsoftware.screens.market.model.CurrencyListItem
 import kotlinx.android.synthetic.main.fragment_market_screen.*
 import kotlinx.android.synthetic.main.include_add_pair.*
-import me.vponomarenko.injectionmanager.IHasComponent
-import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
 
 @Suppress("TooManyFunctions")
-class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenComponent>,
-    CurrencyListAdapter.Listener {
+class MarketScreenFragment : BaseRegularFragment(), CurrencyListAdapter.Listener {
 
     companion object {
 
@@ -76,13 +70,6 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
 
     private val baseAdapter: CurrencyListAdapter = CurrencyListAdapter(this)
     private val marketAdapter: CurrencyListAdapter = CurrencyListAdapter(this)
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        XInjectionManager
-            .bindComponent(this)
-            .inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -165,13 +152,6 @@ class MarketScreenFragment : BaseRegularFragment(), IHasComponent<MarketScreenCo
         }
 
         return false
-    }
-
-    override fun getComponent(): MarketScreenComponent {
-        val regularFlowToolsProvider =
-            XInjectionManager.findComponent { it is RegularFlowToolsProvider } as RegularFlowToolsProvider
-
-        return MarketScreenComponent.Initializer.init(regularFlowToolsProvider)
     }
 
     override fun onItemClick(item: CurrencyListItem) {

@@ -6,7 +6,6 @@ apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
 
 dependencies {
-    implementation project(':core-tools-api')
     implementation project(':core-domain')
 
     implementation "com.google.dagger:dagger:$versions.dagger"

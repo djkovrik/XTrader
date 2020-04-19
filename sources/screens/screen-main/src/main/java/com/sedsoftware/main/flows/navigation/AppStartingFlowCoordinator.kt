@@ -1,24 +1,30 @@
 package com.sedsoftware.main.flows.navigation
 
-import com.sedsoftware.core.di.qualifier.StartingFlow
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
+import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.main.Screens
+import com.sedsoftware.main.flows.AppFlow
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 class AppStartingFlowCoordinator @Inject constructor(
-    @StartingFlow private val router: Router
+    private val ciceroneManager: CiceroneManager
 ) : StartingFlowCoordinator {
 
+    private val startingRouter: Router by lazy {
+        ciceroneManager.getRouter(AppFlow.STARTING)
+    }
+
+    // TODO
     override fun navigateToPinScreen() {
-        router.newRootScreen(Screens.Pin)
+        startingRouter.newRootScreen(Screens.Empty)
     }
 
     override fun navigateToBaseScreen() {
-        router.newRootScreen(Screens.IntroBase)
+        startingRouter.newRootScreen(Screens.IntroBase)
     }
 
     override fun navigateToExchangeScreen() {
-        router.newRootScreen(Screens.IntroExchanges)
+        startingRouter.newRootScreen(Screens.Empty)
     }
 }

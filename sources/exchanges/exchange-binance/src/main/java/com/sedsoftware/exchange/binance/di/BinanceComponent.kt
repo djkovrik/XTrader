@@ -6,6 +6,7 @@ import com.sedsoftware.core.di.DeviceToolsProvider
 import com.sedsoftware.exchange.binance.di.module.BinanceDatabaseModule
 import com.sedsoftware.exchange.binance.di.module.BinanceExportModule
 import com.sedsoftware.exchange.binance.di.module.BinanceNetworkModule
+import com.sedsoftware.exchange.binance.di.module.BinanceRepositoryModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,9 +16,10 @@ import javax.inject.Singleton
         CoinMarketCapProvider::class
     ],
     modules = [
-        BinanceExportModule::class,
         BinanceDatabaseModule::class,
-        BinanceNetworkModule::class
+        BinanceNetworkModule::class,
+        BinanceRepositoryModule::class,
+        BinanceExportModule::class
     ]
 )
 @Singleton

@@ -1,5 +1,0 @@
-test {
-    useJUnitPlatform {
-        includeEngines 'spek2'
-    }
-}

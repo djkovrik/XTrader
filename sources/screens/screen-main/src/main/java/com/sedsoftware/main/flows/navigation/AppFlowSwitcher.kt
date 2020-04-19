@@ -2,11 +2,10 @@ package com.sedsoftware.main.flows.navigation
 
 import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.main.Screens
-import com.sedsoftware.main.flows.FlowRouter
 import javax.inject.Inject
 
 class AppFlowSwitcher @Inject constructor(
-    private val flowRouter: FlowRouter
+    private val flowRouter: GlobalFlowRouter
 ) : FlowSwitcher {
 
     override fun switchToStartingFlow() {

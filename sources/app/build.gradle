@@ -48,6 +48,9 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs += [
+                "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-Xuse-experimental=kotlinx.coroutines.ObsoleteCoroutinesApi"]
     }
 
     lintOptions {
@@ -63,26 +66,23 @@ dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
     implementation project(':core-presentation')
-    implementation project(':core-test')
-    implementation project(':core-tools-api')
-    implementation project(':core-tools-impl')
-    implementation project(':core-utils')
+    implementation project(':core-tools')
 
-    implementation project(':screen-main')
-    implementation project(':screen-intro-base')
-    implementation project(':screen-intro-exchanges')
-    implementation project(':screen-intro-pin')
-    implementation project(':screen-market')
-    implementation project(':screen-wallet')
-    implementation project(':screen-orders')
-    implementation project(':screen-tracker')
-    implementation project(':screen-tools')
+    implementation project(':provider-coinmarketcap')
 
+    implementation project(':exchange-manager')
     implementation project(':exchange-binance')
     implementation project(':exchange-bitfinex')
 
-    implementation project(':support-coinmarketcap')
-    implementation project(':support-manager')
+    implementation project(':screen-main')
+    implementation project(':screen-intro-base')
+//    implementation project(':screen-intro-exchanges')
+//    implementation project(':screen-intro-pin')
+//    implementation project(':screen-market')
+//    implementation project(':screen-wallet')
+//    implementation project(':screen-orders')
+//    implementation project(':screen-tracker')
+//    implementation project(':screen-tools')
 
     implementation "com.google.firebase:firebase-core:$versions.firebaseCore"
     implementation "com.google.firebase:firebase-analytics:$versions.firebaseAnalytics"
@@ -97,8 +97,10 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
 
     implementation "com.google.dagger:dagger:$versions.dagger"
-    implementation "com.github.valeryponomarenko.componentsmanager:androidx:$versions.daggerComponentManager"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+
+    implementation "com.arkivanov.mvikotlin:mvikotlin:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:mvikotlin-main:$versions.mviKotlin"
 
     implementation "com.jakewharton.timber:timber:$versions.timber"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
