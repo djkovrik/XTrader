@@ -20,6 +20,9 @@ class IntroBaseViewImpl(viewBinding: FragmentIntroBaseBinding) : BaseMviView<Vie
         downloadButton.setOnClickListener {
             dispatch(ViewEvent.DownloadClicked)
         }
+        nextButton.setOnClickListener {
+            // TODO navigate further
+        }
     }
 
     override val renderer: ViewRenderer<ViewModel>? = diff {

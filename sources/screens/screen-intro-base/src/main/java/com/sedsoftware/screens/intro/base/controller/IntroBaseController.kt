@@ -5,15 +5,15 @@ import com.arkivanov.mvikotlin.core.lifecycle.Lifecycle
 import com.arkivanov.mvikotlin.extensions.coroutines.bind
 import com.arkivanov.mvikotlin.extensions.coroutines.events
 import com.arkivanov.mvikotlin.extensions.coroutines.states
-import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
-import com.sedsoftware.screens.intro.base.store.IntroBaseStoreFactory
+import com.sedsoftware.screens.intro.base.store.IntroBaseStore
 import com.sedsoftware.screens.intro.base.view.IntroBaseView
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 // TODO ExperimentalCoroutinesApi !
-class IntroBaseController {
-
-    private val introBaseStore = IntroBaseStoreFactory(DefaultStoreFactory).create()
+class IntroBaseController @Inject constructor(
+    private val introBaseStore: IntroBaseStore
+) {
 
     fun onViewCreated(introBaseView: IntroBaseView, viewLifecycle: Lifecycle) {
         bind(viewLifecycle, BinderLifecycleMode.START_STOP) {

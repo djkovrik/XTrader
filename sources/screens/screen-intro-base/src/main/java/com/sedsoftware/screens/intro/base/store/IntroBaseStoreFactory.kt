@@ -9,11 +9,12 @@ import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Intent
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Result
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.State
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-// TODO DI EVERYWHERE!
-internal class IntroBaseStoreFactory(private val storeFactory: StoreFactory) {
+class IntroBaseStoreFactory @Inject constructor(
+    private val storeFactory: StoreFactory,
+    private val currencyMapLoader: CurrencyMapLoader
+) {
 
     fun create(): IntroBaseStore =
         object : IntroBaseStore, Store<Intent, State, Nothing> by storeFactory.create(
@@ -33,10 +34,7 @@ internal class IntroBaseStoreFactory(private val storeFactory: StoreFactory) {
 
     }
 
-    private class IntroBaseExecutor : SuspendExecutor<Intent, Nothing, State, Result, Nothing>() {
-
-        // TODO INJECT LOADER
-        lateinit var currencyMapLoader: CurrencyMapLoader
+    private inner class IntroBaseExecutor : SuspendExecutor<Intent, Nothing, State, Result, Nothing>() {
 
         override suspend fun executeIntent(intent: Intent, getState: () -> State) {
 
@@ -48,13 +46,11 @@ internal class IntroBaseStoreFactory(private val storeFactory: StoreFactory) {
         private suspend fun downloadCurrencyMap() {
             dispatch(Result.InProgress)
 
-            withContext(Dispatchers.IO) {
-                try {
-                    currencyMapLoader.loadCurrencyMap()
-                    dispatch(Result.Success)
-                } catch (throwable: Throwable) {
-                    dispatch(Result.Error(throwable))
-                }
+            try {
+                currencyMapLoader.loadCurrencyMap()
+                dispatch(Result.Success)
+            } catch (throwable: Throwable) {
+                dispatch(Result.Error(throwable))
             }
         }
     }

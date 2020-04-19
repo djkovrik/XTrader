@@ -4,7 +4,7 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Intent
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.State
 
-internal interface IntroBaseStore : Store<Intent, State, Nothing> {
+interface IntroBaseStore : Store<Intent, State, Nothing> {
 
     sealed class Intent {
         object LoadCurrencyMap : Intent()
