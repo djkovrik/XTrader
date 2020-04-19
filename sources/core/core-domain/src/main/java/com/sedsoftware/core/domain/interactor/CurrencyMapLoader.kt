@@ -18,7 +18,7 @@ interface CurrencyMapLoader {
                 true -> {
                     try {
                         repository.downloadCurrencyMap()
-                    } catch (exception: Exception) {
+                    } catch (exception: Throwable) {
                         throw CurrencyMapLoadingError(exception)
                     }
                 }

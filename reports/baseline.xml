@@ -1,24 +1,30 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <SmellBaseline>
   <Blacklist/>
   <Whitelist>
+    <ID>ArrayPrimitive:SpriteAnimatorBuilder.kt$SpriteAnimatorBuilder$Array&lt;Float></ID>
+    <ID>ArrayPrimitive:SpriteAnimatorBuilder.kt$SpriteAnimatorBuilder$Array&lt;Int></ID>
+    <ID>ArrayPrimitive:SpriteAnimatorBuilder.kt$SpriteAnimatorBuilder.FloatFrameData$Array&lt;Float></ID>
+    <ID>ArrayPrimitive:SpriteAnimatorBuilder.kt$SpriteAnimatorBuilder.IntFrameData$Array&lt;Int></ID>
     <ID>ComplexCondition:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$minFlingVelocity &lt;= absVelocityX &amp;&amp; absVelocityX &lt;= maxFlingVelocity &amp;&amp; absVelocityY &lt; absVelocityX &amp;&amp; absVelocityY &lt; absVelocityX &amp;&amp; swiping</ID>
-    <ID>ComplexMethod:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
-    <ID>LongMethod:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
+    <ID>ComplexMethod:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$onTouch</ID>
+    <ID>EmptyFunctionBlock:AnimatorExt.kt$&lt;no name provided>${ }</ID>
+    <ID>EmptyFunctionBlock:Sprite.kt$Sprite${ }</ID>
+    <ID>EmptyFunctionBlock:SpriteContainer.kt$SpriteContainer${}</ID>
+    <ID>LongMethod:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$onTouch</ID>
+    <ID>MagicNumber:BitfinexSymbolsMapper.kt$BitfinexSymbolsMapper$3</ID>
     <ID>MagicNumber:StringSigner.kt$StringSigner$4</ID>
     <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$1000</ID>
     <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$16</ID>
+    <ID>MaxLineLength:AppToolsModule.kt$AppToolsModule$@Binds abstract</ID>
+    <ID>MaxLineLength:BaseCurrencyItemDelegate.kt$BaseCurrencyItemDelegate$override</ID>
     <ID>MaxLineLength:ExchangeItemDelegate.kt$ExchangeItemDelegate$override</ID>
+    <ID>MaxLineLength:MarketCurrencyItemDelegate.kt$MarketCurrencyItemDelegate$override</ID>
     <ID>ReturnCount:PathInterpolatorDonut.kt$PathInterpolatorDonut$override fun getInterpolation(t: Float): Float</ID>
     <ID>ReturnCount:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
-    <ID>TooGenericExceptionCaught:BinancePairLoader.kt$BinancePairLoader$exception: Exception</ID>
-    <ID>TooGenericExceptionCaught:BinancePairManager.kt$BinancePairManager$exception: Exception</ID>
-    <ID>TooGenericExceptionCaught:CoinMarketCapMapLoader.kt$CoinMarketCapMapLoader$exception: Exception</ID>
-    <ID>TooGenericExceptionCaught:RegularViewModelOwnerFactory.kt$RegularViewModelOwnerFactory$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:StartingViewModelOwnerFactory.kt$StartingViewModelOwnerFactory$e: Exception</ID>
-    <ID>TooGenericExceptionThrown:RegularViewModelOwnerFactory.kt$RegularViewModelOwnerFactory$throw RuntimeException(e)</ID>
-    <ID>TooGenericExceptionThrown:StartingViewModelOwnerFactory.kt$StartingViewModelOwnerFactory$throw RuntimeException(e)</ID>
-    <ID>TooManyFunctions:Sprite.kt$Sprite : DrawableAnimatorUpdateListenerAnimatableCallback</ID>
-    <ID>TooManyFunctions:SpriteAnimatorBuilder.kt$SpriteAnimatorBuilder</ID>
+    <ID>TooGenericExceptionCaught:CurrencyMapLoader.kt$CurrencyMapLoader$exception: Throwable</ID>
+    <ID>TooGenericExceptionCaught:IntroBaseStoreFactory.kt$IntroBaseStoreFactory.IntroBaseExecutor$throwable: Throwable</ID>
+    <ID>TooManyFunctions:Sprite.kt$Sprite$Sprite</ID>
+    <ID>TooManyFunctions:SpriteAnimatorBuilder.kt$SpriteAnimatorBuilder$SpriteAnimatorBuilder</ID>
   </Whitelist>
 </SmellBaseline>
