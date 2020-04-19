@@ -10,6 +10,8 @@ import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Label
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Result
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.State
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 // TODO DI EVERYWHERE!
 internal class IntroBaseStoreFactory(private val storeFactory: StoreFactory) {
@@ -46,13 +48,15 @@ internal class IntroBaseStoreFactory(private val storeFactory: StoreFactory) {
         private suspend fun downloadCurrencyMap() {
             dispatch(Result.InProgress)
 
-            try {
-                currencyMapLoader.loadCurrencyMap()
-                dispatch(Result.Success)
+            withContext(Dispatchers.IO) {
+                try {
+                    currencyMapLoader.loadCurrencyMap()
+                    dispatch(Result.Success)
 
-                publish(Label.NavigationAvailable)
-            } catch (throwable: Throwable) {
-                dispatch(Result.Error(throwable))
+                    publish(Label.NavigationAvailable)
+                } catch (throwable: Throwable) {
+                    dispatch(Result.Error(throwable))
+                }
             }
         }
     }
