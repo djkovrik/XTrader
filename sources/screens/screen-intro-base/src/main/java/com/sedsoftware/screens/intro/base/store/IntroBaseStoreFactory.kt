@@ -27,9 +27,9 @@ internal class IntroBaseStoreFactory(private val storeFactory: StoreFactory) {
     private object IntroBaseReducer : Reducer<State, Result> {
         override fun State.reduce(result: Result): State =
             when (result) {
-                is Result.InProgress -> copy(state = LoadingState.LOADING)
-                is Result.Success -> copy(state = LoadingState.DONE)
-                is Result.Error -> copy(state = LoadingState.ERROR)
+                is Result.InProgress -> copy(loadingState = LoadingState.LOADING)
+                is Result.Success -> copy(loadingState = LoadingState.DONE)
+                is Result.Error -> copy(loadingState = LoadingState.ERROR)
             }
 
     }
@@ -53,7 +53,7 @@ internal class IntroBaseStoreFactory(private val storeFactory: StoreFactory) {
                     currencyMapLoader.loadCurrencyMap()
                     dispatch(Result.Success)
 
-                    publish(Label.NavigationAvailable)
+                    publish(Label.LoadingCompleted)
                 } catch (throwable: Throwable) {
                     dispatch(Result.Error(throwable))
                 }

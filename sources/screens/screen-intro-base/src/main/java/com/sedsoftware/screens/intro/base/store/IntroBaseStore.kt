@@ -12,11 +12,11 @@ internal interface IntroBaseStore : Store<Intent, State, Label> {
     }
 
     data class State(
-        val state: LoadingState = LoadingState.IDLE
+        val loadingState: LoadingState = LoadingState.IDLE
     )
 
     sealed class Label {
-        object NavigationAvailable : Label()
+        object LoadingCompleted : Label()
     }
 
     sealed class Result {

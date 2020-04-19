@@ -2,7 +2,7 @@ package com.sedsoftware.screens.intro.base.di
 
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.scope.ScreenScope
-import com.sedsoftware.screens.intro.base.IntroBaseFragment
+import com.sedsoftware.screens.intro.base.view.IntroBaseFragment
 import dagger.Component
 
 @Component(

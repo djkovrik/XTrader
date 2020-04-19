@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.intro.base
+package com.sedsoftware.screens.intro.base.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,8 @@ import com.sedsoftware.screens.intro.base.databinding.FragmentIntroBaseBinding
 class IntroBaseFragment : BaseFragment() {
 
     companion object {
-        fun newInstance(): IntroBaseFragment = IntroBaseFragment()
+        fun newInstance(): IntroBaseFragment =
+            IntroBaseFragment()
     }
 
     var binding: FragmentIntroBaseBinding? = null
