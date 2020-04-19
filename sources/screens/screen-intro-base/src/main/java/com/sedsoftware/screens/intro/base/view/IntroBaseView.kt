@@ -14,6 +14,5 @@ interface IntroBaseView : MviView<ViewModel, ViewEvent> {
 
     sealed class ViewEvent {
         object DownloadClicked : ViewEvent()
-        object NextClicked : ViewEvent()
     }
 }

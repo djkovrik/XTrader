@@ -10,19 +10,15 @@ import com.sedsoftware.screens.intro.base.databinding.FragmentIntroBaseBinding
 import com.sedsoftware.screens.intro.base.view.IntroBaseView.ViewEvent
 import com.sedsoftware.screens.intro.base.view.IntroBaseView.ViewModel
 
-class IntroBaseViewImpl(binding: FragmentIntroBaseBinding) : BaseMviView<ViewModel, ViewEvent>(), IntroBaseView {
+class IntroBaseViewImpl(viewBinding: FragmentIntroBaseBinding) : BaseMviView<ViewModel, ViewEvent>(), IntroBaseView {
 
-    private val downloadButton: MaterialButton = binding.downloadButton
-    private val nextButton: MaterialButton = binding.nextButton
-    private val progress: ProgressBar = binding.progressBar
+    private val downloadButton: MaterialButton = viewBinding.downloadButton
+    private val nextButton: MaterialButton = viewBinding.nextButton
+    private val progress: ProgressBar = viewBinding.progressBar
 
     init {
         downloadButton.setOnClickListener {
             dispatch(ViewEvent.DownloadClicked)
-        }
-
-        nextButton.setOnClickListener {
-            dispatch(ViewEvent.NextClicked)
         }
     }
 
