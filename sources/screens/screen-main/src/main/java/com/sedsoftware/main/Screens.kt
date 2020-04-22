@@ -10,6 +10,7 @@ import com.sedsoftware.main.tabs.ToolsTabContainerFragment
 import com.sedsoftware.main.tabs.TrackerTabContainerFragment
 import com.sedsoftware.main.tabs.WalletTabContainerFragment
 import com.sedsoftware.screens.intro.base.view.IntroBaseFragment
+import com.sedsoftware.screens.intro.exchanges.IntroExchangesFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {
@@ -54,10 +55,10 @@ object Screens {
     object IntroBase : SupportAppScreen() {
         override fun getFragment(): Fragment = IntroBaseFragment.newInstance()
     }
-//
-//    object IntroExchanges : SupportAppScreen() {
-//        override fun getFragment(): Fragment = IntroExchangesFragment.newInstance()
-//    }
+
+    object IntroExchanges : SupportAppScreen() {
+        override fun getFragment(): Fragment = IntroExchangesFragment.newInstance()
+    }
 //
 //    object Pin : SupportAppScreen() {
 //        override fun getFragment(): Fragment = PinScreenFragment.newInstance()

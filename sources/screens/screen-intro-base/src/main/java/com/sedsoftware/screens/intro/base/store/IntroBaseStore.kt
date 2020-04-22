@@ -8,6 +8,7 @@ interface IntroBaseStore : Store<Intent, State, Nothing> {
 
     sealed class Intent {
         object LoadCurrencyMap : Intent()
+        object NavigateToExchangesScreen : Intent()
     }
 
     data class State(

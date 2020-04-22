@@ -21,7 +21,7 @@ class IntroBaseViewImpl(viewBinding: FragmentIntroBaseBinding) : BaseMviView<Vie
             dispatch(ViewEvent.DownloadClicked)
         }
         nextButton.setOnClickListener {
-            // TODO navigate further
+            dispatch(ViewEvent.NextClicked)
         }
     }
 

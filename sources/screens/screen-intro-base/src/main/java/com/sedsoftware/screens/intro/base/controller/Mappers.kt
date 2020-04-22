@@ -7,6 +7,7 @@ import com.sedsoftware.screens.intro.base.view.IntroBaseView
 internal fun IntroBaseView.ViewEvent.toIntent(): IntroBaseStore.Intent =
     when (this) {
         is IntroBaseView.ViewEvent.DownloadClicked -> IntroBaseStore.Intent.LoadCurrencyMap
+        is IntroBaseView.ViewEvent.NextClicked -> IntroBaseStore.Intent.NavigateToExchangesScreen
     }
 
 internal fun IntroBaseStore.State.toViewModel(): IntroBaseView.ViewModel =

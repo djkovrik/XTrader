@@ -25,6 +25,6 @@ class AppStartingFlowCoordinator @Inject constructor(
     }
 
     override fun navigateToExchangeScreen() {
-        startingRouter.newRootScreen(Screens.Empty)
+        startingRouter.newRootScreen(Screens.IntroExchanges)
     }
 }

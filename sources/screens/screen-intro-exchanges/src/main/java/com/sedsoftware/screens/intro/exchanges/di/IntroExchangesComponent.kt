@@ -1,15 +1,15 @@
 package com.sedsoftware.screens.intro.exchanges.di
 
-import com.sedsoftware.core.di.StartingFlowToolsProvider
+import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.screens.intro.exchanges.IntroExchangesFragment
-import com.sedsoftware.screens.intro.exchanges.adapter.ExchangeListAdapter
+import com.sedsoftware.screens.intro.exchanges.view.adapter.ExchangeListAdapter
 import dagger.BindsInstance
 import dagger.Component
 
 @Component(
     dependencies = [
-        StartingFlowToolsProvider::class
+        ActivityToolsProvider::class
     ]
 )
 @ScreenScope
@@ -21,7 +21,7 @@ interface IntroExchangesComponent {
     interface Factory {
         fun create(
             @BindsInstance clickListener: ExchangeListAdapter.Listener,
-            startingFlowToolsProvider: StartingFlowToolsProvider
+            activityToolsProvider: ActivityToolsProvider
         ): IntroExchangesComponent
     }
 
@@ -30,12 +30,12 @@ interface IntroExchangesComponent {
 
             fun init(
                 clickListener: ExchangeListAdapter.Listener,
-                startingFlowToolsProvider: StartingFlowToolsProvider
+                activityToolsProvider: ActivityToolsProvider
             ): IntroExchangesComponent {
 
                 return DaggerIntroExchangesComponent
                     .factory()
-                    .create(clickListener, startingFlowToolsProvider)
+                    .create(clickListener, activityToolsProvider)
             }
         }
     }

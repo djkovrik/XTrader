@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.intro.exchanges.model
+package com.sedsoftware.screens.intro.exchanges.view.model
 
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.presentation.type.DownloadState

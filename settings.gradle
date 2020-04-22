@@ -26,8 +26,8 @@ include ':screen-main'
 project(':screen-main').projectDir = new File(rootDir, 'sources/screens/screen-main')
 include ':screen-intro-base'
 project(':screen-intro-base').projectDir = new File(rootDir, 'sources/screens/screen-intro-base')
-//include ':screen-intro-exchanges'
-//project(':screen-intro-exchanges').projectDir = new File(rootDir, 'sources/screens/screen-intro-exchanges')
+include ':screen-intro-exchanges'
+project(':screen-intro-exchanges').projectDir = new File(rootDir, 'sources/screens/screen-intro-exchanges')
 //include ':screen-intro-pin'
 //project(':screen-intro-pin').projectDir = new File(rootDir, 'sources/screens/screen-intro-pin')
 //include ':screen-market'

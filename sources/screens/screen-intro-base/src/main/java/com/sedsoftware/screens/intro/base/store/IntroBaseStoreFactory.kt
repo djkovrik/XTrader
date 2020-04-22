@@ -5,6 +5,7 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
+import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Intent
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Result
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 class IntroBaseStoreFactory @Inject constructor(
     private val storeFactory: StoreFactory,
-    private val currencyMapLoader: CurrencyMapLoader
+    private val currencyMapLoader: CurrencyMapLoader,
+    private val startingFlowCoordinator: StartingFlowCoordinator
 ) {
 
     fun create(): IntroBaseStore =
@@ -40,6 +42,7 @@ class IntroBaseStoreFactory @Inject constructor(
 
             when (intent) {
                 is Intent.LoadCurrencyMap -> downloadCurrencyMap()
+                is Intent.NavigateToExchangesScreen -> navigateToExchangesScreen()
             }
         }
 
@@ -52,6 +55,10 @@ class IntroBaseStoreFactory @Inject constructor(
             } catch (throwable: Throwable) {
                 dispatch(Result.Error(throwable))
             }
+        }
+
+        private fun navigateToExchangesScreen() {
+            startingFlowCoordinator.navigateToExchangeScreen()
         }
     }
 }

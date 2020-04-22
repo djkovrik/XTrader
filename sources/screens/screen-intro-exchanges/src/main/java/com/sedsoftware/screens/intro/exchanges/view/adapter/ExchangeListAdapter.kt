@@ -1,9 +1,9 @@
-package com.sedsoftware.screens.intro.exchanges.adapter
+package com.sedsoftware.screens.intro.exchanges.view.adapter
 
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.sedsoftware.core.domain.provider.AssetsProvider
-import com.sedsoftware.screens.intro.exchanges.adapter.delegate.ExchangeItemDelegate
-import com.sedsoftware.screens.intro.exchanges.model.ExchangeListItem
+import com.sedsoftware.screens.intro.exchanges.view.adapter.delegate.ExchangeItemDelegate
+import com.sedsoftware.screens.intro.exchanges.view.model.ExchangeListItem
 import javax.inject.Inject
 
 class ExchangeListAdapter @Inject constructor(
