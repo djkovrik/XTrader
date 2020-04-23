@@ -1,5 +1,6 @@
 package com.sedsoftware.core.tools.impl.cicerone
 
+import com.sedsoftware.core.domain.tools.CiceroneManager
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -8,7 +9,7 @@ import javax.inject.Singleton
 
 @Singleton
 class MainCiceroneManager @Inject constructor() :
-    com.sedsoftware.core.domain.tools.CiceroneManager {
+    CiceroneManager {
 
     private val containers: HashMap<String, Cicerone<Router>> = HashMap()
 

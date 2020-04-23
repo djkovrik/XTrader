@@ -15,6 +15,7 @@ import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.domain.tools.Logger
 import com.sedsoftware.core.domain.tools.NetworkHandler
+import com.sedsoftware.core.domain.tools.ResourceManager
 import com.sedsoftware.core.domain.tools.Settings
 import com.sedsoftware.core.domain.tools.Signer
 import com.squareup.moshi.Moshi
@@ -34,6 +35,7 @@ interface DeviceToolsProvider {
     fun provideSettings(): Settings
     fun provideSigner(): Signer
     fun provideCiceroneManager(): CiceroneManager
+    fun provideResourceManager(): ResourceManager
     fun provideMoshi(): Moshi
     fun provideOkHttpClient(): OkHttpClient
     fun provideDefaultDisplay(): Display

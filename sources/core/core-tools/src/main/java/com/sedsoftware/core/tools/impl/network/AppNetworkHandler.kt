@@ -4,13 +4,14 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import com.sedsoftware.core.domain.tools.NetworkHandler
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Suppress("DEPRECATION")
 @Singleton
 class AppNetworkHandler @Inject constructor(private val context: Context) :
-    com.sedsoftware.core.domain.tools.NetworkHandler {
+    NetworkHandler {
     override val isConnected: Boolean
         get() {
             var result = false

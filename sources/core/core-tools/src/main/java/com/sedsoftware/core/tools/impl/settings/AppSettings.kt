@@ -3,6 +3,7 @@ package com.sedsoftware.core.tools.impl.settings
 import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.annotation.StringRes
+import com.sedsoftware.core.domain.tools.Settings
 import com.sedsoftware.core.tools.impl.R
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -11,7 +12,7 @@ import javax.inject.Singleton
 class AppSettings @Inject constructor(
     private val resources: Resources,
     private val preferences: SharedPreferences
-) : com.sedsoftware.core.domain.tools.Settings {
+) : Settings {
 
     private companion object {
         inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {

@@ -1,12 +1,13 @@
 package com.sedsoftware.core.tools.impl.encrypt
 
+import com.sedsoftware.core.domain.tools.Signer
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class StringSigner @Inject constructor() : com.sedsoftware.core.domain.tools.Signer {
+class StringSigner @Inject constructor() : Signer {
 
     companion object {
         private const val SHA1_ALGORITHM = "HmacSHA1"

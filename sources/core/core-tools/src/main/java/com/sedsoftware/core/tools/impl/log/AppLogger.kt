@@ -1,11 +1,12 @@
 package com.sedsoftware.core.tools.impl.log
 
+import com.sedsoftware.core.domain.tools.Logger
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AppLogger @Inject constructor() : com.sedsoftware.core.domain.tools.Logger {
+class AppLogger @Inject constructor() : Logger {
 
     override fun d(message: String) {
         Timber.asTree().d(message)
