@@ -5,11 +5,11 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import com.sedsoftware.core.domain.tools.NetworkHandler
+import dagger.Reusable
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @Suppress("DEPRECATION")
-@Singleton
+@Reusable
 class AppNetworkHandler @Inject constructor(private val context: Context) :
     NetworkHandler {
     override val isConnected: Boolean

@@ -1,12 +1,12 @@
 package com.sedsoftware.core.tools.impl.encrypt
 
 import com.sedsoftware.core.domain.tools.Signer
+import dagger.Reusable
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@Reusable
 class StringSigner @Inject constructor() : Signer {
 
     companion object {

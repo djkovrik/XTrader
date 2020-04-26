@@ -6,9 +6,7 @@ import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
 import com.sedsoftware.core.domain.repository.PairsInfoRepository
 import com.sedsoftware.core.domain.tools.NetworkHandler
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class BinancePairsLoader @Inject constructor(
     @ForExchange(BINANCE)
     override val repository: PairsInfoRepository,
