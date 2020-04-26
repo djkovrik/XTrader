@@ -1,5 +1,6 @@
 package com.sedsoftware.screens.intro.base.controller
 
+import com.sedsoftware.screens.intro.base.OneTimeEvent
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
 import com.sedsoftware.screens.intro.base.view.IntroBaseView
@@ -7,7 +8,7 @@ import com.sedsoftware.screens.intro.base.view.IntroBaseView
 internal fun IntroBaseView.ViewEvent.toIntent(): IntroBaseStore.Intent =
     when (this) {
         is IntroBaseView.ViewEvent.DownloadClicked -> IntroBaseStore.Intent.LoadCurrencyMap
-        is IntroBaseView.ViewEvent.NextClicked -> IntroBaseStore.Intent.NavigateToExchangesScreen
+        is IntroBaseView.ViewEvent.NextClicked -> IntroBaseStore.Intent.NavigateToNextScreen
     }
 
 internal fun IntroBaseStore.State.toViewModel(): IntroBaseView.ViewModel =
@@ -35,4 +36,9 @@ internal fun IntroBaseStore.State.toViewModel(): IntroBaseView.ViewModel =
             isNextButtonAvailable = true,
             isProgressVisible = false
         )
+    }
+
+internal fun IntroBaseStore.Label.toEvent(): OneTimeEvent =
+    when (this) {
+        is IntroBaseStore.Label.ErrorCaught -> OneTimeEvent.HandleError(throwable)
     }

@@ -6,7 +6,9 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
+import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Action
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Intent
+import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Label
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Result
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.State
@@ -19,7 +21,7 @@ class IntroBaseStoreFactory @Inject constructor(
 ) {
 
     fun create(): IntroBaseStore =
-        object : IntroBaseStore, Store<Intent, State, Nothing> by storeFactory.create(
+        object : IntroBaseStore, Store<Intent, State, Label> by storeFactory.create(
             name = "IntroBaseStore",
             initialState = State(),
             executorFactory = ::IntroBaseExecutor,
@@ -36,13 +38,13 @@ class IntroBaseStoreFactory @Inject constructor(
 
     }
 
-    private inner class IntroBaseExecutor : SuspendExecutor<Intent, Nothing, State, Result, Nothing>() {
+    private inner class IntroBaseExecutor : SuspendExecutor<Intent, Action, State, Result, Label>() {
 
         override suspend fun executeIntent(intent: Intent, getState: () -> State) {
 
             when (intent) {
                 is Intent.LoadCurrencyMap -> downloadCurrencyMap()
-                is Intent.NavigateToExchangesScreen -> navigateToExchangesScreen()
+                is Intent.NavigateToNextScreen -> navigateToExchangesScreen()
             }
         }
 
