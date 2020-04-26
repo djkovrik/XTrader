@@ -13,18 +13,16 @@ interface CurrencyMapLoader {
     val networkHandler: NetworkHandler
 
     suspend fun loadCurrencyMap() = withContext(Dispatchers.IO) {
-        if (repository.isLoadingNeeded()) {
-            when (networkHandler.isConnected) {
-                true -> {
-                    try {
-                        repository.downloadCurrencyMap()
-                    } catch (exception: Throwable) {
-                        throw CurrencyMapLoadingError(exception)
-                    }
+        when (networkHandler.isConnected) {
+            true -> {
+                try {
+                    repository.downloadCurrencyMap()
+                } catch (exception: Throwable) {
+                    throw CurrencyMapLoadingError(exception)
                 }
-                false -> {
-                    throw NetworkConnectionMissing()
-                }
+            }
+            false -> {
+                throw NetworkConnectionMissing()
             }
         }
     }

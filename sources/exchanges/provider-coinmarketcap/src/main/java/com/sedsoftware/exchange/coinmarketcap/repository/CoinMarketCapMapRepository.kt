@@ -27,9 +27,4 @@ class CoinMarketCapMapRepository @Inject constructor(
         currencyDao.insert(mapper.mapToDb(currencyMap))
         currencySyncInfoDao.insert(mapper.mapSyncInfoToDb(currencyMap))
     }
-
-    override suspend fun isLoadingNeeded(): Boolean {
-        val count = currencySyncInfoDao.getSavedCurrencyCount()
-        return count == null || count == 0
-    }
 }
