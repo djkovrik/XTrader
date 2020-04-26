@@ -1,5 +1,6 @@
 package com.sedsoftware.core.tools.impl.di
 
+import com.sedsoftware.core.domain.errorhandler.ErrorHandler
 import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.domain.tools.Logger
 import com.sedsoftware.core.domain.tools.NetworkHandler
@@ -8,6 +9,7 @@ import com.sedsoftware.core.domain.tools.Settings
 import com.sedsoftware.core.domain.tools.Signer
 import com.sedsoftware.core.tools.impl.cicerone.MainCiceroneManager
 import com.sedsoftware.core.tools.impl.encrypt.StringSigner
+import com.sedsoftware.core.tools.impl.errorhandler.DefaultErrorHandler
 import com.sedsoftware.core.tools.impl.log.AppLogger
 import com.sedsoftware.core.tools.impl.manager.AppResourceManager
 import com.sedsoftware.core.tools.impl.network.AppNetworkHandler
@@ -35,4 +37,7 @@ abstract class AppToolsModule {
 
     @Binds
     abstract fun provideResourceManager(implementation: AppResourceManager): ResourceManager
+
+    @Binds
+    abstract fun provideErrorHandler(implementation: DefaultErrorHandler): ErrorHandler
 }

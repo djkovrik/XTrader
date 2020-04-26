@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_no_internet_connection">No internet connection available</string>
+    <string name="msg_currency_loading_error">Failed to load currency map</string>
+    <string name="msg_unknown_error">Unknown error: %1$s</string>
+</resources>

@@ -1,8 +1,8 @@
 package com.sedsoftware.core.tools.impl.di
 
 import androidx.viewbinding.BuildConfig
-import com.sedsoftware.core.tools.impl.checkIfMainThread
 import com.sedsoftware.core.tools.impl.adapter.OffsetDateTimeAdapter
+import com.sedsoftware.core.tools.impl.checkIfMainThread
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

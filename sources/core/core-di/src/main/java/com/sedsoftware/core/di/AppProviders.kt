@@ -5,6 +5,7 @@ import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.entity.Exchange
+import com.sedsoftware.core.domain.errorhandler.ErrorHandler
 import com.sedsoftware.core.domain.interactor.CurrencyManager
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
@@ -35,6 +36,7 @@ interface DeviceToolsProvider {
     fun provideSettings(): Settings
     fun provideSigner(): Signer
     fun provideCiceroneManager(): CiceroneManager
+    fun provideErrorHandler(): ErrorHandler
     fun provideResourceManager(): ResourceManager
     fun provideMoshi(): Moshi
     fun provideOkHttpClient(): OkHttpClient
