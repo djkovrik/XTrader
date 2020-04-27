@@ -35,13 +35,11 @@ class IntroBaseStoreFactory @Inject constructor(
                 is Result.Success -> copy(loadingState = LoadingState.DONE)
                 is Result.Error -> copy(loadingState = LoadingState.ERROR)
             }
-
     }
 
     private inner class IntroBaseExecutor : SuspendExecutor<Intent, Action, State, Result, Label>() {
 
         override suspend fun executeIntent(intent: Intent, getState: () -> State) {
-
             when (intent) {
                 is Intent.LoadCurrencyMap -> downloadCurrencyMap()
                 is Intent.NavigateToNextScreen -> navigateToExchangesScreen()

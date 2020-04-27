@@ -27,4 +27,9 @@ dependencies {
 
     implementation "blue.aodev:material-values:$versions.materialValues"
     implementation "com.afollestad.material-dialogs:core:$versions.materialDialogs"
+
+    implementation "com.arkivanov.mvikotlin:mvikotlin:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:mvikotlin-main:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:$versions.mviKotlin"
+    implementation "com.arkivanov.mvikotlin:androidx-lifecycle-interop:$versions.mviKotlin"
 }

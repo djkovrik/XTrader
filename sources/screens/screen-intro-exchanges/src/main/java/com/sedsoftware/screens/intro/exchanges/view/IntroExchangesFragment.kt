@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.intro.exchanges
+package com.sedsoftware.screens.intro.exchanges.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.screens.intro.exchanges.databinding.FragmentIntroExchangesBinding
 import com.sedsoftware.screens.intro.exchanges.view.adapter.ExchangeListAdapter
-import com.sedsoftware.screens.intro.exchanges.view.model.ExchangeListItem
+import com.sedsoftware.screens.intro.exchanges.store.model.ExchangeListItem
 import javax.inject.Inject
 
 class IntroExchangesFragment : BaseFragment(), ExchangeListAdapter.Listener {

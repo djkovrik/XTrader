@@ -10,7 +10,7 @@ import com.sedsoftware.main.tabs.ToolsTabContainerFragment
 import com.sedsoftware.main.tabs.TrackerTabContainerFragment
 import com.sedsoftware.main.tabs.WalletTabContainerFragment
 import com.sedsoftware.screens.intro.base.view.IntroBaseFragment
-import com.sedsoftware.screens.intro.exchanges.IntroExchangesFragment
+import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {

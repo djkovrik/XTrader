@@ -6,7 +6,7 @@ package com.sedsoftware.screens.intro.exchanges
 //import com.sedsoftware.core.domain.navigation.FlowSwitcher
 //import com.sedsoftware.core.presentation.base.BaseViewModel
 //import com.sedsoftware.core.presentation.extension.launch
-//import com.sedsoftware.core.presentation.type.DownloadState
+//import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState
 //import com.sedsoftware.core.utils.extension.either
 //import com.sedsoftware.core.utils.type.Failure
 //import com.sedsoftware.screens.intro.exchanges.view.model.ExchangeListItem

@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.sedsoftware.core.presentation.R
-import com.sedsoftware.core.presentation.type.DownloadState
-import com.sedsoftware.core.presentation.type.DownloadState.AVAILABLE
-import com.sedsoftware.core.presentation.type.DownloadState.COMPLETED
-import com.sedsoftware.core.presentation.type.DownloadState.ERROR
-import com.sedsoftware.core.presentation.type.DownloadState.IN_PROGRESS
+import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState
+import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState.AVAILABLE
+import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState.COMPLETED
+import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState.ERROR
+import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState.IN_PROGRESS
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_download_button.*
 
@@ -36,9 +36,9 @@ class DownloadButton : FrameLayout, LayoutContainer {
         }
 
 
-    private lateinit var views: Map<DownloadState, View>
+    private lateinit var views: Map<com.sedsoftware.screens.intro.exchanges.store.model.DownloadState, View>
 
-    private var currentState: DownloadState? = null
+    private var currentState: com.sedsoftware.screens.intro.exchanges.store.model.DownloadState? = null
     private var textAvailable: String? = null
     private var textInProgress: String? = null
     private var textCompleted: String? = null
@@ -84,7 +84,7 @@ class DownloadButton : FrameLayout, LayoutContainer {
         )
     }
 
-    fun setState(newState: DownloadState) {
+    fun setState(newState: com.sedsoftware.screens.intro.exchanges.store.model.DownloadState) {
         currentState?.let { views[it]?.visibility = View.INVISIBLE }
         views[newState]?.visibility = View.VISIBLE
         currentState = newState

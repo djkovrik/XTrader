@@ -9,10 +9,10 @@ import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.sedsoftware.core.domain.provider.AssetsProvider
 import com.sedsoftware.core.presentation.extension.dim
 import com.sedsoftware.core.presentation.extension.inflate
-import com.sedsoftware.core.presentation.type.DownloadState
+import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState
 import com.sedsoftware.screens.intro.exchanges.R
 import com.sedsoftware.screens.intro.exchanges.view.adapter.ExchangeListAdapter.Listener
-import com.sedsoftware.screens.intro.exchanges.view.model.ExchangeListItem
+import com.sedsoftware.screens.intro.exchanges.store.model.ExchangeListItem
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.fragment_intro_exchanges_item.*
 

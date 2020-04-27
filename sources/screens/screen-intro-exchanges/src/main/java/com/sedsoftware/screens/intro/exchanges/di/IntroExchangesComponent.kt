@@ -2,7 +2,7 @@ package com.sedsoftware.screens.intro.exchanges.di
 
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.scope.ScreenScope
-import com.sedsoftware.screens.intro.exchanges.IntroExchangesFragment
+import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesFragment
 import com.sedsoftware.screens.intro.exchanges.view.adapter.ExchangeListAdapter
 import dagger.BindsInstance
 import dagger.Component
