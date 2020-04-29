@@ -13,6 +13,11 @@ import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.Intent
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.Label
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.Result
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.State
+import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState
+import com.sedsoftware.screens.intro.exchanges.store.model.ExchangeListItem
+import com.sedsoftware.screens.intro.exchanges.store.model.update
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class IntroExchangesStoreFactory @Inject constructor(
@@ -26,19 +31,46 @@ class IntroExchangesStoreFactory @Inject constructor(
             name = "IntroExchangesStore",
             initialState = State(),
             executorFactory = ::IntroExchangesExecutor,
-            bootstrapper = IntroExchangesBootstrapper,
+            bootstrapper = IntroExchangesBootstrapper(),
             reducer = IntroExchangesReducer
         ) {}
 
     private object IntroExchangesReducer : Reducer<State, Result> {
-        override fun State.reduce(result: Result): State {
-            TODO()
-        }
+        override fun State.reduce(result: Result): State =
+            when (result) {
+                is Result.Created -> copy(
+                    exchanges = result.list
+                )
+                is Result.InProgress -> copy(
+                    exchanges = exchanges.update(
+                        exchange = result.exchange,
+                        state = DownloadState.IN_PROGRESS
+                    )
+                )
+                is Result.Completed -> copy(
+                    exchanges = exchanges.update(
+                        exchange = result.exchange,
+                        state = DownloadState.COMPLETED
+                    )
+                )
+                is Result.Error -> copy(
+                    exchanges = exchanges.update(
+                        exchange = result.exchange,
+                        state = DownloadState.ERROR
+                    )
+                )
+            }
     }
 
-    private object IntroExchangesBootstrapper : SuspendBootstrapper<Action>() {
+    private inner class IntroExchangesBootstrapper : SuspendBootstrapper<Action>() {
         override suspend fun bootstrap() {
-            dispatch(Action.CreateExchangesList)
+            val list = withContext(Dispatchers.IO) {
+                loaders.keys.map {
+                    ExchangeListItem(exchange = it, state = DownloadState.AVAILABLE)
+                }
+            }
+
+            dispatch(Action.CreateExchangesList(list))
         }
     }
 

@@ -26,7 +26,7 @@ interface IntroExchangesStore {
     }
 
     sealed class Result {
-        data class ExchangesListReady(val list: List<ExchangeListItem>) : Result()
+        data class Created(val list: List<ExchangeListItem>) : Result()
         data class InProgress(val exchange: Exchange) : Result()
         data class Completed(val exchange: Exchange) : Result()
         data class Error(val exchange: Exchange) : Result()
