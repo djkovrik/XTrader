@@ -1,27 +1,30 @@
 package com.sedsoftware.core.domain.interactor
 
+import com.sedsoftware.core.domain.exception.CurrencyPairsLoadingError
 import com.sedsoftware.core.domain.exception.NetworkConnectionMissing
 import com.sedsoftware.core.domain.repository.PairsInfoRepository
 import com.sedsoftware.core.domain.tools.NetworkHandler
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 
 interface CurrencyPairsLoader {
 
     val networkHandler: NetworkHandler
     val repository: PairsInfoRepository
 
-    suspend fun fetchCurrencyPairs(): Flow<Unit> = flow<Unit> {
+    suspend fun fetchCurrencyPairs() = withContext(Dispatchers.IO) {
         when (networkHandler.isConnected) {
             true -> {
-                repository.downloadRemotePairsInfo()
-                repository.markAsDownloaded()
+                try {
+                    repository.downloadRemotePairsInfo()
+                    repository.markAsDownloaded()
+                } catch (exception: Throwable) {
+                    throw  CurrencyPairsLoadingError(exception)
+                }
             }
             false -> {
                 throw NetworkConnectionMissing()
             }
         }
-    }.flowOn(Dispatchers.IO)
+    }
 }
