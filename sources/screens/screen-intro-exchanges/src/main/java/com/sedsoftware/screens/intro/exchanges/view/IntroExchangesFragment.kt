@@ -4,31 +4,51 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.arkivanov.mvikotlin.androidxlifecycleinterop.asMviLifecycle
+import com.sedsoftware.core.di.ActivityToolsProvider
+import com.sedsoftware.core.di.management.DaggerComponentManager
+import com.sedsoftware.core.di.management.HasDaggerComponent
+import com.sedsoftware.core.di.management.HasInject
+import com.sedsoftware.core.domain.provider.AssetsProvider
+import com.sedsoftware.core.domain.tools.ResourceManager
 import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.screens.intro.exchanges.controller.IntroExchangesController
 import com.sedsoftware.screens.intro.exchanges.databinding.FragmentIntroExchangesBinding
-import com.sedsoftware.screens.intro.exchanges.view.adapter.ExchangeListAdapter
-import com.sedsoftware.screens.intro.exchanges.store.model.ExchangeListItem
+import com.sedsoftware.screens.intro.exchanges.di.IntroExchangesComponent
 import javax.inject.Inject
 
-class IntroExchangesFragment : BaseFragment(), ExchangeListAdapter.Listener {
+class IntroExchangesFragment : BaseFragment(), HasDaggerComponent<IntroExchangesComponent>, HasInject {
 
     companion object {
         fun newInstance(): IntroExchangesFragment =
             IntroExchangesFragment()
-
-        private const val ALPHA_GRAYED = 0.7f
-        private const val ALPHA_NORMAL = 1f
     }
 
     private val binding: FragmentIntroExchangesBinding get() = _binding!!
     private var _binding: FragmentIntroExchangesBinding? = null
 
     @Inject
-    lateinit var exchangesAdapter: ExchangeListAdapter
+    lateinit var assetsProvider: AssetsProvider
+
+    @Inject
+    lateinit var resourceManager: ResourceManager
+
+    @Inject
+    lateinit var controller: IntroExchangesController
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentIntroExchangesBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        controller.onViewCreated(
+            view = IntroExchangesViewImpl(binding, assetsProvider, resourceManager),
+            lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
+            errorHandlerView = this
+        )
     }
 
     override fun onDestroyView() {
@@ -36,42 +56,17 @@ class IntroExchangesFragment : BaseFragment(), ExchangeListAdapter.Listener {
         _binding = null
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        appbar.outlineProvider = null
-//        toolbar_text.text = string(R.string.app_name)
-//        toolbar_text.gravity = Gravity.CENTER
-//
-//        introButton.setOnClickListener {
-//            introViewModel.switchToRegularFlow()
-//        }
-//
-//        with(exchangesRecyclerView) {
-//            adapter = exchangesAdapter
-//            layoutManager = LinearLayoutManager(this@IntroExchangesFragment.context)
-//            setHasFixedSize(true)
-//        }
-//    }
-
-    override fun onItemClick(item: ExchangeListItem) {
-//        introViewModel.onExchangeClicked(item.exchange)
+    override fun getComponent(): IntroExchangesComponent {
+        val activityTools = DaggerComponentManager.get<ActivityToolsProvider>()
+        return IntroExchangesComponent.Initializer.init(activityTools)
     }
 
-//    private fun observeLoaderList(exchanges: List<ExchangeListItem>?) {
-//        exchanges?.let { list ->
-//            exchangesAdapter.items = list
-//            exchangesAdapter.notifyDataSetChanged()
-//        }
-//    }
-//
-//    private fun observeNextButtonAvailability(shouldEnable: Boolean?) {
-//        if (shouldEnable == true) {
-//            introButton.alpha = ALPHA_NORMAL
-//            introButton.isEnabled = true
-//        } else {
-//            introButton.alpha = ALPHA_GRAYED
-//            introButton.isEnabled = false
-//        }
-//    }
+    override fun getComponentKey(): String =
+        this::class.java.simpleName
+
+    override fun inject() {
+        DaggerComponentManager
+            .get<IntroExchangesComponent>()
+            .inject(this)
+    }
 }

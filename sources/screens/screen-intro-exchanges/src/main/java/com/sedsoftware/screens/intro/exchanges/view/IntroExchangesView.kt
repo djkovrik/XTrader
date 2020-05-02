@@ -15,7 +15,6 @@ interface IntroExchangesView : MviView<ViewModel, ViewEvent> {
 
     sealed class ViewEvent {
         data class DownloadClicked(val exchange: Exchange) : ViewEvent()
-        data class RetryClicked(val exchange: Exchange) : ViewEvent()
         object DoneClicked : ViewEvent()
     }
 }

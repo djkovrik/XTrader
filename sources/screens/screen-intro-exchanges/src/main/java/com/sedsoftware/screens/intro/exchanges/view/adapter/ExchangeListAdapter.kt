@@ -2,11 +2,10 @@ package com.sedsoftware.screens.intro.exchanges.view.adapter
 
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.sedsoftware.core.domain.provider.AssetsProvider
-import com.sedsoftware.screens.intro.exchanges.view.adapter.delegate.ExchangeItemDelegate
 import com.sedsoftware.screens.intro.exchanges.store.model.ExchangeListItem
-import javax.inject.Inject
+import com.sedsoftware.screens.intro.exchanges.view.adapter.delegate.ExchangeItemDelegate
 
-class ExchangeListAdapter @Inject constructor(
+class ExchangeListAdapter(
     clickListener: Listener,
     assetsProvider: AssetsProvider
 ) : ListDelegationAdapter<List<ExchangeListItem>>() {
@@ -18,11 +17,6 @@ class ExchangeListAdapter @Inject constructor(
     init {
         items = ArrayList()
 
-        delegatesManager.addDelegate(
-            ExchangeItemDelegate(
-                assetsProvider,
-                clickListener
-            )
-        )
+        delegatesManager.addDelegate(ExchangeItemDelegate(clickListener, assetsProvider))
     }
 }
