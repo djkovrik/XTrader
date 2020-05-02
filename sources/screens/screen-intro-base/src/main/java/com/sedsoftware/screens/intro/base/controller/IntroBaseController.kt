@@ -19,7 +19,6 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-// TODO ExperimentalCoroutinesApi !
 class IntroBaseController @Inject constructor(
     private val store: IntroBaseStore,
     private val eventBus: BroadcastChannel<OneTimeEvent>,
