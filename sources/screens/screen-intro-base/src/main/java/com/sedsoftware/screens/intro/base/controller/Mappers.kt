@@ -1,6 +1,6 @@
 package com.sedsoftware.screens.intro.base.controller
 
-import com.sedsoftware.screens.intro.base.OneTimeEvent
+import com.sedsoftware.core.presentation.event.OneTimeEvent
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
 import com.sedsoftware.screens.intro.base.view.IntroBaseView

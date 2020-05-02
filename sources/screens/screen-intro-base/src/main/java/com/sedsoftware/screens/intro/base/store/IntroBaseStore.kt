@@ -27,7 +27,7 @@ interface IntroBaseStore : Store<Intent, State, Label> {
     sealed class Result {
         object InProgress : Result()
         object Success : Result()
-        data class Error(val throwable: Throwable) : Result()
+        object Error : Result()
     }
 
     enum class LoadingState { IDLE, LOADING, ERROR, DONE }

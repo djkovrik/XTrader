@@ -1,14 +1,16 @@
 package com.sedsoftware.screens.intro.exchanges.store
 
+import com.arkivanov.mvikotlin.core.store.Store
 import com.sedsoftware.core.domain.entity.Exchange
+import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.Intent
+import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.Label
+import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.State
 import com.sedsoftware.screens.intro.exchanges.store.model.ExchangeListItem
 
-interface IntroExchangesStore {
+interface IntroExchangesStore : Store<Intent, State, Label> {
 
     sealed class Intent {
         data class StartDownloading(val exchange: Exchange) : Intent()
-        data class MarkAsCompleted(val exchange: Exchange) : Intent()
-        data class MarkAsError(val exchange: Exchange) : Intent()
         object NavigateToNextScreen : Intent()
 
     }

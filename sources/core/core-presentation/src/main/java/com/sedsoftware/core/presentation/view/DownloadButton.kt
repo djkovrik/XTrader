@@ -7,15 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.sedsoftware.core.presentation.R
-import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState
-import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState.AVAILABLE
-import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState.COMPLETED
-import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState.ERROR
-import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState.IN_PROGRESS
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_download_button.*
 
 class DownloadButton : FrameLayout, LayoutContainer {
+
+    enum class State { AVAILABLE, IN_PROGRESS, COMPLETED, ERROR }
 
     constructor(context: Context) : super(context) {
         LayoutInflater.from(context).inflate(R.layout.view_download_button, this, true)
@@ -36,9 +33,9 @@ class DownloadButton : FrameLayout, LayoutContainer {
         }
 
 
-    private lateinit var views: Map<com.sedsoftware.screens.intro.exchanges.store.model.DownloadState, View>
+    private lateinit var views: Map<State, View>
 
-    private var currentState: com.sedsoftware.screens.intro.exchanges.store.model.DownloadState? = null
+    private var currentState: State? = null
     private var textAvailable: String? = null
     private var textInProgress: String? = null
     private var textCompleted: String? = null
@@ -77,14 +74,14 @@ class DownloadButton : FrameLayout, LayoutContainer {
         colorError?.let { error_image.setColorFilter(it, PorterDuff.Mode.SRC_IN) }
 
         views = mapOf(
-            AVAILABLE to button,
-            IN_PROGRESS to progress,
-            COMPLETED to completed,
-            ERROR to error
+            State.AVAILABLE to button,
+            State.IN_PROGRESS to progress,
+            State.COMPLETED to completed,
+            State.ERROR to error
         )
     }
 
-    fun setState(newState: com.sedsoftware.screens.intro.exchanges.store.model.DownloadState) {
+    fun setState(newState: State) {
         currentState?.let { views[it]?.visibility = View.INVISIBLE }
         views[newState]?.visibility = View.VISIBLE
         currentState = newState

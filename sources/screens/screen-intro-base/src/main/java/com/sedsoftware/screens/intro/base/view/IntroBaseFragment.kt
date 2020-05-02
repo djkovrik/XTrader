@@ -37,8 +37,8 @@ class IntroBaseFragment : BaseFragment(), HasDaggerComponent<IntroBaseComponent>
         super.onViewCreated(view, savedInstanceState)
 
         controller.onViewCreated(
-            introBaseView = IntroBaseViewImpl(binding),
-            viewLifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
+            view = IntroBaseViewImpl(binding),
+            lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
             errorHandlerView = this
         )
     }

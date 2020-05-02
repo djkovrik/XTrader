@@ -18,9 +18,8 @@ import com.sedsoftware.screens.intro.exchanges.store.model.ExchangeListItem
 import com.sedsoftware.screens.intro.exchanges.store.model.update
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class IntroExchangesStoreFactory @Inject constructor(
+class IntroExchangesStoreFactory(
     private val storeFactory: StoreFactory,
     private val flowSwitcher: FlowSwitcher,
     private val loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairsLoader>
@@ -63,6 +62,7 @@ class IntroExchangesStoreFactory @Inject constructor(
     }
 
     private inner class IntroExchangesBootstrapper : SuspendBootstrapper<Action>() {
+
         override suspend fun bootstrap() {
             val list = withContext(Dispatchers.IO) {
                 loaders.keys.map {
@@ -77,11 +77,36 @@ class IntroExchangesStoreFactory @Inject constructor(
     private inner class IntroExchangesExecutor : SuspendExecutor<Intent, Action, State, Result, Label>() {
 
         override suspend fun executeAction(action: Action, getState: () -> State) {
-            super.executeAction(action, getState)
+            when (action) {
+                is Action.CreateExchangesList -> {
+                    dispatch(Result.Created(action.list))
+                }
+            }
         }
 
         override suspend fun executeIntent(intent: Intent, getState: () -> State) {
-            super.executeIntent(intent, getState)
+            when (intent) {
+                is Intent.StartDownloading -> startDownloading(intent.exchange)
+                is Intent.NavigateToNextScreen -> switchToRegularFlow()
+            }
+        }
+
+        private suspend fun startDownloading(exchange: Exchange) {
+            loaders[exchange]?.let { loader ->
+                dispatch(Result.InProgress(exchange))
+
+                try {
+                    loader.fetchCurrencyPairs()
+                    dispatch(Result.Completed(exchange))
+                } catch (throwable: Throwable) {
+                    dispatch(Result.Error(exchange))
+                    publish(Label.ErrorCaught(throwable))
+                }
+            }
+        }
+
+        private fun switchToRegularFlow() {
+            flowSwitcher.switchToRegularFlow()
         }
     }
 }

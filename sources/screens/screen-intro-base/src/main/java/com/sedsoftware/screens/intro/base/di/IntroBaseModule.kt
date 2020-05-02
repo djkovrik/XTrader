@@ -4,7 +4,7 @@ import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
-import com.sedsoftware.screens.intro.base.OneTimeEvent
+import com.sedsoftware.core.presentation.event.OneTimeEvent
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore
 import com.sedsoftware.screens.intro.base.store.IntroBaseStoreFactory
 import dagger.Module

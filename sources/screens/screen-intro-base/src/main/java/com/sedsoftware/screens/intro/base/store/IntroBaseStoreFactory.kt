@@ -12,9 +12,8 @@ import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Label
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Result
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.State
-import javax.inject.Inject
 
-class IntroBaseStoreFactory @Inject constructor(
+class IntroBaseStoreFactory(
     private val storeFactory: StoreFactory,
     private val currencyMapLoader: CurrencyMapLoader,
     private val startingFlowCoordinator: StartingFlowCoordinator
@@ -29,6 +28,7 @@ class IntroBaseStoreFactory @Inject constructor(
         ) {}
 
     private object IntroBaseReducer : Reducer<State, Result> {
+
         override fun State.reduce(result: Result): State =
             when (result) {
                 is Result.InProgress -> copy(loadingState = LoadingState.LOADING)
@@ -53,7 +53,8 @@ class IntroBaseStoreFactory @Inject constructor(
                 currencyMapLoader.loadCurrencyMap()
                 dispatch(Result.Success)
             } catch (throwable: Throwable) {
-                dispatch(Result.Error(throwable))
+                dispatch(Result.Error)
+                publish(Label.ErrorCaught(throwable))
             }
         }
 

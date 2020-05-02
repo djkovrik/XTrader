@@ -25,7 +25,7 @@ class IntroBaseViewImpl(viewBinding: FragmentIntroBaseBinding) : BaseMviView<Vie
         }
     }
 
-    override val renderer: ViewRenderer<ViewModel>? = diff {
+    override val renderer: ViewRenderer<ViewModel> = diff {
         diff(get = ViewModel::isDownloadButtonAvailable, set = { downloadButton.isEnabled = it })
         diff(get = ViewModel::isNextButtonAvailable, set = { nextButton.isEnabled = it })
         diff(get = ViewModel::isProgressVisible, set = { progress.isVisible = it })
