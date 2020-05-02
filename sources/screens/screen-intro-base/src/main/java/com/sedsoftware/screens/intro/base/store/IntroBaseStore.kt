@@ -17,7 +17,7 @@ interface IntroBaseStore : Store<Intent, State, Label> {
     )
 
     sealed class Action {
-
+        // empty
     }
 
     sealed class Label {
