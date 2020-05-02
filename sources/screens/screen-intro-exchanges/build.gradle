@@ -1,14 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
-
-androidExtensions {
-    experimental = true
-}
 
 dependencies {
     implementation project(':core-di')
@@ -16,6 +11,7 @@ dependencies {
     implementation project(':core-presentation')
 
     implementation "com.hannesdorfmann:adapterdelegates4:$versions.adapterDelegates"
+    implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$versions.adapterDelegates"
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"

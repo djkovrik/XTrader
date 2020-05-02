@@ -7,31 +7,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.sedsoftware.core.presentation.R
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.view_download_button.*
+import com.sedsoftware.core.presentation.databinding.ViewDownloadButtonBinding
 
-class DownloadButton : FrameLayout, LayoutContainer {
+class DownloadButton : FrameLayout {
 
     enum class State { AVAILABLE, IN_PROGRESS, COMPLETED, ERROR }
 
     constructor(context: Context) : super(context) {
-        LayoutInflater.from(context).inflate(R.layout.view_download_button, this, true)
-        init(null)
+        init()
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        LayoutInflater.from(context).inflate(R.layout.view_download_button, this, true)
         init(attrs)
     }
 
     var clickListener: () -> Unit = {}
         set(value) {
             field = value
-            button?.setOnClickListener { field.invoke() }
-            error_text?.setOnClickListener { field.invoke() }
-            error_image?.setOnClickListener { field.invoke() }
+            binding.button.setOnClickListener { field.invoke() }
+            binding.errorText.setOnClickListener { field.invoke() }
+            binding.errorImage.setOnClickListener { field.invoke() }
         }
 
+    private val binding: ViewDownloadButtonBinding get() = _binding!!
+    private var _binding: ViewDownloadButtonBinding? = null
 
     private lateinit var views: Map<State, View>
 
@@ -45,9 +44,10 @@ class DownloadButton : FrameLayout, LayoutContainer {
     private var colorCompleted: Int? = null
     private var colorError: Int? = null
 
-    override val containerView: View? = this
+    private fun init(attrs: AttributeSet? = null) {
 
-    private fun init(attrs: AttributeSet?) {
+        _binding = ViewDownloadButtonBinding.inflate(LayoutInflater.from(context), this, true)
+
         val typedArray = context?.obtainStyledAttributes(attrs, R.styleable.DownloadButton)
 
         textAvailable = typedArray?.getString(R.styleable.DownloadButton_text_available)
@@ -62,22 +62,24 @@ class DownloadButton : FrameLayout, LayoutContainer {
 
         typedArray?.recycle()
 
-        textAvailable?.let { button.text = it }
-        textInProgress?.let { progress.text = it }
-        textCompleted?.let { completed.text = it }
-        textError?.let { error_text.text = it }
+        with(binding) {
+            textAvailable?.let { button.text = it }
+            textInProgress?.let { progress.text = it }
+            textCompleted?.let { completed.text = it }
+            textError?.let { errorText.text = it }
 
-        colorAvailable?.let { button.setTextColor(it) }
-        colorInProgress?.let { progress.setTextColor(it) }
-        colorCompleted?.let { completed.setTextColor(it) }
-        colorError?.let { error_text.setTextColor(it) }
-        colorError?.let { error_image.setColorFilter(it, PorterDuff.Mode.SRC_IN) }
+            colorAvailable?.let { button.setTextColor(it) }
+            colorInProgress?.let { progress.setTextColor(it) }
+            colorCompleted?.let { completed.setTextColor(it) }
+            colorError?.let { errorText.setTextColor(it) }
+            colorError?.let { errorImage.setColorFilter(it, PorterDuff.Mode.SRC_IN) }
+        }
 
         views = mapOf(
-            State.AVAILABLE to button,
-            State.IN_PROGRESS to progress,
-            State.COMPLETED to completed,
-            State.ERROR to error
+            State.AVAILABLE to binding.button,
+            State.IN_PROGRESS to binding.progress,
+            State.COMPLETED to binding.completed,
+            State.ERROR to binding.error
         )
     }
 

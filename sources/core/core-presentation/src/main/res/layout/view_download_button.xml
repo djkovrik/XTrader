@@ -33,7 +33,7 @@
         tools:ignore="UseCompoundDrawables">
 
         <TextView
-            android:id="@+id/error_text"
+            android:id="@+id/errorText"
             style="@style/XTButtonStateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             tools:text="Retry" />
 
         <ImageView
-            android:id="@+id/error_image"
+            android:id="@+id/errorImage"
             android:layout_width="@dimen/size_icon_retry"
             android:layout_height="@dimen/size_icon_retry"
             android:src="@drawable/ic_redo"
