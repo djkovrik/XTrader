@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/material_baseline_grid_8x"
-    android:layout_marginEnd="@dimen/material_baseline_grid_2x"
-    android:layout_marginStart="@dimen/material_baseline_grid_2x">
+    android:layout_height="@dimen/height_exchange_list_item"
+    android:layout_marginStart="@dimen/baseline_grid_2x"
+    android:layout_marginEnd="@dimen/baseline_grid_2x">
 
     <ImageView
         android:id="@+id/exchangeLogoImageView"
-        android:layout_width="@dimen/material_list_avatar_size"
-        android:layout_height="@dimen/material_list_avatar_size"
+        android:layout_width="@dimen/size_exchange_image"
+        android:layout_height="@dimen/size_exchange_image"
         android:contentDescription="@string/a11y_app_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/exchangeNameTextView"
@@ -23,8 +23,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginEnd="@dimen/material_baseline_grid_1x"
-        android:layout_marginStart="@dimen/material_baseline_grid_1x"
+        android:layout_marginStart="@dimen/baseline_grid_1x"
+        android:layout_marginEnd="@dimen/baseline_grid_1x"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/exchangeDownloadButton"
         app:layout_constraintStart_toEndOf="@+id/exchangeLogoImageView"

@@ -20,6 +20,5 @@ dependencies {
     implementation "com.google.android.material:material:$versions.materialComponents"
     implementation "androidx.core:core-ktx:$versions.ktx"
 
-    implementation "blue.aodev:material-values:$versions.materialValues"
     implementation "com.afollestad.material-dialogs:core:$versions.materialDialogs"
 }

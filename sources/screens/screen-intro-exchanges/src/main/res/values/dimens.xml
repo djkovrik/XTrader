@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_exchange_list_item">64dp</dimen>
+    <dimen name="size_exchange_image">40dp</dimen>
+</resources>

@@ -37,7 +37,7 @@
             style="@style/XTButtonStateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/material_baseline_grid_0.5x"
+            android:layout_margin="@dimen/baseline_grid_0.5x"
             tools:text="Retry" />
 
         <ImageView

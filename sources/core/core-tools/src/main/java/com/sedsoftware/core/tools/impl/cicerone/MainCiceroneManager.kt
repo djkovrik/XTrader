@@ -8,8 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MainCiceroneManager @Inject constructor() :
-    CiceroneManager {
+class MainCiceroneManager @Inject constructor() : CiceroneManager {
 
     private val containers: HashMap<String, Cicerone<Router>> = HashMap()
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="@dimen/material_baseline_grid_2x"
-    android:insetRight="@dimen/material_baseline_grid_2x">
+    android:insetLeft="@dimen/baseline_grid_2x"
+    android:insetRight="@dimen/baseline_grid_2x">
 
     <shape android:shape="rectangle">
 

@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
     <FrameLayout
         android:id="@+id/regularFlowContainer"
         android:layout_width="match_parent"

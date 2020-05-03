@@ -18,10 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:background="@color/colorNotificationBackground"
-        android:paddingBottom="@dimen/material_baseline_grid_1.5x"
-        android:paddingEnd="@dimen/material_baseline_grid_2x"
-        android:paddingStart="@dimen/material_baseline_grid_2x"
-        android:paddingTop="@dimen/material_baseline_grid_1.5x"
+        android:padding="@dimen/baseline_grid_2x"
         tools:text="This is top notification text" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
