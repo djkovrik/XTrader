@@ -89,9 +89,6 @@ class StartingFlowFragment : FlowFragment(), HasDaggerComponent<StartingFlowComp
         return StartingFlowComponent.Initializer.init(activityTools)
     }
 
-    override fun getComponentKey(): String =
-        this::class.java.simpleName
-
     override fun inject() {
         DaggerComponentManager
             .get<StartingFlowComponent>()

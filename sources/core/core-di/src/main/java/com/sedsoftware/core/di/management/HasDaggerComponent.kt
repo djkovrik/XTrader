@@ -19,5 +19,6 @@ interface HasDaggerComponent<T> {
      *
      * @return Key value
      */
-    fun getComponentKey(): String
+    fun getComponentKey(): String =
+        this::class.java.simpleName
 }

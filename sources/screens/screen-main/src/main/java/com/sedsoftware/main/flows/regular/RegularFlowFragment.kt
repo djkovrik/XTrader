@@ -120,9 +120,6 @@ class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowCompon
         return RegularFlowComponent.Initializer.init(activityTools)
     }
 
-    override fun getComponentKey(): String =
-        this::class.java.simpleName
-
     override fun inject() {
         DaggerComponentManager
             .get<RegularFlowComponent>()

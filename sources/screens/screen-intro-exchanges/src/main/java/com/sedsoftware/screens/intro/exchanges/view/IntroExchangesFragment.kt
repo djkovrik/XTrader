@@ -61,9 +61,6 @@ class IntroExchangesFragment : BaseFragment(), HasDaggerComponent<IntroExchanges
         return IntroExchangesComponent.Initializer.init(activityTools)
     }
 
-    override fun getComponentKey(): String =
-        this::class.java.simpleName
-
     override fun inject() {
         DaggerComponentManager
             .get<IntroExchangesComponent>()

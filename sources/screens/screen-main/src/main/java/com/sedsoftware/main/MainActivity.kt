@@ -132,9 +132,6 @@ class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainAc
         return MainActivityComponent.Initializer.init(appComponent)
     }
 
-    override fun getComponentKey(): String =
-        this::class.java.simpleName
-
     override fun inject() {
         DaggerComponentManager
             .get<MainActivityComponent>()
