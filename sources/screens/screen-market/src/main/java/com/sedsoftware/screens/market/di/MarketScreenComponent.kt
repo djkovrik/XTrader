@@ -1,13 +1,13 @@
 package com.sedsoftware.screens.market.di
 
-import com.sedsoftware.core.di.RegularFlowToolsProvider
+import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.screens.market.MarketScreenFragment
 import dagger.Component
 
 @Component(
     dependencies = [
-        RegularFlowToolsProvider::class
+        ActivityToolsProvider::class
     ]
 )
 @ScreenScope
@@ -17,17 +17,17 @@ interface MarketScreenComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(regularFlowToolsProvider: RegularFlowToolsProvider): MarketScreenComponent
+        fun create(provider: ActivityToolsProvider): MarketScreenComponent
     }
 
     class Initializer private constructor() {
         companion object {
 
-            fun init(regularFlowToolsProvider: RegularFlowToolsProvider): MarketScreenComponent {
+            fun init(provider: ActivityToolsProvider): MarketScreenComponent {
 
                 return DaggerMarketScreenComponent
                     .factory()
-                    .create(regularFlowToolsProvider)
+                    .create(provider)
             }
         }
     }

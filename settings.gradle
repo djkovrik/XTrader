@@ -28,18 +28,18 @@ include ':screen-intro-base'
 project(':screen-intro-base').projectDir = new File(rootDir, 'sources/screens/screen-intro-base')
 include ':screen-intro-exchanges'
 project(':screen-intro-exchanges').projectDir = new File(rootDir, 'sources/screens/screen-intro-exchanges')
-//include ':screen-intro-pin'
-//project(':screen-intro-pin').projectDir = new File(rootDir, 'sources/screens/screen-intro-pin')
-//include ':screen-market'
-//project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
-//include ':screen-orders'
-//project(':screen-orders').projectDir = new File(rootDir, 'sources/screens/screen-orders')
-//include ':screen-wallet'
-//project(':screen-wallet').projectDir = new File(rootDir, 'sources/screens/screen-wallet')
-//include ':screen-tracker'
-//project(':screen-tracker').projectDir = new File(rootDir, 'sources/screens/screen-tracker')
-//include ':screen-tools'
-//project(':screen-tools').projectDir = new File(rootDir, 'sources/screens/screen-tools')
+include ':screen-intro-pin'
+project(':screen-intro-pin').projectDir = new File(rootDir, 'sources/screens/screen-intro-pin')
+include ':screen-market'
+project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
+include ':screen-orders'
+project(':screen-orders').projectDir = new File(rootDir, 'sources/screens/screen-orders')
+include ':screen-wallet'
+project(':screen-wallet').projectDir = new File(rootDir, 'sources/screens/screen-wallet')
+include ':screen-tracker'
+project(':screen-tracker').projectDir = new File(rootDir, 'sources/screens/screen-tracker')
+include ':screen-tools'
+project(':screen-tools').projectDir = new File(rootDir, 'sources/screens/screen-tools')
 
 include ':lib-spin-kit'
 project(':lib-spin-kit').projectDir = new File(rootDir, 'sources/libraries/lib-spin-kit')

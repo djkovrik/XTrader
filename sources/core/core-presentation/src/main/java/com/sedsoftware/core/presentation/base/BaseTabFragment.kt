@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.R
+import com.sedsoftware.core.presentation.databinding.LayoutContainerBinding
 import com.sedsoftware.core.presentation.extension.setLaunchScreen
 import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
+import javax.inject.Inject
 
 abstract class BaseTabFragment : Fragment() {
 
@@ -30,8 +34,11 @@ abstract class BaseTabFragment : Fragment() {
         }
     }
 
-//    @Inject
-//    lateinit var tabCiceroneHolder: TabCiceroneHolder
+    @Inject
+    lateinit var ciceroneManager: CiceroneManager
+
+    private val binding: LayoutContainerBinding get() = _binding!!
+    private var _binding: LayoutContainerBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,23 +48,29 @@ abstract class BaseTabFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.layout_container, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding = LayoutContainerBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-//    override fun onResume() {
-//        super.onResume()
-//        getCicerone().navigatorHolder.setNavigator(navigator)
-//    }
-//
-//    override fun onPause() {
-//        getCicerone().navigatorHolder.removeNavigator()
-//        super.onPause()
-//    }
-//
-//    private fun getContainerTag(): String =
-//        this.javaClass.simpleName
-//
-//    private fun getCicerone(): Cicerone<Router> =
-//        tabCiceroneHolder.getCicerone(getContainerTag())
+    override fun onResume() {
+        super.onResume()
+        getNavigatorHolder().setNavigator(navigator)
+    }
 
+    override fun onPause() {
+        getNavigatorHolder().removeNavigator()
+        super.onPause()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun getNavigatorHolder(): NavigatorHolder =
+        ciceroneManager.getNavigatorHolder(getContainerTag())
+
+    private fun getContainerTag(): String =
+        this.javaClass.simpleName
 }

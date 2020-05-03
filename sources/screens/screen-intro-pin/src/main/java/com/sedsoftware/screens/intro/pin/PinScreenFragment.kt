@@ -1,12 +1,10 @@
 package com.sedsoftware.screens.intro.pin
 
-import com.sedsoftware.core.presentation.base.BaseStartingFragment
+import com.sedsoftware.core.presentation.base.BaseFragment
 
-class PinScreenFragment : BaseStartingFragment() {
+class PinScreenFragment : BaseFragment() {
 
     companion object {
         fun newInstance(): PinScreenFragment = PinScreenFragment()
     }
-
-    override val layoutResId: Int = R.layout.fragment_pin_screen
 }

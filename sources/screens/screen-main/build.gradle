@@ -12,12 +12,12 @@ dependencies {
 
     implementation project(':screen-intro-base')
     implementation project(':screen-intro-exchanges')
-//    implementation project(':screen-intro-pin')
-//    implementation project(':screen-market')
-//    implementation project(':screen-wallet')
-//    implementation project(':screen-orders')
-//    implementation project(':screen-tracker')
-//    implementation project(':screen-tools')
+    implementation project(':screen-intro-pin')
+    implementation project(':screen-market')
+    implementation project(':screen-wallet')
+    implementation project(':screen-orders')
+    implementation project(':screen-tracker')
+    implementation project(':screen-tools')
 
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
     implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"

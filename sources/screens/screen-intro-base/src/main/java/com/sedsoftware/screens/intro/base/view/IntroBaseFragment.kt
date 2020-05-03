@@ -18,8 +18,7 @@ import javax.inject.Inject
 class IntroBaseFragment : BaseFragment(), HasDaggerComponent<IntroBaseComponent>, HasInject {
 
     companion object {
-        fun newInstance(): IntroBaseFragment =
-            IntroBaseFragment()
+        fun newInstance(): IntroBaseFragment = IntroBaseFragment()
     }
 
     private val binding: FragmentIntroBaseBinding get() = _binding!!

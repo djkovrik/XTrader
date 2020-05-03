@@ -1,9 +1,8 @@
 package com.sedsoftware.main
 
 import androidx.fragment.app.Fragment
-import com.sedsoftware.main.flows.EmptyFragment
-import com.sedsoftware.main.flows.regular.RegularFlowFragment
-import com.sedsoftware.main.flows.starting.StartingFlowFragment
+import com.sedsoftware.main.flows.RegularFlowFragment
+import com.sedsoftware.main.flows.StartingFlowFragment
 import com.sedsoftware.main.tabs.MarketTabContainerFragment
 import com.sedsoftware.main.tabs.OrdersTabContainerFragment
 import com.sedsoftware.main.tabs.ToolsTabContainerFragment
@@ -11,6 +10,12 @@ import com.sedsoftware.main.tabs.TrackerTabContainerFragment
 import com.sedsoftware.main.tabs.WalletTabContainerFragment
 import com.sedsoftware.screens.intro.base.view.IntroBaseFragment
 import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesFragment
+import com.sedsoftware.screens.intro.pin.PinScreenFragment
+import com.sedsoftware.screens.market.MarketScreenFragment
+import com.sedsoftware.screens.orders.OrdersScreenFragment
+import com.sedsoftware.screens.tools.ToolsScreenFragment
+import com.sedsoftware.screens.tracker.TrackerScreenFragment
+import com.sedsoftware.screens.wallet.WalletScreenFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {
@@ -46,11 +51,6 @@ object Screens {
         override fun getFragment(): Fragment = ToolsTabContainerFragment.newInstance()
     }
 
-    object Empty: SupportAppScreen() {
-        override fun getFragment(): Fragment = EmptyFragment()
-    }
-
-
     // Screens
     object IntroBase : SupportAppScreen() {
         override fun getFragment(): Fragment = IntroBaseFragment.newInstance()
@@ -59,28 +59,28 @@ object Screens {
     object IntroExchanges : SupportAppScreen() {
         override fun getFragment(): Fragment = IntroExchangesFragment.newInstance()
     }
-//
-//    object Pin : SupportAppScreen() {
-//        override fun getFragment(): Fragment = PinScreenFragment.newInstance()
-//    }
-//
-//    object Market : SupportAppScreen() {
-//        override fun getFragment(): Fragment = MarketScreenFragment.newInstance()
-//    }
-//
-//    object Orders : SupportAppScreen() {
-//        override fun getFragment(): Fragment = OrdersScreenFragment.newInstance()
-//    }
-//
-//    object Wallet : SupportAppScreen() {
-//        override fun getFragment(): Fragment = WalletScreenFragment.newInstance()
-//    }
-//
-//    object Tracker : SupportAppScreen() {
-//        override fun getFragment(): Fragment = TrackerScreenFragment.newInstance()
-//    }
-//
-//    object Tools : SupportAppScreen() {
-//        override fun getFragment(): Fragment = ToolsScreenFragment.newInstance()
-//    }
+
+    object Pin : SupportAppScreen() {
+        override fun getFragment(): Fragment = PinScreenFragment.newInstance()
+    }
+
+    object Market : SupportAppScreen() {
+        override fun getFragment(): Fragment = MarketScreenFragment.newInstance()
+    }
+
+    object Orders : SupportAppScreen() {
+        override fun getFragment(): Fragment = OrdersScreenFragment.newInstance()
+    }
+
+    object Wallet : SupportAppScreen() {
+        override fun getFragment(): Fragment = WalletScreenFragment.newInstance()
+    }
+
+    object Tracker : SupportAppScreen() {
+        override fun getFragment(): Fragment = TrackerScreenFragment.newInstance()
+    }
+
+    object Tools : SupportAppScreen() {
+        override fun getFragment(): Fragment = ToolsScreenFragment.newInstance()
+    }
 }

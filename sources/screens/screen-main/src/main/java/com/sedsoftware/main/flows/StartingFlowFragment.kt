@@ -1,4 +1,4 @@
-package com.sedsoftware.main.flows.starting
+package com.sedsoftware.main.flows
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,16 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.management.DaggerComponentManager
-import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.core.presentation.databinding.LayoutContainerBinding
 import com.sedsoftware.main.Screens
-import com.sedsoftware.main.flows.AppFlow
-import com.sedsoftware.main.flows.starting.di.StartingFlowComponent
+import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -25,7 +22,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class StartingFlowFragment : FlowFragment(), HasDaggerComponent<StartingFlowComponent>, HasInject {
+class StartingFlowFragment : FlowFragment(), HasInject {
 
     companion object {
         fun newInstance(): StartingFlowFragment = StartingFlowFragment()
@@ -84,14 +81,9 @@ class StartingFlowFragment : FlowFragment(), HasDaggerComponent<StartingFlowComp
         _binding = null
     }
 
-    override fun getComponent(): StartingFlowComponent {
-        val activityTools = DaggerComponentManager.get<ActivityToolsProvider>()
-        return StartingFlowComponent.Initializer.init(activityTools)
-    }
-
     override fun inject() {
         DaggerComponentManager
-            .get<StartingFlowComponent>()
+            .get<MainActivityComponent>()
             .inject(this)
     }
 }

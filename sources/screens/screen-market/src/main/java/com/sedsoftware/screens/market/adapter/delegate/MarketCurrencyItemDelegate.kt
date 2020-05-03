@@ -1,18 +1,13 @@
 package com.sedsoftware.screens.market.adapter.delegate
 
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.screens.market.R
-import com.sedsoftware.screens.market.adapter.CurrencyListAdapter
 import com.sedsoftware.screens.market.adapter.CurrencyListAdapter.Listener
 import com.sedsoftware.screens.market.model.CurrencyListItem
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_add_pair_market.*
 
 class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterDelegate<List<CurrencyListItem>>() {
 
@@ -23,31 +18,29 @@ class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterD
         holder as ItemViewHolder
         val item = items[position]
 
-        if (payloads.isNotEmpty() && payloads[0] == CurrencyListAdapter.STATUS_PAYLOAD) {
-            holder.bindStatus(item)
-        } else {
-            holder.bindAll(item, clickListener)
-        }
+//        if (payloads.isNotEmpty() && payloads[0] == CurrencyListAdapter.STATUS_PAYLOAD) {
+//            holder.bindStatus(item)
+//        } else {
+//            holder.bindAll(item, clickListener)
+//        }
     }
 
     override fun isForViewType(items: List<CurrencyListItem>, position: Int): Boolean =
         !items[position].isBase
 
     class ItemViewHolder(parent: ViewGroup) :
-        RecyclerView.ViewHolder(parent.inflate(R.layout.item_add_pair_market)), LayoutContainer {
+        RecyclerView.ViewHolder(parent.inflate(R.layout.item_add_pair_market)) {
 
-        override val containerView: View? = itemView
-
-        fun bindAll(item: CurrencyListItem, listener: Listener) {
-            currencyTextView.text = String.format("%s", item.currency.name)
-            itemContainer.setOnClickListener { listener.onItemClick(item) }
-            checkedImageView.isVisible = item.isSelected
-            selector.isVisible = item.isSelected
-        }
-
-        fun bindStatus(item: CurrencyListItem) {
-            checkedImageView.isVisible = item.isSelected
-            selector.isVisible = item.isSelected
-        }
+//        fun bindAll(item: CurrencyListItem, listener: Listener) {
+//            currencyTextView.text = String.format("%s", item.currency.name)
+//            itemContainer.setOnClickListener { listener.onItemClick(item) }
+//            checkedImageView.isVisible = item.isSelected
+//            selector.isVisible = item.isSelected
+//        }
+//
+//        fun bindStatus(item: CurrencyListItem) {
+//            checkedImageView.isVisible = item.isSelected
+//            selector.isVisible = item.isSelected
+//        }
     }
 }

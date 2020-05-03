@@ -1,4 +1,4 @@
-package com.sedsoftware.main.flows.regular
+package com.sedsoftware.main.flows
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,16 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.management.DaggerComponentManager
-import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.BaseTabFragment
 import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.main.Screens
-import com.sedsoftware.main.flows.AppFlow
-import com.sedsoftware.main.flows.regular.di.RegularFlowComponent
+import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
 import com.sedsoftware.screens.main.databinding.FragmentFlowRegularBinding
 import ru.terrakok.cicerone.Navigator
@@ -27,7 +24,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowComponent>, HasInject {
+class RegularFlowFragment : FlowFragment(), HasInject {
 
     companion object {
         fun newInstance(): RegularFlowFragment = RegularFlowFragment()
@@ -74,8 +71,8 @@ class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowCompon
         ciceroneManager.getNavigatorHolder(AppFlow.REGULAR)
     }
 
-    private val currentTabFragment: BaseTabFragment? =
-        childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseTabFragment
+    private val currentTabFragment: BaseTabFragment?
+        get() = childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseTabFragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentFlowRegularBinding.inflate(inflater, container, false)
@@ -115,14 +112,9 @@ class RegularFlowFragment : FlowFragment(), HasDaggerComponent<RegularFlowCompon
         _binding = null
     }
 
-    override fun getComponent(): RegularFlowComponent {
-        val activityTools = DaggerComponentManager.get<ActivityToolsProvider>()
-        return RegularFlowComponent.Initializer.init(activityTools)
-    }
-
     override fun inject() {
         DaggerComponentManager
-            .get<RegularFlowComponent>()
+            .get<MainActivityComponent>()
             .inject(this)
     }
 

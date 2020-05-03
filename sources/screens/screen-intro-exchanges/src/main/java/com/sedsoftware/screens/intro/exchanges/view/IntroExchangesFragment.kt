@@ -20,8 +20,7 @@ import javax.inject.Inject
 class IntroExchangesFragment : BaseFragment(), HasDaggerComponent<IntroExchangesComponent>, HasInject {
 
     companion object {
-        fun newInstance(): IntroExchangesFragment =
-            IntroExchangesFragment()
+        fun newInstance(): IntroExchangesFragment = IntroExchangesFragment()
     }
 
     private val binding: FragmentIntroExchangesBinding get() = _binding!!

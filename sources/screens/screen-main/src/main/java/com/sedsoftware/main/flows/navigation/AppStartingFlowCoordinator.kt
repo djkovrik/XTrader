@@ -15,9 +15,8 @@ class AppStartingFlowCoordinator @Inject constructor(
         ciceroneManager.getRouter(AppFlow.STARTING)
     }
 
-    // TODO
     override fun navigateToPinScreen() {
-        startingRouter.newRootScreen(Screens.Empty)
+        startingRouter.newRootScreen(Screens.Pin)
     }
 
     override fun navigateToBaseScreen() {
