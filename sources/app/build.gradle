@@ -105,7 +105,6 @@ dependencies {
 
     implementation "com.jakewharton.timber:timber:$versions.timber"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
-    debugImplementation "com.amitshekhar.android:debug-db:$versions.androidDebugDatabase"
 }
 
 apply plugin: 'com.google.gms.google-services'
