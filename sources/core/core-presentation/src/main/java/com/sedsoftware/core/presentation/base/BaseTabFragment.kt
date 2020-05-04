@@ -16,6 +16,7 @@ import javax.inject.Inject
 abstract class BaseTabFragment : Fragment(R.layout.layout_container) {
 
     abstract val launchScreen: SupportAppScreen
+    abstract val navigationTag: String
 
     private val navigator: Navigator by lazy {
         object : SupportAppNavigator(requireActivity(), childFragmentManager, R.id.container) {
@@ -52,8 +53,5 @@ abstract class BaseTabFragment : Fragment(R.layout.layout_container) {
     }
 
     private fun getNavigatorHolder(): NavigatorHolder =
-        ciceroneManager.getNavigatorHolder(getContainerTag())
-
-    private fun getContainerTag(): String =
-        this.javaClass.simpleName
+        ciceroneManager.getNavigatorHolder(navigationTag)
 }

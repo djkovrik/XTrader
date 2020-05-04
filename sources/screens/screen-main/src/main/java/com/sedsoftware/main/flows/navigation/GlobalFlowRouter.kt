@@ -14,15 +14,7 @@ class GlobalFlowRouter @Inject constructor(
         ciceroneManager.getRouter(AppFlow.GLOBAL)
     }
 
-    fun startFlow(screen: SupportAppScreen) {
-        globalRouter.navigateTo(screen)
-    }
-
     fun newRootFlow(screen: SupportAppScreen) {
         globalRouter.newRootScreen(screen)
-    }
-
-    fun finishFlow() {
-        globalRouter.exit()
     }
 }

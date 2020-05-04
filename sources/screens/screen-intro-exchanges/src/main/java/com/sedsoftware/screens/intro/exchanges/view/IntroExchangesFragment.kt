@@ -17,7 +17,8 @@ import com.sedsoftware.screens.intro.exchanges.databinding.FragmentIntroExchange
 import com.sedsoftware.screens.intro.exchanges.di.IntroExchangesComponent
 import javax.inject.Inject
 
-class IntroExchangesFragment : BaseFragment(R.layout.fragment_intro_exchanges), HasDaggerComponent<IntroExchangesComponent>, HasInject {
+class IntroExchangesFragment :
+    BaseFragment(R.layout.fragment_intro_exchanges), HasDaggerComponent<IntroExchangesComponent>, HasInject {
 
     companion object {
         fun newInstance(): IntroExchangesFragment = IntroExchangesFragment()

@@ -15,7 +15,8 @@ import com.sedsoftware.screens.intro.base.databinding.FragmentIntroBaseBinding
 import com.sedsoftware.screens.intro.base.di.IntroBaseComponent
 import javax.inject.Inject
 
-class IntroBaseFragment : BaseFragment(R.layout.fragment_intro_base), HasDaggerComponent<IntroBaseComponent>, HasInject {
+class IntroBaseFragment :
+    BaseFragment(R.layout.fragment_intro_base), HasDaggerComponent<IntroBaseComponent>, HasInject {
 
     companion object {
         fun newInstance(): IntroBaseFragment = IntroBaseFragment()

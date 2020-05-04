@@ -4,6 +4,7 @@ import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.BaseTabFragment
 import com.sedsoftware.main.Screens
+import com.sedsoftware.main.Tabs
 import com.sedsoftware.main.di.MainActivityComponent
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
@@ -14,6 +15,7 @@ class MarketTabContainerFragment : BaseTabFragment(), HasInject {
     }
 
     override val launchScreen: SupportAppScreen = Screens.Market
+    override val navigationTag: String = Tabs.MARKET
 
     override fun inject() {
         DaggerComponentManager

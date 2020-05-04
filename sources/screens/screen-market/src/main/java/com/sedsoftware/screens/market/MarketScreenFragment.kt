@@ -9,7 +9,8 @@ import com.sedsoftware.core.presentation.viewbinding.viewBinding
 import com.sedsoftware.screens.market.databinding.FragmentMarketScreenBinding
 import com.sedsoftware.screens.market.di.MarketScreenComponent
 
-class MarketScreenFragment : BaseFragment(R.layout.fragment_market_screen), HasDaggerComponent<MarketScreenComponent>, HasInject {
+class MarketScreenFragment :
+    BaseFragment(R.layout.fragment_market_screen), HasDaggerComponent<MarketScreenComponent>, HasInject {
 
     companion object {
         fun newInstance(): MarketScreenFragment = MarketScreenFragment()
