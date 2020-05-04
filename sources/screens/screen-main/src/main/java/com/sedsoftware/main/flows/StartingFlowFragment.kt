@@ -1,16 +1,11 @@
 package com.sedsoftware.main.flows
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.FlowFragment
-import com.sedsoftware.core.presentation.databinding.LayoutContainerBinding
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
@@ -22,14 +17,11 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class StartingFlowFragment : FlowFragment(), HasInject {
+class StartingFlowFragment : FlowFragment(R.layout.layout_container), HasInject {
 
     companion object {
         fun newInstance(): StartingFlowFragment = StartingFlowFragment()
     }
-
-    private val binding: LayoutContainerBinding get() = _binding!!
-    private var _binding: LayoutContainerBinding? = null
 
     override val launchScreen: SupportAppScreen = Screens.IntroBase
 
@@ -61,11 +53,6 @@ class StartingFlowFragment : FlowFragment(), HasInject {
         ciceroneManager.getNavigatorHolder(AppFlow.STARTING)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = LayoutContainerBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onResume() {
         super.onResume()
         navigatorHolder.setNavigator(navigator)
@@ -74,11 +61,6 @@ class StartingFlowFragment : FlowFragment(), HasInject {
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun inject() {

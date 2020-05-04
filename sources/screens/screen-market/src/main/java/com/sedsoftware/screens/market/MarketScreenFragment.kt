@@ -1,35 +1,21 @@
 package com.sedsoftware.screens.market
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.core.presentation.viewbinding.viewBinding
 import com.sedsoftware.screens.market.databinding.FragmentMarketScreenBinding
 import com.sedsoftware.screens.market.di.MarketScreenComponent
 
-class MarketScreenFragment : BaseFragment(), HasDaggerComponent<MarketScreenComponent>, HasInject {
+class MarketScreenFragment : BaseFragment(R.layout.fragment_market_screen), HasDaggerComponent<MarketScreenComponent>, HasInject {
 
     companion object {
         fun newInstance(): MarketScreenFragment = MarketScreenFragment()
     }
 
-    private val binding: FragmentMarketScreenBinding get() = _binding!!
-    private var _binding: FragmentMarketScreenBinding? = null
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentMarketScreenBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+    private val binding: FragmentMarketScreenBinding by viewBinding()
 
     override fun getComponent(): MarketScreenComponent {
         val activityTools = DaggerComponentManager.get<ActivityToolsProvider>()

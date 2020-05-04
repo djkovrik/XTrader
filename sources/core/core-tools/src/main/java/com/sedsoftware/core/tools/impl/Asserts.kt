@@ -1,10 +1,13 @@
 package com.sedsoftware.core.tools.impl
 
 import android.os.Looper
-import com.sedsoftware.core.domain.exception.BuildOnMainThreadException
+import com.sedsoftware.core.domain.exception.CallOnMainThreadException
+import com.sedsoftware.core.domain.exception.CallNotOnMainThreadException
 
-fun checkIfMainThread(where: String) {
-    if (Looper.myLooper() == Looper.getMainLooper()) throw BuildOnMainThreadException(
-        where
-    )
+fun Any.checkIsNotMainThread(where: String) {
+    if (Looper.myLooper() == Looper.getMainLooper()) throw CallOnMainThreadException(where)
+}
+
+fun Any.checkIsMainThread(where: String) {
+    if (Looper.myLooper() != Looper.getMainLooper()) throw CallNotOnMainThreadException(where)
 }

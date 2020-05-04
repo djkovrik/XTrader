@@ -12,6 +12,7 @@ import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.BaseTabFragment
 import com.sedsoftware.core.presentation.base.FlowFragment
+import com.sedsoftware.core.presentation.viewbinding.viewBinding
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
@@ -24,7 +25,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class RegularFlowFragment : FlowFragment(), HasInject {
+class RegularFlowFragment : FlowFragment(R.layout.fragment_flow_regular), HasInject {
 
     companion object {
         fun newInstance(): RegularFlowFragment = RegularFlowFragment()
@@ -38,8 +39,7 @@ class RegularFlowFragment : FlowFragment(), HasInject {
         private val DEFAULT_TAB = R.id.navigation_market
     }
 
-    private val binding: FragmentFlowRegularBinding get() = _binding!!
-    private var _binding: FragmentFlowRegularBinding? = null
+    private val binding: FragmentFlowRegularBinding by viewBinding()
 
     override val launchScreen: SupportAppScreen = Screens.MarketTabContainer
 
@@ -74,11 +74,6 @@ class RegularFlowFragment : FlowFragment(), HasInject {
     private val currentTabFragment: BaseTabFragment?
         get() = childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseTabFragment
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentFlowRegularBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -105,11 +100,6 @@ class RegularFlowFragment : FlowFragment(), HasInject {
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun inject() {

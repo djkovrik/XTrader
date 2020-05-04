@@ -8,6 +8,7 @@ apply from: '../../kapt-config.gradle'
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
+    implementation project(':core-tools')
 
     implementation project(':lib-spin-kit')
 
@@ -15,8 +16,7 @@ dependencies {
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
 
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
-    implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
     implementation "com.google.android.material:material:$versions.materialComponents"
 }
