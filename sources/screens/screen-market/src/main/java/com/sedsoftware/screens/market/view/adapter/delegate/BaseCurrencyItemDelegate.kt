@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.market.adapter.delegate
+package com.sedsoftware.screens.market.view.adapter.delegate
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.screens.market.R
-import com.sedsoftware.screens.market.adapter.CurrencyListAdapter.Listener
-import com.sedsoftware.screens.market.model.CurrencyListItem
+import com.sedsoftware.screens.market.view.adapter.CurrencyListAdapter.Listener
+import com.sedsoftware.screens.market.store.model.CurrencyListItem
 
-class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterDelegate<List<CurrencyListItem>>() {
+class BaseCurrencyItemDelegate(private val clickListener: Listener) : AdapterDelegate<List<CurrencyListItem>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup): ItemViewHolder =
         ItemViewHolder(parent)
@@ -26,10 +26,10 @@ class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterD
     }
 
     override fun isForViewType(items: List<CurrencyListItem>, position: Int): Boolean =
-        !items[position].isBase
+        items[position].isBase
 
     class ItemViewHolder(parent: ViewGroup) :
-        RecyclerView.ViewHolder(parent.inflate(R.layout.item_add_pair_market)) {
+        RecyclerView.ViewHolder(parent.inflate(R.layout.item_add_pair_base)) {
 
 //        fun bindAll(item: CurrencyListItem, listener: Listener) {
 //            currencyTextView.text = String.format("%s", item.currency.name)
