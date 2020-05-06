@@ -3,6 +3,8 @@ package com.sedsoftware.screens.market.store
 import com.arkivanov.mvikotlin.core.store.Store
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
+import com.sedsoftware.core.domain.utils.emptyCurrency
+import com.sedsoftware.core.domain.utils.emptyExchange
 import com.sedsoftware.screens.market.store.MarketStore.Intent
 import com.sedsoftware.screens.market.store.MarketStore.Label
 import com.sedsoftware.screens.market.store.MarketStore.State
@@ -21,13 +23,13 @@ interface MarketStore : Store<Intent, State, Label> {
     }
 
     data class State(
-        val baseCurrencies: List<Currency>,
-        val selectedBaseCurrency: Currency,
-        val marketCurrencies: List<Currency>,
-        val selectedMarketCurrency: Currency,
-        val exchanges: List<Exchange>,
-        val selectedExchange: Exchange,
-        val isPairSelectionActive: Boolean
+        val baseCurrencies: List<Currency> = emptyList(),
+        val selectedBaseCurrency: Currency = emptyCurrency(),
+        val marketCurrencies: List<Currency> = emptyList(),
+        val selectedMarketCurrency: Currency = emptyCurrency(),
+        val exchanges: List<Exchange> = emptyList(),
+        val selectedExchange: Exchange = emptyExchange(),
+        val isPairSelectionActive: Boolean = false
     )
 
     sealed class Action {
@@ -44,5 +46,9 @@ interface MarketStore : Store<Intent, State, Label> {
         data class ExchangesListReady(val exchanges: List<Exchange>) : Result()
         data class BaseCurrenciesListReady(val currencies: List<Currency>) : Result()
         data class MarketCurrenciesListReady(val currencies: List<Currency>) : Result()
+        data class BaseCurrencySelected(val currencies: List<Currency>) : Result()
+        data class MarketCurrencySelected(val currencies: List<Currency>) : Result()
+        object PairSelectionDisplayed : Result()
+        object PairSelectionClosed : Result()
     }
 }
