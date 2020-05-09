@@ -4,6 +4,7 @@ import com.sedsoftware.core.domain.errorhandler.CanShowError
 import com.sedsoftware.core.domain.errorhandler.ErrorHandler
 import com.sedsoftware.core.domain.exception.CurrencyMapLoadingError
 import com.sedsoftware.core.domain.exception.CurrencyPairsLoadingError
+import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
 import com.sedsoftware.core.domain.exception.NetworkConnectionMissing
 import com.sedsoftware.core.domain.tools.ResourceManager
 import com.sedsoftware.core.tools.impl.R
@@ -21,6 +22,7 @@ class DefaultErrorHandler @Inject constructor(
             is NetworkConnectionMissing -> string(R.string.msg_no_internet_connection)
             is CurrencyMapLoadingError -> string(R.string.msg_currency_loading_error)
             is CurrencyPairsLoadingError -> string(R.string.msg_currency_pairs_loading_error)
+            is MarketPairsLoadingError -> string(R.string.msg_market_pairs_loading_error)
             else -> String.format(string(R.string.msg_unknown_error), error.message)
         }
 

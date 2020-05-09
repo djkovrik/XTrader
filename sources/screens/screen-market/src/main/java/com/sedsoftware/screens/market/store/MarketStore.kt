@@ -12,11 +12,9 @@ import com.sedsoftware.screens.market.store.MarketStore.State
 interface MarketStore : Store<Intent, State, Label> {
 
     sealed class Intent {
-        data class SetBaseCurrencies(val currencies: List<Currency>) : Intent()
-        data class SelectBaseCurrency(val currency: Currency) : Intent()
-        data class SetMarketCurrencies(val currencies: List<Currency>) : Intent()
-        data class SelectMarketCurrency(val currency: Currency) : Intent()
         data class SelectExchange(val exchange: Exchange) : Intent()
+        data class SelectBaseCurrency(val currency: Currency) : Intent()
+        data class SelectMarketCurrency(val currency: Currency) : Intent()
         data class SaveSelectedPair(val base: Currency, val market: Currency, val exchange: Exchange) : Intent()
         object ShowPairSelection : Intent()
         object HidePairSelection : Intent()
@@ -33,12 +31,7 @@ interface MarketStore : Store<Intent, State, Label> {
     )
 
     sealed class Action {
-        data class CreateExchangesList(val exchanges: List<Exchange>): Action()
-        data class HighlightExchange(val exchange: Exchange): Action()
-        object FetchBaseCurrencies : Action()
-        data class HighlightBaseCurrency(val currency: Currency): Action()
-        data class FetchMarketCurrencies(val baseCurrency: Currency) : Action()
-        data class HighlightMarketCurrency(val currency: Currency): Action()
+        data class CreateCurrencyLists(val exchanges: List<Exchange>): Action()
     }
 
     sealed class Label {
@@ -47,10 +40,11 @@ interface MarketStore : Store<Intent, State, Label> {
 
     sealed class Result {
         data class ExchangesListReady(val exchanges: List<Exchange>) : Result()
+        data class ExchangeSelected(val exchange: Exchange) : Result()
         data class BaseCurrenciesListReady(val currencies: List<Currency>) : Result()
+        data class BaseCurrencySelected(val currency: Currency) : Result()
         data class MarketCurrenciesListReady(val currencies: List<Currency>) : Result()
-        data class BaseCurrencySelected(val currencies: List<Currency>) : Result()
-        data class MarketCurrencySelected(val currencies: List<Currency>) : Result()
+        data class MarketCurrencySelected(val currency: Currency) : Result()
         object PairSelectionDisplayed : Result()
         object PairSelectionClosed : Result()
     }

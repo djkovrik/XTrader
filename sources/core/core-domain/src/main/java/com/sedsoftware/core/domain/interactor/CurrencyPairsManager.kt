@@ -1,6 +1,7 @@
 package com.sedsoftware.core.domain.interactor
 
 import com.sedsoftware.core.domain.entity.Currency
+import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
 import com.sedsoftware.core.domain.repository.PairsManagerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,15 +15,23 @@ interface CurrencyPairsManager {
     }
 
     suspend fun getBaseCurrencies(): List<Currency> = withContext(Dispatchers.IO) {
-        repository
-            .getBaseCurrencies()
-            .sortedBy { it.name }
-            .distinctBy { it.name }
+        try {
+            repository
+                .getBaseCurrencies()
+                .sortedBy { it.name }
+                .distinctBy { it.name }
+        } catch (throwable: Throwable) {
+            throw MarketPairsLoadingError(throwable)
+        }
     }
 
     suspend fun getMarketCurrencies(base: Currency): List<Currency> = withContext(Dispatchers.IO) {
-        repository
-            .getMarketCurrencies(base)
-            .sortedBy { it.name }
+        try {
+            repository
+                .getMarketCurrencies(base)
+                .sortedBy { it.name }
+        } catch (throwable: Throwable) {
+            throw MarketPairsLoadingError(throwable)
+        }
     }
 }
