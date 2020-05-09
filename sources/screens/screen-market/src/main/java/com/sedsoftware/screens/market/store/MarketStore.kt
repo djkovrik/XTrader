@@ -12,12 +12,12 @@ import com.sedsoftware.screens.market.store.MarketStore.State
 interface MarketStore : Store<Intent, State, Label> {
 
     sealed class Intent {
-        data class SetBaseCurrencies(val currencies: List<Currency>)
+        data class SetBaseCurrencies(val currencies: List<Currency>) : Intent()
         data class SelectBaseCurrency(val currency: Currency) : Intent()
-        data class SetMarketCurrencies(val currencies: List<Currency>)
+        data class SetMarketCurrencies(val currencies: List<Currency>) : Intent()
         data class SelectMarketCurrency(val currency: Currency) : Intent()
         data class SelectExchange(val exchange: Exchange) : Intent()
-        data class SaveSelectedPair(val base: Currency, val market: Currency, val exchange: Exchange)
+        data class SaveSelectedPair(val base: Currency, val market: Currency, val exchange: Exchange) : Intent()
         object ShowPairSelection : Intent()
         object HidePairSelection : Intent()
     }
@@ -33,9 +33,12 @@ interface MarketStore : Store<Intent, State, Label> {
     )
 
     sealed class Action {
-        object CreateExchangesList: Action()
+        data class CreateExchangesList(val exchanges: List<Exchange>): Action()
+        data class HighlightExchange(val exchange: Exchange): Action()
         object FetchBaseCurrencies : Action()
+        data class HighlightBaseCurrency(val currency: Currency): Action()
         data class FetchMarketCurrencies(val baseCurrency: Currency) : Action()
+        data class HighlightMarketCurrency(val currency: Currency): Action()
     }
 
     sealed class Label {

@@ -7,3 +7,5 @@ fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toIn
 fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 fun Int?.orZero(): Int = this ?: 0
+
+fun Boolean?.orFalse(): Boolean = this ?: false

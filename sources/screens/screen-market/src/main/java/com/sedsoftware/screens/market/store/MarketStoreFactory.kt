@@ -7,6 +7,7 @@ import com.arkivanov.mvikotlin.extensions.coroutines.SuspendBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
+import com.sedsoftware.core.presentation.extension.orFalse
 import com.sedsoftware.screens.market.store.MarketStore.Action
 import com.sedsoftware.screens.market.store.MarketStore.Intent
 import com.sedsoftware.screens.market.store.MarketStore.Label
@@ -42,17 +43,74 @@ class MarketStoreFactory(
 
     private inner class MarketBootstrapper : SuspendBootstrapper<Action>() {
         override suspend fun bootstrap() {
+            val exchanges = mutableListOf<Exchange>()
 
+            managers.keys.forEach { exchange ->
+                val isAvailable = managers[exchange]?.checkIfDataAvailable().orFalse()
+                if (isAvailable) {
+                    exchanges.add(exchange)
+                }
+            }
+
+            if (exchanges.isEmpty()) return
+
+            dispatch(Action.CreateExchangesList(exchanges))
+
+            val defaultExchange = exchanges.first()
+            dispatch(Action.HighlightExchange(defaultExchange))
+
+            managers[defaultExchange]?.let { manager ->
+                val baseCurrencies = manager.getBaseCurrencies()
+                if (baseCurrencies.isEmpty()) return@let
+
+                val defaultBaseCurrency = baseCurrencies.first()
+                dispatch(Action.HighlightBaseCurrency(defaultBaseCurrency))
+
+                val marketCurrencies = manager.getMarketCurrencies(defaultBaseCurrency)
+                if (marketCurrencies.isEmpty()) return
+
+                dispatch(Action.HighlightMarketCurrency(marketCurrencies.first()))
+            }
         }
     }
 
     private inner class MarketExecutor : SuspendExecutor<Intent, Action, State, Result, Label>() {
         override suspend fun executeAction(action: Action, getState: () -> State) {
-            super.executeAction(action, getState)
+            when (action) {
+                is Action.CreateExchangesList -> {
+                }
+                is Action.HighlightExchange -> {
+                }
+                is Action.FetchBaseCurrencies -> {
+                }
+                is Action.HighlightBaseCurrency -> {
+                }
+                is Action.FetchMarketCurrencies -> {
+                }
+                is Action.HighlightMarketCurrency -> {
+                }
+            }
         }
 
         override suspend fun executeIntent(intent: Intent, getState: () -> State) {
-            super.executeIntent(intent, getState)
+            when (intent) {
+                is Intent.SetBaseCurrencies -> {
+                }
+                is Intent.SelectBaseCurrency -> {
+                }
+                is Intent.SetMarketCurrencies -> {
+                }
+                is Intent.SelectMarketCurrency -> {
+                }
+                is Intent.SelectExchange -> {
+                }
+                is Intent.SaveSelectedPair -> {
+                }
+                is Intent.ShowPairSelection -> {
+                }
+                is Intent.HidePairSelection -> {
+                }
+            }
         }
     }
 }
