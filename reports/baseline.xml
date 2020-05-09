@@ -22,6 +22,7 @@
     <ID>ReturnCount:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
     <ID>TooGenericExceptionCaught:CurrencyMapLoader.kt$CurrencyMapLoader$exception: Throwable</ID>
     <ID>TooGenericExceptionCaught:CurrencyPairsLoader.kt$CurrencyPairsLoader$exception: Throwable</ID>
+    <ID>TooGenericExceptionCaught:CurrencyPairsManager.kt$CurrencyPairsManager$throwable: Throwable</ID>
     <ID>TooGenericExceptionCaught:IntroBaseStoreFactory.kt$IntroBaseStoreFactory.IntroBaseExecutor$throwable: Throwable</ID>
     <ID>TooGenericExceptionCaught:IntroExchangesStoreFactory.kt$IntroExchangesStoreFactory.IntroExchangesExecutor$throwable: Throwable</ID>
     <ID>TooManyFunctions:Sprite.kt$Sprite$Sprite</ID>

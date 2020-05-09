@@ -1,12 +1,13 @@
 package com.sedsoftware.screens.market.store
 
 import com.arkivanov.mvikotlin.core.store.Reducer
+import com.arkivanov.mvikotlin.core.store.SimpleBootstrapper
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
-import com.arkivanov.mvikotlin.extensions.coroutines.SuspendBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
+import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.core.presentation.extension.orFalse
 import com.sedsoftware.screens.market.store.MarketStore.Action
@@ -25,7 +26,7 @@ class MarketStoreFactory(
             name = "MarketStore",
             initialState = State(),
             executorFactory = ::MarketExecutor,
-            bootstrapper = MarketBootstrapper(),
+            bootstrapper = SimpleBootstrapper(Action.FetchInitialData),
             reducer = MarketReducer
         ) {}
 
@@ -43,29 +44,23 @@ class MarketStoreFactory(
             }
     }
 
-    private inner class MarketBootstrapper : SuspendBootstrapper<Action>() {
-        override suspend fun bootstrap() {
-            val exchanges = mutableListOf<Exchange>()
-
-            managers.keys.forEach { exchange ->
-                val isAvailable = managers[exchange]?.checkIfDataAvailable().orFalse()
-                if (isAvailable) {
-                    exchanges.add(exchange)
-                }
-            }
-
-            if (exchanges.isEmpty()) return
-
-            dispatch(Action.CreateCurrencyLists(exchanges))
-        }
-    }
-
     private inner class MarketExecutor : SuspendExecutor<Intent, Action, State, Result, Label>() {
         override suspend fun executeAction(action: Action, getState: () -> State) {
             when (action) {
-                is Action.CreateCurrencyLists -> {
+                is Action.FetchInitialData -> {
                     try {
-                        val defaultExchange = action.exchanges.first()
+                        val exchanges = mutableListOf<Exchange>()
+
+                        managers.keys.forEach { exchange ->
+                            val isAvailable = managers[exchange]?.checkIfDataAvailable().orFalse()
+                            if (isAvailable) {
+                                exchanges.add(exchange)
+                            }
+                        }
+
+                        if (exchanges.isEmpty()) return
+
+                        val defaultExchange = exchanges.first()
                         dispatch(Result.ExchangeSelected(defaultExchange))
 
                         managers[defaultExchange]?.let { manager ->
@@ -81,8 +76,8 @@ class MarketStoreFactory(
                             dispatch(Result.MarketCurrenciesListReady(marketCurrencies))
                             dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
                         }
-                    } catch (throwable: Throwable) {
-                        publish(Label.ErrorCaught(throwable))
+                    } catch (exception: MarketPairsLoadingError) {
+                        publish(Label.ErrorCaught(exception))
                     }
                 }
             }
@@ -100,7 +95,7 @@ class MarketStoreFactory(
         }
 
         private suspend fun saveSelectedPair(base: Currency, market: Currency, exchange: Exchange) {
-
+            TODO()
         }
     }
 }

@@ -31,7 +31,7 @@ interface MarketStore : Store<Intent, State, Label> {
     )
 
     sealed class Action {
-        data class CreateCurrencyLists(val exchanges: List<Exchange>): Action()
+        object FetchInitialData : Action()
     }
 
     sealed class Label {
