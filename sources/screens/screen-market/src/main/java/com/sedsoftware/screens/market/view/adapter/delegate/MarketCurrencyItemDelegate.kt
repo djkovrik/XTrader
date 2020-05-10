@@ -7,7 +7,7 @@ import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.sedsoftware.core.presentation.extension.inflate
 import com.sedsoftware.screens.market.R
 import com.sedsoftware.screens.market.view.adapter.CurrencyListAdapter.Listener
-import com.sedsoftware.screens.market.store.model.CurrencyListItem
+import com.sedsoftware.screens.market.view.model.CurrencyListItem
 
 class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterDelegate<List<CurrencyListItem>>() {
 

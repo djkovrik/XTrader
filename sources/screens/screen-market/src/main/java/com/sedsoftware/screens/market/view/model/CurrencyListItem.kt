@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.market.store.model
+package com.sedsoftware.screens.market.view.model
 
 import com.sedsoftware.core.domain.entity.Currency
 

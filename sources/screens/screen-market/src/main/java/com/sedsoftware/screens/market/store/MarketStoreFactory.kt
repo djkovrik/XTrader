@@ -5,7 +5,6 @@ import com.arkivanov.mvikotlin.core.store.SimpleBootstrapper
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
-import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
@@ -88,13 +87,13 @@ class MarketStoreFactory(
                 is Intent.SelectExchange -> dispatch(Result.ExchangeSelected(intent.exchange))
                 is Intent.SelectBaseCurrency -> dispatch(Result.BaseCurrencySelected(intent.currency))
                 is Intent.SelectMarketCurrency -> dispatch(Result.MarketCurrencySelected(intent.currency))
-                is Intent.SaveSelectedPair -> saveSelectedPair(intent.base, intent.market, intent.exchange)
+                is Intent.SaveCurrentPair -> saveSelectedPair(getState())
                 is Intent.ShowPairSelection -> dispatch(Result.PairSelectionDisplayed)
                 is Intent.HidePairSelection -> dispatch(Result.PairSelectionClosed)
             }
         }
 
-        private suspend fun saveSelectedPair(base: Currency, market: Currency, exchange: Exchange) {
+        private suspend fun saveSelectedPair(state: State) {
             TODO()
         }
     }

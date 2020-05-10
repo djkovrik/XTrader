@@ -3,7 +3,7 @@ package com.sedsoftware.screens.market.view.adapter
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.sedsoftware.screens.market.view.adapter.delegate.BaseCurrencyItemDelegate
 import com.sedsoftware.screens.market.view.adapter.delegate.MarketCurrencyItemDelegate
-import com.sedsoftware.screens.market.store.model.CurrencyListItem
+import com.sedsoftware.screens.market.view.model.CurrencyListItem
 
 class CurrencyListAdapter(
     clickListener: Listener

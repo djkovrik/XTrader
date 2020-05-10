@@ -15,18 +15,18 @@ interface MarketStore : Store<Intent, State, Label> {
         data class SelectExchange(val exchange: Exchange) : Intent()
         data class SelectBaseCurrency(val currency: Currency) : Intent()
         data class SelectMarketCurrency(val currency: Currency) : Intent()
-        data class SaveSelectedPair(val base: Currency, val market: Currency, val exchange: Exchange) : Intent()
+        object SaveCurrentPair : Intent()
         object ShowPairSelection : Intent()
         object HidePairSelection : Intent()
     }
 
     data class State(
+        val exchanges: List<Exchange> = emptyList(),
+        val selectedExchange: Exchange = emptyExchange(),
         val baseCurrencies: List<Currency> = emptyList(),
         val selectedBaseCurrency: Currency = emptyCurrency(),
         val marketCurrencies: List<Currency> = emptyList(),
         val selectedMarketCurrency: Currency = emptyCurrency(),
-        val exchanges: List<Exchange> = emptyList(),
-        val selectedExchange: Exchange = emptyExchange(),
         val isPairSelectionActive: Boolean = false
     )
 
