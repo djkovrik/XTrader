@@ -8,6 +8,9 @@ import dagger.Component
 @Component(
     dependencies = [
         ActivityToolsProvider::class
+    ],
+    modules = [
+        MarketScreenModule::class
     ]
 )
 @ScreenScope
