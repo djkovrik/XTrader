@@ -7,10 +7,12 @@ import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.core.presentation.event.OneTimeEvent
 import com.sedsoftware.screens.market.store.MarketStore
 import com.sedsoftware.screens.market.store.MarketStoreFactory
+import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 
+@Module
 class MarketScreenModule {
 
     @Provides
