@@ -42,11 +42,11 @@ private fun setAnimation(itemView: View, position: Int) {
     }
 }
 
-private fun mapDownloadState(state: DownloadState): DownloadButton.State =
+private fun mapDownloadState(state: DownloadState): DownloadButton.ButtonState =
     when (state) {
-        DownloadState.AVAILABLE -> DownloadButton.State.AVAILABLE
-        DownloadState.IN_PROGRESS -> DownloadButton.State.IN_PROGRESS
-        DownloadState.COMPLETED -> DownloadButton.State.COMPLETED
-        DownloadState.ERROR -> DownloadButton.State.ERROR
+        DownloadState.AVAILABLE -> DownloadButton.ButtonState.AVAILABLE
+        DownloadState.IN_PROGRESS -> DownloadButton.ButtonState.IN_PROGRESS
+        DownloadState.COMPLETED -> DownloadButton.ButtonState.COMPLETED
+        DownloadState.ERROR -> DownloadButton.ButtonState.ERROR
     }
 

@@ -11,7 +11,7 @@ import com.sedsoftware.core.presentation.databinding.ViewDownloadButtonBinding
 
 class DownloadButton : FrameLayout {
 
-    enum class State { AVAILABLE, IN_PROGRESS, COMPLETED, ERROR }
+    enum class ButtonState { AVAILABLE, IN_PROGRESS, COMPLETED, ERROR }
 
     constructor(context: Context) : super(context) {
         init()
@@ -32,9 +32,9 @@ class DownloadButton : FrameLayout {
     private val binding: ViewDownloadButtonBinding get() = _binding!!
     private var _binding: ViewDownloadButtonBinding? = null
 
-    private lateinit var views: Map<State, View>
+    private lateinit var views: Map<ButtonState, View>
 
-    private var currentState: State? = null
+    private var currentButtonState: ButtonState? = null
     private var textAvailable: String? = null
     private var textInProgress: String? = null
     private var textCompleted: String? = null
@@ -76,16 +76,16 @@ class DownloadButton : FrameLayout {
         }
 
         views = mapOf(
-            State.AVAILABLE to binding.button,
-            State.IN_PROGRESS to binding.progress,
-            State.COMPLETED to binding.completed,
-            State.ERROR to binding.error
+            ButtonState.AVAILABLE to binding.button,
+            ButtonState.IN_PROGRESS to binding.progress,
+            ButtonState.COMPLETED to binding.completed,
+            ButtonState.ERROR to binding.error
         )
     }
 
-    fun setState(newState: State) {
-        currentState?.let { views[it]?.visibility = View.INVISIBLE }
-        views[newState]?.visibility = View.VISIBLE
-        currentState = newState
+    fun setState(newButtonState: ButtonState) {
+        currentButtonState?.let { views[it]?.visibility = View.INVISIBLE }
+        views[newButtonState]?.visibility = View.VISIBLE
+        currentButtonState = newButtonState
     }
 }
