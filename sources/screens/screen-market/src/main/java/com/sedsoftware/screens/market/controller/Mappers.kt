@@ -1,6 +1,6 @@
 package com.sedsoftware.screens.market.controller
 
-import com.sedsoftware.core.presentation.event.OneTimeEvent
+import com.sedsoftware.screens.market.MarketEvent
 import com.sedsoftware.screens.market.store.MarketStore
 import com.sedsoftware.screens.market.view.MarketView
 import com.sedsoftware.screens.market.view.model.CurrencyListItem
@@ -47,7 +47,7 @@ internal fun MarketStore.State.toViewModel(): MarketView.ViewModel {
     )
 }
 
-internal fun MarketStore.Label.toEvent(): OneTimeEvent =
+internal fun MarketStore.Label.toEvent(): MarketEvent =
     when (this) {
-        is MarketStore.Label.ErrorCaught -> OneTimeEvent.HandleError(throwable)
+        is MarketStore.Label.ErrorCaught -> MarketEvent.HandleError(throwable)
     }

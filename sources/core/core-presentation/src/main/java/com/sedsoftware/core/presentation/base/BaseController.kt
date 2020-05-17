@@ -12,21 +12,20 @@ import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import com.sedsoftware.core.domain.errorhandler.CanShowError
 import com.sedsoftware.core.domain.errorhandler.ErrorHandler
-import com.sedsoftware.core.presentation.event.OneTimeEvent
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 
-interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any, ViewEvent : Any> {
+interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any, FeatureEvent : Any, ViewEvent : Any> {
 
     val store: Store<Intent, State, Label>
-    val eventBus: BroadcastChannel<OneTimeEvent>
+    val eventBus: BroadcastChannel<FeatureEvent>
     val errorHandler: ErrorHandler
 
     val stateToViewModel: (State) -> ViewModel
     val viewEventToIntent: (ViewEvent) -> Intent
-    val labelToEvent: (Label) -> OneTimeEvent
+    val labelToEvent: (Label) -> FeatureEvent
 
     fun onViewCreated(view: MviView<ViewModel, ViewEvent>, lifecycle: Lifecycle, errorHandlerView: CanShowError) {
         bind(lifecycle, BinderLifecycleMode.START_STOP) {
@@ -36,7 +35,7 @@ interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any
         bind(lifecycle, BinderLifecycleMode.CREATE_DESTROY) {
             view.events.map { viewEventToIntent(it) } bindTo store
             store.labels.map { labelToEvent(it) } bindTo { eventBus.send(it) }
-            eventBus.asFlow().filterNotNull() bindTo { consumeEvent(it) }
+            eventBus.asFlow().filterNotNull() bindTo { consumeFeatureEvent(it) }
         }
 
         lifecycle.doOnResumePause(
@@ -49,9 +48,5 @@ interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any
         }
     }
 
-    private fun consumeEvent(event: OneTimeEvent) {
-        when (event) {
-            is OneTimeEvent.HandleError -> errorHandler.consume(event.throwable)
-        }
-    }
+    fun consumeFeatureEvent(event: FeatureEvent)
 }

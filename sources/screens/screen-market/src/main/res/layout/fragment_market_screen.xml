@@ -67,6 +67,7 @@
         android:visibility="gone" />
 
     <include
+        android:id="@+id/includedLayout"
         layout="@layout/include_add_pair"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

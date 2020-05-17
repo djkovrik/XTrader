@@ -4,7 +4,7 @@ import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
-import com.sedsoftware.core.presentation.event.OneTimeEvent
+import com.sedsoftware.screens.market.MarketEvent
 import com.sedsoftware.screens.market.store.MarketStore
 import com.sedsoftware.screens.market.store.MarketStoreFactory
 import dagger.Module
@@ -24,6 +24,6 @@ class MarketScreenModule {
 
     @Provides
     @ScreenScope
-    fun provideEventBus(): BroadcastChannel<OneTimeEvent> =
+    fun provideEventBus(): BroadcastChannel<MarketEvent> =
         BroadcastChannel(Channel.BUFFERED)
 }

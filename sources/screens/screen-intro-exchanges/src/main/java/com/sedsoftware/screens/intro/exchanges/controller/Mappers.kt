@@ -1,6 +1,6 @@
 package com.sedsoftware.screens.intro.exchanges.controller
 
-import com.sedsoftware.core.presentation.event.OneTimeEvent
+import com.sedsoftware.screens.intro.exchanges.IntroExchangesEvent
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore
 import com.sedsoftware.screens.intro.exchanges.store.model.DownloadState
 import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesView
@@ -18,7 +18,7 @@ internal fun IntroExchangesStore.State.toViewModel(): IntroExchangesView.ViewMod
     return IntroExchangesView.ViewModel(listItems = exchanges, isDoneButtonAvailable = canNavigateFurther)
 }
 
-internal fun IntroExchangesStore.Label.toEvent(): OneTimeEvent =
+internal fun IntroExchangesStore.Label.toEvent(): IntroExchangesEvent =
     when (this) {
-        is IntroExchangesStore.Label.ErrorCaught -> OneTimeEvent.HandleError(throwable)
+        is IntroExchangesStore.Label.ErrorCaught -> IntroExchangesEvent.HandleError(throwable)
     }

@@ -1,6 +1,6 @@
 package com.sedsoftware.screens.intro.base.controller
 
-import com.sedsoftware.core.presentation.event.OneTimeEvent
+import com.sedsoftware.screens.intro.base.IntroBaseEvent
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
 import com.sedsoftware.screens.intro.base.view.IntroBaseView
@@ -38,7 +38,7 @@ internal fun IntroBaseStore.State.toViewModel(): IntroBaseView.ViewModel =
         )
     }
 
-internal fun IntroBaseStore.Label.toEvent(): OneTimeEvent =
+internal fun IntroBaseStore.Label.toEvent(): IntroBaseEvent =
     when (this) {
-        is IntroBaseStore.Label.ErrorCaught -> OneTimeEvent.HandleError(throwable)
+        is IntroBaseStore.Label.ErrorCaught -> IntroBaseEvent.HandleError(throwable)
     }

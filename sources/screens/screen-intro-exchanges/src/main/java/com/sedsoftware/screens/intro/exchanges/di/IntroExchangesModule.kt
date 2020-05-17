@@ -5,7 +5,7 @@ import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
 import com.sedsoftware.core.domain.navigation.FlowSwitcher
-import com.sedsoftware.core.presentation.event.OneTimeEvent
+import com.sedsoftware.screens.intro.exchanges.IntroExchangesEvent
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStoreFactory
 import dagger.Module
@@ -26,6 +26,6 @@ class IntroExchangesModule {
 
     @Provides
     @ScreenScope
-    fun provideEventBus(): BroadcastChannel<OneTimeEvent> =
+    fun provideEventBus(): BroadcastChannel<IntroExchangesEvent> =
         BroadcastChannel(Channel.BUFFERED)
 }
