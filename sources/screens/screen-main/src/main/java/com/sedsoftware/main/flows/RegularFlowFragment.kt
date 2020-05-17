@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.domain.tools.CiceroneManager
+import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.base.BaseTabFragment
-import com.sedsoftware.core.presentation.base.FlowFragment
 import com.sedsoftware.core.presentation.viewbinding.viewBinding
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.di.MainActivityComponent
@@ -22,7 +22,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class RegularFlowFragment : FlowFragment(R.layout.fragment_flow_regular), HasInject {
+class RegularFlowFragment : BaseFragment(R.layout.fragment_flow_regular), HasInject {
 
     companion object {
         fun newInstance(): RegularFlowFragment = RegularFlowFragment()
@@ -38,9 +38,7 @@ class RegularFlowFragment : FlowFragment(R.layout.fragment_flow_regular), HasInj
 
     private val binding: FragmentFlowRegularBinding by viewBinding()
 
-    override val launchScreen: SupportAppScreen = Screens.MarketTabContainer
-
-    override val navigator: Navigator by lazy {
+    private val navigator: Navigator by lazy {
         object : SupportAppNavigator(requireActivity(), childFragmentManager, R.id.regularFlowContainer) {
             override fun activityBack() {
                 router.exit()
@@ -82,6 +80,7 @@ class RegularFlowFragment : FlowFragment(R.layout.fragment_flow_regular), HasInj
                 R.id.navigation_tools -> selectTab(toolsTab)
                 else -> selectTab(marketTab)
             }
+            true
         }
 
         if (savedInstanceState == null) {
@@ -105,11 +104,11 @@ class RegularFlowFragment : FlowFragment(R.layout.fragment_flow_regular), HasInj
             .inject(this)
     }
 
-    private fun selectTab(tab: SupportAppScreen): Boolean {
+    private fun selectTab(tab: SupportAppScreen) {
         val currentFragment = currentTabFragment
         val newFragment = childFragmentManager.findFragmentByTag(tab.screenKey)
 
-        if (currentFragment != null && newFragment != null && currentFragment == newFragment) return false
+        if (currentFragment != null && newFragment != null && currentFragment == newFragment) return
 
         childFragmentManager.beginTransaction()
             .apply {
@@ -120,7 +119,5 @@ class RegularFlowFragment : FlowFragment(R.layout.fragment_flow_regular), HasInj
                 currentFragment?.let { hide(it) }
                 newFragment?.let { show(it) }
             }.commitNow()
-
-        return true
     }
 }

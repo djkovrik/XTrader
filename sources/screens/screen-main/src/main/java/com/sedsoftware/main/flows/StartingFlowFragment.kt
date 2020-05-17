@@ -1,11 +1,13 @@
 package com.sedsoftware.main.flows
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.domain.tools.CiceroneManager
-import com.sedsoftware.core.presentation.base.FlowFragment
+import com.sedsoftware.core.presentation.base.BaseFragment
+import com.sedsoftware.core.presentation.extension.setLaunchScreen
 import com.sedsoftware.main.Screens
 import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
@@ -13,19 +15,16 @@ import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
-import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class StartingFlowFragment : FlowFragment(R.layout.layout_container), HasInject {
+class StartingFlowFragment : BaseFragment(R.layout.layout_container), HasInject {
 
     companion object {
         fun newInstance(): StartingFlowFragment = StartingFlowFragment()
     }
 
-    override val launchScreen: SupportAppScreen = Screens.IntroBase
-
-    override val navigator: Navigator by lazy {
+    private val navigator: Navigator by lazy {
         object : SupportAppNavigator(requireActivity(), childFragmentManager, R.id.container) {
             override fun activityBack() {
                 router.exit()
@@ -51,6 +50,16 @@ class StartingFlowFragment : FlowFragment(R.layout.layout_container), HasInject 
 
     private val navigatorHolder: NavigatorHolder by lazy {
         ciceroneManager.getNavigatorHolder(AppFlow.STARTING)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (childFragmentManager.fragments.isEmpty()) {
+            // TODO чекать ланчскрин когда будет пин
+            val launchScreen = Screens.IntroBase
+            navigator.setLaunchScreen(launchScreen)
+        }
     }
 
     override fun onResume() {
