@@ -15,6 +15,7 @@ import android.view.animation.Interpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -39,6 +40,7 @@ import com.sedsoftware.screens.market.view.model.ExchangeListItem
 
 class MarketViewImpl(
     private val context: Context,
+    private val onBackPressedCallback: OnBackPressedCallback,
     private val display: Display,
     viewBinding: FragmentMarketScreenBinding
 ) : BaseMviView<ViewModel, ViewEvent>(), MarketView {
@@ -156,6 +158,7 @@ class MarketViewImpl(
     private fun showPairSelectionView(show: Boolean) {
         if (isPairSelectionExpanded != show) {
             dispatch(ViewEvent.ShowPairSelectionView(show))
+            onBackPressedCallback.isEnabled = show
             changeAddPairViewExpandState()
         }
     }

@@ -3,6 +3,7 @@ package com.sedsoftware.screens.market.view
 import android.os.Bundle
 import android.view.Display
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import com.arkivanov.mvikotlin.androidxlifecycleinterop.asMviLifecycle
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.management.DaggerComponentManager
@@ -25,6 +26,12 @@ class MarketScreenFragment :
 
     private val binding: FragmentMarketScreenBinding by viewBinding()
 
+    private val onBackPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            controller.onBackPressed()
+        }
+    }
+
     @Inject
     lateinit var defaultDisplay: Display
 
@@ -35,14 +42,21 @@ class MarketScreenFragment :
         super.onViewCreated(view, savedInstanceState)
 
         controller.onViewCreated(
-            view = MarketViewImpl(requireContext(), defaultDisplay, binding),
+            view = MarketViewImpl(requireContext(), onBackPressedCallback, defaultDisplay, binding),
             lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
             errorHandlerView = this
         )
     }
 
-    override fun onBackPressed(): Boolean =
-        controller.onBackPressed()
+    override fun onStart() {
+        super.onStart()
+        requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        onBackPressedCallback.remove()
+    }
 
     override fun getComponent(): MarketScreenComponent {
         val activityTools = DaggerComponentManager.get<ActivityToolsProvider>()

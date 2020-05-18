@@ -28,12 +28,9 @@ class MarketController @Inject constructor(
         }
     }
 
-    fun onBackPressed(): Boolean {
+    fun onBackPressed() {
         if (store.state.isPairSelectionActive) {
             store.accept(Intent.ChangePairSelectionState(false))
-            return true
         }
-
-        return false
     }
 }
