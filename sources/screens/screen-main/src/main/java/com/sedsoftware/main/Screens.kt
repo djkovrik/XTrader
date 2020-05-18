@@ -11,7 +11,7 @@ import com.sedsoftware.main.tabs.WalletTabContainerFragment
 import com.sedsoftware.screens.intro.base.view.IntroBaseFragment
 import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesFragment
 import com.sedsoftware.screens.intro.pin.PinScreenFragment
-import com.sedsoftware.screens.market.MarketScreenFragment
+import com.sedsoftware.screens.market.view.MarketScreenFragment
 import com.sedsoftware.screens.orders.OrdersScreenFragment
 import com.sedsoftware.screens.tools.ToolsScreenFragment
 import com.sedsoftware.screens.tracker.TrackerScreenFragment

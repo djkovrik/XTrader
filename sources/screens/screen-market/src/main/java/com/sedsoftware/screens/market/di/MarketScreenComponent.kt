@@ -2,7 +2,7 @@ package com.sedsoftware.screens.market.di
 
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.scope.ScreenScope
-import com.sedsoftware.screens.market.MarketScreenFragment
+import com.sedsoftware.screens.market.view.MarketScreenFragment
 import dagger.Component
 
 @Component(

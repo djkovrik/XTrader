@@ -11,7 +11,10 @@ dependencies {
     implementation project(':core-presentation')
 
     implementation "com.hannesdorfmann:adapterdelegates4:$versions.adapterDelegates"
+    implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$versions.adapterDelegates"
+
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
+
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 

@@ -1,8 +1,8 @@
 package com.sedsoftware.screens.market.view.adapter
 
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
-import com.sedsoftware.screens.market.view.adapter.delegate.BaseCurrencyItemDelegate
-import com.sedsoftware.screens.market.view.adapter.delegate.MarketCurrencyItemDelegate
+import com.sedsoftware.screens.market.view.adapter.delegate.baseCurrencyItemDelegate
+import com.sedsoftware.screens.market.view.adapter.delegate.marketCurrencyItemDelegate
 import com.sedsoftware.screens.market.view.model.CurrencyListItem
 
 class CurrencyListAdapter(
@@ -13,13 +13,9 @@ class CurrencyListAdapter(
         fun onItemClick(item: CurrencyListItem)
     }
 
-    companion object {
-        const val STATUS_PAYLOAD = 1
-    }
-
     init {
         delegatesManager
-            .addDelegate(BaseCurrencyItemDelegate(clickListener))
-            .addDelegate(MarketCurrencyItemDelegate(clickListener))
+            .addDelegate(baseCurrencyItemDelegate(clickListener))
+            .addDelegate(marketCurrencyItemDelegate(clickListener))
     }
 }

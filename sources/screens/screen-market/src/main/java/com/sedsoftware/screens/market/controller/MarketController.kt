@@ -27,4 +27,13 @@ class MarketController @Inject constructor(
             is MarketEvent.HandleError -> errorHandler.consume(event.throwable)
         }
     }
+
+    fun onBackPressed(): Boolean {
+        if (store.state.isPairSelectionActive) {
+            store.accept(Intent.ChangePairSelectionState(false))
+            return true
+        }
+
+        return false
+    }
 }

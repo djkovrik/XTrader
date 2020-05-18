@@ -14,14 +14,14 @@ interface MarketView : MviView<ViewModel, ViewEvent> {
         val exchanges: List<ExchangeListItem>,
         val baseCurrencies: List<CurrencyListItem>,
         val marketCurrencies: List<CurrencyListItem>,
+        val isFabAvailable: Boolean,
         val isPairSelectionViewActive: Boolean
     )
 
     sealed class ViewEvent {
         data class ExchangeSelected(val exchange: Exchange) : ViewEvent()
         data class BaseCurrencySelected(val currency: Currency) : ViewEvent()
-        object OpenPairPicker : ViewEvent()
-        object ClosePairPicker : ViewEvent()
-        object SaveButtonClicked : ViewEvent()
+        data class MarketCurrencySelected(val currency: Currency) : ViewEvent()
+        data class ShowPairSelectionView(val show: Boolean) : ViewEvent()
     }
 }

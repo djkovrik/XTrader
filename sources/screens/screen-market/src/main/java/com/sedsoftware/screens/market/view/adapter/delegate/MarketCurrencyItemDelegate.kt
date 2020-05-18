@@ -1,46 +1,25 @@
 package com.sedsoftware.screens.market.view.adapter.delegate
 
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
-import com.sedsoftware.core.presentation.extension.inflate
-import com.sedsoftware.screens.market.R
+import androidx.core.view.isVisible
+import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
+import com.sedsoftware.screens.market.databinding.ItemAddPairMarketBinding
 import com.sedsoftware.screens.market.view.adapter.CurrencyListAdapter.Listener
 import com.sedsoftware.screens.market.view.model.CurrencyListItem
 
-class MarketCurrencyItemDelegate(private val clickListener: Listener) : AdapterDelegate<List<CurrencyListItem>>() {
+fun marketCurrencyItemDelegate(clickListener: Listener) =
+    adapterDelegateViewBinding<CurrencyListItem, CurrencyListItem, ItemAddPairMarketBinding>(
+        { layoutInflater, root -> ItemAddPairMarketBinding.inflate(layoutInflater, root, false) }
+    ) {
 
-    override fun onCreateViewHolder(parent: ViewGroup): ItemViewHolder =
-        ItemViewHolder(parent)
+        binding.itemContainer.setOnClickListener {
+            clickListener.onItemClick(item)
+        }
 
-    override fun onBindViewHolder(items: List<CurrencyListItem>, position: Int, holder: ViewHolder, payloads: MutableList<Any>) {
-        holder as ItemViewHolder
-        val item = items[position]
-
-//        if (payloads.isNotEmpty() && payloads[0] == CurrencyListAdapter.STATUS_PAYLOAD) {
-//            holder.bindStatus(item)
-//        } else {
-//            holder.bindAll(item, clickListener)
-//        }
+        bind {
+            with(item) {
+                binding.currencyTextView.text = String.format("%s", item.currency.name)
+                binding.checkedImageView.isVisible = item.isSelected
+                binding.selector.isVisible = item.isSelected
+            }
+        }
     }
-
-    override fun isForViewType(items: List<CurrencyListItem>, position: Int): Boolean =
-        !items[position].isBase
-
-    class ItemViewHolder(parent: ViewGroup) :
-        RecyclerView.ViewHolder(parent.inflate(R.layout.item_add_pair_market)) {
-
-//        fun bindAll(item: CurrencyListItem, listener: Listener) {
-//            currencyTextView.text = String.format("%s", item.currency.name)
-//            itemContainer.setOnClickListener { listener.onItemClick(item) }
-//            checkedImageView.isVisible = item.isSelected
-//            selector.isVisible = item.isSelected
-//        }
-//
-//        fun bindStatus(item: CurrencyListItem) {
-//            checkedImageView.isVisible = item.isSelected
-//            selector.isVisible = item.isSelected
-//        }
-    }
-}

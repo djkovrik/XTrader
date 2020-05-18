@@ -10,9 +10,8 @@ internal fun MarketView.ViewEvent.toIntent(): MarketStore.Intent =
     when (this) {
         is MarketView.ViewEvent.ExchangeSelected -> MarketStore.Intent.SelectExchange(exchange)
         is MarketView.ViewEvent.BaseCurrencySelected -> MarketStore.Intent.SelectBaseCurrency(currency)
-        is MarketView.ViewEvent.OpenPairPicker -> MarketStore.Intent.ShowPairSelection
-        is MarketView.ViewEvent.ClosePairPicker -> MarketStore.Intent.HidePairSelection
-        is MarketView.ViewEvent.SaveButtonClicked -> MarketStore.Intent.SaveCurrentPair
+        is MarketView.ViewEvent.MarketCurrencySelected -> MarketStore.Intent.SelectMarketCurrency(currency)
+        is MarketView.ViewEvent.ShowPairSelectionView -> MarketStore.Intent.ChangePairSelectionState(show)
     }
 
 internal fun MarketStore.State.toViewModel(): MarketView.ViewModel {
@@ -43,6 +42,7 @@ internal fun MarketStore.State.toViewModel(): MarketView.ViewModel {
         exchanges = exchangeList,
         baseCurrencies = baseCurrencyList,
         marketCurrencies = marketCurrencyList,
+        isFabAvailable = baseCurrencyList.isNotEmpty() && marketCurrencyList.isNotEmpty(),
         isPairSelectionViewActive = isPairSelectionActive
     )
 }

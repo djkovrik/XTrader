@@ -5,6 +5,7 @@ import com.arkivanov.mvikotlin.core.store.SimpleBootstrapper
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
+import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
@@ -38,8 +39,7 @@ class MarketStoreFactory(
                 is Result.BaseCurrencySelected -> copy(selectedBaseCurrency = result.currency)
                 is Result.MarketCurrenciesListReady -> copy(marketCurrencies = result.currencies)
                 is Result.MarketCurrencySelected -> copy(selectedMarketCurrency = result.currency)
-                is Result.PairSelectionDisplayed -> copy(isPairSelectionActive = true)
-                is Result.PairSelectionClosed -> copy(isPairSelectionActive = false)
+                is Result.PairSelectionRequested -> copy(isPairSelectionActive = result.show)
             }
     }
 
@@ -59,6 +59,8 @@ class MarketStoreFactory(
 
                         if (exchanges.isEmpty()) return
 
+                        dispatch(Result.ExchangesListReady(exchanges))
+
                         val defaultExchange = exchanges.first()
                         dispatch(Result.ExchangeSelected(defaultExchange))
 
@@ -72,6 +74,7 @@ class MarketStoreFactory(
 
                             val marketCurrencies = manager.getMarketCurrencies(defaultBaseCurrency)
                             if (marketCurrencies.isEmpty()) return
+
                             dispatch(Result.MarketCurrenciesListReady(marketCurrencies))
                             dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
                         }
@@ -85,11 +88,23 @@ class MarketStoreFactory(
         override suspend fun executeIntent(intent: Intent, getState: () -> State) {
             when (intent) {
                 is Intent.SelectExchange -> dispatch(Result.ExchangeSelected(intent.exchange))
-                is Intent.SelectBaseCurrency -> dispatch(Result.BaseCurrencySelected(intent.currency))
+                is Intent.SelectBaseCurrency -> handleBaseCurrencySelection(getState(), intent.currency)
                 is Intent.SelectMarketCurrency -> dispatch(Result.MarketCurrencySelected(intent.currency))
-                is Intent.SaveCurrentPair -> saveSelectedPair(getState())
-                is Intent.ShowPairSelection -> dispatch(Result.PairSelectionDisplayed)
-                is Intent.HidePairSelection -> dispatch(Result.PairSelectionClosed)
+                is Intent.ChangePairSelectionState -> dispatch(Result.PairSelectionRequested(intent.active))
+            }
+        }
+
+        private suspend fun handleBaseCurrencySelection(state: State, currency: Currency) {
+            dispatch(Result.BaseCurrencySelected(currency))
+
+            val currentExchange = state.selectedExchange
+
+            managers[currentExchange]?.let { manager ->
+                val marketCurrencies = manager.getMarketCurrencies(currency)
+                if (marketCurrencies.isEmpty()) return
+
+                dispatch(Result.MarketCurrenciesListReady(marketCurrencies))
+                dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
             }
         }
 
