@@ -1,11 +1,17 @@
 package com.sedsoftware.screens.market.view
 
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Point
 import android.view.Display
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewAnimationUtils
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import android.view.animation.AnimationUtils
+import android.view.animation.Interpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -14,10 +20,13 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.ArcMotion
 import com.arkivanov.mvikotlin.core.utils.diff
 import com.arkivanov.mvikotlin.core.view.BaseMviView
 import com.arkivanov.mvikotlin.core.view.ViewRenderer
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.sedsoftware.core.presentation.extension.addEndAction
+import com.sedsoftware.core.presentation.extension.addStartEndActions
 import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
 import com.sedsoftware.screens.market.R
@@ -36,9 +45,9 @@ class MarketViewImpl(
 
     // Views
     private val marketFab: FloatingActionButton = viewBinding.marketFab
-    private val globalOverlayView: View = viewBinding.globalOverlayView
     private val overlayView: View = viewBinding.includedLayout.overlayView
     private val overlayImageView: ImageView = viewBinding.includedLayout.overlayImageView
+    private val globalOverlayView: View = viewBinding.globalOverlayView
     private val addPairPanel: View = viewBinding.includedLayout.includedLayout
     private val exchangeTextView: TextView = viewBinding.includedLayout.exchangeTextView
     private val baseRecyclerView: RecyclerView = viewBinding.includedLayout.baseRecyclerView
@@ -73,6 +82,10 @@ class MarketViewImpl(
         }
     )
 
+    private val fastOutLinearInInterpolator: Interpolator by lazy {
+        AnimationUtils.loadInterpolator(context, android.R.interpolator.fast_out_linear_in)
+    }
+
     init {
         addPairPanel.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -83,13 +96,13 @@ class MarketViewImpl(
         })
 
 //        exchangeTextView.setOnClickListener { dispatch(ViewEvent.ShowExchangeList) }
-        overlayView.setOnClickListener { dispatch(ViewEvent.ShowPairSelectionView(false)) }
+        globalOverlayView.setOnClickListener { dispatch(ViewEvent.ShowPairSelectionView(false)) }
         marketFab.setOnClickListener { dispatch(ViewEvent.ShowPairSelectionView(true)) }
 
-        overlayView.setOnTouchListener { _, event ->
+        globalOverlayView.setOnTouchListener { _, event ->
             var flag = false
             if (event.action == MotionEvent.ACTION_DOWN) {
-                flag = overlayView.measuredHeight - event.y < addPairPanel.measuredHeight
+                flag = globalOverlayView.measuredHeight - event.y < addPairPanel.measuredHeight
             }
             flag
         }
@@ -141,8 +154,10 @@ class MarketViewImpl(
     }
 
     private fun showPairSelectionView(show: Boolean) {
-        isPairSelectionExpanded = show
-        setupAddPairViewState()
+        if (isPairSelectionExpanded != show) {
+            dispatch(ViewEvent.ShowPairSelectionView(show))
+            changeAddPairViewExpandState()
+        }
     }
 
     // 3/4 of the screen height
@@ -169,7 +184,7 @@ class MarketViewImpl(
             addPairPanel.translationY = 0f
 
             addPairPanel.isVisible = true
-            overlayView.isVisible = true
+            globalOverlayView.isVisible = true
 
             marketFab.isGone = true
             overlayView.isGone = true
@@ -179,11 +194,149 @@ class MarketViewImpl(
             addPairPanel.translationY = dialogTranslationY
 
             addPairPanel.isGone = true
-            overlayView.isGone = true
+            globalOverlayView.isGone = true
 
             marketFab.isVisible = true
             overlayView.isVisible = true
             overlayImageView.isVisible = true
         }
+    }
+
+    private fun changeAddPairViewExpandState() {
+        val set = AnimatorSet()
+        set.playTogether(
+            getFabArcPathAnimator(),
+            getDialogArcPathAnimator(),
+            getGlobalOverlayAnimator(),
+            getCircularRevealAnimator(),
+            getOverlayAlphaAnimator(),
+            getOverlayIconAlphaAnimator()
+        )
+        set.addStartEndActions(
+            startWith = {
+                globalOverlayView.isEnabled = false
+            },
+            endWith = {
+                globalOverlayView.isEnabled = true
+                isPairSelectionExpanded = !isPairSelectionExpanded
+            }
+        ).start()
+    }
+
+    private fun getFabArcPathAnimator(): Animator {
+        val startX = if (isPairSelectionExpanded) -dialogTranslationX else 0f
+        val startY = if (isPairSelectionExpanded) -dialogTranslationY else 0f
+        val endX = if (isPairSelectionExpanded) 0f else -dialogTranslationX
+        val endY = if (isPairSelectionExpanded) 0f else -dialogTranslationY
+
+        return ObjectAnimator.ofFloat(
+            marketFab,
+            View.TRANSLATION_X,
+            View.TRANSLATION_Y,
+            ArcMotion().getPath(startX, startY, endX, endY)
+        )
+            .applyDefaultParams()
+            .addStartEndActions(
+                startWith = {
+                    if (!isPairSelectionExpanded) {
+                        marketFab.isGone = true
+                        addPairPanel.isVisible = true
+                        overlayView.isVisible = true
+                        overlayImageView.isVisible = true
+                    }
+                },
+                endWith = {
+                    if (isPairSelectionExpanded) {
+                        marketFab.isVisible = true
+                        addPairPanel.isGone = true
+                        overlayView.isGone = true
+                        overlayImageView.isGone = true
+                    }
+                })
+    }
+
+    private fun getDialogArcPathAnimator(): Animator {
+        val startX = if (isPairSelectionExpanded) 0f else dialogTranslationX
+        val startY = if (isPairSelectionExpanded) 0f else dialogTranslationY
+        val endX = if (isPairSelectionExpanded) dialogTranslationX else 0f
+        val endY = if (isPairSelectionExpanded) dialogTranslationY else 0f
+
+
+        return ObjectAnimator.ofFloat(
+            addPairPanel,
+            View.TRANSLATION_X,
+            View.TRANSLATION_Y,
+            ArcMotion().getPath(startX, startY, endX, endY)
+        ).applyDefaultParams()
+    }
+
+    private fun getOverlayAlphaAnimator(): Animator {
+        val startValue = if (isPairSelectionExpanded) 0f else 1f
+        val endValue = if (isPairSelectionExpanded) 1f else 0f
+
+        return ObjectAnimator.ofFloat(overlayView, View.ALPHA, startValue, endValue)
+            .applyDefaultParams()
+            .addEndAction {
+                overlayView.alpha = endValue
+                overlayView.isGone = isPairSelectionExpanded
+            }
+            .apply {
+                startDelay = if (!isPairSelectionExpanded) DIALOG_OVERLAY_ANIMATION_DELAY else 0L
+            }
+    }
+
+    private fun getOverlayIconAlphaAnimator(): Animator {
+        val startValue = if (isPairSelectionExpanded) 0f else 1f
+        val endValue = if (isPairSelectionExpanded) 1f else 0f
+
+        return ObjectAnimator.ofFloat(overlayImageView, View.ALPHA, startValue, endValue)
+            .applyDefaultParams()
+            .addEndAction {
+                overlayImageView.alpha = endValue
+                overlayImageView.isGone = isPairSelectionExpanded
+            }
+    }
+
+    private fun getGlobalOverlayAnimator(): Animator {
+        val startValue = if (isPairSelectionExpanded) 1f else 0f
+        val endValue = if (isPairSelectionExpanded) 0f else 1f
+
+        return ObjectAnimator.ofFloat(globalOverlayView, View.ALPHA, startValue, endValue)
+            .applyDefaultParams()
+            .addStartEndActions(
+                startWith = {
+                    globalOverlayView.alpha = startValue
+                    if (!isPairSelectionExpanded) globalOverlayView.isVisible = true
+                },
+                endWith = {
+                    globalOverlayView.alpha = endValue
+                    if (isPairSelectionExpanded) globalOverlayView.isGone = true
+                }
+            )
+    }
+
+    private fun getCircularRevealAnimator(): Animator {
+        val startRadius = if (isPairSelectionExpanded) addPairPanel.height.toFloat() else marketFab.width / 2f
+        val endRadius = if (isPairSelectionExpanded) marketFab.width / 2f else addPairPanel.height.toFloat()
+
+        return ViewAnimationUtils.createCircularReveal(
+            addPairPanel,
+            addPairPanel.width / 2,
+            addPairPanel.height / 2,
+            startRadius,
+            endRadius
+        ).applyDefaultParams()
+    }
+
+    private fun Animator.applyDefaultParams(startDelay: Long = 0) =
+        apply {
+            this.interpolator = fastOutLinearInInterpolator
+            this.duration = DIALOG_ANIMATION_DURATION
+            this.startDelay = startDelay
+        }
+
+    private companion object {
+        private const val DIALOG_ANIMATION_DURATION = 250L
+        private const val DIALOG_OVERLAY_ANIMATION_DELAY = 150L
     }
 }
