@@ -28,9 +28,9 @@ interface IntroExchangesStore : Store<Intent, State, Label> {
     }
 
     sealed class Result {
-        data class Created(val list: List<ExchangeListItem>) : Result()
-        data class InProgress(val exchange: Exchange) : Result()
-        data class Completed(val exchange: Exchange) : Result()
-        data class Error(val exchange: Exchange) : Result()
+        data class ExchangeListCreated(val list: List<ExchangeListItem>) : Result()
+        data class LoadingStarted(val exchange: Exchange) : Result()
+        data class LoadingCompleted(val exchange: Exchange) : Result()
+        data class LoadingFailed(val exchange: Exchange) : Result()
     }
 }

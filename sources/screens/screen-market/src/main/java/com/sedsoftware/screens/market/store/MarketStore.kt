@@ -37,11 +37,11 @@ interface MarketStore : Store<Intent, State, Label> {
     }
 
     sealed class Result {
-        data class ExchangesListReady(val exchanges: List<Exchange>) : Result()
+        data class ExchangeListCreated(val exchanges: List<Exchange>) : Result()
         data class ExchangeSelected(val exchange: Exchange) : Result()
-        data class BaseCurrenciesListReady(val currencies: List<Currency>) : Result()
+        data class BaseCurrenciesListCreated(val currencies: List<Currency>) : Result()
         data class BaseCurrencySelected(val currency: Currency) : Result()
-        data class MarketCurrenciesListReady(val currencies: List<Currency>) : Result()
+        data class MarketCurrenciesListCreated(val currencies: List<Currency>) : Result()
         data class MarketCurrencySelected(val currency: Currency) : Result()
         data class PairSelectionRequested(val show: Boolean) : Result()
     }

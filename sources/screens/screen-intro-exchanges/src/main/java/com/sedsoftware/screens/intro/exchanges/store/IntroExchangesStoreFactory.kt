@@ -37,22 +37,22 @@ class IntroExchangesStoreFactory(
     private object IntroExchangesReducer : Reducer<State, Result> {
         override fun State.reduce(result: Result): State =
             when (result) {
-                is Result.Created -> copy(
+                is Result.ExchangeListCreated -> copy(
                     exchanges = result.list
                 )
-                is Result.InProgress -> copy(
+                is Result.LoadingStarted -> copy(
                     exchanges = exchanges.update(
                         exchange = result.exchange,
                         state = DownloadState.IN_PROGRESS
                     )
                 )
-                is Result.Completed -> copy(
+                is Result.LoadingCompleted -> copy(
                     exchanges = exchanges.update(
                         exchange = result.exchange,
                         state = DownloadState.COMPLETED
                     )
                 )
-                is Result.Error -> copy(
+                is Result.LoadingFailed -> copy(
                     exchanges = exchanges.update(
                         exchange = result.exchange,
                         state = DownloadState.ERROR
@@ -79,7 +79,7 @@ class IntroExchangesStoreFactory(
         override suspend fun executeAction(action: Action, getState: () -> State) {
             when (action) {
                 is Action.CreateExchangesList -> {
-                    dispatch(Result.Created(action.list))
+                    dispatch(Result.ExchangeListCreated(action.list))
                 }
             }
         }
@@ -93,13 +93,13 @@ class IntroExchangesStoreFactory(
 
         private suspend fun startDownloading(exchange: Exchange) {
             loaders[exchange]?.let { loader ->
-                dispatch(Result.InProgress(exchange))
+                dispatch(Result.LoadingStarted(exchange))
 
                 try {
                     loader.fetchCurrencyPairs()
-                    dispatch(Result.Completed(exchange))
+                    dispatch(Result.LoadingCompleted(exchange))
                 } catch (throwable: Throwable) {
-                    dispatch(Result.Error(exchange))
+                    dispatch(Result.LoadingFailed(exchange))
                     publish(Label.ErrorCaught(throwable))
                 }
             }

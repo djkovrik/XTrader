@@ -31,9 +31,9 @@ class IntroBaseStoreFactory(
 
         override fun State.reduce(result: Result): State =
             when (result) {
-                is Result.InProgress -> copy(loadingState = LoadingState.LOADING)
-                is Result.Success -> copy(loadingState = LoadingState.DONE)
-                is Result.Error -> copy(loadingState = LoadingState.ERROR)
+                is Result.LoadingStarted -> copy(loadingState = LoadingState.LOADING)
+                is Result.LoadingCompleted -> copy(loadingState = LoadingState.DONE)
+                is Result.LoadingFailed -> copy(loadingState = LoadingState.ERROR)
             }
     }
 
@@ -47,13 +47,13 @@ class IntroBaseStoreFactory(
         }
 
         private suspend fun downloadCurrencyMap() {
-            dispatch(Result.InProgress)
+            dispatch(Result.LoadingStarted)
 
             try {
                 currencyMapLoader.loadCurrencyMap()
-                dispatch(Result.Success)
+                dispatch(Result.LoadingCompleted)
             } catch (throwable: Throwable) {
-                dispatch(Result.Error)
+                dispatch(Result.LoadingFailed)
                 publish(Label.ErrorCaught(throwable))
             }
         }

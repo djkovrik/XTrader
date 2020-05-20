@@ -33,11 +33,11 @@ class MarketStoreFactory(
     private object MarketReducer : Reducer<State, Result> {
         override fun State.reduce(result: Result): State =
             when (result) {
-                is Result.ExchangesListReady -> copy(exchanges = result.exchanges)
+                is Result.ExchangeListCreated -> copy(exchanges = result.exchanges)
                 is Result.ExchangeSelected -> copy(selectedExchange = result.exchange)
-                is Result.BaseCurrenciesListReady -> copy(baseCurrencies = result.currencies)
+                is Result.BaseCurrenciesListCreated -> copy(baseCurrencies = result.currencies)
                 is Result.BaseCurrencySelected -> copy(selectedBaseCurrency = result.currency)
-                is Result.MarketCurrenciesListReady -> copy(marketCurrencies = result.currencies)
+                is Result.MarketCurrenciesListCreated -> copy(marketCurrencies = result.currencies)
                 is Result.MarketCurrencySelected -> copy(selectedMarketCurrency = result.currency)
                 is Result.PairSelectionRequested -> copy(isPairSelectionActive = result.show)
             }
@@ -59,7 +59,7 @@ class MarketStoreFactory(
 
                         if (exchanges.isEmpty()) return
 
-                        dispatch(Result.ExchangesListReady(exchanges))
+                        dispatch(Result.ExchangeListCreated(exchanges))
 
                         val defaultExchange = exchanges.first()
                         dispatch(Result.ExchangeSelected(defaultExchange))
@@ -67,7 +67,7 @@ class MarketStoreFactory(
                         managers[defaultExchange]?.let { manager ->
                             val baseCurrencies = manager.getBaseCurrencies()
                             if (baseCurrencies.isEmpty()) return@let
-                            dispatch(Result.BaseCurrenciesListReady(baseCurrencies))
+                            dispatch(Result.BaseCurrenciesListCreated(baseCurrencies))
 
                             val defaultBaseCurrency = baseCurrencies.first()
                             dispatch(Result.BaseCurrencySelected(defaultBaseCurrency))
@@ -75,7 +75,7 @@ class MarketStoreFactory(
                             val marketCurrencies = manager.getMarketCurrencies(defaultBaseCurrency)
                             if (marketCurrencies.isEmpty()) return
 
-                            dispatch(Result.MarketCurrenciesListReady(marketCurrencies))
+                            dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
                             dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
                         }
                     } catch (exception: MarketPairsLoadingError) {
@@ -103,7 +103,7 @@ class MarketStoreFactory(
                 val marketCurrencies = manager.getMarketCurrencies(currency)
                 if (marketCurrencies.isEmpty()) return
 
-                dispatch(Result.MarketCurrenciesListReady(marketCurrencies))
+                dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
                 dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
             }
         }

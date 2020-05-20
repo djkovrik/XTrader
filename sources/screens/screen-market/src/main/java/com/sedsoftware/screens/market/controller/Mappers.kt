@@ -11,7 +11,7 @@ internal fun MarketView.ViewEvent.toIntent(): MarketStore.Intent =
         is MarketView.ViewEvent.ExchangeSelected -> MarketStore.Intent.SelectExchange(exchange)
         is MarketView.ViewEvent.BaseCurrencySelected -> MarketStore.Intent.SelectBaseCurrency(currency)
         is MarketView.ViewEvent.MarketCurrencySelected -> MarketStore.Intent.SelectMarketCurrency(currency)
-        is MarketView.ViewEvent.ShowPairSelectionView -> MarketStore.Intent.ChangePairSelectionState(show)
+        is MarketView.ViewEvent.PairSelectionStateChanged -> MarketStore.Intent.ChangePairSelectionState(show)
     }
 
 internal fun MarketStore.State.toViewModel(): MarketView.ViewModel {

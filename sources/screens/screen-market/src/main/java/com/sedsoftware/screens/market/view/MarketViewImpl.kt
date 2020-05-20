@@ -98,8 +98,8 @@ class MarketViewImpl(
         })
 
 //        exchangeTextView.setOnClickListener { dispatch(ViewEvent.ShowExchangeList) }
-        globalOverlayView.setOnClickListener { dispatch(ViewEvent.ShowPairSelectionView(false)) }
-        marketFab.setOnClickListener { dispatch(ViewEvent.ShowPairSelectionView(true)) }
+        globalOverlayView.setOnClickListener { dispatch(ViewEvent.PairSelectionStateChanged(false)) }
+        marketFab.setOnClickListener { dispatch(ViewEvent.PairSelectionStateChanged(true)) }
 
         globalOverlayView.setOnTouchListener { _, event ->
             var flag = false
@@ -157,7 +157,7 @@ class MarketViewImpl(
 
     private fun showPairSelectionView(show: Boolean) {
         if (isPairSelectionExpanded != show) {
-            dispatch(ViewEvent.ShowPairSelectionView(show))
+            dispatch(ViewEvent.PairSelectionStateChanged(show))
             onBackPressedCallback.isEnabled = show
             changeAddPairViewExpandState()
         }

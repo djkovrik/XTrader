@@ -25,9 +25,9 @@ interface IntroBaseStore : Store<Intent, State, Label> {
     }
 
     sealed class Result {
-        object InProgress : Result()
-        object Success : Result()
-        object Error : Result()
+        object LoadingStarted : Result()
+        object LoadingCompleted : Result()
+        object LoadingFailed : Result()
     }
 
     enum class LoadingState { IDLE, LOADING, ERROR, DONE }

@@ -22,6 +22,6 @@ interface MarketView : MviView<ViewModel, ViewEvent> {
         data class ExchangeSelected(val exchange: Exchange) : ViewEvent()
         data class BaseCurrencySelected(val currency: Currency) : ViewEvent()
         data class MarketCurrencySelected(val currency: Currency) : ViewEvent()
-        data class ShowPairSelectionView(val show: Boolean) : ViewEvent()
+        data class PairSelectionStateChanged(val show: Boolean) : ViewEvent()
     }
 }
