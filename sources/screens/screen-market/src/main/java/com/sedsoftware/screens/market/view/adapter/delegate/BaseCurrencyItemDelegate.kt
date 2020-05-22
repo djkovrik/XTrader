@@ -8,7 +8,8 @@ import com.sedsoftware.screens.market.view.model.CurrencyListItem
 
 fun baseCurrencyItemDelegate(clickListener: Listener) =
     adapterDelegateViewBinding<CurrencyListItem, CurrencyListItem, ItemAddPairBaseBinding>(
-        { layoutInflater, root -> ItemAddPairBaseBinding.inflate(layoutInflater, root, false) }
+        { layoutInflater, root -> ItemAddPairBaseBinding.inflate(layoutInflater, root, false) },
+        { item, _, _ -> item.isBase }
     ) {
 
         binding.itemContainer.setOnClickListener {
