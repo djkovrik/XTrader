@@ -15,6 +15,7 @@ interface MarketStore : Store<Intent, State, Label> {
         data class SelectExchange(val exchange: Exchange) : Intent()
         data class SelectBaseCurrency(val currency: Currency) : Intent()
         data class SelectMarketCurrency(val currency: Currency) : Intent()
+        data class ChangeExchangesDialogState(val active: Boolean) : Intent()
         data class ChangePairSelectionState(val active: Boolean) : Intent()
     }
 
@@ -25,6 +26,7 @@ interface MarketStore : Store<Intent, State, Label> {
         val selectedBaseCurrency: Currency = emptyCurrency(),
         val marketCurrencies: List<Currency> = emptyList(),
         val selectedMarketCurrency: Currency = emptyCurrency(),
+        val isExchangeSelectionActive: Boolean = false,
         val isPairSelectionActive: Boolean = false
     )
 
@@ -43,6 +45,7 @@ interface MarketStore : Store<Intent, State, Label> {
         data class BaseCurrencySelected(val currency: Currency) : Result()
         data class MarketCurrenciesListCreated(val currencies: List<Currency>) : Result()
         data class MarketCurrencySelected(val currency: Currency) : Result()
+        data class ExchangeSelectionRequested(val show: Boolean) : Result()
         data class PairSelectionRequested(val show: Boolean) : Result()
     }
 }

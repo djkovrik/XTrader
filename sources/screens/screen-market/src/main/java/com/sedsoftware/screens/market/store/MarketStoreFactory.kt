@@ -39,6 +39,7 @@ class MarketStoreFactory(
                 is Result.BaseCurrencySelected -> copy(selectedBaseCurrency = result.currency)
                 is Result.MarketCurrenciesListCreated -> copy(marketCurrencies = result.currencies)
                 is Result.MarketCurrencySelected -> copy(selectedMarketCurrency = result.currency)
+                is Result.ExchangeSelectionRequested -> copy(isExchangeSelectionActive = result.show)
                 is Result.PairSelectionRequested -> copy(isPairSelectionActive = result.show)
             }
     }
@@ -63,21 +64,7 @@ class MarketStoreFactory(
 
                         val defaultExchange = exchanges.first()
                         dispatch(Result.ExchangeSelected(defaultExchange))
-
-                        managers[defaultExchange]?.let { manager ->
-                            val baseCurrencies = manager.getBaseCurrencies()
-                            if (baseCurrencies.isEmpty()) return@let
-                            dispatch(Result.BaseCurrenciesListCreated(baseCurrencies))
-
-                            val defaultBaseCurrency = baseCurrencies.first()
-                            dispatch(Result.BaseCurrencySelected(defaultBaseCurrency))
-
-                            val marketCurrencies = manager.getMarketCurrencies(defaultBaseCurrency)
-                            if (marketCurrencies.isEmpty()) return
-
-                            dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
-                            dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
-                        }
+                        loadCurrenciesForExchange(defaultExchange)
                     } catch (exception: MarketPairsLoadingError) {
                         publish(Label.ErrorCaught(exception))
                     }
@@ -87,11 +74,17 @@ class MarketStoreFactory(
 
         override suspend fun executeIntent(intent: Intent, getState: () -> State) {
             when (intent) {
-                is Intent.SelectExchange -> dispatch(Result.ExchangeSelected(intent.exchange))
+                is Intent.SelectExchange -> handleExchangeSelection(intent.exchange)
                 is Intent.SelectBaseCurrency -> handleBaseCurrencySelection(getState(), intent.currency)
                 is Intent.SelectMarketCurrency -> dispatch(Result.MarketCurrencySelected(intent.currency))
+                is Intent.ChangeExchangesDialogState -> dispatch(Result.ExchangeSelectionRequested(intent.active))
                 is Intent.ChangePairSelectionState -> dispatch(Result.PairSelectionRequested(intent.active))
             }
+        }
+
+        private suspend fun handleExchangeSelection(exchange: Exchange) {
+            dispatch(Result.ExchangeSelected(exchange))
+            loadCurrenciesForExchange(exchange)
         }
 
         private suspend fun handleBaseCurrencySelection(state: State, currency: Currency) {
@@ -101,6 +94,23 @@ class MarketStoreFactory(
 
             managers[currentExchange]?.let { manager ->
                 val marketCurrencies = manager.getMarketCurrencies(currency)
+                if (marketCurrencies.isEmpty()) return
+
+                dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
+                dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
+            }
+        }
+
+        private suspend fun loadCurrenciesForExchange(exchange: Exchange) {
+            managers[exchange]?.let { manager ->
+                val baseCurrencies = manager.getBaseCurrencies()
+                if (baseCurrencies.isEmpty()) return@let
+                dispatch(Result.BaseCurrenciesListCreated(baseCurrencies))
+
+                val defaultBaseCurrency = baseCurrencies.first()
+                dispatch(Result.BaseCurrencySelected(defaultBaseCurrency))
+
+                val marketCurrencies = manager.getMarketCurrencies(defaultBaseCurrency)
                 if (marketCurrencies.isEmpty()) return
 
                 dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))

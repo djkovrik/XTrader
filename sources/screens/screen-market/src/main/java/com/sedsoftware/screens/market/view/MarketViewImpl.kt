@@ -22,6 +22,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.ArcMotion
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.arkivanov.mvikotlin.core.utils.diff
 import com.arkivanov.mvikotlin.core.view.BaseMviView
 import com.arkivanov.mvikotlin.core.view.ViewRenderer
@@ -68,6 +70,8 @@ class MarketViewImpl(
     private var defaultFabCenterY = 0f
     private var isPairSelectionExpanded = false
 
+    private var currentExchanges = emptyList<ExchangeListItem>()
+
     private val baseAdapter: CurrencyListAdapter = CurrencyListAdapter(
         clickListener = object : CurrencyListAdapter.Listener {
             override fun onItemClick(item: CurrencyListItem) {
@@ -97,7 +101,7 @@ class MarketViewImpl(
             }
         })
 
-//        exchangeTextView.setOnClickListener { dispatch(ViewEvent.ShowExchangeList) }
+        exchangeTextView.setOnClickListener { dispatch(ViewEvent.ExchangesDialogRequested) }
         globalOverlayView.setOnClickListener { dispatch(ViewEvent.PairSelectionStateChanged(false)) }
         marketFab.setOnClickListener { dispatch(ViewEvent.PairSelectionStateChanged(true)) }
 
@@ -128,11 +132,13 @@ class MarketViewImpl(
         diff(get = ViewModel::baseCurrencies, compare = { a, b -> a === b }, set = ::showBaseCurrencies)
         diff(get = ViewModel::marketCurrencies, compare = { a, b -> a === b }, set = ::showMarketCurrencies)
         diff(get = ViewModel::isFabAvailable, set = marketFab::setEnabled)
+        diff(get = ViewModel::isExchangesDialogActive, set = ::showExchangeSelectionDialog)
         diff(get = ViewModel::isPairSelectionViewActive, set = ::showPairSelectionView)
     }
 
     private fun showSelectedExchange(exchanges: List<ExchangeListItem>) {
         exchanges.find { it.isSelected }?.let { exchangeTextView.text = it.exchange.label }
+        currentExchanges = exchanges
     }
 
     private fun showBaseCurrencies(currencies: List<CurrencyListItem>) {
@@ -152,6 +158,27 @@ class MarketViewImpl(
         currencies.find { it.isSelected }?.let { selected ->
             marketCurrencyTextView.text = selected.currency.name
             marketFullCurrencyTextView.text = selected.currency.label
+        }
+    }
+
+    private fun showExchangeSelectionDialog(show: Boolean) {
+        if (show) {
+            val initialIndex = currentExchanges.indexOfFirst { it.isSelected }
+
+            MaterialDialog(context).show {
+                listItemsSingleChoice(
+                    items = currentExchanges.map { it.exchange.label },
+                    initialSelection = initialIndex,
+                    waitForPositiveButton = true,
+                    selection = { _, index, _ ->
+                        dispatch(ViewEvent.ExchangeSelected(currentExchanges[index].exchange))
+                    }
+                ).show {
+                    title(R.string.label_exchange_dialog)
+                }.setOnDismissListener {
+                    dispatch(ViewEvent.ExchangesDialogClosed)
+                }
+            }
         }
     }
 

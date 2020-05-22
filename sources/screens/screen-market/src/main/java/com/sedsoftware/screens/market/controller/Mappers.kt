@@ -8,6 +8,8 @@ import com.sedsoftware.screens.market.view.model.ExchangeListItem
 
 internal fun MarketView.ViewEvent.toIntent(): MarketStore.Intent =
     when (this) {
+        is MarketView.ViewEvent.ExchangesDialogRequested -> MarketStore.Intent.ChangeExchangesDialogState(true)
+        is MarketView.ViewEvent.ExchangesDialogClosed -> MarketStore.Intent.ChangeExchangesDialogState(false)
         is MarketView.ViewEvent.ExchangeSelected -> MarketStore.Intent.SelectExchange(exchange)
         is MarketView.ViewEvent.BaseCurrencySelected -> MarketStore.Intent.SelectBaseCurrency(currency)
         is MarketView.ViewEvent.MarketCurrencySelected -> MarketStore.Intent.SelectMarketCurrency(currency)
@@ -43,6 +45,7 @@ internal fun MarketStore.State.toViewModel(): MarketView.ViewModel {
         baseCurrencies = baseCurrencyList,
         marketCurrencies = marketCurrencyList,
         isFabAvailable = baseCurrencyList.isNotEmpty() && marketCurrencyList.isNotEmpty(),
+        isExchangesDialogActive = isExchangeSelectionActive,
         isPairSelectionViewActive = isPairSelectionActive
     )
 }
