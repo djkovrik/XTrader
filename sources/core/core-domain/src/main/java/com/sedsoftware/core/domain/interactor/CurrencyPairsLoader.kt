@@ -9,8 +9,8 @@ import kotlinx.coroutines.withContext
 
 interface CurrencyPairsLoader {
 
-    val networkHandler: NetworkHandler
     val repository: PairsInfoRepository
+    val networkHandler: NetworkHandler
 
     suspend fun fetchCurrencyPairs() = withContext(Dispatchers.IO) {
         when (networkHandler.isConnected) {
