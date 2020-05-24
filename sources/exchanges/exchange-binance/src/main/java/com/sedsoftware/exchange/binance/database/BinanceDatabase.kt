@@ -8,11 +8,14 @@ import com.sedsoftware.exchange.binance.database.converter.ListConverter
 import com.sedsoftware.exchange.binance.database.converter.ThreeTenConverter
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
 import com.sedsoftware.exchange.binance.database.dao.BinanceSyncInfoDao
+import com.sedsoftware.exchange.binance.database.dao.BinanceTicksDao
+import com.sedsoftware.exchange.binance.database.model.BinancePairTickDbModel
 import com.sedsoftware.exchange.binance.database.model.BinanceSymbolDbModel
 import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
 
 @Database(
     entities = [
+        BinancePairTickDbModel::class,
         BinanceSymbolDbModel::class,
         BinanceSyncInfoDbModel::class
     ],
@@ -33,4 +36,5 @@ abstract class BinanceDatabase : RoomDatabase() {
 
     abstract fun getBinanceSymbolsDao(): BinanceSymbolsDao
     abstract fun getBinanceSyncInfoDao(): BinanceSyncInfoDao
+    abstract fun getBinanceTicksDao(): BinanceTicksDao
 }
