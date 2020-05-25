@@ -7,6 +7,6 @@ interface CurrencyManager {
 
     val repository: CurrencyRepository
 
-    suspend fun getCurrency(symbol: String): Currency =
-        repository.getCurrency(symbol)
+    suspend fun getCurrency(name: String): Currency =
+        repository.getCurrency(name)
 }

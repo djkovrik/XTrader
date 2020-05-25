@@ -1,7 +1,11 @@
 package com.sedsoftware.exchange.coinmarketcap.network.model
 
+import com.squareup.moshi.Json
+
 data class CurrencyItem(
     val id: Int,
-    val name: String,
-    val symbol: String
+    @Json(name="name")
+    val label: String,
+    @Json(name="symbol")
+    val name: String
 )

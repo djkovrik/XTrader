@@ -16,8 +16,8 @@ class CoinMarketCapCurrencyRepository @Inject constructor(
         db.getCurrencyDao()
     }
 
-    override suspend fun getCurrency(symbol: String): Currency {
-        val dbCurrency = currencyDao.getBySymbol(symbol)
-        return mapper.mapDbToCurrency(dbCurrency, symbol)
+    override suspend fun getCurrency(name: String): Currency {
+        val dbCurrency = currencyDao.getByName(name)
+        return mapper.mapDbToCurrency(dbCurrency, name)
     }
 }

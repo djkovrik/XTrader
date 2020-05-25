@@ -19,15 +19,15 @@ class CurrencyInfoMapper @Inject constructor() {
     fun mapToDb(from: CurrencyMap): List<CurrencyDbModel> =
         from.data.map { mapItem(it) }
 
-    fun mapDbToCurrency(from: CurrencyDbModel?, symbol: String): Currency =
+    fun mapDbToCurrency(from: CurrencyDbModel?, name: String): Currency =
         object : Currency {
-            override val name: String = from?.symbol ?: symbol
-            override val label: String = from?.name.orEmpty()
+            override val name: String = from?.name ?: name
+            override val label: String = from?.label.orEmpty()
         }
 
     private fun mapItem(item: CurrencyItem): CurrencyDbModel =
         CurrencyDbModel(
-            symbol = item.symbol,
-            name = item.name
+            name = item.name,
+            label = item.label
         )
 }

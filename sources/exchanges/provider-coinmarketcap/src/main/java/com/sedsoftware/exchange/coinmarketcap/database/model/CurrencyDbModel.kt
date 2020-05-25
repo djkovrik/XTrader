@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "coinmarketcap_currencies")
 data class CurrencyDbModel(
     @PrimaryKey
-    @ColumnInfo(name = "symbol_id")
-    val symbol: String,
-    @ColumnInfo(name = "name")
-    val name: String
+    @ColumnInfo(name = "name_id")
+    val name: String,
+    @ColumnInfo(name = "label")
+    val label: String
 )
