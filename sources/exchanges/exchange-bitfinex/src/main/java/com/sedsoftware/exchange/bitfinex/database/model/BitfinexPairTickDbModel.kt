@@ -24,6 +24,8 @@ data class BitfinexPairTickDbModel(
     val currentPrice: Float,
     @ColumnInfo(name = "percent_change")
     val percentChange: Float,
-    @ColumnInfo(name = "last_sync_date")
-    val lastSyncDate: OffsetDateTime
+    @ColumnInfo(name = "insertion_date")
+    val insertionDate: OffsetDateTime,
+    @ColumnInfo(name = "refresh_date")
+    val refreshDate: OffsetDateTime
 )

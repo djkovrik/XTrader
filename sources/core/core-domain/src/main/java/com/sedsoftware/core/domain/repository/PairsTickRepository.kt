@@ -5,8 +5,11 @@ import com.sedsoftware.core.domain.entity.CurrencyPairTick
 import kotlinx.coroutines.flow.Flow
 
 interface PairsTickRepository {
-    suspend fun fetchActualPairTick(pair: CurrencyPair)
+    suspend fun hasTicks(): Boolean
+    suspend fun fetchTick(pair: CurrencyPair): CurrencyPairTick
+    suspend fun saveActualPrice(tick: CurrencyPairTick)
     suspend fun addPairToWatchList(pair: CurrencyPair)
     suspend fun removePairFromWatchList(pair: CurrencyPair)
-    suspend fun watchForPair(pair: CurrencyPair): Flow<CurrencyPairTick>
+    suspend fun getCurrentWatchList(): List<CurrencyPairTick>
+    suspend fun watchForTicks(): Flow<List<CurrencyPairTick>>
 }

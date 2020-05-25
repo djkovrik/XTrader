@@ -4,5 +4,6 @@ interface CurrencyPairTick {
     val pair: CurrencyPair
     val price: Float
     val percentChange: Float
-    val timestamp: Long
+    val added: Long
+    val refreshed: Long
 }
