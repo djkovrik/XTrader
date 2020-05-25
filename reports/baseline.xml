@@ -16,8 +16,6 @@
     <ID>MagicNumber:StringSigner.kt$StringSigner$4</ID>
     <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$1000</ID>
     <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$16</ID>
-    <ID>MaxLineLength:BaseCurrencyItemDelegate.kt$BaseCurrencyItemDelegate$override</ID>
-    <ID>MaxLineLength:MarketCurrencyItemDelegate.kt$MarketCurrencyItemDelegate$override</ID>
     <ID>ReturnCount:PathInterpolatorDonut.kt$PathInterpolatorDonut$override fun getInterpolation(t: Float): Float</ID>
     <ID>ReturnCount:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
     <ID>TooGenericExceptionCaught:CurrencyMapLoader.kt$CurrencyMapLoader$exception: Throwable</ID>
@@ -25,6 +23,7 @@
     <ID>TooGenericExceptionCaught:CurrencyPairsManager.kt$CurrencyPairsManager$throwable: Throwable</ID>
     <ID>TooGenericExceptionCaught:IntroBaseStoreFactory.kt$IntroBaseStoreFactory.IntroBaseExecutor$throwable: Throwable</ID>
     <ID>TooGenericExceptionCaught:IntroExchangesStoreFactory.kt$IntroExchangesStoreFactory.IntroExchangesExecutor$throwable: Throwable</ID>
+    <ID>TooGenericExceptionCaught:PairTicksManager.kt$PairTicksManager$exception: Throwable</ID>
     <ID>TooManyFunctions:Sprite.kt$Sprite$Sprite</ID>
     <ID>TooManyFunctions:SpriteAnimatorBuilder.kt$SpriteAnimatorBuilder$SpriteAnimatorBuilder</ID>
   </Whitelist>
