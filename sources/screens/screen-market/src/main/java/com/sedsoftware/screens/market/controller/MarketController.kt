@@ -9,12 +9,10 @@ import com.sedsoftware.screens.market.store.MarketStore.Label
 import com.sedsoftware.screens.market.store.MarketStore.State
 import com.sedsoftware.screens.market.view.MarketView.ViewEvent
 import com.sedsoftware.screens.market.view.MarketView.ViewModel
-import kotlinx.coroutines.channels.BroadcastChannel
 import javax.inject.Inject
 
 class MarketController @Inject constructor(
     override val store: MarketStore,
-    override val eventBus: BroadcastChannel<MarketEvent>,
     override val errorHandler: ErrorHandler
 ) : BaseController<Intent, State, Label, ViewModel, MarketEvent, ViewEvent> {
 
@@ -22,7 +20,7 @@ class MarketController @Inject constructor(
     override val viewEventToIntent: ViewEvent.() -> Intent = Mappers.viewEventToIntent
     override val labelToEvent: Label.() -> MarketEvent = Mappers.labelToEvent
 
-    override fun consumeFeatureEvent(event: MarketEvent) {
+    override val eventConsumer: (MarketEvent) -> Unit = { event ->
         when (event) {
             is MarketEvent.HandleError -> errorHandler.consume(event.throwable)
         }

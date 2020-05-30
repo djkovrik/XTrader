@@ -5,13 +5,10 @@ import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
 import com.sedsoftware.core.domain.navigation.FlowSwitcher
-import com.sedsoftware.screens.intro.exchanges.IntroExchangesEvent
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStoreFactory
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.Channel
 
 @Module
 class IntroExchangesModule {
@@ -23,9 +20,4 @@ class IntroExchangesModule {
         loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairsLoader>
     ): IntroExchangesStore =
         IntroExchangesStoreFactory(DefaultStoreFactory, flowSwitcher, loaders).create()
-
-    @Provides
-    @ScreenScope
-    fun provideEventBus(): BroadcastChannel<IntroExchangesEvent> =
-        BroadcastChannel(Channel.BUFFERED)
 }

@@ -9,12 +9,10 @@ import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.Label
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore.State
 import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesView.ViewEvent
 import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesView.ViewModel
-import kotlinx.coroutines.channels.BroadcastChannel
 import javax.inject.Inject
 
 class IntroExchangesController @Inject constructor(
     override val store: IntroExchangesStore,
-    override val eventBus: BroadcastChannel<IntroExchangesEvent>,
     override val errorHandler: ErrorHandler
 ) : BaseController<Intent, State, Label, ViewModel, IntroExchangesEvent, ViewEvent> {
 
@@ -22,7 +20,7 @@ class IntroExchangesController @Inject constructor(
     override val viewEventToIntent: ViewEvent.() -> Intent = Mappers.viewEventToIntent
     override val labelToEvent: Label.() -> IntroExchangesEvent = Mappers.labelToEvent
 
-    override fun consumeFeatureEvent(event: IntroExchangesEvent) {
+    override val eventConsumer: (IntroExchangesEvent) -> Unit = { event ->
         when (event) {
             is IntroExchangesEvent.HandleError -> errorHandler.consume(event.throwable)
         }

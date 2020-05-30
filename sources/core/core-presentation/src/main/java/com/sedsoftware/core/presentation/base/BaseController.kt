@@ -12,21 +12,19 @@ import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import com.sedsoftware.core.domain.errorhandler.CanShowError
 import com.sedsoftware.core.domain.errorhandler.ErrorHandler
-import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.mapNotNull as mapNotNullFlow
 
 interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any, FeatureEvent : Any, ViewEvent : Any> {
 
     val store: Store<Intent, State, Label>
-    val eventBus: BroadcastChannel<FeatureEvent>
     val errorHandler: ErrorHandler
 
     val stateToViewModel: State.() -> ViewModel
     val viewEventToIntent: ViewEvent.() -> Intent
     val labelToEvent: Label.() -> FeatureEvent
+
+    val eventConsumer: (FeatureEvent) -> Unit
 
     fun onViewCreated(view: MviView<ViewModel, ViewEvent>, lifecycle: Lifecycle, errorHandlerView: CanShowError) {
         bind(lifecycle, BinderLifecycleMode.START_STOP) {
@@ -35,8 +33,7 @@ interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any
 
         bind(lifecycle, BinderLifecycleMode.CREATE_DESTROY) {
             view.events.mapNotNull(viewEventToIntent) bindTo store
-            store.labels.mapNotNull(labelToEvent) bindTo { eventBus.send(it) }
-            eventBus.asFlow().filterNotNull() bindTo { consumeFeatureEvent(it) }
+            store.labels.mapNotNull(labelToEvent) bindTo { eventConsumer(it) }
         }
 
         lifecycle.doOnResumePause(
@@ -46,8 +43,6 @@ interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any
 
         lifecycle.doOnDestroy(store::dispose)
     }
-
-    fun consumeFeatureEvent(event: FeatureEvent)
 
     private inline fun <T, R : Any> Flow<T>.mapNotNull(crossinline mapper: (T) -> R?): Flow<R> =
         mapNotNullFlow { mapper(it) }
