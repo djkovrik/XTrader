@@ -13,9 +13,10 @@ import com.arkivanov.mvikotlin.extensions.coroutines.states
 import com.sedsoftware.core.domain.errorhandler.CanShowError
 import com.sedsoftware.core.domain.errorhandler.ErrorHandler
 import kotlinx.coroutines.channels.BroadcastChannel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull as mapNotNullFlow
 
 interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any, FeatureEvent : Any, ViewEvent : Any> {
 
@@ -23,18 +24,18 @@ interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any
     val eventBus: BroadcastChannel<FeatureEvent>
     val errorHandler: ErrorHandler
 
-    val stateToViewModel: (State) -> ViewModel
-    val viewEventToIntent: (ViewEvent) -> Intent
-    val labelToEvent: (Label) -> FeatureEvent
+    val stateToViewModel: State.() -> ViewModel
+    val viewEventToIntent: ViewEvent.() -> Intent
+    val labelToEvent: Label.() -> FeatureEvent
 
     fun onViewCreated(view: MviView<ViewModel, ViewEvent>, lifecycle: Lifecycle, errorHandlerView: CanShowError) {
         bind(lifecycle, BinderLifecycleMode.START_STOP) {
-            store.states.map { stateToViewModel(it) } bindTo view
+            store.states.mapNotNull(stateToViewModel) bindTo view
         }
 
         bind(lifecycle, BinderLifecycleMode.CREATE_DESTROY) {
-            view.events.map { viewEventToIntent(it) } bindTo store
-            store.labels.map { labelToEvent(it) } bindTo { eventBus.send(it) }
+            view.events.mapNotNull(viewEventToIntent) bindTo store
+            store.labels.mapNotNull(labelToEvent) bindTo { eventBus.send(it) }
             eventBus.asFlow().filterNotNull() bindTo { consumeFeatureEvent(it) }
         }
 
@@ -43,10 +44,11 @@ interface BaseController<Intent : Any, State : Any, Label : Any, ViewModel : Any
             onPause = { errorHandler.detachView() }
         )
 
-        lifecycle.doOnDestroy {
-            store.dispose()
-        }
+        lifecycle.doOnDestroy(store::dispose)
     }
 
     fun consumeFeatureEvent(event: FeatureEvent)
+
+    private inline fun <T, R : Any> Flow<T>.mapNotNull(crossinline mapper: (T) -> R?): Flow<R> =
+        mapNotNullFlow { mapper(it) }
 }

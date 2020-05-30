@@ -18,9 +18,9 @@ class IntroExchangesController @Inject constructor(
     override val errorHandler: ErrorHandler
 ) : BaseController<Intent, State, Label, ViewModel, IntroExchangesEvent, ViewEvent> {
 
-    override val stateToViewModel: (State) -> ViewModel = { it.toViewModel() }
-    override val viewEventToIntent: (ViewEvent) -> Intent = { it.toIntent() }
-    override val labelToEvent: (Label) -> IntroExchangesEvent = { it.toEvent() }
+    override val stateToViewModel: State.() -> ViewModel = Mappers.stateToViewModel
+    override val viewEventToIntent: ViewEvent.() -> Intent = Mappers.viewEventToIntent
+    override val labelToEvent: Label.() -> IntroExchangesEvent = Mappers.labelToEvent
 
     override fun consumeFeatureEvent(event: IntroExchangesEvent) {
         when (event) {
