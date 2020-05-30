@@ -18,6 +18,9 @@ interface BinanceTicksDao {
     @Query("SELECT previous_price FROM binance_ticks WHERE symbol_id LIKE :symbol")
     suspend fun getPreviousPrice(symbol: String): Float
 
+    @Query("SELECT * FROM binance_ticks LIMIT 1")
+    suspend fun getFirstTick(): BinancePairTickDbModel?
+
     @Query("SELECT * FROM binance_ticks WHERE symbol_id LIKE :symbol")
-    suspend fun watchForTick(symbol: String): BinancePairTickDbModel
+    suspend fun getTick(symbol: String): BinancePairTickDbModel
 }
