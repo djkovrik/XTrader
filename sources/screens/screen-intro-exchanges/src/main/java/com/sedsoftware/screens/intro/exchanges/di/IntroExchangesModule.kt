@@ -11,7 +11,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class IntroExchangesModule {
+object IntroExchangesModule {
 
     @Provides
     @ScreenScope

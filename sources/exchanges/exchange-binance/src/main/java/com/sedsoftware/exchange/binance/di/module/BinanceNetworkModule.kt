@@ -14,11 +14,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-class BinanceNetworkModule {
+object BinanceNetworkModule {
 
-    companion object {
-        private const val BASE_URL = "https://api.binance.com/"
-    }
+    private const val BASE_URL = "https://api.binance.com/"
 
     @Provides
     @Singleton

@@ -12,7 +12,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class PlatformToolsModule {
+object PlatformToolsModule {
 
     @Provides
     @Singleton

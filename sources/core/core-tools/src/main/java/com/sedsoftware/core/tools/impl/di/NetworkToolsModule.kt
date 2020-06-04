@@ -13,7 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor.Level
 import javax.inject.Singleton
 
 @Module
-class NetworkToolsModule {
+object NetworkToolsModule {
 
     @Provides
     @Singleton

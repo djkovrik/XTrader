@@ -14,11 +14,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-class CoinMarketCapNetworkModule {
+object CoinMarketCapNetworkModule {
 
-    companion object {
-        private const val BASE_URL = "https://pro-api.coinmarketcap.com/"
-    }
+    private const val BASE_URL = "https://pro-api.coinmarketcap.com/"
 
     @Provides
     @Singleton
