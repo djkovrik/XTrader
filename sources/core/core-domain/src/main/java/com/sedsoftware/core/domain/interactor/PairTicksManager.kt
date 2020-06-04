@@ -20,7 +20,6 @@ interface PairTicksManager {
     }
 
     suspend fun addPairToWatchList(pair: CurrencyPair) = withContext(Dispatchers.IO) {
-        repository.addPairToWatchList(pair)
         fetchPairPrice(pair)
     }
 
@@ -43,10 +42,10 @@ interface PairTicksManager {
         when (networkHandler.isConnected) {
             true -> {
                 try {
-                    val tick = repository.fetchTick(pair)
-                    repository.saveActualPrice(tick)
+                    val price = repository.fetchPrice(pair)
+                    repository.saveActualPrice(pair, price)
                 } catch (exception: Throwable) {
-                    throw  CurrencyTickLoadingError(pair.symbol, exception)
+                    throw CurrencyTickLoadingError(pair.symbol, exception)
                 }
             }
             false -> {

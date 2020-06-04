@@ -6,9 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface PairsTickRepository {
     suspend fun hasTicks(): Boolean
-    suspend fun fetchTick(pair: CurrencyPair): CurrencyPairTick
-    suspend fun saveActualPrice(tick: CurrencyPairTick)
-    suspend fun addPairToWatchList(pair: CurrencyPair)
+    suspend fun fetchPrice(pair: CurrencyPair): Float
+    suspend fun saveActualPrice(pair: CurrencyPair, price: Float)
     suspend fun removePairFromWatchList(pair: CurrencyPair)
     suspend fun getCurrentWatchList(): List<CurrencyPairTick>
     suspend fun watchForTicks(): Flow<List<CurrencyPairTick>>

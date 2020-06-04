@@ -1,7 +1,12 @@
 package com.sedsoftware.exchange.binance.mapper
 
 import com.sedsoftware.core.domain.ExchangeType
+import com.sedsoftware.core.domain.entity.Currency
+import com.sedsoftware.core.domain.entity.CurrencyPair
+import com.sedsoftware.core.domain.entity.CurrencyPairTick
+import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyManager
+import com.sedsoftware.exchange.binance.database.model.BinancePairTickDbModel
 import com.sedsoftware.exchange.binance.database.model.BinanceSymbolDbModel
 import com.sedsoftware.exchange.binance.database.model.BinanceSyncInfoDbModel
 import com.sedsoftware.exchange.binance.network.model.PairsInfo
@@ -20,6 +25,30 @@ class BinanceSymbolsMapper @Inject constructor(
             name = ExchangeType.BINANCE.name,
             lastSyncDate = from.serverTime
         )
+
+    fun mapDbTickToEntity(from: BinancePairTickDbModel): CurrencyPairTick =
+        object : CurrencyPairTick {
+            override val pair: CurrencyPair =
+                object : CurrencyPair {
+                    override val exchange: Exchange = ExchangeType.BINANCE
+                    override val baseCurrency: Currency =
+                        object : Currency {
+                            override val name: String = from.baseCurrencyName
+                            override val label: String = from.baseCurrencyLabel
+                        }
+                    override val marketCurrency: Currency =
+                        object : Currency {
+                            override val name: String = from.quoteCurrencyName
+                            override val label: String = from.quoteCurrencyLabel
+                        }
+                    override val symbol: String = from.symbol
+                }
+            override val price: Float = from.currentPrice
+            override val percentChange: Float = from.percentChange
+            override val valueChange: Float = from.valueChange
+            override val added: Long = from.insertionDate.toEpochSecond()
+            override val refreshed: Long = from.refreshDate.toEpochSecond()
+        }
 
     private suspend fun mapSymbolToDb(from: SymbolInfoModel): BinanceSymbolDbModel {
 
