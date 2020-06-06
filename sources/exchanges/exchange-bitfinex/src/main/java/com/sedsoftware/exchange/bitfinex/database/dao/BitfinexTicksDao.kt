@@ -33,5 +33,5 @@ interface BitfinexTicksDao {
     suspend fun getTicks(): List<BitfinexPairTickDbModel>
 
     @Query("SELECT * FROM bitfinex_ticks")
-    suspend fun getTicksFlow(): Flow<List<BitfinexPairTickDbModel>>
+    fun getTicksFlow(): Flow<List<BitfinexPairTickDbModel>>
 }

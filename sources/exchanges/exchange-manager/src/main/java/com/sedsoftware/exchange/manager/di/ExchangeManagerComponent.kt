@@ -8,6 +8,7 @@ import com.sedsoftware.core.di.ExchangeManagerProvider
 import com.sedsoftware.exchange.binance.di.BinanceComponent
 import com.sedsoftware.exchange.bitfinex.di.BitfinexComponent
 import com.sedsoftware.exchange.manager.di.module.ExchangeManagerModule
+import com.sedsoftware.exchange.manager.di.module.ExchangeToolsModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,7 +18,8 @@ import javax.inject.Singleton
         BitfinexProvider::class
     ],
     modules = [
-        ExchangeManagerModule::class
+        ExchangeManagerModule::class,
+        ExchangeToolsModule::class
     ]
 )
 @Singleton
