@@ -31,7 +31,7 @@ class BinancePairsTickRepository @Inject constructor(
         return tick.price.toFloat()
     }
 
-    override suspend fun saveActualPrice(pair: CurrencyPair, price: Float) {
+    override suspend fun refreshPrice(pair: CurrencyPair, price: Float) {
         val now = OffsetDateTime.now()
         val insertionDate = dao.getInsertionDate(pair.symbol) ?: now
 
@@ -40,18 +40,41 @@ class BinancePairsTickRepository @Inject constructor(
         val percentChange = currentPricePercent - BASE_PERCENT_VALUE
         val valueChange = price - previousPrice
 
-        val dbEntry = BinancePairTickDbModel(
-            symbol = pair.symbol,
-            baseCurrencyName = pair.baseCurrency.name,
-            baseCurrencyLabel = pair.baseCurrency.label,
-            quoteCurrencyName = pair.marketCurrency.name,
-            quoteCurrencyLabel = pair.marketCurrency.label,
-            previousPrice = previousPrice,
-            currentPrice = price,
-            percentChange = percentChange,
-            valueChange = valueChange,
-            insertionDate = insertionDate,
-            refreshDate = now
+        dao.insert(
+            BinancePairTickDbModel(
+                symbol = pair.symbol,
+                baseCurrencyName = pair.baseCurrency.name,
+                baseCurrencyLabel = pair.baseCurrency.label,
+                quoteCurrencyName = pair.marketCurrency.name,
+                quoteCurrencyLabel = pair.marketCurrency.label,
+                previousPrice = previousPrice,
+                currentPrice = price,
+                percentChange = percentChange,
+                valueChange = valueChange,
+                insertionDate = insertionDate,
+                refreshDate = now
+            )
+        )
+    }
+
+    override suspend fun addPairToWatchList(pair: CurrencyPair) {
+        val now = OffsetDateTime.now()
+        val insertionDate = dao.getInsertionDate(pair.symbol) ?: now
+
+        dao.insert(
+            BinancePairTickDbModel(
+                symbol = pair.symbol,
+                baseCurrencyName = pair.baseCurrency.name,
+                baseCurrencyLabel = pair.baseCurrency.label,
+                quoteCurrencyName = pair.marketCurrency.name,
+                quoteCurrencyLabel = pair.marketCurrency.label,
+                previousPrice = 0f,
+                currentPrice = 0f,
+                percentChange = 0f,
+                valueChange = 0f,
+                insertionDate = insertionDate,
+                refreshDate = now
+            )
         )
     }
 
@@ -61,6 +84,7 @@ class BinancePairsTickRepository @Inject constructor(
 
     override suspend fun getCurrentWatchList(): List<CurrencyPairTick> =
         dao.getTicks().map { mapper.mapDbTickToEntity(it) }
+
 
     override suspend fun watchForTicks(): Flow<List<CurrencyPairTick>> =
         dao.getTicksFlow().map { list -> list.map { mapper.mapDbTickToEntity(it) } }
