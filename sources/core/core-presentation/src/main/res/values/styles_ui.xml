@@ -39,6 +39,7 @@
     <style name="XTButtonRounded" parent="XTButton">
         <item name="android:paddingStart">@dimen/padding_button_small</item>
         <item name="android:paddingEnd">@dimen/padding_button_small</item>
+        <item name="cornerRadius">@dimen/corner_radius_button_big</item>
     </style>
 
     <style name="XTButtonOutlinedNormal" parent="XTPrimary">

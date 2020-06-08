@@ -9,6 +9,7 @@ dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
     implementation project(':core-presentation')
+    implementation project(':lib-spin-kit')
 
     implementation "com.hannesdorfmann:adapterdelegates4:$versions.adapterDelegates"
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"

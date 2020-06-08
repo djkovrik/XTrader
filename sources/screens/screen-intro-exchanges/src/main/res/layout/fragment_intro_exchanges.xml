@@ -71,9 +71,9 @@
             android:layout_marginTop="@dimen/baseline_grid_1x"
             android:layout_marginEnd="@dimen/baseline_grid_2x"
             android:layout_marginBottom="@dimen/baseline_grid_2x"
+            android:enabled="false"
             android:alpha="0.7"
-            android:text="@string/done"
-            app:cornerRadius="@dimen/corner_radius_button_big" />
+            android:text="@string/done" />
 
     </FrameLayout>
 

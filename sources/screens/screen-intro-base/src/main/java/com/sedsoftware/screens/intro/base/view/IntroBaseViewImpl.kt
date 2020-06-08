@@ -14,7 +14,7 @@ class IntroBaseViewImpl(viewBinding: FragmentIntroBaseBinding) : BaseMviView<Vie
 
     private val downloadButton: MaterialButton = viewBinding.downloadButton
     private val nextButton: MaterialButton = viewBinding.nextButton
-    private val progress: ProgressBar = viewBinding.progressBar
+    private val progress: ProgressBar = viewBinding.progress
 
     init {
         downloadButton.setOnClickListener {

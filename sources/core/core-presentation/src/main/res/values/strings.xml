@@ -8,6 +8,6 @@
     <string name="ok">OK</string>
     <string name="next">Next</string>
     <string name="done">Done</string>
-    <string name="download">Download</string>
+    <string name="load">Load</string>
 
 </resources>
