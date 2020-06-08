@@ -9,5 +9,5 @@ import dagger.Module
 interface ExchangeToolsModule {
 
     @Binds
-    abstract fun bindAssetsProvider(implementation: ExchangeAssetsProvider): AssetsProvider
+    fun bindAssetsProvider(implementation: ExchangeAssetsProvider): AssetsProvider
 }
