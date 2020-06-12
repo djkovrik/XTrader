@@ -1,6 +1,6 @@
 package com.sedsoftware.exchange.bitfinex
 
-import com.sedsoftware.core.di.qualifier.ForExchange
+import com.sedsoftware.core.di.annotations.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
 import com.sedsoftware.core.domain.repository.PairsInfoRepository

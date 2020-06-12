@@ -1,4 +1,4 @@
-package com.sedsoftware.core.di.qualifier
+package com.sedsoftware.core.di.annotations
 
 import com.sedsoftware.core.domain.ExchangeType
 import javax.inject.Qualifier

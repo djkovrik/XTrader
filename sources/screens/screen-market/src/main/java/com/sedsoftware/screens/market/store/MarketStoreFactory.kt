@@ -5,6 +5,7 @@ import com.arkivanov.mvikotlin.core.store.SimpleBootstrapper
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
+import com.sedsoftware.core.domain.ExchangeType
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
@@ -18,7 +19,7 @@ import com.sedsoftware.screens.market.store.MarketStore.State
 
 class MarketStoreFactory(
     private val storeFactory: StoreFactory,
-    private val managers: Map<Exchange, @JvmSuppressWildcards CurrencyPairsManager>
+    private val managers: Map<ExchangeType, @JvmSuppressWildcards CurrencyPairsManager>
 ) {
 
     fun create(): MarketStore =

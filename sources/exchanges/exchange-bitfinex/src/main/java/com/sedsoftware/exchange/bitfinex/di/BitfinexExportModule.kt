@@ -1,6 +1,6 @@
 package com.sedsoftware.exchange.bitfinex.di
 
-import com.sedsoftware.core.di.qualifier.ForExchange
+import com.sedsoftware.core.di.annotations.ExchangeKey
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
@@ -12,20 +12,24 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.multibindings.IntoMap
 
 @Module
 @InstallIn(ApplicationComponent::class)
 interface BitfinexExportModule {
 
     @Binds
-    @ForExchange(BITFINEX)
+    @IntoMap
+    @ExchangeKey(BITFINEX)
     fun bindBinancePairLoader(implementation: BitfinexPairsLoader): CurrencyPairsLoader
 
     @Binds
-    @ForExchange(BITFINEX)
+    @IntoMap
+    @ExchangeKey(BITFINEX)
     fun bindBinancePairManager(implementation: BitfinexPairsManager): CurrencyPairsManager
 
     @Binds
-    @ForExchange(BITFINEX)
+    @IntoMap
+    @ExchangeKey(BITFINEX)
     fun bindPairTicksManager(implementation: BitfinexPairTicksManager): PairTicksManager
 }

@@ -5,6 +5,7 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
+import com.sedsoftware.core.domain.ExchangeType
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
 import com.sedsoftware.core.domain.navigation.FlowSwitcher
@@ -22,7 +23,7 @@ import kotlinx.coroutines.withContext
 class IntroExchangesStoreFactory(
     private val storeFactory: StoreFactory,
     private val flowSwitcher: FlowSwitcher,
-    private val loaders: Map<Exchange, @JvmSuppressWildcards CurrencyPairsLoader>
+    private val loaders: Map<ExchangeType, @JvmSuppressWildcards CurrencyPairsLoader>
 ) {
 
     fun create(): IntroExchangesStore =

@@ -1,7 +1,7 @@
 package com.sedsoftware.screens.market.di
 
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
-import com.sedsoftware.core.domain.entity.Exchange
+import com.sedsoftware.core.domain.ExchangeType
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.screens.market.store.MarketStore
 import com.sedsoftware.screens.market.store.MarketStoreFactory
@@ -18,7 +18,7 @@ object MarketScreenModule {
     @Provides
     @FragmentScoped
     fun provideMarketStore(
-        managers: Map<Exchange, @JvmSuppressWildcards CurrencyPairsManager>
+        managers: Map<ExchangeType, @JvmSuppressWildcards CurrencyPairsManager>
     ): MarketStore =
         MarketStoreFactory(DefaultStoreFactory, managers).create()
 }

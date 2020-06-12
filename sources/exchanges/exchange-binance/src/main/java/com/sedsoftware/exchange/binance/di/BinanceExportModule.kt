@@ -1,6 +1,6 @@
 package com.sedsoftware.exchange.binance.di
 
-import com.sedsoftware.core.di.qualifier.ForExchange
+import com.sedsoftware.core.di.annotations.ExchangeKey
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
@@ -12,20 +12,24 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.multibindings.IntoMap
 
 @Module
 @InstallIn(ApplicationComponent::class)
 interface BinanceExportModule {
 
     @Binds
-    @ForExchange(BINANCE)
+    @IntoMap
+    @ExchangeKey(BINANCE)
     fun bindBinancePairLoader(implementation: BinancePairsLoader): CurrencyPairsLoader
 
     @Binds
-    @ForExchange(BINANCE)
+    @IntoMap
+    @ExchangeKey(BINANCE)
     fun bindBinancePairManager(implementation: BinancePairsManager): CurrencyPairsManager
 
     @Binds
-    @ForExchange(BINANCE)
+    @IntoMap
+    @ExchangeKey(BINANCE)
     fun bindBinancePairTicksManager(implementation: BinancePairTicksManager): PairTicksManager
 }

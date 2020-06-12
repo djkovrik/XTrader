@@ -1,6 +1,6 @@
 package com.sedsoftware.exchange.binance.di
 
-import com.sedsoftware.core.di.qualifier.ForExchange
+import com.sedsoftware.core.di.annotations.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.repository.PairsInfoRepository
 import com.sedsoftware.core.domain.repository.PairsManagerRepository
