@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.frogermcs.androiddevmetrics'
 
 android {
@@ -77,18 +78,19 @@ dependencies {
 
     implementation project(':screen-main')
     implementation project(':screen-intro-base')
-//    implementation project(':screen-intro-exchanges')
-//    implementation project(':screen-intro-pin')
-//    implementation project(':screen-market')
-//    implementation project(':screen-wallet')
-//    implementation project(':screen-orders')
-//    implementation project(':screen-tracker')
-//    implementation project(':screen-tools')
+    implementation project(':screen-intro-exchanges')
+    implementation project(':screen-intro-pin')
+    implementation project(':screen-market')
+    implementation project(':screen-wallet')
+    implementation project(':screen-orders')
+    implementation project(':screen-tracker')
+    implementation project(':screen-tools')
 
     implementation "com.google.firebase:firebase-core:$versions.firebaseCore"
     implementation "com.google.firebase:firebase-analytics:$versions.firebaseAnalytics"
     implementation "com.crashlytics.sdk.android:crashlytics:$versions.firebaseCrashlytics"
 
+    implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.legacy:legacy-support-core-utils:$versions.legacyUtils"
 
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
@@ -97,8 +99,10 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$versions.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
 
-    implementation "com.google.dagger:dagger:$versions.dagger"
-    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    implementation "androidx.room:room-runtime:$versions.room"
+
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
 
     implementation "com.arkivanov.mvikotlin:mvikotlin:$versions.mviKotlin"
     implementation "com.arkivanov.mvikotlin:mvikotlin-main:$versions.mviKotlin"

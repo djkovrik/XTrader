@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
@@ -15,8 +16,8 @@ dependencies {
     implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$versions.adapterDelegates"
     implementation "ru.terrakok.cicerone:cicerone:$versions.cicerone"
 
-    implementation "com.google.dagger:dagger:$versions.dagger"
-    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
 
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"

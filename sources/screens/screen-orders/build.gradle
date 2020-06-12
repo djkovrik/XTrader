@@ -4,14 +4,15 @@ apply plugin: 'kotlin-kapt'
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
+apply plugin: 'dagger.hilt.android.plugin'
 
 dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
     implementation project(':core-presentation')
 
-    implementation "com.google.dagger:dagger:$versions.dagger"
-    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
 
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"

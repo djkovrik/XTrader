@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
@@ -9,13 +10,13 @@ dependencies {
     implementation project(':core-di')
     implementation project(':core-domain')
 
-    implementation "com.google.dagger:dagger:$versions.dagger"
-    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
 
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
 
     implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
-    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+    api "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
     implementation "com.squareup.moshi:moshi:$versions.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
     implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"

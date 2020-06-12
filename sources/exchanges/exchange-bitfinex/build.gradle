@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 apply from: '../../android-config.gradle'
 apply from: '../../kapt-config.gradle'
@@ -11,8 +12,8 @@ dependencies {
 
     implementation project(':provider-coinmarketcap')
 
-    implementation "com.google.dagger:dagger:$versions.dagger"
-    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
 
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
