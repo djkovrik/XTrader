@@ -3,20 +3,16 @@ package com.sedsoftware.screens.intro.base.view
 import android.os.Bundle
 import android.view.View
 import com.arkivanov.mvikotlin.androidxlifecycleinterop.asMviLifecycle
-import com.sedsoftware.core.di.ActivityToolsProvider
-import com.sedsoftware.core.di.management.DaggerComponentManager
-import com.sedsoftware.core.di.management.HasDaggerComponent
-import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.viewbinding.viewBinding
 import com.sedsoftware.screens.intro.base.R
 import com.sedsoftware.screens.intro.base.controller.IntroBaseController
 import com.sedsoftware.screens.intro.base.databinding.FragmentIntroBaseBinding
-import com.sedsoftware.screens.intro.base.di.IntroBaseComponent
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class IntroBaseFragment :
-    BaseFragment(R.layout.fragment_intro_base), HasDaggerComponent<IntroBaseComponent>, HasInject {
+@AndroidEntryPoint
+class IntroBaseFragment : BaseFragment(R.layout.fragment_intro_base) {
 
     companion object {
         fun newInstance(): IntroBaseFragment = IntroBaseFragment()
@@ -35,16 +31,5 @@ class IntroBaseFragment :
             lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
             errorHandlerView = this
         )
-    }
-
-    override fun getComponent(): IntroBaseComponent {
-        val activityTools = DaggerComponentManager.get<ActivityToolsProvider>()
-        return IntroBaseComponent.Initializer.init(activityTools)
-    }
-
-    override fun inject() {
-        DaggerComponentManager
-            .get<IntroBaseComponent>()
-            .inject(this)
     }
 }

@@ -5,20 +5,16 @@ import android.view.Display
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import com.arkivanov.mvikotlin.androidxlifecycleinterop.asMviLifecycle
-import com.sedsoftware.core.di.ActivityToolsProvider
-import com.sedsoftware.core.di.management.DaggerComponentManager
-import com.sedsoftware.core.di.management.HasDaggerComponent
-import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.viewbinding.viewBinding
 import com.sedsoftware.screens.market.R.layout
 import com.sedsoftware.screens.market.controller.MarketController
 import com.sedsoftware.screens.market.databinding.FragmentMarketScreenBinding
-import com.sedsoftware.screens.market.di.MarketScreenComponent
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class MarketScreenFragment :
-    BaseFragment(layout.fragment_market_screen), HasDaggerComponent<MarketScreenComponent>, HasInject {
+@AndroidEntryPoint
+class MarketScreenFragment : BaseFragment(layout.fragment_market_screen) {
 
     companion object {
         fun newInstance(): MarketScreenFragment = MarketScreenFragment()
@@ -56,16 +52,5 @@ class MarketScreenFragment :
     override fun onStop() {
         super.onStop()
         onBackPressedCallback.remove()
-    }
-
-    override fun getComponent(): MarketScreenComponent {
-        val activityTools = DaggerComponentManager.get<ActivityToolsProvider>()
-        return MarketScreenComponent.Initializer.init(activityTools)
-    }
-
-    override fun inject() {
-        DaggerComponentManager
-            .get<MarketScreenComponent>()
-            .inject(this)
     }
 }

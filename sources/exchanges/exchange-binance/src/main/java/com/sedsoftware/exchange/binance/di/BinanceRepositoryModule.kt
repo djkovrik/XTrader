@@ -1,4 +1,4 @@
-package com.sedsoftware.exchange.binance.di.module
+package com.sedsoftware.exchange.binance.di
 
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
@@ -10,19 +10,22 @@ import com.sedsoftware.exchange.binance.repository.BinancePairsManagerRepository
 import com.sedsoftware.exchange.binance.repository.BinancePairsTickRepository
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 
 @Module
-abstract class BinanceRepositoryModule {
+@InstallIn(ApplicationComponent::class)
+interface BinanceRepositoryModule {
 
     @Binds
     @ForExchange(BINANCE)
-    abstract fun bindPairsInfoRepository(implementation: BinancePairsInfoRepository): PairsInfoRepository
+    fun bindPairsInfoRepository(implementation: BinancePairsInfoRepository): PairsInfoRepository
 
     @Binds
     @ForExchange(BINANCE)
-    abstract fun bindPairsManagerRepository(implementation: BinancePairsManagerRepository): PairsManagerRepository
+    fun bindPairsManagerRepository(implementation: BinancePairsManagerRepository): PairsManagerRepository
 
     @Binds
     @ForExchange(BINANCE)
-    abstract fun bindPairsTickRepository(implementation: BinancePairsTickRepository): PairsTickRepository
+    fun bindPairsTickRepository(implementation: BinancePairsTickRepository): PairsTickRepository
 }

@@ -1,4 +1,4 @@
-package com.sedsoftware.exchange.bitfinex.di.module
+package com.sedsoftware.exchange.bitfinex.di
 
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
@@ -10,19 +10,22 @@ import com.sedsoftware.exchange.bitfinex.repository.BitfinexPairsInfoRepository
 import com.sedsoftware.exchange.bitfinex.repository.BitfinexPairsManagerRepository
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 
 @Module
-abstract class BitfinexRepositoryModule {
+@InstallIn(ApplicationComponent::class)
+interface BitfinexRepositoryModule {
 
     @Binds
     @ForExchange(BITFINEX)
-    abstract fun bindPairsInfoRepository(implementation: BitfinexPairsInfoRepository): PairsInfoRepository
+    fun bindPairsInfoRepository(implementation: BitfinexPairsInfoRepository): PairsInfoRepository
 
     @Binds
     @ForExchange(BITFINEX)
-    abstract fun bindPairsManagerRepository(implementation: BitfinexPairsManagerRepository): PairsManagerRepository
+    fun bindPairsManagerRepository(implementation: BitfinexPairsManagerRepository): PairsManagerRepository
 
     @Binds
     @ForExchange(BITFINEX)
-    abstract fun bindPairsTickRepository(implementation: BitfinexPairTicksRepository): PairsTickRepository
+    fun bindPairsTickRepository(implementation: BitfinexPairTicksRepository): PairsTickRepository
 }

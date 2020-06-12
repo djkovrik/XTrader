@@ -6,31 +6,29 @@ import android.content.res.Resources
 import android.preference.PreferenceManager
 import android.view.Display
 import android.view.WindowManager
-import com.sedsoftware.core.di.App
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
+@InstallIn(ApplicationComponent::class)
 object PlatformToolsModule {
 
     @Provides
     @Singleton
-    fun provideContext(app: App): Context =
-        app.getApplicationContext()
-
-    @Provides
-    @Singleton
-    fun provideResources(context: Context): Resources =
+    fun provideResources(@ApplicationContext context: Context): Resources =
         context.resources
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(context: Context): SharedPreferences =
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
 
     @Provides
     @Singleton
-    fun provideDisplay(context: Context): Display =
+    fun provideDisplay(@ApplicationContext context: Context): Display =
         (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
 }

@@ -1,10 +1,12 @@
-package com.sedsoftware.exchange.binance.di.module
+package com.sedsoftware.exchange.bitfinex.di
 
-import com.sedsoftware.exchange.binance.network.BinanceApi
+import com.sedsoftware.exchange.bitfinex.network.BitfinexApi
 import com.squareup.moshi.Moshi
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.Call
 import okhttp3.Call.Factory
 import okhttp3.OkHttpClient
@@ -14,13 +16,13 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-object BinanceNetworkModule {
+@InstallIn(ApplicationComponent::class)
+object BitfinexNetworkModule {
 
-    private const val BASE_URL = "https://api.binance.com/"
+    private const val BASE_URL = "https://api.bitfinex.com/"
 
     @Provides
-    @Singleton
-    fun provideBinanceApi(moshi: Moshi, client: Lazy<OkHttpClient>): BinanceApi =
+    fun provideBinanceApi(moshi: Moshi, client: Lazy<OkHttpClient>): BitfinexApi =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .callFactory(
@@ -32,5 +34,5 @@ object BinanceNetworkModule {
             )
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
-            .create(BinanceApi::class.java)
+            .create(BitfinexApi::class.java)
 }

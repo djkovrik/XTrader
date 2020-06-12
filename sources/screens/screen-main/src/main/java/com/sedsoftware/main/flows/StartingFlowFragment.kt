@@ -3,14 +3,12 @@ package com.sedsoftware.main.flows
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.di.management.DaggerComponentManager
-import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.BaseFragment
 import com.sedsoftware.core.presentation.extension.setLaunchScreen
 import com.sedsoftware.main.Screens
-import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.screens.main.R
+import dagger.hilt.android.AndroidEntryPoint
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -18,7 +16,8 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class StartingFlowFragment : BaseFragment(R.layout.layout_container), HasInject {
+@AndroidEntryPoint
+class StartingFlowFragment : BaseFragment(R.layout.layout_container) {
 
     companion object {
         fun newInstance(): StartingFlowFragment = StartingFlowFragment()
@@ -70,11 +69,5 @@ class StartingFlowFragment : BaseFragment(R.layout.layout_container), HasInject 
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
-    }
-
-    override fun inject() {
-        DaggerComponentManager
-            .get<MainActivityComponent>()
-            .inject(this)
     }
 }

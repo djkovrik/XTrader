@@ -1,4 +1,4 @@
-package com.sedsoftware.exchange.binance.di.module
+package com.sedsoftware.exchange.binance.di
 
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
@@ -10,8 +10,11 @@ import com.sedsoftware.exchange.binance.BinancePairsLoader
 import com.sedsoftware.exchange.binance.BinancePairsManager
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 
 @Module
+@InstallIn(ApplicationComponent::class)
 interface BinanceExportModule {
 
     @Binds

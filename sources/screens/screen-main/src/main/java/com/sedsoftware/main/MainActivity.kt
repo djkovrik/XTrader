@@ -6,10 +6,6 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.sedsoftware.core.di.App
-import com.sedsoftware.core.di.management.DaggerComponentManager
-import com.sedsoftware.core.di.management.HasDaggerComponent
-import com.sedsoftware.core.di.management.HasInject
 import com.sedsoftware.core.domain.tools.CiceroneManager
 import com.sedsoftware.core.presentation.base.BaseActivity
 import com.sedsoftware.core.presentation.delegate.SnackbarDelegate
@@ -18,10 +14,10 @@ import com.sedsoftware.core.presentation.extension.launch
 import com.sedsoftware.core.presentation.extension.setBackgroundColor
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener
 import com.sedsoftware.core.presentation.listener.SwipeToDismissTouchListener.DismissCallbacks
-import com.sedsoftware.main.di.MainActivityComponent
 import com.sedsoftware.main.flows.AppFlow
 import com.sedsoftware.screens.main.R
 import com.sedsoftware.screens.main.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
 import ru.terrakok.cicerone.Navigator
@@ -30,7 +26,8 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainActivityComponent>, HasInject {
+@AndroidEntryPoint
+class MainActivity : BaseActivity(), SnackbarDelegate {
 
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.mainContainer) {
@@ -125,17 +122,6 @@ class MainActivity : BaseActivity(), SnackbarDelegate, HasDaggerComponent<MainAc
                 }
             }
         }
-    }
-
-    override fun getComponent(): MainActivityComponent {
-        val appComponent = (applicationContext as App).getAppComponent()
-        return MainActivityComponent.Initializer.init(appComponent)
-    }
-
-    override fun inject() {
-        DaggerComponentManager
-            .get<MainActivityComponent>()
-            .inject(this)
     }
 
     private fun translateViewAnimated(view: View, translation: Float, finishedCallback: () -> Unit = {}) {

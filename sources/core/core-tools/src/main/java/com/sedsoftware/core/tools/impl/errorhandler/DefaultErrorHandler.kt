@@ -11,7 +11,9 @@ import com.sedsoftware.core.domain.tools.ResourceManager
 import com.sedsoftware.core.tools.impl.R
 import java.lang.ref.WeakReference
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class DefaultErrorHandler @Inject constructor(
     private val resourceManager: ResourceManager
 ) : ErrorHandler {

@@ -16,28 +16,31 @@ import com.sedsoftware.core.tools.impl.network.AppNetworkHandler
 import com.sedsoftware.core.tools.impl.settings.AppSettings
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 
 @Module
-abstract class AppToolsModule {
+@InstallIn(ApplicationComponent::class)
+interface AppToolsModule {
 
     @Binds
-    abstract fun provideLogger(implementation: AppLogger): Logger
+    fun provideLogger(implementation: AppLogger): Logger
 
     @Binds
-    abstract fun provideNetworkHandler(implementation: AppNetworkHandler): NetworkHandler
+    fun provideNetworkHandler(implementation: AppNetworkHandler): NetworkHandler
 
     @Binds
-    abstract fun provideSettings(implementation: AppSettings): Settings
+    fun provideSettings(implementation: AppSettings): Settings
 
     @Binds
-    abstract fun provideSigner(implementation: StringSigner): Signer
+    fun provideSigner(implementation: StringSigner): Signer
 
     @Binds
-    abstract fun provideCiceroneProvider(implementation: MainCiceroneManager): CiceroneManager
+    fun provideCiceroneProvider(implementation: MainCiceroneManager): CiceroneManager
 
     @Binds
-    abstract fun provideResourceManager(implementation: AppResourceManager): ResourceManager
+    fun provideResourceManager(implementation: AppResourceManager): ResourceManager
 
     @Binds
-    abstract fun provideErrorHandler(implementation: DefaultErrorHandler): ErrorHandler
+    fun provideErrorHandler(implementation: DefaultErrorHandler): ErrorHandler
 }
