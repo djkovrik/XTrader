@@ -8,11 +8,11 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class NavigationModule {
+interface NavigationModule {
 
     @Binds
-    abstract fun bindFlowSwitcher(switcher: AppFlowSwitcher): FlowSwitcher
+    fun bindFlowSwitcher(switcher: AppFlowSwitcher): FlowSwitcher
 
     @Binds
-    abstract fun bindFlowCoordinator(coordinator: AppStartingFlowCoordinator): StartingFlowCoordinator
+    fun bindFlowCoordinator(coordinator: AppStartingFlowCoordinator): StartingFlowCoordinator
 }

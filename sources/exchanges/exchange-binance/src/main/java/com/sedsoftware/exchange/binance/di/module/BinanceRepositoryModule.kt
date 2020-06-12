@@ -12,17 +12,17 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class BinanceRepositoryModule {
+interface BinanceRepositoryModule {
 
     @Binds
     @ForExchange(BINANCE)
-    abstract fun bindPairsInfoRepository(implementation: BinancePairsInfoRepository): PairsInfoRepository
+    fun bindPairsInfoRepository(implementation: BinancePairsInfoRepository): PairsInfoRepository
 
     @Binds
     @ForExchange(BINANCE)
-    abstract fun bindPairsManagerRepository(implementation: BinancePairsManagerRepository): PairsManagerRepository
+    fun bindPairsManagerRepository(implementation: BinancePairsManagerRepository): PairsManagerRepository
 
     @Binds
     @ForExchange(BINANCE)
-    abstract fun bindPairsTickRepository(implementation: BinancePairsTickRepository): PairsTickRepository
+    fun bindPairsTickRepository(implementation: BinancePairsTickRepository): PairsTickRepository
 }

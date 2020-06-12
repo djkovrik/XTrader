@@ -12,17 +12,17 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class BitfinexRepositoryModule {
+interface BitfinexRepositoryModule {
 
     @Binds
     @ForExchange(BITFINEX)
-    abstract fun bindPairsInfoRepository(implementation: BitfinexPairsInfoRepository): PairsInfoRepository
+    fun bindPairsInfoRepository(implementation: BitfinexPairsInfoRepository): PairsInfoRepository
 
     @Binds
     @ForExchange(BITFINEX)
-    abstract fun bindPairsManagerRepository(implementation: BitfinexPairsManagerRepository): PairsManagerRepository
+    fun bindPairsManagerRepository(implementation: BitfinexPairsManagerRepository): PairsManagerRepository
 
     @Binds
     @ForExchange(BITFINEX)
-    abstract fun bindPairsTickRepository(implementation: BitfinexPairTicksRepository): PairsTickRepository
+    fun bindPairsTickRepository(implementation: BitfinexPairTicksRepository): PairsTickRepository
 }

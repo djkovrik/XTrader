@@ -8,10 +8,10 @@ import com.sedsoftware.core.domain.tools.NetworkHandler
 import dagger.Reusable
 import javax.inject.Inject
 
-@Suppress("DEPRECATION")
 @Reusable
-class AppNetworkHandler @Inject constructor(private val context: Context) :
-    NetworkHandler {
+class AppNetworkHandler @Inject constructor(private val context: Context) : NetworkHandler {
+
+    @Suppress("DEPRECATION")
     override val isConnected: Boolean
         get() {
             var result = false

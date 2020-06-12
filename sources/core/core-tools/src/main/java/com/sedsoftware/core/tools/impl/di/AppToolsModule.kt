@@ -18,26 +18,26 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class AppToolsModule {
+interface AppToolsModule {
 
     @Binds
-    abstract fun provideLogger(implementation: AppLogger): Logger
+    fun bindLogger(implementation: AppLogger): Logger
 
     @Binds
-    abstract fun provideNetworkHandler(implementation: AppNetworkHandler): NetworkHandler
+    fun bindNetworkHandler(implementation: AppNetworkHandler): NetworkHandler
 
     @Binds
-    abstract fun provideSettings(implementation: AppSettings): Settings
+    fun bindSettings(implementation: AppSettings): Settings
 
     @Binds
-    abstract fun provideSigner(implementation: StringSigner): Signer
+    fun bindSigner(implementation: StringSigner): Signer
 
     @Binds
-    abstract fun provideCiceroneProvider(implementation: MainCiceroneManager): CiceroneManager
+    fun bindCiceroneProvider(implementation: MainCiceroneManager): CiceroneManager
 
     @Binds
-    abstract fun provideResourceManager(implementation: AppResourceManager): ResourceManager
+    fun bindResourceManager(implementation: AppResourceManager): ResourceManager
 
     @Binds
-    abstract fun provideErrorHandler(implementation: DefaultErrorHandler): ErrorHandler
+    fun bindErrorHandler(implementation: DefaultErrorHandler): ErrorHandler
 }
