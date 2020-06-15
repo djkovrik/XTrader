@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sedsoftware.core.presentation.view.RoundedConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/includedLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorCardBackground"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:corner_radius_constraint="@dimen/corner_radius_containers">
 
     <View
         android:id="@+id/divider"
@@ -167,7 +168,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addPairButton"
-        style="@style/XTButtonWide"
+        style="@style/XTButtonRounded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -179,4 +180,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.sedsoftware.core.presentation.view.RoundedConstraintLayout>

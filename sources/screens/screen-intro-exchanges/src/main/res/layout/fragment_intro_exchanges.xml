@@ -28,10 +28,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <FrameLayout
+    <com.sedsoftware.core.presentation.view.RoundedFrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        app:corner_radius_frame="@dimen/corner_radius_containers">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,6 +76,6 @@
             android:alpha="0.7"
             android:text="@string/done" />
 
-    </FrameLayout>
+    </com.sedsoftware.core.presentation.view.RoundedFrameLayout>
 
 </LinearLayout>

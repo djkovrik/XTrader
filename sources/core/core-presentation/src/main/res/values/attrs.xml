@@ -10,4 +10,12 @@
         <attr name="color_completed" format="color" />
         <attr name="color_error" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="RoundedConstraintLayout">
+        <attr name="corner_radius_constraint" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedFrameLayout">
+        <attr name="corner_radius_frame" format="dimension" />
+    </declare-styleable>
 </resources>

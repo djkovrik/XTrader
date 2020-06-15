@@ -18,6 +18,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
     implementation "com.google.android.material:material:$versions.materialComponents"
 
     implementation "com.arkivanov.mvikotlin:mvikotlin:$versions.mviKotlin"
