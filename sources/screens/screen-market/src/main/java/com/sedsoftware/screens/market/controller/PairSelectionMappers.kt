@@ -1,25 +1,25 @@
 package com.sedsoftware.screens.market.controller
 
 import com.sedsoftware.screens.market.MarketEvent
-import com.sedsoftware.screens.market.store.MarketStore
-import com.sedsoftware.screens.market.view.MarketView
+import com.sedsoftware.screens.market.store.PairSelectionStore
+import com.sedsoftware.screens.market.view.PairSelectionView
 import com.sedsoftware.screens.market.view.model.CurrencyListItem
 import com.sedsoftware.screens.market.view.model.ExchangeListItem
 
-internal object Mappers {
+internal object PairSelectionMappers {
 
-    val viewEventToIntent: MarketView.ViewEvent.() -> MarketStore.Intent = {
+    val viewEventToIntent: PairSelectionView.ViewEvent.() -> PairSelectionStore.Intent = {
         when (this) {
-            is MarketView.ViewEvent.ExchangesDialogRequested -> MarketStore.Intent.ChangeExchangesDialogState(true)
-            is MarketView.ViewEvent.ExchangesDialogClosed -> MarketStore.Intent.ChangeExchangesDialogState(false)
-            is MarketView.ViewEvent.ExchangeSelected -> MarketStore.Intent.SelectExchange(exchange)
-            is MarketView.ViewEvent.BaseCurrencySelected -> MarketStore.Intent.SelectBaseCurrency(currency)
-            is MarketView.ViewEvent.MarketCurrencySelected -> MarketStore.Intent.SelectMarketCurrency(currency)
-            is MarketView.ViewEvent.PairSelectionStateChanged -> MarketStore.Intent.ChangePairSelectionState(show)
+            is PairSelectionView.ViewEvent.ExchangesDialogRequested -> PairSelectionStore.Intent.ChangeExchangesDialogState(true)
+            is PairSelectionView.ViewEvent.ExchangesDialogClosed -> PairSelectionStore.Intent.ChangeExchangesDialogState(false)
+            is PairSelectionView.ViewEvent.ExchangeSelected -> PairSelectionStore.Intent.SelectExchange(exchange)
+            is PairSelectionView.ViewEvent.BaseCurrencySelected -> PairSelectionStore.Intent.SelectBaseCurrency(currency)
+            is PairSelectionView.ViewEvent.MarketCurrencySelected -> PairSelectionStore.Intent.SelectMarketCurrency(currency)
+            is PairSelectionView.ViewEvent.PairSelectionStateChanged -> PairSelectionStore.Intent.ChangePairSelectionState(show)
         }
     }
 
-    val stateToViewModel: MarketStore.State.() -> MarketView.ViewModel = {
+    val stateToViewModel: PairSelectionStore.State.() -> PairSelectionView.ViewModel = {
         val exchangeList = exchanges.map { exchangeItem ->
             ExchangeListItem(
                 exchange = exchangeItem,
@@ -43,19 +43,18 @@ internal object Mappers {
             )
         }
 
-        MarketView.ViewModel(
+        PairSelectionView.ViewModel(
             exchanges = exchangeList,
             baseCurrencies = baseCurrencyList,
             marketCurrencies = marketCurrencyList,
-            isFabAvailable = baseCurrencyList.isNotEmpty() && marketCurrencyList.isNotEmpty(),
             isExchangesDialogActive = isExchangeSelectionActive,
             isPairSelectionViewActive = isPairSelectionActive
         )
     }
 
-    val labelToEvent: MarketStore.Label.() -> MarketEvent = {
+    val labelToEvent: PairSelectionStore.Label.() -> MarketEvent = {
         when (this) {
-            is MarketStore.Label.ErrorCaught -> MarketEvent.HandleError(throwable)
+            is PairSelectionStore.Label.ErrorCaught -> MarketEvent.HandleError(throwable)
         }
     }
 }

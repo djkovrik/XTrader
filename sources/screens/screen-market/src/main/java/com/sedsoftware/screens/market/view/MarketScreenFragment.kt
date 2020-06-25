@@ -41,11 +41,11 @@ class MarketScreenFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        controller.onViewCreated(
-            view = MarketViewImpl(requireContext(), onBackPressedCallback, defaultDisplay, binding),
-            lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
-            errorHandlerView = this
-        )
+//        controller.onViewCreated(
+//            view = MarketViewImpl(requireContext(), onBackPressedCallback, defaultDisplay, binding),
+//            lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
+//            errorHandlerView = this
+//        )
     }
 
     override fun onStart() {

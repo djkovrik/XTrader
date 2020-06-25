@@ -34,18 +34,18 @@ import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
 import com.sedsoftware.screens.market.R
 import com.sedsoftware.screens.market.databinding.FragmentMarketScreenBinding
-import com.sedsoftware.screens.market.view.MarketView.ViewEvent
-import com.sedsoftware.screens.market.view.MarketView.ViewModel
+import com.sedsoftware.screens.market.view.PairSelectionView.ViewEvent
+import com.sedsoftware.screens.market.view.PairSelectionView.ViewModel
 import com.sedsoftware.screens.market.view.adapter.CurrencyListAdapter
 import com.sedsoftware.screens.market.view.model.CurrencyListItem
 import com.sedsoftware.screens.market.view.model.ExchangeListItem
 
-class MarketViewImpl(
+class PairSelectionViewImpl(
     private val context: Context,
     private val onBackPressedCallback: OnBackPressedCallback,
     private val display: Display,
     viewBinding: FragmentMarketScreenBinding
-) : BaseMviView<ViewModel, ViewEvent>(), MarketView {
+) : BaseMviView<ViewModel, ViewEvent>(), PairSelectionView {
 
     // Views
     private val marketFab: FloatingActionButton = viewBinding.marketFab
@@ -131,7 +131,6 @@ class MarketViewImpl(
         diff(get = ViewModel::exchanges, compare = { a, b -> a === b }, set = ::showSelectedExchange)
         diff(get = ViewModel::baseCurrencies, compare = { a, b -> a === b }, set = ::showBaseCurrencies)
         diff(get = ViewModel::marketCurrencies, compare = { a, b -> a === b }, set = ::showMarketCurrencies)
-        diff(get = ViewModel::isFabAvailable, set = marketFab::setEnabled)
         diff(get = ViewModel::isExchangesDialogActive, set = ::showExchangeSelectionDialog)
         diff(get = ViewModel::isPairSelectionViewActive, set = ::showPairSelectionView)
     }

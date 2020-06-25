@@ -10,19 +10,19 @@ import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.core.presentation.extension.orFalse
-import com.sedsoftware.screens.market.store.MarketStore.Action
-import com.sedsoftware.screens.market.store.MarketStore.Intent
-import com.sedsoftware.screens.market.store.MarketStore.Label
-import com.sedsoftware.screens.market.store.MarketStore.Result
-import com.sedsoftware.screens.market.store.MarketStore.State
+import com.sedsoftware.screens.market.store.PairSelectionStore.Action
+import com.sedsoftware.screens.market.store.PairSelectionStore.Intent
+import com.sedsoftware.screens.market.store.PairSelectionStore.Label
+import com.sedsoftware.screens.market.store.PairSelectionStore.Result
+import com.sedsoftware.screens.market.store.PairSelectionStore.State
 
-class MarketStoreFactory(
+class PairSelectionStoreFactory(
     private val storeFactory: StoreFactory,
     private val managers: Map<Exchange, @JvmSuppressWildcards CurrencyPairsManager>
 ) {
 
-    fun create(): MarketStore =
-        object : MarketStore, Store<Intent, State, Label> by storeFactory.create(
+    fun create(): PairSelectionStore =
+        object : PairSelectionStore, Store<Intent, State, Label> by storeFactory.create(
             name = "MarketStore",
             initialState = State(),
             executorFactory = ::MarketExecutor,

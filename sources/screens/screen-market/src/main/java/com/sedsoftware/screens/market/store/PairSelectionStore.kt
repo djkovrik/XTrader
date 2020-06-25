@@ -5,11 +5,11 @@ import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.utils.emptyCurrency
 import com.sedsoftware.core.domain.utils.emptyExchange
-import com.sedsoftware.screens.market.store.MarketStore.Intent
-import com.sedsoftware.screens.market.store.MarketStore.Label
-import com.sedsoftware.screens.market.store.MarketStore.State
+import com.sedsoftware.screens.market.store.PairSelectionStore.Intent
+import com.sedsoftware.screens.market.store.PairSelectionStore.Label
+import com.sedsoftware.screens.market.store.PairSelectionStore.State
 
-interface MarketStore : Store<Intent, State, Label> {
+interface PairSelectionStore : Store<Intent, State, Label> {
 
     sealed class Intent {
         data class SelectExchange(val exchange: Exchange) : Intent()
