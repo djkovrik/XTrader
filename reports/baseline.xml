@@ -16,6 +16,11 @@
     <ID>MagicNumber:StringSigner.kt$StringSigner$4</ID>
     <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$1000</ID>
     <ID>MagicNumber:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$16</ID>
+    <ID>MaxLineLength:PairSelectionMappers.kt$PairSelectionMappers$is PairSelectionView.ViewEvent.BaseCurrencySelected -> PairSelectionStore.Intent.SelectBaseCurrency(currency)</ID>
+    <ID>MaxLineLength:PairSelectionMappers.kt$PairSelectionMappers$is PairSelectionView.ViewEvent.ExchangesDialogClosed -> PairSelectionStore.Intent.ChangeExchangesDialogState(false)</ID>
+    <ID>MaxLineLength:PairSelectionMappers.kt$PairSelectionMappers$is PairSelectionView.ViewEvent.ExchangesDialogRequested -> PairSelectionStore.Intent.ChangeExchangesDialogState(true)</ID>
+    <ID>MaxLineLength:PairSelectionMappers.kt$PairSelectionMappers$is PairSelectionView.ViewEvent.MarketCurrencySelected -> PairSelectionStore.Intent.SelectMarketCurrency(currency)</ID>
+    <ID>MaxLineLength:PairSelectionMappers.kt$PairSelectionMappers$is PairSelectionView.ViewEvent.PairSelectionStateChanged -> PairSelectionStore.Intent.ChangePairSelectionState(show)</ID>
     <ID>ReturnCount:PathInterpolatorDonut.kt$PathInterpolatorDonut$override fun getInterpolation(t: Float): Float</ID>
     <ID>ReturnCount:SwipeToDismissTouchListener.kt$SwipeToDismissTouchListener$@SuppressLint("ClickableViewAccessibility") override fun onTouch(view: View, motionEvent: MotionEvent): Boolean</ID>
     <ID>TooGenericExceptionCaught:CurrencyMapLoader.kt$CurrencyMapLoader$exception: Throwable</ID>

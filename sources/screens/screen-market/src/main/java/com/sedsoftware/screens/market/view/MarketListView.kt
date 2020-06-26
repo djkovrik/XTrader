@@ -7,6 +7,6 @@ interface MarketListView {
     )
 
     sealed class ViewEvent {
-
+        // TODO
     }
 }

@@ -16,7 +16,7 @@ interface MarketListStore : Store<Intent, State, Label> {
     )
 
     sealed class Action {
-
+        // TODO
     }
 
     sealed class Label {
