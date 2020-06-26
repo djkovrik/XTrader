@@ -1,9 +1,9 @@
-package com.sedsoftware.screens.market.view.adapter
+package com.sedsoftware.screens.market.ui.adapter
 
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
-import com.sedsoftware.screens.market.view.adapter.delegate.baseCurrencyItemDelegate
-import com.sedsoftware.screens.market.view.adapter.delegate.marketCurrencyItemDelegate
-import com.sedsoftware.screens.market.view.model.CurrencyListItem
+import com.sedsoftware.screens.market.ui.adapter.delegate.baseCurrencyItemDelegate
+import com.sedsoftware.screens.market.ui.adapter.delegate.marketCurrencyItemDelegate
+import com.sedsoftware.screens.market.ui.model.CurrencyListItem
 
 class CurrencyListAdapter(
     clickListener: Listener

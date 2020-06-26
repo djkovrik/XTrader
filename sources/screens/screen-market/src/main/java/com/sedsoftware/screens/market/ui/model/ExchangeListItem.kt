@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.market.view.model
+package com.sedsoftware.screens.market.ui.model
 
 import com.sedsoftware.core.domain.entity.Exchange
 

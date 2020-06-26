@@ -5,8 +5,8 @@ import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.screens.market.view.PairSelectionView.ViewEvent
 import com.sedsoftware.screens.market.view.PairSelectionView.ViewModel
-import com.sedsoftware.screens.market.view.model.CurrencyListItem
-import com.sedsoftware.screens.market.view.model.ExchangeListItem
+import com.sedsoftware.screens.market.ui.model.CurrencyListItem
+import com.sedsoftware.screens.market.ui.model.ExchangeListItem
 
 interface PairSelectionView : MviView<ViewModel, ViewEvent> {
 

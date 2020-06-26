@@ -1,10 +1,10 @@
-package com.sedsoftware.screens.market.controller
+package com.sedsoftware.screens.market.controller.mappers
 
 import com.sedsoftware.screens.market.MarketEvent
 import com.sedsoftware.screens.market.store.PairSelectionStore
 import com.sedsoftware.screens.market.view.PairSelectionView
-import com.sedsoftware.screens.market.view.model.CurrencyListItem
-import com.sedsoftware.screens.market.view.model.ExchangeListItem
+import com.sedsoftware.screens.market.ui.model.CurrencyListItem
+import com.sedsoftware.screens.market.ui.model.ExchangeListItem
 
 internal object PairSelectionMappers {
 
@@ -52,9 +52,10 @@ internal object PairSelectionMappers {
         )
     }
 
-    val labelToEvent: PairSelectionStore.Label.() -> MarketEvent = {
+    val labelToEvent: PairSelectionStore.Label.() -> MarketEvent? = {
         when (this) {
             is PairSelectionStore.Label.ErrorCaught -> MarketEvent.HandleError(throwable)
+            else -> null
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.sedsoftware.screens.market.view
+package com.sedsoftware.screens.market.ui
 
 import android.os.Bundle
 import android.view.Display
@@ -15,13 +15,16 @@ import com.sedsoftware.screens.market.R.layout
 import com.sedsoftware.screens.market.controller.MarketController
 import com.sedsoftware.screens.market.databinding.FragmentMarketScreenBinding
 import com.sedsoftware.screens.market.di.MarketScreenComponent
+import com.sedsoftware.screens.market.view.MarketListViewImpl
+import com.sedsoftware.screens.market.view.PairSelectionViewImpl
 import javax.inject.Inject
 
 class MarketScreenFragment :
     BaseFragment(layout.fragment_market_screen), HasDaggerComponent<MarketScreenComponent>, HasInject {
 
     companion object {
-        fun newInstance(): MarketScreenFragment = MarketScreenFragment()
+        fun newInstance(): MarketScreenFragment =
+            MarketScreenFragment()
     }
 
     private val binding: FragmentMarketScreenBinding by viewBinding()
@@ -41,11 +44,12 @@ class MarketScreenFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        controller.onViewCreated(
-//            view = MarketViewImpl(requireContext(), onBackPressedCallback, defaultDisplay, binding),
-//            lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
-//            errorHandlerView = this
-//        )
+        controller.onViewCreated(
+            selectorView = PairSelectionViewImpl(requireContext(), onBackPressedCallback, defaultDisplay, binding),
+            marketView = MarketListViewImpl(binding),
+            lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
+            errorHandlerView = this
+        )
     }
 
     override fun onStart() {

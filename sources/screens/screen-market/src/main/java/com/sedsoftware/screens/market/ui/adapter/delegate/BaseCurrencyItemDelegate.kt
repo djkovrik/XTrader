@@ -1,10 +1,10 @@
-package com.sedsoftware.screens.market.view.adapter.delegate
+package com.sedsoftware.screens.market.ui.adapter.delegate
 
 import androidx.core.view.isVisible
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.sedsoftware.screens.market.databinding.ItemAddPairBaseBinding
-import com.sedsoftware.screens.market.view.adapter.CurrencyListAdapter.Listener
-import com.sedsoftware.screens.market.view.model.CurrencyListItem
+import com.sedsoftware.screens.market.ui.adapter.CurrencyListAdapter.Listener
+import com.sedsoftware.screens.market.ui.model.CurrencyListItem
 
 fun baseCurrencyItemDelegate(clickListener: Listener) =
     adapterDelegateViewBinding<CurrencyListItem, CurrencyListItem, ItemAddPairBaseBinding>(

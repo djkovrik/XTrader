@@ -36,6 +36,7 @@ interface PairSelectionStore : Store<Intent, State, Label> {
 
     sealed class Label {
         data class ErrorCaught(val throwable: Throwable) : Label()
+        object PairSelectorAvailable : Label()
     }
 
     sealed class Result {

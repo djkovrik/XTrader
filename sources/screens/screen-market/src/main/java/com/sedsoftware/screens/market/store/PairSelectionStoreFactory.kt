@@ -23,14 +23,14 @@ class PairSelectionStoreFactory(
 
     fun create(): PairSelectionStore =
         object : PairSelectionStore, Store<Intent, State, Label> by storeFactory.create(
-            name = "MarketStore",
+            name = "PairSelectionStore",
             initialState = State(),
-            executorFactory = ::MarketExecutor,
+            executorFactory = ::PairSelectionExecutor,
             bootstrapper = SimpleBootstrapper(Action.FetchInitialData),
-            reducer = MarketReducer
+            reducer = PairSelectionReducer
         ) {}
 
-    private object MarketReducer : Reducer<State, Result> {
+    private object PairSelectionReducer : Reducer<State, Result> {
         override fun State.reduce(result: Result): State =
             when (result) {
                 is Result.ExchangeListCreated -> copy(exchanges = result.exchanges)
@@ -44,7 +44,7 @@ class PairSelectionStoreFactory(
             }
     }
 
-    private inner class MarketExecutor : SuspendExecutor<Intent, Action, State, Result, Label>() {
+    private inner class PairSelectionExecutor : SuspendExecutor<Intent, Action, State, Result, Label>() {
         override suspend fun executeAction(action: Action, getState: () -> State) {
             when (action) {
                 is Action.FetchInitialData -> {
@@ -115,6 +115,7 @@ class PairSelectionStoreFactory(
 
                 dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
                 dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
+                publish(Label.PairSelectorAvailable)
             }
         }
 

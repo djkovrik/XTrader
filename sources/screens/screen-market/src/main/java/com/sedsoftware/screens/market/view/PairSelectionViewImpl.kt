@@ -36,9 +36,9 @@ import com.sedsoftware.screens.market.R
 import com.sedsoftware.screens.market.databinding.FragmentMarketScreenBinding
 import com.sedsoftware.screens.market.view.PairSelectionView.ViewEvent
 import com.sedsoftware.screens.market.view.PairSelectionView.ViewModel
-import com.sedsoftware.screens.market.view.adapter.CurrencyListAdapter
-import com.sedsoftware.screens.market.view.model.CurrencyListItem
-import com.sedsoftware.screens.market.view.model.ExchangeListItem
+import com.sedsoftware.screens.market.ui.adapter.CurrencyListAdapter
+import com.sedsoftware.screens.market.ui.model.CurrencyListItem
+import com.sedsoftware.screens.market.ui.model.ExchangeListItem
 
 class PairSelectionViewImpl(
     private val context: Context,
