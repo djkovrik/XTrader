@@ -20,7 +20,6 @@ import com.sedsoftware.screens.market.controller.mappers.PairSelectionMappers.se
 import com.sedsoftware.screens.market.controller.mappers.PairSelectionMappers.selectorViewEventToIntent
 import com.sedsoftware.screens.market.store.MarketListStore
 import com.sedsoftware.screens.market.store.PairSelectionStore
-import com.sedsoftware.screens.market.store.PairSelectionStore.Intent
 import javax.inject.Inject
 import com.sedsoftware.screens.market.view.MarketListView.ViewEvent as MarketViewEvent
 import com.sedsoftware.screens.market.view.MarketListView.ViewModel as MarketViewModel
@@ -59,12 +58,6 @@ class MarketController @Inject constructor(
         lifecycle.doOnDestroy {
             pairSelectionStore.dispose()
             marketListStore.dispose()
-        }
-    }
-
-    fun onBackPressed() {
-        if (pairSelectionStore.state.isPairSelectionActive) {
-            pairSelectionStore.accept(Intent.ChangePairSelectionState(false))
         }
     }
 

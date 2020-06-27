@@ -31,12 +31,15 @@ class MarketScreenFragment :
 
     private val onBackPressedCallback = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() {
-            controller.onBackPressed()
+            invoker.runAction()
         }
     }
 
     @Inject
-    lateinit var defaultDisplay: Display
+    lateinit var display: Display
+
+    @Inject
+    lateinit var invoker: OnBackPressedInvoker
 
     @Inject
     lateinit var controller: MarketController
@@ -45,7 +48,7 @@ class MarketScreenFragment :
         super.onViewCreated(view, savedInstanceState)
 
         controller.onViewCreated(
-            selectorView = PairSelectionViewImpl(requireContext(), onBackPressedCallback, defaultDisplay, binding),
+            selectorView = PairSelectionViewImpl(requireContext(), onBackPressedCallback, display, invoker, binding),
             marketView = MarketListViewImpl(binding),
             lifecycle = viewLifecycleOwner.lifecycle.asMviLifecycle(),
             errorHandlerView = this

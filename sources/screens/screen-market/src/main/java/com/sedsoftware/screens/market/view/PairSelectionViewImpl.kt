@@ -3,6 +3,7 @@ package com.sedsoftware.screens.market.view
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Point
 import android.view.Display
@@ -35,16 +36,19 @@ import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
 import com.sedsoftware.screens.market.R
 import com.sedsoftware.screens.market.databinding.FragmentMarketScreenBinding
+import com.sedsoftware.screens.market.ui.OnBackPressedInvoker
 import com.sedsoftware.screens.market.ui.adapter.CurrencyListAdapter
 import com.sedsoftware.screens.market.ui.model.CurrencyListItem
 import com.sedsoftware.screens.market.ui.model.ExchangeListItem
 import com.sedsoftware.screens.market.view.PairSelectionView.ViewEvent
 import com.sedsoftware.screens.market.view.PairSelectionView.ViewModel
 
+@SuppressLint("ClickableViewAccessibility")
 class PairSelectionViewImpl(
     private val context: Context,
     private val onBackPressedCallback: OnBackPressedCallback,
     private val display: Display,
+    onBackPressedInvoker: OnBackPressedInvoker,
     viewBinding: FragmentMarketScreenBinding
 ) : BaseMviView<ViewModel, ViewEvent>(), PairSelectionView {
 
@@ -95,6 +99,10 @@ class PairSelectionViewImpl(
     }
 
     init {
+        onBackPressedInvoker.action = {
+            dispatch(ViewEvent.PairSelectionStateChanged(false))
+        }
+
         addPairPanel.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 setupBaseMotionParams()
@@ -113,6 +121,7 @@ class PairSelectionViewImpl(
             if (event.action == MotionEvent.ACTION_DOWN) {
                 flag = globalOverlayView.measuredHeight - event.y < addPairPanel.measuredHeight
             }
+
             flag
         }
 
