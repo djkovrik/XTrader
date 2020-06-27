@@ -13,6 +13,9 @@ import com.sedsoftware.core.domain.errorhandler.CanShowError
 import com.sedsoftware.core.domain.errorhandler.ErrorHandler
 import com.sedsoftware.core.presentation.extension.mapNotNull
 import com.sedsoftware.screens.intro.exchanges.IntroExchangesEvent
+import com.sedsoftware.screens.intro.exchanges.controller.Mappers.labelToEvent
+import com.sedsoftware.screens.intro.exchanges.controller.Mappers.stateToViewModel
+import com.sedsoftware.screens.intro.exchanges.controller.Mappers.viewEventToIntent
 import com.sedsoftware.screens.intro.exchanges.store.IntroExchangesStore
 import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesView.ViewEvent
 import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesView.ViewModel
@@ -25,12 +28,12 @@ class IntroExchangesController @Inject constructor(
 
     fun onViewCreated(view: MviView<ViewModel, ViewEvent>, lifecycle: Lifecycle, errorHandlerView: CanShowError) {
         bind(lifecycle, BinderLifecycleMode.START_STOP) {
-            store.states.mapNotNull(Mappers.stateToViewModel) bindTo view
+            store.states.mapNotNull(stateToViewModel) bindTo view
         }
 
         bind(lifecycle, BinderLifecycleMode.CREATE_DESTROY) {
-            view.events.mapNotNull(Mappers.viewEventToIntent) bindTo store
-            store.labels.mapNotNull(Mappers.labelToEvent) bindTo { consumeEvent(it) }
+            view.events.mapNotNull(viewEventToIntent) bindTo store
+            store.labels.mapNotNull(labelToEvent) bindTo { consumeEvent(it) }
         }
 
         lifecycle.doOnResumePause(

@@ -5,7 +5,7 @@ import com.sedsoftware.screens.market.view.MarketListView
 
 object MarketListMappers {
 
-    val stateToViewModel: MarketListStore.State.() -> MarketListView.ViewModel = {
+    val marketStateToViewModel: MarketListStore.State.() -> MarketListView.ViewModel = {
         MarketListView.ViewModel(
             isFabEnabled = pairSelectorAvailable
         )

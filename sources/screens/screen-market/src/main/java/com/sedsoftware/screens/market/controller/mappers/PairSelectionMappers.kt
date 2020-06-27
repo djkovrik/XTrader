@@ -8,7 +8,7 @@ import com.sedsoftware.screens.market.ui.model.ExchangeListItem
 
 internal object PairSelectionMappers {
 
-    val viewEventToIntent: PairSelectionView.ViewEvent.() -> PairSelectionStore.Intent = {
+    val selectorViewEventToIntent: PairSelectionView.ViewEvent.() -> PairSelectionStore.Intent = {
         when (this) {
             is PairSelectionView.ViewEvent.ExchangesDialogRequested -> PairSelectionStore.Intent.ChangeExchangesDialogState(true)
             is PairSelectionView.ViewEvent.ExchangesDialogClosed -> PairSelectionStore.Intent.ChangeExchangesDialogState(false)
@@ -19,7 +19,7 @@ internal object PairSelectionMappers {
         }
     }
 
-    val stateToViewModel: PairSelectionStore.State.() -> PairSelectionView.ViewModel = {
+    val selectorStateToViewModel: PairSelectionStore.State.() -> PairSelectionView.ViewModel = {
         val exchangeList = exchanges.map { exchangeItem ->
             ExchangeListItem(
                 exchange = exchangeItem,
@@ -52,7 +52,7 @@ internal object PairSelectionMappers {
         )
     }
 
-    val labelToEvent: PairSelectionStore.Label.() -> MarketEvent? = {
+    val selectorLabelToEvent: PairSelectionStore.Label.() -> MarketEvent? = {
         when (this) {
             is PairSelectionStore.Label.ErrorCaught -> MarketEvent.HandleError(throwable)
             else -> null

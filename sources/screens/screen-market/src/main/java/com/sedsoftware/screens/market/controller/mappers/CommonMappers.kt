@@ -5,7 +5,7 @@ import com.sedsoftware.screens.market.store.PairSelectionStore
 
 object CommonMappers {
 
-    val selectorLabelToIntent: PairSelectionStore.Label.() -> MarketListStore.Intent? = {
+    val selectorLabelToMarketIntent: PairSelectionStore.Label.() -> MarketListStore.Intent? = {
         when (this) {
             is PairSelectionStore.Label.PairSelectorAvailable -> MarketListStore.Intent.EnablePairSelector
             else -> null

@@ -13,9 +13,11 @@ import com.sedsoftware.core.domain.errorhandler.CanShowError
 import com.sedsoftware.core.domain.errorhandler.ErrorHandler
 import com.sedsoftware.core.presentation.extension.mapNotNull
 import com.sedsoftware.screens.market.MarketEvent
-import com.sedsoftware.screens.market.controller.mappers.CommonMappers
-import com.sedsoftware.screens.market.controller.mappers.MarketListMappers
-import com.sedsoftware.screens.market.controller.mappers.PairSelectionMappers
+import com.sedsoftware.screens.market.controller.mappers.CommonMappers.selectorLabelToMarketIntent
+import com.sedsoftware.screens.market.controller.mappers.MarketListMappers.marketStateToViewModel
+import com.sedsoftware.screens.market.controller.mappers.PairSelectionMappers.selectorLabelToEvent
+import com.sedsoftware.screens.market.controller.mappers.PairSelectionMappers.selectorStateToViewModel
+import com.sedsoftware.screens.market.controller.mappers.PairSelectionMappers.selectorViewEventToIntent
 import com.sedsoftware.screens.market.store.MarketListStore
 import com.sedsoftware.screens.market.store.PairSelectionStore
 import com.sedsoftware.screens.market.store.PairSelectionStore.Intent
@@ -39,14 +41,14 @@ class MarketController @Inject constructor(
     ) {
 
         bind(lifecycle, BinderLifecycleMode.START_STOP) {
-            pairSelectionStore.states.mapNotNull(PairSelectionMappers.stateToViewModel) bindTo selectorView
-            marketListStore.states.mapNotNull(MarketListMappers.stateToViewModel) bindTo marketView
+            pairSelectionStore.states.mapNotNull(selectorStateToViewModel) bindTo selectorView
+            marketListStore.states.mapNotNull(marketStateToViewModel) bindTo marketView
         }
 
         bind(lifecycle, BinderLifecycleMode.CREATE_DESTROY) {
-            selectorView.events.mapNotNull(PairSelectionMappers.viewEventToIntent) bindTo pairSelectionStore
-            pairSelectionStore.labels.mapNotNull(CommonMappers.selectorLabelToIntent) bindTo marketListStore
-            pairSelectionStore.labels.mapNotNull(PairSelectionMappers.labelToEvent) bindTo { consumeEvent(it) }
+            pairSelectionStore.labels.mapNotNull(selectorLabelToEvent) bindTo { consumeEvent(it) }
+            pairSelectionStore.labels.mapNotNull(selectorLabelToMarketIntent) bindTo marketListStore
+            selectorView.events.mapNotNull(selectorViewEventToIntent) bindTo pairSelectionStore
         }
 
         lifecycle.doOnResumePause(
