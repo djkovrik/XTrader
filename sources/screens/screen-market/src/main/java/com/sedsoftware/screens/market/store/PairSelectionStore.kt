@@ -2,6 +2,7 @@ package com.sedsoftware.screens.market.store
 
 import com.arkivanov.mvikotlin.core.store.Store
 import com.sedsoftware.core.domain.entity.Currency
+import com.sedsoftware.core.domain.entity.CurrencyPair
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.utils.emptyCurrency
 import com.sedsoftware.core.domain.utils.emptyExchange
@@ -17,6 +18,7 @@ interface PairSelectionStore : Store<Intent, State, Label> {
         data class SelectMarketCurrency(val currency: Currency) : Intent()
         data class ChangeExchangesDialogState(val active: Boolean) : Intent()
         data class ChangePairSelectionState(val active: Boolean) : Intent()
+        object SaveCurrentPair : Intent()
     }
 
     data class State(
@@ -36,6 +38,7 @@ interface PairSelectionStore : Store<Intent, State, Label> {
 
     sealed class Label {
         data class ErrorCaught(val throwable: Throwable) : Label()
+        data class CurrencyPairSelected(val pair: CurrencyPair) : Label()
         object PairSelectorAvailable : Label()
     }
 

@@ -6,6 +6,7 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.entity.Currency
+import com.sedsoftware.core.domain.entity.CurrencyPair
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
@@ -79,6 +80,7 @@ class PairSelectionStoreFactory(
                 is Intent.SelectMarketCurrency -> dispatch(Result.MarketCurrencySelected(intent.currency))
                 is Intent.ChangeExchangesDialogState -> dispatch(Result.ExchangeSelectionRequested(intent.active))
                 is Intent.ChangePairSelectionState -> dispatch(Result.PairSelectionRequested(intent.active))
+                is Intent.SaveCurrentPair -> requestForCurrencyPairSaving(getState())
             }
         }
 
@@ -119,8 +121,16 @@ class PairSelectionStoreFactory(
             }
         }
 
-        private suspend fun saveSelectedPair(state: State) {
-            TODO()
+        private fun requestForCurrencyPairSaving(state: State) {
+            val pair = object : CurrencyPair {
+                override val exchange: Exchange = state.selectedExchange
+                override val baseCurrency: Currency = state.selectedBaseCurrency
+                override val marketCurrency: Currency = state.selectedMarketCurrency
+                override val symbol: String =
+                    "${state.selectedBaseCurrency.name}${state.selectedMarketCurrency.name}".toUpperCase()
+            }
+
+            publish(Label.CurrencyPairSelected(pair))
         }
     }
 }

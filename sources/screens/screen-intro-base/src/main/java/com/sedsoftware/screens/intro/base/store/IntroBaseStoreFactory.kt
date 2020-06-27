@@ -6,6 +6,7 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
+import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Action
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Intent
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.Label
 import com.sedsoftware.screens.intro.base.store.IntroBaseStore.LoadingState
@@ -36,7 +37,7 @@ class IntroBaseStoreFactory(
             }
     }
 
-    private inner class IntroBaseExecutor : SuspendExecutor<Intent, Nothing, State, Result, Label>() {
+    private inner class IntroBaseExecutor : SuspendExecutor<Intent, Action, State, Result, Label>() {
 
         override suspend fun executeIntent(intent: Intent, getState: () -> State) {
             when (intent) {

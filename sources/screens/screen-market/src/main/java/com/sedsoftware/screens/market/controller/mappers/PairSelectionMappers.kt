@@ -2,9 +2,9 @@ package com.sedsoftware.screens.market.controller.mappers
 
 import com.sedsoftware.screens.market.MarketEvent
 import com.sedsoftware.screens.market.store.PairSelectionStore
-import com.sedsoftware.screens.market.view.PairSelectionView
 import com.sedsoftware.screens.market.ui.model.CurrencyListItem
 import com.sedsoftware.screens.market.ui.model.ExchangeListItem
+import com.sedsoftware.screens.market.view.PairSelectionView
 
 internal object PairSelectionMappers {
 
@@ -12,6 +12,7 @@ internal object PairSelectionMappers {
         when (this) {
             is PairSelectionView.ViewEvent.ExchangesDialogRequested -> PairSelectionStore.Intent.ChangeExchangesDialogState(true)
             is PairSelectionView.ViewEvent.ExchangesDialogClosed -> PairSelectionStore.Intent.ChangeExchangesDialogState(false)
+            is PairSelectionView.ViewEvent.AddPairToMarket -> PairSelectionStore.Intent.SaveCurrentPair
             is PairSelectionView.ViewEvent.ExchangeSelected -> PairSelectionStore.Intent.SelectExchange(exchange)
             is PairSelectionView.ViewEvent.BaseCurrencySelected -> PairSelectionStore.Intent.SelectBaseCurrency(currency)
             is PairSelectionView.ViewEvent.MarketCurrencySelected -> PairSelectionStore.Intent.SelectMarketCurrency(currency)
@@ -48,7 +49,10 @@ internal object PairSelectionMappers {
             baseCurrencies = baseCurrencyList,
             marketCurrencies = marketCurrencyList,
             isExchangesDialogActive = isExchangeSelectionActive,
-            isPairSelectionViewActive = isPairSelectionActive
+            isPairSelectionViewActive = isPairSelectionActive,
+            isAddButtonEnabled = exchanges.isNotEmpty()
+                    && baseCurrencyList.isNotEmpty()
+                    && marketCurrencyList.isNotEmpty()
         )
     }
 

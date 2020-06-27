@@ -4,6 +4,7 @@ import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.sedsoftware.core.di.scope.ScreenScope
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
+import com.sedsoftware.core.domain.interactor.PairTicksManager
 import com.sedsoftware.screens.market.store.MarketListStore
 import com.sedsoftware.screens.market.store.MarketListStoreFactory
 import com.sedsoftware.screens.market.store.PairSelectionStore
@@ -23,6 +24,8 @@ object MarketScreenModule {
 
     @Provides
     @ScreenScope
-    fun provideMarketListStore(): MarketListStore =
-        MarketListStoreFactory(DefaultStoreFactory).create()
+    fun provideMarketListStore(
+        managers: Map<Exchange, @JvmSuppressWildcards PairTicksManager>
+    ): MarketListStore =
+        MarketListStoreFactory(DefaultStoreFactory, managers).create()
 }

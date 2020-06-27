@@ -1,6 +1,7 @@
 package com.sedsoftware.screens.market.store
 
 import com.arkivanov.mvikotlin.core.store.Store
+import com.sedsoftware.core.domain.entity.CurrencyPair
 import com.sedsoftware.screens.market.store.MarketListStore.Intent
 import com.sedsoftware.screens.market.store.MarketListStore.Label
 import com.sedsoftware.screens.market.store.MarketListStore.State
@@ -8,6 +9,7 @@ import com.sedsoftware.screens.market.store.MarketListStore.State
 interface MarketListStore : Store<Intent, State, Label> {
 
     sealed class Intent {
+        data class AddCurrencyPair(val pair: CurrencyPair) : Intent()
         object EnablePairSelector : Intent()
     }
 

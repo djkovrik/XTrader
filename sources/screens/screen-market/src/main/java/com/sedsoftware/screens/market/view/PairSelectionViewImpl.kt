@@ -27,6 +27,7 @@ import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.arkivanov.mvikotlin.core.utils.diff
 import com.arkivanov.mvikotlin.core.view.BaseMviView
 import com.arkivanov.mvikotlin.core.view.ViewRenderer
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sedsoftware.core.presentation.extension.addEndAction
 import com.sedsoftware.core.presentation.extension.addStartEndActions
@@ -34,11 +35,11 @@ import com.sedsoftware.core.presentation.extension.centerX
 import com.sedsoftware.core.presentation.extension.centerY
 import com.sedsoftware.screens.market.R
 import com.sedsoftware.screens.market.databinding.FragmentMarketScreenBinding
-import com.sedsoftware.screens.market.view.PairSelectionView.ViewEvent
-import com.sedsoftware.screens.market.view.PairSelectionView.ViewModel
 import com.sedsoftware.screens.market.ui.adapter.CurrencyListAdapter
 import com.sedsoftware.screens.market.ui.model.CurrencyListItem
 import com.sedsoftware.screens.market.ui.model.ExchangeListItem
+import com.sedsoftware.screens.market.view.PairSelectionView.ViewEvent
+import com.sedsoftware.screens.market.view.PairSelectionView.ViewModel
 
 class PairSelectionViewImpl(
     private val context: Context,
@@ -49,6 +50,7 @@ class PairSelectionViewImpl(
 
     // Views
     private val marketFab: FloatingActionButton = viewBinding.marketFab
+    private val addPairButton: MaterialButton = viewBinding.includedLayout.addPairButton
     private val overlayView: View = viewBinding.includedLayout.overlayView
     private val overlayImageView: ImageView = viewBinding.includedLayout.overlayImageView
     private val globalOverlayView: View = viewBinding.globalOverlayView
@@ -104,6 +106,7 @@ class PairSelectionViewImpl(
         exchangeTextView.setOnClickListener { dispatch(ViewEvent.ExchangesDialogRequested) }
         globalOverlayView.setOnClickListener { dispatch(ViewEvent.PairSelectionStateChanged(false)) }
         marketFab.setOnClickListener { dispatch(ViewEvent.PairSelectionStateChanged(true)) }
+        addPairButton.setOnClickListener { dispatch(ViewEvent.AddPairToMarket) }
 
         globalOverlayView.setOnTouchListener { _, event ->
             var flag = false
@@ -133,6 +136,7 @@ class PairSelectionViewImpl(
         diff(get = ViewModel::marketCurrencies, compare = { a, b -> a === b }, set = ::showMarketCurrencies)
         diff(get = ViewModel::isExchangesDialogActive, set = ::showExchangeSelectionDialog)
         diff(get = ViewModel::isPairSelectionViewActive, set = ::showPairSelectionView)
+        diff(get = ViewModel::isAddButtonEnabled, set = addPairButton::setEnabled)
     }
 
     private fun showSelectedExchange(exchanges: List<ExchangeListItem>) {

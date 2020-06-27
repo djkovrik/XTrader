@@ -16,6 +16,10 @@ interface IntroBaseStore : Store<Intent, State, Label> {
         val loadingState: LoadingState = LoadingState.IDLE
     )
 
+    sealed class Action {
+        // empty
+    }
+
     sealed class Label {
         data class ErrorCaught(val throwable: Throwable) : Label()
     }
