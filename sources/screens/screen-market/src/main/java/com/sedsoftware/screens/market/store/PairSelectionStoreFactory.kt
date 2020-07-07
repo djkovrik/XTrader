@@ -8,7 +8,6 @@ import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.CurrencyPair
 import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.exception.MarketPairsLoadingError
 import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
 import com.sedsoftware.core.presentation.extension.orFalse
 import com.sedsoftware.screens.market.store.PairSelectionStore.Action
@@ -66,8 +65,8 @@ class PairSelectionStoreFactory(
                         val defaultExchange = exchanges.first()
                         dispatch(Result.ExchangeSelected(defaultExchange))
                         loadCurrenciesForExchange(defaultExchange)
-                    } catch (exception: MarketPairsLoadingError) {
-                        publish(Label.ErrorCaught(exception))
+                    } catch (throwable: Throwable) {
+                        publish(Label.ErrorCaught(throwable))
                     }
                 }
             }
@@ -94,30 +93,38 @@ class PairSelectionStoreFactory(
 
             val currentExchange = state.selectedExchange
 
-            managers[currentExchange]?.let { manager ->
-                val marketCurrencies = manager.getMarketCurrencies(currency)
-                if (marketCurrencies.isEmpty()) return
+            try {
+                managers[currentExchange]?.let { manager ->
+                    val marketCurrencies = manager.getMarketCurrencies(currency)
+                    if (marketCurrencies.isEmpty()) return
 
-                dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
-                dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
+                    dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
+                    dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
+                }
+            } catch (throwable: Throwable) {
+                publish(Label.ErrorCaught(throwable))
             }
         }
 
         private suspend fun loadCurrenciesForExchange(exchange: Exchange) {
-            managers[exchange]?.let { manager ->
-                val baseCurrencies = manager.getBaseCurrencies()
-                if (baseCurrencies.isEmpty()) return@let
-                dispatch(Result.BaseCurrenciesListCreated(baseCurrencies))
+            try {
+                managers[exchange]?.let { manager ->
+                    val baseCurrencies = manager.getBaseCurrencies()
+                    if (baseCurrencies.isEmpty()) return@let
+                    dispatch(Result.BaseCurrenciesListCreated(baseCurrencies))
 
-                val defaultBaseCurrency = baseCurrencies.first()
-                dispatch(Result.BaseCurrencySelected(defaultBaseCurrency))
+                    val defaultBaseCurrency = baseCurrencies.first()
+                    dispatch(Result.BaseCurrencySelected(defaultBaseCurrency))
 
-                val marketCurrencies = manager.getMarketCurrencies(defaultBaseCurrency)
-                if (marketCurrencies.isEmpty()) return
+                    val marketCurrencies = manager.getMarketCurrencies(defaultBaseCurrency)
+                    if (marketCurrencies.isEmpty()) return
 
-                dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
-                dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
-                publish(Label.PairSelectorAvailable)
+                    dispatch(Result.MarketCurrenciesListCreated(marketCurrencies))
+                    dispatch(Result.MarketCurrencySelected(marketCurrencies.first()))
+                    publish(Label.PairSelectorAvailable)
+                }
+            } catch (throwable: Throwable) {
+                publish(Label.ErrorCaught(throwable))
             }
         }
 
