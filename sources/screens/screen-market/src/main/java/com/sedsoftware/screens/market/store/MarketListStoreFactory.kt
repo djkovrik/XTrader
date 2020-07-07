@@ -12,6 +12,8 @@ import com.sedsoftware.screens.market.store.MarketListStore.Label
 import com.sedsoftware.screens.market.store.MarketListStore.Result
 import com.sedsoftware.screens.market.store.MarketListStore.State
 import com.sedsoftware.screens.market.store.PairSelectionStore.Action
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.merge
 
 class MarketListStoreFactory(
     private val storeFactory: StoreFactory,
@@ -29,7 +31,8 @@ class MarketListStoreFactory(
     private object MarketListReducer : Reducer<State, Result> {
         override fun State.reduce(result: Result): State =
             when (result) {
-                Result.SelectorAvailable -> copy(pairSelectorAvailable = true)
+                is Result.TicksRefreshed -> copy(ticks = result.list)
+                is Result.SelectorAvailable -> copy(pairSelectorAvailable = true)
             }
     }
 
@@ -40,9 +43,39 @@ class MarketListStoreFactory(
                 is Intent.AddCurrencyPair -> addCurrencyPairToWatchList(intent.pair)
             }
         }
-    }
 
-    private fun addCurrencyPairToWatchList(pair: CurrencyPair) {
-        // TODO
+        private suspend fun addCurrencyPairToWatchList(pair: CurrencyPair) {
+            try {
+                managers[pair.exchange]?.let { manager ->
+                    manager.addPairToWatchList(pair)
+                    publish(Label.WatchListRefreshed)
+                }
+            } catch (throwable: Throwable) {
+                publish(Label.ErrorCaught(throwable))
+            }
+        }
+
+        private suspend fun refreshWatchList() {
+            try {
+                managers
+                    .filterValues { it.hasTicks() }
+                    .forEach { (_, manager) -> manager.refreshTicks() }
+            } catch (throwable: Throwable) {
+                publish(Label.ErrorCaught(throwable))
+            }
+        }
+
+        private suspend fun rebuildWatchList() {
+            try {
+                managers
+                    .filterValues { it.hasTicks() }
+                    .map { (_, manager) -> manager.watchForTicks() }
+                    .toList()
+                    .merge()
+                    .collect { dispatch(Result.TicksRefreshed(it)) }
+            } catch (throwable: Throwable) {
+                publish(Label.ErrorCaught(throwable))
+            }
+        }
     }
 }
