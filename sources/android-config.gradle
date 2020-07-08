@@ -53,8 +53,8 @@ android {
         ignoreTestSources true
     }
 
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding = true
     }
 }
 
