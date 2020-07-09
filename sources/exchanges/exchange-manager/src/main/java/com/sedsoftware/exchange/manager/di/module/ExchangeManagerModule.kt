@@ -5,7 +5,7 @@ import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
-import com.sedsoftware.core.domain.interactor.CurrencyPairsManager
+import com.sedsoftware.core.domain.interactor.TickersManager
 import com.sedsoftware.core.domain.interactor.PairTicksManager
 import dagger.Module
 import dagger.Provides
@@ -25,9 +25,9 @@ object ExchangeManagerModule {
 
         @Provides
         fun provideCurrencyPairManager(
-            @ForExchange(BINANCE) binancePairsManager: CurrencyPairsManager,
-            @ForExchange(BITFINEX) bitfinexPairsManager: CurrencyPairsManager
-        ): Map<Exchange, @JvmSuppressWildcards CurrencyPairsManager> =
+            @ForExchange(BINANCE) binancePairsManager: TickersManager,
+            @ForExchange(BITFINEX) bitfinexPairsManager: TickersManager
+        ): Map<Exchange, @JvmSuppressWildcards TickersManager> =
             mapOf(
                 BINANCE to binancePairsManager,
                 BITFINEX to bitfinexPairsManager

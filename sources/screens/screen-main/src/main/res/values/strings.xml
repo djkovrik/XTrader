@@ -2,7 +2,7 @@
 <resources>
     <string name="bottom_wallet">Wallet</string>
     <string name="bottom_orders">Orders</string>
-    <string name="bottom_market">Market</string>
+    <string name="bottom_tickers">Tickers</string>
     <string name="bottom_tracker">Tracker</string>
     <string name="bottom_tools">Tools</string>
 </resources>

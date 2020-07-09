@@ -12,7 +12,7 @@ object BitfinexDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideBinanceDatabase(app: App): BitfinexDatabase =
+    fun provideBitfinexDatabase(app: App): BitfinexDatabase =
         Room.databaseBuilder(app.getApplicationContext(), BitfinexDatabase::class.java, BitfinexDatabase.NAME)
             .fallbackToDestructiveMigration()
             .build()

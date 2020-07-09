@@ -30,8 +30,8 @@ include ':screen-intro-exchanges'
 project(':screen-intro-exchanges').projectDir = new File(rootDir, 'sources/screens/screen-intro-exchanges')
 include ':screen-intro-pin'
 project(':screen-intro-pin').projectDir = new File(rootDir, 'sources/screens/screen-intro-pin')
-include ':screen-market'
-project(':screen-market').projectDir = new File(rootDir, 'sources/screens/screen-market')
+include ':screen-tickers'
+project(':screen-tickers').projectDir = new File(rootDir, 'sources/screens/screen-tickers')
 include ':screen-orders'
 project(':screen-orders').projectDir = new File(rootDir, 'sources/screens/screen-orders')
 include ':screen-wallet'

@@ -7,7 +7,7 @@ import com.sedsoftware.main.MainActivity
 import com.sedsoftware.main.di.module.NavigationModule
 import com.sedsoftware.main.flows.RegularFlowFragment
 import com.sedsoftware.main.flows.StartingFlowFragment
-import com.sedsoftware.main.tabs.MarketTabContainerFragment
+import com.sedsoftware.main.tabs.TickersTabContainerFragment
 import com.sedsoftware.main.tabs.OrdersTabContainerFragment
 import com.sedsoftware.main.tabs.ToolsTabContainerFragment
 import com.sedsoftware.main.tabs.TrackerTabContainerFragment
@@ -38,7 +38,7 @@ interface MainActivityComponent : ActivityToolsProvider {
     fun inject(fragment: RegularFlowFragment)
 
     // Containers
-    fun inject(fragment: MarketTabContainerFragment)
+    fun inject(fragment: TickersTabContainerFragment)
     fun inject(fragment: OrdersTabContainerFragment)
     fun inject(fragment: ToolsTabContainerFragment)
     fun inject(fragment: TrackerTabContainerFragment)

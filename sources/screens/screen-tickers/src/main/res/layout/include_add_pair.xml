@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sedsoftware.core.presentation.view.RoundedConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/includedLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorCardBackground"
+    android:orientation="vertical"
+    app:corner_radius_constraint="@dimen/corner_radius_containers">
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:alpha="0.25"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/addPairButton"
+        app:layout_constraintEnd_toEndOf="@+id/overlayImageView"
+        app:layout_constraintStart_toStartOf="@+id/overlayImageView"
+        app:layout_constraintTop_toBottomOf="@+id/baseFullCurrencyTextView" />
+
+    <TextView
+        android:id="@+id/headerTextView"
+        style="@style/XTTextNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/label_exchange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/toTextView"
+        style="@style/XTTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/baseline_grid_0.5x"
+        android:layout_marginEnd="@dimen/baseline_grid_0.5x"
+        android:gravity="center_horizontal"
+        android:text="@string/label_to"
+        app:layout_constraintBottom_toBottomOf="@+id/baseFullCurrencyTextView"
+        app:layout_constraintEnd_toStartOf="@+id/marketCurrencyTextView"
+        app:layout_constraintStart_toEndOf="@+id/baseCurrencyTextView"
+        app:layout_constraintTop_toBottomOf="@+id/exchangeTextView" />
+
+    <TextView
+        android:id="@+id/exchangeTextView"
+        style="@style/XTTextChooser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextView"
+        tools:text="Binance" />
+
+    <TextView
+        android:id="@+id/baseCurrencyTextView"
+        style="@style/XTTextChooser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/baseline_grid_2x"
+        android:layout_marginTop="@dimen/baseline_grid_0.5x"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/baseFullCurrencyTextView"
+        app:layout_constraintEnd_toStartOf="@+id/toTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exchangeTextView"
+        tools:text="BTC" />
+
+    <TextView
+        android:id="@+id/marketCurrencyTextView"
+        style="@style/XTTextChooser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/baseline_grid_0.5x"
+        android:layout_marginEnd="@dimen/baseline_grid_2x"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/marketFullCurrencyTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/toTextView"
+        app:layout_constraintTop_toBottomOf="@+id/exchangeTextView"
+        tools:text="USDT" />
+
+    <TextView
+        android:id="@+id/baseFullCurrencyTextView"
+        style="@style/XTTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/baseRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/baseCurrencyTextView"
+        app:layout_constraintStart_toStartOf="@+id/baseCurrencyTextView"
+        app:layout_constraintTop_toBottomOf="@+id/baseCurrencyTextView"
+        tools:text="Bitcoin" />
+
+    <TextView
+        android:id="@+id/marketFullCurrencyTextView"
+        style="@style/XTTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/marketRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/marketCurrencyTextView"
+        app:layout_constraintStart_toStartOf="@+id/marketCurrencyTextView"
+        app:layout_constraintTop_toBottomOf="@+id/marketCurrencyTextView"
+        tools:text="US Dollar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/marketRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/addPairButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/marketFullCurrencyTextView"
+        tools:itemCount="20"
+        tools:listitem="@layout/item_add_pair_market" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/baseRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/addPairButton"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baseFullCurrencyTextView"
+        tools:itemCount="20"
+        tools:listitem="@layout/item_add_pair_base" />
+
+    <View
+        android:id="@+id/overlayView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@color/colorAccent"
+        android:elevation="@dimen/elevation_fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/overlayImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:elevation="@dimen/elevation_fab"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addPairButton"
+        style="@style/XTButtonRounded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/baseline_grid_1x"
+        android:layout_marginBottom="@dimen/baseline_grid_1x"
+        android:enabled="false"
+        android:text="@string/btn_add_ticker"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</com.sedsoftware.core.presentation.view.RoundedConstraintLayout>

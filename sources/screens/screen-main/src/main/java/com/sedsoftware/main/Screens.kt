@@ -3,7 +3,7 @@ package com.sedsoftware.main
 import androidx.fragment.app.Fragment
 import com.sedsoftware.main.flows.RegularFlowFragment
 import com.sedsoftware.main.flows.StartingFlowFragment
-import com.sedsoftware.main.tabs.MarketTabContainerFragment
+import com.sedsoftware.main.tabs.TickersTabContainerFragment
 import com.sedsoftware.main.tabs.OrdersTabContainerFragment
 import com.sedsoftware.main.tabs.ToolsTabContainerFragment
 import com.sedsoftware.main.tabs.TrackerTabContainerFragment
@@ -11,7 +11,7 @@ import com.sedsoftware.main.tabs.WalletTabContainerFragment
 import com.sedsoftware.screens.intro.base.view.IntroBaseFragment
 import com.sedsoftware.screens.intro.exchanges.view.IntroExchangesFragment
 import com.sedsoftware.screens.intro.pin.PinScreenFragment
-import com.sedsoftware.screens.market.ui.MarketScreenFragment
+import com.sedsoftware.screens.tickers.ui.TickersScreenFragment
 import com.sedsoftware.screens.orders.OrdersScreenFragment
 import com.sedsoftware.screens.tools.ToolsScreenFragment
 import com.sedsoftware.screens.tracker.TrackerScreenFragment
@@ -31,8 +31,8 @@ object Screens {
 
 
     // Containers
-    object MarketTabContainer : SupportAppScreen() {
-        override fun getFragment(): Fragment = MarketTabContainerFragment.newInstance()
+    object TickersTabContainer : SupportAppScreen() {
+        override fun getFragment(): Fragment = TickersTabContainerFragment.newInstance()
     }
 
     object WalletTabContainer : SupportAppScreen() {
@@ -64,8 +64,8 @@ object Screens {
         override fun getFragment(): Fragment = PinScreenFragment.newInstance()
     }
 
-    object Market : SupportAppScreen() {
-        override fun getFragment(): Fragment = MarketScreenFragment.newInstance()
+    object Tickers : SupportAppScreen() {
+        override fun getFragment(): Fragment = TickersScreenFragment.newInstance()
     }
 
     object Orders : SupportAppScreen() {

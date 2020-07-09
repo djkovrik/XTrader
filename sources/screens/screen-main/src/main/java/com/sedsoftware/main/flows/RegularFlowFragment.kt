@@ -29,11 +29,11 @@ class RegularFlowFragment : BaseFragment(R.layout.fragment_flow_regular), HasInj
 
         private val walletTab = Screens.WalletTabContainer
         private val ordersTab = Screens.OrdersTabContainer
-        private val marketTab = Screens.MarketTabContainer
+        private val tickersTab = Screens.TickersTabContainer
         private val trackerTab = Screens.TrackerTabContainer
         private val toolsTab = Screens.ToolsTabContainer
 
-        private val DEFAULT_TAB = R.id.navigation_market
+        private val DEFAULT_TAB = R.id.navigation_tickers
     }
 
     private val binding: FragmentFlowRegularBinding by viewBinding()
@@ -78,7 +78,7 @@ class RegularFlowFragment : BaseFragment(R.layout.fragment_flow_regular), HasInj
                 R.id.navigation_orders -> selectTab(ordersTab)
                 R.id.navigation_tracker -> selectTab(trackerTab)
                 R.id.navigation_tools -> selectTab(toolsTab)
-                else -> selectTab(marketTab)
+                else -> selectTab(tickersTab)
             }
             true
         }

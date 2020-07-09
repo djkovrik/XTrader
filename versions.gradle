@@ -30,8 +30,8 @@ ext.versions = [
     materialDialogs: "3.3.0",
 
     // Firebase
-    firebaseCore: "17.4.3",
-    firebaseAnalytics: "17.4.3",
+    firebaseCore: "17.4.4",
+    firebaseAnalytics: "17.4.4",
     firebaseFirestore: "21.0.0",
     firebaseCloudMessaging: "20.0.0",
     firebaseCrashlytics: "2.10.1",

@@ -14,10 +14,10 @@
         android:title="@string/bottom_orders" />
 
     <item
-        android:id="@+id/navigation_market"
-        android:contentDescription="@string/bottom_market"
-        android:icon="@drawable/ic_market"
-        android:title="@string/bottom_market" />
+        android:id="@+id/navigation_tickers"
+        android:contentDescription="@string/bottom_tickers"
+        android:icon="@drawable/ic_tickers"
+        android:title="@string/bottom_tickers" />
 
     <item
         android:id="@+id/navigation_tracker"

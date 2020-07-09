@@ -20,7 +20,7 @@ object BitfinexNetworkModule {
 
     @Provides
     @Singleton
-    fun provideBinanceApi(moshi: Moshi, client: Lazy<OkHttpClient>): BitfinexApi =
+    fun provideBitfinexApi(moshi: Moshi, client: Lazy<OkHttpClient>): BitfinexApi =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .callFactory(
