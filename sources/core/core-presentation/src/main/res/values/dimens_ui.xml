@@ -7,8 +7,6 @@
     <dimen name="elevation_card">4dp</dimen>
     <dimen name="padding_button_vertical">4dp</dimen>
     <dimen name="padding_button_small">16dp</dimen>
-    <dimen name="padding_button_normal">24dp</dimen>
-    <dimen name="padding_button_wide">32dp</dimen>
     <dimen name="size_icon_retry">20dp</dimen>
     <dimen name="size_image_empty_page">160dp</dimen>
     <dimen name="width_arrow">10dp</dimen>
