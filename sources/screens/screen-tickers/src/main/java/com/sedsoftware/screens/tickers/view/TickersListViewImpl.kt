@@ -1,5 +1,6 @@
 package com.sedsoftware.screens.tickers.view
 
+import androidx.recyclerview.widget.RecyclerView
 import com.arkivanov.mvikotlin.core.utils.diff
 import com.arkivanov.mvikotlin.core.view.BaseMviView
 import com.arkivanov.mvikotlin.core.view.ViewRenderer
@@ -14,6 +15,7 @@ class TickersListViewImpl(
 
     // Views
     private val tickersFab: FloatingActionButton = viewBinding.tickersFab
+    private val tickersList: RecyclerView = viewBinding.tickersRecyclerView
 
     override val renderer: ViewRenderer<ViewModel> = diff {
         diff(get = ViewModel::isFabEnabled, set = tickersFab::setEnabled)
