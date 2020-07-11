@@ -48,18 +48,9 @@ class TickersListStoreFactory(
             try {
                 managers[pair.exchange]?.let { manager ->
                     manager.addPairToWatchList(pair)
-                    publish(Label.WatchListRefreshed)
+                    rebuildWatchList()
+                    publish(Label.WatchListUpdated)
                 }
-            } catch (throwable: Throwable) {
-                publish(Label.ErrorCaught(throwable))
-            }
-        }
-
-        private suspend fun refreshWatchList() {
-            try {
-                managers
-                    .filterValues { it.hasTicks() }
-                    .forEach { (_, manager) -> manager.refreshTicks() }
             } catch (throwable: Throwable) {
                 publish(Label.ErrorCaught(throwable))
             }
@@ -73,6 +64,16 @@ class TickersListStoreFactory(
                     .toList()
                     .merge()
                     .collect { dispatch(Result.TicksRefreshed(it)) }
+            } catch (throwable: Throwable) {
+                publish(Label.ErrorCaught(throwable))
+            }
+        }
+
+        private suspend fun refreshWatchList() {
+            try {
+                managers
+                    .filterValues { it.hasTicks() }
+                    .forEach { (_, manager) -> manager.refreshTicks() }
             } catch (throwable: Throwable) {
                 publish(Label.ErrorCaught(throwable))
             }

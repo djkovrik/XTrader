@@ -25,7 +25,7 @@ interface TickersListStore : Store<Intent, State, Label> {
 
     sealed class Label {
         data class ErrorCaught(val throwable: Throwable) : Label()
-        object WatchListRefreshed : Label()
+        object WatchListUpdated : Label()
     }
 
     sealed class Result {

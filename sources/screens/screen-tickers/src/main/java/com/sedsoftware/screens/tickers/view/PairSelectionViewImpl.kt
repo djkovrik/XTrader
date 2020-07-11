@@ -114,7 +114,11 @@ class PairSelectionViewImpl(
         exchangeTextView.setOnClickListener { dispatch(ViewEvent.ExchangesDialogRequested) }
         globalOverlayView.setOnClickListener { dispatch(ViewEvent.PairSelectionStateChanged(false)) }
         tickersFab.setOnClickListener { dispatch(ViewEvent.PairSelectionStateChanged(true)) }
-        addPairButton.setOnClickListener { dispatch(ViewEvent.AddNewTicker) }
+
+        addPairButton.setOnClickListener {
+            dispatch(ViewEvent.AddNewTicker)
+            dispatch(ViewEvent.PairSelectionStateChanged(false))
+        }
 
         globalOverlayView.setOnTouchListener { _, event ->
             var flag = false
