@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/baseCurrencyTextView"
+        style="@style/XTTextTickerCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/baseline_grid_0.5x"
+        app:layout_constraintBottom_toBottomOf="@+id/marketCurrencyTextView"
+        app:layout_constraintStart_toEndOf="@+id/slash"
+        app:layout_constraintTop_toTopOf="@+id/marketCurrencyTextView"
+        tools:text="BTC" />
+
+    <TextView
+        android:id="@+id/slash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash"
+        app:layout_constraintBottom_toBottomOf="@+id/marketCurrencyTextView"
+        app:layout_constraintEnd_toStartOf="@+id/baseCurrencyTextView"
+        app:layout_constraintStart_toEndOf="@+id/marketCurrencyTextView"
+        app:layout_constraintTop_toTopOf="@+id/marketCurrencyTextView" />
+
+    <TextView
+        android:id="@+id/marketCurrencyTextView"
+        style="@style/XTTextTickerCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/baseline_grid_1x"
+        android:layout_marginTop="@dimen/baseline_grid_0.5x"
+        android:layout_marginEnd="@dimen/baseline_grid_0.5x"
+        app:layout_constraintBottom_toTopOf="@+id/exchangeNameTextView"
+        app:layout_constraintEnd_toStartOf="@+id/slash"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="USD" />
+
+    <TextView
+        android:id="@+id/exchangeNameTextView"
+        style="@style/XTTextTickerExchange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/baseline_grid_1x"
+        android:layout_marginBottom="@dimen/baseline_grid_0.5x"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketCurrencyTextView"
+        tools:text="Bitfinex" />
+
+    <TextView
+        android:id="@+id/priceTextView"
+        style="@style/XTTextTickerPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/baseline_grid_0.5x"
+        android:layout_marginEnd="@dimen/baseline_grid_1x"
+        app:layout_constraintBottom_toTopOf="@+id/percentTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="0.005555555" />
+
+    <TextView
+        android:id="@+id/percentTextView"
+        style="@style/XTTextTickerPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/baseline_grid_1x"
+        android:layout_marginBottom="@dimen/baseline_grid_0.5x"
+        android:textColor="@color/colorPercentPositive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceTextView"
+        tools:text="+25.75 %" />
+
+    <ImageView
+        android:id="@+id/indicatorUpImageView"
+        android:layout_width="@dimen/size_ticker_indicator"
+        android:layout_height="@dimen/size_ticker_indicator"
+        android:layout_marginEnd="@dimen/baseline_grid_2x"
+        android:src="@drawable/ic_triangle_up"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/priceTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/indicatorDownImageView"
+        android:layout_width="@dimen/size_ticker_indicator"
+        android:layout_height="@dimen/size_ticker_indicator"
+        android:layout_marginEnd="@dimen/baseline_grid_2x"
+        android:src="@drawable/ic_triangle_down"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/priceTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

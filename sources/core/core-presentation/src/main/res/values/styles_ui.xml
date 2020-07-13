@@ -66,6 +66,26 @@
         <item name="android:textColor">@color/colorTextSecondary</item>
     </style>
 
+    <style name="XTTextTickerCurrency" parent="XTTextNormal">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="XTTextTickerPrice" parent="XTTextNormal">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="XTTextTickerExchange" parent="XTTextSecondary">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="XTTextTickerPercent" parent="XTTextNormal">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
     <!-- NOTIFICATION -->
 
     <style name="XTNotificationText">

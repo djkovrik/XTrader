@@ -28,4 +28,8 @@
     <color name="colorNotificationBackground">#E6000000</color>
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorDivider">#0D000000</color>
+
+    <!-- Currencies -->
+    <color name="colorPercentPositive">@color/material_color_green_500</color>
+    <color name="colorPercentNegative">@color/material_color_red_600</color>
 </resources>

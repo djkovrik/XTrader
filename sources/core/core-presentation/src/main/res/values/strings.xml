@@ -9,5 +9,6 @@
     <string name="next">Next</string>
     <string name="done">Done</string>
     <string name="load">Load</string>
+    <string name="slash">/</string>
 
 </resources>
