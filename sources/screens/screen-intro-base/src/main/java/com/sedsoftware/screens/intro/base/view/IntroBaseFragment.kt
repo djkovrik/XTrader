@@ -2,7 +2,7 @@ package com.sedsoftware.screens.intro.base.view
 
 import android.os.Bundle
 import android.view.View
-import com.arkivanov.mvikotlin.androidxlifecycleinterop.asMviLifecycle
+import com.arkivanov.mvikotlin.extensions.androidx.lifecycle.asMviLifecycle
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent

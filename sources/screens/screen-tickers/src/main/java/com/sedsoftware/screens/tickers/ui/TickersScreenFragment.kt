@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.Display
 import android.view.View
 import androidx.activity.OnBackPressedCallback
-import com.arkivanov.mvikotlin.androidxlifecycleinterop.asMviLifecycle
+import com.arkivanov.mvikotlin.extensions.androidx.lifecycle.asMviLifecycle
 import com.sedsoftware.core.di.ActivityToolsProvider
 import com.sedsoftware.core.di.management.DaggerComponentManager
 import com.sedsoftware.core.di.management.HasDaggerComponent
@@ -15,8 +15,8 @@ import com.sedsoftware.screens.tickers.R.layout
 import com.sedsoftware.screens.tickers.controller.TickersController
 import com.sedsoftware.screens.tickers.databinding.FragmentTickersScreenBinding
 import com.sedsoftware.screens.tickers.di.TickersScreenComponent
-import com.sedsoftware.screens.tickers.view.TickersListViewImpl
 import com.sedsoftware.screens.tickers.view.PairSelectionViewImpl
+import com.sedsoftware.screens.tickers.view.TickersListViewImpl
 import javax.inject.Inject
 
 class TickersScreenFragment :
