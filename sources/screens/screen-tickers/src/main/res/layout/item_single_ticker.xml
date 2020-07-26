@@ -124,4 +124,17 @@
         tools:ignore="ContentDescription"
         tools:visibility="visible" />
 
+    <ImageView
+        android:id="@+id/indicatorStillImageView"
+        android:layout_width="@dimen/size_ticker_indicator"
+        android:layout_height="@dimen/size_ticker_indicator"
+        android:layout_marginEnd="@dimen/baseline_grid_2x"
+        android:src="@drawable/ic_triangle_right"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/barrier"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

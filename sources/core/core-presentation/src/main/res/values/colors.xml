@@ -32,4 +32,5 @@
     <!-- Currencies -->
     <color name="colorPercentPositive">@color/material_color_green_500</color>
     <color name="colorPercentNegative">@color/material_color_red_600</color>
+    <color name="colorPercentStill">@color/material_color_grey_600</color>
 </resources>
