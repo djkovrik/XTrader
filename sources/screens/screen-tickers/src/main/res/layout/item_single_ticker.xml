@@ -52,6 +52,13 @@
         app:layout_constraintTop_toBottomOf="@+id/marketCurrencyTextView"
         tools:text="Bitfinex" />
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="priceTextView,timeTextView" />
+
     <TextView
         android:id="@+id/priceTextView"
         style="@style/XTTextTickerPrice"
@@ -77,6 +84,20 @@
         app:layout_constraintTop_toBottomOf="@+id/priceTextView"
         tools:text="+25.75 %" />
 
+    <TextView
+        android:id="@+id/timeTextView"
+        style="@style/XTTextTickerTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/baseline_grid_1x"
+        android:layout_marginBottom="@dimen/baseline_grid_0.5x"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/percentTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/barrier"
+        app:layout_constraintTop_toBottomOf="@+id/priceTextView"
+        tools:text="189d" />
+
     <ImageView
         android:id="@+id/indicatorUpImageView"
         android:layout_width="@dimen/size_ticker_indicator"
@@ -85,7 +106,7 @@
         android:src="@drawable/ic_triangle_up"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/priceTextView"
+        app:layout_constraintEnd_toStartOf="@+id/barrier"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
         tools:visibility="visible" />
@@ -98,8 +119,9 @@
         android:src="@drawable/ic_triangle_down"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/priceTextView"
+        app:layout_constraintEnd_toStartOf="@+id/barrier"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
