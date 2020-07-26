@@ -1,15 +1,15 @@
 package com.sedsoftware.exchange.bitfinex.repository
 
 import com.sedsoftware.core.domain.entity.Currency
-import com.sedsoftware.core.domain.repository.TickersRepository
+import com.sedsoftware.core.domain.repository.PairManagerRepository
 import com.sedsoftware.exchange.bitfinex.database.BitfinexDatabase
 import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSymbolsDao
 import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexSyncInfoDao
 import javax.inject.Inject
 
-class BitfinexTickersRepository @Inject constructor(
+class BitfinexPairManagerRepository @Inject constructor(
     private val db: BitfinexDatabase
-) : TickersRepository {
+) : PairManagerRepository {
 
     private val symbolsDao: BitfinexSymbolsDao by lazy {
         db.getBitfinexSymbolsDao()

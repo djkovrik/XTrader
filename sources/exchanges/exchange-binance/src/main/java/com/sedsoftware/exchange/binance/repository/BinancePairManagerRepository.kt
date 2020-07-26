@@ -1,16 +1,16 @@
 package com.sedsoftware.exchange.binance.repository
 
 import com.sedsoftware.core.domain.entity.Currency
-import com.sedsoftware.core.domain.repository.TickersRepository
+import com.sedsoftware.core.domain.repository.PairManagerRepository
 import com.sedsoftware.exchange.binance.common.params.SymbolStatus
 import com.sedsoftware.exchange.binance.database.BinanceDatabase
 import com.sedsoftware.exchange.binance.database.dao.BinanceSymbolsDao
 import com.sedsoftware.exchange.binance.database.dao.BinanceSyncInfoDao
 import javax.inject.Inject
 
-class BinanceTickersRepository @Inject constructor(
+class BinancePairManagerRepository @Inject constructor(
     private val db: BinanceDatabase
-) : TickersRepository {
+) : PairManagerRepository {
 
     private val symbolsDao: BinanceSymbolsDao by lazy {
         db.getBinanceSymbolsDao()

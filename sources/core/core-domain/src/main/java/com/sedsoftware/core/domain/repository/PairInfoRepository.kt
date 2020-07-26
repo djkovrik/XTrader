@@ -1,6 +1,6 @@
 package com.sedsoftware.core.domain.repository
 
-interface PairsInfoRepository {
+interface PairInfoRepository {
     suspend fun downloadRemotePairsInfo()
     suspend fun markAsDownloaded()
 }

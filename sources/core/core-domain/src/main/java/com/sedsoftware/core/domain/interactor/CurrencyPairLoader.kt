@@ -2,14 +2,14 @@ package com.sedsoftware.core.domain.interactor
 
 import com.sedsoftware.core.domain.exception.CurrencyPairsLoadingError
 import com.sedsoftware.core.domain.exception.NetworkConnectionMissing
-import com.sedsoftware.core.domain.repository.PairsInfoRepository
+import com.sedsoftware.core.domain.repository.PairInfoRepository
 import com.sedsoftware.core.domain.tools.NetworkHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-interface CurrencyPairsLoader {
+interface CurrencyPairLoader {
 
-    val repository: PairsInfoRepository
+    val repository: PairInfoRepository
     val networkHandler: NetworkHandler
 
     suspend fun fetchCurrencyPairs() = withContext(Dispatchers.IO) {

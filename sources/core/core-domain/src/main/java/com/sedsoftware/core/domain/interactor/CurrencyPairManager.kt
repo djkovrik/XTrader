@@ -2,13 +2,13 @@ package com.sedsoftware.core.domain.interactor
 
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.exception.TickerPairsLoadingError
-import com.sedsoftware.core.domain.repository.TickersRepository
+import com.sedsoftware.core.domain.repository.PairManagerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-interface TickersManager {
+interface CurrencyPairManager {
 
-    val repository: TickersRepository
+    val repository: PairManagerRepository
 
     suspend fun checkIfDataAvailable(): Boolean = withContext(Dispatchers.IO) {
         repository.isSynchronized()

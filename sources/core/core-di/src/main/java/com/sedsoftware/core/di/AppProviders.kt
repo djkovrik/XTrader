@@ -8,9 +8,9 @@ import com.sedsoftware.core.domain.entity.Exchange
 import com.sedsoftware.core.domain.errorhandler.ErrorHandler
 import com.sedsoftware.core.domain.interactor.CurrencyManager
 import com.sedsoftware.core.domain.interactor.CurrencyMapLoader
-import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
-import com.sedsoftware.core.domain.interactor.TickersManager
-import com.sedsoftware.core.domain.interactor.PairTicksManager
+import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
+import com.sedsoftware.core.domain.interactor.CurrencyPairManager
+import com.sedsoftware.core.domain.interactor.TickerManager
 import com.sedsoftware.core.domain.navigation.FlowSwitcher
 import com.sedsoftware.core.domain.navigation.StartingFlowCoordinator
 import com.sedsoftware.core.domain.provider.AssetsProvider
@@ -45,22 +45,22 @@ interface DeviceToolsProvider {
 }
 
 interface ExchangeManagerProvider {
-    fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairsLoader>
-    fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards TickersManager>
-    fun providePairTicksManagers(): Map<Exchange, @JvmSuppressWildcards PairTicksManager>
+    fun provideExchangePairLoaders(): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader>
+    fun provideExchangePairManagers(): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
+    fun provideExchangeTickerManagers(): Map<Exchange, @JvmSuppressWildcards TickerManager>
     fun provideIconsProvider(): AssetsProvider
 }
 
 interface BinanceProvider {
-    @ForExchange(BINANCE) fun provideBinancePairLoader(): CurrencyPairsLoader
-    @ForExchange(BINANCE) fun provideBinancePairManager(): TickersManager
-    @ForExchange(BINANCE) fun provideBinancePairTicksManager(): PairTicksManager
+    @ForExchange(BINANCE) fun provideBinancePairLoader(): CurrencyPairLoader
+    @ForExchange(BINANCE) fun provideBinancePairManager(): CurrencyPairManager
+    @ForExchange(BINANCE) fun provideBinancePairTicksManager(): TickerManager
 }
 
 interface BitfinexProvider {
-    @ForExchange(BITFINEX) fun provideBitfinexPairLoader(): CurrencyPairsLoader
-    @ForExchange(BITFINEX) fun provideBitfinexPairManager(): TickersManager
-    @ForExchange(BITFINEX) fun provideBitfinexPairTicksManager(): PairTicksManager
+    @ForExchange(BITFINEX) fun provideBitfinexPairLoader(): CurrencyPairLoader
+    @ForExchange(BITFINEX) fun provideBitfinexPairManager(): CurrencyPairManager
+    @ForExchange(BITFINEX) fun provideBitfinexPairTicksManager(): TickerManager
 }
 
 interface CoinMarketCapProvider {

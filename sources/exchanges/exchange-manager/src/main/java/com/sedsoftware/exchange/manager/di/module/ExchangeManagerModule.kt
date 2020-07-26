@@ -4,9 +4,9 @@ import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BINANCE
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
 import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.interactor.CurrencyPairsLoader
-import com.sedsoftware.core.domain.interactor.TickersManager
-import com.sedsoftware.core.domain.interactor.PairTicksManager
+import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
+import com.sedsoftware.core.domain.interactor.CurrencyPairManager
+import com.sedsoftware.core.domain.interactor.TickerManager
 import dagger.Module
 import dagger.Provides
 
@@ -15,31 +15,31 @@ object ExchangeManagerModule {
 
     @Provides
     fun provideCurrencyPairLoaders(
-        @ForExchange(BINANCE) binancePairsLoader: CurrencyPairsLoader,
-        @ForExchange(BITFINEX) bitfinexPairsLoader: CurrencyPairsLoader
-    ): Map<Exchange, @JvmSuppressWildcards CurrencyPairsLoader> =
+        @ForExchange(BINANCE) binancePairLoader: CurrencyPairLoader,
+        @ForExchange(BITFINEX) bitfinexPairLoader: CurrencyPairLoader
+    ): Map<Exchange, @JvmSuppressWildcards CurrencyPairLoader> =
         mapOf(
-            BINANCE to binancePairsLoader,
-            BITFINEX to bitfinexPairsLoader
+            BINANCE to binancePairLoader,
+            BITFINEX to bitfinexPairLoader
         )
 
-        @Provides
-        fun provideCurrencyPairManager(
-            @ForExchange(BINANCE) binancePairsManager: TickersManager,
-            @ForExchange(BITFINEX) bitfinexPairsManager: TickersManager
-        ): Map<Exchange, @JvmSuppressWildcards TickersManager> =
-            mapOf(
-                BINANCE to binancePairsManager,
-                BITFINEX to bitfinexPairsManager
-            )
+    @Provides
+    fun provideCurrencyPairManager(
+        @ForExchange(BINANCE) binancePairManager: CurrencyPairManager,
+        @ForExchange(BITFINEX) bitfinexPairManager: CurrencyPairManager
+    ): Map<Exchange, @JvmSuppressWildcards CurrencyPairManager> =
+        mapOf(
+            BINANCE to binancePairManager,
+            BITFINEX to bitfinexPairManager
+        )
 
     @Provides
-    fun providePairTicksManagers(
-        @ForExchange(BINANCE) binanceTicksManager: PairTicksManager,
-        @ForExchange(BITFINEX) bitfinexTicksManager: PairTicksManager
-    ): Map<Exchange, @JvmSuppressWildcards PairTicksManager> =
+    fun provideTickerManagers(
+        @ForExchange(BINANCE) binanceTickerManager: TickerManager,
+        @ForExchange(BITFINEX) bitfinexTickerManager: TickerManager
+    ): Map<Exchange, @JvmSuppressWildcards TickerManager> =
         mapOf(
-            BINANCE to binanceTicksManager,
-            BITFINEX to bitfinexTicksManager
+            BINANCE to binanceTickerManager,
+            BITFINEX to bitfinexTickerManager
         )
 }

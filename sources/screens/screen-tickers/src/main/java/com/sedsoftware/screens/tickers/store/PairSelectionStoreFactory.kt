@@ -8,7 +8,7 @@ import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.entity.Currency
 import com.sedsoftware.core.domain.entity.CurrencyPair
 import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.interactor.TickersManager
+import com.sedsoftware.core.domain.interactor.CurrencyPairManager
 import com.sedsoftware.core.presentation.extension.orFalse
 import com.sedsoftware.screens.tickers.store.PairSelectionStore.Action
 import com.sedsoftware.screens.tickers.store.PairSelectionStore.Intent
@@ -18,7 +18,7 @@ import com.sedsoftware.screens.tickers.store.PairSelectionStore.State
 
 class PairSelectionStoreFactory(
     private val storeFactory: StoreFactory,
-    private val managers: Map<Exchange, @JvmSuppressWildcards TickersManager>
+    private val managers: Map<Exchange, @JvmSuppressWildcards CurrencyPairManager>
 ) {
 
     fun create(): PairSelectionStore =

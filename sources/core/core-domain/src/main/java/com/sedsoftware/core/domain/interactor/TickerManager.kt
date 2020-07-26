@@ -4,19 +4,19 @@ import com.sedsoftware.core.domain.entity.CurrencyPair
 import com.sedsoftware.core.domain.entity.CurrencyPairTick
 import com.sedsoftware.core.domain.exception.CurrencyTickLoadingError
 import com.sedsoftware.core.domain.exception.NetworkConnectionMissing
-import com.sedsoftware.core.domain.repository.PairsTickRepository
+import com.sedsoftware.core.domain.repository.TickerRepository
 import com.sedsoftware.core.domain.tools.NetworkHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
-interface PairTicksManager {
+interface TickerManager {
 
-    val repository: PairsTickRepository
+    val repository: TickerRepository
     val networkHandler: NetworkHandler
 
     suspend fun hasTicks(): Boolean = withContext(Dispatchers.IO) {
-        repository.hasTicks()
+        repository.hasTickers()
     }
 
     suspend fun addPairToWatchList(pair: CurrencyPair) = withContext(Dispatchers.IO) {
@@ -29,7 +29,7 @@ interface PairTicksManager {
     }
 
     suspend fun watchForTicks(): Flow<List<CurrencyPairTick>> = withContext(Dispatchers.IO) {
-        repository.watchForTicks()
+        repository.watchForTickers()
     }
 
     suspend fun refreshTicks() = withContext(Dispatchers.IO) {

@@ -2,12 +2,13 @@ package com.sedsoftware.exchange.bitfinex
 
 import com.sedsoftware.core.di.qualifier.ForExchange
 import com.sedsoftware.core.domain.ExchangeType.BITFINEX
-import com.sedsoftware.core.domain.interactor.PairTicksManager
-import com.sedsoftware.core.domain.repository.PairsTickRepository
+import com.sedsoftware.core.domain.interactor.CurrencyPairLoader
+import com.sedsoftware.core.domain.repository.PairInfoRepository
 import com.sedsoftware.core.domain.tools.NetworkHandler
 import javax.inject.Inject
 
-class BitfinexPairTicksManager @Inject constructor(
-    @ForExchange(BITFINEX) override val repository: PairsTickRepository,
+class BitfinexPairLoader @Inject constructor(
+    @ForExchange(BITFINEX)
+    override val repository: PairInfoRepository,
     override val networkHandler: NetworkHandler
-) : PairTicksManager
+) : CurrencyPairLoader

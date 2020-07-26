@@ -1,29 +1,29 @@
-package com.sedsoftware.exchange.bitfinex.repository
+package com.sedsoftware.exchange.binance.repository
 
 import com.sedsoftware.core.domain.entity.CurrencyPair
 import com.sedsoftware.core.domain.entity.CurrencyPairTick
-import com.sedsoftware.core.domain.repository.PairsTickRepository
-import com.sedsoftware.exchange.bitfinex.database.BitfinexDatabase
-import com.sedsoftware.exchange.bitfinex.database.dao.BitfinexTicksDao
-import com.sedsoftware.exchange.bitfinex.database.model.BitfinexPairTickDbModel
-import com.sedsoftware.exchange.bitfinex.mapper.BitfinexSymbolsMapper
-import com.sedsoftware.exchange.bitfinex.network.BitfinexApi
+import com.sedsoftware.core.domain.repository.TickerRepository
+import com.sedsoftware.exchange.binance.database.BinanceDatabase
+import com.sedsoftware.exchange.binance.database.dao.BinanceTicksDao
+import com.sedsoftware.exchange.binance.database.model.BinancePairTickDbModel
+import com.sedsoftware.exchange.binance.mapper.BinanceSymbolsMapper
+import com.sedsoftware.exchange.binance.network.BinanceApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.threeten.bp.OffsetDateTime
 import javax.inject.Inject
 
-class BitfinexPairTicksRepository @Inject constructor(
-    private val api: BitfinexApi,
-    private val db: BitfinexDatabase,
-    private val mapper: BitfinexSymbolsMapper
-) : PairsTickRepository {
+class BinanceTickerRepository @Inject constructor(
+    private val api: BinanceApi,
+    private val db: BinanceDatabase,
+    private val mapper: BinanceSymbolsMapper
+) : TickerRepository {
 
-    private val dao: BitfinexTicksDao by lazy {
-        db.getBitfinexTicksDao()
+    private val dao: BinanceTicksDao by lazy {
+        db.getBinanceTicksDao()
     }
 
-    override suspend fun hasTicks(): Boolean =
+    override suspend fun hasTickers(): Boolean =
         dao.getFirstTick() != null
 
     override suspend fun fetchPrice(pair: CurrencyPair): Float {
@@ -41,7 +41,7 @@ class BitfinexPairTicksRepository @Inject constructor(
         val valueChange = price - previousPrice
 
         dao.insert(
-            BitfinexPairTickDbModel(
+            BinancePairTickDbModel(
                 symbol = pair.symbol,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
@@ -62,7 +62,7 @@ class BitfinexPairTicksRepository @Inject constructor(
         val insertionDate = dao.getInsertionDate(pair.symbol) ?: now
 
         dao.insert(
-            BitfinexPairTickDbModel(
+            BinancePairTickDbModel(
                 symbol = pair.symbol,
                 baseCurrencyName = pair.baseCurrency.name,
                 baseCurrencyLabel = pair.baseCurrency.label,
@@ -86,7 +86,7 @@ class BitfinexPairTicksRepository @Inject constructor(
         dao.getTicks().map { mapper.mapDbTickToEntity(it) }
 
 
-    override suspend fun watchForTicks(): Flow<List<CurrencyPairTick>> =
+    override suspend fun watchForTickers(): Flow<List<CurrencyPairTick>> =
         dao.getTicksFlow().map { list -> list.map { mapper.mapDbTickToEntity(it) } }
 
     private companion object {

@@ -6,18 +6,18 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.SuspendExecutor
 import com.sedsoftware.core.domain.entity.CurrencyPair
 import com.sedsoftware.core.domain.entity.Exchange
-import com.sedsoftware.core.domain.interactor.PairTicksManager
+import com.sedsoftware.core.domain.interactor.TickerManager
+import com.sedsoftware.screens.tickers.store.PairSelectionStore.Action
 import com.sedsoftware.screens.tickers.store.TickersListStore.Intent
 import com.sedsoftware.screens.tickers.store.TickersListStore.Label
 import com.sedsoftware.screens.tickers.store.TickersListStore.Result
 import com.sedsoftware.screens.tickers.store.TickersListStore.State
-import com.sedsoftware.screens.tickers.store.PairSelectionStore.Action
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.merge
 
 class TickersListStoreFactory(
     private val storeFactory: StoreFactory,
-    private val managers: Map<Exchange, @JvmSuppressWildcards PairTicksManager>
+    private val managers: Map<Exchange, @JvmSuppressWildcards TickerManager>
 ) {
 
     fun create(): TickersListStore =
